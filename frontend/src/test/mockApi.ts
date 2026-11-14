@@ -101,7 +101,19 @@ const machineDetail: MachineDetail = {
   ...machine,
   destinationId: 'mars',
   mission: { id: 'mission-a', name: 'Test Mission', destinationId: 'mars' },
-  relations: [],
+  relations: [
+    {
+      id: 'rel-1',
+      from: { kind: 'mission', id: 'mission-0' },
+      to: { kind: 'machine', id: 'machine-a' },
+      type: 'technology',
+      transmitted: 'The airbag landing system.',
+      evidence: 'A test document says so.',
+      sourceIds: ['src-1'],
+      fromEntity: { kind: 'mission', id: 'mission-0', name: 'Earlier Mission', destinationId: 'mars' },
+      toEntity: { kind: 'machine', id: 'machine-a', name: 'Test Rover', destinationId: 'mars' },
+    },
+  ],
   media: [photo, artwork],
   storyTarget: { id: 'story-a', title: 'The test story', status: 'draft', missionIds: ['mission-a'] },
   sources: [source],
@@ -131,6 +143,7 @@ const story: StoryDetail = {
   steps,
   destinationId: 'mars',
   missions: [{ id: 'mission-a', name: 'Test Mission', destinationId: 'mars' }],
+  machines: [{ id: 'machine-a', name: 'Test Rover', destinationId: 'mars' }],
   relations: [
     {
       id: 'rel-1',
@@ -140,6 +153,8 @@ const story: StoryDetail = {
       transmitted: 'The airbag landing system.',
       evidence: 'A test document says so.',
       sourceIds: ['src-1'],
+      fromEntity: { kind: 'mission', id: 'mission-0', name: 'Earlier Mission', destinationId: 'mars' },
+      toEntity: { kind: 'mission', id: 'mission-a', name: 'Test Mission', destinationId: 'mars' },
     },
   ],
   media: [photo],

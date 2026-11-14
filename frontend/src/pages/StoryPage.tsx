@@ -6,12 +6,13 @@ import type { Media, Relation, Source, StoryDetail } from '@/api/types'
 import { paths } from '@/app/paths'
 import { LoadState } from '@/components/common/LoadState'
 import { MediaFigure } from '@/components/media/MediaFigure'
+import { RelationEnds } from '@/components/relations/RelationEnds'
 import { SourceList } from '@/components/sources/SourceList'
 import { VoiceTag } from '@/components/sources/VoiceTag'
 import { useApi } from '@/hooks/useApi'
 import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 import { useTranslation } from '@/i18n'
-import { DESTINATION_IDS, type DestinationId } from '@/types/content'
+import { DESTINATION_IDS } from '@/types/content'
 
 /** STORY-001 → 009: a six-step story driven by the URL (?step=1..6), never by scroll alone. */
 export function StoryPage() {
@@ -71,8 +72,11 @@ function StoryExperience({ story }: { story: StoryDetail }) {
   }
 
   const destinationId = story.destinationId
+  // Back to the machine the visitor came from, with its details open (US-4.2 criterion 3).
   const exitHref = destinationId
-    ? `${paths.destination(destinationId)}${from ? `#machine-${encodeURIComponent(from)}` : '#missions-title'}`
+    ? from
+      ? paths.machine(destinationId, from)
+      : `${paths.destination(destinationId)}#missions-title`
     : paths.home()
   const mediaById = new Map(story.media.map((m) => [m.id, m]))
   const sourceById = new Map(story.sources.map((s) => [s.id, s]))
@@ -165,7 +169,7 @@ function StoryExperience({ story }: { story: StoryDetail }) {
         )}
       </div>
 
-      {current === total && <StoryEnd destinationId={destinationId} exitHref={exitHref} />}
+      {current === total && <StoryEnd story={story} exitHref={exitHref} />}
     </article>
   )
 }
@@ -210,7 +214,8 @@ function Relations({ relations, sourceById }: { relations: Relation[]; sourceByI
       <ul className="mt-4 space-y-5">
         {relations.map((r) => (
           <li key={r.id}>
-            <p className="font-medium">{r.transmitted}</p>
+            <RelationEnds relation={r} />
+            <p className="mt-1 font-medium">{r.transmitted}</p>
             <p className="mt-1 text-sm text-moon-dust">
               <span className="font-semibold">{t('story.evidence')} </span>
               {r.evidence}
@@ -225,9 +230,13 @@ function Relations({ relations, sourceById }: { relations: Relation[]; sourceByI
   )
 }
 
-/** STORY-008: at the end, go back to the machines or explore the other destination. */
-function StoryEnd({ destinationId, exitHref }: { destinationId: DestinationId | null; exitHref: string }) {
+/**
+ * STORY-008 / US-4.7: at the end, go back to the machines, to each mission of the story, to the
+ * machines it cites, or explore the other destination.
+ */
+function StoryEnd({ story, exitHref }: { story: StoryDetail; exitHref: string }) {
   const { t } = useTranslation()
+  const { destinationId } = story
   const other = DESTINATION_IDS.find((d) => d !== destinationId)
   return (
     <section aria-labelledby="story-end-title" className="mt-10">
@@ -249,6 +258,40 @@ function StoryEnd({ destinationId, exitHref }: { destinationId: DestinationId | 
           </Link>
         )}
       </div>
+      {story.missions.length > 0 && (
+        <>
+          <h3 className="mt-6 text-sm font-semibold">{t('story.missionsTitle')}</h3>
+          <ul className="mt-2 flex flex-wrap gap-2">
+            {story.missions.map((mission) => (
+              <li key={mission.id}>
+                <Link
+                  to={`${paths.destination(mission.destinationId)}#mission-${encodeURIComponent(mission.id)}`}
+                  className="inline-flex min-h-11 items-center rounded-full border border-stellar-cyan/50 px-4 text-sm font-medium hover:bg-nebula-surface"
+                >
+                  {mission.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+      {story.machines.length > 0 && (
+        <>
+          <h3 className="mt-6 text-sm font-semibold">{t('story.machinesTitle')}</h3>
+          <ul className="mt-2 flex flex-wrap gap-2">
+            {story.machines.map((machine) => (
+              <li key={machine.id}>
+                <Link
+                  to={machine.destinationId ? paths.machine(machine.destinationId, machine.id) : paths.home()}
+                  className="inline-flex min-h-11 items-center rounded-full border border-moon-dust/50 px-4 text-sm font-medium hover:bg-nebula-surface"
+                >
+                  {machine.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
     </section>
   )
 }

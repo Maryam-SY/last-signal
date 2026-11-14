@@ -93,6 +93,14 @@ export interface Mission {
   timeline: TimelineEvent[]
 }
 
+/** One end of a relation, named by the API (machine and story details). */
+export interface EntityLabel {
+  kind: 'machine' | 'mission'
+  id: string
+  name: string
+  destinationId: DestinationId | null
+}
+
 export interface Relation {
   id: string
   from: { kind: 'machine' | 'mission'; id: string }
@@ -101,6 +109,9 @@ export interface Relation {
   transmitted: string
   evidence: string
   sourceIds: string[]
+  /** Present on GET /api/machines/:id and /api/stories/:id. */
+  fromEntity?: EntityLabel | null
+  toEntity?: EntityLabel | null
 }
 
 export interface DestinationSummary {
@@ -158,6 +169,8 @@ export interface StoryDetail {
   steps: StoryStep[]
   destinationId: DestinationId | null
   missions: { id: string; name: string; destinationId: DestinationId }[]
+  /** Machines cited by the story (STORY-008), with the destination where each one is. */
+  machines: { id: string; name: string; destinationId: DestinationId | null }[]
   relations: Relation[]
   media: Media[]
   sources: Source[]
