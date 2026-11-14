@@ -14,7 +14,7 @@
 | Élément | Exigences PRD | Stories |
 |---|---|---|
 | Sélecteur de destination Moon / Mars | DEST-001 → 005 | US-2.1, US-2.2 |
-| Accueil immersif « depth journey » (Lune et Mars au centre, caméra en profondeur au scroll, survol animé, morph vers la destination) — décision de l'équipe du 2026-11-14 | DEST-001 → 005, NFR-A11Y-006 | US-2.1 · [ADR-017](../architecture/TECHNICAL_DECISIONS.md) |
+| Accueil immersif « depth journey » (Lune et Mars au centre, caméra en profondeur au scroll, survol animé, morph vers la destination) — décision de l'équipe du 2026-11-14 | DEST-001 → 005, NFR-A11Y-006 | US-2.1 · [ADR-018](../architecture/TECHNICAL_DECISIONS.md) |
 | Espace Lune | EXPL-001, EQUIP-*, MAP-* | E3 |
 | Espace Mars | EXPL-001, EQUIP-*, MAP-* | E3 |
 | Carte interactive 2D (SVG, schématique) | MAP-001 → 006 | US-3.3, US-3.6 |
@@ -41,7 +41,7 @@
 
 ## P2 — Évolutions futures (hors hackathon)
 
-- Animations narratives avancées **dans les récits** (scroll storytelling / parallax poussés). L'accueil en fait exception (P0, ADR-017).
+- Animations narratives avancées **dans les récits** (scroll storytelling / parallax poussés). L'accueil en fait exception (P0, ADR-018).
 - Audio / mode radio.
 - PWA et consultation hors ligne.
 - Mini-quiz.

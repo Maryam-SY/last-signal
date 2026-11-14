@@ -75,7 +75,7 @@ Le guide fournit des couleurs par **famille d'objets** (étoiles, planètes roch
 | `MapMarker` | Cible 44 × 44 px ; repos : cercle contour Starlight ; sélectionné : cercle plein Cyan + anneau + taille ×1,25 |
 | Cartes cliquables | Surface `#1C2638`, survol : éclaircissement, focus : anneau Indigo |
 | Animations | Durée ≤ 200 ms, `opacity`/`transform` uniquement, supprimées sous `prefers-reduced-motion` |
-| Exception : accueil (ADR-017) | Animations continues pilotées par le scroll et le pointeur (caméra en profondeur, rotation, filtres SVG de distorsion, canvas d'étoiles, View Transition ≤ 900 ms). Jamais porteuses d'information ; repli en sections statiques et aucune animation sous `prefers-reduced-motion` |
+| Exception : accueil (ADR-018) | Animations continues pilotées par le scroll et le pointeur (caméra en profondeur, rotation, filtres SVG de distorsion, canvas d'étoiles, View Transition ≤ 900 ms). Jamais porteuses d'information ; repli en sections statiques et aucune animation sous `prefers-reduced-motion` |
 
 ## 5. Rayons, espacements
 

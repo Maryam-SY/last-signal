@@ -24,7 +24,7 @@
 | ADR-014 | Moteur narratif découplé de la technique d'animation | Acceptée | OPEN-10 |
 | ADR-015 | Internationalisation : dictionnaires typés, sans librairie i18n | Acceptée | OPEN-06 |
 | ADR-016 | Architecture frontend + backend (site dynamique) | Acceptée (rôle de l'API ouvert) | OPEN-03, OPEN-18 |
-| ADR-017 | Accueil immersif « depth journey » sans bibliothèque | Acceptée | — |
+| ADR-018 | Accueil immersif « depth journey » sans bibliothèque | Acceptée | — |
 
 ---
 
@@ -207,7 +207,7 @@
   - Exigence de résilience : si l'API est indisponible, l'interface affiche un message clair et ne doit jamais afficher de donnée non sourcée.
   - Écart assumé avec le CDC §7, tracé ici.
 
-## ADR-017 — Accueil immersif « depth journey » sans bibliothèque
+## ADR-018 — Accueil immersif « depth journey » sans bibliothèque
 
 - **Statut** : Acceptée le 2026-11-14 (demande explicite de l'équipe ; implémentée par US-2.1, PR #3)
 - **Problème** : l'équipe veut un accueil centré sur la Lune et Mars, avec rotations au survol, distorsions au scroll et entrée « dans » la planète au clic, et que le scroll donne l'impression que **la page vient vers le visiteur** plutôt qu'un défilement vertical (barre de défilement masquée). SCOPE classait ces animations en P2 et DESIGN_SYSTEM limitait les animations à 200 ms.
