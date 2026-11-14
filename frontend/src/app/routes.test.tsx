@@ -34,10 +34,10 @@ describe('routes', () => {
     expect(screen.getByRole('link', { name: 'Back to home' })).toHaveAttribute('href', '/')
   })
 
-  it('renders the story shell', () => {
+  it('renders the story route (unknown story → clear message)', async () => {
     renderRoute('/stories/apollo-12')
     expect(screen.getByRole('heading', { level: 1, name: 'Story' })).toBeInTheDocument()
-    expect(screen.getByText(/apollo-12/)).toBeInTheDocument()
+    expect(await screen.findByText(/apollo-12/)).toBeInTheDocument()
   })
 
   it('shows the non-affiliation statement on /about', () => {

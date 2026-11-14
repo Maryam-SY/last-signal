@@ -240,6 +240,15 @@ flowchart LR
 
 ## 11. Chargement des contenus
 
+> **Mise à jour 2026-11-14 — le frontend lit le contenu depuis l'API (ADR-016, OPEN-18).** Le tableau ci-dessous (import statique) est remplacé :
+> - `src/api/client.ts` : une fonction par route (`api.destination`, `api.mission`, `api.machine`, `api.story`, `api.sources`) ; base `VITE_API_BASE_URL` (vide en dev : proxy Vite `/api` → backend) ; `?lang=` = langue de l'interface.
+> - `src/api/types.ts` : formes des réponses déjà localisées (miroir de `backend/src/content/types.ts`).
+> - `src/hooks/useApi.ts` : chargement + annulation (AbortController) + rechargement au changement de langue, état `loading | success | error` et `retry()` ; aucune librairie ajoutée.
+> - Chargement **à la demande** : la page destination charge `/destinations/:id` ; la chronologie (`/missions/:id`) et les photos/sources d'une machine (`/machines/:id`) ne se chargent qu'à l'ouverture du panneau.
+> - Erreurs : composant `LoadState` (message clair + « Réessayer ») ; récit inconnu → message dédié (404).
+> - Les ancres (`#mission-…`, `#machine-…`) sont résolues **après** chargement (retour « Quitter le récit » vers la machine d'origine, avec focus).
+> - Médias : `MediaFigure` charge les fichiers depuis les serveurs NASA (ADR-017) avec `DepictionBadge` (MEDIA-001) ; YouTube, modèles 3D et PDF s'ouvrent sur leur page officielle (pas d'intégration tierce).
+
 | Fichier | Mode | Justification |
 |---|---|---|
 | destinations, missions, machines, relations, sources, credits | Import statique (bundle principal) | Petits volumes (dizaines d'entrées), nécessaires dès la page destination |
