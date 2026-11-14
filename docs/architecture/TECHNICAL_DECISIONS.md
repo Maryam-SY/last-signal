@@ -28,6 +28,7 @@
 | ADR-018 | Accueil immersif « depth journey » sans bibliothèque | Acceptée | — |
 | ADR-019 | Pages Destination et Récit en scroll immersif continu | Acceptée | — |
 | ADR-020 | Modèles 3D NASA affichés avec `@google/model-viewer`, chargé à la demande | Acceptée (demande de l'équipe, 2026-11-14) | — |
+| ADR-021 | Vidéo d'introduction de l'équipe et ciel commun au site | Acceptée (demande de l'équipe, 2026-11-14) | — |
 
 ---
 
@@ -287,3 +288,15 @@
   - Les tests remplacent le module (`vi.mock`), car jsdom n'a pas WebGL.
   - Le rendu réel a été vérifié dans Chromium : WebGL logiciel, 1440 et 360 px.
 
+---
+
+## ADR-021 — Vidéo d'introduction de l'équipe et ciel commun au site
+
+- **Statut** : Acceptée le 2026-11-14 (demande explicite de l'équipe ; US-2.4)
+- **Problème** : l'équipe fournit une vidéo (9,5 s : surface de la Lune, titre « The Next Frontier », puis la Lune et Mars sur la Voie lactée) et veut qu'elle ouvre le site, que l'accueil apparaisse à sa fin (deux planètes en surbrillance, titre « Choisis ta destination » tapé à la machine), et que le fond de la vidéo devienne le fond de tout le site.
+- **Décision** :
+  - Fichiers **dans le dépôt** (`frontend/public/media/`) : contrairement aux médias NASA servis par référence (ADR-017), c'est un élément d'interface fourni par l'équipe. `intro.mp4` réencodée en H.264 sans piste audio (0,69 Mo, `faststart`), `intro-poster.jpg` (première image), `space-bg.jpg` (dernière image **sans les planètes**, retouchée : diffusion du ciel et réemploi du grain d'étoiles des bords de l'image, 1696 × 956, 161 Ko).
+  - `IntroVideo` : plein écran au-dessus de l'accueil, **muette** (seule une vidéo muette démarre automatiquement), bouton « Passer l'intro » (focalisé) et touche Échap ; jouée **une fois par visite** (`sessionStorage`) ; ignorée sous `prefers-reduced-motion` et si le navigateur refuse la lecture ; en portrait, vidéo entière (`object-contain`). Badge « Contient des animations » (MEDIA-001 : les planètes de la vidéo sont des images de synthèse).
+  - Fondu croisé de 900 ms : l'accueil s'allume pendant que la vidéo s'efface ; planètes en halo pulsé (`.planet-glow`) ; titre révélé lettre par lettre sans décaler la mise en page (le texte complet reste lu par les lecteurs d'écran).
+  - Ciel commun : classe `.space-sky` sous le champ d'étoiles de toutes les pages (voile sombre `--sky-veil`) ; vignette du champ d'étoiles allégée pour laisser voir la Voie lactée.
+- **Conséquences** : la musique de la vidéo n'est pas utilisée. **Origine et licence de la vidéo à confirmer par l'équipe**, puis crédit dans About (ABOUT-001). Aucune dépendance ajoutée.

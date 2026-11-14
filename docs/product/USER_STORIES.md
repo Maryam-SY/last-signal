@@ -107,6 +107,14 @@ Personas : **Visiteur** (10-15 ans, principal), **Curieux** (adulte), **Équipe*
   1. Chaque image a un texte alternatif et un crédit consultable dans About.
   2. Étant donné `showCounts: true`, alors les nombres affichés sont calculés depuis le contenu ; étant donné `false`, alors aucun nombre n'apparaît.
 
+### US-2.4 — Vidéo d'introduction et accueil qui s'allume
+- **Story** : En tant que visiteur, je souhaite être accueilli par une courte vidéo qui se transforme en page d'accueil, afin d'entrer dans l'univers du site.
+- **Priorité** : P0 (décision de l'équipe du 2026-11-14) · **Exigences** : DEST-001, NFR-A11Y-006 · **Statut** : `review` (ADR-021 ; `docs/project/stories/US-2.4.md`)
+- **Critères** :
+  1. À l'arrivée sur l'accueil, la vidéo de l'équipe joue en plein écran, muette, une fois par visite ; « Passer l'intro » et Échap l'arrêtent ; rien sous `prefers-reduced-motion`.
+  2. À sa fin, fondu vers l'accueil : la Lune et Mars en surbrillance sur le même ciel, et « Choisis ta destination » s'écrit lettre par lettre.
+  3. Le ciel de la vidéo (sans les planètes) est le fond de toutes les pages.
+
 ### US-2.3 — Me repérer partout
 - **Story** : En tant que visiteur, je souhaite savoir où je suis et revenir en arrière facilement afin de ne jamais me perdre.
 - **Priorité** : P0 · **Exigences** : NAV-001, NAV-002, NAV-003, NAV-005

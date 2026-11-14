@@ -4,6 +4,11 @@ import { cn } from '@/lib/utils'
 interface ScatterTextProps {
   text: string
   className?: string
+  /**
+   * Typewriter (US-2.4): only the first `typed` letters are visible, followed by a caret.
+   * Hidden letters keep their place, so the title never reflows while it is being typed.
+   */
+  typed?: number
 }
 
 /** Deterministic pseudo-random in [-1, 1] so letters scatter the same way on every render. */
@@ -17,7 +22,8 @@ function noise(seed: number): number {
  * Driven only by the inherited CSS variable `--pass` (0 → 1) set by DepthJourney.
  * The whole text stays available to assistive tech via the visually-hidden copy.
  */
-export function ScatterText({ text, className }: ScatterTextProps) {
+export function ScatterText({ text, className, typed }: ScatterTextProps) {
+  const typing = typed !== undefined && typed < Array.from(text.replace(/ /g, '')).length
   let letterIndex = 0
   const words = text.split(' ')
 
@@ -32,10 +38,12 @@ export function ScatterText({ text, className }: ScatterTextProps) {
             {Array.from(word).map((letter) => {
               letterIndex += 1
               const seed = letterIndex
+              const hidden = typed !== undefined && seed > typed
+              const caret = typing && seed === typed
               return (
                 <span
                   key={seed}
-                  className="scatter-letter"
+                  className={cn('scatter-letter', hidden && 'invisible', caret && 'typing-caret')}
                   style={
                     {
                       '--sx': (noise(seed) * 260).toFixed(0),

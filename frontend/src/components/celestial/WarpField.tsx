@@ -132,7 +132,7 @@ export function WarpField() {
   })
 
   return (
-    <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-void">
+    <div aria-hidden="true" className="space-sky pointer-events-none fixed inset-0 z-0 overflow-hidden [--sky-veil:0.25]">
       <div className="absolute top-[-20%] left-[-15%] h-[60vmax] w-[60vmax] rounded-full bg-[radial-gradient(circle,rgba(139,157,255,0.14),transparent_65%)] blur-3xl" />
       <div className="absolute right-[-20%] bottom-[-25%] h-[65vmax] w-[65vmax] rounded-full bg-[radial-gradient(circle,rgba(217,119,87,0.12),transparent_65%)] blur-3xl" />
       <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />

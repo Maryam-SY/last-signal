@@ -18,3 +18,8 @@ HTMLCanvasElement.prototype.getContext = (() => null) as typeof HTMLCanvasElemen
 
 // jsdom does not scroll; the router's scroll restoration and the immersive pages call these.
 window.scrollTo = (() => {}) as typeof window.scrollTo
+
+// jsdom cannot play media: by default the intro video "refuses" to play (as a browser that
+// blocks autoplay would), so pages render straight away. Intro tests override this.
+window.HTMLMediaElement.prototype.play = () => Promise.reject(new Error('jsdom cannot play media'))
+window.HTMLMediaElement.prototype.pause = () => {}

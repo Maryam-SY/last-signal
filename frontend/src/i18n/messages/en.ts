@@ -25,6 +25,11 @@ export const en = {
     tagline: 'Moon · Mars — the machines we left behind',
     sources: 'All sources',
   },
+  intro: {
+    label: 'Introduction',
+    description: 'Intro video: a flight over the surface of the Moon, the title “The Next Frontier”, then the Moon and Mars side by side.',
+    skip: 'Skip intro',
+  },
   explore: {
     title: 'Choose your destination',
     intro:

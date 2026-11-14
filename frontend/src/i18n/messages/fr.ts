@@ -23,6 +23,11 @@ export const fr: Messages = {
     tagline: 'Lune · Mars — les machines que nous avons laissées',
     sources: 'Toutes les sources',
   },
+  intro: {
+    label: 'Introduction',
+    description: 'Vidéo d’introduction : un survol de la surface de la Lune, le titre « The Next Frontier », puis la Lune et Mars côte à côte.',
+    skip: 'Passer l’intro',
+  },
   explore: {
     title: 'Choisis ta destination',
     intro:

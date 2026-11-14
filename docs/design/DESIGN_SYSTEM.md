@@ -79,6 +79,8 @@ Le guide fournit des couleurs par **famille d'objets** (étoiles, planètes roch
 | Animations | Durée ≤ 200 ms, `opacity`/`transform` uniquement, supprimées sous `prefers-reduced-motion` |
 | Exception : Destination et Récit (ADR-019) | Planète épinglée pilotée par le scroll, apparitions au scroll (`Reveal`, ≤ 700 ms), couleur d'ambiance par étape (700 ms), barre de progression. Jamais porteuses d'information ; supprimées sous `prefers-reduced-motion` |
 | Panneaux « verre » | Utilitaire `glass` : fond Deep Space 55-72 % + flou ; le fond seul garantit le contraste si le flou n'est pas supporté |
+| Ciel du site (ADR-021) | `.space-sky` : image `public/media/space-bg.jpg` (Voie lactée de la vidéo d'intro, planètes retirées) + voile Void Black (`--sky-veil`, 0,55 par défaut, 0,25 sur l'accueil), sous le champ d'étoiles ; le texte reste sur des panneaux ou un fond assez sombre |
+| Exception : intro (ADR-021) | Vidéo plein écran ≤ 10 s, muette, passable (bouton + Échap), une fois par visite, fondu 900 ms ; titre tapé (70 ms/lettre) et halo pulsé des planètes ; rien sous `prefers-reduced-motion` |
 | Exception : accueil (ADR-018) | Animations continues pilotées par le scroll et le pointeur (caméra en profondeur, rotation, filtres SVG de distorsion, canvas d'étoiles, View Transition ≤ 900 ms). Jamais porteuses d'information ; repli en sections statiques et aucune animation sous `prefers-reduced-motion` |
 
 ## 5. Rayons, espacements
