@@ -36,6 +36,8 @@ export function contentRouter(repo: ContentRepository): Router {
   router.get('/relations', (req, res) => send(req, res, repo.listRelations(), 'Relations'))
   router.get('/sources', (req, res) => send(req, res, repo.listSources(), 'Sources'))
   router.get('/sources/:id', (req, res) => send(req, res, repo.getSource(req.params.id), 'Source'))
+  router.get('/glossary', (req, res) => send(req, res, repo.listGlossary(), 'Glossary'))
+  router.get('/timeline', (req, res) => send(req, res, repo.getTimeline(), 'Timeline'))
 
   router.get('/media', (req, res) => {
     const type = stringParam(req.query.type)

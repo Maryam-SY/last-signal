@@ -1,18 +1,25 @@
+import { useEffect } from 'react'
 import { ArrowLeft, ChevronsDown } from 'lucide-react'
 import { Link, useParams } from 'react-router'
 import { api } from '@/api/client'
 import { paths } from '@/app/paths'
 import { SpaceBackdrop } from '@/components/celestial/SpaceBackdrop'
+import { ErrorBoundary } from '@/components/common/ErrorBoundary'
+import { LoadState } from '@/components/common/LoadState'
 import { PinnedDestinationPlanet, StaticDestinationPlanet } from '@/components/destination/DestinationPlanet'
 import { NextWorld } from '@/components/destination/NextWorld'
+import { Scene } from '@/components/destination/Scene'
 import { MissionGallery } from '@/components/gallery/MissionGallery'
 import { ScrollProgress } from '@/components/motion/ScrollProgress'
+import { SiteMap } from '@/components/map/SiteMap'
 import { JourneyRail } from '@/components/navigation/JourneyRail'
+import { WorldsTimeline } from '@/components/timeline/WorldsTimeline'
 import { getBodyByDestination } from '@/content/celestialBodies'
 import { useApi } from '@/hooks/useApi'
 import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { useTranslation } from '@/i18n'
+import { record } from '@/lib/explorerLog'
 import { ctaPrimary, eyebrow } from '@/lib/styles'
 import { cn } from '@/lib/utils'
 import { DESTINATION_IDS, isDestinationId, type DestinationId } from '@/types/content'
@@ -39,12 +46,15 @@ function DestinationView({ destinationId }: { destinationId: DestinationId }) {
   const destination = useApi(`destination:${destinationId}`, (lang, signal) => api.destination(destinationId, lang, signal))
   const other = DESTINATION_IDS.find((id) => id !== destinationId)
   useDocumentTitle(name)
+  useEffect(() => record('worlds', destinationId), [destinationId])
 
   const railItems = [
     { id: 'orbit', label: t('destination.orbit') },
+    { id: 'site-map', label: t('map.rail') },
     ...(destination.status === 'success'
       ? destination.data.missions.map((mission) => ({ id: `mission-${mission.id}`, label: mission.name }))
       : []),
+    { id: 'timeline', label: t('timeline.rail') },
     ...(other ? [{ id: 'next-world', label: t('destination.nextWorld') }] : []),
   ]
 
@@ -53,7 +63,7 @@ function DestinationView({ destinationId }: { destinationId: DestinationId }) {
       <SpaceBackdrop />
       <ScrollProgress />
       {body && !reduced && <PinnedDestinationPlanet key={destinationId} body={body} />}
-      <JourneyRail items={railItems} label={t('destination.journeyLabel')} className="hidden md:block" />
+      <JourneyRail items={railItems} label={t('destination.journeyLabel')} />
 
       {/* Gutter for the fixed journey rail (md and up), so its dots never cover the content. */}
       <div className="relative z-10 md:pr-16 lg:pr-20">
@@ -105,7 +115,22 @@ function DestinationView({ destinationId }: { destinationId: DestinationId }) {
           </p>
         </section>
 
+        <Scene id="site-map" eyebrow={t('map.eyebrow')} title={t('map.title')} intro={t('map.intro')}>
+          {destination.status === 'success' ? (
+            <ErrorBoundary fallback={<p role="alert" className="glass rounded-2xl p-5 text-sm">{t('map.error')}</p>}>
+              <SiteMap destination={destination.data} />
+            </ErrorBoundary>
+          ) : destination.status === 'loading' ? (
+            <LoadState status="loading" />
+          ) : null /* the missions section below reports the error, with its retry button */}
+        </Scene>
+
         <MissionGallery state={destination} />
+
+        <Scene id="timeline" eyebrow={t('timeline.eyebrow')} title={t('timeline.title')} intro={t('timeline.intro')}>
+          <WorldsTimeline current={destinationId} />
+        </Scene>
+
         {other && <NextWorld id={other} />}
       </div>
     </div>

@@ -187,6 +187,22 @@
   transition: --step-accent 700ms ease;
 }
 
+/* Relay chain: a signal travels from the giver to the receiver (StoryPedagogy.tsx). */
+@keyframes relay {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+  15%,
+  85% {
+    opacity: 1;
+  }
+  100% {
+    left: calc(100% - 0.5rem);
+    opacity: 0;
+  }
+}
+
 /* Idle float for the SVG planets; scroll parallax is applied by JS on the parent wrapper. */
 @media (prefers-reduced-motion: no-preference) {
   .planet-float {

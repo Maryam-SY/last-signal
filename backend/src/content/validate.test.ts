@@ -33,6 +33,28 @@ describe('content integrity (real content)', () => {
 })
 
 describe('content integrity (rules)', () => {
+  it('rejects a glossary entry without source or without a French form (V14)', () => {
+    const c = clone()
+    c.glossary[0]!.sourceIds = []
+    c.glossary[1]!.terms.fr = []
+    const errors = errorsOf(c)
+    expect(errors).toContainEqual(expect.stringContaining(`glossary/${c.glossary[0]!.id}.sourceIds`))
+    expect(errors).toContainEqual(expect.stringContaining('needs at least one "fr" form (V14)'))
+  })
+
+  it('rejects a picture story without review status (V15)', () => {
+    const c = clone()
+    const story = c.media.find((m) => m.description)!
+    delete story.descriptionStatus
+    expect(errorsOf(c)).toContainEqual(expect.stringContaining('descriptionStatus draft|reviewed (V15)'))
+  })
+
+  it('keeps every picture story in draft until a human reviews it', () => {
+    const stories = real.media.filter((m) => m.description)
+    expect(stories.length).toBeGreaterThan(30)
+    expect(stories.every((m) => m.descriptionStatus === 'draft')).toBe(true)
+  })
+
   it('rejects an unknown source', () => {
     const c = clone()
     c.machines[0]!.status.sourceIds = ['does-not-exist']

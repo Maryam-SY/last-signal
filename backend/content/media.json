@@ -92,7 +92,12 @@
     ],
     "sourceId": "jpl-llr-2004",
     "aiGenerated": false,
-    "depiction": "photo"
+    "depiction": "photo",
+    "description": {
+      "en": "The Apollo 11 reflector: 100 prisms arranged in 10 rows of 10. Each one is made of fused silica (a kind of quartz) and is 3.8 cm across.",
+      "fr": "Le réflecteur d’Apollo 11 : 100 prismes rangés en 10 lignes de 10. Chacun est en silice fondue (une sorte de quartz) et mesure 3,8 cm de diamètre."
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "llr-corner-cube-prisms",
@@ -115,7 +120,12 @@
     ],
     "sourceId": "jpl-llr-2004",
     "aiGenerated": false,
-    "depiction": "photo"
+    "depiction": "photo",
+    "description": {
+      "en": "These prisms send any light straight back to where it came from. The same idea is used in car tail lights, bike reflectors and road-sign paint.",
+      "fr": "Ces prismes renvoient toute lumière exactement d’où elle vient. On retrouve la même idée dans les feux arrière des voitures, les catadioptres de vélo et la peinture des panneaux routiers."
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "surveyor-3-apollo-12-as12-48-7134",
@@ -235,7 +245,12 @@
     ],
     "sourceId": "nasa-science-mars-pathfinder",
     "aiGenerated": false,
-    "depiction": "photo"
+    "depiction": "photo",
+    "description": {
+      "en": "About 100 pictures from the lander were stitched together by hand to make this panorama. The colours were adjusted to tell the kinds of rocks and soils apart as clearly as possible, and the sky was retouched.",
+      "fr": "Une centaine de photos de l’atterrisseur ont été assemblées à la main pour former ce panorama. Les couleurs ont été réglées pour distinguer au mieux les types de roches et de sols, et le ciel a été retouché."
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "pathfinder-360-video",
@@ -309,7 +324,12 @@
     ],
     "sourceId": "nasa-science-mars-pathfinder",
     "aiGenerated": false,
-    "depiction": "photo"
+    "depiction": "photo",
+    "description": {
+      "en": "Engineers test the huge airbags that wrapped Pathfinder before it hit the ground: four big bags, each holding six smaller linked spheres — about 5 m tall!",
+      "fr": "Des ingénieurs testent les énormes airbags qui ont enveloppé Pathfinder avant son impact au sol : quatre grands sacs, contenant chacun six sphères plus petites reliées entre elles — environ 5 m de haut !"
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "pathfinder-sojourner-sol-2-pia01551",
@@ -451,7 +471,12 @@
     "dateCreated": "2004-01-11",
     "nasaId": "PIA05044",
     "aiGenerated": false,
-    "depiction": "photo"
+    "depiction": "photo",
+    "description": {
+      "en": "Seen from above, Spirit still sits on its lander. An airbag blocks the way straight ahead, so the yellow arrow shows another exit: the rover has to back up and turn, like a car doing a three-point turn in a tight car park.",
+      "fr": "Vu d’en haut, Spirit est encore sur son atterrisseur. Un airbag bloque la sortie tout droit, alors la flèche jaune montre un autre chemin : le rover doit reculer et tourner, comme une voiture qui fait demi-tour en trois manœuvres dans un parking étroit."
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "mer-spirit-landing-site-pia05117",
@@ -474,7 +499,12 @@
     ],
     "sourceId": "nasa-science-mer",
     "aiGenerated": false,
-    "depiction": "photo"
+    "depiction": "photo",
+    "description": {
+      "en": "Spirit looks around its landing site in Gusev Crater, named the Columbia Memorial Station. On the left, the rim of a crater about 200 m wide; on the right, hills about 3 km away. Photo taken on the rover’s 16th Martian day.",
+      "fr": "Spirit regarde autour de son site d’atterrissage dans le cratère Gusev, baptisé Columbia Memorial Station. À gauche, le bord d’un cratère d’environ 200 m de large ; à droite, des collines à environ 3 km. Photo prise le 16e jour martien du rover."
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "mer-lion-king-panorama-pia05755",
@@ -497,7 +527,12 @@
     ],
     "sourceId": "nasa-science-mer",
     "aiGenerated": false,
-    "depiction": "photo"
+    "depiction": "photo",
+    "description": {
+      "en": "Opportunity’s “Lion King” panorama shows Eagle Crater, where it landed, and the plains of Meridiani Planum. Made of 558 pictures — the biggest panorama either rover took in 2004 — it sums up the start of the adventure: the lander, the rocks and soils studied, and the way out of the crater.",
+      "fr": "Le panorama « Lion King » d’Opportunity montre le cratère Eagle, où il s’est posé, et les plaines de Meridiani Planum. Fait de 558 photos — le plus grand panorama pris par l’un des deux rovers en 2004 —, il résume le début de l’aventure : l’atterrisseur, les roches et les sols étudiés, et la sortie du cratère."
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "mer-blueberries-pia19113",
@@ -520,7 +555,12 @@
     ],
     "sourceId": "nasa-science-mer-highlights",
     "aiGenerated": false,
-    "depiction": "photo"
+    "depiction": "photo",
+    "description": {
+      "en": "Seen by the microscope camera on Opportunity’s arm, these little spheres lie near Fram Crater. The whole picture is only 3 cm wide!",
+      "fr": "Vues par la caméra-microscope du bras d’Opportunity, ces petites sphères se trouvent près du cratère Fram. Toute l’image ne fait que 3 cm de large !"
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "mer-comanche-spirit",
@@ -589,7 +629,12 @@
     ],
     "sourceId": "nasa-science-mer-highlights",
     "aiGenerated": false,
-    "depiction": "diagram"
+    "depiction": "diagram",
+    "description": {
+      "en": "The gold line traces Opportunity’s route from its landing site inside Eagle Crater, at the top left. Since August 2011 the rover had been exploring the western rim of Endeavour Crater.",
+      "fr": "La ligne dorée trace le trajet d’Opportunity depuis son site d’atterrissage dans le cratère Eagle, en haut à gauche. Depuis août 2011, le rover explorait le bord ouest du cratère Endeavour."
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "mer-opportunity-clean-vs-dusty-2014",
@@ -658,7 +703,12 @@
     ],
     "sourceId": "jpl-opportunity-end-2019",
     "aiGenerated": false,
-    "depiction": "photo"
+    "depiction": "photo",
+    "description": {
+      "en": "A self-portrait thanks to the Sun: Opportunity’s shadow, caught by its front hazard-avoidance camera as it drove deeper into Endurance Crater.",
+      "fr": "Un autoportrait grâce au Soleil : l’ombre d’Opportunity, saisie par sa caméra avant d’évitement d’obstacles alors qu’il s’enfonçait dans le cratère Endurance."
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "jpl-opportunity-last-commands-2019",
@@ -681,7 +731,12 @@
     ],
     "sourceId": "jpl-opportunity-end-2019",
     "aiGenerated": false,
-    "depiction": "photo"
+    "depiction": "photo",
+    "description": {
+      "en": "Late on 12 February 2019, at NASA’s Jet Propulsion Laboratory in California, mission controllers sent the last commands asking Opportunity to call home.",
+      "fr": "Tard le 12 février 2019, au Jet Propulsion Laboratory de la NASA en Californie, les contrôleurs de la mission envoient les dernières commandes demandant à Opportunity de donner des nouvelles."
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "ingenuity-on-mars-pia24581",
@@ -1351,7 +1406,12 @@
     "dateCreated": "1969-07-20",
     "nasaId": "as11-40-5951",
     "aiGenerated": false,
-    "depiction": "photo"
+    "depiction": "photo",
+    "description": {
+      "en": "Aldrin sets up the seismometer near Tranquility Base. The instrument stayed on the Moon to radio back news of moonquakes, landslides and meteorite impacts.",
+      "fr": "Aldrin installe le sismomètre près de la base de la Tranquillité. L’instrument est resté sur la Lune pour envoyer par radio des informations sur les tremblements de Lune, les glissements de terrain et les impacts de météorites."
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "nasa-lib-as11-37-5551",
@@ -1483,7 +1543,12 @@
     "dateCreated": "1969-07-20",
     "nasaId": "KSC-as11-40-5964",
     "aiGenerated": false,
-    "depiction": "photo"
+    "depiction": "photo",
+    "description": {
+      "en": "Footprints everywhere: near the Lunar Module Eagle, Buzz Aldrin sets up an experiment on the solar wind at Tranquility Base.",
+      "fr": "Des empreintes partout : près du module lunaire Eagle, Buzz Aldrin installe une expérience sur le vent solaire, à la base de la Tranquillité."
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "nasa-lib-as11-40-5902",
@@ -1535,7 +1600,12 @@
     "dateCreated": "1969-07-20",
     "nasaId": "as11-40-5863",
     "aiGenerated": false,
-    "depiction": "photo"
+    "depiction": "photo",
+    "description": {
+      "en": "Buzz Aldrin climbs out of the Lunar Module Eagle. Neil Armstrong took this photo with a camera adapted for the Moon’s surface. Meanwhile, the third astronaut, Michael Collins, kept circling the Moon aboard the command module Columbia.",
+      "fr": "Buzz Aldrin sort du module lunaire Eagle. Neil Armstrong a pris cette photo avec un appareil adapté à la surface de la Lune. Pendant ce temps, le troisième astronaute, Michael Collins, tournait autour de la Lune à bord du module de commande Columbia."
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "nasa-lib-s69-44463",
@@ -1561,7 +1631,12 @@
     "dateCreated": "1969-07-01",
     "nasaId": "S69-44463",
     "aiGenerated": false,
-    "depiction": "photo"
+    "depiction": "photo",
+    "description": {
+      "en": "Neil Armstrong took a series of pictures all around the landing site, in the south-east of the Sea of Tranquility. In some of them you can see the Lunar Module’s footpads and shadows.",
+      "fr": "Neil Armstrong a pris une série de photos tout autour du site d’atterrissage, dans le sud-est de la mer de la Tranquillité. Sur certaines, on voit les pieds et l’ombre du module lunaire."
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "nasa-lib-s69-39588",
@@ -1587,7 +1662,12 @@
     "dateCreated": "1969-07-22",
     "nasaId": "S69-39588",
     "aiGenerated": false,
-    "depiction": "photo"
+    "depiction": "photo",
+    "description": {
+      "en": "In Mission Control, scientist Garry Latham studies the tracings of the seismometer that the Apollo 11 astronauts had just set up on the Moon. He was in charge of this experiment.",
+      "fr": "Au centre de contrôle de la mission, le scientifique Garry Latham étudie les tracés du sismomètre que les astronautes d’Apollo 11 venaient d’installer sur la Lune. C’est lui qui dirigeait cette expérience."
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "nasa-lib-s69-39587",
@@ -1641,7 +1721,12 @@
     "dateCreated": "1969-11-20",
     "nasaId": "AS12-48-7133",
     "aiGenerated": false,
-    "depiction": "photo"
+    "depiction": "photo",
+    "description": {
+      "en": "A rare picture with two American spacecraft on the Moon: the robot Surveyor 3 in front and, behind it, the Apollo 12 Lunar Module, which landed about 180 m away. Pete Conrad is looking at Surveyor’s TV camera before removing it to take it back to Earth.",
+      "fr": "Une photo rare avec deux engins américains sur la Lune : le robot Surveyor 3 au premier plan et, derrière, le module lunaire d’Apollo 12, posé à environ 180 m. Pete Conrad examine la caméra de télévision de Surveyor avant de la détacher pour la rapporter sur Terre."
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "nasa-lib-as12-48-7136",
@@ -1668,7 +1753,12 @@
     "dateCreated": "1969-11-20",
     "nasaId": "as12-48-7136",
     "aiGenerated": false,
-    "depiction": "photo"
+    "depiction": "photo",
+    "description": {
+      "en": "Pete Conrad inspects Surveyor 3 during the second moonwalk of Apollo 12. Behind him, the Lunar Module is parked about 180 m away. It is the only time Apollo astronauts touched a spacecraft that had reached the Moon long before them. Alan Bean took the photo.",
+      "fr": "Pete Conrad inspecte Surveyor 3 pendant la deuxième sortie d’Apollo 12. Derrière lui, le module lunaire est garé à environ 180 m. C’est la seule fois où des astronautes d’Apollo ont touché un engin arrivé sur la Lune bien avant eux. C’est Alan Bean qui a pris la photo."
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "nasa-lib-pia23553",
@@ -1722,7 +1812,12 @@
     "dateCreated": "1969-11-15",
     "nasaId": "S69-57076",
     "aiGenerated": false,
-    "depiction": "photo"
+    "depiction": "photo",
+    "description": {
+      "en": "This picture was taken from lunar orbit by the Lunar Orbiter 3 probe. It shows the area chosen for the Apollo 12 landing: the planned landing point was only about 300 m east and 150 m north of Surveyor 3.",
+      "fr": "Cette photo a été prise depuis l’orbite de la Lune par la sonde Lunar Orbiter 3. Elle montre la zone choisie pour l’atterrissage d’Apollo 12 : le point visé n’était qu’à environ 300 m à l’est et 150 m au nord de Surveyor 3."
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "nasa-lib-as12-47-6949",
@@ -1827,7 +1922,12 @@
     "dateCreated": "1969-11-19",
     "nasaId": "as12-47-6919",
     "aiGenerated": false,
-    "depiction": "photo"
+    "depiction": "photo",
+    "description": {
+      "en": "During the first Apollo 12 moonwalk, Alan Bean sets up the parts of the ALSEP science station. Pete Conrad took the photo with a Hasselblad camera modified for the Moon.",
+      "fr": "Pendant la première sortie d’Apollo 12, Alan Bean installe les éléments de la station scientifique ALSEP. Pete Conrad a pris la photo avec un appareil Hasselblad modifié pour la Lune."
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "nasa-lib-as12-47-6918",
@@ -1853,7 +1953,12 @@
     "dateCreated": "1969-11-19",
     "nasaId": "as12-47-6918",
     "aiGenerated": false,
-    "depiction": "photo"
+    "depiction": "photo",
+    "description": {
+      "en": "Three parts of the ALSEP station: in front, the seismometer; the biggest object is the Central Station; the white object on legs is an ion detector called SIDE. Alan Bean took the photo — part of Pete Conrad’s shadow shows on the left.",
+      "fr": "Trois éléments de la station ALSEP : devant, le sismomètre ; le plus gros objet est la station centrale ; l’objet blanc sur pieds est un détecteur d’ions appelé SIDE. Alan Bean a pris la photo — on voit une partie de l’ombre de Pete Conrad à gauche."
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "nasa-lib-as12-46-6790",
@@ -1957,7 +2062,12 @@
     "dateCreated": "1969-11-20",
     "nasaId": "S69-59547",
     "aiGenerated": false,
-    "depiction": "photo"
+    "depiction": "photo",
+    "description": {
+      "en": "This trace is the seismometer’s reading when the upper part of the Lunar Module — dropped once the astronauts were back in orbit — was sent to crash into the Moon.",
+      "fr": "Ce tracé est la mesure du sismomètre quand la partie haute du module lunaire — larguée une fois les astronautes revenus en orbite — a été envoyée s’écraser sur la Lune."
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "nasa-lib-as12-46-6726",
@@ -1983,7 +2093,12 @@
     "dateCreated": "1969-11-19",
     "nasaId": "as12-46-6726",
     "aiGenerated": false,
-    "depiction": "photo"
+    "depiction": "photo",
+    "description": {
+      "en": "Alan Bean starts down the ladder of the Lunar Module Intrepid to join commander Pete Conrad on the Moon. High above them, Richard Gordon stayed in orbit aboard Yankee Clipper.",
+      "fr": "Alan Bean commence à descendre l’échelle du module lunaire Intrepid pour rejoindre le commandant Pete Conrad sur la Lune. Bien au-dessus d’eux, Richard Gordon restait en orbite à bord de Yankee Clipper."
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "nasa-lib-ksc-96pc-1130",
@@ -2035,7 +2150,12 @@
     "dateCreated": "1996-12-04",
     "nasaId": "9614653",
     "aiGenerated": false,
-    "depiction": "photo"
+    "depiction": "photo",
+    "description": {
+      "en": "Mars Pathfinder lifts off on a Delta II rocket from Cape Canaveral. Its main goal: show a low-cost way to deliver science instruments to Mars, landing with small rocket engines, a parachute and airbags.",
+      "fr": "Mars Pathfinder décolle sur une fusée Delta II depuis Cap Canaveral. Son but principal : montrer un moyen peu coûteux de déposer des instruments scientifiques sur Mars, en se posant avec de petits moteurs-fusées, un parachute et des airbags."
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "nasa-lib-pia00608",
@@ -2295,7 +2415,12 @@
     "dateCreated": "1997-07-06",
     "nasaId": "PIA00623",
     "aiGenerated": false,
-    "depiction": "photo"
+    "depiction": "photo",
+    "description": {
+      "en": "Sojourner has just driven onto Mars: the first robot ever to travel across the planet’s surface on its own. Its mission, planned for seven days: use its spectrometer to find out what Martian rocks and soil are made of.",
+      "fr": "Sojourner vient de rouler sur Mars : le premier robot autonome à parcourir la surface de la planète. Sa mission, prévue pour sept jours : analyser avec son spectromètre de quoi sont faits les roches et le sol martiens."
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "nasa-lib-pia00625",
@@ -2425,7 +2550,12 @@
     "dateCreated": "1997-07-06",
     "nasaId": "PIA00629",
     "aiGenerated": false,
-    "depiction": "photo"
+    "depiction": "photo",
+    "description": {
+      "en": "On the second Martian day, the lander’s camera spots possible targets: the small rock on the left was nicknamed “Barnacle Bill”, the big one on the right “Yogi”, 3 to 4 m away. Barnacle Bill was planned as the first to be studied.",
+      "fr": "Au deuxième jour martien, la caméra de l’atterrisseur repère des cibles possibles : le petit rocher à gauche a été surnommé « Barnacle Bill », le grand à droite « Yogi », à 3 ou 4 m. Barnacle Bill était prévu comme premier objet d’étude."
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "nasa-lib-pia00630",
@@ -3024,7 +3154,12 @@
     "dateCreated": "2003-12-15",
     "nasaId": "PIA04928",
     "aiGenerated": false,
-    "depiction": "artwork"
+    "depiction": "artwork",
+    "description": {
+      "en": "This is a drawing, not a photo: an artist imagined a rover on Mars before the twins arrived. Each of the two rovers, Spirit and Opportunity, was built to work like a robot geologist.",
+      "fr": "Ceci est un dessin, pas une photo : un artiste a imaginé un rover sur Mars avant l’arrivée des jumeaux. Chacun des deux rovers, Spirit et Opportunity, a été conçu pour travailler comme un robot géologue."
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "nasa-lib-pia11436",
@@ -3108,7 +3243,12 @@
     "dateCreated": "2009-11-04",
     "nasaId": "PIA12337",
     "aiGenerated": false,
-    "depiction": "simulation"
+    "depiction": "simulation",
+    "description": {
+      "en": "This is not a photo but a screen from the team’s software: it shows how deep Spirit’s wheels sank into soft ground at a place called Troy.",
+      "fr": "Ce n’est pas une photo mais un écran du logiciel de l’équipe : il montre à quel point les roues de Spirit se sont enfoncées dans un sol meuble, à un endroit appelé Troy."
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "nasa-lib-pia14134",
@@ -3134,7 +3274,12 @@
     "dateCreated": "2011-06-08",
     "nasaId": "PIA14134",
     "aiGenerated": false,
-    "depiction": "photo"
+    "depiction": "photo",
+    "description": {
+      "en": "This part of Endeavour Crater’s rim was nicknamed “Spirit Point”: the team planned it as the place where Opportunity would reach the rim.",
+      "fr": "Cette partie du bord du cratère Endeavour a été surnommée « Spirit Point » : l’équipe l’avait choisie comme l’endroit où Opportunity atteindrait le bord."
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "nasa-lib-pia14508",
@@ -3160,7 +3305,12 @@
     "dateCreated": "2011-08-10",
     "nasaId": "PIA14508",
     "aiGenerated": false,
-    "depiction": "photo"
+    "depiction": "photo",
+    "description": {
+      "en": "Part of the west rim of Endeavour Crater, seen by Opportunity. Its first goal on the rim was called Spirit Point, in tribute to its twin Spirit, which had stopped working.",
+      "fr": "Une partie du bord ouest du cratère Endeavour, vue par Opportunity. Son premier objectif sur le bord s’appelait Spirit Point, en hommage à son jumeau Spirit, qui ne fonctionnait plus."
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "nasa-lib-pia20851",
@@ -3472,7 +3622,12 @@
     "dateCreated": "2021-03-30",
     "nasaId": "PIA24424",
     "aiGenerated": false,
-    "depiction": "photo"
+    "depiction": "photo",
+    "description": {
+      "en": "Ingenuity rides under the belly of the Perseverance rover, waiting to be dropped off. Photo taken on 25 March 2021 by a camera at the end of the rover’s long robotic arm.",
+      "fr": "Ingenuity voyage sous le ventre du rover Perseverance, en attendant d’être déposé. Photo prise le 25 mars 2021 par une caméra placée au bout du long bras robotique du rover."
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "nasa-lib-pia24449",
@@ -3498,7 +3653,12 @@
     "dateCreated": "2021-04-01",
     "nasaId": "PIA24449",
     "aiGenerated": false,
-    "depiction": "photo"
+    "depiction": "photo",
+    "description": {
+      "en": "Ingenuity has unfolded its four legs before dropping from Perseverance’s belly, on 30 March 2021. Photo taken by the camera at the end of the rover’s arm.",
+      "fr": "Ingenuity a déplié ses quatre pieds avant de se détacher du ventre de Perseverance, le 30 mars 2021. Photo prise par la caméra au bout du bras du rover."
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "nasa-lib-pia24585",
@@ -3810,7 +3970,12 @@
     "dateCreated": "2021-05-07",
     "nasaId": "PIA24648",
     "aiGenerated": false,
-    "depiction": "photo"
+    "depiction": "photo",
+    "description": {
+      "en": "Seen by Perseverance after landing on 7 May 2021: on its fifth flight, Ingenuity climbed to a record 10 m and flew 129 m to a new landing site — its first one-way trip, 108 seconds in the air.",
+      "fr": "Vu par Perseverance après son atterrissage le 7 mai 2021 : lors de son cinquième vol, Ingenuity est monté à 10 m, un record, et a parcouru 129 m jusqu’à un nouveau site — son premier aller simple, 108 secondes en l’air."
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "nasa-lib-pia24600",
@@ -4174,7 +4339,12 @@
     "dateCreated": "2021-04-19",
     "nasaId": "JPL-20210419-TECHf-0001-First Video of NASA’s Ingenuity Mars Helicopter in Flight",
     "aiGenerated": false,
-    "depiction": "photo"
+    "depiction": "photo",
+    "description": {
+      "en": "Filmed by Perseverance, parked about 64 m away: Ingenuity climbs to 3 m, hovers, then lands again — the first powered, controlled flight on another planet.",
+      "fr": "Filmé par Perseverance, garé à environ 64 m : Ingenuity monte à 3 m, reste en vol stationnaire, puis se repose — le premier vol motorisé et contrôlé sur une autre planète."
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "nasa-lib-jpl-20210422-techf-0001-ingenuity-2nd-flight-recap",
@@ -4460,7 +4630,12 @@
     "dateCreated": "2022-05-27",
     "nasaId": "JPL-20220527-M2020f-0001-NASAs_Ingenuity_Mars_Helicopter_Captures_Video_of_Record_Flight2",
     "aiGenerated": false,
-    "depiction": "photo"
+    "depiction": "photo",
+    "description": {
+      "en": "Made from Ingenuity’s own navigation camera during its 25th flight, on 18 April 2022: 704 m at 5.5 m per second, its longest and fastest flight so far. It flies over sand ripples, then fields of rocks.",
+      "fr": "Réalisée avec la caméra de navigation d’Ingenuity pendant son 25e vol, le 18 avril 2022 : 704 m à 5,5 m par seconde, son vol le plus long et le plus rapide jusque-là. Il survole des rides de sable, puis des champs de rochers."
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "nasa-lib-jpl-20230403-mars-report-ingenuity-updates-april-2023-uhd",
@@ -4538,7 +4713,12 @@
     "dateCreated": "2024-01-31",
     "nasaId": "GSFC_20240131_NSL_Ingenuity_Ep52",
     "aiGenerated": false,
-    "depiction": "mixed"
+    "depiction": "mixed",
+    "description": {
+      "en": "A NASA Science Live show about Ingenuity: planned for up to five flights, it made more than 70 and flew more than 128 minutes. On its last flight its rotor blades were damaged, and the mission came to an end.",
+      "fr": "Une émission NASA Science Live consacrée à Ingenuity : prévu pour cinq vols au maximum, il en a réalisé plus de 70 et a volé plus de 128 minutes. Lors de son dernier vol, ses pales ont été endommagées et la mission s’est terminée."
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "nasa-lib-jpl-20240201-techf-0001-mars-report-ingenuity",
@@ -4619,6 +4799,7 @@
     "description": {
       "en": "This model shows the whole Lunar Module. Only its lower half, the descent stage, stayed on the Moon: the upper half carried the astronauts back to orbit.",
       "fr": "Ce modèle montre le module lunaire entier. Seule sa moitié du bas, l’étage de descente, est restée sur la Lune : la moitié du haut a ramené les astronautes en orbite."
-    }
+    },
+    "descriptionStatus": "draft"
   }
 ]

@@ -1,0 +1,112 @@
+[
+  {
+    "id": "rover",
+    "status": "draft",
+    "terms": { "en": ["rover", "rovers"], "fr": ["rover", "rovers"] },
+    "label": { "en": "Rover", "fr": "Rover" },
+    "definition": {
+      "en": "A robot on wheels that can drive around on the surface of another world.",
+      "fr": "Un robot à roues qui peut se déplacer à la surface d’un autre monde."
+    },
+    "sourceIds": ["nasa-science-mer", "nssdca-2003-027a", "nssdca-2003-032a"]
+  },
+  {
+    "id": "seismometer",
+    "status": "draft",
+    "terms": { "en": ["seismometer"], "fr": ["sismomètre"] },
+    "label": { "en": "Seismometer", "fr": "Sismomètre" },
+    "definition": {
+      "en": "An instrument that “listens” for quakes — on the Moon, moonquakes.",
+      "fr": "Un instrument qui « écoute » les tremblements du sol — sur la Lune, les tremblements de Lune."
+    },
+    "sourceIds": ["jpl-llr-2004", "nssdca-1969-059c"]
+  },
+  {
+    "id": "corner-cube-prism",
+    "status": "draft",
+    "terms": { "en": ["prism", "prisms"], "fr": ["prisme", "prismes"] },
+    "label": { "en": "Corner-cube prism", "fr": "Prisme en coin de cube" },
+    "definition": {
+      "en": "A glass prism shaped like the corner of a cube. Whatever direction light comes from, it sends it straight back — like the reflectors on a bike — without any electricity.",
+      "fr": "Un prisme en verre en forme de coin de cube. D’où que vienne la lumière, il la renvoie tout droit — comme les catadioptres d’un vélo — sans aucune électricité."
+    },
+    "sourceIds": ["jpl-llr-2004"]
+  },
+  {
+    "id": "photon",
+    "status": "draft",
+    "terms": { "en": ["photon"], "fr": ["photon"] },
+    "label": { "en": "Photon", "fr": "Photon" },
+    "definition": {
+      "en": "A particle of light.",
+      "fr": "Une particule de lumière."
+    },
+    "sourceIds": ["jpl-llr-2004"]
+  },
+  {
+    "id": "easep",
+    "status": "draft",
+    "terms": { "en": ["EASEP"], "fr": ["EASEP"] },
+    "label": { "en": "EASEP", "fr": "EASEP" },
+    "definition": {
+      "en": "The small kit of experiments set up by the Apollo 11 astronauts, including a seismometer powered by solar panels.",
+      "fr": "Le petit ensemble d’expériences installé par les astronautes d’Apollo 11, dont un sismomètre alimenté par des panneaux solaires."
+    },
+    "sourceIds": ["jpl-llr-2004", "nssdca-1969-059c"]
+  },
+  {
+    "id": "alsep",
+    "status": "draft",
+    "terms": { "en": ["ALSEP"], "fr": ["ALSEP"] },
+    "label": { "en": "ALSEP", "fr": "ALSEP" },
+    "definition": {
+      "en": "The science stations left by the later Apollo missions. They worked until they were all switched off on 30 September 1977.",
+      "fr": "Les stations scientifiques laissées par les missions Apollo suivantes. Elles ont fonctionné jusqu’à leur arrêt général le 30 septembre 1977."
+    },
+    "sourceIds": ["nssdca-1969-059c", "nssdca-1969-099c"]
+  },
+  {
+    "id": "solar-panel",
+    "status": "draft",
+    "terms": { "en": ["solar panel", "solar panels", "solar-powered"], "fr": ["panneau solaire", "panneaux solaires"] },
+    "label": { "en": "Solar panel", "fr": "Panneau solaire" },
+    "definition": {
+      "en": "A panel that lets a machine run on sunlight.",
+      "fr": "Un panneau qui permet à une machine de fonctionner grâce à la lumière du Soleil."
+    },
+    "sourceIds": ["jpl-opportunity-end-2019", "nasa-science-mer-highlights"]
+  },
+  {
+    "id": "hematite",
+    "status": "draft",
+    "terms": { "en": ["hematite"], "fr": ["hématite"] },
+    "label": { "en": "Hematite", "fr": "Hématite" },
+    "definition": {
+      "en": "A mineral that usually forms in water. On Mars, Opportunity found it as small grey balls nicknamed “blueberries”.",
+      "fr": "Un minéral qui se forme généralement dans l’eau. Sur Mars, Opportunity en a trouvé sous forme de petites billes grises surnommées « myrtilles »."
+    },
+    "sourceIds": ["nasa-science-mer-highlights"]
+  },
+  {
+    "id": "gypsum",
+    "status": "draft",
+    "terms": { "en": ["gypsum"], "fr": ["gypse"] },
+    "label": { "en": "Gypsum", "fr": "Gypse" },
+    "definition": {
+      "en": "A mineral. On Mars, Opportunity found veins of it left by water flowing through cracks in the rock.",
+      "fr": "Un minéral. Sur Mars, Opportunity en a trouvé des veines laissées par de l’eau qui coulait dans les fissures de la roche."
+    },
+    "sourceIds": ["nasa-science-mer-highlights"]
+  },
+  {
+    "id": "lunar-night",
+    "status": "draft",
+    "terms": { "en": ["lunar night"], "fr": ["nuit lunaire"] },
+    "label": { "en": "Lunar night", "fr": "Nuit lunaire" },
+    "definition": {
+      "en": "Night on the Moon. It lasts about two weeks — too long for Surveyor 3, which never woke up after it.",
+      "fr": "La nuit sur la Lune. Elle dure environ deux semaines — trop longtemps pour Surveyor 3, qui ne s’est jamais réveillé ensuite."
+    },
+    "sourceIds": ["nssdca-1967-035a"]
+  }
+]

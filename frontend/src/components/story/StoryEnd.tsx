@@ -3,6 +3,7 @@ import { Link } from 'react-router'
 import type { StoryDetail } from '@/api/types'
 import { paths } from '@/app/paths'
 import { Reveal } from '@/components/motion/Reveal'
+import { ExplorerLogCard } from '@/components/progress/ExplorerLogCard'
 import { useTranslation } from '@/i18n'
 import { ctaGhost, ctaPrimary, eyebrow } from '@/lib/styles'
 import { cn } from '@/lib/utils'
@@ -101,6 +102,7 @@ export function StoryEnd({ story, exitHref }: { story: StoryDetail; exitHref: st
           </>
         )}
       </Reveal>
+      <ExplorerLogCard className="mt-16 w-full" />
     </section>
   )
 }

@@ -1,13 +1,13 @@
 import type { CSSProperties, Ref } from 'react'
-import type { Media, Relation, Source, StoryBlock, StoryStep, Voice } from '@/api/types'
+import type { GlossaryEntry, Media, Relation, Source, StoryBlock, StoryStep, Voice } from '@/api/types'
 import { MediaFigure } from '@/components/media/MediaFigure'
-import { RelationEnds } from '@/components/relations/RelationEnds'
 import { Reveal } from '@/components/motion/Reveal'
 import { SourceList } from '@/components/sources/SourceList'
 import { VoiceTag } from '@/components/sources/VoiceTag'
 import { useTranslation } from '@/i18n'
 import { eyebrow } from '@/lib/styles'
 import { cn } from '@/lib/utils'
+import { Logbook, RelayChain, WordsToKnow } from './StoryPedagogy'
 import { STEP_ACCENT, stepSectionId } from './storySteps'
 
 interface StepSceneProps {
@@ -18,6 +18,9 @@ interface StepSceneProps {
   mediaById: Map<string, Media>
   sourceById: Map<string, Source>
   relations: Relation[]
+  /** Glossary words used in this step (US-5.7). */
+  words: GlossaryEntry[]
+  storyId: string
 }
 
 /** Accent bar of each narrative voice (STORY-007; the VoiceTag text stays the real label). */
@@ -28,7 +31,7 @@ const VOICE_BAR: Record<Voice, string> = {
 }
 
 /** One step of a story as a full-screen scene of the scroll (US-5.6). */
-export function StepScene({ step, number, total, headingRef, mediaById, sourceById, relations }: StepSceneProps) {
+export function StepScene({ step, number, total, headingRef, mediaById, sourceById, relations, words, storyId }: StepSceneProps) {
   const { t } = useTranslation()
   const titleId = `${stepSectionId(number)}-title`
   const accent = { '--scene-accent': STEP_ACCENT[step.key] } as CSSProperties
@@ -65,6 +68,8 @@ export function StepScene({ step, number, total, headingRef, mediaById, sourceBy
       </div>
 
       {relations.length > 0 && <Relations relations={relations} sourceById={sourceById} />}
+      <WordsToKnow words={words} />
+      {step.key === 'your-turn' && <Logbook storyId={storyId} />}
     </section>
   )
 }
@@ -120,10 +125,9 @@ function Relations({ relations, sourceById }: { relations: Relation[]; sourceByI
         </h3>
         <ul className="mt-4 space-y-6">
           {relations.map((r) => (
-            <li key={r.id} className="relative pl-6">
-              <span aria-hidden="true" className="absolute top-2 left-0 size-2.5 rounded-full bg-world shadow-[0_0_12px_var(--world-accent)]" />
-              <RelationEnds relation={r} />
-              <p className="mt-1 text-lg font-medium">{r.transmitted}</p>
+            <li key={r.id}>
+              <RelayChain relation={r} />
+              <p className="mt-3 text-lg font-medium">{r.transmitted}</p>
               <p className="mt-1 text-sm text-moon-dust">
                 <span className="font-semibold text-starlight">{t('story.evidence')} </span>
                 {r.evidence}

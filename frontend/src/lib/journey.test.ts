@@ -81,6 +81,14 @@ describe('journey helpers', () => {
     expect(machineCover(mission([], [media('opening', { machineIds: [] }), shared]), 'rover')?.id).toBe('shared')
   })
 
+  it('avoids a picture the mission log already told, unless it is the only one (US-5.9)', () => {
+    const opening = media('opening', { machineIds: [] })
+    const told = media('told')
+    const fresh = media('fresh')
+    expect(machineCover(mission([], [opening, told, fresh]), 'rover', new Set(['told']))?.id).toBe('fresh')
+    expect(machineCover(mission([], [opening, told]), 'rover', new Set(['told']))?.id).toBe('told')
+  })
+
   it('finds a .glb 3D model of the machine and ignores embedded model pages', () => {
     const glb = media('glb', { type: '3d-model', url: 'https://example.org/models/Rover%20Model.glb' })
     const embed = media('embed', { type: '3d-model', url: 'https://example.org/gltf_embed/25043' })
