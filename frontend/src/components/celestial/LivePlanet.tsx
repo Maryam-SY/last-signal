@@ -44,6 +44,8 @@ export function LivePlanet({
   const handleRef = useRef<PlanetHandle>(null)
   const tiltRef = useRef<HTMLDivElement>(null)
   const activeRef = useRef(active)
+  const visibleRef = useRef(true)
+  const lastTilt = useRef('')
   const state = useRef({
     angle: 0,
     spin: IDLE_SPIN,
@@ -53,6 +55,21 @@ export function LivePlanet({
     ripple: arrivalRipple ? 1.6 : 0,
   })
 
+  // Skip the whole simulation while the world is off-screen.
+  useEffect(() => {
+    const tilt = tiltRef.current
+    if (!tilt || typeof IntersectionObserver === 'undefined') return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        visibleRef.current = entries[0]?.isIntersecting ?? false
+      },
+      { rootMargin: '20% 0px' },
+    )
+    observer.observe(tilt)
+    return () => observer.disconnect()
+  }, [])
+
   useEffect(() => {
     // A fresh ripple every time the world becomes active.
     if (active && !activeRef.current) state.current.ripple = 1
@@ -60,6 +77,7 @@ export function LivePlanet({
   }, [active])
 
   useMotionLoop(({ dt, velocity }) => {
+    if (!visibleRef.current) return
     const s = state.current
     const isActive = activeRef.current
     const ease = (rate: number) => 1 - Math.pow(1 - rate, dt / 16.67)
@@ -75,7 +93,12 @@ export function LivePlanet({
 
     const tilt = tiltRef.current
     if (tilt) {
-      tilt.style.transform = `perspective(900px) rotateX(${(-s.tiltY * MAX_TILT).toFixed(2)}deg) rotateY(${(s.tiltX * MAX_TILT).toFixed(2)}deg) scale(${(1 + s.lift * 0.06).toFixed(3)})`
+      const next = `perspective(900px) rotateX(${(-s.tiltY * MAX_TILT).toFixed(1)}deg) rotateY(${(s.tiltX * MAX_TILT).toFixed(1)}deg) scale(${(1 + s.lift * 0.06).toFixed(3)})`
+      // Idle worlds settle into a stable transform: stop writing it.
+      if (next !== lastTilt.current) {
+        lastTilt.current = next
+        tilt.style.transform = next
+      }
     }
 
     const handle = handleRef.current

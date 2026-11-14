@@ -83,6 +83,8 @@ function SpatialJourney({ scenes, layers, navLabel }: DepthJourneyProps) {
   const dotRefs = useRef<Array<HTMLButtonElement | null>>([])
   const progressRef = useRef<HTMLDivElement>(null)
   const activeScene = useRef(-1)
+  /** Last style key per layer, so unchanged frames do no DOM work. */
+  const writtenRef = useRef<string[]>([])
   const lastScene = scenes.length - 1
 
   useEffect(() => {
@@ -108,7 +110,7 @@ function SpatialJourney({ scenes, layers, navLabel }: DepthJourneyProps) {
 
     const camera = clamp(-track.getBoundingClientRect().top / sceneScrollPx(), 0, lastScene)
     const tilt = clamp(velocity, -40, 40)
-    stage.style.setProperty('--vel', tilt.toFixed(2))
+    stage.style.setProperty('--vel', tilt.toFixed(1))
 
     layers.forEach((layer, index) => {
       const element = layerRefs.current[index]
@@ -116,19 +118,23 @@ function SpatialJourney({ scenes, layers, navLabel }: DepthJourneyProps) {
       const distance = layer.scene + (layer.offset ?? 0) - camera
       const opacity = opacityAt(distance)
       const z = clamp(-distance * SCENE_DEPTH, -SCENE_DEPTH * 3, PERSPECTIVE * 0.9)
-      const blur = distance < 0 ? -distance * 18 : Math.max(0, distance - 0.4) * 6
 
-      element.style.opacity = opacity.toFixed(3)
-      element.style.transform = `translate3d(0, 0, ${z.toFixed(1)}px) rotateX(${(tilt * 0.12).toFixed(2)}deg)`
-      element.style.filter = blur > 0.3 ? `blur(${blur.toFixed(1)}px)` : ''
+      // No blur: filtering full-screen layers every frame is what made scrolling stutter.
+      // Depth comes from z, opacity and the layers' own --pass/--approach transforms.
+      const key = `${opacity.toFixed(2)}|${z.toFixed(0)}|${(tilt * 0.12).toFixed(1)}`
+      if (writtenRef.current[index] === key) return
+      writtenRef.current[index] = key
+
+      element.style.opacity = opacity.toFixed(2)
+      element.style.transform = `translate3d(0, 0, ${z.toFixed(0)}px) rotateX(${(tilt * 0.12).toFixed(2)}deg)`
       element.style.zIndex = String(Math.round(1000 - distance * 100))
       element.style.pointerEvents = opacity > 0.6 && distance > -0.15 ? 'auto' : 'none'
-      element.style.setProperty('--pass', clamp(-distance / 0.4, 0, 1).toFixed(3))
-      element.style.setProperty('--approach', clamp(distance, 0, 1).toFixed(3))
+      element.style.setProperty('--pass', clamp(-distance / 0.4, 0, 1).toFixed(2))
+      element.style.setProperty('--approach', clamp(distance, 0, 1).toFixed(2))
     })
 
     if (progressRef.current) {
-      progressRef.current.style.transform = `scaleY(${(lastScene ? camera / lastScene : 1).toFixed(4)})`
+      progressRef.current.style.transform = `scaleY(${(lastScene ? camera / lastScene : 1).toFixed(3)})`
     }
     const nearest = Math.round(camera)
     if (nearest !== activeScene.current) {
@@ -143,16 +149,6 @@ function SpatialJourney({ scenes, layers, navLabel }: DepthJourneyProps) {
 
   return (
     <div ref={trackRef} className="relative" style={{ height: `${100 + lastScene * SCENE_SCROLL_VH}vh` }}>
-      {/* Snap points, one per scene, so the camera settles on each world. */}
-      {scenes.map((scene, index) => (
-        <div
-          key={scene.id}
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 h-screen snap-start"
-          style={{ top: `${index * SCENE_SCROLL_VH}vh` }}
-        />
-      ))}
-
       <div
         ref={stageRef}
         className="sticky top-0 h-dvh overflow-clip"
