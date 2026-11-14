@@ -3,6 +3,7 @@ import { api } from '@/api/client'
 import { SpaceBackdrop } from '@/components/celestial/SpaceBackdrop'
 import { LoadState } from '@/components/common/LoadState'
 import { Reveal } from '@/components/motion/Reveal'
+import { MediaCredits } from '@/components/sources/MediaCredits'
 import { SourceList } from '@/components/sources/SourceList'
 import { useApi } from '@/hooks/useApi'
 import { useDocumentTitle } from '@/hooks/useDocumentTitle'
@@ -16,7 +17,7 @@ const SECTIONS: { id: string; titleKey: MessageKey; Icon: typeof Images }[] = [
   { id: 'sources', titleKey: 'about.sourcesTitle', Icon: BookMarked },
 ]
 
-/** Shell only — full content arrives with US-5.1 (ABOUT-001). */
+/** ABOUT-001: credits of every picture (US-5.11), use of AI (US-5.1) and every source (SOURCE-004). */
 export function AboutPage() {
   const { t } = useTranslation()
   useDocumentTitle(t('about.title'))
@@ -39,20 +40,7 @@ export function AboutPage() {
                   </span>
                   {t(titleKey)}
                 </h2>
-                {id === 'sources' ? <AllSources /> : <p className="mt-3 text-moon-dust">{t('about.comingSoon')}</p>}
-                {id === 'credits' && (
-                  <p className="mt-3 text-sm text-moon-dust">
-                    {t('about.imagesCredit')}{' '}
-                    <a
-                      href="https://nssdc.gsfc.nasa.gov/Images/"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="font-medium text-cosmic-indigo hover:underline"
-                    >
-                      {t('about.imagesSourceLabel')}
-                    </a>
-                  </p>
-                )}
+                {id === 'sources' ? <AllSources /> : id === 'credits' ? <MediaCredits /> : <p className="mt-3 text-moon-dust">{t('about.comingSoon')}</p>}
               </section>
             </Reveal>
           ))}

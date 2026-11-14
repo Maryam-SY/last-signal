@@ -69,7 +69,7 @@ export function MachineJourney({ machine, mission, story, told }: MachineJourney
     <section ref={sceneRef} aria-label={machine.name} className="machine-journey relative">
       <div className={cn('grid gap-6', staged && 'lg:grid-cols-[1.1fr_0.9fr] lg:gap-12')}>
         {staged && (
-          <div className="sticky top-16 z-10 h-[44vh] bg-void/70 py-2 backdrop-blur-sm lg:top-24 lg:h-[calc(100vh-8rem)] lg:bg-transparent lg:backdrop-blur-none">
+          <div className="sticky top-16 z-10 h-[44vh] bg-void/90 py-2 lg:top-24 lg:h-[calc(100vh-8rem)] lg:bg-transparent lg:backdrop-blur-none">
             {showModel && model && wide ? <ModelViewer3D model={model} /> : <MachineStage media={stageMedia} />}
           </div>
         )}
@@ -129,7 +129,7 @@ function ChapterItem({ chapter, index, staged, register }: ChapterItemProps) {
   const { t, locale } = useTranslation()
   return (
     <li ref={register} data-chapter={index} className={cn('flex flex-col justify-center', staged ? 'min-h-[75vh] max-lg:justify-end max-lg:pb-10' : 'mt-8')}>
-      <article className="rounded-xl border border-stellar-border/50 bg-deep-space/85 p-5 backdrop-blur-sm">
+      <article className="rounded-xl border border-stellar-border/50 bg-deep-space/90 p-5 shadow-2xl shadow-black/40">
         <p className="font-mono text-xs uppercase tracking-widest text-stellar-cyan">
           {chapter.date ? (
             <time dateTime={chapter.date.value}>{formatPartialDate(chapter.date.value, locale)}</time>

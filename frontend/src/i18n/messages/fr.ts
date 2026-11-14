@@ -31,7 +31,7 @@ export const fr: Messages = {
   explore: {
     title: 'Choisis ta destination',
     intro:
-      "Des machines construites par l’humanité sont restées sur ces mondes après la fin de leur mission. Choisis-en un pour découvrir ce qu’elles ont laissé — et ce qu’elles ont transmis.",
+      'Des atterrisseurs, des rovers et même un hélicoptère sont toujours là-haut, sur la Lune et sur Mars. Choisis un monde : découvre ce que chaque machine a fait, ce qu’elle est devenue — et ce qu’elle a transmis aux explorateurs suivants.',
     destinationsLabel: 'Destinations',
     eyebrow: 'Un guide de terrain des machines que nous avons laissées',
     scrollHint: 'Fais défiler — les mondes viennent à toi',
@@ -42,6 +42,19 @@ export const fr: Messages = {
     mottoEyebrow: 'Ce qu’elles ont transmis',
     motto: 'Chaque machine a laissé plus qu’une trace : elle a transmis quelque chose.',
     backToStart: 'Revenir au départ',
+    statWorlds: 'mondes',
+    statMissions: 'missions',
+    statMachines: 'machines toujours sur place',
+    statsLabel: 'AeroReborn en chiffres',
+    stepsEyebrow: 'Ton expédition',
+    stepsTitle: 'Trois étapes, aucune connaissance requise',
+    step1Title: 'Choisis un monde',
+    step1Text: 'La Lune ou Mars. Chacun garde des machines que des humains y ont envoyées — et qui ne sont jamais revenues.',
+    step2Title: 'Descends vers la surface',
+    step2Text: 'Fais défiler : la carte montre où chaque machine s’est posée, puis chaque mission raconte son histoire, date après date, avec de vraies images.',
+    step3Title: 'Suis le signal',
+    step3Text: 'Chaque récit se termine par ce qu’une machine a transmis aux suivantes — et par une question qui n’attend que toi.',
+    startCta: 'Commencer par la Lune',
   },
   bodies: {
     mercury: {
@@ -164,7 +177,7 @@ export const fr: Messages = {
     showModel: 'La faire tourner en 3D',
     hideModel: 'Revenir aux photos',
     modelHelp: 'Fais-le glisser (ou utilise les flèches du clavier une fois sélectionné) pour le faire tourner. Modèle 3D publié par la NASA.',
-    modelUnavailable: 'Le modèle 3D n’a pas pu être chargé. La page de la NASA ci-dessous le propose toujours.',
+    modelUnavailable: 'Le modèle 3D n’a pas pu être chargé. Réessaie plus tard.',
     anotherLook: 'Un autre regard',
   },
   machineType: {
@@ -204,16 +217,14 @@ export const fr: Messages = {
     imagination: 'Imagine',
   },
   media: {
-    credit: 'Crédit : {credit}',
     noCredit: 'Crédit non indiqué sur la page source',
-    viewOriginal: 'Voir sur la page de la NASA',
     newTab: '(s’ouvre dans un nouvel onglet)',
     openVideo: 'Regarder la vidéo',
     open3d: 'Ouvrir le modèle 3D',
     openDocument: 'Ouvrir le document',
     whatYouSee: 'Ce que tu vois :',
     videoUnsupported: 'Ton navigateur ne peut pas lire cette vidéo.',
-    unavailable: 'Cette image ne peut pas s’afficher pour le moment. La page de la NASA ci-dessous la propose toujours.',
+    unavailable: 'Cette image ne peut pas s’afficher pour le moment.',
   },
   sources: {
     title: 'Sources',
@@ -300,7 +311,6 @@ export const fr: Messages = {
     notebookCopy: 'Copier',
     notebookCopied: 'Copié !',
     notebookClear: 'Effacer',
-    coverCredit: 'Photo : {credit}',
   },
   timeline: {
     eyebrow: 'Frise du temps',
@@ -341,9 +351,12 @@ export const fr: Messages = {
     sourcesIntro: 'Chaque fait affiché sur AeroReborn provient de l’une de ces sources.',
     aiTitle: 'Utilisation de l’IA',
     comingSoon: 'Cette section sera complétée avant la mise en ligne.',
-    imagesCredit:
-      'Les photographies des planètes et des petits corps proviennent des ressources d’images du NSSDCA de la NASA et font partie du domaine public.',
-    imagesSourceLabel: 'Ressources d’images du NSSDCA',
+    visualLink: 'Original',
+    visualSky: 'Ciel de fond : Scientific Visualization Studio de la NASA, « Deep Star Maps 2020 » (Voie lactée autour du centre galactique, exposition et cadrage par AeroReborn). Domaine public.',
+    visualMoon: 'Lune en 3D : Scientific Visualization Studio de la NASA, « CGI Moon Kit » — mosaïque couleur de la caméra de Lunar Reconnaissance Orbiter et relief de son altimètre laser (LOLA). Domaine public.',
+    visualMars: 'Mars en 3D : NASA / JPL / USGS, mosaïque globale colorisée Viking MDIM 2.1 (couleurs légèrement renforcées par AeroReborn). Domaine public.',
+    visualPlanets: 'Autres photos de planètes : galerie photo du NSSDCA de la NASA. Domaine public.',
+    mediaIntro: 'Les {count} images, vidéos et modèles 3D des récits, regroupés par auteur. Chaque titre ouvre la page d’origine.',
   },
   notFound: {
     title: 'Page introuvable',

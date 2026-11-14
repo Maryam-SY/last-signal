@@ -43,11 +43,21 @@ describe('site map (US-3.3, US-3.4)', () => {
 })
 
 describe('photos, statuses and timeline', () => {
-  it('shows the cover photo of a machine with its credit (US-5.7)', async () => {
+  it('shows the cover photo of a machine, without a credit line under it (US-5.7, US-5.11)', async () => {
     renderRoute('/explore/moon')
     expect(await screen.findByAltText('A lander on grey ground')).toBeInTheDocument()
-    // Credited on the machine's stage ("Credit: …") or on a cover ("Photo: …").
-    expect(screen.getAllByText(/(Credit|Photo): NASA\/JPL/).length).toBeGreaterThan(0)
+    // US-5.11 (team decision 2026-11-14): picture credits are listed once, on the About page.
+    expect(screen.queryByText(/(Credit|Photo): NASA\/JPL/)).not.toBeInTheDocument()
+  })
+
+  it('lists every picture credit once, on the About page (US-5.11, ABOUT-001)', async () => {
+    renderRoute('/about')
+    const credits = screen.getByRole('region', { name: 'Credits' })
+    // Grouped by credit holder: the fixtures have two NASA/JPL items and one without credit.
+    expect(await within(credits).findByText('NASA/JPL')).toBeInTheDocument()
+    expect(within(credits).getByText('Credit not shown on the source page')).toBeInTheDocument()
+    expect(within(credits).getByText(/Deep Star Maps 2020/)).toBeInTheDocument()
+    expect(within(credits).getByText('Artist’s view — not a photo')).toBeInTheDocument()
   })
 
   it('explains every status in words', async () => {

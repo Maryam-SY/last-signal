@@ -103,13 +103,6 @@ export function ModelViewer3D({ model }: { model: Media }) {
       <figcaption className="mt-2 space-y-1 text-xs text-moon-dust">
         {model.description && <p className="text-sm text-starlight/90">{model.description}</p>}
         <p>{t('journey.modelHelp')}</p>
-        <p>
-          {model.credit ? t('media.credit', { credit: model.credit }) : t('media.noCredit')} ·{' '}
-          <a href={model.pageUrl} target="_blank" rel="noopener noreferrer" className="text-cosmic-indigo hover:underline">
-            {t('media.viewOriginal')}
-            <span className="sr-only"> {t('media.newTab')}</span>
-          </a>
-        </p>
       </figcaption>
     </figure>
   )

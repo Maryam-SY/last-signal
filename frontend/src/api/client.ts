@@ -4,6 +4,7 @@ import type {
   GlossaryEntry,
   Lang,
   MachineDetail,
+  Media,
   MissionDetail,
   Source,
   StoryDetail,
@@ -54,6 +55,7 @@ export const api = {
   story: (storyId: string, lang: Lang, signal?: AbortSignal) =>
     apiGet<StoryDetail>(`/stories/${id(storyId)}`, lang, signal),
   sources: (lang: Lang, signal?: AbortSignal) => apiGet<Source[]>('/sources', lang, signal),
+  media: (lang: Lang, signal?: AbortSignal) => apiGet<Media[]>('/media', lang, signal),
   glossary: (lang: Lang, signal?: AbortSignal) => apiGet<GlossaryEntry[]>('/glossary', lang, signal),
   timeline: (lang: Lang, signal?: AbortSignal) => apiGet<TimelineEntry[]>('/timeline', lang, signal),
 }

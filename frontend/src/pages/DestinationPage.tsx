@@ -10,6 +10,7 @@ import { PinnedDestinationPlanet, StaticDestinationPlanet } from '@/components/d
 import { NextWorld } from '@/components/destination/NextWorld'
 import { Scene } from '@/components/destination/Scene'
 import { MissionGallery } from '@/components/gallery/MissionGallery'
+import { CountUp } from '@/components/motion/CountUp'
 import { ScrollProgress } from '@/components/motion/ScrollProgress'
 import { SiteMap } from '@/components/map/SiteMap'
 import { JourneyRail } from '@/components/navigation/JourneyRail'
@@ -75,7 +76,7 @@ function DestinationView({ destinationId }: { destinationId: DestinationId }) {
           {body && (reduced ? <StaticDestinationPlanet body={body} className="lg:hidden" /> : <div aria-hidden="true" className="dest-planet-gap" />)}
 
           <div className="grid items-center gap-10 lg:grid-cols-[1fr_0.9fr]">
-            <div>
+            <div className="hero-rise">
               <Link
                 to={paths.home()}
                 viewTransition
@@ -142,7 +143,7 @@ function Stat({ value, label }: { value: number | null; label: string }) {
     <div className="flex flex-col-reverse">
       <dt className="mt-1 max-w-[9rem] text-xs leading-tight text-moon-dust">{label}</dt>
       <dd className="font-mono text-4xl font-medium text-world sm:text-5xl">
-        {value ?? <span aria-hidden="true" className="skeleton inline-block h-10 w-12 rounded-md align-middle" />}
+        {value === null ? <span aria-hidden="true" className="skeleton inline-block h-10 w-12 rounded-md align-middle" /> : <CountUp value={value} duration={1100} />}
       </dd>
     </div>
   )

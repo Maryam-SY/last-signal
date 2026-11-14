@@ -84,7 +84,7 @@ export function IntroVideo({ onReveal, onDone }: IntroVideoProps) {
         ref={skipRef}
         type="button"
         onClick={() => finish(true)}
-        className="glass absolute right-4 bottom-[max(1.25rem,env(safe-area-inset-bottom))] inline-flex min-h-11 items-center gap-2 rounded-full px-5 text-sm font-medium text-starlight transition-colors hover:border-stellar-cyan hover:text-stellar-cyan sm:right-6"
+        className="glass-blur absolute right-4 bottom-[max(1.25rem,env(safe-area-inset-bottom))] inline-flex min-h-11 items-center gap-2 rounded-full px-5 text-sm font-medium text-starlight transition-colors hover:border-stellar-cyan hover:text-stellar-cyan sm:right-6"
       >
         {t('intro.skip')}
         <SkipForward aria-hidden="true" className="size-4" />

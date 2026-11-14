@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Box, ExternalLink, FileText, ImageOff, PlayCircle } from 'lucide-react'
+import { Box, FileText, ImageOff, PlayCircle } from 'lucide-react'
 import type { Media } from '@/api/types'
 import { useTranslation } from '@/i18n'
 import { cn } from '@/lib/utils'
@@ -16,12 +16,10 @@ interface MediaFigureProps {
 
 /**
  * Displays one media reference (image, animation, video, 3D model or document) with its
- * depiction label, credit and a link to the original NASA page. Files are never copied:
- * they are loaded from NASA servers (ADR-017).
+ * depiction label (MEDIA-001). Credits and links to the original pages are listed once, on the
+ * About page (US-5.11). Files are never copied: they are loaded from NASA servers (ADR-017).
  */
 export function MediaFigure({ media, className, lead, withStory = false }: MediaFigureProps) {
-  const { t } = useTranslation()
-
   return (
     <figure className={cn('overflow-hidden rounded-lg border border-stellar-border/60 bg-deep-space', className)}>
       <div className="relative">
@@ -35,20 +33,6 @@ export function MediaFigure({ media, className, lead, withStory = false }: Media
         <p className={cn(withStory && media.description && 'text-xs text-moon-dust')}>
           {lead && <span className="font-semibold text-world">{lead} </span>}
           {media.alt}
-        </p>
-        <p className="text-xs text-moon-dust">
-          {media.credit ? t('media.credit', { credit: media.credit }) : t('media.noCredit')}
-          {' · '}
-          <a
-            href={media.pageUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-cosmic-indigo hover:underline"
-          >
-            {t('media.viewOriginal')}
-            <ExternalLink aria-hidden="true" className="size-3" />
-            <span className="sr-only">{t('media.newTab')}</span>
-          </a>
         </p>
       </figcaption>
     </figure>
@@ -90,7 +74,7 @@ function MediaBody({ media }: { media: Media }) {
 
 /**
  * Media are loaded from NASA servers (ADR-017): if one moves or is unreachable, say so instead
- * of showing a broken image. The caption keeps the link to the source page.
+ * of showing a broken image.
  */
 function RemoteImage({ media }: { media: Media }) {
   const { t } = useTranslation()

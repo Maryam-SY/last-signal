@@ -161,6 +161,7 @@ function SpatialJourney({ scenes, layers, navLabel }: DepthJourneyProps) {
               layerRefs.current[index] = element
             }}
             onFocus={() => goTo(layer.scene)}
+            data-depth-layer=""
             className={cn(
               'absolute inset-0 flex items-center justify-center pt-16 opacity-0 will-change-transform',
               layer.className,

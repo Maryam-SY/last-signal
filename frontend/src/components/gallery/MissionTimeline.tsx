@@ -1,7 +1,7 @@
 import type { MissionDetail } from '@/api/types'
 import { MediaFigure } from '@/components/media/MediaFigure'
 import { Reveal } from '@/components/motion/Reveal'
-import { SourceList } from '@/components/sources/SourceList'
+import { SourcesDisclosure } from '@/components/sources/SourcesDisclosure'
 import { useTranslation } from '@/i18n'
 import { formatPartialDate } from '@/lib/formatDate'
 import { toldPicture } from '@/lib/journey'
@@ -57,10 +57,11 @@ export function MissionTimeline({ mission }: { mission: MissionDetail }) {
       )}
 
       {mission.sources && mission.sources.length > 0 && (
-        <section aria-label={t('destination.missionSources', { count: mission.sources.length })} className="mt-12 pl-8 sm:pl-12">
-          <p className={cn(eyebrow, 'mb-3 text-moon-dust')}>{t('destination.missionSources', { count: mission.sources.length })}</p>
-          <SourceList sources={mission.sources} />
-        </section>
+        <SourcesDisclosure
+          sources={mission.sources}
+          label={t('destination.missionSources', { count: mission.sources.length })}
+          className="mt-12 pl-8 sm:pl-12"
+        />
       )}
     </div>
   )

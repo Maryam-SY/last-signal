@@ -93,8 +93,19 @@
   --world-accent: var(--cosmos-rocky-planet);
 }
 
-/* Frosted panel. The tinted background alone keeps text contrast if blur is unsupported. */
+/* Panel over the sky. No backdrop blur (US-5.11): with a moving sky, every blurred panel on
+   screen had to be re-blurred at every frame — the main cause of scroll lag. A deep tinted
+   gradient and a lit top edge give the same "glass" depth for free. */
 @utility glass {
+  background-image: linear-gradient(160deg, rgb(28 38 56 / 0.86), rgb(11 16 27 / 0.82));
+  border: 1px solid rgb(148 163 184 / 0.14);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.06),
+    0 24px 60px -30px rgb(0 0 0 / 0.8);
+}
+
+/* Real frosted glass, only for small fixed bars (header, controls): cheap at that size. */
+@utility glass-blur {
   background-color: rgb(17 24 39 / 0.72);
   border: 1px solid rgb(148 163 184 / 0.16);
   @supports (backdrop-filter: blur(1px)) {
@@ -188,17 +199,61 @@
 }
 
 /* ---------------------------------------------------------------------------------------
-   US-2.4 — intro video, typed title, glowing planets, site-wide sky.
-   The sky is the last shot of the intro video with the two planets removed
-   (public/media/space-bg.jpg); it sits under the starfield of every page.
+   US-2.4 / US-5.11 — site-wide sky. A real NASA all-sky map (SVS "Deep Star Maps 2020",
+   galactic centre, tone-mapped and tilted) sits under the starfield of every page. It drifts
+   very slowly (a GPU-only transform, never a repaint); the veil keeps text contrast.
    --------------------------------------------------------------------------------------- */
 .space-sky {
   background-color: var(--cosmos-void-black);
+  overflow: hidden;
+}
+.space-sky::before {
+  content: '';
+  position: absolute;
+  inset: -6%;
   background-image:
-    linear-gradient(rgb(8 11 18 / var(--sky-veil, 0.55)), rgb(8 11 18 / var(--sky-veil, 0.55))),
-    url('/media/space-bg.jpg');
+    radial-gradient(ellipse at 50% 45%, transparent 35%, rgb(8 11 18 / 0.75) 100%),
+    linear-gradient(rgb(8 11 18 / var(--sky-veil, 0.5)), rgb(8 11 18 / var(--sky-veil, 0.5))),
+    url('/media/sky-milkyway-1280.webp');
   background-size: cover;
   background-position: center;
+  will-change: transform;
+}
+@media (min-width: 900px), (min-resolution: 2dppx) {
+  .space-sky::before {
+    background-image:
+      radial-gradient(ellipse at 50% 45%, transparent 35%, rgb(8 11 18 / 0.75) 100%),
+      linear-gradient(rgb(8 11 18 / var(--sky-veil, 0.5)), rgb(8 11 18 / var(--sky-veil, 0.5))),
+      url('/media/sky-milkyway-1920.webp');
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .space-sky::before {
+    animation: sky-drift 90s ease-in-out infinite alternate;
+  }
+}
+@keyframes sky-drift {
+  from {
+    transform: scale(1) rotate(0deg);
+  }
+  to {
+    transform: scale(1.06) rotate(1.2deg) translate3d(-1%, 0.6%, 0);
+  }
+}
+
+/* A few stars breathe (opacity only: composited, no repaint). */
+@media (prefers-reduced-motion: no-preference) {
+  .star-twinkle {
+    animation: star-twinkle 5.5s ease-in-out infinite alternate;
+  }
+}
+@keyframes star-twinkle {
+  from {
+    opacity: 0.45;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Blinking caret after the last typed letter of the home title. */
@@ -429,3 +484,117 @@ html.depth-mode::-webkit-scrollbar {
   }
 }
 
+
+/* ---------------------------------------------------------------------------------------
+   US-5.11 — finishing effects. All animate transform/opacity or a small text area only.
+   --------------------------------------------------------------------------------------- */
+
+/* A slow beam of light across a headline (text only: a tiny repaint). */
+.title-sheen {
+  background-image: linear-gradient(
+    100deg,
+    var(--cosmos-starlight) 0%,
+    var(--cosmos-starlight) 40%,
+    var(--cosmos-stellar-cyan) 50%,
+    var(--cosmos-starlight) 60%,
+    var(--cosmos-starlight) 100%
+  );
+  background-size: 250% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .title-sheen {
+    animation: title-sheen 6s ease-in-out infinite;
+  }
+}
+@keyframes title-sheen {
+  0%,
+  35% {
+    background-position: 100% 0;
+  }
+  70%,
+  100% {
+    background-position: 0% 0;
+  }
+}
+
+/* Big numbers lit from above, like an instrument readout. */
+.stat-number {
+  background-image: linear-gradient(180deg, #ffffff 10%, var(--cosmos-stellar-cyan) 120%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Expedition cards land one after the other as the camera reaches the scene. */
+.expedition-card {
+  opacity: calc(1 - clamp(0, var(--approach, 0) * 3 - (3 - var(--i)) * 0.15, 1));
+  transform: translate3d(0, calc(clamp(0, var(--approach, 0) * 3 - (3 - var(--i)) * 0.15, 1) * 40px), 0);
+  transition: border-color 300ms;
+}
+.expedition-card:hover {
+  border-color: color-mix(in srgb, var(--cosmos-stellar-cyan) 45%, transparent);
+}
+
+/* The main call to action breathes, to say "start here". */
+@media (prefers-reduced-motion: no-preference) {
+  .cta-pulse {
+    position: relative;
+  }
+  .cta-pulse::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 9999px;
+    border: 1px solid var(--cosmos-stellar-cyan);
+    opacity: 0;
+    animation: cta-pulse 2.8s ease-out infinite;
+    pointer-events: none;
+  }
+}
+@keyframes cta-pulse {
+  0% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.25, 1.6);
+  }
+}
+
+/* Destination hero: its lines rise into place one after the other on arrival. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-rise > * {
+    animation: hero-rise 900ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  .hero-rise > :nth-child(2) {
+    animation-delay: 80ms;
+  }
+  .hero-rise > :nth-child(3) {
+    animation-delay: 160ms;
+  }
+  .hero-rise > :nth-child(4) {
+    animation-delay: 300ms;
+  }
+  .hero-rise > :nth-child(5) {
+    animation-delay: 420ms;
+  }
+  .hero-rise > :nth-child(6) {
+    animation-delay: 540ms;
+  }
+}
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

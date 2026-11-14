@@ -252,6 +252,7 @@ const ROUTES: Record<string, unknown> = {
   '/api/machines/machine-a': machineDetail,
   '/api/stories/story-a': story,
   '/api/sources': [source],
+  '/api/media': [photo, artwork, model],
 }
 
 /** Replaces global fetch with a router over the fixtures. Unknown paths answer 404. */

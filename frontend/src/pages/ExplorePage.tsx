@@ -1,15 +1,21 @@
 import { Fragment, useEffect, useState, type CSSProperties } from 'react'
-import { ChevronsDown } from 'lucide-react'
+import { ArrowRight, ChevronsDown, Globe2, Radio, Rocket } from 'lucide-react'
+import { Link } from 'react-router'
+import { api } from '@/api/client'
+import { paths } from '@/app/paths'
 import { WarpField } from '@/components/celestial/WarpField'
 import { IntroVideo } from '@/components/home/IntroVideo'
 import { shouldPlayIntro } from '@/components/home/introSession'
 import { WorldChapter, WorldEcho } from '@/components/home/WorldChapter'
 import { WorldPortal } from '@/components/home/WorldPortal'
 import { DepthJourney, type DepthLayer, type DepthScene } from '@/components/motion/DepthJourney'
+import { CountUp } from '@/components/motion/CountUp'
 import { ScatterText } from '@/components/motion/ScatterText'
+import { useApi } from '@/hooks/useApi'
 import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { useTranslation } from '@/i18n'
+import { ctaPrimary, eyebrow } from '@/lib/styles'
 import { cn } from '@/lib/utils'
 import { DESTINATION_IDS } from '@/types/content'
 
@@ -29,6 +35,7 @@ export function ExplorePage() {
     { id: 'departure', label: t('explore.sceneDeparture') },
     { id: 'moon', label: t('destinations.moon.name') },
     { id: 'mars', label: t('destinations.mars.name') },
+    { id: 'expedition', label: t('explore.stepsEyebrow') },
     { id: 'motto', label: t('explore.sceneMotto') },
   ]
 
@@ -38,7 +45,8 @@ export function ExplorePage() {
     { id: 'moon', scene: 1, children: <WorldChapter id="moon" number={1} /> },
     { id: 'mars-echo', scene: 2, offset: 0.5, children: <WorldEcho id="mars" /> },
     { id: 'mars', scene: 2, children: <WorldChapter id="mars" number={2} reversed /> },
-    { id: 'motto', scene: 3, children: <Motto /> },
+    { id: 'expedition', scene: 3, children: <Expedition /> },
+    { id: 'motto', scene: 4, children: <Motto /> },
   ]
 
   return (
@@ -130,6 +138,8 @@ function Departure({ revealed }: { revealed: boolean }) {
         ))}
       </ul>
 
+      <HomeStats revealed={revealed} className={cn('scatter-fade', appear(1600).className)} style={appear(1600).style} />
+
       <p
         className={cn(
           'scatter-fade mt-3 hidden items-center [@media(min-height:640px)]:flex gap-2 font-mono text-[0.6rem] tracking-[0.25em] text-moon-dust/80 uppercase sm:mt-6 sm:text-[0.68rem]',
@@ -141,6 +151,81 @@ function Departure({ revealed }: { revealed: boolean }) {
         {t('explore.scrollHint')}
       </p>
     </div>
+  )
+}
+
+/** Live numbers from the API (sourced content): worlds, missions and machines on the site. */
+function HomeStats({ revealed, className, style }: { revealed: boolean; className?: string; style?: CSSProperties }) {
+  const { t } = useTranslation()
+  const destinations = useApi('destinations', (lang, signal) => api.destinations(lang, signal))
+  if (destinations.status !== 'success') return null
+  const missions = destinations.data.reduce((sum, d) => sum + d.missionCount, 0)
+  const machines = destinations.data.reduce((sum, d) => sum + d.machineCount, 0)
+  const stats = [
+    { value: destinations.data.length, label: t('explore.statWorlds') },
+    { value: missions, label: t('explore.statMissions') },
+    { value: machines, label: t('explore.statMachines') },
+  ]
+  return (
+    <dl
+      aria-label={t('explore.statsLabel')}
+      className={cn('mt-4 hidden items-end justify-center gap-6 sm:gap-12 [@media(min-height:760px)]:flex', className)}
+      style={style}
+    >
+      {stats.map((stat) => (
+        <div key={stat.label} className="flex flex-col-reverse items-center">
+          <dt className="mt-1 font-mono text-[0.6rem] tracking-[0.25em] text-moon-dust uppercase">{stat.label}</dt>
+          <dd className="stat-number font-heading text-3xl leading-none font-bold sm:text-4xl">
+            <CountUp value={stat.value} run={revealed} />
+          </dd>
+        </div>
+      ))}
+    </dl>
+  )
+}
+
+const EXPEDITION_STEPS = [
+  { n: 1, Icon: Globe2 },
+  { n: 2, Icon: Rocket },
+  { n: 3, Icon: Radio },
+] as const
+
+/** US-5.11 pedagogy: how the visit works, in three stages, before the motto. */
+function Expedition() {
+  const { t } = useTranslation()
+  return (
+    <section aria-labelledby="expedition-title" className="mx-auto w-full max-w-5xl pr-12 pl-4 sm:px-16">
+      <p className={cn(eyebrow, 'text-center text-stellar-cyan')}>{t('explore.stepsEyebrow')}</p>
+      <h2 id="expedition-title" className="title-sheen mt-2 text-center font-heading text-[clamp(1.35rem,4.2vw,3.2rem)] leading-tight font-bold">
+        {t('explore.stepsTitle')}
+      </h2>
+      <ol className="mt-4 grid gap-2.5 md:mt-10 md:grid-cols-3 md:gap-5">
+        {EXPEDITION_STEPS.map(({ n, Icon }) => (
+          <li
+            key={n}
+            className="expedition-card glass group relative flex gap-3 overflow-hidden rounded-2xl p-3 md:block md:p-6"
+            style={{ '--i': n } as CSSProperties}
+          >
+            <span aria-hidden="true" className="text-outline absolute -top-3 right-2 hidden font-heading text-8xl font-bold md:block">
+              {n}
+            </span>
+            <span aria-hidden="true" className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-stellar-cyan/10 text-stellar-cyan ring-1 ring-stellar-cyan/30 md:size-12">
+              <Icon className="size-5 md:size-6" />
+            </span>
+            <div>
+              <h3 className="font-heading text-base font-bold md:mt-5 md:text-xl">{t(`explore.step${n}Title`)}</h3>
+              <p className="mt-0.5 text-[0.8rem] leading-snug text-moon-dust md:mt-2 md:text-sm md:leading-relaxed">{t(`explore.step${n}Text`)}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+      <div className="mt-4 flex justify-center md:mt-10">
+        <Link to={paths.destination('moon')} viewTransition className={cn(ctaPrimary, 'cta-pulse group px-6')}>
+          {t('explore.startCta')}
+          <ArrowRight aria-hidden="true" className="size-4 transition-transform group-hover:translate-x-1" />
+        </Link>
+      </div>
+    </section>
   )
 }
 

@@ -22,7 +22,7 @@ export function Layout() {
       <header
         className={cn(
           'fixed inset-x-0 top-0 z-[2500]',
-          isHome ? 'bg-gradient-to-b from-void/90 to-transparent' : 'glass border-x-0 border-t-0',
+          isHome ? 'bg-gradient-to-b from-void/90 to-transparent' : 'glass-blur border-x-0 border-t-0',
         )}
       >
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-2 px-4">

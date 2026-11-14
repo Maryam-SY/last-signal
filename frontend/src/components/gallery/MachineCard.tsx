@@ -8,7 +8,7 @@ import { LoadState } from '@/components/common/LoadState'
 import { StatusBadge } from '@/components/machine/StatusBadge'
 import { CoverPhoto } from '@/components/media/CoverPhoto'
 import { RelationEnds } from '@/components/relations/RelationEnds'
-import { SourceList } from '@/components/sources/SourceList'
+import { SourcesDisclosure } from '@/components/sources/SourcesDisclosure'
 import { useApi } from '@/hooks/useApi'
 import { useTranslation } from '@/i18n'
 import { record } from '@/lib/explorerLog'
@@ -159,10 +159,7 @@ function MachineDetails({ machineId }: { machineId: string }) {
         </section>
       )}
 
-      <section aria-label={t('sources.count', { count: detail.data.sources.length })}>
-        <p className={cn(eyebrow, 'mb-3 text-moon-dust')}>{t('sources.count', { count: detail.data.sources.length })}</p>
-        <SourceList sources={detail.data.sources} />
-      </section>
+      <SourcesDisclosure sources={detail.data.sources} label={t('sources.count', { count: detail.data.sources.length })} />
     </div>
   )
 }

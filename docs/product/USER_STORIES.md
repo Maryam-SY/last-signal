@@ -114,6 +114,7 @@ Personas : **Visiteur** (10-15 ans, principal), **Curieux** (adulte), **Équipe*
   1. À l'arrivée sur l'accueil, la vidéo de l'équipe joue en plein écran, muette, une fois par visite ; « Passer l'intro » et Échap l'arrêtent ; rien sous `prefers-reduced-motion`.
   2. À sa fin, fondu vers l'accueil : la Lune et Mars en surbrillance sur le même ciel, et « Choisis ta destination » s'écrit lettre par lettre.
   3. Le ciel de la vidéo (sans les planètes) est le fond de toutes les pages.
+- **Modifié par US-5.11 (décision de l'équipe du 2026-11-14)** : critère 3 → le fond de toutes les pages est la Voie lactée NASA haute définition (ADR-022), plus le ciel extrait de la vidéo.
 
 ### US-2.3 — Me repérer partout
 - **Story** : En tant que visiteur, je souhaite savoir où je suis et revenir en arrière facilement afin de ne jamais me perdre.
@@ -278,7 +279,7 @@ Personas : **Visiteur** (10-15 ans, principal), **Curieux** (adulte), **Équipe*
 - **Story** : En tant que visiteur de 10-15 ans, je souhaite voir de vraies photos et comprendre les mots et les voix du récit afin d'apprendre sans me sentir perdu.
 - **Priorité** : P0 (décision de l'équipe du 2026-11-14) · **Exigences** : EQUIP-002, EQUIP-005, STORY-007, MEDIA-001 · **Statut** : `review` (`docs/project/stories/PEDAGOGY-BATCH.md`)
 - **Critères** :
-  1. Chaque carte d'équipement et chaque récit montrent une photo de couverture `depiction: "photo"` avec son crédit ; jamais un dessin ou une simulation.
+  1. Chaque carte d'équipement et chaque récit montrent une photo de couverture `depiction: "photo"` ; jamais un dessin ou une simulation. *(Modifié par US-5.11 : le crédit n'est plus sous la photo mais sur la page About.)*
   2. Le récit explique ses trois voix avant la première étape ; chaque étape propose les « mots à connaître » qu'elle emploie, avec définition sourcée (glossaire V14, en `draft` tant qu'il n'est pas relu).
   3. L'étape « À toi » propose un carnet de bord gardé sur l'appareil uniquement (rien n'est envoyé).
   4. La relation de l'étape Relais est dessinée « De → À » ; la légende des statuts explique chaque statut en mots.
@@ -305,6 +306,16 @@ Personas : **Visiteur** (10-15 ans, principal), **Curieux** (adulte), **Équipe*
   1. Chaque image affichée dans un journal de mission porte, quand sa légende source le permet, une courte histoire bilingue (`Media.description`) qui ne reprend que ce que dit cette légende.
   2. Ces histoires sont en `descriptionStatus: "draft"` (règle V15) et l'interface le signale ; seul un humain les passe en `reviewed`.
   3. Pour chaque moment, l'image affichée est celle dont on peut raconter l'histoire, sinon la première.
+
+### US-5.11 — Effet « waouh » : visuels HD, fluidité, pédagogie
+- **Story** : En tant que visiteur (et jury du hackathon), je souhaite un site au rendu réaliste, fluide et qui explique clairement le parcours, afin d'avoir envie de découvrir le spatial.
+- **Priorité** : P0 (décision de l'équipe du 2026-11-14) · **Exigences** : MEDIA-001, ABOUT-001, NFR-PERF-001/002, NFR-A11Y-006 · **Statut** : `review` (ADR-022 ; `docs/project/stories/US-5.11.md`)
+- **Critères** :
+  1. La Lune et Mars sont des globes 3D éclairés, aux textures NASA haute définition ; le ciel de toutes les pages est une image NASA haute définition ; repli photo sans WebGL ; image fixe sous `prefers-reduced-motion`.
+  2. Le scroll des pages Destination et de l'accueil tient 60 images/s sur la machine de démo (mesure consignée).
+  3. Aucune ligne de crédit sous les images ; tous les crédits images (et des visuels du site) sont regroupés sur About ; les badges de nature (MEDIA-001) restent visibles ; les sources d'une mission ou d'une machine restent à un clic (repliées).
+  4. L'accueil explique le parcours en trois étapes et donne les chiffres du site (calculés depuis l'API).
+- **Modifie** : US-5.7 critère 1 (« avec son crédit » → crédit sur About), US-2.4 critère 3.
 
 ### US-5.5 — Mise en production et démo
 - **Priorité** : P0 · **Exigences** : DEPLOY-001, indicateurs PRD §11

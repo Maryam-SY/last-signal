@@ -34,8 +34,24 @@ describe('home depth journey', () => {
     expect(screen.getByRole('heading', { level: 2, name: 'Mars' })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'Land on Mars' })).toHaveAttribute('href', '/explore/mars')
     const journey = screen.getByRole('navigation', { name: 'Journey' })
-    expect(within(journey).getAllByRole('button')).toHaveLength(4)
+    expect(within(journey).getAllByRole('button')).toHaveLength(5)
     expect(document.documentElement).toHaveClass('depth-mode')
+  })
+
+  it('explains the visit in three stages and invites to start (US-5.11)', () => {
+    renderRoute('/')
+    const expedition = screen.getByRole('region', { name: 'Three stages, no prior knowledge needed' })
+    expect(within(expedition).getAllByRole('listitem')).toHaveLength(3)
+    expect(within(expedition).getByRole('heading', { level: 3, name: 'Descend to the surface' })).toBeInTheDocument()
+    expect(within(expedition).getByRole('link', { name: 'Start with the Moon' })).toHaveAttribute('href', '/explore/moon')
+  })
+
+  it('shows the numbers of the site from the API (US-5.11)', async () => {
+    renderRoute('/')
+    // Two destinations in the fixtures: "2 worlds" (the final value is always in the text).
+    const worlds = (await screen.findByText('worlds')).closest('div')!
+    expect(within(worlds).getAllByText('2').length).toBeGreaterThan(0)
+    expect(screen.getByText('machines still there')).toBeInTheDocument()
   })
 
   it('falls back to ordinary sections under reduced motion (NFR-A11Y-006)', () => {

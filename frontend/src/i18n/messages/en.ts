@@ -33,7 +33,7 @@ export const en = {
   explore: {
     title: 'Choose your destination',
     intro:
-      'Human-made machines stayed behind on these worlds after their missions ended. Pick one to discover what they left — and what they passed on.',
+      'Landers, rovers and even a helicopter are still out there, on the Moon and on Mars. Pick a world: discover what each machine did, what became of it — and what it passed on to the next explorers.',
     destinationsLabel: 'Destinations',
     eyebrow: 'A field guide to the machines we left behind',
     scrollHint: 'Scroll — the worlds come to you',
@@ -44,6 +44,19 @@ export const en = {
     mottoEyebrow: 'What they passed on',
     motto: 'Every machine left more than a trace: it passed something on.',
     backToStart: 'Back to the start',
+    statWorlds: 'worlds',
+    statMissions: 'missions',
+    statMachines: 'machines still there',
+    statsLabel: 'AeroReborn in numbers',
+    stepsEyebrow: 'Your expedition',
+    stepsTitle: 'Three stages, no prior knowledge needed',
+    step1Title: 'Pick a world',
+    step1Text: 'The Moon or Mars. Each one keeps machines that people sent there — and that never came back.',
+    step2Title: 'Descend to the surface',
+    step2Text: 'Scroll down: the map shows where each machine landed, then every mission tells its story, date by date, with real pictures.',
+    step3Title: 'Follow the signal',
+    step3Text: 'Each story ends with what a machine passed on to the next ones — and with a question waiting just for you.',
+    startCta: 'Start with the Moon',
   },
   bodies: {
     mercury: {
@@ -166,7 +179,7 @@ export const en = {
     showModel: 'Turn it in 3D',
     hideModel: 'Back to the photos',
     modelHelp: 'Drag it (or use the arrow keys once it is selected) to turn it around. 3D model published by NASA.',
-    modelUnavailable: 'The 3D model could not be loaded. The NASA page below still has it.',
+    modelUnavailable: 'The 3D model could not be loaded. Try again later.',
     anotherLook: 'Another look',
   },
   machineType: {
@@ -206,16 +219,14 @@ export const en = {
     imagination: 'Imagine',
   },
   media: {
-    credit: 'Credit: {credit}',
     noCredit: 'Credit not shown on the source page',
-    viewOriginal: 'See it on the NASA page',
     newTab: '(opens in a new tab)',
     openVideo: 'Watch the video',
     open3d: 'Open the 3D model',
     openDocument: 'Open the document',
     videoUnsupported: 'Your browser cannot play this video.',
     whatYouSee: 'What you see:',
-    unavailable: 'This image cannot be shown right now. The NASA page below still has it.',
+    unavailable: 'This image cannot be shown right now.',
   },
   sources: {
     title: 'Sources',
@@ -302,7 +313,6 @@ export const en = {
     notebookCopy: 'Copy',
     notebookCopied: 'Copied!',
     notebookClear: 'Erase',
-    coverCredit: 'Photo: {credit}',
   },
   timeline: {
     eyebrow: 'Timeline',
@@ -343,9 +353,12 @@ export const en = {
     sourcesIntro: 'Every fact shown on AeroReborn comes from one of these sources.',
     aiTitle: 'Use of AI',
     comingSoon: 'This section will be completed before release.',
-    imagesCredit:
-      'Planet and small-body photographs come from the NASA NSSDCA Image Resources and are in the public domain.',
-    imagesSourceLabel: 'NSSDCA Image Resources',
+    visualLink: 'Original',
+    visualSky: 'Background sky: NASA’s Scientific Visualization Studio, “Deep Star Maps 2020” (Milky Way around the galactic centre, tone-mapped and tilted by AeroReborn). Public domain.',
+    visualMoon: '3D Moon: NASA’s Scientific Visualization Studio, “CGI Moon Kit” — colour mosaic from the Lunar Reconnaissance Orbiter camera and relief from its laser altimeter (LOLA). Public domain.',
+    visualMars: '3D Mars: NASA / JPL / USGS, Viking MDIM 2.1 colourised global mosaic (colour slightly enhanced by AeroReborn). Public domain.',
+    visualPlanets: 'Other planet photographs: NASA NSSDCA Photo Gallery. Public domain.',
+    mediaIntro: 'The {count} pictures, videos and 3D models of the stories, grouped by who made them. Each title opens the original page.',
   },
   notFound: {
     title: 'Page not found',
