@@ -127,4 +127,26 @@ describe('content API', () => {
     expect(firstFlight.media[0]).toHaveProperty('depiction')
     expect(typeof firstFlight.media[0].alt).toBe('string')
   })
+
+  it('GET /api/stories/:id names the missions, machines and relation ends it cites', async () => {
+    const res = await request(app).get('/api/stories/moon-surveyor-apollo12')
+    expect(res.status).toBe(200)
+    expect(res.body.missions).toEqual([
+      { kind: 'mission', id: 'surveyor-3', name: 'Surveyor 3', destinationId: 'moon' },
+      { kind: 'mission', id: 'apollo-12', name: 'Apollo 12', destinationId: 'moon' },
+    ])
+    expect(res.body.machines.map((m: { id: string }) => m.id)).toContain('surveyor-3-lander')
+    const relation = res.body.relations.find((r: { id: string }) => r.id === 'surveyor-3-to-apollo-12-data')
+    expect(relation.fromEntity).toMatchObject({ id: 'surveyor-3-lander', destinationId: 'moon' })
+    expect(relation.toEntity).toMatchObject({ kind: 'mission', id: 'apollo-12', name: 'Apollo 12' })
+  })
+
+  it('GET /api/machines/:id resolves the sources of the relations it shows', async () => {
+    const res = await request(app).get('/api/machines/surveyor-3-lander')
+    const sourceIds = new Set(res.body.sources.map((s: { id: string }) => s.id))
+    for (const relation of res.body.relations as { sourceIds: string[]; fromEntity: unknown }[]) {
+      expect(relation.fromEntity).not.toBeNull()
+      for (const id of relation.sourceIds) expect(sourceIds.has(id)).toBe(true)
+    }
+  })
 })
