@@ -7,7 +7,7 @@ import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { useTranslation } from '@/i18n'
 import { formatPartialDate } from '@/lib/formatDate'
-import { bestStill, machineChapters, mediaOfMachine, modelOf, type JourneyChapter, type Told } from '@/lib/journey'
+import { machineChapters, machineCover, modelOf, type JourneyChapter, type Told } from '@/lib/journey'
 import { cn } from '@/lib/utils'
 import { MachineStage } from './MachineStage'
 import { ModelViewer3D } from './ModelViewer3D'
@@ -32,10 +32,9 @@ export function MachineJourney({ machine, mission, story, told }: MachineJourney
   const { t } = useTranslation()
   const reduced = useReducedMotion()
   const sceneRef = useSceneMotion<HTMLElement>(!reduced)
-  // The machine's portrait on the stage: preferably a picture the mission log has not shown.
-  const machineMedia = mission ? mediaOfMachine(mission, machine.id) : []
-  const cover =
-    bestStill(machineMedia.filter((item) => !told?.mediaIds.has(item.id))) ?? bestStill(machineMedia) ?? machine.cover ?? undefined
+  // The machine's own photo on the stage (#16 rules), avoiding pictures the mission log above
+  // has already told; the API cover when the mission has no picture of this machine.
+  const cover = (mission ? machineCover(mission, machine.id, told?.mediaIds) : undefined) ?? machine.cover ?? undefined
   const chapters = mission ? machineChapters(machine, mission, cover, 4, told) : []
   const model = mission ? modelOf(mission, machine.id) : undefined
   const [showModel, setShowModel] = useState(false)

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import type { Machine, Media, MissionDetail } from '@/api/types'
-import { bestStill, machineChapters, modelOf, sceneMotion } from './journey'
+import { bestStill, machineChapters, machineCover, missionCover, modelOf, sceneMotion } from './journey'
 
 const media = (id: string, extra: Partial<Media> = {}): Media => ({
   id,
@@ -53,6 +53,40 @@ describe('journey helpers', () => {
     const cover = media('cover')
     const chapters = machineChapters(machine, mission([], [cover, media('p2'), media('model', { type: '3d-model' })]), cover)
     expect(chapters).toEqual([expect.objectContaining({ id: 'p2', date: null, text: 'Alt p2' })])
+  })
+
+  it('does not reuse the mission photo for a machine that has another photo', () => {
+    const shared = media('shared')
+    const own = media('own')
+    const all = mission([], [shared, own])
+    expect(missionCover(all)?.id).toBe('shared')
+    expect(machineCover(all, 'rover')?.id).toBe('own')
+  })
+
+  it('keeps the mission photo when it is the only photo of the machine, and prefers it to a drawing', () => {
+    const shared = media('shared')
+    expect(machineCover(mission([], [shared]), 'rover')?.id).toBe('shared')
+    expect(machineCover(mission([], [shared, media('drawing', { depiction: 'artwork' })]), 'rover')?.id).toBe('shared')
+    expect(machineCover(mission([], [media('drawing', { depiction: 'artwork' })]), 'rover')?.id).toBe('drawing')
+  })
+
+  it('prefers a still photo to an animation for the machine', () => {
+    const gif = media('gif', { type: 'animation' })
+    expect(machineCover(mission([], [media('opening', { machineIds: [] }), gif, media('still')]), 'rover')?.id).toBe('still')
+  })
+
+  it('prefers a photo of the machine alone to one shared with another machine', () => {
+    const shared = media('shared', { machineIds: ['rover', 'lander'] })
+    expect(machineCover(mission([], [media('opening', { machineIds: [] }), shared, media('alone')]), 'rover')?.id).toBe('alone')
+    expect(machineCover(mission([], [media('opening', { machineIds: [] }), shared]), 'rover')?.id).toBe('shared')
+  })
+
+  it('avoids a picture the mission log already told, unless it is the only one (US-5.9)', () => {
+    const opening = media('opening', { machineIds: [] })
+    const told = media('told')
+    const fresh = media('fresh')
+    expect(machineCover(mission([], [opening, told, fresh]), 'rover', new Set(['told']))?.id).toBe('fresh')
+    expect(machineCover(mission([], [opening, told]), 'rover', new Set(['told']))?.id).toBe('told')
   })
 
   it('finds a .glb 3D model of the machine and ignores embedded model pages', () => {

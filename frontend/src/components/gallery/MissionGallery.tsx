@@ -12,7 +12,7 @@ import { MissionScene } from '@/components/journey/MissionScene'
 import { useApi, type ApiState } from '@/hooks/useApi'
 import { useTranslation } from '@/i18n'
 import { formatPartialDate } from '@/lib/formatDate'
-import { bestStill, toldPicture } from '@/lib/journey'
+import { missionCover, toldPicture } from '@/lib/journey'
 import { ctaPrimary, eyebrow } from '@/lib/styles'
 import { cn } from '@/lib/utils'
 import { MissionTimeline } from './MissionTimeline'
@@ -118,7 +118,7 @@ function MissionSection({ mission, number, total }: MissionSectionProps) {
         {padded}
       </span>
 
-      <MissionScene cover={missionDetail ? bestStill(missionDetail.media) : undefined}>
+      <MissionScene cover={missionDetail ? missionCover(missionDetail) : undefined}>
       <Reveal>
         <p className={cn(eyebrow, 'text-world')}>
           {t('destination.missionNumber', { number: padded, total: String(total).padStart(2, '0') })}

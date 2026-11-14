@@ -65,7 +65,8 @@ function DestinationView({ destinationId }: { destinationId: DestinationId }) {
       {body && !reduced && <PinnedDestinationPlanet key={destinationId} body={body} />}
       <JourneyRail items={railItems} label={t('destination.journeyLabel')} />
 
-      <div className="relative z-10">
+      {/* Gutter for the fixed journey rail (md and up), so its dots never cover the content. */}
+      <div className="relative z-10 md:pr-16 lg:pr-20">
         <section
           id="orbit"
           aria-labelledby="destination-title"
