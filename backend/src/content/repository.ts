@@ -7,6 +7,17 @@ export interface StorySummary {
   missionIds: string[]
 }
 
+/** One end of a relation, named so that the interface never shows a bare id. */
+export interface EntityLabel {
+  kind: EntityRef['kind']
+  id: string
+  name: string
+  destinationId: Mission['destinationId'] | null
+}
+
+/** A relation with its two ends named (no extra request needed to say "from … to …"). */
+export type NamedRelation = Relation & { fromEntity: EntityLabel | null; toEntity: EntityLabel | null }
+
 export interface MediaFilter {
   missionId?: string
   machineId?: string
@@ -74,15 +85,20 @@ export class ContentRepository {
     const machine = this.machines.get(id)
     if (!machine) return null
     const mission = this.missions.get(machine.missionId) ?? null
+    const relations = [
+      ...this.relationsOf({ kind: 'machine', id }),
+      ...(mission ? this.relationsOf({ kind: 'mission', id: mission.id }) : []),
+    ].map((relation) => this.named(relation))
     return {
       ...machine,
       destinationId: mission?.destinationId ?? null,
       mission: mission ? { id: mission.id, name: mission.name, destinationId: mission.destinationId } : null,
-      relations: [...this.relationsOf({ kind: 'machine', id }), ...(mission ? this.relationsOf({ kind: 'mission', id: mission.id }) : [])],
+      relations,
       media: this.listMedia({ machineId: id }),
       // STORY-003: the machine's own story first, otherwise its mission's main story.
       storyTarget: this.summary(this.stories.get(machine.storyIds[0] ?? mission?.mainStoryId ?? '')),
-      sources: this.sourcesCitedBy(machine),
+      // The relations shown with the machine cite sources too: resolve them with the machine's own.
+      sources: this.sourcesCitedBy({ machine, relations }),
     }
   }
 
@@ -95,7 +111,7 @@ export class ContentRepository {
     if (!story) return null
     const mediaIds = new Set(story.steps.flatMap((step) => step.blocks.flatMap((b) => b.mediaIds ?? [])))
     const relationIds = new Set(story.steps.flatMap((step) => step.relationIds ?? []))
-    const relations = this.content.relations.filter((r) => relationIds.has(r.id))
+    const relations = this.content.relations.filter((r) => relationIds.has(r.id)).map((r) => this.named(r))
     const firstMission = this.missions.get(story.missionIds[0] ?? '')
     return {
       ...story,
@@ -105,6 +121,11 @@ export class ContentRepository {
         .map((mid) => this.missions.get(mid))
         .filter((m): m is Mission => m !== undefined)
         .map((m) => ({ id: m.id, name: m.name, destinationId: m.destinationId })),
+      // STORY-008: "machines in this story" at the end, with the destination where each one is.
+      machines: story.machineIds
+        .map((mid) => this.label({ kind: 'machine', id: mid }))
+        .filter((m): m is EntityLabel => m !== null)
+        .map(({ id: machineId, name, destinationId }) => ({ id: machineId, name, destinationId })),
       relations,
       media: [...mediaIds].map((mid) => this.media.get(mid)).filter((m): m is Media => m !== undefined),
       sources: this.sourcesCitedBy({ story, relations }),
@@ -130,6 +151,20 @@ export class ContentRepository {
         (!filter.machineId || m.machineIds.includes(filter.machineId)) &&
         (!filter.type || m.type === filter.type),
     )
+  }
+
+  private label(ref: EntityRef): EntityLabel | null {
+    if (ref.kind === 'mission') {
+      const mission = this.missions.get(ref.id)
+      return mission ? { kind: 'mission', id: mission.id, name: mission.name, destinationId: mission.destinationId } : null
+    }
+    const machine = this.machines.get(ref.id)
+    if (!machine) return null
+    return { kind: 'machine', id: machine.id, name: machine.name, destinationId: this.missions.get(machine.missionId)?.destinationId ?? null }
+  }
+
+  private named(relation: Relation): NamedRelation {
+    return { ...relation, fromEntity: this.label(relation.from), toEntity: this.label(relation.to) }
   }
 
   private machinesOf(missionId: string): Machine[] {

@@ -1,11 +1,12 @@
 import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router'
+import type { StoryDetail } from '@/api/types'
 import { paths } from '@/app/paths'
 import { Reveal } from '@/components/motion/Reveal'
 import { useTranslation } from '@/i18n'
 import { ctaGhost, ctaPrimary, eyebrow } from '@/lib/styles'
 import { cn } from '@/lib/utils'
-import { DESTINATION_IDS, type DestinationId } from '@/types/content'
+import { DESTINATION_IDS } from '@/types/content'
 
 /** Six stars, one per step, joined into a small constellation (decoration). */
 const STARS = [
@@ -17,9 +18,16 @@ const STARS = [
   [205, 34],
 ] as const
 
-/** STORY-008: the end of the journey — back to the machines, or on to the other world. */
-export function StoryEnd({ destinationId, exitHref }: { destinationId: DestinationId | null; exitHref: string }) {
+const chip =
+  'inline-flex min-h-11 items-center rounded-full border border-moon-dust/40 px-4 text-sm font-medium transition-colors hover:border-world hover:text-world'
+
+/**
+ * STORY-008 / US-4.7: the end of the journey — back to the machines, to each mission of the
+ * story, to the machines it cites, or on to the other world.
+ */
+export function StoryEnd({ story, exitHref }: { story: StoryDetail; exitHref: string }) {
   const { t } = useTranslation()
+  const { destinationId } = story
   const other = DESTINATION_IDS.find((d) => d !== destinationId)
 
   return (
@@ -63,6 +71,35 @@ export function StoryEnd({ destinationId, exitHref }: { destinationId: Destinati
             </Link>
           )}
         </div>
+
+        {story.missions.length > 0 && (
+          <>
+            <h3 className={cn(eyebrow, 'mt-12 text-moon-dust')}>{t('story.missionsTitle')}</h3>
+            <ul className="mt-3 flex flex-wrap justify-center gap-2">
+              {story.missions.map((mission) => (
+                <li key={mission.id}>
+                  <Link to={`${paths.destination(mission.destinationId)}#mission-${encodeURIComponent(mission.id)}`} className={chip}>
+                    {mission.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+        {story.machines.length > 0 && (
+          <>
+            <h3 className={cn(eyebrow, 'mt-8 text-moon-dust')}>{t('story.machinesTitle')}</h3>
+            <ul className="mt-3 flex flex-wrap justify-center gap-2">
+              {story.machines.map((machine) => (
+                <li key={machine.id}>
+                  <Link to={machine.destinationId ? paths.machine(machine.destinationId, machine.id) : paths.home()} className={chip}>
+                    {machine.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
       </Reveal>
     </section>
   )

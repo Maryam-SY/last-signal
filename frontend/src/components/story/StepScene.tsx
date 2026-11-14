@@ -1,6 +1,7 @@
 import type { CSSProperties, Ref } from 'react'
 import type { Media, Relation, Source, StoryBlock, StoryStep, Voice } from '@/api/types'
 import { MediaFigure } from '@/components/media/MediaFigure'
+import { RelationEnds } from '@/components/relations/RelationEnds'
 import { Reveal } from '@/components/motion/Reveal'
 import { SourceList } from '@/components/sources/SourceList'
 import { VoiceTag } from '@/components/sources/VoiceTag'
@@ -121,7 +122,8 @@ function Relations({ relations, sourceById }: { relations: Relation[]; sourceByI
           {relations.map((r) => (
             <li key={r.id} className="relative pl-6">
               <span aria-hidden="true" className="absolute top-2 left-0 size-2.5 rounded-full bg-world shadow-[0_0_12px_var(--world-accent)]" />
-              <p className="text-lg font-medium">{r.transmitted}</p>
+              <RelationEnds relation={r} />
+              <p className="mt-1 text-lg font-medium">{r.transmitted}</p>
               <p className="mt-1 text-sm text-moon-dust">
                 <span className="font-semibold text-starlight">{t('story.evidence')} </span>
                 {r.evidence}

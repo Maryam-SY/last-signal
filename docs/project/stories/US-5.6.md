@@ -53,6 +53,7 @@ Aucune dépendance ajoutée. Aucune donnée scientifique dans le code : compteur
 ## Journal de l'agent
 
 - Problème trouvé et corrigé pendant la vérification : `ScrollRestoration` gardait la position d'une autre page pour les URL ouvertes depuis la barre d'adresse (clé `default`) → clé par URL dans ce cas.
+- Fusion de `main` (PR #8, 2026-11-14) : conflits sur `MachineCard.tsx` (carte ouverte dans l'URL `?machine=`, Échap, relations) et `StoryPage.tsx` (sortie vers `paths.machine`, liens missions/machines de fin, « De → À » des relations). Logique de #8 conservée et portée dans `StoryEnd.tsx` / `StepScene.tsx` au nouveau style. Après fusion : frontend `npm run check` OK (39 tests), backend `npm run check` OK (44 tests). Pas de nouvelle vérification navigateur après fusion.
 - Points ouverts : bloc média vide observé à l'étape *Discovery* d'Apollo 11 (image NASA lente ou URL à vérifier, relève de US-1.8) ; vérification reduced-motion et navigateurs autres que Chromium.
 
 ## Revue humaine

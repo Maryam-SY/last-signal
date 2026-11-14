@@ -196,6 +196,7 @@ export const fr: Messages = {
     open3d: 'Ouvrir le modèle 3D',
     openDocument: 'Ouvrir le document',
     videoUnsupported: 'Ton navigateur ne peut pas lire cette vidéo.',
+    unavailable: 'Cette image ne peut pas s’afficher pour le moment. La page de la NASA ci-dessous la propose toujours.',
   },
   sources: {
     title: 'Sources',
@@ -230,6 +231,12 @@ export const fr: Messages = {
     finishTitle: 'Continuer l’exploration',
     backToDestination: 'Retour aux machines : {destination}',
     exploreOther: 'Explorer : {destination}',
+    missionsTitle: 'Les missions de ce récit',
+    machinesTitle: 'Les machines de ce récit',
+  },
+  relations: {
+    from: 'De',
+    to: 'vers',
   },
   about: {
     title: 'À propos et sources',

@@ -164,8 +164,11 @@ function StoryExperience({ story }: { story: StoryDetail }) {
   }, [])
 
   const destinationId = story.destinationId
+  // Back to the machine the visitor came from, with its details open (US-4.2 criterion 3).
   const exitHref = destinationId
-    ? `${paths.destination(destinationId)}${from ? `#machine-${encodeURIComponent(from)}` : '#missions-title'}`
+    ? from
+      ? paths.machine(destinationId, from)
+      : `${paths.destination(destinationId)}#missions-title`
     : paths.home()
   const mediaById = new Map(story.media.map((m) => [m.id, m]))
   const sourceById = new Map(story.sources.map((s) => [s.id, s]))
@@ -217,7 +220,7 @@ function StoryExperience({ story }: { story: StoryDetail }) {
           />
         ))}
 
-        <StoryEnd destinationId={destinationId} exitHref={exitHref} />
+        <StoryEnd story={story} exitHref={exitHref} />
       </div>
 
       <StoryControls current={current} total={total} stepTitle={step.title} exitHref={exitHref} onGo={goTo} />

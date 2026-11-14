@@ -198,6 +198,7 @@ export const en = {
     open3d: 'Open the 3D model',
     openDocument: 'Open the document',
     videoUnsupported: 'Your browser cannot play this video.',
+    unavailable: 'This image cannot be shown right now. The NASA page below still has it.',
   },
   sources: {
     title: 'Sources',
@@ -232,6 +233,12 @@ export const en = {
     finishTitle: 'Keep exploring',
     backToDestination: 'Back to the machines of {destination}',
     exploreOther: 'Explore {destination}',
+    missionsTitle: 'The missions of this story',
+    machinesTitle: 'The machines of this story',
+  },
+  relations: {
+    from: 'From',
+    to: 'to',
   },
   about: {
     title: 'About & Sources',
