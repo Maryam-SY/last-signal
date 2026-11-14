@@ -1,6 +1,6 @@
 # US-5.6 — Immersion spatiale et scroll continu
 
-- **Statut** : review
+- **Statut** : done
 - **Epic** : E5 — Qualité et livraison
 - **Priorité** : P0
 - **Exigences PRD** : NAV-001, NAV-004, STORY-004 → 009, NFR-A11Y-001 → 008, MEDIA-001
@@ -58,4 +58,4 @@ Aucune dépendance ajoutée. Aucune donnée scientifique dans le code : compteur
 
 ## Revue humaine
 
-- Relu par : · Date : · Verdict : accepté | modifications demandées
+- Relu par : Birame · Date : 2026-11-14 · Verdict : **accepté** — PR #9 fusionnée (`83d6e2e`), CI verte. Critère 4 (`prefers-reduced-motion`) accepté sans vérification dans un navigateur : à contrôler avec US-5.3 (audit accessibilité).

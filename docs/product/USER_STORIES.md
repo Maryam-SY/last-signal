@@ -258,7 +258,7 @@ Personas : **Visiteur** (10-15 ans, principal), **Curieux** (adulte), **Équipe*
 
 ### US-5.6 — Immersion spatiale et scroll continu
 - **Story** : En tant que visiteur de 10-15 ans, je souhaite que chaque page soit une expérience immersive où l'on avance en faisant défiler, sans navigation compliquée, afin d'avoir envie d'explorer et de toujours savoir où je suis.
-- **Priorité** : P0 · **Exigences** : NAV-001, NAV-004, STORY-004 → 009, NFR-A11Y-001 → 008 · **Statut** : `review` (ADR-019 ; fichier `docs/project/stories/US-5.6.md`)
+- **Priorité** : P0 · **Exigences** : NAV-001, NAV-004, STORY-004 → 009, NFR-A11Y-001 → 008 · **Statut** : `done` (validée le 2026-11-14 ; PR #9 ; ADR-019 ; fichier `docs/project/stories/US-5.6.md` ; critère 4 accepté sans vérification navigateur)
 - **Critères** :
   1. Destination : planète épinglée, une scène par mission, scène « monde suivant », rail de sections à partir de 768 px.
   2. Récit : 6 scènes dans un même scroll ; `?step=` suit la scène visible ; rail d'étapes, Previous/Next, Exit et touches ← → toujours disponibles.
