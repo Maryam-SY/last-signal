@@ -59,7 +59,7 @@ function DestinationView({ destinationId }: { destinationId: DestinationId }) {
   ]
 
   return (
-    <div data-world={destinationId} className="relative">
+    <div data-world={destinationId} className="relative overflow-x-clip">
       <SpaceBackdrop />
       <ScrollProgress />
       {body && !reduced && <PinnedDestinationPlanet key={destinationId} body={body} />}

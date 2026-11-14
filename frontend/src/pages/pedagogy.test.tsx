@@ -46,7 +46,8 @@ describe('photos, statuses and timeline', () => {
   it('shows the cover photo of a machine with its credit (US-5.7)', async () => {
     renderRoute('/explore/moon')
     expect(await screen.findByAltText('A lander on grey ground')).toBeInTheDocument()
-    expect(screen.getAllByText('Photo: NASA/JPL').length).toBeGreaterThan(0)
+    // Credited on the machine's stage ("Credit: …") or on a cover ("Photo: …").
+    expect(screen.getAllByText(/(Credit|Photo): NASA\/JPL/).length).toBeGreaterThan(0)
   })
 
   it('explains every status in words', async () => {

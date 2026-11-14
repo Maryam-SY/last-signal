@@ -27,6 +27,7 @@
 | ADR-017 | Médias référencés par URL, pas stockés dans le dépôt | Proposée | — |
 | ADR-018 | Accueil immersif « depth journey » sans bibliothèque | Acceptée | — |
 | ADR-019 | Pages Destination et Récit en scroll immersif continu | Acceptée | — |
+| ADR-020 | Modèles 3D NASA affichés avec `@google/model-viewer`, chargé à la demande | Acceptée (demande de l'équipe, 2026-11-14) | — |
 
 ---
 
@@ -260,3 +261,29 @@
   - `prefers-reduced-motion: reduce` : planète non épinglée (rendue dans le héros), aucune apparition ni défilement animé ; les scènes restent des sections lisibles.
   - Rail de la destination masqué sous `md` (le scroll suffit, EQUIP-006 reste couvert à partir de `md`).
   - À vérifier avant la démo : Safari/Firefox (View Transitions, `@property`), mobile bas de gamme (`backdrop-filter`).
+
+## ADR-020 — Modèles 3D NASA affichés avec `@google/model-viewer`, chargé à la demande
+
+- **Statut** : Acceptée — demande écrite de l'équipe le 2026-11-14 (« ajoute les modèles 3D avec model-viewer »)
+- **Problème** : montrer en vraie 3D, que l'on peut faire tourner, les machines dont la NASA publie un modèle. Les liens « 3D » du contenu étaient des pages NASA intégrées (`gltf_embed`) : l'une renvoyait une 404 portant le logo NASA (interdit par CLAUDE.md §7), l'autre pointait vers un domaine retiré.
+- **Options** :
+  - (a) `<iframe>` des pages NASA ;
+  - (b) `@google/model-viewer` lisant les fichiers `.glb` des « NASA 3D Resources » ;
+  - (c) `three.js` seul, avec une visionneuse maison.
+- **Analyse** :
+  - (a) Aucune dépendance. − Pages tierces qui changent ou disparaissent, habillage et logo NASA, aucune maîtrise de l'accessibilité.
+  - (b) Composant web standard : rotation à la souris, au toucher et au clavier, `alt`, rotation auto désactivable, contrôle du `touch-action` pour garder le défilement de la page. Licence Apache-2.0 ; dépend de `three` (MIT) et `lit` (BSD-3). − Bibliothèque lourde : environ 1 Mo, 291 Ko gzip.
+  - (c) Plus léger en théorie. − Rotation, éclairage, chargement Draco, accessibilité et gestion des erreurs à écrire et à maintenir : disproportionné pour un hackathon.
+- **Décision** : (b), avec les règles suivantes.
+  - **Chargement à la demande** : `import('@google/model-viewer')` n'a lieu qu'au clic sur « Turn it in 3D » (`ModelViewer3D`). Vite en fait un fichier séparé, et le bundle principal ne grossit que d'environ 5 Ko.
+  - **Médias par URL (ADR-017)** : les `.glb` sont lus sur `assets.science.nasa.gov`, qui répond `Access-Control-Allow-Origin: *` (vérifié le 2026-11-14). Aucun modèle n'est copié dans le dépôt.
+  - **Aucune requête vers Google** : par défaut, `model-viewer` télécharge son décodeur Draco sur `www.gstatic.com`. Les modèles NASA étant compressés en Draco, le décodeur est servi par le site, dans `frontend/public/draco/`. Les fichiers sont copiés tels quels depuis `three@0.183.2` (Apache-2.0, voir `NOTICE.txt`) et configurés avant l'import. L'emplacement KTX2 pointe aussi vers le site (aucun modèle actuel n'utilise KTX2).
+  - **Défilement préservé** : `disable-zoom`, car le zoom à la molette appelle `preventDefault` et bloquerait le parcours. `touch-action="pan-y"`.
+  - **Mouvement réduit** : pas de rotation automatique.
+  - **Seuls les fichiers `.glb`/`.gltf` sont affichés** (`lib/journey.ts → modelOf`). Les autres médias `3d-model` restent de simples liens vers leur page.
+- **Conséquences** :
+  - Dépendances ajoutées dans `frontend/` : `@google/model-viewer@^4.4.0` et `three@^0.183.2` (dépendance pair, déclarée explicitement).
+  - Vite affiche un avertissement de taille pour le fichier `model-viewer`. Il est attendu, puisque ce fichier n'est chargé qu'à la demande.
+  - Les tests remplacent le module (`vi.mock`), car jsdom n'a pas WebGL.
+  - Le rendu réel a été vérifié dans Chromium : WebGL logiciel, 1440 et 360 px.
+

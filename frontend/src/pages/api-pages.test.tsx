@@ -3,6 +3,9 @@ import userEvent from '@testing-library/user-event'
 import { describe, expect, it, vi } from 'vitest'
 import { renderRoute } from '@/test/renderRoute'
 
+// <model-viewer> needs WebGL: in jsdom its module is replaced by an empty one (the element stays inert).
+vi.mock('@google/model-viewer', () => ({}))
+
 describe('destination page (connected to the API)', () => {
   it('shows the missions and their machines', async () => {
     renderRoute('/explore/mars')
@@ -59,6 +62,48 @@ describe('destination page (connected to the API)', () => {
     renderRoute('/explore/mars?machine=machine-a')
     fireEvent.error(await screen.findByAltText('Drawing of a helicopter'))
     expect(screen.getAllByText(/This image cannot be shown right now/).length).toBeGreaterThan(0)
+  })
+
+  it('gives each machine its scroll scene without repeating what the mission log told (US-5.9)', async () => {
+    renderRoute('/explore/mars')
+    const mission = await screen.findByRole('region', { name: 'Test Mission' })
+    const machineScene = await within(mission).findByRole('region', { name: 'Test Rover' })
+    // The machine's picture is on the 3D stage, next to its card…
+    expect(within(machineScene).getAllByAltText('A rover on the ground').length).toBeGreaterThan(0)
+    expect(within(machineScene).getByRole('heading', { level: 4, name: 'Test Rover' })).toBeInTheDocument()
+    // …but the steps already told by the mission log are not told again.
+    expect(within(machineScene).queryByText('The rover bounces on its airbags.')).not.toBeInTheDocument()
+    expect(within(machineScene).queryByAltText('Drawing of a helicopter')).not.toBeInTheDocument()
+  })
+
+  it('shows the machine picture inline, without the animated stage, under reduced motion', async () => {
+    vi.stubGlobal('matchMedia', (query: string) => ({
+      matches: query.includes('reduce'),
+      media: query,
+      addEventListener: () => {},
+      removeEventListener: () => {},
+    }))
+    renderRoute('/explore/mars')
+    const machineScene = await screen.findByRole('region', { name: 'Test Rover' })
+    expect(await within(machineScene).findByAltText('A rover on the ground')).toBeInTheDocument()
+    expect(machineScene.querySelector('.journey-card')).toBeNull()
+  })
+
+  it('loads the NASA 3D model only when the visitor asks for it', async () => {
+    const user = userEvent.setup()
+    renderRoute('/explore/mars')
+    const button = await screen.findByRole('button', { name: 'Turn it in 3D' })
+    expect(document.querySelector('model-viewer')).toBeNull()
+    await user.click(button)
+    expect(button).toHaveAttribute('aria-pressed', 'true')
+    const viewer = await waitForViewer()
+    expect(viewer).toHaveAttribute('src', 'https://example.org/models/Test%20Rover.glb')
+    expect(viewer).toHaveAttribute('alt', '3D model of the test rover')
+    expect(viewer).toHaveAttribute('disable-zoom')
+    expect(screen.getByText('Computer image — not a photo')).toBeInTheDocument()
+    expect(screen.getByText('A fictional 3D model.')).toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: 'Back to the photos' }))
+    expect(document.querySelector('model-viewer')).toBeNull()
   })
 
   it('tells the mission step by step, with dates and pictures, as the visitor scrolls', async () => {
@@ -191,3 +236,13 @@ describe('about page (connected to the API)', () => {
     expect(screen.getByText(/Consulted on 14 November 2026/)).toBeInTheDocument()
   })
 })
+
+async function waitForViewer(): Promise<Element> {
+  const { waitFor } = await import('@testing-library/react')
+  let viewer: Element | null = null
+  await waitFor(() => {
+    viewer = document.querySelector('model-viewer')
+    expect(viewer).not.toBeNull()
+  })
+  return viewer!
+}

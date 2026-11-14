@@ -73,9 +73,10 @@ function MediaBody({ media }: { media: Media }) {
   // YouTube videos, 3D models and documents open on their official page (no third-party embed).
   const label = media.type === '3d-model' ? t('media.open3d') : media.type === 'document' ? t('media.openDocument') : t('media.openVideo')
   const Icon = media.type === '3d-model' ? Box : media.type === 'document' ? FileText : PlayCircle
+  // A 3D model file (.glb) is not a page: send the visitor to its NASA page instead.
   return (
     <a
-      href={media.url}
+      href={media.type === '3d-model' ? media.pageUrl : media.url}
       target="_blank"
       rel="noopener noreferrer"
       className="flex aspect-video w-full flex-col items-center justify-center gap-2 bg-nebula-surface text-center text-sm font-medium text-cosmic-indigo hover:underline"

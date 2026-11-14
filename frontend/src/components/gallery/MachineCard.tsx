@@ -20,6 +20,8 @@ interface MachineCardProps {
   machine: Machine
   /** Story to open from this card (STORY-003): the machine's own story, else its mission's. */
   story: StorySummary | null
+  /** False when a stage next to the card already shows the machine's picture (MachineJourney). */
+  showCover?: boolean
 }
 
 /**
@@ -28,7 +30,7 @@ interface MachineCardProps {
  * plain heading. No gallery: pictures belong to the moments of the mission log above.
  * `?machine=<id>` (US-3.2, map, "Exit story") selects it: highlighted and brought into view.
  */
-export function MachineCard({ machine, story }: MachineCardProps) {
+export function MachineCard({ machine, story, showCover = true }: MachineCardProps) {
   const { t, locale } = useTranslation()
   const [params] = useSearchParams()
   const selected = params.get('machine') === machine.id
@@ -62,8 +64,8 @@ export function MachineCard({ machine, story }: MachineCardProps) {
         selected && 'border-world shadow-[0_0_0_2px_var(--world-accent),0_20px_60px_-20px_var(--world-accent)]',
       )}
     >
-      <div className="grid lg:grid-cols-[1.1fr_1fr]">
-        {machine.cover && <CoverPhoto media={machine.cover} className="aspect-[16/10] lg:order-2 lg:aspect-auto lg:min-h-full" />}
+      <div className={cn('grid', showCover && machine.cover && 'lg:grid-cols-[1.1fr_1fr]')}>
+        {showCover && machine.cover && <CoverPhoto media={machine.cover} className="aspect-[16/10] lg:order-2 lg:aspect-auto lg:min-h-full" />}
 
         <div className="p-5 sm:p-8">
           <p className={cn(eyebrow, 'text-world')}>{t(`machineType.${machine.type}`)}</p>

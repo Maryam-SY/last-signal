@@ -399,30 +399,6 @@
     "depiction": "diagram"
   },
   {
-    "id": "mer-3d-model",
-    "type": "3d-model",
-    "url": "https://solarsystem.nasa.gov/gltf_embed/2370/?height=450&rotate=true&cc=true&fs=true&target=&orbit=",
-    "pageUrl": "https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/",
-    "title": "Mars Exploration Rovers 3D Model",
-    "caption": "A 3D model of the twin Mars Exploration Rovers, Spirit and Opportunity.",
-    "alt": {
-      "en": "Interactive 3D model of the Spirit and Opportunity rovers.",
-      "fr": "Modèle 3D interactif des rovers Spirit et Opportunity."
-    },
-    "credit": "NASA Visualization Technology Applications and Development (VTAD)",
-    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
-    "missionIds": [
-      "mars-exploration-rovers"
-    ],
-    "machineIds": [
-      "spirit",
-      "opportunity"
-    ],
-    "sourceId": "nasa-science-mer",
-    "aiGenerated": false,
-    "depiction": "simulation"
-  },
-  {
     "id": "mer-opportunity-self-portrait-2014",
     "type": "image",
     "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/internal_resources/3447/solar_panels_on_rover_seen_from_above.jpeg",
@@ -444,6 +420,37 @@
     "sourceId": "nasa-science-mer",
     "aiGenerated": false,
     "depiction": "photo"
+  },
+  {
+    "id": "nasa-lib-pia05044",
+    "type": "image",
+    "url": "https://images-assets.nasa.gov/image/PIA05044/PIA05044~orig.jpg",
+    "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA05044/PIA05044~thumb.jpg",
+    "pageUrl": "https://images.nasa.gov/details/PIA05044",
+    "title": "PIA05044",
+    "caption": "This mosaic image taken by the navigation camera on the Mars Exploration Rover Spirit represents an overhead view of the rover as it prepares to roll off the lander and onto the martian surface. The yellow arrow illustrates the direction the rover may take to roll safely off the lander. The rover was originally positioned to roll straight forward off the lander (south side of image). However, an airbag is blocking its path. To take this northeastern route, the rover must back up and perform what is likened to a 3-point turn in a cramped parking lot. http://photojournal.jpl.nasa.gov/catalog/PIA05044",
+    "alt": {
+      "en": "View from above of Spirit on its lander, with the path chosen to roll off.",
+      "fr": "Vue d’en haut de Spirit sur son atterrisseur, avec le chemin prévu pour descendre."
+    },
+    "credit": "NASA/JPL",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-exploration-rovers"
+    ],
+    "machineIds": [
+      "spirit"
+    ],
+    "sourceId": "nasa-image-video-library",
+    "dateCreated": "2004-01-11",
+    "nasaId": "PIA05044",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "Seen from above, Spirit still sits on its lander. An airbag blocks the way straight ahead, so the yellow arrow shows another exit: the rover has to back up and turn, like a car doing a three-point turn in a tight car park.",
+      "fr": "Vu d’en haut, Spirit est encore sur son atterrisseur. Un airbag bloque la sortie tout droit, alors la flèche jaune montre un autre chemin : le rover doit reculer et tourner, comme une voiture qui fait demi-tour en trois manœuvres dans un parking étroit."
+    },
+    "descriptionStatus": "draft"
   },
   {
     "id": "mer-spirit-landing-site-pia05117",
@@ -1099,15 +1106,15 @@
   {
     "id": "ingenuity-3d-model",
     "type": "3d-model",
-    "url": "https://mars.nasa.gov/gltf_embed/25043",
-    "pageUrl": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
-    "title": "ingenuity",
-    "caption": "Interactive 3D model of the Mars Ingenuity Helicopter. This model can also be viewed in augmented reality on mobile devices using NASA's Spacecraft AR app.",
+    "url": "https://assets.science.nasa.gov/content/dam/science/cds/3d/resources/model/ingenuity-mars-helicopter/Ingenuity%20Mars%20Helicopter.glb",
+    "pageUrl": "https://science.nasa.gov/3d-resources/ingenuity-mars-helicopter/",
+    "title": "Ingenuity Mars Helicopter",
+    "caption": null,
     "alt": {
-      "en": "Interactive 3D model of the Ingenuity helicopter.",
-      "fr": "Modèle 3D interactif de l’hélicoptère Ingenuity."
+      "en": "3D model of the Ingenuity helicopter that you can turn around.",
+      "fr": "Modèle 3D de l’hélicoptère Ingenuity, que l’on peut faire tourner."
     },
-    "credit": null,
+    "credit": "NASA/Brian E. Kumanchik",
     "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
     "missionIds": [
       "mars-2020"
@@ -1115,7 +1122,7 @@
     "machineIds": [
       "ingenuity"
     ],
-    "sourceId": "nasa-science-ingenuity",
+    "sourceId": "nasa-3d-ingenuity",
     "aiGenerated": false,
     "depiction": "simulation"
   },
@@ -2757,37 +2764,6 @@
     "nasaId": "PIA05043",
     "aiGenerated": false,
     "depiction": "photo"
-  },
-  {
-    "id": "nasa-lib-pia05044",
-    "type": "image",
-    "url": "https://images-assets.nasa.gov/image/PIA05044/PIA05044~orig.jpg",
-    "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA05044/PIA05044~thumb.jpg",
-    "pageUrl": "https://images.nasa.gov/details/PIA05044",
-    "title": "PIA05044",
-    "caption": "This mosaic image taken by the navigation camera on the Mars Exploration Rover Spirit represents an overhead view of the rover as it prepares to roll off the lander and onto the martian surface. The yellow arrow illustrates the direction the rover may take to roll safely off the lander. The rover was originally positioned to roll straight forward off the lander (south side of image). However, an airbag is blocking its path. To take this northeastern route, the rover must back up and perform what is likened to a 3-point turn in a cramped parking lot. http://photojournal.jpl.nasa.gov/catalog/PIA05044",
-    "alt": {
-      "en": "View from above of Spirit on its lander, with the path chosen to roll off.",
-      "fr": "Vue d’en haut de Spirit sur son atterrisseur, avec le chemin prévu pour descendre."
-    },
-    "credit": "NASA/JPL",
-    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
-    "missionIds": [
-      "mars-exploration-rovers"
-    ],
-    "machineIds": [
-      "spirit"
-    ],
-    "sourceId": "nasa-image-video-library",
-    "dateCreated": "2004-01-11",
-    "nasaId": "PIA05044",
-    "aiGenerated": false,
-    "depiction": "photo",
-    "description": {
-      "en": "Seen from above, Spirit still sits on its lander. An airbag blocks the way straight ahead, so the yellow arrow shows another exit: the rover has to back up and turn, like a car doing a three-point turn in a tight car park.",
-      "fr": "Vu d’en haut, Spirit est encore sur son atterrisseur. Un airbag bloque la sortie tout droit, alors la flèche jaune montre un autre chemin : le rover doit reculer et tourner, comme une voiture qui fait demi-tour en trois manœuvres dans un parking étroit."
-    },
-    "descriptionStatus": "draft"
   },
   {
     "id": "nasa-lib-pia05063",
@@ -4795,5 +4771,35 @@
     "nasaId": "JPL-20240423-TECHf-0001-Ingenuity Last Downlink BRoll Reel",
     "aiGenerated": false,
     "depiction": "photo"
+  },
+  {
+    "id": "apollo-lunar-module-3d-model",
+    "type": "3d-model",
+    "url": "https://assets.science.nasa.gov/content/dam/science/cds/3d/resources/model/apollo-lunar-module/Apollo%20Lunar%20Module.glb",
+    "pageUrl": "https://science.nasa.gov/3d-resources/apollo-lunar-module/",
+    "title": "Apollo Lunar Module",
+    "caption": null,
+    "alt": {
+      "en": "3D model of a complete Apollo Lunar Module that you can turn around.",
+      "fr": "Modèle 3D d’un module lunaire Apollo complet, que l’on peut faire tourner."
+    },
+    "credit": "NASA/Michael D. Carbajal",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "apollo-11",
+      "apollo-12"
+    ],
+    "machineIds": [
+      "apollo-11-lm-eagle-descent-stage",
+      "apollo-12-lm-intrepid-descent-stage"
+    ],
+    "sourceId": "nasa-3d-apollo-lunar-module",
+    "aiGenerated": false,
+    "depiction": "simulation",
+    "description": {
+      "en": "This model shows the whole Lunar Module. Only its lower half, the descent stage, stayed on the Moon: the upper half carried the astronauts back to orbit.",
+      "fr": "Ce modèle montre le module lunaire entier. Seule sa moitié du bas, l’étage de descente, est restée sur la Lune : la moitié du haut a ramené les astronautes en orbite."
+    },
+    "descriptionStatus": "draft"
   }
 ]

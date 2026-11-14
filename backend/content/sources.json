@@ -172,5 +172,31 @@
       "en": "Each media item links to its own page (pageUrl). Titles, descriptions and credits are copied from the library metadata; long descriptions are shortened and end with […].",
       "fr": "Chaque média renvoie à sa propre page (pageUrl). Titres, descriptions et crédits sont recopiés depuis les métadonnées de la bibliothèque ; les descriptions longues sont raccourcies et se terminent par […]."
     }
+  },
+  {
+    "id": "nasa-3d-apollo-lunar-module",
+    "organization": "NASA Science",
+    "title": "Apollo Lunar Module - NASA Science",
+    "url": "https://science.nasa.gov/3d-resources/apollo-lunar-module/",
+    "type": "other",
+    "publishedOn": "2025-03-20",
+    "accessedOn": "2026-11-14",
+    "note": {
+      "en": "NASA 3D Resources page of the Apollo Lunar Module model (GLB file, source NASA/Michael D. Carbajal).",
+      "fr": "Page « 3D Resources » de la NASA pour le modèle du module lunaire Apollo (fichier GLB, source NASA/Michael D. Carbajal)."
+    }
+  },
+  {
+    "id": "nasa-3d-ingenuity",
+    "organization": "NASA Science",
+    "title": "Ingenuity Mars Helicopter - NASA Science",
+    "url": "https://science.nasa.gov/3d-resources/ingenuity-mars-helicopter/",
+    "type": "other",
+    "publishedOn": "2025-04-03",
+    "accessedOn": "2026-11-14",
+    "note": {
+      "en": "NASA 3D Resources page of the Ingenuity model (GLB file, source NASA/Brian E. Kumanchik).",
+      "fr": "Page « 3D Resources » de la NASA pour le modèle d’Ingenuity (fichier GLB, source NASA/Brian E. Kumanchik)."
+    }
   }
 ]

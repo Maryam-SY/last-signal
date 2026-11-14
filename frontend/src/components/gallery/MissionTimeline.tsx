@@ -4,6 +4,7 @@ import { Reveal } from '@/components/motion/Reveal'
 import { SourceList } from '@/components/sources/SourceList'
 import { useTranslation } from '@/i18n'
 import { formatPartialDate } from '@/lib/formatDate'
+import { toldPicture } from '@/lib/journey'
 import { eyebrow } from '@/lib/styles'
 import { cn } from '@/lib/utils'
 
@@ -24,7 +25,7 @@ export function MissionTimeline({ mission }: { mission: MissionDetail }) {
         <span aria-hidden="true" className="absolute top-2 bottom-2 left-[0.45rem] w-px bg-gradient-to-b from-world/70 via-world/25 to-transparent" />
         {mission.timeline.map((event, index) => {
           // The picture whose story we can tell, otherwise the first one (US-5.10).
-          const picture = event.media.find((m) => m.description) ?? event.media[0]
+          const picture = toldPicture(event.media)
           const flipped = index % 2 === 1
           return (
             <li key={event.id} className="relative pl-8 sm:pl-12">
@@ -51,7 +52,7 @@ export function MissionTimeline({ mission }: { mission: MissionDetail }) {
         })}
       </ol>
 
-      {mission.timeline.some((e) => (e.media.find((m) => m.description) ?? e.media[0])?.descriptionStatus === 'draft') && (
+      {mission.timeline.some((e) => toldPicture(e.media)?.descriptionStatus === 'draft') && (
         <p className="mt-10 pl-8 text-xs text-moon-dust/80 sm:pl-12">{t('destination.pictureStoriesDraft')}</p>
       )}
 

@@ -7,12 +7,14 @@ import { paths } from '@/app/paths'
 import { LoadState } from '@/components/common/LoadState'
 import { StatusHelp } from '@/components/machine/StatusHelp'
 import { Reveal } from '@/components/motion/Reveal'
+import { MachineJourney } from '@/components/journey/MachineJourney'
+import { MissionScene } from '@/components/journey/MissionScene'
 import { useApi, type ApiState } from '@/hooks/useApi'
 import { useTranslation } from '@/i18n'
 import { formatPartialDate } from '@/lib/formatDate'
+import { bestStill, toldPicture } from '@/lib/journey'
 import { ctaPrimary, eyebrow } from '@/lib/styles'
 import { cn } from '@/lib/utils'
-import { MachineCard } from './MachineCard'
 import { MissionTimeline } from './MissionTimeline'
 
 interface MissionGalleryProps {
@@ -84,13 +86,27 @@ interface MissionSectionProps {
 
 function MissionSection({ mission, number, total }: MissionSectionProps) {
   const { t, locale } = useTranslation()
-  const detail = useApi(`mission:${mission.id}`, (lang, signal) => api.mission(mission.id, lang, signal))
   const titleId = `mission-${mission.id}-title`
   const period = mission.period?.value
   const padded = String(number).padStart(2, '0')
+  // Photos and timeline of the mission feed the scroll journey (mission photo, then each
+  // machine in 3D with what it did). Until they arrive, each machine shows its plain card.
+  const detail = useApi(`mission:${mission.id}`, (lang, signal) => api.mission(mission.id, lang, signal))
+  const missionDetail = detail.status === 'success' ? detail.data : null
+  // US-5.9: the mission log tells every step; the machines' scenes must not tell them again.
+  const told = missionDetail
+    ? {
+        eventIds: new Set(missionDetail.timeline.map((event) => event.id)),
+        mediaIds: new Set(missionDetail.timeline.flatMap((event) => toldPicture(event.media)?.id ?? [])),
+      }
+    : undefined
 
   return (
-    <section id={`mission-${mission.id}`} aria-labelledby={titleId} className="relative scroll-mt-20 py-16 sm:py-24">
+    <section
+      id={`mission-${mission.id}`}
+      aria-labelledby={titleId}
+      className="relative scroll-mt-20 py-16 sm:py-24"
+    >
       <span
         aria-hidden="true"
         className="absolute top-[4.6rem] -left-[calc(1.5rem+7px)] size-3.5 rounded-full border-2 border-world bg-void shadow-[0_0_16px_var(--world-accent)] sm:top-[6.6rem] sm:-left-[calc(2.5rem+7px)]"
@@ -102,7 +118,8 @@ function MissionSection({ mission, number, total }: MissionSectionProps) {
         {padded}
       </span>
 
-      <Reveal className="flex min-h-[60dvh] flex-col justify-center">
+      <MissionScene cover={missionDetail ? bestStill(missionDetail.media) : undefined}>
+      <Reveal>
         <p className={cn(eyebrow, 'text-world')}>
           {t('destination.missionNumber', { number: padded, total: String(total).padStart(2, '0') })}
         </p>
@@ -124,22 +141,18 @@ function MissionSection({ mission, number, total }: MissionSectionProps) {
           </Link>
         )}
       </Reveal>
+      </MissionScene>
 
-      <div className="mt-6">
-        {detail.status === 'success' ? (
-          <MissionTimeline mission={detail.data} />
-        ) : (
-          <LoadState status={detail.status} onRetry={detail.retry} />
-        )}
+      {/* US-5.9: the whole mission, step by step, right in the scroll — nothing to unfold. */}
+      <div className="mt-10">
+        {missionDetail ? <MissionTimeline mission={missionDetail} /> : <LoadState status={detail.status === 'error' ? 'error' : 'loading'} onRetry={detail.retry} />}
       </div>
 
       <p className={cn(eyebrow, 'mt-20 text-world')}>{t('destination.machinesLeft')}</p>
       <h4 className="sr-only">{t('destination.machinesTitle')}</h4>
-      <div className="mt-6 space-y-10">
+      <div className="mt-8 space-y-24">
         {mission.machines.map((machine) => (
-          <Reveal key={machine.id}>
-            <MachineCard machine={machine} story={mission.mainStory} />
-          </Reveal>
+          <MachineJourney key={machine.id} machine={machine} mission={missionDetail} story={mission.mainStory} told={told} />
         ))}
       </div>
     </section>

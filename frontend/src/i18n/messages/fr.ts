@@ -155,6 +155,13 @@ export const fr: Messages = {
     previousSection: 'Précédent : {name}',
     nextSection: 'Suivant : {name}',
   },
+  journey: {
+    showModel: 'La faire tourner en 3D',
+    hideModel: 'Revenir aux photos',
+    modelHelp: 'Fais-le glisser (ou utilise les flèches du clavier une fois sélectionné) pour le faire tourner. Modèle 3D publié par la NASA.',
+    modelUnavailable: 'Le modèle 3D n’a pas pu être chargé. La page de la NASA ci-dessous le propose toujours.',
+    anotherLook: 'Un autre regard',
+  },
   machineType: {
     lander: 'Atterrisseur',
     rover: 'Rover',
