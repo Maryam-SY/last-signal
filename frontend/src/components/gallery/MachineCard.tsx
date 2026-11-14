@@ -2,7 +2,7 @@ import { useEffect, useRef, type ReactNode } from 'react'
 import { ArrowRight, MapPin } from 'lucide-react'
 import { Link, useSearchParams } from 'react-router'
 import { api } from '@/api/client'
-import type { Machine, StorySummary } from '@/api/types'
+import type { Machine, Media, StorySummary } from '@/api/types'
 import { paths } from '@/app/paths'
 import { LoadState } from '@/components/common/LoadState'
 import { StatusBadge } from '@/components/machine/StatusBadge'
@@ -20,8 +20,10 @@ interface MachineCardProps {
   machine: Machine
   /** Story to open from this card (STORY-003): the machine's own story, else its mission's. */
   story: StorySummary | null
-  /** False when a stage next to the card already shows the machine's picture (MachineJourney). */
+  /** False when something next to the card already shows the machine's picture. */
   showCover?: boolean
+  /** Picture to show instead of the API cover (the scene's own choice, see journey.ts). */
+  cover?: Media
 }
 
 /**
@@ -30,11 +32,12 @@ interface MachineCardProps {
  * plain heading. No gallery: pictures belong to the moments of the mission log above.
  * `?machine=<id>` (US-3.2, map, "Exit story") selects it: highlighted and brought into view.
  */
-export function MachineCard({ machine, story, showCover = true }: MachineCardProps) {
+export function MachineCard({ machine, story, showCover = true, cover: coverOverride }: MachineCardProps) {
   const { t, locale } = useTranslation()
   const [params] = useSearchParams()
   const selected = params.get('machine') === machine.id
   const cardRef = useRef<HTMLElement>(null)
+  const cover = coverOverride ?? machine.cover ?? undefined
 
   // Explorer log (US-5.8): a machine scrolled into view, or selected, has been examined.
   useEffect(() => {
@@ -64,8 +67,8 @@ export function MachineCard({ machine, story, showCover = true }: MachineCardPro
         selected && 'border-world shadow-[0_0_0_2px_var(--world-accent),0_20px_60px_-20px_var(--world-accent)]',
       )}
     >
-      <div className={cn('grid', showCover && machine.cover && 'lg:grid-cols-[1.1fr_1fr]')}>
-        {showCover && machine.cover && <CoverPhoto media={machine.cover} className="aspect-[16/10] lg:order-2 lg:aspect-auto lg:min-h-full" />}
+      <div className={cn('grid', showCover && cover && 'lg:grid-cols-[1.1fr_1fr]')}>
+        {showCover && cover && <CoverPhoto media={cover} className="aspect-[16/10] lg:order-2 lg:aspect-auto lg:min-h-full" />}
 
         <div className="p-5 sm:p-8">
           <p className={cn(eyebrow, 'text-world')}>{t(`machineType.${machine.type}`)}</p>

@@ -1,4 +1,5 @@
 import { Link, Outlet, ScrollRestoration, useMatch } from 'react-router'
+import { SpaceScene } from '@/components/celestial/SpaceScene'
 import { LanguageSwitch } from '@/components/navigation/LanguageSwitch'
 import { SiteNavigation } from '@/components/navigation/SiteNavigation'
 import { useTranslation } from '@/i18n'
@@ -12,6 +13,8 @@ export function Layout() {
 
   return (
     <div className="flex min-h-dvh flex-col">
+      {/* One living sky for the whole site: it keeps flying from page to page (US-5.11). */}
+      <SpaceScene bright={isHome} />
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[3000] focus:rounded-md focus:bg-primary focus:px-4 focus:py-3 focus:text-primary-foreground"

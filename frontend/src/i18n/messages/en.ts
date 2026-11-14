@@ -181,6 +181,7 @@ export const en = {
     modelHelp: 'Drag it (or use the arrow keys once it is selected) to turn it around. 3D model published by NASA.',
     modelUnavailable: 'The 3D model could not be loaded. Try again later.',
     anotherLook: 'Another look',
+    flightLabel: 'In pictures: {name}',
   },
   machineType: {
     lander: 'Lander',

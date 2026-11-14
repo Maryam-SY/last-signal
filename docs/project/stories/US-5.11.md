@@ -57,6 +57,33 @@ Aucune dépendance ajoutée. Aucune donnée scientifique ajoutée dans le code (
 | 360 px | Navigateur intégré 360 × 740 | Accueil et Mars : `scrollWidth` = 360 (aucun débordement) ; scène « Ton expédition » tient dans l'écran |
 | Reduced motion | Non vérifié dans le navigateur | Logique : `useMotionLoop` coupé → globe dessiné une fois ; animations CSS sous `prefers-reduced-motion: no-preference` uniquement |
 
+## 2e passe (2026-11-14) — fond animé, planètes, vol de photos
+
+Demande de l'équipe : « l'arrière-plan doit s'animer, avancer » ; « bien centrer les planètes, les ombres » ; « utiliser l'animation de konkelectrical.com quand on entre dans une mission ou un robot ; laisser la première page comme ça ».
+
+- [x] 5. Fond animé qui avance — *preuve : `SpaceScene` (ADR-022, complément) ; différence de pixels mesurée entre deux images à 1 s d'écart ; captures accueil et Mars.*
+- [x] 6. Vol de photos dans les missions et les machines, accueil inchangé — *preuve : test « flies through the pictures of the mission log, keeping them readable » ; captures 1366 × 768 et 375 × 740 ; aucun débordement horizontal (`scrollWidth` = `clientWidth`).*
+
+| Fichier | Changement |
+|---|---|
+| `celestial/SpaceScene.tsx`, `celestial/space/createSpaceScene.ts` | Ciel WebGL vivant, monté dans `app/Layout.tsx` |
+| `celestial/SpaceBackdrop.tsx`, `pages/ExplorePage.tsx` | Ne dessinent plus le ciel (lueur d'ambiance seule ; `WarpField` retiré de l'accueil) |
+| `celestial/globe/createGlobe.ts`, `LivePlanet.tsx`, `index.css` | Soleil frontal, liseré nocturne, flottement |
+| `journey/PhotoFlight.tsx`, `index.css` | Vol de photos (canvas réduits hors fil principal, file d'attente) |
+| `gallery/MissionTimeline.tsx`, `journey/MachineJourney.tsx`, `gallery/MachineCard.tsx` | Journal et chapitres en vol de photos ; la photo de la machine est dans sa carte |
+| `media/MediaFigure.tsx` (`captionOnly`), `media/CoverPhoto.tsx` (badge si pas une photo, miniature NASA d'abord) | |
+| `pages/api-pages.test.tsx` | 2 tests adaptés (photo dans la carte), 1 test ajouté |
+
+| Contrôle | Résultat réel |
+|---|---|
+| G1 lint | 0 erreur, 2 avertissements préexistants |
+| G2 typecheck | 0 erreur |
+| G3 test | 77/77 sur 3 passages consécutifs |
+| G4 build | OK ; JS initial 159 Ko gzip ; `createSpaceScene` 2,1 Ko gzip, chargé à la demande |
+| Fluidité Mars | 1er passage : médiane 16,7 ms, p95 17,3 ms, pire 216 ms (préparation des photos) ; 2e passage : pire 17,4 ms |
+
+**À valider par un humain** : `WarpField.tsx` et `journey/MachineStage.tsx` ne sont plus utilisés (non supprimés, CLAUDE.md §6) ; textes du panneau de lecture longs sur téléphone (la photo reste visible au-dessus) ; dérogation NFR-PERF-001 inchangée.
+
 ## Journal de l'agent
 
 - Modèle / session : Claude (Claude Code), 2026-11-14.

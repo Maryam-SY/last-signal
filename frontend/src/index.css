@@ -598,3 +598,86 @@ html.depth-mode::-webkit-scrollbar {
     transform: none;
   }
 }
+
+/* 3D globes float gently in space (transform only). */
+@media (prefers-reduced-motion: no-preference) {
+  .globe-float {
+    animation: globe-float 9s ease-in-out infinite;
+  }
+}
+@keyframes globe-float {
+  0%,
+  100% {
+    transform: translate3d(0, -1.6%, 0);
+  }
+  50% {
+    transform: translate3d(0, 1.6%, 0);
+  }
+}
+
+/* ---------------------------------------------------------------------------------------
+   US-5.11 — photo flight (components/journey/PhotoFlight.tsx). The stage is pinned; the
+   world moves toward the viewer (translateZ written per scroll frame); each picture hangs on
+   the left or right wall of a corridor, turned toward the centre. Transforms and opacity
+   only. The reading panel shows the moment of the picture in focus.
+   --------------------------------------------------------------------------------------- */
+.photo-flight-world {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.photo-flight-plane {
+  --w: min(50vw, 640px);
+  position: absolute;
+  left: 50%;
+  top: 44%;
+  width: var(--w);
+  aspect-ratio: 4 / 3;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid rgb(148 163 184 / 0.18);
+  background: var(--cosmos-deep-space);
+  box-shadow: 0 40px 90px -30px rgb(0 0 0 / 0.9);
+  opacity: 0;
+  /* Rasterised once, then only moved by the GPU (no re-raster while it grows). */
+  will-change: transform, opacity;
+  transform: translate(-50%, -50%) translate3d(calc(var(--side) * 27vw), var(--lift), var(--z))
+    rotateY(calc(var(--side) * -22deg));
+  backface-visibility: hidden;
+}
+@media (min-width: 1024px) {
+  /* The reading column is on the left: the corridor opens on the right. */
+  .photo-flight-plane {
+    --w: min(42vw, 720px);
+    left: 64%;
+    top: 50%;
+    transform: translate(-50%, -50%) translate3d(calc(var(--side) * 17vw), var(--lift), var(--z))
+      rotateY(calc(var(--side) * -24deg));
+  }
+}
+@media (max-width: 767px) {
+  .photo-flight-plane {
+    --w: 94vw;
+    top: 23%;
+    transform: translate(-50%, -50%) translate3d(calc(var(--side) * 9vw), calc(var(--lift) * 0.4), var(--z))
+      rotateY(calc(var(--side) * -16deg));
+  }
+}
+.photo-flight-item {
+  opacity: 0;
+  transform: translate3d(0, 14px, 0);
+  transition:
+    opacity 450ms ease,
+    transform 450ms ease;
+  pointer-events: none;
+}
+.photo-flight-item.is-active {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+@media (min-width: 1024px) {
+  .photo-flight-stage {
+    perspective-origin: 64% 50%;
+  }
+}

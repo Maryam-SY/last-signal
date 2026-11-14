@@ -179,6 +179,7 @@ export const fr: Messages = {
     modelHelp: 'Fais-le glisser (ou utilise les flèches du clavier une fois sélectionné) pour le faire tourner. Modèle 3D publié par la NASA.',
     modelUnavailable: 'Le modèle 3D n’a pas pu être chargé. Réessaie plus tard.',
     anotherLook: 'Un autre regard',
+    flightLabel: 'En images : {name}',
   },
   machineType: {
     lander: 'Atterrisseur',

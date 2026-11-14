@@ -28,8 +28,8 @@ describe('destination page (connected to the API)', () => {
     expect(await within(card).findByText('The airbag landing system.')).toBeInTheDocument()
     expect(within(card).getByText('Earlier Mission')).toBeInTheDocument()
     expect(within(card).getByRole('link', { name: /Test source page/ })).toHaveAttribute('href', 'https://example.org/source')
-    // No gallery and no button to unfold anything.
-    expect(within(card).queryByRole('img')).not.toBeInTheDocument()
+    // One photo of the machine (US-5.11: in its card), no gallery, no button to unfold anything.
+    expect(within(card).getAllByRole('img').length).toBeLessThanOrEqual(1)
     expect(screen.queryByRole('button', { name: 'Photos, videos and sources' })).not.toBeInTheDocument()
   })
 
@@ -43,6 +43,17 @@ describe('destination page (connected to the API)', () => {
     // One picture per moment: the second picture of "A plan for later" is not shown.
     expect(within(timeline).getAllByRole('img')).toHaveLength(2)
     expect(within(timeline).getAllByText('What you see:')).toHaveLength(2)
+  })
+
+  it('flies through the pictures of the mission log, keeping them readable (US-5.11)', async () => {
+    renderRoute('/explore/mars')
+    const timeline = await screen.findByRole('list', { name: 'Step by step' })
+    const flight = timeline.closest('.photo-flight')!
+    // The corridor of pictures is decorative: hidden from screen readers, labelled for the eyes.
+    const corridor = flight.querySelector('.photo-flight-world')!
+    expect(corridor).toHaveAttribute('aria-hidden', 'true')
+    expect(corridor.querySelectorAll('figure')).toHaveLength(2)
+    expect(within(corridor as HTMLElement).getByText('Artist’s view — not a photo')).toBeInTheDocument()
   })
 
   it('tells the story behind a picture, marked as a draft until reviewed (US-5.10)', async () => {
@@ -68,8 +79,8 @@ describe('destination page (connected to the API)', () => {
     renderRoute('/explore/mars')
     const mission = await screen.findByRole('region', { name: 'Test Mission' })
     const machineScene = await within(mission).findByRole('region', { name: 'Test Rover' })
-    // The machine's picture is on the 3D stage, next to its card…
-    expect(within(machineScene).getAllByAltText('A rover on the ground').length).toBeGreaterThan(0)
+    // The machine's picture is in its card (US-5.11)…
+    expect((await within(machineScene).findAllByAltText('A rover on the ground')).length).toBeGreaterThan(0)
     expect(within(machineScene).getByRole('heading', { level: 4, name: 'Test Rover' })).toBeInTheDocument()
     // …but the steps already told by the mission log are not told again.
     expect(within(machineScene).queryByText('The rover bounces on its airbags.')).not.toBeInTheDocument()

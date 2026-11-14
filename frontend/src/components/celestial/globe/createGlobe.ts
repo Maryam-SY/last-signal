@@ -108,6 +108,18 @@ export function globeMapUrl(config: GlobeConfig, devicePixels: number): string {
   return config.mapHd && devicePixels > 760 ? config.mapHd : config.map
 }
 
+const RIM_FRAGMENT = /* glsl */ `
+  uniform vec3 uSun;
+  varying vec3 vNormal;
+  varying vec3 vView;
+  void main() {
+    float rim = pow(1.0 - abs(dot(vNormal, vView)), 4.0);
+    float night = 1.0 - smoothstep(-0.2, 0.35, dot(vNormal, uSun));
+    float a = rim * night * 0.32;
+    gl_FragColor = vec4(vec3(0.75, 0.82, 1.0) * a, a);
+  }
+`
+
 export async function createGlobe(canvas: HTMLCanvasElement, config: GlobeConfig, mapUrl = config.map): Promise<GlobeInstance> {
   const renderer = new WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'default' })
   renderer.outputColorSpace = SRGBColorSpace
@@ -117,12 +129,13 @@ export async function createGlobe(canvas: HTMLCanvasElement, config: GlobeConfig
   const camera = new OrthographicCamera(-VIEW, VIEW, VIEW, -VIEW, 0.1, 10)
   camera.position.set(0, 0, 4)
 
-  // The sun sits up and to the left, like the light on the old SVG planets.
-  const sunDirection = new Vector3(-0.78, 0.3, 0.55).normalize()
-  const sun = new DirectionalLight(0xfff6ea, 3.6)
+  // The sun sits up-left and mostly in front: the world is seen almost full, with a soft
+  // night crescent on the right — the disc stays visually centred.
+  const sunDirection = new Vector3(-0.5, 0.3, 0.81).normalize()
+  const sun = new DirectionalLight(0xfff6ea, 3.3)
   sun.position.copy(sunDirection)
   scene.add(sun)
-  scene.add(new AmbientLight(0x9fb0ff, 0.07))
+  scene.add(new AmbientLight(0x9fb0ff, 0.1))
 
   const [mapImage, bumpImage] = await Promise.all([
     loadImage(mapUrl),
@@ -158,6 +171,18 @@ export async function createGlobe(canvas: HTMLCanvasElement, config: GlobeConfig
   const lean = new Group()
   lean.add(axis)
   scene.add(lean)
+
+  // Cool rim light on the night side: the whole disc stays readable against the sky.
+  const rimGeometry = new SphereGeometry(1.004, 96, 64)
+  const rimMaterial = new ShaderMaterial({
+    vertexShader: ATMOSPHERE_VERTEX,
+    fragmentShader: RIM_FRAGMENT,
+    uniforms: { uSun: { value: sunDirection.clone() } },
+    transparent: true,
+    depthWrite: false,
+    blending: AdditiveBlending,
+  })
+  lean.add(new Mesh(rimGeometry, rimMaterial))
 
   let atmosphere: { geometry: SphereGeometry; material: ShaderMaterial } | null = null
   if (config.atmosphere) {
@@ -207,6 +232,8 @@ export async function createGlobe(canvas: HTMLCanvasElement, config: GlobeConfig
     material.dispose()
     map.dispose()
     bumpMap?.dispose()
+    rimGeometry.dispose()
+    rimMaterial.dispose()
     atmosphere?.geometry.dispose()
     atmosphere?.material.dispose()
     renderer.dispose()

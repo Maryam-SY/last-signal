@@ -8,6 +8,7 @@ declare module 'three' {
   export const AdditiveBlending: number
   export const BackSide: number
   export const LinearMipmapLinearFilter: number
+  export const LinearFilter: number
 
   export class Vector3 {
     constructor(x?: number, y?: number, z?: number)
@@ -18,6 +19,11 @@ declare module 'three' {
     normalize(): this
     clone(): Vector3
     copy(v: Vector3): this
+  }
+
+  export class Vector2 {
+    constructor(x?: number, y?: number)
+    set(x: number, y: number): this
   }
 
   export class Euler {
@@ -39,6 +45,12 @@ declare module 'three' {
   export class Group extends Object3D {}
   export class Scene extends Object3D {}
 
+  export class PerspectiveCamera extends Object3D {
+    constructor(fov?: number, aspect?: number, near?: number, far?: number)
+    aspect: number
+    updateProjectionMatrix(): void
+  }
+
   export class OrthographicCamera extends Object3D {
     constructor(left: number, right: number, top: number, bottom: number, near?: number, far?: number)
   }
@@ -51,7 +63,13 @@ declare module 'three' {
     constructor(color?: string | number, intensity?: number)
   }
 
+  export class BufferAttribute {}
+  export class Float32BufferAttribute extends BufferAttribute {
+    constructor(array: ArrayLike<number>, itemSize: number)
+  }
+
   export class BufferGeometry {
+    setAttribute(name: string, attribute: BufferAttribute): this
     dispose(): void
   }
   export class SphereGeometry extends BufferGeometry {
@@ -63,6 +81,7 @@ declare module 'three' {
     colorSpace: string
     anisotropy: number
     minFilter: number
+    generateMipmaps: boolean
     needsUpdate: boolean
     dispose(): void
   }
@@ -82,6 +101,7 @@ declare module 'three' {
     })
   }
   export class ShaderMaterial extends Material {
+    uniforms: Record<string, { value: unknown } | undefined>
     constructor(parameters?: {
       vertexShader?: string
       fragmentShader?: string
@@ -94,6 +114,9 @@ declare module 'three' {
   }
 
   export class Mesh extends Object3D {
+    constructor(geometry?: BufferGeometry, material?: Material)
+  }
+  export class Points extends Object3D {
     constructor(geometry?: BufferGeometry, material?: Material)
   }
 

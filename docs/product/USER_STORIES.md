@@ -315,6 +315,8 @@ Personas : **Visiteur** (10-15 ans, principal), **Curieux** (adulte), **Équipe*
   2. Le scroll des pages Destination et de l'accueil tient 60 images/s sur la machine de démo (mesure consignée).
   3. Aucune ligne de crédit sous les images ; tous les crédits images (et des visuels du site) sont regroupés sur About ; les badges de nature (MEDIA-001) restent visibles ; les sources d'une mission ou d'une machine restent à un clic (repliées).
   4. L'accueil explique le parcours en trois étapes et donne les chiffres du site (calculés depuis l'API).
+  5. *(2e passe, 2026-11-14)* Le fond de toutes les pages s'anime et « avance » (voyage à travers les étoiles, accéléré par le scroll) ; les globes sont centrés, ombres adoucies.
+  6. *(2e passe)* Dans le journal d'une mission et les chapitres d'une machine, les images défilent en « vol de photos » 3D (inspiration konkelectrical.com) ; l'accueil reste inchangé.
 - **Modifie** : US-5.7 critère 1 (« avec son crédit » → crédit sur About), US-2.4 critère 3.
 
 ### US-5.5 — Mise en production et démo

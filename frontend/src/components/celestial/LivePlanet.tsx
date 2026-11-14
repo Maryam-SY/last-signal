@@ -217,7 +217,7 @@ export function LivePlanet({
           ref={canvasRef}
           aria-hidden="true"
           className={cn(
-            'absolute inset-0 size-full transition-opacity duration-700 ease-out',
+            'globe-float absolute inset-0 size-full transition-opacity duration-700 ease-out',
             globeReady ? 'opacity-100' : 'opacity-0',
           )}
         />

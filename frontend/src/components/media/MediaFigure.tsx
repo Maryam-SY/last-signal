@@ -12,6 +12,11 @@ interface MediaFigureProps {
   lead?: string
   /** Tell the story behind the picture (`media.description`) above what it shows. */
   withStory?: boolean
+  /**
+   * Caption only: the picture itself is drawn elsewhere (the 3D photo flight), so it stays here
+   * for screen readers only; the depiction label moves into the caption (MEDIA-001).
+   */
+  captionOnly?: boolean
 }
 
 /**
@@ -19,7 +24,25 @@ interface MediaFigureProps {
  * depiction label (MEDIA-001). Credits and links to the original pages are listed once, on the
  * About page (US-5.11). Files are never copied: they are loaded from NASA servers (ADR-017).
  */
-export function MediaFigure({ media, className, lead, withStory = false }: MediaFigureProps) {
+export function MediaFigure({ media, className, lead, withStory = false, captionOnly = false }: MediaFigureProps) {
+  if (captionOnly) {
+    return (
+      <figure className={className}>
+        <div className="sr-only">
+          <MediaBody media={media} />
+        </div>
+        <figcaption className="space-y-1.5 text-sm">
+          <DepictionBadge depiction={media.depiction} />
+          {withStory && media.description && <p className="leading-relaxed text-starlight/90">{media.description}</p>}
+          <p className="text-xs text-moon-dust">
+            {lead && <span className="font-semibold text-world">{lead} </span>}
+            {media.alt}
+          </p>
+        </figcaption>
+      </figure>
+    )
+  }
+
   return (
     <figure className={cn('overflow-hidden rounded-lg border border-stellar-border/60 bg-deep-space', className)}>
       <div className="relative">

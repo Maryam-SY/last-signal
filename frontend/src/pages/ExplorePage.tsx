@@ -3,7 +3,6 @@ import { ArrowRight, ChevronsDown, Globe2, Radio, Rocket } from 'lucide-react'
 import { Link } from 'react-router'
 import { api } from '@/api/client'
 import { paths } from '@/app/paths'
-import { WarpField } from '@/components/celestial/WarpField'
 import { IntroVideo } from '@/components/home/IntroVideo'
 import { shouldPlayIntro } from '@/components/home/introSession'
 import { WorldChapter, WorldEcho } from '@/components/home/WorldChapter'
@@ -51,7 +50,6 @@ export function ExplorePage() {
 
   return (
     <div className="relative">
-      <WarpField />
       <div className="relative z-10">
         <DepthJourney scenes={scenes} layers={layers} navLabel={t('explore.journeyLabel')} />
       </div>
