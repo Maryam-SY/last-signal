@@ -48,37 +48,45 @@ export function Planet({
   const surfaceRef = useRef<SVGGElement>(null)
   const shadeRef = useRef<SVGRadialGradientElement>(null)
   const warpGroupRef = useRef<SVGGElement>(null)
-  const displacementRef = useRef<SVGFEDisplacementMapElement>(null)
   const visibleRef = useRef(true)
-  const warpId = `warp-${uid}`
+  /** Last values written to the DOM, so unchanged frames cost nothing. */
+  const written = useRef({ surface: '', lightX: '', lightY: '', pulse: -1 })
 
   useImperativeHandle(
     handleRef,
     () => ({
       setSurface(rotateDeg, offsetX, offsetY) {
-        surfaceRef.current?.setAttribute(
-          'transform',
-          `translate(${offsetX.toFixed(2)} ${offsetY.toFixed(2)}) rotate(${rotateDeg.toFixed(2)})`,
-        )
+        // Quantise: sub-0.2° changes are invisible but would re-rasterise the photo.
+        const next = `translate(${offsetX.toFixed(1)} ${offsetY.toFixed(1)}) rotate(${rotateDeg.toFixed(1)})`
+        if (next === written.current.surface) return
+        written.current.surface = next
+        surfaceRef.current?.setAttribute('transform', next)
       },
       setLight(cxPercent, cyPercent) {
-        shadeRef.current?.setAttribute('cx', `${cxPercent.toFixed(1)}%`)
-        shadeRef.current?.setAttribute('cy', `${cyPercent.toFixed(1)}%`)
+        const x = cxPercent.toFixed(0)
+        const y = cyPercent.toFixed(0)
+        if (x !== written.current.lightX) {
+          written.current.lightX = x
+          shadeRef.current?.setAttribute('cx', `${x}%`)
+        }
+        if (y !== written.current.lightY) {
+          written.current.lightY = y
+          shadeRef.current?.setAttribute('cy', `${y}%`)
+        }
       },
       setDistortion(scale) {
+        if (!distortion) return
         const group = warpGroupRef.current
-        const displacement = displacementRef.current
-        if (!group || !displacement) return
-        // Only pay for the filter while it is visible.
-        if (scale < 0.15) {
-          group.removeAttribute('filter')
-          return
-        }
-        displacement.setAttribute('scale', scale.toFixed(2))
-        group.setAttribute('filter', `url(#${warpId})`)
+        if (!group) return
+        // A tiny scale pulse instead of an SVG turbulence filter: same liquid feel at a
+        // fraction of the cost (SVG filters re-rasterise the whole disc every frame).
+        const pulse = Math.round(Math.min(scale, 26) / 4)
+        if (pulse === written.current.pulse) return
+        written.current.pulse = pulse
+        group.style.transform = pulse === 0 ? '' : `scale(${(1 + pulse * 0.004).toFixed(3)})`
       },
     }),
-    [warpId],
+    [distortion],
   )
 
   useEffect(() => {
@@ -96,7 +104,7 @@ export function Planet({
   }, [])
 
   useScrollFrame(({ viewportH }) => {
-    if (!parallax || !visibleRef.current) return
+    if (!visibleRef.current) return
     const wrapper = wrapperRef.current
     const surface = surfaceRef.current
     if (!wrapper || !surface) return
@@ -106,7 +114,7 @@ export function Planet({
     const drift = body.imageMode === 'sphere' ? 7 : 12
     surface.setAttribute('transform', `translate(${(-clamped * drift).toFixed(2)} 0)`)
     wrapper.style.transform = `translate3d(0, ${(clamped * -20).toFixed(2)}px, 0)`
-  })
+  }, parallax)
 
   const { palette, rings, image, imageMode } = body
   const clipId = `clip-${uid}`
@@ -148,19 +156,6 @@ export function Planet({
               <stop offset="58%" stopColor="#ffffff" stopOpacity="1" />
               <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
             </radialGradient>
-            {distortion && (
-              <filter id={warpId} x="-15%" y="-15%" width="130%" height="130%">
-                <feTurbulence type="fractalNoise" baseFrequency="0.018 0.05" numOctaves={2} seed={7} result="noise" />
-                <feDisplacementMap
-                  ref={displacementRef}
-                  in="SourceGraphic"
-                  in2="noise"
-                  scale={0}
-                  xChannelSelector="R"
-                  yChannelSelector="G"
-                />
-              </filter>
-            )}
             <mask id={maskId}>
               <rect x={-110} y={-110} width={220} height={220} fill={`url(#${fadeId})`} />
             </mask>

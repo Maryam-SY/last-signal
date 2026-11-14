@@ -1,16 +1,19 @@
-import { useId, useState } from 'react'
+import { useEffect, useId, useRef } from 'react'
 import { ArrowRight, MapPin } from 'lucide-react'
-import { Link } from 'react-router'
+import { Link, useSearchParams } from 'react-router'
 import { api } from '@/api/client'
 import type { Machine, StorySummary } from '@/api/types'
 import { paths } from '@/app/paths'
 import { LoadState } from '@/components/common/LoadState'
 import { StatusBadge } from '@/components/machine/StatusBadge'
 import { MediaFigure } from '@/components/media/MediaFigure'
+import { RelationEnds } from '@/components/relations/RelationEnds'
 import { SourceList } from '@/components/sources/SourceList'
 import { useApi } from '@/hooks/useApi'
 import { useTranslation } from '@/i18n'
 import { formatPartialDate } from '@/lib/formatDate'
+import { ctaGhost, ctaPrimary, eyebrow } from '@/lib/styles'
+import { cn } from '@/lib/utils'
 
 interface MachineCardProps {
   machine: Machine
@@ -18,16 +21,56 @@ interface MachineCardProps {
   story: StorySummary | null
 }
 
-/** EQUIP-002: summary of one machine; photos, videos and sources load when the visitor asks. */
+/**
+ * EQUIP-002: summary of one machine; photos, videos, relations and sources load when the
+ * visitor asks. The open card lives in the URL (?machine=<id>, US-3.2): it can be shared,
+ * reloaded, and reached from "Exit story". Escape closes it and gives the focus back.
+ */
 export function MachineCard({ machine, story }: MachineCardProps) {
   const { t, locale } = useTranslation()
-  const [open, setOpen] = useState(false)
+  const [params, setParams] = useSearchParams()
+  const open = params.get('machine') === machine.id
   const panelId = useId()
+  const toggleRef = useRef<HTMLButtonElement>(null)
+  const cardRef = useRef<HTMLElement>(null)
+
+  const setOpen = (value: boolean) => {
+    const next = new URLSearchParams(params)
+    if (value) next.set('machine', machine.id)
+    else next.delete('machine')
+    // replace: opening details is a selection, not a new page in the history (ARCHITECTURE §4).
+    setParams(next, { replace: true, preventScrollReset: true })
+  }
+
+  // Escape closes the open details when the focus is anywhere in this card (US-3.2 criterion 3).
+  const closeRef = useRef(() => setOpen(false))
+  useEffect(() => {
+    closeRef.current = () => setOpen(false)
+  })
+  useEffect(() => {
+    if (!open) return
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape' || !cardRef.current?.contains(document.activeElement)) return
+      closeRef.current()
+      toggleRef.current?.focus()
+    }
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [open])
 
   return (
-    <article id={`machine-${machine.id}`} className="scroll-mt-24 rounded-xl border border-moon-dust/30 bg-card p-5">
-      <p className="font-mono text-[0.68rem] uppercase tracking-[0.25em] text-stellar-cyan">{t(`machineType.${machine.type}`)}</p>
-      <h4 className="mt-2 font-heading text-xl font-bold">{machine.name}</h4>
+    <article
+      ref={cardRef}
+      id={`machine-${machine.id}`}
+      className="glass group/card relative h-full scroll-mt-24 overflow-hidden rounded-2xl p-5 transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:border-world/60 hover:shadow-[0_12px_40px_-16px_var(--world-accent)] focus-within:border-world/60 sm:p-6"
+    >
+      {/* Light sweep along the top edge on hover: decoration only. */}
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-world to-transparent opacity-40 transition-opacity group-hover/card:opacity-100"
+      />
+      <p className={cn(eyebrow, 'text-world')}>{t(`machineType.${machine.type}`)}</p>
+      <h4 className="mt-2 font-heading text-2xl font-bold">{machine.name}</h4>
 
       <dl className="mt-3 space-y-1.5 text-sm">
         {machine.date && (
@@ -59,20 +102,18 @@ export function MachineCard({ machine, story }: MachineCardProps) {
 
       <div className="mt-4 flex flex-wrap gap-2">
         {story && (
-          <Link
-            to={`${paths.story(story.id)}?from=${encodeURIComponent(machine.id)}`}
-            className="inline-flex min-h-11 items-center gap-2 rounded-md bg-primary px-4 text-sm font-semibold text-primary-foreground hover:bg-primary/85"
-          >
+          <Link to={`${paths.story(story.id)}?from=${encodeURIComponent(machine.id)}`} className={ctaPrimary}>
             {t('destination.discoverStory')}
             <ArrowRight aria-hidden="true" className="size-4" />
           </Link>
         )}
         <button
+          ref={toggleRef}
           type="button"
           aria-expanded={open}
           aria-controls={panelId}
-          onClick={() => setOpen((v) => !v)}
-          className="inline-flex min-h-11 items-center rounded-md border border-moon-dust/50 px-4 text-sm font-medium hover:bg-nebula-surface"
+          onClick={() => setOpen(!open)}
+          className={ctaGhost}
         >
           {open ? t('destination.detailsHide') : t('destination.detailsShow')}
         </button>
@@ -101,6 +142,23 @@ function MachineDetails({ machineId }: { machineId: string }) {
             <MediaFigure key={m.id} media={m} />
           ))}
         </div>
+      )}
+      {detail.data.relations.length > 0 && (
+        <section>
+          <h5 className="mb-2 text-sm font-semibold">{t('story.relationsTitle')}</h5>
+          <ul className="space-y-3">
+            {detail.data.relations.map((relation) => (
+              <li key={relation.id} className="rounded-xl border border-world/30 bg-void/40 p-3 text-sm">
+                <RelationEnds relation={relation} />
+                <p className="mt-1">{relation.transmitted}</p>
+                <p className="mt-1 text-moon-dust">
+                  <span className="font-semibold">{t('story.evidence')} </span>
+                  {relation.evidence}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </section>
       )}
       <section>
         <h5 className="mb-2 text-sm font-semibold">{t('sources.count', { count: detail.data.sources.length })}</h5>

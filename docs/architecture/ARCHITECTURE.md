@@ -306,9 +306,9 @@ Pas d'E2E navigateur (Playwright) dans le MVP (ADR-012) ; à reconsidérer en P1
 | `GET /api/destinations` | Destinations triées, avec `missionCount` et `machineCount` calculés | — |
 | `GET /api/destinations/:id` | Destination + `missions[]` (triées) avec leurs `machines[]` et `mainStory` | 404 |
 | `GET /api/missions/:id` | Mission + `timeline` (étapes datées, chacune avec ses `media` résolus), `machines`, `stories`, `relations`, `media` | 404 |
-| `GET /api/machines/:id` | Équipement + `mission`, `destinationId`, `relations`, `media`, `storyTarget` (STORY-003), `sources` résolues | 404 |
+| `GET /api/machines/:id` | Équipement + `mission`, `destinationId`, `relations` (avec `fromEntity`/`toEntity` : `{ kind, id, name, destinationId }`), `media`, `storyTarget` (STORY-003), `sources` résolues (équipement **et** relations) | 404 |
 | `GET /api/stories` | Résumés `{ id, title, status, missionIds }` | — |
-| `GET /api/stories/:id` | Récit complet (6 étapes) + `relations`, `media` et `sources` utilisées | 404 |
+| `GET /api/stories/:id` | Récit complet (6 étapes) + `destinationId`, `missions`, `machines` citées (`{ id, name, destinationId }`), `relations` (avec `fromEntity`/`toEntity`), `media` et `sources` utilisées | 404 |
 | `GET /api/relations` | Toutes les relations documentées | — |
 | `GET /api/sources`, `GET /api/sources/:id` | Sources | 404 |
 | `GET /api/media?missionId=&machineId=&type=` | Médias filtrés (`type` : image, animation, video, 3d-model, document) | 400 si `type` inconnu |

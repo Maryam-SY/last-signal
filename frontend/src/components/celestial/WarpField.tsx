@@ -30,12 +30,14 @@ interface Field {
 }
 
 function resizeField(canvas: HTMLCanvasElement, field: Field): void {
-  field.ratio = Math.min(window.devicePixelRatio || 1, 2)
+  // Render at CSS resolution: the field is a soft star streak layer, and a full-screen
+  // canvas at devicePixelRatio 2 costs four times the fill rate for no visible gain.
+  field.ratio = 1
   field.width = window.innerWidth
   field.height = window.innerHeight
   canvas.width = Math.round(field.width * field.ratio)
   canvas.height = Math.round(field.height * field.ratio)
-  const count = Math.min(420, Math.round((field.width * field.height) / 3600))
+  const count = Math.min(260, Math.round((field.width * field.height) / 6000))
   while (field.stars.length < count) {
     const star = { x: 0, y: 0, z: 0, px: Number.NaN, py: Number.NaN }
     spawn(star, false)
@@ -43,6 +45,13 @@ function resizeField(canvas: HTMLCanvasElement, field: Field): void {
   }
   field.stars.length = count
 }
+
+/** Three depth buckets: one stroke call each instead of one per star. */
+const BUCKETS = [
+  { alpha: 0.38, width: 0.6 },
+  { alpha: 0.68, width: 1.2 },
+  { alpha: 1, width: 1.9 },
+] as const
 
 function drawField(canvas: HTMLCanvasElement, field: Field, dt: number): void {
   const context = canvas.getContext('2d')
@@ -56,6 +65,8 @@ function drawField(canvas: HTMLCanvasElement, field: Field, dt: number): void {
   context.setTransform(ratio, 0, 0, ratio, 0, 0)
   context.clearRect(0, 0, width, height)
   context.lineCap = 'round'
+
+  const paths: [Path2D, Path2D, Path2D] = [new Path2D(), new Path2D(), new Path2D()]
 
   for (const star of field.stars) {
     star.z -= step
@@ -72,17 +83,22 @@ function drawField(canvas: HTMLCanvasElement, field: Field, dt: number): void {
     const depth = 1 - star.z
     const fromX = Number.isNaN(star.px) ? sx : star.px
     const fromY = Number.isNaN(star.py) ? sy : star.py
-
-    context.strokeStyle = `rgba(241,245,249,${Math.min(1, depth * 1.4).toFixed(3)})`
-    context.lineWidth = 0.3 + depth * 1.5
-    context.beginPath()
-    context.moveTo(fromX, fromY)
-    context.lineTo(sx + 0.01, sy + 0.01)
-    context.stroke()
+    const path = paths[depth > 0.67 ? 2 : depth > 0.34 ? 1 : 0]
+    path.moveTo(fromX, fromY)
+    path.lineTo(sx + 0.01, sy + 0.01)
 
     star.px = sx
     star.py = sy
   }
+
+  const strokeBucket = (path: Path2D, alpha: number, width: number) => {
+    context.strokeStyle = `rgba(241,245,249,${alpha})`
+    context.lineWidth = width
+    context.stroke(path)
+  }
+  strokeBucket(paths[0], BUCKETS[0].alpha, BUCKETS[0].width)
+  strokeBucket(paths[1], BUCKETS[1].alpha, BUCKETS[1].width)
+  strokeBucket(paths[2], BUCKETS[2].alpha, BUCKETS[2].width)
 }
 
 /**

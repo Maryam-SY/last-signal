@@ -35,6 +35,8 @@
 
 Le guide fournit des couleurs par **famille d'objets** (étoiles, planètes rocheuses `#D97757`, nébuleuses…). AeroReborn n'affiche que deux destinations : seule **Planètes rocheuses `#D97757`** est pertinente (accent de la carte Mars). Aucune teinte dédiée n'existe pour un satellite naturel : la Lune utilise `--color-text-muted`/`--color-text` (à valider). Ces couleurs sont des repères d'interface, **jamais** une représentation des couleurs réelles.
 
+**Accent de monde (US-5.6)** : `--world-accent` (utilitaire Tailwind `world`) vaut Stellar Cyan sur la Lune et Rocky `#D97757` sur Mars (`[data-world]`). Couleur d'ambiance par étape de récit : Signal/Relay = Cyan, Why = Indigo, How/Your turn = Purple, Discovery = Gold (`components/story/storySteps.ts`).
+
 ## 2. Contrastes vérifiés (WCAG 2.2, calculés le 2026-11-14)
 
 | Premier plan | sur Void `#080B12` | sur Deep Space `#111827` | sur Surface `#1C2638` | Verdict |
@@ -75,6 +77,8 @@ Le guide fournit des couleurs par **famille d'objets** (étoiles, planètes roch
 | `MapMarker` | Cible 44 × 44 px ; repos : cercle contour Starlight ; sélectionné : cercle plein Cyan + anneau + taille ×1,25 |
 | Cartes cliquables | Surface `#1C2638`, survol : éclaircissement, focus : anneau Indigo |
 | Animations | Durée ≤ 200 ms, `opacity`/`transform` uniquement, supprimées sous `prefers-reduced-motion` |
+| Exception : Destination et Récit (ADR-019) | Planète épinglée pilotée par le scroll, apparitions au scroll (`Reveal`, ≤ 700 ms), couleur d'ambiance par étape (700 ms), barre de progression. Jamais porteuses d'information ; supprimées sous `prefers-reduced-motion` |
+| Panneaux « verre » | Utilitaire `glass` : fond Deep Space 55-72 % + flou ; le fond seul garantit le contraste si le flou n'est pas supporté |
 | Exception : accueil (ADR-018) | Animations continues pilotées par le scroll et le pointeur (caméra en profondeur, rotation, filtres SVG de distorsion, canvas d'étoiles, View Transition ≤ 900 ms). Jamais porteuses d'information ; repli en sections statiques et aucune animation sous `prefers-reduced-motion` |
 
 ## 5. Rayons, espacements

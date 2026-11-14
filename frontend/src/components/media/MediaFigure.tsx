@@ -1,4 +1,5 @@
-import { Box, ExternalLink, FileText, PlayCircle } from 'lucide-react'
+import { useState } from 'react'
+import { Box, ExternalLink, FileText, ImageOff, PlayCircle } from 'lucide-react'
 import type { Media } from '@/api/types'
 import { useTranslation } from '@/i18n'
 import { cn } from '@/lib/utils'
@@ -50,9 +51,7 @@ function MediaBody({ media }: { media: Media }) {
   const { t } = useTranslation()
   const isYoutube = /youtube\.com|youtu\.be/.test(media.url)
 
-  if (media.type === 'image' || media.type === 'animation') {
-    return <img src={media.url} alt={media.alt} loading="lazy" decoding="async" className="aspect-video w-full object-cover" />
-  }
+  if (media.type === 'image' || media.type === 'animation') return <RemoteImage media={media} />
 
   if (media.type === 'video' && !isYoutube) {
     return (
@@ -77,5 +76,33 @@ function MediaBody({ media }: { media: Media }) {
       {label}
       <span className="sr-only">{t('media.newTab')}</span>
     </a>
+  )
+}
+
+/**
+ * Media are loaded from NASA servers (ADR-017): if one moves or is unreachable, say so instead
+ * of showing a broken image. The caption keeps the link to the source page.
+ */
+function RemoteImage({ media }: { media: Media }) {
+  const { t } = useTranslation()
+  const [failed, setFailed] = useState(false)
+  if (failed) {
+    return (
+      <div className="flex aspect-video w-full flex-col items-center justify-center gap-2 bg-nebula-surface p-4 text-center text-sm text-moon-dust">
+        <ImageOff aria-hidden="true" className="size-8" />
+        <p>{t('media.unavailable')}</p>
+        <p className="sr-only">{media.alt}</p>
+      </div>
+    )
+  }
+  return (
+    <img
+      src={media.url}
+      alt={media.alt}
+      loading="lazy"
+      decoding="async"
+      onError={() => setFailed(true)}
+      className="aspect-video w-full object-cover"
+    />
   )
 }

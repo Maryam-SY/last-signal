@@ -129,7 +129,7 @@ Scripts réellement disponibles (`frontend/package.json`) : `dev`, `build`, `lin
 | R6 | Déploiement découvert le dernier jour | Moyenne | Haute | Déployer le squelette dès la phase 1 |
 | R7 | Licences d'images / fonds de carte non conformes | Moyenne | Moyenne | Crédit et licence obligatoires dans le modèle `Media` ; THIRD_PARTY_LICENSES |
 | R8 | Dérive du périmètre (animations, 3D, quiz…) | Haute | Moyenne | SCOPE.md + règle CLAUDE.md « pas de hors périmètre sans validation » |
-| R9 | Branches `front`/`back` utilisées en parallèle → conflits | Moyenne | Moyenne | OPEN-11 : trunk-based + branches courtes par story |
+| R9 | Branches `front`/`back` utilisées en parallèle → conflits | Moyenne | Moyenne | OPEN-11 : périmètres séparés (`frontend/` / `backend/`), stories transverses sur `main`, `main` refusionnée dans `front` et `back` après chaque fusion |
 | R10 | Échéance du hackathon inconnue → plan non calibré | — | Haute | OPEN-12 |
 
 ## 6. Application de la méthode BMAD
@@ -180,7 +180,7 @@ Chaque décision a une **recommandation** ; tant qu'elle n'est pas validée, les
 | OPEN-08 | ✅ **Tranchée** (§7.1) — Missions disposant d'un récit complet dans le MVP | **Apollo 12** (avec Surveyor 3) et **Mars Exploration Rover** (Spirit/Opportunity, relais Sojourner), conformément au CDC. | E4 |
 | OPEN-09 | Relations : carte, récits ou les deux | **Récits (étape Relais) + fiche détail en P0** ; tracés sur la carte en P1. | MAP-007 |
 | OPEN-10 | Technique d'animation narrative | **Reportée volontairement** (CDC). Le moteur de récit est conçu indépendamment (ADR-014). | — |
-| OPEN-11 | Stratégie de branches | Trunk-based sur `main`, branches courtes `feat/US-x.y-slug`, PR + CI obligatoire. `front`/`back` laissées en l'état (identiques à `main`). | Process |
+| OPEN-11 | ✅ **Tranchée** (2026-11-14, décision de l'équipe) — Stratégie de branches | `front` = intégration frontend, `back` = intégration backend ; stories transverses et docs sur `main`. Branches courtes `feat/US-x.y-slug` partant de la branche d'intégration concernée, PR + CI obligatoire, puis PR `front`/`back` → `main`. `main` refusionnée dans `front` et `back` après chaque fusion. Détail : CLAUDE.md §10. | Process |
 | OPEN-12 | Échéance du hackathon et répartition de l'équipe | **Information manquante** : nécessaire pour calibrer le plan. | Plan |
 | OPEN-13 | ✅ **Tranchée** (§7.1) — Polices et thème | Fait : thème COSMOS, polices auto-hébergées via `@fontsource`. | US-1.4 |
 | OPEN-14 | Filtre par mission : P0 ou P1 ? | **P0 léger** : barre de saut vers les groupes de mission (ancres). Filtre par statut en P1. | US-3.5 |
