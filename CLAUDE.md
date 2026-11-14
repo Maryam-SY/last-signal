@@ -55,7 +55,7 @@ Une tâche de développement = **une story `ready`** de `USER_STORIES.md`. Pas d
 
 1. **Understand** — lire la story, les exigences PRD citées, les sections d'architecture et de modèle de données concernées. Vérifier la DoR. Si une `OPEN-xx` liée est ouverte : **s'arrêter et demander**.
 2. **Plan** — créer `docs/project/stories/US-x.y.md` depuis le modèle ; lister fichiers touchés, approche, risques, dépendances. Pour une modification importante, **présenter le plan et attendre l'accord** avant d'implémenter.
-3. **Implement** — petites modifications, sur une branche `feat/US-x.y-slug`. Respecter ARCHITECTURE §3 (emplacements) et §5 (responsabilités).
+3. **Implement** — petites modifications, sur une branche `feat/US-x.y-slug` partie de `front`, `back` ou `main` selon la zone touchée (§10). Respecter ARCHITECTURE §3 (emplacements) et §5 (responsabilités).
 4. **Verify** — exécuter G1→G4 (QUALITY_GATES §3) + contrôles manuels applicables ; consigner la **sortie réelle** dans le fichier de story.
 5. **Document** — mettre à jour les docs impactées ; passer la story en `review`. Seul un humain passe une story en `done`.
 
@@ -106,7 +106,12 @@ Toute décision validée est tracée : ADR (technique) ou mise à jour du docume
 
 ## 10. Git
 
-- Branche par story : `feat/US-x.y-slug` (ou `fix/…`, `docs/…`) ; PR vers `main` ; CI verte obligatoire.
+- Branche par story : `feat/US-x.y-slug` (ou `fix/…`, `docs/…`) ; CI verte obligatoire avant toute fusion.
+- **Branches d'intégration (OPEN-11)** : `front` regroupe le travail frontend, `back` le travail backend.
+  - Story qui ne touche que `frontend/` → branche partie de `front`, PR vers `front`.
+  - Story qui ne touche que `backend/` (API, `backend/content/`) → branche partie de `back`, PR vers `back`.
+  - Story qui touche les deux, docs et configuration du dépôt (`docs/`, `.github/`, `CLAUDE.md`) → branche partie de `main`, PR vers `main`.
+  - `front` et `back` rejoignent `main` par PR (CI verte, relecture humaine) dès qu'un lot est stable.
+  - Après chaque fusion dans `main`, fusionner `main` dans `front` et `back` (merge, jamais de rebase ni de force push) pour éviter les divergences.
 - Messages de commit : `type(scope): résumé` (feat, fix, docs, content, test, chore) avec l'ID de story.
-- Les branches `front` et `back` existantes ne sont pas utilisées (OPEN-11).
 - Ne jamais committer de secret ni de `node_modules`.
