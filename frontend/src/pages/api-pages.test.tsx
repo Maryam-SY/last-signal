@@ -3,6 +3,9 @@ import userEvent from '@testing-library/user-event'
 import { describe, expect, it, vi } from 'vitest'
 import { renderRoute } from '@/test/renderRoute'
 
+// <model-viewer> needs WebGL: in jsdom its module is replaced by an empty one (the element stays inert).
+vi.mock('@google/model-viewer', () => ({}))
+
 describe('destination page (connected to the API)', () => {
   it('shows the missions and their machines', async () => {
     renderRoute('/explore/mars')
@@ -85,6 +88,23 @@ describe('destination page (connected to the API)', () => {
     const landing = (await within(machineScene).findByRole('heading', { level: 5, name: 'Landing' })).closest('article')!
     expect(within(landing).getByAltText('A rover on the ground')).toBeInTheDocument()
     expect(machineScene.querySelector('.journey-card')).toBeNull()
+  })
+
+  it('loads the NASA 3D model only when the visitor asks for it', async () => {
+    const user = userEvent.setup()
+    renderRoute('/explore/mars')
+    const button = await screen.findByRole('button', { name: 'Turn it in 3D' })
+    expect(document.querySelector('model-viewer')).toBeNull()
+    await user.click(button)
+    expect(button).toHaveAttribute('aria-pressed', 'true')
+    const viewer = await waitForViewer()
+    expect(viewer).toHaveAttribute('src', 'https://example.org/models/Test%20Rover.glb')
+    expect(viewer).toHaveAttribute('alt', '3D model of the test rover')
+    expect(viewer).toHaveAttribute('disable-zoom')
+    expect(screen.getByText('Computer image — not a photo')).toBeInTheDocument()
+    expect(screen.getByText('A fictional 3D model.')).toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: 'Back to the photos' }))
+    expect(document.querySelector('model-viewer')).toBeNull()
   })
 
   it('shows the mission step by step', async () => {
@@ -213,3 +233,13 @@ describe('about page (connected to the API)', () => {
     expect(screen.getByText(/Consulted on 14 November 2026/)).toBeInTheDocument()
   })
 })
+
+async function waitForViewer(): Promise<Element> {
+  const { waitFor } = await import('@testing-library/react')
+  let viewer: Element | null = null
+  await waitFor(() => {
+    viewer = document.querySelector('model-viewer')
+    expect(viewer).not.toBeNull()
+  })
+  return viewer!
+}

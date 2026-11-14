@@ -154,6 +154,10 @@ export const en = {
     nextWorldTitle: 'The journey continues',
   },
   journey: {
+    showModel: 'Turn it in 3D',
+    hideModel: 'Back to the photos',
+    modelHelp: 'Drag it (or use the arrow keys once it is selected) to turn it around. 3D model published by NASA.',
+    modelUnavailable: 'The 3D model could not be loaded. The NASA page below still has it.',
     anotherLook: 'Another look',
   },
   machineType: {

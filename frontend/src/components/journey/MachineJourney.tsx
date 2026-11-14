@@ -1,13 +1,16 @@
 import { useEffect, useRef, useState } from 'react'
+import { Box } from 'lucide-react'
 import type { Machine, MissionDetail, StorySummary } from '@/api/types'
 import { MachineCard } from '@/components/gallery/MachineCard'
 import { MediaFigure } from '@/components/media/MediaFigure'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { useTranslation } from '@/i18n'
 import { formatPartialDate } from '@/lib/formatDate'
-import { bestStill, machineChapters, mediaOfMachine, type JourneyChapter } from '@/lib/journey'
+import { bestStill, machineChapters, mediaOfMachine, modelOf, type JourneyChapter } from '@/lib/journey'
 import { cn } from '@/lib/utils'
 import { MachineStage } from './MachineStage'
+import { ModelViewer3D } from './ModelViewer3D'
 import { useSceneMotion } from './useSceneMotion'
 
 interface MachineJourneyProps {
@@ -24,12 +27,20 @@ interface MachineJourneyProps {
  * readers; under reduced motion each picture is simply shown inside its step.
  */
 export function MachineJourney({ machine, mission, story }: MachineJourneyProps) {
+  const { t } = useTranslation()
   const reduced = useReducedMotion()
   const sceneRef = useSceneMotion<HTMLElement>(!reduced)
   const cover = mission ? bestStill(mediaOfMachine(mission, machine.id)) : undefined
   const chapters = mission ? machineChapters(machine, mission, cover) : []
+  const model = mission ? modelOf(mission, machine.id) : undefined
+  const [showModel, setShowModel] = useState(false)
+  // The 3D model takes the sticky stage only on large screens. On phones the stage is too
+  // short for it: the model goes in the flow under the card and the sticky stage steps aside
+  // (each chapter then shows its own picture), so nothing covers the model.
+  const wide = useMediaQuery('(min-width: 1024px)')
+  const modelInFlow = showModel && model !== undefined && !wide
   // Same tree with or without the mission data, so the card (and its focus) is never remounted.
-  const staged = !reduced && cover !== undefined
+  const staged = !reduced && cover !== undefined && !modelInFlow
   const [active, setActive] = useState(0)
   const chapterRefs = useRef<(HTMLLIElement | null)[]>([])
 
@@ -55,7 +66,7 @@ export function MachineJourney({ machine, mission, story }: MachineJourneyProps)
       <div className={cn('grid gap-6', staged && 'lg:grid-cols-[1.1fr_0.9fr] lg:gap-12')}>
         {staged && (
           <div className="sticky top-16 z-10 h-[44vh] bg-void/70 py-2 backdrop-blur-sm lg:top-24 lg:h-[calc(100vh-8rem)] lg:bg-transparent lg:backdrop-blur-none">
-            <MachineStage media={stageMedia} />
+            {showModel && model && wide ? <ModelViewer3D model={model} /> : <MachineStage media={stageMedia} />}
           </div>
         )}
 
@@ -67,8 +78,24 @@ export function MachineJourney({ machine, mission, story }: MachineJourneyProps)
             data-chapter={0}
             className={cn('flex flex-col justify-center', staged && 'min-h-[85vh] max-lg:justify-end max-lg:pb-10')}
           >
-            {!staged && cover && <MediaFigure media={cover} className="mb-4" />}
+            {!staged && !modelInFlow && cover && <MediaFigure media={cover} className="mb-4" />}
             <MachineCard machine={machine} story={story} />
+            {model && (
+              <button
+                type="button"
+                aria-pressed={showModel}
+                onClick={() => setShowModel((value) => !value)}
+                className="mt-3 inline-flex min-h-11 w-fit items-center gap-2 rounded-md border border-stellar-cyan/60 px-4 text-sm font-medium hover:bg-nebula-surface"
+              >
+                <Box aria-hidden="true" className="size-4" />
+                {showModel ? t('journey.hideModel') : t('journey.showModel')}
+              </button>
+            )}
+            {showModel && model && (!staged || modelInFlow) && (
+              <div className="mt-4 h-[26rem]">
+                <ModelViewer3D model={model} />
+              </div>
+            )}
           </li>
           {chapters.map((chapter, index) => (
             <ChapterItem

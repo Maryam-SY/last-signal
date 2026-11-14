@@ -1049,15 +1049,15 @@
   {
     "id": "ingenuity-3d-model",
     "type": "3d-model",
-    "url": "https://mars.nasa.gov/gltf_embed/25043",
-    "pageUrl": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
-    "title": "ingenuity",
-    "caption": "Interactive 3D model of the Mars Ingenuity Helicopter. This model can also be viewed in augmented reality on mobile devices using NASA's Spacecraft AR app.",
+    "url": "https://assets.science.nasa.gov/content/dam/science/cds/3d/resources/model/ingenuity-mars-helicopter/Ingenuity%20Mars%20Helicopter.glb",
+    "pageUrl": "https://science.nasa.gov/3d-resources/ingenuity-mars-helicopter/",
+    "title": "Ingenuity Mars Helicopter",
+    "caption": null,
     "alt": {
-      "en": "Interactive 3D model of the Ingenuity helicopter.",
-      "fr": "Modèle 3D interactif de l’hélicoptère Ingenuity."
+      "en": "3D model of the Ingenuity helicopter that you can turn around.",
+      "fr": "Modèle 3D de l’hélicoptère Ingenuity, que l’on peut faire tourner."
     },
-    "credit": null,
+    "credit": "NASA/Brian E. Kumanchik",
     "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
     "missionIds": [
       "mars-2020"
@@ -1065,7 +1065,7 @@
     "machineIds": [
       "ingenuity"
     ],
-    "sourceId": "nasa-science-ingenuity",
+    "sourceId": "nasa-3d-ingenuity",
     "aiGenerated": false,
     "depiction": "simulation"
   },
@@ -4615,5 +4615,34 @@
     "nasaId": "JPL-20240423-TECHf-0001-Ingenuity Last Downlink BRoll Reel",
     "aiGenerated": false,
     "depiction": "photo"
+  },
+  {
+    "id": "apollo-lunar-module-3d-model",
+    "type": "3d-model",
+    "url": "https://assets.science.nasa.gov/content/dam/science/cds/3d/resources/model/apollo-lunar-module/Apollo%20Lunar%20Module.glb",
+    "pageUrl": "https://science.nasa.gov/3d-resources/apollo-lunar-module/",
+    "title": "Apollo Lunar Module",
+    "caption": null,
+    "alt": {
+      "en": "3D model of a complete Apollo Lunar Module that you can turn around.",
+      "fr": "Modèle 3D d’un module lunaire Apollo complet, que l’on peut faire tourner."
+    },
+    "credit": "NASA/Michael D. Carbajal",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "apollo-11",
+      "apollo-12"
+    ],
+    "machineIds": [
+      "apollo-11-lm-eagle-descent-stage",
+      "apollo-12-lm-intrepid-descent-stage"
+    ],
+    "sourceId": "nasa-3d-apollo-lunar-module",
+    "aiGenerated": false,
+    "depiction": "simulation",
+    "description": {
+      "en": "This model shows the whole Lunar Module. Only its lower half, the descent stage, stayed on the Moon: the upper half carried the astronauts back to orbit.",
+      "fr": "Ce modèle montre le module lunaire entier. Seule sa moitié du bas, l’étage de descente, est restée sur la Lune : la moitié du haut a ramené les astronautes en orbite."
+    }
   }
 ]
