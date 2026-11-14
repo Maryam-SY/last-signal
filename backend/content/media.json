@@ -262,6 +262,32 @@
     "depiction": "mixed"
   },
   {
+    "id": "nasa-lib-pia00616",
+    "type": "image",
+    "url": "https://images-assets.nasa.gov/image/PIA00616/PIA00616~orig.jpg",
+    "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA00616/PIA00616~thumb.jpg",
+    "pageUrl": "https://images.nasa.gov/details/PIA00616",
+    "title": "Lander, Airbags, & Martian Terrain",
+    "caption": "Several objects have been imaged by the Imager for Mars Pathfinder (IMP) during the spacecraft's first day on Mars. Portions of the deflated airbags, part of one the lander's petals, soil, and several rocks are visible. The furrows in the soil were artificially produced by the retraction of the airbags after landing, which occurred at 10:07 a.m. PDT. http://photojournal.jpl.nasa.gov/catalog/PIA00616",
+    "alt": {
+      "en": "Parts of the lander, airbags and Martian ground on the first day.",
+      "fr": "Des parties de l’atterrisseur, les airbags et le sol martien le premier jour."
+    },
+    "credit": "NASA/JPL",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-pathfinder"
+    ],
+    "machineIds": [
+      "mars-pathfinder-lander"
+    ],
+    "sourceId": "nasa-image-video-library",
+    "dateCreated": "1997-07-05",
+    "nasaId": "PIA00616",
+    "aiGenerated": false,
+    "depiction": "photo"
+  },
+  {
     "id": "pathfinder-airbag-test",
     "type": "image",
     "url": "https://science.nasa.gov/wp-content/uploads/2024/08/5277460495-c6d046d5a9-o.jpg",
@@ -2112,32 +2138,6 @@
     "sourceId": "nasa-image-video-library",
     "dateCreated": "1997-07-05",
     "nasaId": "PIA00614",
-    "aiGenerated": false,
-    "depiction": "photo"
-  },
-  {
-    "id": "nasa-lib-pia00616",
-    "type": "image",
-    "url": "https://images-assets.nasa.gov/image/PIA00616/PIA00616~orig.jpg",
-    "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA00616/PIA00616~thumb.jpg",
-    "pageUrl": "https://images.nasa.gov/details/PIA00616",
-    "title": "Lander, Airbags, & Martian Terrain",
-    "caption": "Several objects have been imaged by the Imager for Mars Pathfinder (IMP) during the spacecraft's first day on Mars. Portions of the deflated airbags, part of one the lander's petals, soil, and several rocks are visible. The furrows in the soil were artificially produced by the retraction of the airbags after landing, which occurred at 10:07 a.m. PDT. http://photojournal.jpl.nasa.gov/catalog/PIA00616",
-    "alt": {
-      "en": "Parts of the lander, airbags and Martian ground on the first day.",
-      "fr": "Des parties de l’atterrisseur, les airbags et le sol martien le premier jour."
-    },
-    "credit": "NASA/JPL",
-    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
-    "missionIds": [
-      "mars-pathfinder"
-    ],
-    "machineIds": [
-      "mars-pathfinder-lander"
-    ],
-    "sourceId": "nasa-image-video-library",
-    "dateCreated": "1997-07-05",
-    "nasaId": "PIA00616",
     "aiGenerated": false,
     "depiction": "photo"
   },
