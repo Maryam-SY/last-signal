@@ -285,7 +285,26 @@ Pas d'E2E navigateur (Playwright) dans le MVP (ADR-012) ; à reconsidérer en P1
 
 ## 16. Backend
 
-`backend/` : Express 5 en TypeScript (ADR-016). Routes actuelles : `GET /api/health` et un 404 JSON pour toute autre route `/api/*`. En développement, Vite redirige `/api/*` vers `http://localhost:3000` (`VITE_API_PROXY_TARGET` pour changer). Le contrat d'API métier (routes, formats, erreurs, cache) sera documenté ici une fois **OPEN-18** tranchée, avant toute implémentation.
+`backend/` : Express 5 en TypeScript (ADR-016). Routes actuelles : `GET /api/health` et un 404 JSON pour toute autre route `/api/*`. En développement, Vite redirige `/api/*` vers `http://localhost:3000` (`VITE_API_PROXY_TARGET` pour changer). 
+
+**Contenu** : `backend/content/` (`destinations.json`, `missions.json`, `machines.json`, `relations.json`, `sources.json`, `media.json`, `stories/*.json`), chargé par `src/content/load.ts` (`$CONTENT_DIR` pour un autre dossier) et validé au démarrage par `src/content/validate.ts`. `npm run content:check` affiche toutes les erreurs et tous les avertissements.
+
+**Contrat d'API** (lecture seule, JSON, `?lang=en` ou `?lang=fr`, anglais par défaut ; chaque objet `{ en, fr }` devient une chaîne) :
+
+| Route | Réponse | Erreurs |
+|---|---|---|
+| `GET /api/health` | `{ status, message }` | — |
+| `GET /api/destinations` | Destinations triées, avec `missionCount` et `machineCount` calculés | — |
+| `GET /api/destinations/:id` | Destination + `missions[]` (triées) avec leurs `machines[]` et `mainStory` | 404 |
+| `GET /api/missions/:id` | Mission + `timeline` (étapes datées, chacune avec ses `media` résolus), `machines`, `stories`, `relations`, `media` | 404 |
+| `GET /api/machines/:id` | Équipement + `mission`, `destinationId`, `relations`, `media`, `storyTarget` (STORY-003), `sources` résolues | 404 |
+| `GET /api/stories` | Résumés `{ id, title, status, missionIds }` | — |
+| `GET /api/stories/:id` | Récit complet (6 étapes) + `relations`, `media` et `sources` utilisées | 404 |
+| `GET /api/relations` | Toutes les relations documentées | — |
+| `GET /api/sources`, `GET /api/sources/:id` | Sources | 404 |
+| `GET /api/media?missionId=&machineId=&type=` | Médias filtrés (`type` : image, animation, video, 3d-model, document) | 400 si `type` inconnu |
+
+Toute autre route `/api/*` renvoie `404 { error: "Not found" }`. Le statut `draft` ou `reviewed` des récits est exposé tel quel : le frontend doit signaler un récit non relu.
 
 ## 17. Extensibilité (hors MVP, sans surcoût aujourd'hui)
 

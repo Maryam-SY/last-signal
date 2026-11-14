@@ -1,0 +1,22 @@
+[
+  {
+    "id": "moon",
+    "name": { "en": "Moon", "fr": "Lune" },
+    "kind": "natural-satellite",
+    "intro": {
+      "en": "Robotic landers and Apollo crews left machines on the Moon. Some of them still have a story to tell.",
+      "fr": "Des robots et des équipages Apollo ont laissé des machines sur la Lune. Certaines ont encore une histoire à raconter."
+    },
+    "order": 1
+  },
+  {
+    "id": "mars",
+    "name": { "en": "Mars", "fr": "Mars" },
+    "kind": "planet",
+    "intro": {
+      "en": "Landers, rovers and a helicopter explored Mars and stayed there after their missions.",
+      "fr": "Des atterrisseurs, des rovers et un hélicoptère ont exploré Mars et y sont restés après leur mission."
+    },
+    "order": 2
+  }
+]

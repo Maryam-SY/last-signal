@@ -303,6 +303,25 @@ Le détail des niveaux de priorité est dans [SCOPE.md](SCOPE.md).
 - **Priorité** : P0 · **Source** : CDC §4.3, §7
 - **Critères d'acceptation** : une relation précise origine, cible, type (méthode, technologie, données, connaissance, inspiration), **ce qui a été transmis**, **la preuve** et ≥ 1 source ; elle n'est jamais déduite d'une proximité chronologique.
 
+### 8.5 bis Médias et chronologies — `MEDIA`, `TIMELINE`
+
+#### MEDIA-001 — Nature des médias toujours visible
+- **Priorité** : P0 · **Source** : CDC §8 (« ne pas confondre visuel d'ambiance et preuve scientifique »), demande de l'équipe du 2026-11-14
+- **Objectif** : qu'aucune vue d'artiste, simulation ou animation ne soit prise pour une photo.
+- **Critères d'acceptation** :
+  1. Chaque média a un champ `depiction` ∈ photo, artwork, simulation, diagram, mixed, document (test d'intégrité bloquant).
+  2. Pour toute valeur autre que `photo` et `document`, un badge textuel visible (pas seulement une infobulle) est affiché à côté du média, dans la galerie, la fiche, le récit et la chronologie.
+  3. Le texte alternatif d'une vue d'artiste ou d'une simulation le précise (« pas une photo »).
+
+#### TIMELINE-001 — Chronologie de chaque mission
+- **Priorité** : P0 · **Source** : demande de l'équipe du 2026-11-14
+- **Objectif** : raconter chaque mission étape par étape (lancement, atterrissage, travaux, découvertes, fin), simplement et avec des images.
+- **Critères d'acceptation** :
+  1. `GET /api/missions/:id` renvoie `timeline[]` dans l'ordre chronologique : date sourcée, titre, explication simple (fr/en), images résolues.
+  2. Chaque date a au moins une source ; les dates partielles (mois, année) sont autorisées.
+  3. Les images d'une étape appartiennent à la mission (règle V13).
+  4. L'interface affiche la chronologie sur la fiche mission ou équipement, utilisable au clavier et sur mobile.
+
 ### 8.6 À propos — `ABOUT`
 
 #### ABOUT-001 — Page About & Sources

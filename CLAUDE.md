@@ -19,11 +19,11 @@ Guide opérationnel permanent pour Claude Code et tout agent de développement. 
 | Routage | react-router (`src/app/routes.tsx`, URLs via `src/app/paths.ts`), état dans l'URL | ADR-006 |
 | Style | Tailwind v4 + tokens COSMOS, primitives shadcn/base-ui | ADR-010 |
 | Carte | SVG maison + marqueurs `<button>`, pas de lib cartographique | ADR-007 |
-| Données | JSON versionné, pas de base de données ; servi par l'API ou embarqué : **OPEN-18** | ADR-003, ADR-016 |
+| Données | JSON versionné dans `backend/content/`, validé au démarrage, servi par l'API `/api/*` (`?lang=en` ou `fr`) ; pas de base de données ; médias par référence | ADR-003, ADR-016, ADR-017 |
 | i18n | Dictionnaires typés `src/i18n/messages/{en,fr}.ts`, `useTranslation()` | ADR-015 |
 | Lint / tests | oxlint · Vitest + Testing Library | ADR-011, ADR-012 |
 | CI / hébergement | GitHub Actions (frontend + backend) · hébergement à décider (OPEN-05) | ADR-013 |
-| `backend/` | Express 5 + TypeScript (`src/app.ts`, `src/server.ts`) ; **aucune route métier avant décision OPEN-18** | ADR-016 |
+| `backend/` | Express 5 + TypeScript : `src/app.ts`, `src/content/` (types, chargement, validation), `src/routes/content.ts` ; `npm run content:check` | ADR-016 |
 
 Commandes (dans `frontend/` **et** `backend/`) : `npm run dev` · `npm run lint` · `npm run typecheck` · `npm test` · `npm run build` · `npm run check` (les quatre précédentes). Frontend : `npm run preview`. Backend : `npm start`. À créer : `npm run check:links` (US-1.5). **Ne jamais annoncer le résultat d'une commande qui n'existe pas encore.**
 
@@ -42,6 +42,7 @@ Commandes (dans `frontend/` **et** `backend/`) : `npm run dev` · `npm run lint`
 | DoR, DoD, contrôles | `docs/quality/QUALITY_GATES.md` |
 | Phases, ordre, plan de réduction | `docs/project/IMPLEMENTATION_PLAN.md` |
 | État initial, risques, **décisions ouvertes OPEN-xx** | `docs/project/AUDIT_PHASE0.md` |
+| Relecture scientifique du contenu | `docs/content/CONTENT_REVIEW.md` |
 | Modèle de fichier de story | `docs/project/stories/_TEMPLATE.md` |
 
 ## 4. Méthode (inspirée de BMAD)
@@ -65,6 +66,7 @@ Une tâche de développement = **une story `ready`** de `USER_STORIES.md`. Pas d
 - Composants réutilisables, un par fichier, typés ; pas de duplication (ex. une seule fonction `cn`).
 - Aucun texte d'interface en dur : ajouter la clé dans `src/i18n/messages/en.ts` **et** `fr.ts`, puis `t('cle')` via `useTranslation()` (ADR-015).
 - Aucune donnée scientifique dans le code : uniquement dans `frontend/content/`.
+- **Nature des médias (obligatoire)** : chaque média de l'API a un champ `depiction`. Pour toute valeur autre que `photo` et `document`, l'interface affiche un **badge visible** à côté du média, jamais seulement en infobulle : `artwork` → « Vue d'artiste — pas une photo », `simulation` → « Image de synthèse — pas une photo », `diagram` → « Schéma / carte », `mixed` → « Contient des animations ». Une vue d'artiste ne doit jamais être présentée comme une preuve (PRD MEDIA-001).
 - Accessibilité par défaut : éléments natifs (`button`, `a`), focus visible, pas d'info par la couleur seule ni au survol seul, cibles ≥ 44 px, `prefers-reduced-motion` respecté.
 - Mobile-first : vérifier à 360 px avant 1440 px.
 - Ne pas supprimer de fichier, de fonctionnalité ou de test existant sans validation ; ne pas réécrire l'historique Git ; ne pas pousser sur `main` directement.

@@ -1,0 +1,346 @@
+[
+  {
+    "id": "surveyor-3-lander",
+    "name": "Surveyor 3",
+    "missionId": "surveyor-3",
+    "type": "lander",
+    "nssdcaId": "1967-035A",
+    "date": { "value": "1967-04-20", "sourceIds": ["nssdca-1967-035a", "nasa-science-surveyor-3"] },
+    "dateLabel": "landing",
+    "locationName": { "value": "Oceanus Procellarum (Ocean of Storms)", "sourceIds": ["nssdca-1967-035a", "nasa-science-surveyor-3"] },
+    "coordinates": {
+      "value": { "lat": -3.0162, "lon": -23.418 },
+      "sourceIds": ["nssdca-1967-035a"],
+      "note": {
+        "en": "NSSDCA gives 3.0162 S, 336.582 E (from Lunar Reconnaissance Orbiter images), converted here to an east-positive longitude.",
+        "fr": "La NSSDCA donne 3,0162 S, 336,582 E (d'après les images du Lunar Reconnaissance Orbiter), converti ici en longitude positive vers l'est."
+      }
+    },
+    "status": {
+      "value": "inactive",
+      "sourceIds": ["nssdca-1967-035a"],
+      "note": {
+        "en": "Last data received on 4 May 1967; it did not come back to life after the lunar night. Apollo 12 astronauts later removed about 10 kg of parts.",
+        "fr": "Dernières données reçues le 4 mai 1967 ; il ne s'est pas réveillé après la nuit lunaire. Les astronautes d'Apollo 12 ont ensuite retiré environ 10 kg de pièces."
+      }
+    },
+    "scienceSummary": {
+      "value": {
+        "en": "Its scoop dug trenches and pressed on the ground: lunar soil turned out to be solid enough to support an Apollo Lunar Module.",
+        "fr": "Sa pelle a creusé des tranchées et appuyé sur le sol : le sol lunaire s'est révélé assez solide pour supporter un module lunaire Apollo."
+      },
+      "sourceIds": ["nasa-science-surveyor-3"]
+    },
+    "storyIds": []
+  },
+  {
+    "id": "apollo-11-lm-eagle-descent-stage",
+    "name": "Apollo 11 Lunar Module “Eagle” — descent stage",
+    "missionId": "apollo-11",
+    "type": "descent-stage",
+    "nssdcaId": "1969-059C",
+    "date": { "value": "1969-07-20", "sourceIds": ["nssdca-1969-059c"] },
+    "dateLabel": "landing",
+    "locationName": { "value": "Mare Tranquillitatis (Sea of Tranquility)", "sourceIds": ["nssdca-1969-059c"] },
+    "coordinates": {
+      "value": { "lat": 0.67416, "lon": 23.47314 },
+      "sourceIds": ["nssdca-1969-059c"],
+      "note": {
+        "en": "Landing point determined from Lunar Reconnaissance Orbiter images.",
+        "fr": "Point d'atterrissage déterminé d'après les images du Lunar Reconnaissance Orbiter."
+      }
+    },
+    "status": {
+      "value": "inactive",
+      "sourceIds": ["nssdca-1969-059c"],
+      "note": {
+        "en": "The descent stage served as a launch platform for the ascent stage and was left behind on the Moon.",
+        "fr": "L'étage de descente a servi de plateforme de lancement à l'étage de remontée et a été laissé sur la Lune."
+      }
+    },
+    "scienceSummary": {
+      "value": {
+        "en": "It carried Neil Armstrong and Buzz Aldrin to the first crewed landing on the Moon, on 20 July 1969.",
+        "fr": "Il a transporté Neil Armstrong et Buzz Aldrin lors du premier atterrissage habité sur la Lune, le 20 juillet 1969."
+      },
+      "sourceIds": ["nssdca-1969-059c"]
+    },
+    "storyIds": []
+  },
+  {
+    "id": "apollo-11-easep",
+    "name": "Early Apollo Scientific Experiments Package (EASEP)",
+    "missionId": "apollo-11",
+    "type": "experiment",
+    "nssdcaId": null,
+    "date": { "value": "1969-07-21", "sourceIds": ["nssdca-1969-059c"] },
+    "dateLabel": "deployment",
+    "locationName": { "value": "Tranquility Base, about 17 m south of the Lunar Module", "sourceIds": ["nssdca-1969-059c"] },
+    "coordinates": {
+      "value": { "lat": 0.6735, "lon": 23.473 },
+      "sourceIds": ["nssdca-1969-059c"]
+    },
+    "status": {
+      "value": "mission-ended",
+      "sourceIds": ["nssdca-1969-059c"],
+      "note": {
+        "en": "On 27 August 1969 it no longer accepted commands from Earth and the experiment was terminated.",
+        "fr": "Le 27 août 1969, il n'acceptait plus les commandes envoyées depuis la Terre et l'expérience a pris fin."
+      }
+    },
+    "scienceSummary": {
+      "value": {
+        "en": "A solar-powered seismometer and dust detector — the forerunner of the ALSEP stations of later Apollo missions.",
+        "fr": "Un sismomètre et un détecteur de poussière alimentés par panneaux solaires — l'ancêtre des stations ALSEP des missions Apollo suivantes."
+      },
+      "sourceIds": ["nssdca-1969-059c"]
+    },
+    "storyIds": []
+  },
+  {
+    "id": "apollo-11-lrrr",
+    "name": "Apollo 11 Laser Ranging Retroreflector (LRRR)",
+    "missionId": "apollo-11",
+    "type": "experiment",
+    "nssdcaId": null,
+    "date": { "value": "1969-07-21", "sourceIds": ["jpl-llr-2004"] },
+    "dateLabel": "deployment",
+    "locationName": { "value": "Tranquility Base, about 5 m north-northwest of the EASEP", "sourceIds": ["nssdca-1969-059c"] },
+    "coordinates": null,
+    "status": {
+      "value": "operational",
+      "sourceIds": ["jpl-llr-2004"],
+      "note": {
+        "en": "Reported as still functioning perfectly in 2004 (JPL). A more recent NASA source must be checked before publication.",
+        "fr": "Signalé comme fonctionnant toujours parfaitement en 2004 (JPL). Une source NASA plus récente doit être vérifiée avant publication."
+      }
+    },
+    "scienceSummary": {
+      "value": {
+        "en": "Its 100 prisms send laser pulses fired from Earth straight back. Laser ranging showed that the Moon is moving away from Earth by about 3.8 cm per year.",
+        "fr": "Ses 100 prismes renvoient tout droit les impulsions laser tirées depuis la Terre. Ces mesures ont montré que la Lune s'éloigne de la Terre d'environ 3,8 cm par an."
+      },
+      "sourceIds": ["jpl-llr-1999", "jpl-llr-2004"]
+    },
+    "storyIds": []
+  },
+  {
+    "id": "apollo-12-lm-intrepid-descent-stage",
+    "name": "Apollo 12 Lunar Module “Intrepid” — descent stage",
+    "missionId": "apollo-12",
+    "type": "descent-stage",
+    "nssdcaId": "1969-099C",
+    "date": { "value": "1969-11-19", "sourceIds": ["nssdca-1969-099c"] },
+    "dateLabel": "landing",
+    "locationName": { "value": "Oceanus Procellarum (Ocean of Storms)", "sourceIds": ["nssdca-1969-099c"] },
+    "coordinates": {
+      "value": { "lat": -3.0128, "lon": -23.4219 },
+      "sourceIds": ["nssdca-1969-099c"],
+      "note": {
+        "en": "Landing point determined from Lunar Reconnaissance Orbiter images.",
+        "fr": "Point d'atterrissage déterminé d'après les images du Lunar Reconnaissance Orbiter."
+      }
+    },
+    "status": {
+      "value": "inactive",
+      "sourceIds": ["nssdca-1969-099c"],
+      "note": {
+        "en": "The descent stage served as a launch platform for the ascent stage and was left behind on the Moon.",
+        "fr": "L'étage de descente a servi de plateforme de lancement à l'étage de remontée et a été laissé sur la Lune."
+      }
+    },
+    "scienceSummary": {
+      "value": {
+        "en": "It landed within about 180 m of Surveyor 3, which the crew walked to on their second moonwalk.",
+        "fr": "Il s'est posé à environ 180 m de Surveyor 3, que l'équipage a rejoint à pied lors de sa deuxième sortie."
+      },
+      "sourceIds": ["nssdca-1969-099c"]
+    },
+    "storyIds": []
+  },
+  {
+    "id": "apollo-12-alsep",
+    "name": "Apollo 12 Lunar Surface Experiments Package (ALSEP)",
+    "missionId": "apollo-12",
+    "type": "experiment",
+    "nssdcaId": null,
+    "date": { "value": "1969-11-19", "sourceIds": ["nssdca-1969-099c"] },
+    "dateLabel": "deployment",
+    "locationName": { "value": "Oceanus Procellarum, near the Apollo 12 landing site", "sourceIds": ["nssdca-1969-099c"] },
+    "coordinates": {
+      "value": { "lat": -3.0094, "lon": -23.4246 },
+      "sourceIds": ["nssdca-1969-099c"],
+      "note": { "en": "Position of the central station.", "fr": "Position de la station centrale." }
+    },
+    "status": {
+      "value": "mission-ended",
+      "sourceIds": ["nssdca-1969-099c"],
+      "note": {
+        "en": "Shut down along with the other ALSEP stations on 30 September 1977.",
+        "fr": "Arrêtée en même temps que les autres stations ALSEP le 30 septembre 1977."
+      }
+    },
+    "scienceSummary": {
+      "value": {
+        "en": "A nuclear-powered station with six instruments. Its seismometer recorded the first artificial moonquake, when the Apollo 12 ascent stage was deliberately crashed into the Moon.",
+        "fr": "Une station alimentée par un générateur nucléaire, avec six instruments. Son sismomètre a enregistré le premier séisme lunaire artificiel, provoqué par l'impact volontaire de l'étage de remontée d'Apollo 12."
+      },
+      "sourceIds": ["nssdca-1969-099c"]
+    },
+    "storyIds": []
+  },
+  {
+    "id": "mars-pathfinder-lander",
+    "name": "Mars Pathfinder lander (Carl Sagan Memorial Station)",
+    "missionId": "mars-pathfinder",
+    "type": "lander",
+    "nssdcaId": "1996-068A",
+    "date": { "value": "1997-07-04", "sourceIds": ["nssdca-1996-068a", "nasa-science-mars-pathfinder"] },
+    "dateLabel": "landing",
+    "locationName": { "value": "Ares Vallis", "sourceIds": ["nssdca-1996-068a", "nasa-science-mars-pathfinder"] },
+    "coordinates": {
+      "value": { "lat": 19.33, "lon": -33.55 },
+      "sourceIds": ["nssdca-1996-068a"]
+    },
+    "status": {
+      "value": "mission-ended",
+      "sourceIds": ["nasa-science-mars-pathfinder"],
+      "note": { "en": "Final data transmission on 27 September 1997.", "fr": "Dernière transmission de données le 27 septembre 1997." }
+    },
+    "scienceSummary": {
+      "value": {
+        "en": "The first airbag landing on Mars. With its rover, it returned more than 16,500 lander images and 550 rover images.",
+        "fr": "Le premier atterrissage sur Mars amorti par des airbags. Avec son rover, il a renvoyé plus de 16 500 images de l'atterrisseur et 550 images du rover."
+      },
+      "sourceIds": ["nasa-science-mars-pathfinder"]
+    },
+    "storyIds": []
+  },
+  {
+    "id": "sojourner",
+    "name": "Sojourner rover",
+    "missionId": "mars-pathfinder",
+    "type": "rover",
+    "nssdcaId": null,
+    "date": { "value": "1997-07-05", "sourceIds": ["nasa-science-mars-pathfinder"] },
+    "dateLabel": "deployment",
+    "locationName": { "value": "Ares Vallis, near the Pathfinder lander", "sourceIds": ["nasa-science-mars-pathfinder"] },
+    "coordinates": null,
+    "status": {
+      "value": "mission-ended",
+      "sourceIds": ["nasa-science-mars-pathfinder"],
+      "note": { "en": "Mars Pathfinder's final data transmission was on 27 September 1997.", "fr": "La dernière transmission de Mars Pathfinder date du 27 septembre 1997." }
+    },
+    "scienceSummary": {
+      "value": {
+        "en": "The first robotic rover on Mars (10.6 kg). Its spectrometer measured the elements in rocks and soils.",
+        "fr": "Le premier rover robotisé sur Mars (10,6 kg). Son spectromètre a mesuré les éléments présents dans les roches et le sol."
+      },
+      "sourceIds": ["nasa-science-mars-pathfinder"]
+    },
+    "storyIds": []
+  },
+  {
+    "id": "spirit",
+    "name": "Spirit (MER-A)",
+    "missionId": "mars-exploration-rovers",
+    "type": "rover",
+    "nssdcaId": "2003-027A",
+    "date": {
+      "value": "2004-01-04",
+      "sourceIds": ["nssdca-2003-027a"],
+      "note": { "en": "UT date (3 January 2004 in US time zones).", "fr": "Date UT (3 janvier 2004 aux États-Unis)." }
+    },
+    "dateLabel": "landing",
+    "locationName": { "value": "Gusev Crater", "sourceIds": ["nssdca-2003-027a", "nasa-science-mer"] },
+    "coordinates": {
+      "value": { "lat": -14.572, "lon": 175.478 },
+      "sourceIds": ["nssdca-2003-027a"],
+      "note": {
+        "en": "Landing site. The rover then travelled 7.73 km; its final resting place is “Home Plate”.",
+        "fr": "Site d'atterrissage. Le rover a ensuite parcouru 7,73 km ; il repose à « Home Plate »."
+      }
+    },
+    "status": {
+      "value": "mission-ended",
+      "sourceIds": ["nssdca-2003-027a", "nasa-science-mer"],
+      "note": {
+        "en": "Stuck in soft sand from 2009; last transmission on 22 March 2010. NASA states that Spirit concluded its mission in 2010.",
+        "fr": "Enlisé dans un sable meuble à partir de 2009 ; dernière transmission le 22 mars 2010. La NASA indique que Spirit a terminé sa mission en 2010."
+      }
+    },
+    "scienceSummary": {
+      "value": {
+        "en": "At “Home Plate” it found soil that is 90% pure silica — on Earth, this kind of deposit usually forms in hot springs or steam vents.",
+        "fr": "À « Home Plate », il a trouvé un sol composé à 90 % de silice pure — sur Terre, ce type de dépôt se forme généralement dans des sources chaudes ou des fumerolles."
+      },
+      "sourceIds": ["nasa-science-mer-highlights"]
+    },
+    "storyIds": []
+  },
+  {
+    "id": "opportunity",
+    "name": "Opportunity (MER-B)",
+    "missionId": "mars-exploration-rovers",
+    "type": "rover",
+    "nssdcaId": "2003-032A",
+    "date": {
+      "value": "2004-01-25",
+      "sourceIds": ["nssdca-2003-032a", "nasa-science-mer-highlights"],
+      "note": { "en": "UT date (24 January 2004 in US time zones).", "fr": "Date UT (24 janvier 2004 aux États-Unis)." }
+    },
+    "dateLabel": "landing",
+    "locationName": { "value": "Meridiani Planum", "sourceIds": ["nasa-science-mer"] },
+    "coordinates": {
+      "value": { "lat": -1.946, "lon": -5.527 },
+      "sourceIds": ["nssdca-2003-032a"],
+      "note": {
+        "en": "Landing site: NSSDCA gives 1.946 S, 354.473 E, converted here to an east-positive longitude. The rover then drove more than 45 km.",
+        "fr": "Site d'atterrissage : la NSSDCA donne 1,946 S, 354,473 E, converti ici en longitude positive vers l'est. Le rover a ensuite parcouru plus de 45 km."
+      }
+    },
+    "status": {
+      "value": "mission-ended",
+      "sourceIds": ["jpl-opportunity-end-2019", "nssdca-2003-032a"],
+      "note": {
+        "en": "Final communication on 10 June 2018, during a planet-wide dust storm. NASA declared the end of the mission on 13 February 2019.",
+        "fr": "Dernière communication le 10 juin 2018, pendant une tempête de poussière planétaire. La NASA a déclaré la fin de la mission le 13 février 2019."
+      }
+    },
+    "scienceSummary": {
+      "value": {
+        "en": "It found hematite “blueberries” and gypsum veins: signs that water once soaked and flowed through the rocks.",
+        "fr": "Il a trouvé des « myrtilles » d'hématite et des veines de gypse : des signes que de l'eau a autrefois imprégné les roches et circulé dedans."
+      },
+      "sourceIds": ["nasa-science-mer-highlights"]
+    },
+    "storyIds": []
+  },
+  {
+    "id": "ingenuity",
+    "name": "Ingenuity Mars Helicopter",
+    "missionId": "mars-2020",
+    "type": "helicopter",
+    "nssdcaId": null,
+    "date": { "value": "2021-02-18", "sourceIds": ["nasa-science-ingenuity", "nssdca-2020-052a"] },
+    "dateLabel": "landing",
+    "locationName": { "value": "Jezero Crater", "sourceIds": ["nasa-science-ingenuity", "nssdca-2020-052a"] },
+    "coordinates": null,
+    "status": {
+      "value": "mission-ended",
+      "sourceIds": ["nasa-science-ingenuity", "nssdca-2020-052a"],
+      "note": {
+        "en": "Last flight on 18 January 2024, when its rotors were damaged on landing; mission completed on 25 January 2024.",
+        "fr": "Dernier vol le 18 janvier 2024, au cours duquel ses rotors ont été endommagés à l'atterrissage ; mission terminée le 25 janvier 2024."
+      }
+    },
+    "scienceSummary": {
+      "value": {
+        "en": "The first powered, controlled flight on another planet, on 19 April 2021. It went on to make 72 flights in almost three years.",
+        "fr": "Le premier vol motorisé et contrôlé sur une autre planète, le 19 avril 2021. Il a ensuite réalisé 72 vols en près de trois ans."
+      },
+      "sourceIds": ["nasa-science-ingenuity"]
+    },
+    "storyIds": []
+  }
+]
