@@ -19,13 +19,14 @@ export const fr: Messages = {
       "Des machines construites par l’humanité sont restées sur ces mondes après la fin de leur mission. Choisis-en un pour découvrir ce qu’elles ont laissé — et ce qu’elles ont transmis.",
     destinationsLabel: 'Destinations',
     eyebrow: 'Un guide de terrain des machines que nous avons laissées',
-    scrollHint: 'Fais défiler pour voyager',
-    openDestination: 'Entrer dans la destination',
-    bodiesLabel: 'Corps célestes',
-    indexLabel: 'Aller à un monde',
-    outroTitle: 'Le reste est encore là-haut',
-    outroBody:
-      'Chaque monde de cette page garde une chose que nous avons construite, puis abandonnée. La Lune et Mars sont ouvertes à la visite ; les autres attendent leur archive.',
+    scrollHint: 'Fais défiler — les mondes viennent à toi',
+    journeyLabel: 'Voyage',
+    sceneDeparture: 'Départ',
+    sceneMotto: 'Transmission',
+    chapter: 'Destination {number}',
+    mottoEyebrow: 'Ce qu’elles ont transmis',
+    motto: 'Chaque machine a laissé plus qu’une trace : elle a transmis quelque chose.',
+    backToStart: 'Revenir au départ',
   },
   bodies: {
     mercury: {
@@ -105,10 +106,12 @@ export const fr: Messages = {
     moon: {
       name: 'Lune',
       cta: 'Explorer la Lune',
+      land: 'Se poser sur la Lune',
     },
     mars: {
       name: 'Mars',
       cta: 'Explorer Mars',
+      land: 'Se poser sur Mars',
     },
   },
   destination: {

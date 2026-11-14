@@ -1,10 +1,13 @@
-import { Link, Outlet } from 'react-router'
+import { Link, Outlet, useMatch } from 'react-router'
 import { SiteNavigation } from '@/components/navigation/SiteNavigation'
 import { useTranslation } from '@/i18n'
+import { cn } from '@/lib/utils'
 import { paths } from './paths'
 
 export function Layout() {
   const { t } = useTranslation()
+  // On the home journey the header floats over the 3D scene instead of pushing it down.
+  const isHome = useMatch(paths.home()) !== null
 
   return (
     <div className="flex min-h-dvh flex-col">
@@ -15,7 +18,14 @@ export function Layout() {
         {t('app.skipToContent')}
       </a>
 
-      <header className="relative z-20 border-b border-border bg-deep-space">
+      <header
+        className={cn(
+          'z-20',
+          isHome
+            ? 'fixed inset-x-0 top-0 bg-gradient-to-b from-void/90 to-transparent'
+            : 'relative border-b border-border bg-deep-space',
+        )}
+      >
         <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-2 px-4 py-2">
           <Link to={paths.home()} className="inline-flex min-h-11 items-center font-heading text-lg font-bold">
             {t('app.name')}
