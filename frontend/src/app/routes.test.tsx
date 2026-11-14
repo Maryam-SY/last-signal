@@ -1,9 +1,17 @@
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { describe, expect, it } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+import { mockApi } from '@/test/mockApi'
 import { renderRoute } from '@/test/renderRoute'
 
 describe('routes', () => {
+  beforeEach(() => {
+    mockApi()
+  })
+  afterEach(() => {
+    vi.unstubAllGlobals()
+  })
+
   it('shows the destination selector on /', () => {
     renderRoute('/')
     expect(screen.getByRole('heading', { level: 1, name: 'Choose your destination' })).toBeInTheDocument()
@@ -34,10 +42,10 @@ describe('routes', () => {
     expect(screen.getByRole('link', { name: 'Back to home' })).toHaveAttribute('href', '/')
   })
 
-  it('renders the story shell', () => {
-    renderRoute('/stories/apollo-12')
+  it('renders a story page, or a clear message for an unknown story', async () => {
+    renderRoute('/stories/does-not-exist')
     expect(screen.getByRole('heading', { level: 1, name: 'Story' })).toBeInTheDocument()
-    expect(screen.getByText(/apollo-12/)).toBeInTheDocument()
+    expect(await screen.findByText(/does not exist or has not been published yet/)).toBeInTheDocument()
   })
 
   it('shows the non-affiliation statement on /about', () => {
