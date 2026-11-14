@@ -46,7 +46,7 @@ Choix validés le 2026-11-14 :
   - frontend : typecheck OK, lint 0 erreur (2 avertissements préexistants), **45 tests passés** ;
   - navigateur 1440 et 360 px, 5 positions de défilement : variables d'animation correctes, aucun défilement horizontal.
 
-## Écart : modèles 3D NASA retirés
+## Écart : modèles 3D NASA retirés (résolu ensuite, voir `MODEL-VIEWER-3D.md`)
 
 Testés dans le navigateur, les deux modèles 3D du contenu ne fonctionnent pas :
 - **`ingenuity-3d-model`** (`https://mars.nasa.gov/gltf_embed/25043`) répond par une **page 404 NASA qui affiche le logo NASA**, interdit par CLAUDE.md §7.
@@ -73,5 +73,5 @@ Le bouton « La faire tourner en 3D » n'est donc **pas livré**. Pour l'ajouter
 
 - **SCOPE** : le PO doit acter la réalisation de cette animation P2 dans SCOPE.md.
 - **Durée des animations** : elle dépasse la règle DESIGN_SYSTEM (≤ 200 ms). Le retournement dure 520 ms et les mouvements suivent le scroll. C'est le même écart que pour US-2.1, à valider.
-- **Piste contenu** : URL des modèles 3D à corriger (voir « Écart »).
+- **Modèles 3D** : réglé par `MODEL-VIEWER-3D.md` pour Ingenuity et les modules lunaires Apollo ; le lien de Spirit/Opportunity reste à traiter.
 - **Personnes sur les photos** : certaines photos du contenu montrent des personnes à l'arrière-plan (ex. essais d'airbags MER). Il faut vérifier l'absence de mineurs (CLAUDE.md §7).
