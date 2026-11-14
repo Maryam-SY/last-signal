@@ -49,7 +49,7 @@ export function prefersReducedMotion(): boolean {
   return window.matchMedia('(prefers-reduced-motion: reduce)').matches
 }
 
-export function useScrollFrame(listener: Listener): void {
+export function useScrollFrame(listener: Listener, enabled = true): void {
   const listenerRef = useRef(listener)
 
   useEffect(() => {
@@ -57,7 +57,7 @@ export function useScrollFrame(listener: Listener): void {
   }, [listener])
 
   useEffect(() => {
-    if (typeof window === 'undefined' || prefersReducedMotion()) return
+    if (!enabled || typeof window === 'undefined' || prefersReducedMotion()) return
 
     const entry: Listener = (frame) => listenerRef.current(frame)
     listeners.add(entry)
@@ -68,5 +68,5 @@ export function useScrollFrame(listener: Listener): void {
       listeners.delete(entry)
       if (listeners.size === 0) detach()
     }
-  }, [])
+  }, [enabled])
 }
