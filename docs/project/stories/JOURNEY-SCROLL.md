@@ -34,6 +34,18 @@ Choix validés le 2026-11-14 :
 - **Chargement de la frise** : la fiche reste à la même place dans l'arbre React. Elle n'est jamais remontée, et le focus n'est pas perdu.
 - **`DestinationPage`** : `overflow-hidden` devient `overflow-x-clip`. L'ancienne valeur faisait de la page un conteneur de défilement et empêchait les éléments sticky.
 
+## Fusion avec US-5.6 (2026-11-14)
+
+`main` a reçu entre-temps US-5.6 (#9 : destination en défilement continu, planète épinglée, rail, scène « monde suivant »). La fusion a donné des conflits sur `DestinationPage.tsx` et `MissionGallery.tsx`. Résolution par merge, sans rebase ni push forcé :
+- **US-5.6 conservée telle quelle** : planète épinglée, rail, numéro de mission, frise orbitale, boutons.
+- **Ajouts par-dessus** :
+  - le texte de la scène de mission de US-5.6 s'affiche sur la photo de la mission (`MissionScene`) ;
+  - la grille de cartes machines est remplacée par le parcours `MachineJourney`, une scène par machine ;
+  - `overflow-x-clip` sur le conteneur de la page, pour que l'entrée de la machine depuis la gauche ne crée pas de défilement horizontal.
+- **Après fusion** :
+  - frontend : typecheck OK, lint 0 erreur (2 avertissements préexistants), **45 tests passés** ;
+  - navigateur 1440 et 360 px, 5 positions de défilement : variables d'animation correctes, aucun défilement horizontal.
+
 ## Écart : modèles 3D NASA retirés
 
 Testés dans le navigateur, les deux modèles 3D du contenu ne fonctionnent pas :

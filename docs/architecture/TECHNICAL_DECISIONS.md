@@ -26,6 +26,7 @@
 | ADR-016 | Architecture frontend + backend (site dynamique) | Acceptée ; rôle de l'API tranché (OPEN-18) | OPEN-03, OPEN-18 |
 | ADR-017 | Médias référencés par URL, pas stockés dans le dépôt | Proposée | — |
 | ADR-018 | Accueil immersif « depth journey » sans bibliothèque | Acceptée | — |
+| ADR-019 | Pages Destination et Récit en scroll immersif continu | Acceptée | — |
 
 ---
 
@@ -241,3 +242,21 @@
   - `prefers-reduced-motion: reduce` : l'accueil devient des sections classiques, aucune animation ni transition (NFR-A11Y-006).
   - Barre de défilement masquée **uniquement** sur l'accueil (`html.depth-mode`), remplacée par un indicateur accessible.
   - À vérifier avant la démo : fluidité sur mobile bas de gamme, Safari et Firefox.
+
+---
+
+## ADR-019 — Pages Destination et Récit en scroll immersif continu
+
+- **Statut** : Acceptée le 2026-11-14 (demande explicite de l'équipe, option A de `docs/project/stories/US-5.6.md` ; implémentée par US-5.6)
+- **Problème** : l'équipe veut que **tout le site** soit une expérience au scroll « fixe », sans navigation compliquée, et pas seulement l'accueil (ADR-018). Le PRD impose pourtant pour le récit une liste d'étapes cliquable (STORY-004), Previous/Next et une progression qui ne dépend jamais du seul défilement (STORY-005), l'étape dans l'URL (NAV-004) et un récit complet sans animation (STORY-009). SCOPE classait le « scroll storytelling » des récits en P2.
+- **Options** : (A) scroll continu partout, contrôles réduits à un HUD discret ; (B) un seul long scroll pour tout le site (casse NAV-004 : URLs, retour, partage) ; (C) scroll seul, sans boutons (contraire à STORY-004/005 et au clavier).
+- **Décision** : (A), sans dépendance nouvelle.
+  - **Destination** : planète épinglée (`PinnedDestinationPlanet`, une variable CSS `--p` écrite au scroll) qui s'enfonce en horizon derrière les missions ; une scène par mission ; scène finale « monde suivant » ; rail de sections (`JourneyRail`, ancres natives, scroll-spy par IntersectionObserver) à partir de `md`.
+  - **Récit** : les 6 étapes rendues comme scènes plein écran d'un même scroll (`StepScene`) ; l'étape au centre de l'écran est écrite dans `?step=` (`replace`), les sauts (rail `StepRail`, `StoryControls` Previous/Next/Exit, touches ← →, retour navigateur) font `push` puis défilent vers la scène et y placent le focus. Couleur d'ambiance par étape (`@property --step-accent`).
+  - **Global** : en-tête « verre » fixe, sélecteur EN/FR (choix mémorisé en `localStorage`), fond étoilé partagé, squelettes de chargement, `ScrollRestoration`.
+- **Conséquences** :
+  - Remplace le principe « un seul pas visible » d'ADR-014 : `StoryExperience` reste piloté par l'URL, la progression ne dépend toujours pas du seul scroll.
+  - Exception d'animation étendue (DESIGN_SYSTEM §4) : apparitions au scroll ≤ 700 ms, transition de couleur d'ambiance 700 ms ; jamais porteuses d'information.
+  - `prefers-reduced-motion: reduce` : planète non épinglée (rendue dans le héros), aucune apparition ni défilement animé ; les scènes restent des sections lisibles.
+  - Rail de la destination masqué sous `md` (le scroll suffit, EQUIP-006 reste couvert à partir de `md`).
+  - À vérifier avant la démo : Safari/Firefox (View Transitions, `@property`), mobile bas de gamme (`backdrop-filter`).
