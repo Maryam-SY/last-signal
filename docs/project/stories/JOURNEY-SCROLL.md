@@ -46,6 +46,20 @@ Choix validés le 2026-11-14 :
   - frontend : typecheck OK, lint 0 erreur (2 avertissements préexistants), **45 tests passés** ;
   - navigateur 1440 et 360 px, 5 positions de défilement : variables d'animation correctes, aucun défilement horizontal.
 
+## Choix des photos de machine (2026-11-14, demande de l'équipe)
+
+Avant, chaque machine prenait sa première photo dans l'ordre du contenu. Résultat : 7 machines sur 11 répétaient la photo de leur mission, ou ne se montraient pas elles-mêmes (le module lunaire d'Apollo 12 montrait Surveyor 3, Sojourner un panorama). La règle est désormais dans `lib/journey.ts → machineCover`, testée :
+1. jamais un dessin si une vraie photo existe ;
+2. pas la photo déjà utilisée pour la scène de la mission, si la machine en a une autre ;
+3. de préférence une photo de cette machine seule plutôt qu'une photo partagée avec une autre machine (l'EASEP et le réflecteur d'Apollo 11 montraient la même) ;
+4. une photo fixe plutôt qu'une animation.
+
+Ajustements d'ordre dans `backend/content/media.json`, sans modifier aucune donnée, pour que la photo choisie montre la machine sur place :
+- `nasa-lib-pia00616` (atterrisseur de Pathfinder sur Mars) passe avant `pathfinder-airbag-test` (essai d'airbags sur Terre) ;
+- déjà fait dans #15 pour Spirit (`nasa-lib-pia05044`).
+
+Vérifié dans le navigateur, contenu réel : les 11 machines ont une photo différente de celle de leur mission, et différente entre elles.
+
 ## Écart : modèles 3D NASA retirés (résolu ensuite, voir `MODEL-VIEWER-3D.md`)
 
 Testés dans le navigateur, les deux modèles 3D du contenu ne fonctionnent pas :
