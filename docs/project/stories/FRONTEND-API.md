@@ -8,13 +8,13 @@
 | Story | Ce qui est livré | Ce qui manque |
 |---|---|---|
 | US-3.1 Parcourir par mission | Galerie groupée par mission (période, résumé, machines), « Position non cartographiée » | — |
-| US-3.2 Consulter un équipement | Carte machine (type, date, statut icône + texte, lieu, science, note de statut), photos/vidéos/sources à la demande, lien « Découvrir son histoire » | Panneau `?machine=` (EQUIP-003) : remplacé pour l'instant par le dépliage dans la carte |
+| US-3.2 Consulter un équipement | Carte machine (type, date, statut icône + texte, lieu, science, note de statut), photos/vidéos/sources à la demande, lien « Découvrir son histoire » Fait dans `STORYTELLING-DELTA.md` : le dépliage est piloté par `?machine=` (lien partageable), Échap le ferme, relations nommées |
 | US-3.5 Aller à une mission | Barre « Aller à une mission » (ancres) | — |
 | US-3.3 / US-3.4 Carte et synchronisation | — | **Non commencé** (carte 2D) |
 | US-4.1 / US-4.2 Récit en 6 étapes | Étapes pilotées par `?step=`, progression cliquable (`aria-current="step"`), Précédent/Suivant, focus sur le titre de l'étape, bouton retour du navigateur, Quitter le récit vers la machine d'origine | — |
 | US-4.3 Voix | `VoiceTag` texte + icône | — |
 | US-4.4 Sources dans le récit | Sources de chaque bloc dans un `<details>` dépliable | — |
-| US-4.7 Fin du récit | Retour aux machines + autre destination | Liens vers récits individuels (aucun n'existe encore) |
+| US-4.7 Fin du récit | Retour aux machines + autre destination ; missions et machines du récit (`STORYTELLING-DELTA.md`) | Liens vers récits individuels (aucun n'existe encore) |
 | US-5.1 About & Sources | Liste complète des sources depuis l'API, ancres `#source-{id}` | Crédits, IA : toujours « à compléter » |
 | MEDIA-001 | Badge visible pour vue d'artiste, simulation, schéma, contenu animé | — |
 | TIMELINE-001 | Chronologie dépliable par mission, avec dates formatées et images | — |
