@@ -98,13 +98,13 @@
 /* ---------------------------------------------------------------------------------------
    Home depth journey (components/motion/DepthJourney.tsx).
    The scroll moves a camera, not the page: the native scrollbar is hidden (a journey
-   indicator replaces it) and each scene snaps into focus. Only active on the home page,
-   never under reduced motion. Layer variables: --pass (0→1 once the camera passes the
-   layer), --approach (0 at focus → 1 one scene away), --vel (signed scroll speed).
+   indicator replaces it). Only active on the home page, never under reduced motion.
+   Layer variables: --pass (0→1 once the camera passes the layer), --approach (0 at
+   focus → 1 one scene away), --vel (signed scroll speed). No scroll snapping and no
+   per-frame blur: both made wheel scrolling stutter on mid-range machines.
    --------------------------------------------------------------------------------------- */
 html.depth-mode {
   scrollbar-width: none;
-  scroll-snap-type: y proximity;
 }
 html.depth-mode::-webkit-scrollbar {
   display: none;

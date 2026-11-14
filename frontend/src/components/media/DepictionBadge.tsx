@@ -1,30 +1,22 @@
-import { Bot, Brush, Clapperboard, Map, MonitorPlay } from 'lucide-react'
+import { Brush, Cpu, Film, Map } from 'lucide-react'
+import type { Depiction } from '@/api/types'
 import { useTranslation } from '@/i18n'
-import { cn } from '@/lib/utils'
-import type { Media } from '@/types/content'
 
-const ICONS = { artwork: Brush, simulation: MonitorPlay, diagram: Map, mixed: Clapperboard } as const
+const ICONS = { artwork: Brush, simulation: Cpu, diagram: Map, mixed: Film } as const
 
 /**
- * Visible label for anything that is not a real photo or a document (CLAUDE.md §7, PRD
- * MEDIA-001): a drawing or a simulation must never be mistaken for evidence. Always text, never
- * a tooltip only.
+ * MEDIA-001: anything that is not a real photo (or a document) gets a visible text label,
+ * so that a drawing or a simulation is never mistaken for evidence.
  */
-export function DepictionBadge({ media, className }: { media: Pick<Media, 'depiction' | 'aiGenerated'>; className?: string }) {
+export function DepictionBadge({ depiction }: { depiction: Depiction }) {
   const { t } = useTranslation()
-  const depiction = media.depiction === 'photo' || media.depiction === 'document' ? null : media.depiction
-  if (!depiction && !media.aiGenerated) return null
-  const Icon = depiction ? ICONS[depiction] : Bot
+  if (depiction === 'photo' || depiction === 'document') return null
+  const Icon = ICONS[depiction]
 
   return (
-    <span
-      className={cn(
-        'inline-flex items-center gap-1.5 rounded-md border border-stellar-gold/70 bg-void/85 px-2 py-1 text-xs font-medium text-stellar-gold',
-        className,
-      )}
-    >
-      <Icon aria-hidden className="size-3.5 shrink-0" />
-      {depiction ? t(`media.depiction.${depiction}`) : t('media.aiGenerated')}
+    <span className="inline-flex items-center gap-1.5 rounded-full border border-stellar-gold/60 bg-void/85 px-2.5 py-1 text-xs font-semibold text-stellar-gold">
+      <Icon aria-hidden="true" className="size-3.5" />
+      {t(`depiction.${depiction}`)}
     </span>
   )
 }

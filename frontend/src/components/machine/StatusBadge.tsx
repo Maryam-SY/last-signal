@@ -1,29 +1,22 @@
-import { CircleCheck, CircleHelp, CirclePause, CircleStop, RadioTower, type LucideIcon } from 'lucide-react'
+import { CircleCheck, CircleDashed, CircleOff, CircleStop, Unplug } from 'lucide-react'
+import type { MachineStatus } from '@/api/types'
 import { useTranslation } from '@/i18n'
-import { cn } from '@/lib/utils'
-import type { MachineStatus } from '@/types/content'
 
-const STATUS: Record<MachineStatus, { icon: LucideIcon; className: string }> = {
-  operational: { icon: CircleCheck, className: 'text-stellar-cyan border-stellar-cyan/60' },
-  'contact-lost': { icon: RadioTower, className: 'text-stellar-gold border-stellar-gold/50' },
-  inactive: { icon: CirclePause, className: 'text-moon-dust border-moon-dust/50' },
-  'mission-ended': { icon: CircleStop, className: 'text-starlight border-moon-dust/70' },
-  unknown: { icon: CircleHelp, className: 'text-moon-dust border-dashed border-moon-dust/50' },
-}
+const ICONS = {
+  operational: CircleCheck,
+  'contact-lost': Unplug,
+  inactive: CircleOff,
+  'mission-ended': CircleStop,
+  unknown: CircleDashed,
+} as const
 
-/** Status = icon + text; colour is only a reinforcement (EQUIP-005, NFR-A11Y-004). */
-export function StatusBadge({ status, className }: { status: MachineStatus; className?: string }) {
+/** EQUIP-005: status shown as icon + text, never by colour alone. */
+export function StatusBadge({ status }: { status: MachineStatus }) {
   const { t } = useTranslation()
-  const { icon: Icon, className: statusClass } = STATUS[status]
+  const Icon = ICONS[status]
   return (
-    <span
-      className={cn(
-        'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-medium',
-        statusClass,
-        className,
-      )}
-    >
-      <Icon aria-hidden className="size-3.5" />
+    <span className="inline-flex items-center gap-1.5 text-sm">
+      <Icon aria-hidden="true" className="size-4 text-stellar-cyan" />
       {t(`status.${status}`)}
     </span>
   )

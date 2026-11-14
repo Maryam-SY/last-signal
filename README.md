@@ -51,6 +51,8 @@ Run the web app (Vite dev server; `/api/*` is proxied to `http://localhost:3000`
 cd frontend && npm run dev
 ```
 
+The web app reads all mission content from the API (`/api/*`), so start the backend first. In production, set `VITE_API_BASE_URL` (e.g. `https://api.example.org`) at build time; when it is empty, the app calls `/api` on its own origin.
+
 ## Scripts
 
 Available in both `frontend/` and `backend/`:

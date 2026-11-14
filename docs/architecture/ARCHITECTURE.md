@@ -240,6 +240,15 @@ flowchart LR
 
 ## 11. Chargement des contenus
 
+> **Mise à jour 2026-11-14 — le frontend lit le contenu depuis l'API (ADR-016, OPEN-18).** Le tableau ci-dessous (import statique) est remplacé :
+> - `src/api/client.ts` : une fonction par route (`api.destination`, `api.mission`, `api.machine`, `api.story`, `api.sources`) ; base `VITE_API_BASE_URL` (vide en dev : proxy Vite `/api` → backend) ; `?lang=` = langue de l'interface.
+> - `src/api/types.ts` : formes des réponses déjà localisées (miroir de `backend/src/content/types.ts`).
+> - `src/hooks/useApi.ts` : chargement + annulation (AbortController) + rechargement au changement de langue, état `loading | success | error` et `retry()` ; aucune librairie ajoutée.
+> - Chargement **à la demande** : la page destination charge `/destinations/:id` ; la chronologie (`/missions/:id`) et les photos/sources d'une machine (`/machines/:id`) ne se chargent qu'à l'ouverture du panneau.
+> - Erreurs : composant `LoadState` (message clair + « Réessayer ») ; récit inconnu → message dédié (404).
+> - Les ancres (`#mission-…`, `#machine-…`) sont résolues **après** chargement (retour « Quitter le récit » vers la machine d'origine, avec focus).
+> - Médias : `MediaFigure` charge les fichiers depuis les serveurs NASA (ADR-017) avec `DepictionBadge` (MEDIA-001) ; YouTube, modèles 3D et PDF s'ouvrent sur leur page officielle (pas d'intégration tierce).
+
 | Fichier | Mode | Justification |
 |---|---|---|
 | destinations, missions, machines, relations, sources, credits | Import statique (bundle principal) | Petits volumes (dizaines d'entrées), nécessaires dès la page destination |
@@ -297,16 +306,14 @@ Pas d'E2E navigateur (Playwright) dans le MVP (ADR-012) ; à reconsidérer en P1
 | `GET /api/destinations` | Destinations triées, avec `missionCount` et `machineCount` calculés | — |
 | `GET /api/destinations/:id` | Destination + `missions[]` (triées) avec leurs `machines[]` et `mainStory` | 404 |
 | `GET /api/missions/:id` | Mission + `timeline` (étapes datées, chacune avec ses `media` résolus), `machines`, `stories`, `relations`, `media` | 404 |
-| `GET /api/machines/:id` | Équipement + `mission`, `destinationId`, `relations` (avec `fromEntity`/`toEntity` nommés), `media`, `storyTarget` (STORY-003), `sources` résolues (équipement **et** relations) | 404 |
+| `GET /api/machines/:id` | Équipement + `mission`, `destinationId`, `relations`, `media`, `storyTarget` (STORY-003), `sources` résolues | 404 |
 | `GET /api/stories` | Résumés `{ id, title, status, missionIds }` | — |
-| `GET /api/stories/:id` | Récit complet (6 étapes) + `missions` et `machines` citées (`{ kind, id, name, destinationId }`), `relations` (avec `fromEntity`/`toEntity`), `media` et `sources` utilisées | 404 |
+| `GET /api/stories/:id` | Récit complet (6 étapes) + `relations`, `media` et `sources` utilisées | 404 |
 | `GET /api/relations` | Toutes les relations documentées | — |
 | `GET /api/sources`, `GET /api/sources/:id` | Sources | 404 |
 | `GET /api/media?missionId=&machineId=&type=` | Médias filtrés (`type` : image, animation, video, 3d-model, document) | 400 si `type` inconnu |
 
 Toute autre route `/api/*` renvoie `404 { error: "Not found" }`. Le statut `draft` ou `reviewed` des récits est exposé tel quel : le frontend doit signaler un récit non relu.
-
-**Côté frontend** : types dérivés des réponses du backend (`src/types/content.ts`, ADR-019) ; client `src/lib/api.ts` (ajoute `?lang=` selon la langue de l'interface) ; hook `useApiResource` (chargement, 404, erreur avec « Try again », annulation). Pages : `DestinationPage` charge `/destinations/:id`, `/sources` et `/media?missionId=` (couverture des cartes : une photo réelle en priorité) ; `MissionTimeline` charge `/missions/:id` à l'ouverture ; `MachineDetail` charge `/machines/:id` ; `StoryPage` charge `/stories/:id`. Tout média autre que `photo`/`document` porte un `DepictionBadge` visible ; une image distante qui ne charge pas est remplacée par un message, le lien vers la page source reste.
 
 ## 17. Extensibilité (hors MVP, sans surcoût aujourd'hui)
 

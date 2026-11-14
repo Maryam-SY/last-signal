@@ -1,81 +1,111 @@
-import { ImageOff, MapPinOff } from 'lucide-react'
-import { useState } from 'react'
+import { useId, useState } from 'react'
+import { ArrowRight, MapPin } from 'lucide-react'
+import { Link } from 'react-router'
+import { api } from '@/api/client'
+import type { Machine, StorySummary } from '@/api/types'
+import { paths } from '@/app/paths'
+import { LoadState } from '@/components/common/LoadState'
 import { StatusBadge } from '@/components/machine/StatusBadge'
-import { DepictionBadge } from '@/components/media/DepictionBadge'
+import { MediaFigure } from '@/components/media/MediaFigure'
+import { SourceList } from '@/components/sources/SourceList'
+import { useApi } from '@/hooks/useApi'
 import { useTranslation } from '@/i18n'
-import { anchors } from '@/lib/anchors'
-import { formatPartialDate } from '@/lib/format'
-import { cn } from '@/lib/utils'
-import type { Machine, Media } from '@/types/content'
+import { formatPartialDate } from '@/lib/formatDate'
 
 interface MachineCardProps {
   machine: Machine
-  cover: Media | undefined
-  selected: boolean
-  onSelect: (machineId: string) => void
+  /** Story to open from this card (STORY-003): the machine's own story, else its mission's. */
+  story: StorySummary | null
 }
 
-/** Summary of one machine; the whole card is a single button that opens its details. */
-export function MachineCard({ machine, cover, selected, onSelect }: MachineCardProps) {
+/** EQUIP-002: summary of one machine; photos, videos and sources load when the visitor asks. */
+export function MachineCard({ machine, story }: MachineCardProps) {
   const { t, locale } = useTranslation()
-  const [coverFailed, setCoverFailed] = useState(false)
-  const dateLabel = t(`dateLabel.${machine.dateLabel ?? 'default'}`)
+  const [open, setOpen] = useState(false)
+  const panelId = useId()
 
   return (
-    <button
-      type="button"
-      id={anchors.machineCard(machine.id)}
-      aria-haspopup="dialog"
-      aria-label={t('gallery.openDetails', { machine: machine.name })}
-      onClick={() => onSelect(machine.id)}
-      className={cn(
-        'group flex h-full w-full flex-col overflow-hidden rounded-xl border-2 bg-nebula-surface text-left transition-[transform,background-color] duration-200 hover:-translate-y-0.5 hover:bg-[color-mix(in_oklch,var(--cosmos-nebula-surface),white_6%)] motion-reduce:transition-none motion-reduce:hover:translate-y-0',
-        selected ? 'border-stellar-cyan' : 'border-transparent',
+    <article id={`machine-${machine.id}`} className="scroll-mt-24 rounded-xl border border-moon-dust/30 bg-card p-5">
+      <p className="font-mono text-[0.68rem] uppercase tracking-[0.25em] text-stellar-cyan">{t(`machineType.${machine.type}`)}</p>
+      <h4 className="mt-2 font-heading text-xl font-bold">{machine.name}</h4>
+
+      <dl className="mt-3 space-y-1.5 text-sm">
+        {machine.date && (
+          <div className="flex flex-wrap gap-x-2">
+            <dt className="text-moon-dust">{t(`dateLabel.${machine.dateLabel ?? 'landing'}`)}</dt>
+            <dd className="font-mono">
+              <time dateTime={machine.date.value}>{formatPartialDate(machine.date.value, locale)}</time>
+            </dd>
+          </div>
+        )}
+        <div className="flex flex-wrap items-center gap-x-2">
+          <dt className="sr-only">{t('status.label')}</dt>
+          <dd>
+            <StatusBadge status={machine.status.value} />
+          </dd>
+        </div>
+        <div className="flex items-start gap-1.5 text-moon-dust">
+          <dt className="sr-only">{t('destination.location')}</dt>
+          <MapPin aria-hidden="true" className="mt-0.5 size-4 shrink-0" />
+          <dd>
+            {machine.locationName?.value}
+            {!machine.coordinates && <span className="block text-xs">{t('destination.locationNotMapped')}</span>}
+          </dd>
+        </div>
+      </dl>
+
+      {machine.scienceSummary && <p className="mt-3">{machine.scienceSummary.value}</p>}
+      {machine.status.note && <p className="mt-2 text-sm text-moon-dust">{machine.status.note}</p>}
+
+      <div className="mt-4 flex flex-wrap gap-2">
+        {story && (
+          <Link
+            to={`${paths.story(story.id)}?from=${encodeURIComponent(machine.id)}`}
+            className="inline-flex min-h-11 items-center gap-2 rounded-md bg-primary px-4 text-sm font-semibold text-primary-foreground hover:bg-primary/85"
+          >
+            {t('destination.discoverStory')}
+            <ArrowRight aria-hidden="true" className="size-4" />
+          </Link>
+        )}
+        <button
+          type="button"
+          aria-expanded={open}
+          aria-controls={panelId}
+          onClick={() => setOpen((v) => !v)}
+          className="inline-flex min-h-11 items-center rounded-md border border-moon-dust/50 px-4 text-sm font-medium hover:bg-nebula-surface"
+        >
+          {open ? t('destination.detailsHide') : t('destination.detailsShow')}
+        </button>
+      </div>
+
+      <div id={panelId} hidden={!open} className="mt-4">
+        {open && <MachineDetails machineId={machine.id} />}
+      </div>
+    </article>
+  )
+}
+
+function MachineDetails({ machineId }: { machineId: string }) {
+  const { t } = useTranslation()
+  const detail = useApi(`machine:${machineId}`, (lang, signal) => api.machine(machineId, lang, signal))
+
+  if (detail.status !== 'success') return <LoadState status={detail.status} onRetry={detail.retry} />
+
+  return (
+    <div className="space-y-4">
+      {detail.data.media.length === 0 ? (
+        <p className="text-sm text-moon-dust">{t('destination.noMedia')}</p>
+      ) : (
+        <div className="grid gap-3 sm:grid-cols-2">
+          {detail.data.media.map((m) => (
+            <MediaFigure key={m.id} media={m} />
+          ))}
+        </div>
       )}
-    >
-      <div className="relative aspect-[4/3] w-full overflow-hidden bg-deep-space">
-        {cover && !coverFailed ? (
-          <>
-            <img
-              src={cover.url}
-              alt={cover.alt}
-              loading="lazy"
-              decoding="async"
-              referrerPolicy="no-referrer"
-              onError={() => setCoverFailed(true)}
-              className="size-full object-cover transition-transform duration-200 group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
-            />
-            <DepictionBadge media={cover} className="absolute left-2 top-2" />
-          </>
-        ) : (
-          <span className="flex size-full flex-col items-center justify-center gap-2 text-xs text-moon-dust">
-            <ImageOff aria-hidden className="size-6" />
-            {coverFailed ? t('media.unavailableShort') : t('gallery.noImage')}
-          </span>
-        )}
-      </div>
-      <div className="flex flex-1 flex-col gap-3 p-4">
-        <div>
-          <p className="font-mono text-[0.68rem] uppercase tracking-[0.2em] text-stellar-cyan">
-            {t(`machineType.${machine.type}`)}
-          </p>
-          <h3 className="mt-1 font-heading text-lg font-semibold text-starlight">{machine.name}</h3>
-        </div>
-        <div className="mt-auto flex flex-wrap items-center gap-2">
-          <StatusBadge status={machine.status.value} />
-          {machine.date && (
-            <span className="font-mono text-xs text-moon-dust">
-              {dateLabel} · {formatPartialDate(machine.date.value, locale)}
-            </span>
-          )}
-        </div>
-        {!machine.coordinates && (
-          <p className="flex items-center gap-1.5 text-xs text-moon-dust">
-            <MapPinOff aria-hidden className="size-3.5" />
-            {t('gallery.locationNotMapped')}
-          </p>
-        )}
-      </div>
-    </button>
+      <section>
+        <h5 className="mb-2 text-sm font-semibold">{t('sources.count', { count: detail.data.sources.length })}</h5>
+        <SourceList sources={detail.data.sources} />
+      </section>
+    </div>
   )
 }
