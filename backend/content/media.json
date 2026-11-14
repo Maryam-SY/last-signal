@@ -379,30 +379,6 @@
     "depiction": "diagram"
   },
   {
-    "id": "mer-3d-model",
-    "type": "3d-model",
-    "url": "https://solarsystem.nasa.gov/gltf_embed/2370/?height=450&rotate=true&cc=true&fs=true&target=&orbit=",
-    "pageUrl": "https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/",
-    "title": "Mars Exploration Rovers 3D Model",
-    "caption": "A 3D model of the twin Mars Exploration Rovers, Spirit and Opportunity.",
-    "alt": {
-      "en": "Interactive 3D model of the Spirit and Opportunity rovers.",
-      "fr": "Modèle 3D interactif des rovers Spirit et Opportunity."
-    },
-    "credit": "NASA Visualization Technology Applications and Development (VTAD)",
-    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
-    "missionIds": [
-      "mars-exploration-rovers"
-    ],
-    "machineIds": [
-      "spirit",
-      "opportunity"
-    ],
-    "sourceId": "nasa-science-mer",
-    "aiGenerated": false,
-    "depiction": "simulation"
-  },
-  {
     "id": "mer-opportunity-self-portrait-2014",
     "type": "image",
     "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/internal_resources/3447/solar_panels_on_rover_seen_from_above.jpeg",
@@ -422,6 +398,32 @@
       "opportunity"
     ],
     "sourceId": "nasa-science-mer",
+    "aiGenerated": false,
+    "depiction": "photo"
+  },
+  {
+    "id": "nasa-lib-pia05044",
+    "type": "image",
+    "url": "https://images-assets.nasa.gov/image/PIA05044/PIA05044~orig.jpg",
+    "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA05044/PIA05044~thumb.jpg",
+    "pageUrl": "https://images.nasa.gov/details/PIA05044",
+    "title": "PIA05044",
+    "caption": "This mosaic image taken by the navigation camera on the Mars Exploration Rover Spirit represents an overhead view of the rover as it prepares to roll off the lander and onto the martian surface. The yellow arrow illustrates the direction the rover may take to roll safely off the lander. The rover was originally positioned to roll straight forward off the lander (south side of image). However, an airbag is blocking its path. To take this northeastern route, the rover must back up and perform what is likened to a 3-point turn in a cramped parking lot. http://photojournal.jpl.nasa.gov/catalog/PIA05044",
+    "alt": {
+      "en": "View from above of Spirit on its lander, with the path chosen to roll off.",
+      "fr": "Vue d’en haut de Spirit sur son atterrisseur, avec le chemin prévu pour descendre."
+    },
+    "credit": "NASA/JPL",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-exploration-rovers"
+    ],
+    "machineIds": [
+      "spirit"
+    ],
+    "sourceId": "nasa-image-video-library",
+    "dateCreated": "2004-01-11",
+    "nasaId": "PIA05044",
     "aiGenerated": false,
     "depiction": "photo"
   },
@@ -2630,32 +2632,6 @@
     "sourceId": "nasa-image-video-library",
     "dateCreated": "2004-01-11",
     "nasaId": "PIA05043",
-    "aiGenerated": false,
-    "depiction": "photo"
-  },
-  {
-    "id": "nasa-lib-pia05044",
-    "type": "image",
-    "url": "https://images-assets.nasa.gov/image/PIA05044/PIA05044~orig.jpg",
-    "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA05044/PIA05044~thumb.jpg",
-    "pageUrl": "https://images.nasa.gov/details/PIA05044",
-    "title": "PIA05044",
-    "caption": "This mosaic image taken by the navigation camera on the Mars Exploration Rover Spirit represents an overhead view of the rover as it prepares to roll off the lander and onto the martian surface. The yellow arrow illustrates the direction the rover may take to roll safely off the lander. The rover was originally positioned to roll straight forward off the lander (south side of image). However, an airbag is blocking its path. To take this northeastern route, the rover must back up and perform what is likened to a 3-point turn in a cramped parking lot. http://photojournal.jpl.nasa.gov/catalog/PIA05044",
-    "alt": {
-      "en": "View from above of Spirit on its lander, with the path chosen to roll off.",
-      "fr": "Vue d’en haut de Spirit sur son atterrisseur, avec le chemin prévu pour descendre."
-    },
-    "credit": "NASA/JPL",
-    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
-    "missionIds": [
-      "mars-exploration-rovers"
-    ],
-    "machineIds": [
-      "spirit"
-    ],
-    "sourceId": "nasa-image-video-library",
-    "dateCreated": "2004-01-11",
-    "nasaId": "PIA05044",
     "aiGenerated": false,
     "depiction": "photo"
   },
