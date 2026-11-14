@@ -8,7 +8,7 @@
 - **Priorité** : P0 | P1
 - **Exigences PRD** : <IDs>
 - **Décisions liées** : <ADR-xxx, OPEN-xx (doivent être tranchées)>
-- **Branche** : `feat/US-x.y-<slug>`
+- **Branche** : `feat/US-x.y-<slug>` · **Base et cible de la PR** : `front` | `back` | `main` (CLAUDE.md §10)
 
 ## Story
 

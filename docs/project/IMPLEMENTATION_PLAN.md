@@ -10,7 +10,7 @@
    - **Piste code** (développeurs + agent) : phases 1 → 5.
    - **Piste contenu** (rédacteurs) : catalogue sourcé (US-1.8) puis récits (US-4.5, US-4.6). C'est le **chemin critique** (risque R1).
 3. **Galerie avant carte**, **pas-à-pas avant animation**, **P0 avant P1**.
-4. **Petites stories vérifiables** : une story = une branche `feat/US-x.y-slug` = une PR = CI verte + relecture humaine.
+4. **Petites stories vérifiables** : une story = une branche `feat/US-x.y-slug` = une PR (vers `front`, `back` ou `main` selon la zone, OPEN-11) = CI verte + relecture humaine.
 5. **Validation humaine à chaque fin de phase** (gate de sortie) avant d'ouvrir la suivante.
 
 ## 2. Calendrier relatif
