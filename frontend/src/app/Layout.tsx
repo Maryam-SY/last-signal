@@ -15,7 +15,7 @@ export function Layout() {
         {t('app.skipToContent')}
       </a>
 
-      <header className="border-b border-border bg-deep-space">
+      <header className="relative z-20 border-b border-border bg-deep-space">
         <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-2 px-4 py-2">
           <Link to={paths.home()} className="inline-flex min-h-11 items-center font-heading text-lg font-bold">
             {t('app.name')}
@@ -28,7 +28,7 @@ export function Layout() {
         <Outlet />
       </main>
 
-      <footer className="border-t border-border bg-deep-space">
+      <footer className="relative z-20 border-t border-border bg-deep-space">
         <p className="mx-auto max-w-5xl px-4 py-6 text-sm text-muted-foreground">{t('app.disclaimer')}</p>
       </footer>
     </div>

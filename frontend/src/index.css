@@ -78,6 +78,23 @@
   }
 }
 
+/* Idle float for the SVG planets; scroll parallax is applied by JS on the parent wrapper. */
+@media (prefers-reduced-motion: no-preference) {
+  .planet-float {
+    animation: planet-float 11s ease-in-out infinite;
+  }
+}
+
+@keyframes planet-float {
+  0%,
+  100% {
+    transform: translateY(-1.4%) rotate(-0.8deg);
+  }
+  50% {
+    transform: translateY(1.4%) rotate(0.8deg);
+  }
+}
+
 /* NFR-A11Y-006: no non-essential motion when the user asks for less */
 @media (prefers-reduced-motion: reduce) {
   *,

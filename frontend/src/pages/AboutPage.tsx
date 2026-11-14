@@ -22,6 +22,19 @@ export function AboutPage() {
             {t(titleKey)}
           </h2>
           <p className="mt-2 text-muted-foreground">{t('about.comingSoon')}</p>
+          {id === 'credits' && (
+            <p className="mt-3 text-sm text-muted-foreground">
+              {t('about.imagesCredit')}{' '}
+              <a
+                href="https://nssdc.gsfc.nasa.gov/Images/"
+                target="_blank"
+                rel="noreferrer"
+                className="font-medium text-cosmic-indigo hover:underline"
+              >
+                {t('about.imagesSourceLabel')}
+              </a>
+            </p>
+          )}
         </section>
       ))}
     </div>

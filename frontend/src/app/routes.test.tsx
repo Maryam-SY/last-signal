@@ -7,7 +7,9 @@ describe('routes', () => {
   it('shows the destination selector on /', () => {
     renderRoute('/')
     expect(screen.getByRole('heading', { level: 1, name: 'Choose your destination' })).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: 'Explore the Moon' })).toHaveAttribute('href', '/explore/moon')
+    const moonLinks = screen.getAllByRole('link', { name: 'Explore the Moon' })
+    expect(moonLinks.length).toBeGreaterThan(0)
+    for (const link of moonLinks) expect(link).toHaveAttribute('href', '/explore/moon')
     expect(screen.getByRole('link', { name: 'Explore Mars' })).toHaveAttribute('href', '/explore/mars')
     expect(document.title).toBe('Choose your destination · AeroReborn')
   })
@@ -64,7 +66,7 @@ describe('routes', () => {
   it('renders the interface in French when the locale is fr', () => {
     renderRoute('/', 'fr')
     expect(screen.getByRole('heading', { level: 1, name: 'Choisis ta destination' })).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: 'Explorer la Lune' })).toBeInTheDocument()
+    expect(screen.getAllByRole('link', { name: 'Explorer la Lune' }).length).toBeGreaterThan(0)
     expect(document.documentElement.lang).toBe('fr')
   })
 })
