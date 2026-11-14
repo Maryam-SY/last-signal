@@ -7,7 +7,7 @@ import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { useTranslation } from '@/i18n'
 import { formatPartialDate } from '@/lib/formatDate'
-import { bestStill, machineChapters, mediaOfMachine, modelOf, type JourneyChapter } from '@/lib/journey'
+import { machineChapters, machineCover, modelOf, type JourneyChapter } from '@/lib/journey'
 import { cn } from '@/lib/utils'
 import { MachineStage } from './MachineStage'
 import { ModelViewer3D } from './ModelViewer3D'
@@ -30,7 +30,7 @@ export function MachineJourney({ machine, mission, story }: MachineJourneyProps)
   const { t } = useTranslation()
   const reduced = useReducedMotion()
   const sceneRef = useSceneMotion<HTMLElement>(!reduced)
-  const cover = mission ? bestStill(mediaOfMachine(mission, machine.id)) : undefined
+  const cover = mission ? machineCover(mission, machine.id) : undefined
   const chapters = mission ? machineChapters(machine, mission, cover) : []
   const model = mission ? modelOf(mission, machine.id) : undefined
   const [showModel, setShowModel] = useState(false)

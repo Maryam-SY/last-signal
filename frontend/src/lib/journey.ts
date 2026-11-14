@@ -26,6 +26,28 @@ export function mediaOfMachine(mission: MissionDetail, machineId: string): Media
   return mission.media.filter((item) => item.machineIds.includes(machineId))
 }
 
+/** Photo of the mission's opening scene. */
+export function missionCover(mission: MissionDetail): Media | undefined {
+  return bestStill(mission.media)
+}
+
+/**
+ * Photo of a machine on its stage: its best real photo, but not the one already shown for the
+ * mission just above when the machine has another one (otherwise the same picture appears
+ * twice and the machine itself is not shown). Real photos still win over drawings; among
+ * photos, one of this machine alone and a still image are preferred.
+ */
+export function machineCover(mission: MissionDetail, machineId: string): Media | undefined {
+  const stills = mediaOfMachine(mission, machineId).filter(isStill)
+  // Preferences, in order: a photo of this machine alone rather than one shared with other
+  // machines (two machines in a row would show the same picture), then a still photo rather
+  // than an animation (lighter, and the stage animates it already). Content order otherwise.
+  const rank = (item: Media) => (item.machineIds.length > 1 ? 2 : 0) + (item.type === 'animation' ? 1 : 0)
+  const photos = stills.filter((item) => item.depiction === 'photo').sort((a, b) => rank(a) - rank(b))
+  const opening = missionCover(mission)
+  return photos.find((item) => item.id !== opening?.id) ?? photos[0] ?? stills[0]
+}
+
 const MODEL_FILE = /\.(glb|gltf)$/i
 
 /**
