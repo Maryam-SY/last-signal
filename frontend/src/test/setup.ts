@@ -15,3 +15,6 @@ afterEach(() => {
 
 // jsdom has no canvas implementation; WarpField simply skips drawing when there is no context.
 HTMLCanvasElement.prototype.getContext = (() => null) as typeof HTMLCanvasElement.prototype.getContext
+
+// jsdom does not scroll; the router's scroll restoration and the immersive pages call these.
+window.scrollTo = (() => {}) as typeof window.scrollTo

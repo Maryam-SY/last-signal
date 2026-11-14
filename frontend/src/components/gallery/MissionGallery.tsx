@@ -1,36 +1,38 @@
 import { useEffect, useId, useState } from 'react'
-import { BookOpenText } from 'lucide-react'
+import { BookOpenText, ListOrdered } from 'lucide-react'
 import { Link, useLocation } from 'react-router'
-import { api } from '@/api/client'
 import type { DestinationDetail } from '@/api/types'
 import { paths } from '@/app/paths'
 import { LoadState } from '@/components/common/LoadState'
-import { useApi } from '@/hooks/useApi'
+import { Reveal } from '@/components/motion/Reveal'
+import type { ApiState } from '@/hooks/useApi'
 import { useTranslation } from '@/i18n'
 import { formatPartialDate } from '@/lib/formatDate'
-import type { DestinationId } from '@/types/content'
+import { ctaGhost, ctaPrimary, eyebrow } from '@/lib/styles'
+import { cn } from '@/lib/utils'
 import { MachineCard } from './MachineCard'
 import { MissionTimeline } from './MissionTimeline'
 
+interface MissionGalleryProps {
+  state: ApiState<DestinationDetail> & { retry: () => void }
+}
+
 /**
- * EQUIP-001 / EQUIP-006: the destination's machines grouped by mission, with a jump bar.
- * This gallery works on its own, without the map (SYNC-003).
+ * EQUIP-001 / EQUIP-006: the destination's machines grouped by mission, each mission a
+ * scene of the descent (US-5.6). Works on its own, without the map (SYNC-003).
  */
-export function MissionGallery({ destinationId }: { destinationId: DestinationId }) {
+export function MissionGallery({ state }: MissionGalleryProps) {
   const { t } = useTranslation()
-  const destination = useApi(`destination:${destinationId}`, (lang, signal) => api.destination(destinationId, lang, signal))
 
   return (
-    <section aria-labelledby="missions-title" className="mx-auto max-w-5xl px-5 pb-24">
-      <h2 id="missions-title" className="font-heading text-3xl font-bold sm:text-4xl">
+    <section aria-labelledby="missions-title" className="mx-auto max-w-6xl px-5 pb-12">
+      <h2 id="missions-title" tabIndex={-1} className="scroll-mt-24 font-heading text-3xl font-bold outline-none sm:text-5xl">
         {t('destination.missionsTitle')}
       </h2>
-      {destination.status !== 'success' ? (
-        <div className="mt-4">
-          <LoadState status={destination.status} onRetry={destination.retry} />
-        </div>
+      {state.status !== 'success' ? (
+        <LoadState status={state.status} onRetry={state.retry} variant="cards" className="mt-6" />
       ) : (
-        <GalleryContent destination={destination.data} />
+        <GalleryContent destination={state.data} />
       )}
     </section>
   )
@@ -51,87 +53,103 @@ function GalleryContent({ destination }: { destination: DestinationDetail }) {
     target.focus({ preventScroll: true })
   }, [hash])
 
+  const total = destination.missions.length
+
   return (
     <>
-      <p className="mt-2 text-moon-dust">{destination.intro}</p>
-      <p className="mt-1 font-mono text-xs uppercase tracking-widest text-moon-dust">
+      <p className="mt-3 max-w-2xl text-moon-dust sm:text-lg">{destination.intro}</p>
+      <p className={cn(eyebrow, 'mt-2 text-moon-dust')}>
         {t('destination.missionsCount', { missions: destination.missionCount, machines: destination.machineCount })}
       </p>
 
-      <nav aria-label={t('destination.jumpToMission')} className="mt-6">
-        <ul className="flex flex-wrap gap-2">
-          {destination.missions.map((mission) => (
-            <li key={mission.id}>
-              <a
-                href={`#mission-${mission.id}`}
-                className="inline-flex min-h-11 items-center rounded-full border border-stellar-cyan/50 px-4 text-sm font-medium hover:bg-nebula-surface"
-              >
-                {mission.name}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-
-      <div className="mt-10 space-y-16">
-        {destination.missions.map((mission) => (
-          <MissionSection key={mission.id} mission={mission} />
+      {/* The orbital track: one node per mission along a glowing line. */}
+      <div className="relative mt-8 border-l border-world/25 pl-6 sm:pl-10">
+        <div aria-hidden="true" className="absolute top-0 bottom-0 -left-px w-px bg-gradient-to-b from-world via-world/30 to-transparent" />
+        {destination.missions.map((mission, index) => (
+          <MissionSection key={mission.id} mission={mission} number={index + 1} total={total} />
         ))}
       </div>
     </>
   )
 }
 
-function MissionSection({ mission }: { mission: DestinationDetail['missions'][number] }) {
+interface MissionSectionProps {
+  mission: DestinationDetail['missions'][number]
+  number: number
+  total: number
+}
+
+function MissionSection({ mission, number, total }: MissionSectionProps) {
   const { t, locale } = useTranslation()
   const [timelineOpen, setTimelineOpen] = useState(false)
   const timelineId = useId()
   const titleId = `mission-${mission.id}-title`
   const period = mission.period?.value
+  const padded = String(number).padStart(2, '0')
 
   return (
-    <section id={`mission-${mission.id}`} aria-labelledby={titleId} className="scroll-mt-24">
-      <h3 id={titleId} tabIndex={-1} className="font-heading text-2xl font-bold sm:text-3xl">
-        {mission.name}
-      </h3>
-      {period && (
-        <p className="mt-1 font-mono text-sm text-stellar-cyan">
-          {period.end
-            ? t('destination.period', { start: formatPartialDate(period.start, locale), end: formatPartialDate(period.end, locale) })
-            : t('destination.since', { start: formatPartialDate(period.start, locale) })}
+    <section
+      id={`mission-${mission.id}`}
+      aria-labelledby={titleId}
+      className="relative flex min-h-[85dvh] scroll-mt-20 flex-col justify-center py-16 sm:py-24"
+    >
+      <span
+        aria-hidden="true"
+        className="absolute top-[4.6rem] -left-[calc(1.5rem+7px)] size-3.5 rounded-full border-2 border-world bg-void shadow-[0_0_16px_var(--world-accent)] sm:top-[6.6rem] sm:-left-[calc(2.5rem+7px)]"
+      />
+      <span
+        aria-hidden="true"
+        className="text-outline pointer-events-none absolute top-6 right-0 font-heading text-[30vw] leading-none font-bold select-none sm:text-[13rem]"
+      >
+        {padded}
+      </span>
+
+      <Reveal>
+        <p className={cn(eyebrow, 'text-world')}>
+          {t('destination.missionNumber', { number: padded, total: String(total).padStart(2, '0') })}
         </p>
-      )}
-      <p className="mt-3 max-w-3xl text-moon-dust">{mission.summary}</p>
-
-      <div className="mt-4 flex flex-wrap gap-2">
-        {mission.mainStory && (
-          <Link
-            to={paths.story(mission.mainStory.id)}
-            className="inline-flex min-h-11 items-center gap-2 rounded-md bg-primary px-4 text-sm font-semibold text-primary-foreground hover:bg-primary/85"
-          >
-            <BookOpenText aria-hidden="true" className="size-4" />
-            {t('destination.readStory', { title: mission.mainStory.title })}
-          </Link>
+        <h3 id={titleId} tabIndex={-1} className="mt-2 font-heading text-4xl font-bold outline-none sm:text-6xl">
+          {mission.name}
+        </h3>
+        {period && (
+          <p className="mt-2 font-mono text-sm text-stellar-cyan">
+            {period.end
+              ? t('destination.period', { start: formatPartialDate(period.start, locale), end: formatPartialDate(period.end, locale) })
+              : t('destination.since', { start: formatPartialDate(period.start, locale) })}
+          </p>
         )}
-        <button
-          type="button"
-          aria-expanded={timelineOpen}
-          aria-controls={timelineId}
-          onClick={() => setTimelineOpen((v) => !v)}
-          className="inline-flex min-h-11 items-center rounded-md border border-moon-dust/50 px-4 text-sm font-medium hover:bg-nebula-surface"
-        >
-          {timelineOpen ? t('destination.timelineHide') : t('destination.timelineShow')}
-        </button>
-      </div>
+        <p className="mt-4 max-w-3xl text-starlight/90 sm:text-lg">{mission.summary}</p>
 
-      <div id={timelineId} hidden={!timelineOpen} className="mt-6">
+        <div className="mt-6 flex flex-wrap gap-3">
+          {mission.mainStory && (
+            <Link to={paths.story(mission.mainStory.id)} className={ctaPrimary}>
+              <BookOpenText aria-hidden="true" className="size-4" />
+              {t('destination.readStory', { title: mission.mainStory.title })}
+            </Link>
+          )}
+          <button
+            type="button"
+            aria-expanded={timelineOpen}
+            aria-controls={timelineId}
+            onClick={() => setTimelineOpen((v) => !v)}
+            className={ctaGhost}
+          >
+            <ListOrdered aria-hidden="true" className="size-4" />
+            {timelineOpen ? t('destination.timelineHide') : t('destination.timelineShow')}
+          </button>
+        </div>
+      </Reveal>
+
+      <div id={timelineId} hidden={!timelineOpen} className="mt-8">
         {timelineOpen && <MissionTimeline missionId={mission.id} />}
       </div>
 
       <h4 className="sr-only">{t('destination.machinesTitle')}</h4>
-      <div className="mt-6 grid gap-4 md:grid-cols-2">
-        {mission.machines.map((machine) => (
-          <MachineCard key={machine.id} machine={machine} story={mission.mainStory} />
+      <div className="mt-8 grid gap-5 md:grid-cols-2">
+        {mission.machines.map((machine, index) => (
+          <Reveal key={machine.id} delay={(index % 2) * 120}>
+            <MachineCard machine={machine} story={mission.mainStory} />
+          </Reveal>
         ))}
       </div>
     </section>

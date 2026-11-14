@@ -14,6 +14,16 @@ export const en = {
     label: 'Main',
     explore: 'Explore',
     about: 'About & Sources',
+    home: 'AeroReborn — home',
+  },
+  lang: {
+    label: 'Language',
+    en: 'English',
+    fr: 'Français',
+  },
+  footer: {
+    tagline: 'Moon · Mars — the machines we left behind',
+    sources: 'All sources',
   },
   explore: {
     title: 'Choose your destination',
@@ -134,6 +144,14 @@ export const en = {
     noMedia: 'No photo available for this machine yet.',
     period: '{start} – {end}',
     since: 'Since {start}',
+    journeyLabel: 'Your descent',
+    orbit: 'Orbit',
+    scrollHint: 'Scroll — descend toward the surface',
+    statMissions: 'missions',
+    statMachines: 'machines left behind',
+    missionNumber: 'Mission {number} / {total}',
+    nextWorld: 'Next world',
+    nextWorldTitle: 'The journey continues',
   },
   machineType: {
     lander: 'Lander',
@@ -193,6 +211,7 @@ export const en = {
     errorTitle: 'This content could not be loaded.',
     errorHint: 'The AeroReborn server did not answer. Make sure it is running, then try again.',
     retry: 'Try again',
+    signalLost: 'Signal lost',
   },
   story: {
     title: 'Story',
@@ -202,6 +221,12 @@ export const en = {
     stepOf: 'Step {current} of {total}',
     previous: 'Previous step',
     next: 'Next step',
+    previousShort: 'Previous',
+    nextShort: 'Next',
+    begin: 'Start the story',
+    scrollHint: 'Scroll to follow the signal',
+    keyboardHint: 'Tip: the ← and → keys change step.',
+    completeEyebrow: 'Transmission complete',
     draftNotice: 'This story is still being checked by our team: some details may change.',
     relationsTitle: 'What was passed on',
     evidence: 'How we know:',
@@ -217,6 +242,7 @@ export const en = {
   },
   about: {
     title: 'About & Sources',
+    eyebrow: 'Mission dossier',
     creditsTitle: 'Credits',
     sourcesTitle: 'Sources',
     sourcesIntro: 'Every fact shown on AeroReborn comes from one of these sources.',
@@ -228,6 +254,7 @@ export const en = {
   },
   notFound: {
     title: 'Page not found',
+    eyebrow: 'Error 404 · Lost in space',
     message: 'This page does not exist or has moved.',
     backHome: 'Back to home',
   },

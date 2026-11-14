@@ -4,7 +4,7 @@ import { useTranslation } from '@/i18n'
 import { cn } from '@/lib/utils'
 
 const linkClass =
-  'inline-flex min-h-11 items-center rounded-md px-3 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground aria-[current=page]:text-foreground aria-[current=page]:underline aria-[current=page]:decoration-stellar-cyan aria-[current=page]:decoration-2 aria-[current=page]:underline-offset-8'
+  'relative inline-flex min-h-11 items-center rounded-full px-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground sm:px-3 aria-[current=page]:text-foreground after:absolute after:inset-x-3 after:bottom-1.5 after:h-0.5 after:origin-center after:scale-x-0 after:rounded-full after:bg-stellar-cyan after:transition-transform aria-[current=page]:after:scale-x-100'
 
 export function SiteNavigation() {
   const { t } = useTranslation()
@@ -16,7 +16,7 @@ export function SiteNavigation() {
 
   return (
     <nav aria-label={t('nav.label')}>
-      <ul className="flex items-center gap-1">
+      <ul className="flex items-center sm:gap-1">
         <li>
           <Link to={paths.home()} className={cn(linkClass)} aria-current={isExplore ? 'page' : undefined}>
             {t('nav.explore')}

@@ -12,6 +12,16 @@ export const fr: Messages = {
     label: 'Principale',
     explore: 'Explorer',
     about: 'À propos et sources',
+    home: 'AeroReborn — accueil',
+  },
+  lang: {
+    label: 'Langue',
+    en: 'English',
+    fr: 'Français',
+  },
+  footer: {
+    tagline: 'Lune · Mars — les machines que nous avons laissées',
+    sources: 'Toutes les sources',
   },
   explore: {
     title: 'Choisis ta destination',
@@ -132,6 +142,14 @@ export const fr: Messages = {
     noMedia: 'Pas encore de photo pour cette machine.',
     period: '{start} – {end}',
     since: 'Depuis le {start}',
+    journeyLabel: 'Ta descente',
+    orbit: 'Orbite',
+    scrollHint: 'Fais défiler — descends vers la surface',
+    statMissions: 'missions',
+    statMachines: 'machines laissées sur place',
+    missionNumber: 'Mission {number} / {total}',
+    nextWorld: 'Monde suivant',
+    nextWorldTitle: 'Le voyage continue',
   },
   machineType: {
     lander: 'Atterrisseur',
@@ -191,6 +209,7 @@ export const fr: Messages = {
     errorTitle: 'Ce contenu n’a pas pu être chargé.',
     errorHint: 'Le serveur d’AeroReborn n’a pas répondu. Vérifie qu’il est lancé, puis réessaie.',
     retry: 'Réessayer',
+    signalLost: 'Signal perdu',
   },
   story: {
     title: 'Récit',
@@ -200,6 +219,12 @@ export const fr: Messages = {
     stepOf: 'Étape {current} sur {total}',
     previous: 'Étape précédente',
     next: 'Étape suivante',
+    previousShort: 'Précédente',
+    nextShort: 'Suivante',
+    begin: 'Commencer le récit',
+    scrollHint: 'Fais défiler pour suivre le signal',
+    keyboardHint: 'Astuce : les touches ← et → changent d’étape.',
+    completeEyebrow: 'Transmission terminée',
     draftNotice: 'Ce récit est encore en cours de vérification par notre équipe : certains détails peuvent changer.',
     relationsTitle: 'Ce qui a été transmis',
     evidence: 'Comment on le sait :',
@@ -215,6 +240,7 @@ export const fr: Messages = {
   },
   about: {
     title: 'À propos et sources',
+    eyebrow: 'Dossier de mission',
     creditsTitle: 'Crédits',
     sourcesTitle: 'Sources',
     sourcesIntro: 'Chaque fait affiché sur AeroReborn provient de l’une de ces sources.',
@@ -226,6 +252,7 @@ export const fr: Messages = {
   },
   notFound: {
     title: 'Page introuvable',
+    eyebrow: 'Erreur 404 · Perdu dans l’espace',
     message: 'Cette page n’existe pas ou a été déplacée.',
     backHome: 'Retour à l’accueil',
   },

@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react'
+import { screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it } from 'vitest'
 import { renderRoute } from '@/test/renderRoute'
@@ -61,6 +61,16 @@ describe('routes', () => {
     renderRoute('/')
     expect(screen.getByRole('link', { name: 'Skip to content' })).toHaveAttribute('href', '#main-content')
     expect(document.getElementById('main-content')).toBeInTheDocument()
+  })
+
+  it('switches the interface language from the header', async () => {
+    const user = userEvent.setup()
+    renderRoute('/about')
+    const group = screen.getByRole('group', { name: 'Language' })
+    await user.click(within(group).getByRole('button', { name: 'fr' }))
+    expect(screen.getByRole('heading', { level: 1, name: 'À propos et sources' })).toBeInTheDocument()
+    expect(within(group).getByRole('button', { name: 'fr' })).toHaveAttribute('aria-pressed', 'true')
+    expect(document.documentElement.lang).toBe('fr')
   })
 
   it('renders the interface in French when the locale is fr', () => {

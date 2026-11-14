@@ -101,10 +101,35 @@ describe('story page (connected to the API)', () => {
     renderRoute('/stories/story-a')
     expect(await screen.findByRole('heading', { level: 1, name: 'The test story' })).toBeInTheDocument()
     expect(screen.getByText(/still being checked/)).toBeInTheDocument()
-    expect(screen.getByRole('heading', { level: 2, name: 'Signal' })).toBeInTheDocument()
-    expect(screen.getByText('Fact')).toBeInTheDocument()
-    expect(screen.getByAltText('A rover on the ground')).toBeInTheDocument()
+    // All six steps are scenes of one scroll (US-5.6): check the first one's content.
+    const signal = screen.getByRole('region', { name: 'Signal' })
+    expect(within(signal).getByRole('heading', { level: 2, name: 'Signal' })).toBeInTheDocument()
+    expect(within(signal).getByText('Fact')).toBeInTheDocument()
+    expect(within(signal).getByAltText('A rover on the ground')).toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'Previous step' })).toBeDisabled()
+  })
+
+  it('changes step with the arrow keys, and not while typing', async () => {
+    const user = userEvent.setup()
+    const { router } = renderRoute('/stories/story-a?step=2')
+    await screen.findByRole('heading', { level: 1, name: 'The test story' })
+    await user.keyboard('{ArrowRight}')
+    expect(router.state.location.search).toContain('step=3')
+    expect(screen.getByRole('heading', { level: 2, name: 'How' })).toHaveFocus()
+    await user.keyboard('{ArrowLeft}{ArrowLeft}')
+    expect(router.state.location.search).toContain('step=1')
+    await user.keyboard('{ArrowLeft}')
+    expect(router.state.location.search).toContain('step=1')
+  })
+
+  it('jumps to a step from the step list', async () => {
+    const user = userEvent.setup()
+    const { router } = renderRoute('/stories/story-a')
+    const steps = await screen.findByRole('navigation', { name: 'Story steps' })
+    await user.click(within(steps).getByRole('button', { name: /4\s*Discovery/ }))
+    expect(router.state.location.search).toContain('step=4')
+    expect(within(steps).getByRole('button', { name: /4\s*Discovery/ })).toHaveAttribute('aria-current', 'step')
+    expect(screen.getByRole('heading', { level: 2, name: 'Discovery' })).toHaveFocus()
   })
 
   it('moves between steps with the buttons and keeps the step in the URL', async () => {
