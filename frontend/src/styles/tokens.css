@@ -1,0 +1,47 @@
+/*
+ * COSMOS design tokens — source: docs/design/DESIGN_SYSTEM.md
+ * Contrast ratios are documented there. Stellar Border (#334155) is < 3:1 on every
+ * background: use it for decorative separators only, never as the sole boundary
+ * of an interactive element.
+ */
+:root {
+  /* Structure */
+  --cosmos-void-black: #080b12;
+  --cosmos-deep-space: #111827;
+  --cosmos-nebula-surface: #1c2638;
+  --cosmos-stellar-border: #334155;
+
+  /* Identity accents (use sparingly) */
+  --cosmos-cosmic-indigo: #8b9dff;
+  --cosmos-stellar-cyan: #61d6e8;
+  --cosmos-nebula-purple: #b58aff;
+  --cosmos-stellar-gold: #e5c58d;
+
+  /* Content */
+  --cosmos-starlight: #f1f5f9;
+  --cosmos-moon-dust: #94a3b8;
+
+  /* Celestial cue (interface only, not real colors) */
+  --cosmos-rocky-planet: #d97757;
+
+  /* shadcn semantic mapping */
+  --background: var(--cosmos-void-black);
+  --foreground: var(--cosmos-starlight);
+  --card: var(--cosmos-nebula-surface);
+  --card-foreground: var(--cosmos-starlight);
+  --popover: var(--cosmos-deep-space);
+  --popover-foreground: var(--cosmos-starlight);
+  --primary: var(--cosmos-cosmic-indigo);
+  --primary-foreground: var(--cosmos-void-black);
+  --secondary: var(--cosmos-deep-space);
+  --secondary-foreground: var(--cosmos-starlight);
+  --muted: var(--cosmos-deep-space);
+  --muted-foreground: var(--cosmos-moon-dust);
+  --accent: var(--cosmos-nebula-surface);
+  --accent-foreground: var(--cosmos-starlight);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: var(--cosmos-stellar-border);
+  --input: var(--cosmos-stellar-border);
+  --ring: var(--cosmos-cosmic-indigo);
+  --radius: 0.625rem;
+}
