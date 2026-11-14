@@ -58,7 +58,7 @@ Personas : **Visiteur** (10-15 ans, principal), **Curieux** (adulte), **Équipe*
 
 ### US-1.5 — Modèle de contenu et contrôle d'intégrité
 - **Story** : En tant qu'équipe, je souhaite des types et un test d'intégrité du contenu afin qu'aucune donnée non sourcée ou incohérente n'atteigne l'interface.
-- **Priorité** : P0 · **Exigences** : DATA-001 → 006, SOURCE-001, SOURCE-003, MAP-003 · **Statut** : `review` côté backend (types, validation, API, tests) ; `check:links` et accès frontend restent à faire
+- **Priorité** : P0 · **Exigences** : DATA-001 → 006, SOURCE-001, SOURCE-003, MAP-003 · **Statut** : `review` côté backend (types, validation, API, tests) et accès frontend (client typé, ADR-019) ; `check:links` reste à faire
 - **Critères** :
   1. Étant donné `frontend/content/`, alors les fichiers de [DATA_MODEL.md](../architecture/DATA_MODEL.md) existent (éventuellement vides).
   2. Quand un fait référence une source inexistante, alors `npm test` échoue avec un message citant l'identifiant fautif.
@@ -122,7 +122,7 @@ Personas : **Visiteur** (10-15 ans, principal), **Curieux** (adulte), **Équipe*
 
 ### US-3.1 — Parcourir les équipements par mission
 - **Story** : En tant que visiteur, je souhaite voir les équipements regroupés par mission afin de comprendre quelle mission les a apportés.
-- **Priorité** : P0 · **Exigences** : EXPL-001, EQUIP-001, EQUIP-004, SYNC-003 · **Dépend de** : US-1.5, US-1.8
+- **Priorité** : P0 · **Exigences** : EXPL-001, EQUIP-001, EQUIP-004, SYNC-003 · **Dépend de** : US-1.5, US-1.8 · **Statut** : `review` (critère 4, test T2, à faire par l'équipe ; voir `docs/project/stories/STORYTELLING-BATCH.md`)
 - **Critères** :
   1. Étant donné `/explore/mars`, alors chaque mission de Mars présente dans le contenu apparaît comme un groupe titré, avec ses équipements.
   2. Étant donné une période non sourcée, alors aucune date n'est affichée pour ce groupe.
@@ -131,7 +131,7 @@ Personas : **Visiteur** (10-15 ans, principal), **Curieux** (adulte), **Équipe*
 
 ### US-3.2 — Consulter un équipement
 - **Story** : En tant que visiteur, je souhaite ouvrir la fiche d'un équipement afin de connaître sa mission, son lieu, son statut et ce qu'il a permis d'apprendre.
-- **Priorité** : P0 · **Exigences** : EQUIP-002, EQUIP-003, EQUIP-005, SOURCE-002, STORY-003
+- **Priorité** : P0 · **Exigences** : EQUIP-002, EQUIP-003, EQUIP-005, SOURCE-002, STORY-003 · **Statut** : `review`
 - **Critères** :
   1. Quand j'active une carte d'équipement, alors l'URL contient `?machine={id}` et la fiche détaillée s'ouvre.
   2. Étant donné la fiche, alors le statut est affiché en texte + icône, et chaque fait a un accès à sa source.
@@ -180,7 +180,7 @@ Personas : **Visiteur** (10-15 ans, principal), **Curieux** (adulte), **Équipe*
 
 ### US-4.1 — Lire un récit en six étapes
 - **Story** : En tant que visiteur, je souhaite un récit découpé en six étapes courtes afin de comprendre une mission sans lire un long texte.
-- **Priorité** : P0 · **Exigences** : STORY-001, STORY-009, NFR-READ-001
+- **Priorité** : P0 · **Exigences** : STORY-001, STORY-009, NFR-READ-001 · **Statut** : `review`
 - **Critères** :
   1. Étant donné `/stories/{id}?step=1`, alors l'étape « Signal » s'affiche seule avec son titre.
   2. Étant donné un `step` absent ou invalide, alors l'étape 1 s'affiche.
@@ -188,7 +188,7 @@ Personas : **Visiteur** (10-15 ans, principal), **Curieux** (adulte), **Équipe*
 
 ### US-4.2 — Naviguer dans le récit
 - **Story** : En tant que visiteur, je souhaite avancer, reculer, voir où j'en suis et sortir à tout moment afin de garder le contrôle de ma lecture.
-- **Priorité** : P0 · **Exigences** : STORY-004, STORY-005, STORY-006, NAV-003
+- **Priorité** : P0 · **Exigences** : STORY-004, STORY-005, STORY-006, NAV-003 · **Statut** : `review`
 - **Critères** :
   1. Quand j'active « Next » à l'étape 2, alors l'étape 3 s'affiche, l'URL contient `step=3` et le focus est placé sur le titre de l'étape.
   2. Étant donné l'étape 1, alors « Previous » est désactivé ; étant donné l'étape 6, alors « Next » est remplacé par les choix de fin.
@@ -197,14 +197,14 @@ Personas : **Visiteur** (10-15 ans, principal), **Curieux** (adulte), **Équipe*
 
 ### US-4.3 — Distinguer fait, interprétation et imagination
 - **Story** : En tant que visiteur, je souhaite savoir si je lis un fait, une explication ou une mise en situation afin de ne pas confondre science et imagination.
-- **Priorité** : P0 · **Exigences** : STORY-007, NFR-SCI-001, NFR-A11Y-004
+- **Priorité** : P0 · **Exigences** : STORY-007, NFR-SCI-001, NFR-A11Y-004 · **Statut** : `review`
 - **Critères** :
   1. Chaque bloc affiche son étiquette textuelle (« Fact », « What it means », « Imagine »).
   2. Un bloc `data` sans source fait échouer le test d'intégrité.
 
 ### US-4.4 — Vérifier une information depuis le récit
 - **Story** : En tant que visiteur, je souhaite voir d'où vient une information sans quitter le récit afin de vérifier ce que je lis.
-- **Priorité** : P0 · **Exigences** : SOURCE-002, SOURCE-003
+- **Priorité** : P0 · **Exigences** : SOURCE-002, SOURCE-003 · **Statut** : `review` (test T5 à faire par l'équipe)
 - **Critères** :
   1. Quand j'active un `SourceBadge`, alors la source (organisme, titre, lien, date de consultation) s'affiche sans changer d'étape.
   2. Le lien externe s'ouvre dans un nouvel onglet, annoncé comme tel.
@@ -225,7 +225,7 @@ Personas : **Visiteur** (10-15 ans, principal), **Curieux** (adulte), **Équipe*
 
 ### US-4.7 — Terminer un récit et approfondir
 - **Story** : En tant que visiteur, je souhaite à la fin du récit pouvoir continuer vers la mission, les équipements liés ou l'autre destination afin de poursuivre mon exploration.
-- **Priorité** : P0 · **Exigences** : STORY-002, STORY-008
+- **Priorité** : P0 · **Exigences** : STORY-002, STORY-008 · **Statut** : `review` (critère 2 sans objet tant qu'aucun récit individuel de machine n'existe)
 - **Critères** :
   1. Étant donné l'étape 6, alors trois actions sont proposées : retour à la mission, équipements associés, autre destination.
   2. Étant donné un récit principal citant un équipement qui a un récit individuel, alors un lien vers ce récit est proposé.

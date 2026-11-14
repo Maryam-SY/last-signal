@@ -26,6 +26,7 @@
 | ADR-016 | Architecture frontend + backend (site dynamique) | Acceptée ; rôle de l'API tranché (OPEN-18) | OPEN-03, OPEN-18 |
 | ADR-017 | Médias référencés par URL, pas stockés dans le dépôt | Proposée | — |
 | ADR-018 | Accueil immersif « depth journey » sans bibliothèque | Acceptée | — |
+| ADR-019 | Types du frontend dérivés du backend (`import type`) | Proposée | — |
 
 ---
 
@@ -241,3 +242,15 @@
   - `prefers-reduced-motion: reduce` : l'accueil devient des sections classiques, aucune animation ni transition (NFR-A11Y-006).
   - Barre de défilement masquée **uniquement** sur l'accueil (`html.depth-mode`), remplacée par un indicateur accessible.
   - À vérifier avant la démo : fluidité sur mobile bas de gamme, Safari et Firefox.
+
+## ADR-019 — Types du frontend dérivés du backend (`import type`)
+
+- **Statut** : Proposée (2026-11-14, lot storytelling) — à valider par l'équipe
+- **Problème** : le frontend consomme l'API de contenu (ARCHITECTURE §16). Les réponses sont calculées par `ContentRepository` puis localisées (`Localized<T>`) ; recopier leurs types à la main côté frontend les ferait diverger au premier changement.
+- **Options** : (a) dupliquer les types dans `frontend/src/types/` ; (b) dériver les types des méthodes du dépôt backend par `import type` (alias `@backend/*` dans `frontend/tsconfig.json`) ; (c) paquet partagé ou workspace npm.
+- **Analyse** :
+  - (a) Indépendant. − Duplication, divergence silencieuse, contraire à CLAUDE.md §6.
+  - (b) Une seule source : `Localized<ReturnType<ContentRepository['getStory']>>`… Un changement de l'API casse `npm run typecheck` du frontend au lieu de l'interface. `import type` est effacé à la compilation : **rien du backend n'entre dans le bundle**. − Le typecheck du frontend lit `backend/src/content/` (le dépôt complet est déjà extrait en CI).
+  - (c) Propre à long terme. − Réorganisation du dépôt et de la CI, disproportionnée pour un hackathon.
+- **Décision** : (b), dans `frontend/src/types/content.ts` uniquement. Les composants n'importent jamais `@backend/*` directement.
+- **Conséquences** : un fichier backend importé en type ne doit dépendre ni de `node:*` ni d'Express (c'est le cas de `content/types.ts`, `localize.ts`, `repository.ts`).
