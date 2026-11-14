@@ -24,6 +24,7 @@
 | ADR-014 | Moteur narratif découplé de la technique d'animation | Acceptée | OPEN-10 |
 | ADR-015 | Internationalisation : dictionnaires typés, sans librairie i18n | Acceptée | OPEN-06 |
 | ADR-016 | Architecture frontend + backend (site dynamique) | Acceptée (rôle de l'API ouvert) | OPEN-03, OPEN-18 |
+| ADR-017 | Accueil immersif « depth journey » sans bibliothèque | Acceptée | — |
 
 ---
 
@@ -205,3 +206,19 @@
   - Le contrat d'API (routes, formats, erreurs) devra être documenté avant son implémentation (OPEN-18).
   - Exigence de résilience : si l'API est indisponible, l'interface affiche un message clair et ne doit jamais afficher de donnée non sourcée.
   - Écart assumé avec le CDC §7, tracé ici.
+
+## ADR-017 — Accueil immersif « depth journey » sans bibliothèque
+
+- **Statut** : Acceptée le 2026-11-14 (demande explicite de l'équipe ; implémentée par US-2.1, PR #3)
+- **Problème** : l'équipe veut un accueil centré sur la Lune et Mars, avec rotations au survol, distorsions au scroll et entrée « dans » la planète au clic, et que le scroll donne l'impression que **la page vient vers le visiteur** plutôt qu'un défilement vertical (barre de défilement masquée). SCOPE classait ces animations en P2 et DESIGN_SYSTEM limitait les animations à 200 ms.
+- **Options** : (a) garder l'accueil sobre (conforme aux docs) ; (b) bibliothèque d'animation (GSAP, Framer Motion) ou 3D (three.js) ; (c) implémentation maison : CSS 3D, filtres SVG, canvas 2D, `requestAnimationFrame`, View Transitions natives.
+- **Analyse** :
+  - (a) Conforme, mais contraire à la demande de l'équipe.
+  - (b) Rapide à écrire. − Nouvelles dépendances (poids, licence GSAP), WebGL coûteux sur mobile.
+  - (c) Aucune dépendance, contrôle total de l'accessibilité. − Plus de code à maintenir, View Transitions absentes de certains navigateurs (repli : navigation simple).
+- **Décision** : (c). `DepthJourney` (piste de scroll + scène `sticky` en perspective, caméra sur l'axe z, indicateur de parcours, snap de proximité, focus clavier qui déplace la caméra), `LivePlanet` (rotation, inclinaison, distorsion `feDisplacementMap`), `WarpField` (canvas), `viewTransition` de react-router pour le morph vers `/explore/:id`. Boucle d'animation unique par composant, écritures DOM directes, aucun rendu React par frame.
+- **Conséquences** :
+  - Exception tracée dans SCOPE (ligne P0) et DESIGN_SYSTEM (règle « Animations ») ; les animations avancées **dans les récits** restent P2.
+  - `prefers-reduced-motion: reduce` : l'accueil devient des sections classiques, aucune animation ni transition (NFR-A11Y-006).
+  - Barre de défilement masquée **uniquement** sur l'accueil (`html.depth-mode`), remplacée par un indicateur accessible.
+  - À vérifier avant la démo : fluidité sur mobile bas de gamme, Safari et Firefox.

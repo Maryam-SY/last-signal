@@ -1,10 +1,10 @@
 # US-2.1 — Choisir sa destination (accueil « depth journey »)
 
-- **Statut** : review
+- **Statut** : review (fusionnée sur `main`, PR #3, commit `f28d22b`)
 - **Epic** : E2 — Choisir une destination
 - **Priorité** : P0
 - **Exigences PRD** : DEST-001, DEST-003, DEST-004, DEST-005, NFR-A11Y-001/005/006/007
-- **Décisions liées** : ADR-007 (pas de lib), ADR-015 (i18n). Animations scroll/parallax avancées = P2 dans SCOPE : **réalisées sur demande écrite de l'équipe (session du 2026-11-14)**, à acter dans SCOPE.md par le PO.
+- **Décisions liées** : ADR-007 (pas de lib), ADR-015 (i18n). ADR-017 (accueil immersif, actée le 2026-11-14 à la demande de l'équipe ; exception tracée dans SCOPE et DESIGN_SYSTEM).
 - **Branche** : `feat/home-moon-mars` (créée depuis `main` à jour, `61f5fab`)
 
 ## Story
@@ -49,6 +49,6 @@ En tant que visiteur, je souhaite voir clairement les deux destinations et en ch
 
 ## Points ouverts
 
-- Animations : dépassent la règle DESIGN_SYSTEM « ≤ 200 ms, opacity/transform » et le classement P2 de SCOPE → à valider/acter par le PO.
+- ~~Animations hors règle DESIGN_SYSTEM / P2 de SCOPE~~ → actée par ADR-017 (2026-11-14).
 - La décroissance de l'ondulation d'arrivée et la fluidité réelle n'ont pas pu être observées (panneau navigateur masqué, `requestAnimationFrame` suspendu) : à vérifier sur un vrai navigateur, y compris Safari et Firefox.
 - Performance sur mobile bas de gamme (filtres SVG + canvas) non mesurée.
