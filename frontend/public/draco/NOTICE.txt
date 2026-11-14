@@ -1,0 +1,4 @@
+Draco 3D mesh decoder (draco_decoder.wasm, draco_wasm_wrapper.js)
+Copyright Google LLC — Apache License 2.0 — https://github.com/google/draco
+Copied unchanged from three@0.183.2 (examples/jsm/libs/draco/gltf/) so that
+<model-viewer> decodes NASA 3D models without calling a Google CDN (ADR-020).

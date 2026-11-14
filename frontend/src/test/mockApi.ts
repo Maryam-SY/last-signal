@@ -38,6 +38,17 @@ const photo: Media = {
 
 const artwork: Media = { ...photo, id: 'media-art', alt: 'Drawing of a helicopter', depiction: 'artwork', credit: null }
 
+const model: Media = {
+  ...photo,
+  id: 'media-model',
+  type: '3d-model',
+  url: 'https://example.org/models/Test%20Rover.glb',
+  pageUrl: 'https://example.org/models/test-rover',
+  alt: '3D model of the test rover',
+  depiction: 'simulation',
+  description: 'A fictional 3D model.',
+}
+
 const machine: Machine = {
   id: 'machine-a',
   name: 'Test Rover',
@@ -94,7 +105,7 @@ const mission: MissionDetail = {
   ],
   stories: [],
   relations: [],
-  media: [photo],
+  media: [photo, model],
 }
 
 const machineDetail: MachineDetail = {

@@ -26,6 +26,23 @@ export function mediaOfMachine(mission: MissionDetail, machineId: string): Media
   return mission.media.filter((item) => item.machineIds.includes(machineId))
 }
 
+const MODEL_FILE = /\.(glb|gltf)$/i
+
+/**
+ * The NASA 3D model of a machine, when the content has one as a .glb/.gltf file (ADR-020).
+ * Other "3d-model" media (embedded pages) are not shown in the viewer.
+ */
+export function modelOf(mission: MissionDetail, machineId: string): Media | undefined {
+  return mediaOfMachine(mission, machineId).find((item) => {
+    if (item.type !== '3d-model') return false
+    try {
+      return MODEL_FILE.test(new URL(item.url).pathname)
+    } catch {
+      return false
+    }
+  })
+}
+
 /**
  * What a machine did, in order: the steps of the mission timeline whose illustrations show this
  * machine (date, title and plain-language explanation are already sourced). Without such steps,
