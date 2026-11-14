@@ -15,6 +15,7 @@
 |---|---|---|
 | Sélecteur de destination Moon / Mars | DEST-001 → 005 | US-2.1, US-2.2 |
 | Accueil immersif « depth journey » (Lune et Mars au centre, caméra en profondeur au scroll, survol animé, morph vers la destination) — décision de l'équipe du 2026-11-14 | DEST-001 → 005, NFR-A11Y-006 | US-2.1 · [ADR-018](../architecture/TECHNICAL_DECISIONS.md) |
+| Vidéo d'introduction de l'équipe qui se fond dans l'accueil ; ciel de la vidéo comme fond du site — décision de l'équipe du 2026-11-14 | DEST-001, NFR-A11Y-006 | US-2.4 · [ADR-021](../architecture/TECHNICAL_DECISIONS.md) |
 | Destination et récit en scroll immersif continu (planète épinglée, scènes, HUD discret, EN/FR dans l'en-tête) — décision de l'équipe du 2026-11-14 | NAV-001, STORY-004 → 009, NFR-A11Y-006 | US-5.6 · [ADR-019](../architecture/TECHNICAL_DECISIONS.md) |
 | Espace Lune | EXPL-001, EQUIP-*, MAP-* | E3 |
 | Espace Mars | EXPL-001, EQUIP-*, MAP-* | E3 |

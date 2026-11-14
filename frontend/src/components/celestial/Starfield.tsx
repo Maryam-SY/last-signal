@@ -120,7 +120,7 @@ export function Starfield() {
           }}
         />
       ))}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_-10%,transparent_0%,#080b12_72%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_30%,transparent_0%,rgba(8,11,18,0.55)_95%)]" />
     </div>
   )
 }
