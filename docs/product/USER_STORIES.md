@@ -256,6 +256,15 @@ Personas : **Visiteur** (10-15 ans, principal), **Curieux** (adulte), **Équipe*
 - **Priorité** : P0 · **Exigences** : NFR-SCI-001, SOURCE-*
 - **Critères** : gate QG-SCI passé pour 100 % du contenu publié ; liens de sources vérifiés (QG-LINKS).
 
+### US-5.6 — Immersion spatiale et scroll continu
+- **Story** : En tant que visiteur de 10-15 ans, je souhaite que chaque page soit une expérience immersive où l'on avance en faisant défiler, sans navigation compliquée, afin d'avoir envie d'explorer et de toujours savoir où je suis.
+- **Priorité** : P0 · **Exigences** : NAV-001, NAV-004, STORY-004 → 009, NFR-A11Y-001 → 008 · **Statut** : `review` (ADR-019 ; fichier `docs/project/stories/US-5.6.md`)
+- **Critères** :
+  1. Destination : planète épinglée, une scène par mission, scène « monde suivant », rail de sections à partir de 768 px.
+  2. Récit : 6 scènes dans un même scroll ; `?step=` suit la scène visible ; rail d'étapes, Previous/Next, Exit et touches ← → toujours disponibles.
+  3. En-tête : sélecteur EN/FR mémorisé ; aucun débordement horizontal à 360 px.
+  4. Sous `prefers-reduced-motion` : aucune animation, contenu complet.
+
 ### US-5.5 — Mise en production et démo
 - **Priorité** : P0 · **Exigences** : DEPLOY-001, indicateurs PRD §11
 - **Critères** : URL publique vérifiée en navigation privée sur 1 ordinateur et 2 formats de téléphone ; parcours de démo chronométré < 3 min ; plan de secours (galerie seule) répété.

@@ -1,19 +1,31 @@
-import { useEffect, useRef } from 'react'
-import { AlertTriangle, ArrowLeft, ArrowRight, X } from 'lucide-react'
+import { useEffect, useRef, type CSSProperties, type ReactNode } from 'react'
+import { AlertTriangle, ChevronsDown } from 'lucide-react'
 import { Link, useParams, useSearchParams } from 'react-router'
 import { ApiError, api } from '@/api/client'
-import type { Media, Relation, Source, StoryDetail } from '@/api/types'
+import type { StoryDetail } from '@/api/types'
 import { paths } from '@/app/paths'
+import { SpaceBackdrop } from '@/components/celestial/SpaceBackdrop'
 import { LoadState } from '@/components/common/LoadState'
-import { MediaFigure } from '@/components/media/MediaFigure'
-import { SourceList } from '@/components/sources/SourceList'
-import { VoiceTag } from '@/components/sources/VoiceTag'
+import { ScrollProgress } from '@/components/motion/ScrollProgress'
+import { StepRail } from '@/components/story/StepRail'
+import { StepScene } from '@/components/story/StepScene'
+import { STEP_ACCENT, stepSectionId } from '@/components/story/storySteps'
+import { StoryControls } from '@/components/story/StoryControls'
+import { StoryEnd } from '@/components/story/StoryEnd'
+import { useActiveSection, scrollToSection } from '@/hooks/useActiveSection'
 import { useApi } from '@/hooks/useApi'
 import { useDocumentTitle } from '@/hooks/useDocumentTitle'
+import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { useTranslation } from '@/i18n'
-import { DESTINATION_IDS, type DestinationId } from '@/types/content'
+import { ctaGhost, ctaPrimary, eyebrow } from '@/lib/styles'
+import { cn } from '@/lib/utils'
 
-/** STORY-001 → 009: a six-step story driven by the URL (?step=1..6), never by scroll alone. */
+/**
+ * STORY-001 → 009: a six-step story told as one continuous scroll (US-5.6). Each step is a
+ * full-screen scene; the step in view is written to the URL (?step=1..6), and the rail,
+ * Previous / Next and the ← → keys jump between steps, so progress never depends on
+ * scrolling alone.
+ */
 export function StoryPage() {
   const { storyId = '' } = useParams()
   const { t } = useTranslation()
@@ -22,53 +34,134 @@ export function StoryPage() {
 
   if (story.status === 'error' && story.error instanceof ApiError && story.error.status === 404) {
     return (
-      <div className="mx-auto max-w-3xl px-4 py-8">
-        <h1 className="text-3xl font-bold sm:text-4xl">{t('story.title')}</h1>
-        <p className="mt-4 text-muted-foreground">{t('story.unavailable', { storyId })}</p>
-        <Link to={paths.home()} className="mt-6 inline-flex min-h-11 items-center text-sm font-medium text-cosmic-indigo hover:underline">
+      <StoryShell>
+        <h1 className="font-heading text-4xl font-bold sm:text-5xl">{t('story.title')}</h1>
+        <p className="mt-4 text-moon-dust">{t('story.unavailable', { storyId })}</p>
+        <Link to={paths.home()} className={cn(ctaGhost, 'mt-8')}>
           {t('story.exit')}
         </Link>
-      </div>
+      </StoryShell>
     )
   }
 
   if (story.status !== 'success') {
     return (
-      <div className="mx-auto max-w-3xl px-4 py-8">
-        <h1 className="text-3xl font-bold sm:text-4xl">{t('story.title')}</h1>
-        <LoadState status={story.status} onRetry={story.retry} />
-      </div>
+      <StoryShell>
+        <h1 className="font-heading text-4xl font-bold sm:text-5xl">{t('story.title')}</h1>
+        <LoadState status={story.status} onRetry={story.retry} className="mt-6" />
+      </StoryShell>
     )
   }
 
   return <StoryExperience story={story.data} />
 }
 
+function StoryShell({ children }: { children: ReactNode }) {
+  return (
+    <div className="relative">
+      <SpaceBackdrop />
+      <div className="relative z-10 mx-auto flex min-h-[70dvh] max-w-3xl flex-col justify-center px-5 py-16">{children}</div>
+    </div>
+  )
+}
+
+/** Keys that must keep their native meaning (typing, media seeking, menus). */
+function ownsArrowKeys(target: EventTarget | null): boolean {
+  if (!(target instanceof HTMLElement)) return false
+  return target.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT', 'VIDEO', 'AUDIO'].includes(target.tagName)
+}
+
 function StoryExperience({ story }: { story: StoryDetail }) {
   const { t } = useTranslation()
+  const reduced = useReducedMotion()
   const [params, setParams] = useSearchParams()
   const total = story.steps.length
   const requested = Number(params.get('step'))
   const current = Number.isInteger(requested) && requested >= 1 && requested <= total ? requested : 1
   const step = story.steps[current - 1]!
   const from = params.get('from')
-  const headingRef = useRef<HTMLHeadingElement>(null)
+
+  const headingRefs = useRef<Array<HTMLHeadingElement | null>>([])
   const firstRender = useRef(true)
+  /** Step the URL was just set to because the visitor scrolled there (no scroll back). */
+  const fromScroll = useRef<number | null>(null)
+  /** While a jump is scrolling to this step, ignore the steps crossed on the way. */
+  const jumpTarget = useRef<number | null>(null)
+  const jumpTimer = useRef<number | undefined>(undefined)
 
-  // Move focus to the new step title so keyboard and screen-reader users follow the change.
-  useEffect(() => {
-    if (firstRender.current) {
-      firstRender.current = false
-      return
-    }
-    headingRef.current?.focus()
-  }, [current])
-
-  const goTo = (n: number) => {
+  const setStepParam = (n: number, replace: boolean) => {
     const next = new URLSearchParams(params)
     next.set('step', String(n))
-    setParams(next) // push: the browser back button returns to the previous step
+    setParams(next, { replace, preventScrollReset: true })
   }
+
+  // Scroll → URL: the step crossing the middle of the screen becomes the current step.
+  // `replace`, so scrolling does not flood the history; jumps below push an entry.
+  useActiveSection(
+    story.steps.map((_, index) => stepSectionId(index + 1)),
+    (id) => {
+      const n = Number(id.slice('step-'.length))
+      if (jumpTarget.current !== null) {
+        if (n !== jumpTarget.current) return
+        jumpTarget.current = null
+      }
+      if (n === current) return
+      fromScroll.current = n
+      setStepParam(n, true)
+    },
+  )
+
+  // URL → scroll: a jump (rail, buttons, keys, back/forward) brings its scene into view and
+  // moves focus to its title for keyboard and screen-reader users.
+  useEffect(() => {
+    const section = document.getElementById(stepSectionId(current))
+    if (firstRender.current) {
+      firstRender.current = false
+      if (current > 1) section?.scrollIntoView?.({ block: 'start' })
+      return
+    }
+    if (fromScroll.current === current) {
+      fromScroll.current = null
+      return
+    }
+    jumpTarget.current = current
+    window.clearTimeout(jumpTimer.current)
+    jumpTimer.current = window.setTimeout(() => {
+      jumpTarget.current = null
+    }, 1500)
+    scrollToSection(section, reduced, headingRefs.current[current - 1])
+  }, [current, reduced])
+
+  useEffect(() => () => window.clearTimeout(jumpTimer.current), [])
+
+  const goTo = (n: number) => {
+    if (n < 1 || n > total) return
+    if (n === current) {
+      scrollToSection(document.getElementById(stepSectionId(n)), reduced, headingRefs.current[n - 1])
+      return
+    }
+    setStepParam(n, false) // push: the browser back button returns to the previous step
+  }
+
+  // ← / → change step, unless the focused element needs the arrows itself.
+  const goToRef = useRef(goTo)
+  const currentRef = useRef(current)
+  useEffect(() => {
+    goToRef.current = goTo
+    currentRef.current = current
+  })
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      if (event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return
+      if (ownsArrowKeys(event.target)) return
+      if (event.key === 'ArrowRight') goToRef.current(currentRef.current + 1)
+      else if (event.key === 'ArrowLeft') goToRef.current(currentRef.current - 1)
+      else return
+      event.preventDefault()
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [])
 
   const destinationId = story.destinationId
   const exitHref = destinationId
@@ -76,179 +169,58 @@ function StoryExperience({ story }: { story: StoryDetail }) {
     : paths.home()
   const mediaById = new Map(story.media.map((m) => [m.id, m]))
   const sourceById = new Map(story.sources.map((s) => [s.id, s]))
+  const ambient = { '--step-accent': STEP_ACCENT[step.key] } as CSSProperties
 
   return (
-    <article className="mx-auto max-w-3xl px-4 py-8">
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <p className="font-mono text-xs uppercase tracking-widest text-stellar-cyan">{story.missions.map((m) => m.name).join(' · ')}</p>
-        <Link to={exitHref} className="inline-flex min-h-11 items-center gap-2 text-sm font-medium text-cosmic-indigo hover:underline">
-          <X aria-hidden="true" className="size-4" />
-          {t('story.exit')}
-        </Link>
-      </div>
-      <h1 className="mt-2 font-heading text-3xl font-bold sm:text-5xl">{story.title}</h1>
+    <article data-world={destinationId ?? undefined} style={ambient} className="relative">
+      <SpaceBackdrop />
+      <ScrollProgress />
+      <StepRail steps={story.steps} current={current} onSelect={goTo} />
 
-      {story.status === 'draft' && (
-        <p className="mt-4 flex items-start gap-2 rounded-lg border border-stellar-gold/50 bg-stellar-gold/10 p-3 text-sm">
-          <AlertTriangle aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-stellar-gold" />
-          {t('story.draftNotice')}
-        </p>
-      )}
+      <div className="relative z-10 mx-auto max-w-3xl px-5 pb-32">
+        <header className="flex min-h-[calc(100dvh-4rem)] flex-col justify-center pt-20 pb-10 xl:pt-10">
+          <p className={cn(eyebrow, 'text-world')}>{story.missions.map((m) => m.name).join(' · ')}</p>
+          <h1 className="text-glow mt-3 font-heading text-5xl leading-[0.95] font-bold sm:text-7xl">{story.title}</h1>
 
-      <nav aria-label={t('story.progressLabel')} className="mt-6">
-        <ol className="grid grid-cols-3 gap-2 sm:grid-cols-6">
-          {story.steps.map((s, index) => {
-            const n = index + 1
-            const isCurrent = n === current
-            return (
-              <li key={s.key}>
-                <button
-                  type="button"
-                  onClick={() => goTo(n)}
-                  aria-current={isCurrent ? 'step' : undefined}
-                  className={
-                    isCurrent
-                      ? 'flex min-h-11 w-full flex-col items-center justify-center rounded-md border-2 border-stellar-cyan bg-nebula-surface px-2 py-1 text-xs font-semibold'
-                      : 'flex min-h-11 w-full flex-col items-center justify-center rounded-md border border-moon-dust/40 px-2 py-1 text-xs text-moon-dust hover:bg-nebula-surface'
-                  }
-                >
-                  <span className="font-mono">{n}</span>
-                  {s.title}
-                </button>
-              </li>
-            )
-          })}
-        </ol>
-      </nav>
-
-      <section aria-labelledby="story-step-title" className="mt-8">
-        <p className="font-mono text-xs uppercase tracking-widest text-moon-dust">{t('story.stepOf', { current, total })}</p>
-        <h2 id="story-step-title" ref={headingRef} tabIndex={-1} className="mt-1 font-heading text-2xl font-bold outline-none sm:text-3xl">
-          {step.title}
-        </h2>
-
-        <div className="mt-6 space-y-8">
-          {step.blocks.map((block, index) => (
-            <div key={index} className="space-y-3">
-              <VoiceTag voice={block.voice} />
-              <p className="text-lg leading-relaxed">{block.text}</p>
-              <BlockMedia ids={block.mediaIds ?? []} mediaById={mediaById} />
-              <BlockSources ids={block.sourceIds} sourceById={sourceById} />
-            </div>
-          ))}
-        </div>
-
-        {step.key === 'relay' && step.relationIds && (
-          <Relations relations={story.relations.filter((r) => step.relationIds!.includes(r.id))} sourceById={sourceById} />
-        )}
-      </section>
-
-      <div className="mt-10 flex flex-wrap justify-between gap-3 border-t border-stellar-border/50 pt-6">
-        <button
-          type="button"
-          onClick={() => goTo(current - 1)}
-          disabled={current === 1}
-          className="inline-flex min-h-11 items-center gap-2 rounded-md border border-moon-dust/50 px-4 text-sm font-medium hover:bg-nebula-surface disabled:opacity-40"
-        >
-          <ArrowLeft aria-hidden="true" className="size-4" />
-          {t('story.previous')}
-        </button>
-        {current < total && (
-          <button
-            type="button"
-            onClick={() => goTo(current + 1)}
-            className="inline-flex min-h-11 items-center gap-2 rounded-md bg-primary px-4 text-sm font-semibold text-primary-foreground hover:bg-primary/85"
-          >
-            {t('story.next')}
-            <ArrowRight aria-hidden="true" className="size-4" />
-          </button>
-        )}
-      </div>
-
-      {current === total && <StoryEnd destinationId={destinationId} exitHref={exitHref} />}
-    </article>
-  )
-}
-
-function BlockMedia({ ids, mediaById }: { ids: string[]; mediaById: Map<string, Media> }) {
-  const items = ids.map((id) => mediaById.get(id)).filter((m): m is Media => m !== undefined)
-  if (items.length === 0) return null
-  return (
-    <div className={items.length > 1 ? 'grid gap-3 sm:grid-cols-2' : ''}>
-      {items.map((m) => (
-        <MediaFigure key={m.id} media={m} />
-      ))}
-    </div>
-  )
-}
-
-/** SOURCE-002: sources of a fact, one click away, without leaving the step. */
-function BlockSources({ ids, sourceById }: { ids: string[]; sourceById: Map<string, Source> }) {
-  const { t } = useTranslation()
-  const sources = ids.map((id) => sourceById.get(id)).filter((s): s is Source => s !== undefined)
-  if (sources.length === 0) return null
-  return (
-    <details className="rounded-md border border-stellar-border/50 bg-deep-space px-3 py-2">
-      <summary className="min-h-11 cursor-pointer content-center text-sm font-medium text-cosmic-indigo">
-        {t('sources.count', { count: sources.length })}
-      </summary>
-      <div className="pt-2 pb-1">
-        <SourceList sources={sources} />
-      </div>
-    </details>
-  )
-}
-
-function Relations({ relations, sourceById }: { relations: Relation[]; sourceById: Map<string, Source> }) {
-  const { t } = useTranslation()
-  if (relations.length === 0) return null
-  return (
-    <section aria-labelledby="relations-title" className="mt-10 rounded-xl border border-stellar-cyan/40 bg-nebula-surface/50 p-5">
-      <h3 id="relations-title" className="font-heading text-xl font-bold">
-        {t('story.relationsTitle')}
-      </h3>
-      <ul className="mt-4 space-y-5">
-        {relations.map((r) => (
-          <li key={r.id}>
-            <p className="font-medium">{r.transmitted}</p>
-            <p className="mt-1 text-sm text-moon-dust">
-              <span className="font-semibold">{t('story.evidence')} </span>
-              {r.evidence}
+          {story.status === 'draft' && (
+            <p className="glass mt-8 flex items-start gap-3 rounded-2xl border-stellar-gold/40 p-4 text-sm">
+              <AlertTriangle aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-stellar-gold" />
+              {t('story.draftNotice')}
             </p>
-            <div className="mt-2">
-              <BlockSources ids={r.sourceIds} sourceById={sourceById} />
-            </div>
-          </li>
-        ))}
-      </ul>
-    </section>
-  )
-}
+          )}
 
-/** STORY-008: at the end, go back to the machines or explore the other destination. */
-function StoryEnd({ destinationId, exitHref }: { destinationId: DestinationId | null; exitHref: string }) {
-  const { t } = useTranslation()
-  const other = DESTINATION_IDS.find((d) => d !== destinationId)
-  return (
-    <section aria-labelledby="story-end-title" className="mt-10">
-      <h2 id="story-end-title" className="font-heading text-xl font-bold">
-        {t('story.finishTitle')}
-      </h2>
-      <div className="mt-4 flex flex-wrap gap-3">
-        {destinationId && (
-          <Link to={exitHref} className="inline-flex min-h-11 items-center rounded-md bg-primary px-4 text-sm font-semibold text-primary-foreground hover:bg-primary/85">
-            {t('story.backToDestination', { destination: t(`destinations.${destinationId}.name`) })}
-          </Link>
-        )}
-        {other && (
-          <Link
-            to={paths.destination(other)}
-            className="inline-flex min-h-11 items-center rounded-md border border-moon-dust/50 px-4 text-sm font-medium hover:bg-nebula-surface"
-          >
-            {t('story.exploreOther', { destination: t(`destinations.${other}.name`) })}
-          </Link>
-        )}
+          <div className="mt-10 flex flex-wrap items-center gap-4">
+            <button type="button" onClick={() => goTo(1)} className={cn(ctaPrimary, 'group')}>
+              {t('story.begin')}
+              <ChevronsDown aria-hidden="true" className="size-4 transition-transform group-hover:translate-y-0.5" />
+            </button>
+            <p className="hidden text-sm text-moon-dust lg:block">{t('story.keyboardHint')}</p>
+          </div>
+          <p aria-hidden="true" className={cn(eyebrow, 'mt-16 flex items-center gap-2 text-moon-dust/80')}>
+            <ChevronsDown className="size-4 motion-safe:animate-bounce" />
+            {t('story.scrollHint')}
+          </p>
+        </header>
+
+        {story.steps.map((s, index) => (
+          <StepScene
+            key={s.key}
+            step={s}
+            number={index + 1}
+            total={total}
+            headingRef={(element) => {
+              headingRefs.current[index] = element
+            }}
+            mediaById={mediaById}
+            sourceById={sourceById}
+            relations={s.key === 'relay' && s.relationIds ? story.relations.filter((r) => s.relationIds!.includes(r.id)) : []}
+          />
+        ))}
+
+        <StoryEnd destinationId={destinationId} exitHref={exitHref} />
       </div>
-    </section>
+
+      <StoryControls current={current} total={total} stepTitle={step.title} exitHref={exitHref} onGo={goTo} />
+    </article>
   )
 }
