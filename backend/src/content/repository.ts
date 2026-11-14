@@ -58,6 +58,11 @@ export class ContentRepository {
     if (!mission) return null
     return {
       ...mission,
+      // Each timeline step comes with its illustrations resolved, ready to display.
+      timeline: mission.timeline.map((event) => ({
+        ...event,
+        media: event.mediaIds.map((mid) => this.media.get(mid)).filter((m): m is Media => m !== undefined),
+      })),
       machines: this.machinesOf(id),
       stories: this.content.stories.filter((s) => s.missionIds.includes(id)).map((s) => this.summary(s)),
       relations: this.relationsOf({ kind: 'mission', id }),

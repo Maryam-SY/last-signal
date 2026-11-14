@@ -3,87 +3,680 @@
     "id": "surveyor-3",
     "name": "Surveyor 3",
     "destinationId": "moon",
-    "agency": ["NASA"],
-    "nssdcaIds": ["1967-035A"],
+    "agency": [
+      "NASA"
+    ],
+    "nssdcaIds": [
+      "1967-035A"
+    ],
     "period": {
-      "value": { "start": "1967-04-20", "end": "1967-05-04" },
-      "sourceIds": ["nssdca-1967-035a", "nasa-science-surveyor-3"],
-      "note": { "en": "From landing to last contact (UT).", "fr": "De l'atterrissage au dernier contact (UT)." }
+      "value": {
+        "start": "1967-04-20",
+        "end": "1967-05-04"
+      },
+      "sourceIds": [
+        "nssdca-1967-035a",
+        "nasa-science-surveyor-3"
+      ],
+      "note": {
+        "en": "From landing to last contact (UT).",
+        "fr": "De l'atterrissage au dernier contact (UT)."
+      }
     },
     "summary": {
       "en": "A robotic lander sent to prepare the crewed Apollo landings. It was the first Surveyor to carry a scoop to dig into the lunar soil.",
       "fr": "Un atterrisseur robotisé envoyé pour préparer les atterrissages habités Apollo. C'est le premier Surveyor équipé d'une pelle pour creuser le sol lunaire."
     },
     "mainStoryId": "moon-surveyor-apollo12",
-    "sourceIds": ["nssdca-1967-035a", "nasa-science-surveyor-3"],
-    "order": 1
+    "sourceIds": [
+      "nssdca-1967-035a",
+      "nasa-science-surveyor-3"
+    ],
+    "order": 1,
+    "timeline": [
+      {
+        "id": "launch",
+        "date": {
+          "value": "1967-04-17",
+          "sourceIds": [
+            "nasa-science-surveyor-3"
+          ]
+        },
+        "title": {
+          "en": "Launch",
+          "fr": "Lancement"
+        },
+        "description": {
+          "en": "Surveyor 3 leaves Earth on an Atlas-Centaur rocket. Its job: prove that a spacecraft can land gently on the Moon before astronauts try.",
+          "fr": "Surveyor 3 quitte la Terre sur une fusée Atlas-Centaur. Sa mission : prouver qu’un engin peut se poser en douceur sur la Lune avant que des astronautes essaient."
+        },
+        "mediaIds": []
+      },
+      {
+        "id": "landing",
+        "date": {
+          "value": "1967-04-20",
+          "sourceIds": [
+            "nssdca-1967-035a",
+            "nasa-science-surveyor-3"
+          ]
+        },
+        "title": {
+          "en": "A bumpy landing",
+          "fr": "Un atterrissage mouvementé"
+        },
+        "description": {
+          "en": "Shiny rocks confuse its radar and the engines keep firing: the robot bounces twice before settling in the Ocean of Storms, inside a small crater.",
+          "fr": "Des roches brillantes trompent son radar et les moteurs continuent de pousser : le robot rebondit deux fois avant de s’immobiliser dans l’océan des Tempêtes, au fond d’un petit cratère."
+        },
+        "mediaIds": [
+          "nasa-lib-s69-57076"
+        ]
+      },
+      {
+        "id": "digging",
+        "date": {
+          "value": "1967-04",
+          "sourceIds": [
+            "nssdca-1967-035a",
+            "nasa-science-surveyor-3"
+          ]
+        },
+        "title": {
+          "en": "Digging into the Moon",
+          "fr": "Il creuse la Lune"
+        },
+        "description": {
+          "en": "Controlled from Earth, its little scoop digs trenches and presses on the ground. Result: the soil is like wet sand, firm enough to hold a Lunar Module. Its camera sends back 6,326 pictures.",
+          "fr": "Commandée depuis la Terre, sa petite pelle creuse des tranchées et appuie sur le sol. Résultat : le sol ressemble à du sable mouillé, assez ferme pour porter un module lunaire. Sa caméra renvoie 6 326 images."
+        },
+        "mediaIds": [
+          "nasa-lib-as12-48-7133"
+        ]
+      },
+      {
+        "id": "last-contact",
+        "date": {
+          "value": "1967-05-04",
+          "sourceIds": [
+            "nssdca-1967-035a",
+            "nasa-science-surveyor-3"
+          ]
+        },
+        "title": {
+          "en": "Silence",
+          "fr": "Le silence"
+        },
+        "description": {
+          "en": "The lunar night lasts about two weeks. Surveyor 3 sends its last data and never wakes up again.",
+          "fr": "La nuit lunaire dure environ deux semaines. Surveyor 3 envoie ses dernières données et ne se réveille plus jamais."
+        },
+        "mediaIds": []
+      },
+      {
+        "id": "apollo-12-visit",
+        "date": {
+          "value": "1969-11-20",
+          "sourceIds": [
+            "nssdca-1969-099c",
+            "nssdca-1967-035a"
+          ]
+        },
+        "title": {
+          "en": "Visitors!",
+          "fr": "De la visite !"
+        },
+        "description": {
+          "en": "Two and a half years later, Apollo 12 astronauts Pete Conrad and Alan Bean walk up to the robot and remove about 10 kg of parts, including its camera, to bring them home.",
+          "fr": "Deux ans et demi plus tard, les astronautes d’Apollo 12 Pete Conrad et Alan Bean marchent jusqu’au robot et retirent environ 10 kg de pièces, dont sa caméra, pour les rapporter sur Terre."
+        },
+        "mediaIds": [
+          "nssdca-conrad-surveyor-3",
+          "nasa-lib-as12-48-7136"
+        ]
+      },
+      {
+        "id": "analysis",
+        "date": {
+          "value": "1972",
+          "sourceIds": [
+            "nssdca-1969-099c"
+          ]
+        },
+        "title": {
+          "en": "What the Moon did to the parts",
+          "fr": "Ce que la Lune a fait aux pièces"
+        },
+        "description": {
+          "en": "NASA publishes a report on the parts brought back, to understand how materials age after years on the Moon.",
+          "fr": "La NASA publie un rapport sur les pièces rapportées, pour comprendre comment les matériaux vieillissent après des années sur la Lune."
+        },
+        "mediaIds": [
+          "nssdca-surveyor-3-analysis-1972"
+        ]
+      }
+    ]
   },
   {
     "id": "apollo-11",
     "name": "Apollo 11",
     "destinationId": "moon",
-    "agency": ["NASA"],
-    "nssdcaIds": ["1969-059C"],
+    "agency": [
+      "NASA"
+    ],
+    "nssdcaIds": [
+      "1969-059C"
+    ],
     "period": {
-      "value": { "start": "1969-07-20", "end": "1969-07-21" },
-      "sourceIds": ["nssdca-1969-059c"],
-      "note": { "en": "Time spent on the lunar surface (UT).", "fr": "Séjour à la surface de la Lune (UT)." }
+      "value": {
+        "start": "1969-07-20",
+        "end": "1969-07-21"
+      },
+      "sourceIds": [
+        "nssdca-1969-059c"
+      ],
+      "note": {
+        "en": "Time spent on the lunar surface (UT).",
+        "fr": "Séjour à la surface de la Lune (UT)."
+      }
     },
     "summary": {
       "en": "The first crewed landing on the Moon. Before leaving the Sea of Tranquility, the crew set up a small package of experiments and a laser reflector.",
       "fr": "Le premier atterrissage habité sur la Lune. Avant de quitter la mer de la Tranquillité, l'équipage a installé un petit ensemble d'expériences et un réflecteur laser."
     },
     "mainStoryId": "moon-apollo11-retroreflectors",
-    "sourceIds": ["nssdca-1969-059c", "jpl-llr-2004"],
-    "order": 2
+    "sourceIds": [
+      "nssdca-1969-059c",
+      "jpl-llr-2004"
+    ],
+    "order": 2,
+    "timeline": [
+      {
+        "id": "launch",
+        "date": {
+          "value": "1969-07-16",
+          "sourceIds": [
+            "nssdca-1969-059c"
+          ]
+        },
+        "title": {
+          "en": "Launch",
+          "fr": "Lancement"
+        },
+        "description": {
+          "en": "A giant Saturn V rocket carries Neil Armstrong, Buzz Aldrin and Michael Collins toward the Moon.",
+          "fr": "Une fusée géante Saturn V emporte Neil Armstrong, Buzz Aldrin et Michael Collins vers la Lune."
+        },
+        "mediaIds": []
+      },
+      {
+        "id": "landing",
+        "date": {
+          "value": "1969-07-20",
+          "sourceIds": [
+            "nssdca-1969-059c"
+          ]
+        },
+        "title": {
+          "en": "“The Eagle has landed”",
+          "fr": "« The Eagle has landed »"
+        },
+        "description": {
+          "en": "The Lunar Module Eagle lands in the Sea of Tranquility with Armstrong and Aldrin on board. Collins stays in orbit.",
+          "fr": "Le module lunaire Eagle se pose dans la mer de la Tranquillité avec Armstrong et Aldrin à bord. Collins reste en orbite."
+        },
+        "mediaIds": [
+          "nasa-lib-ksc-as11-40-5964",
+          "nssdca-apollo-11-lm-as11-40-5927"
+        ]
+      },
+      {
+        "id": "first-steps",
+        "date": {
+          "value": "1969-07-21",
+          "sourceIds": [
+            "nssdca-1969-059c"
+          ]
+        },
+        "title": {
+          "en": "First steps on the Moon",
+          "fr": "Premiers pas sur la Lune"
+        },
+        "description": {
+          "en": "Neil Armstrong steps onto the Moon (still 20 July in the United States), followed by Buzz Aldrin 19 minutes later. They walk about 250 m in total.",
+          "fr": "Neil Armstrong pose le pied sur la Lune (encore le 20 juillet aux États-Unis), suivi de Buzz Aldrin 19 minutes plus tard. Ils parcourent environ 250 m au total."
+        },
+        "mediaIds": [
+          "nasa-lib-as11-40-5863",
+          "nasa-lib-as11-40-5902"
+        ]
+      },
+      {
+        "id": "experiments",
+        "date": {
+          "value": "1969-07-21",
+          "sourceIds": [
+            "nssdca-1969-059c",
+            "jpl-llr-2004"
+          ]
+        },
+        "title": {
+          "en": "Leaving instruments behind",
+          "fr": "Des instruments laissés sur place"
+        },
+        "description": {
+          "en": "Before leaving, the astronauts set up a seismometer to “listen” to the Moon and a mirror made of 100 prisms for laser beams sent from Earth.",
+          "fr": "Avant de partir, les astronautes installent un sismomètre pour « écouter » la Lune et un miroir de 100 prismes pour les rayons laser envoyés depuis la Terre."
+        },
+        "mediaIds": [
+          "nasa-lib-as11-40-5951",
+          "llr-easep-aldrin-as11-40-5949",
+          "llr-retroreflector-array"
+        ]
+      },
+      {
+        "id": "liftoff",
+        "date": {
+          "value": "1969-07-21",
+          "sourceIds": [
+            "nssdca-1969-059c"
+          ]
+        },
+        "title": {
+          "en": "Leaving the Moon",
+          "fr": "Départ de la Lune"
+        },
+        "description": {
+          "en": "After 21 hours and 36 minutes on the Moon, the top part of Eagle takes off. The bottom part stays behind and serves as its launch pad.",
+          "fr": "Après 21 heures et 36 minutes sur la Lune, la partie haute d’Eagle décolle. La partie basse reste sur place et sert de rampe de lancement."
+        },
+        "mediaIds": [
+          "nasa-lib-s69-44463"
+        ]
+      },
+      {
+        "id": "easep-stops",
+        "date": {
+          "value": "1969-08-27",
+          "sourceIds": [
+            "nssdca-1969-059c"
+          ]
+        },
+        "title": {
+          "en": "The seismometer goes quiet",
+          "fr": "Le sismomètre se tait"
+        },
+        "description": {
+          "en": "The solar-powered seismometer stops answering commands from Earth. Its mission is over.",
+          "fr": "Le sismomètre, alimenté par des panneaux solaires, ne répond plus aux commandes envoyées depuis la Terre. Sa mission est terminée."
+        },
+        "mediaIds": [
+          "nasa-lib-s69-39588"
+        ]
+      },
+      {
+        "id": "moon-moving-away",
+        "date": {
+          "value": "1999-07-19",
+          "sourceIds": [
+            "jpl-llr-1999"
+          ]
+        },
+        "title": {
+          "en": "The Moon is moving away",
+          "fr": "La Lune s’éloigne"
+        },
+        "description": {
+          "en": "Thirty years of laser shots at the mirror show that the Moon drifts away from Earth by about 3.8 cm each year.",
+          "fr": "Trente ans de tirs laser sur le miroir montrent que la Lune s’éloigne de la Terre d’environ 3,8 cm chaque année."
+        },
+        "mediaIds": [
+          "llr-corner-cube-prisms"
+        ]
+      },
+      {
+        "id": "still-working",
+        "date": {
+          "value": "2004-07-20",
+          "sourceIds": [
+            "jpl-llr-2004"
+          ]
+        },
+        "title": {
+          "en": "Still working after 35 years",
+          "fr": "Toujours en service après 35 ans"
+        },
+        "description": {
+          "en": "NASA reports that the mirror, which needs no power, is still working perfectly. Observatories in Texas and France keep aiming lasers at it.",
+          "fr": "La NASA indique que le miroir, qui n’a besoin d’aucune énergie, fonctionne toujours parfaitement. Des observatoires au Texas et en France continuent de le viser au laser."
+        },
+        "mediaIds": [
+          "llr-retroreflector-array"
+        ]
+      }
+    ]
   },
   {
     "id": "apollo-12",
     "name": "Apollo 12",
     "destinationId": "moon",
-    "agency": ["NASA"],
-    "nssdcaIds": ["1969-099C"],
+    "agency": [
+      "NASA"
+    ],
+    "nssdcaIds": [
+      "1969-099C"
+    ],
     "period": {
-      "value": { "start": "1969-11-19", "end": "1969-11-20" },
-      "sourceIds": ["nssdca-1969-099c"],
-      "note": { "en": "Time spent on the lunar surface (UT).", "fr": "Séjour à la surface de la Lune (UT)." }
+      "value": {
+        "start": "1969-11-19",
+        "end": "1969-11-20"
+      },
+      "sourceIds": [
+        "nssdca-1969-099c"
+      ],
+      "note": {
+        "en": "Time spent on the lunar surface (UT).",
+        "fr": "Séjour à la surface de la Lune (UT)."
+      }
     },
     "summary": {
       "en": "The second crewed landing on the Moon, about 180 m from Surveyor 3. The crew installed a science station (ALSEP) and brought back parts of Surveyor 3.",
       "fr": "Le deuxième atterrissage habité sur la Lune, à environ 180 m de Surveyor 3. L'équipage a installé une station scientifique (ALSEP) et rapporté des pièces de Surveyor 3."
     },
     "mainStoryId": "moon-surveyor-apollo12",
-    "sourceIds": ["nssdca-1969-099c"],
-    "order": 3
+    "sourceIds": [
+      "nssdca-1969-099c"
+    ],
+    "order": 3,
+    "timeline": [
+      {
+        "id": "launch",
+        "date": {
+          "value": "1969-11-14",
+          "sourceIds": [
+            "nssdca-1969-099c"
+          ]
+        },
+        "title": {
+          "en": "Launch",
+          "fr": "Lancement"
+        },
+        "description": {
+          "en": "Apollo 12 leaves for the Moon with Pete Conrad, Alan Bean and Richard Gordon.",
+          "fr": "Apollo 12 part vers la Lune avec Pete Conrad, Alan Bean et Richard Gordon."
+        },
+        "mediaIds": []
+      },
+      {
+        "id": "landing",
+        "date": {
+          "value": "1969-11-19",
+          "sourceIds": [
+            "nssdca-1969-099c"
+          ]
+        },
+        "title": {
+          "en": "A precise landing",
+          "fr": "Un atterrissage précis"
+        },
+        "description": {
+          "en": "The Lunar Module Intrepid lands in the Ocean of Storms, only about 180 m from the Surveyor 3 robot that had arrived two years earlier.",
+          "fr": "Le module lunaire Intrepid se pose dans l’océan des Tempêtes, à seulement 180 m environ du robot Surveyor 3 arrivé deux ans plus tôt."
+        },
+        "mediaIds": [
+          "nasa-lib-as12-46-6726",
+          "nasa-lib-as12-47-6949"
+        ]
+      },
+      {
+        "id": "alsep",
+        "date": {
+          "value": "1969-11-19",
+          "sourceIds": [
+            "nssdca-1969-099c"
+          ]
+        },
+        "title": {
+          "en": "A science station on the Moon",
+          "fr": "Une station scientifique sur la Lune"
+        },
+        "description": {
+          "en": "Alan Bean sets up the ALSEP, a station with six instruments powered by a small nuclear generator. It sends its measurements to Earth.",
+          "fr": "Alan Bean installe l’ALSEP, une station de six instruments alimentée par un petit générateur nucléaire. Elle envoie ses mesures vers la Terre."
+        },
+        "mediaIds": [
+          "nasa-lib-as12-47-6919",
+          "nasa-lib-as12-46-6790",
+          "nasa-lib-6903633"
+        ]
+      },
+      {
+        "id": "surveyor-visit",
+        "date": {
+          "value": "1969-11-20",
+          "sourceIds": [
+            "nssdca-1969-099c",
+            "nssdca-1967-035a"
+          ]
+        },
+        "title": {
+          "en": "Visiting Surveyor 3",
+          "fr": "Visite à Surveyor 3"
+        },
+        "description": {
+          "en": "On their second moonwalk, the astronauts walk to Surveyor 3, photograph it and bring back about 10 kg of its parts.",
+          "fr": "Lors de leur deuxième sortie, les astronautes marchent jusqu’à Surveyor 3, le photographient et rapportent environ 10 kg de ses pièces."
+        },
+        "mediaIds": [
+          "nasa-lib-as12-48-7133",
+          "surveyor-3-apollo-12-as12-48-7134"
+        ]
+      },
+      {
+        "id": "moonquake",
+        "date": {
+          "value": "1969-11-20",
+          "sourceIds": [
+            "nssdca-1969-099c"
+          ]
+        },
+        "title": {
+          "en": "An artificial moonquake",
+          "fr": "Un séisme lunaire artificiel"
+        },
+        "description": {
+          "en": "Once the crew is back in orbit, the empty top part of the Lunar Module is crashed into the Moon on purpose. The seismometer records the shock: the first artificial moonquake ever recorded.",
+          "fr": "Une fois l’équipage revenu en orbite, la partie haute du module lunaire, vide, est volontairement écrasée sur la Lune. Le sismomètre enregistre le choc : le premier séisme lunaire artificiel jamais enregistré."
+        },
+        "mediaIds": [
+          "nasa-lib-s69-59547"
+        ]
+      },
+      {
+        "id": "alsep-shutdown",
+        "date": {
+          "value": "1977-09-30",
+          "sourceIds": [
+            "nssdca-1969-099c"
+          ]
+        },
+        "title": {
+          "en": "The stations are switched off",
+          "fr": "Les stations sont éteintes"
+        },
+        "description": {
+          "en": "After almost eight years of measurements, the Apollo 12 station is shut down together with all the other ALSEP stations.",
+          "fr": "Après près de huit ans de mesures, la station d’Apollo 12 est arrêtée en même temps que toutes les autres stations ALSEP."
+        },
+        "mediaIds": [
+          "nasa-lib-as12-47-6918"
+        ]
+      }
+    ]
   },
   {
     "id": "mars-pathfinder",
     "name": "Mars Pathfinder",
     "destinationId": "mars",
-    "agency": ["NASA"],
-    "nssdcaIds": ["1996-068A"],
+    "agency": [
+      "NASA"
+    ],
+    "nssdcaIds": [
+      "1996-068A"
+    ],
     "period": {
-      "value": { "start": "1997-07-04", "end": "1997-09-27" },
-      "sourceIds": ["nasa-science-mars-pathfinder"],
-      "note": { "en": "From landing to the final data transmission.", "fr": "De l'atterrissage à la dernière transmission de données." }
+      "value": {
+        "start": "1997-07-04",
+        "end": "1997-09-27"
+      },
+      "sourceIds": [
+        "nasa-science-mars-pathfinder"
+      ],
+      "note": {
+        "en": "From landing to the final data transmission.",
+        "fr": "De l'atterrissage à la dernière transmission de données."
+      }
     },
     "summary": {
       "en": "A technology demonstration that tested a new way to land on Mars, cushioned by airbags, and delivered the first robotic rover, Sojourner.",
       "fr": "Une démonstration technologique qui a testé une nouvelle façon d'atterrir sur Mars, amortie par des airbags, et a déposé le premier rover robotisé, Sojourner."
     },
     "mainStoryId": null,
-    "sourceIds": ["nasa-science-mars-pathfinder", "nssdca-1996-068a"],
-    "order": 1
+    "sourceIds": [
+      "nasa-science-mars-pathfinder",
+      "nssdca-1996-068a"
+    ],
+    "order": 1,
+    "timeline": [
+      {
+        "id": "launch",
+        "date": {
+          "value": "1996-12-04",
+          "sourceIds": [
+            "nasa-science-mars-pathfinder",
+            "nssdca-1996-068a"
+          ]
+        },
+        "title": {
+          "en": "Launch",
+          "fr": "Lancement"
+        },
+        "description": {
+          "en": "Mars Pathfinder leaves Earth on a Delta II rocket, with the little Sojourner rover folded on one of its petals.",
+          "fr": "Mars Pathfinder quitte la Terre sur une fusée Delta II, avec le petit rover Sojourner replié sur l’un de ses pétales."
+        },
+        "mediaIds": [
+          "nasa-lib-9614653",
+          "nasa-lib-ksc-96pc-1130"
+        ]
+      },
+      {
+        "id": "landing",
+        "date": {
+          "value": "1997-07-04",
+          "sourceIds": [
+            "nasa-science-mars-pathfinder",
+            "nssdca-1996-068a"
+          ]
+        },
+        "title": {
+          "en": "Bouncing onto Mars",
+          "fr": "Des rebonds sur Mars"
+        },
+        "description": {
+          "en": "Wrapped in giant airbags, the lander hits the ground and bounces about 15 times before stopping in Ares Vallis, an ancient flood plain. It is the first airbag landing on Mars.",
+          "fr": "Enveloppé d’airbags géants, l’atterrisseur touche le sol et rebondit une quinzaine de fois avant de s’arrêter à Ares Vallis, une ancienne plaine d’inondation. C’est le premier atterrissage sur Mars amorti par des airbags."
+        },
+        "mediaIds": [
+          "pathfinder-airbag-test",
+          "nasa-lib-pia00611"
+        ]
+      },
+      {
+        "id": "sojourner-rolls",
+        "date": {
+          "value": "1997-07-05",
+          "sourceIds": [
+            "nasa-science-mars-pathfinder"
+          ]
+        },
+        "title": {
+          "en": "The first rover on Mars",
+          "fr": "Le premier rover sur Mars"
+        },
+        "description": {
+          "en": "Sojourner, a small rover about 30 cm tall and weighing 10.6 kg, rolls down a ramp onto Martian soil.",
+          "fr": "Sojourner, un petit rover d’environ 30 cm de haut pesant 10,6 kg, descend une rampe et roule sur le sol martien."
+        },
+        "mediaIds": [
+          "nasa-lib-pia00623",
+          "pathfinder-sojourner-sol-2-pia01551"
+        ]
+      },
+      {
+        "id": "rocks",
+        "date": {
+          "value": "1997-07",
+          "sourceIds": [
+            "nasa-science-mars-pathfinder",
+            "nasa-image-video-library"
+          ]
+        },
+        "title": {
+          "en": "Reading the rocks",
+          "fr": "Lire les roches"
+        },
+        "description": {
+          "en": "Sojourner presses its instrument against rocks nicknamed “Yogi” or “Flat Top” to find out what they are made of. Rounded pebbles suggest that water once flowed here.",
+          "fr": "Sojourner pose son instrument contre des rochers surnommés « Yogi » ou « Flat Top » pour savoir de quoi ils sont faits. Des galets arrondis laissent penser que de l’eau a coulé ici autrefois."
+        },
+        "mediaIds": [
+          "nasa-lib-pia00629",
+          "pathfinder-sojourner-apxs-animation"
+        ]
+      },
+      {
+        "id": "last-data",
+        "date": {
+          "value": "1997-09-27",
+          "sourceIds": [
+            "nasa-science-mars-pathfinder"
+          ]
+        },
+        "title": {
+          "en": "Last transmission",
+          "fr": "Dernière transmission"
+        },
+        "description": {
+          "en": "Mars Pathfinder sends its final data. In total: more than 16,500 images from the lander and 550 from the rover.",
+          "fr": "Mars Pathfinder envoie ses dernières données. Au total : plus de 16 500 images de l’atterrisseur et 550 du rover."
+        },
+        "mediaIds": [
+          "pathfinder-presidential-panorama"
+        ]
+      }
+    ]
   },
   {
     "id": "mars-exploration-rovers",
     "name": "Mars Exploration Rovers (Spirit and Opportunity)",
     "destinationId": "mars",
-    "agency": ["NASA"],
-    "nssdcaIds": ["2003-027A", "2003-032A"],
+    "agency": [
+      "NASA"
+    ],
+    "nssdcaIds": [
+      "2003-027A",
+      "2003-032A"
+    ],
     "period": {
-      "value": { "start": "2004-01-04", "end": "2018-06-10" },
-      "sourceIds": ["nssdca-2003-027a", "nssdca-2003-032a"],
+      "value": {
+        "start": "2004-01-04",
+        "end": "2018-06-10"
+      },
+      "sourceIds": [
+        "nssdca-2003-027a",
+        "nssdca-2003-032a"
+      ],
       "note": {
         "en": "From Spirit's landing (UT) to Opportunity's final communication.",
         "fr": "De l'atterrissage de Spirit (UT) à la dernière communication d'Opportunity."
@@ -94,18 +687,294 @@
       "fr": "Deux robots géologues jumeaux envoyés de part et d'autre de Mars pour chercher des traces d'eau ancienne."
     },
     "mainStoryId": "mars-spirit-opportunity",
-    "sourceIds": ["nasa-science-mer", "nssdca-2003-027a", "nssdca-2003-032a"],
-    "order": 2
+    "sourceIds": [
+      "nasa-science-mer",
+      "nssdca-2003-027a",
+      "nssdca-2003-032a"
+    ],
+    "order": 2,
+    "timeline": [
+      {
+        "id": "spirit-launch",
+        "date": {
+          "value": "2003-06-10",
+          "sourceIds": [
+            "nssdca-2003-027a"
+          ]
+        },
+        "title": {
+          "en": "Spirit leaves Earth",
+          "fr": "Spirit quitte la Terre"
+        },
+        "description": {
+          "en": "The first of the twin rovers is launched on a Delta II rocket.",
+          "fr": "Le premier des deux rovers jumeaux est lancé sur une fusée Delta II."
+        },
+        "mediaIds": [
+          "nasa-lib-pia04928"
+        ]
+      },
+      {
+        "id": "opportunity-launch",
+        "date": {
+          "value": "2003-07-08",
+          "sourceIds": [
+            "nssdca-2003-032a"
+          ]
+        },
+        "title": {
+          "en": "Opportunity follows",
+          "fr": "Opportunity suit"
+        },
+        "description": {
+          "en": "Its twin, Opportunity, leaves a month later.",
+          "fr": "Son jumeau, Opportunity, part un mois plus tard."
+        },
+        "mediaIds": []
+      },
+      {
+        "id": "spirit-landing",
+        "date": {
+          "value": "2004-01-04",
+          "sourceIds": [
+            "nssdca-2003-027a"
+          ]
+        },
+        "title": {
+          "en": "Spirit lands in Gusev Crater",
+          "fr": "Spirit se pose dans le cratère Gusev"
+        },
+        "description": {
+          "en": "Cushioned by airbags, Spirit bounces and rolls into Gusev Crater, which looks like an old lake bed.",
+          "fr": "Amorti par des airbags, Spirit rebondit et roule jusque dans le cratère Gusev, qui ressemble à un ancien fond de lac."
+        },
+        "mediaIds": [
+          "mer-spirit-landing-site-pia05117",
+          "nasa-lib-pia05120"
+        ]
+      },
+      {
+        "id": "spirit-rolls-off",
+        "date": {
+          "value": "2004-01-15",
+          "sourceIds": [
+            "nssdca-2003-027a"
+          ]
+        },
+        "title": {
+          "en": "Spirit starts driving",
+          "fr": "Spirit prend la route"
+        },
+        "description": {
+          "en": "Eleven days after landing, Spirit drives off its platform onto the Martian ground.",
+          "fr": "Onze jours après l’atterrissage, Spirit quitte sa plateforme et roule sur le sol martien."
+        },
+        "mediaIds": [
+          "nasa-lib-pia05044",
+          "nasa-lib-pia05045"
+        ]
+      },
+      {
+        "id": "opportunity-landing",
+        "date": {
+          "value": "2004-01-25",
+          "sourceIds": [
+            "nssdca-2003-032a"
+          ]
+        },
+        "title": {
+          "en": "Opportunity lands at Meridiani",
+          "fr": "Opportunity se pose à Meridiani"
+        },
+        "description": {
+          "en": "Opportunity lands on the other side of Mars and stops inside a small 20-metre crater: a lucky “hole in one”.",
+          "fr": "Opportunity atterrit de l’autre côté de Mars et s’arrête au fond d’un petit cratère de 20 mètres : un coup de chance."
+        },
+        "mediaIds": [
+          "nasa-lib-pia05251",
+          "mer-lion-king-panorama-pia05755"
+        ]
+      },
+      {
+        "id": "blueberries",
+        "date": {
+          "value": "2004-04",
+          "sourceIds": [
+            "nasa-science-mer-highlights"
+          ]
+        },
+        "title": {
+          "en": "The “blueberries”",
+          "fr": "Les « myrtilles »"
+        },
+        "description": {
+          "en": "Opportunity finds small grey spheres of hematite, a mineral that usually forms in water. Proof that water soaked this place long ago.",
+          "fr": "Opportunity découvre de petites billes grises d’hématite, un minéral qui se forme généralement dans l’eau. La preuve que de l’eau a imprégné cet endroit il y a très longtemps."
+        },
+        "mediaIds": [
+          "mer-blueberries-pia19113"
+        ]
+      },
+      {
+        "id": "spirit-silica",
+        "date": {
+          "value": "2007-03",
+          "sourceIds": [
+            "nasa-science-mer-highlights"
+          ]
+        },
+        "title": {
+          "en": "Spirit’s lucky wheel",
+          "fr": "La roue chanceuse de Spirit"
+        },
+        "description": {
+          "en": "Dragging a wheel it can no longer use, Spirit scrapes up bright soil made of almost pure silica — the kind of deposit that, on Earth, forms in hot springs.",
+          "fr": "En traînant une roue qui ne fonctionne plus, Spirit fait apparaître un sol clair fait de silice presque pure — le genre de dépôt qui, sur Terre, se forme dans des sources chaudes."
+        },
+        "mediaIds": []
+      },
+      {
+        "id": "spirit-stuck",
+        "date": {
+          "value": "2009-04-23",
+          "sourceIds": [
+            "nssdca-2003-027a"
+          ]
+        },
+        "title": {
+          "en": "Spirit gets stuck",
+          "fr": "Spirit s’enlise"
+        },
+        "description": {
+          "en": "Spirit breaks through a thin crust into soft sand. By 1 May it can no longer move at all.",
+          "fr": "Spirit perce une fine croûte et s’enfonce dans du sable meuble. Dès le 1er mai, il ne peut plus bouger du tout."
+        },
+        "mediaIds": [
+          "nasa-lib-pia12337"
+        ]
+      },
+      {
+        "id": "spirit-silent",
+        "date": {
+          "value": "2010-03-22",
+          "sourceIds": [
+            "nssdca-2003-027a"
+          ]
+        },
+        "title": {
+          "en": "Spirit’s last message",
+          "fr": "Le dernier message de Spirit"
+        },
+        "description": {
+          "en": "Unable to turn its solar panels toward the Sun for the winter, Spirit sends its last transmission after 7.73 km and six years on Mars.",
+          "fr": "Incapable d’orienter ses panneaux solaires vers le Soleil pour l’hiver, Spirit envoie sa dernière transmission après 7,73 km et six ans sur Mars."
+        },
+        "mediaIds": []
+      },
+      {
+        "id": "endeavour",
+        "date": {
+          "value": "2011-08",
+          "sourceIds": [
+            "nasa-science-mer-highlights"
+          ]
+        },
+        "title": {
+          "en": "Opportunity reaches Endeavour Crater",
+          "fr": "Opportunity atteint le cratère Endeavour"
+        },
+        "description": {
+          "en": "After years of driving, Opportunity arrives at the rim of the huge Endeavour Crater. Its first goal there is a spot named “Spirit Point”.",
+          "fr": "Après des années de route, Opportunity arrive au bord de l’immense cratère Endeavour. Son premier objectif est un endroit baptisé « Spirit Point »."
+        },
+        "mediaIds": [
+          "nasa-lib-pia14134",
+          "nasa-lib-pia14508"
+        ]
+      },
+      {
+        "id": "marathon",
+        "date": {
+          "value": "2015-03-24",
+          "sourceIds": [
+            "nasa-science-mer-highlights"
+          ]
+        },
+        "title": {
+          "en": "A marathon on Mars",
+          "fr": "Un marathon sur Mars"
+        },
+        "description": {
+          "en": "Opportunity passes the distance of a marathon: 42.2 km driven on Mars.",
+          "fr": "Opportunity dépasse la distance d’un marathon : 42,2 km parcourus sur Mars."
+        },
+        "mediaIds": [
+          "mer-opportunity-traverse-map-pia19154"
+        ]
+      },
+      {
+        "id": "opportunity-silent",
+        "date": {
+          "value": "2018-06-10",
+          "sourceIds": [
+            "jpl-opportunity-end-2019",
+            "nssdca-2003-032a"
+          ]
+        },
+        "title": {
+          "en": "The dust storm",
+          "fr": "La tempête de poussière"
+        },
+        "description": {
+          "en": "A dust storm covers the whole planet and hides the Sun. Without light for its solar panels, Opportunity stops communicating.",
+          "fr": "Une tempête de poussière recouvre toute la planète et cache le Soleil. Sans lumière pour ses panneaux solaires, Opportunity cesse de communiquer."
+        },
+        "mediaIds": [
+          "jpl-opportunity-shadow-pia06739"
+        ]
+      },
+      {
+        "id": "mission-end",
+        "date": {
+          "value": "2019-02-13",
+          "sourceIds": [
+            "jpl-opportunity-end-2019"
+          ]
+        },
+        "title": {
+          "en": "Goodbye, Opportunity",
+          "fr": "Au revoir, Opportunity"
+        },
+        "description": {
+          "en": "After months of trying to wake it up, NASA declares the mission over. Designed for 90 days, it lasted almost 15 years and covered more than 45 km.",
+          "fr": "Après des mois de tentatives pour le réveiller, la NASA déclare la mission terminée. Prévue pour 90 jours, elle a duré près de 15 ans et parcouru plus de 45 km."
+        },
+        "mediaIds": [
+          "jpl-opportunity-last-commands-2019",
+          "mer-by-the-numbers-infographic"
+        ]
+      }
+    ]
   },
   {
     "id": "mars-2020",
     "name": "Mars 2020 (Perseverance and Ingenuity)",
     "destinationId": "mars",
-    "agency": ["NASA"],
-    "nssdcaIds": ["2020-052A"],
+    "agency": [
+      "NASA"
+    ],
+    "nssdcaIds": [
+      "2020-052A"
+    ],
     "period": {
-      "value": { "start": "2021-02-18", "end": null },
-      "sourceIds": ["nssdca-2020-052a", "nasa-science-mer"],
+      "value": {
+        "start": "2021-02-18",
+        "end": null
+      },
+      "sourceIds": [
+        "nssdca-2020-052a",
+        "nasa-science-mer"
+      ],
       "note": {
         "en": "Landing date. The Perseverance rover is still operating; AeroReborn only presents the Ingenuity helicopter, whose mission has ended.",
         "fr": "Date d'atterrissage. Le rover Perseverance fonctionne encore ; AeroReborn ne présente que l'hélicoptère Ingenuity, dont la mission est terminée."
@@ -116,7 +985,261 @@
       "fr": "Une mission de rover qui transportait aussi Ingenuity, un petit hélicoptère accroché sous le rover, pour tester le vol sur Mars."
     },
     "mainStoryId": "mars-ingenuity",
-    "sourceIds": ["nssdca-2020-052a", "nasa-science-ingenuity"],
-    "order": 3
+    "sourceIds": [
+      "nssdca-2020-052a",
+      "nasa-science-ingenuity"
+    ],
+    "order": 3,
+    "timeline": [
+      {
+        "id": "launch",
+        "date": {
+          "value": "2020-07-30",
+          "sourceIds": [
+            "nssdca-2020-052a",
+            "nasa-science-ingenuity"
+          ]
+        },
+        "title": {
+          "en": "Launch",
+          "fr": "Lancement"
+        },
+        "description": {
+          "en": "The Perseverance rover leaves Earth with Ingenuity, a 1.8 kg helicopter, folded under its belly.",
+          "fr": "Le rover Perseverance quitte la Terre avec Ingenuity, un hélicoptère de 1,8 kg, replié sous son ventre."
+        },
+        "mediaIds": [
+          "nasa-lib-pia23882"
+        ]
+      },
+      {
+        "id": "landing",
+        "date": {
+          "value": "2021-02-18",
+          "sourceIds": [
+            "nssdca-2020-052a",
+            "nasa-science-ingenuity"
+          ]
+        },
+        "title": {
+          "en": "Arrival in Jezero Crater",
+          "fr": "Arrivée dans le cratère Jezero"
+        },
+        "description": {
+          "en": "Perseverance lands in Jezero Crater, still carrying Ingenuity underneath.",
+          "fr": "Perseverance se pose dans le cratère Jezero, toujours avec Ingenuity accroché dessous."
+        },
+        "mediaIds": [
+          "nasa-lib-pia24424"
+        ]
+      },
+      {
+        "id": "four-feet",
+        "date": {
+          "value": "2021-04-03",
+          "sourceIds": [
+            "nasa-science-ingenuity"
+          ]
+        },
+        "title": {
+          "en": "Four feet on Mars",
+          "fr": "Quatre pieds sur Mars"
+        },
+        "description": {
+          "en": "The rover drops Ingenuity onto the ground, then drives to a safe distance; the helicopter charges its batteries with its solar panel.",
+          "fr": "Le rover dépose Ingenuity sur le sol, puis s’éloigne à une distance de sécurité ; l’hélicoptère recharge ses batteries grâce à son panneau solaire."
+        },
+        "mediaIds": [
+          "ingenuity-four-feet-on-mars-pia24548",
+          "nasa-lib-pia24449"
+        ]
+      },
+      {
+        "id": "first-night",
+        "date": {
+          "value": "2021-04-04",
+          "sourceIds": [
+            "nasa-science-ingenuity"
+          ]
+        },
+        "title": {
+          "en": "Surviving the first night",
+          "fr": "Survivre à la première nuit"
+        },
+        "description": {
+          "en": "Ingenuity spends its first night alone on Mars and survives, thanks to a heater designed for the night.",
+          "fr": "Ingenuity passe sa première nuit seul sur Mars et y survit, grâce à un système de chauffage prévu pour la nuit."
+        },
+        "mediaIds": [
+          "ingenuity-first-night-pia24541"
+        ]
+      },
+      {
+        "id": "first-flight",
+        "date": {
+          "value": "2021-04-19",
+          "sourceIds": [
+            "nasa-science-ingenuity",
+            "nssdca-2020-052a"
+          ]
+        },
+        "title": {
+          "en": "First flight on another planet",
+          "fr": "Premier vol sur une autre planète"
+        },
+        "description": {
+          "en": "Ingenuity lifts off, hovers 3 m above the ground for about 30 seconds and lands: the first powered, controlled flight on another planet.",
+          "fr": "Ingenuity décolle, reste 3 m au-dessus du sol pendant environ 30 secondes et se repose : le premier vol motorisé et contrôlé sur une autre planète."
+        },
+        "mediaIds": [
+          "ingenuity-first-flight-shadow-pia24584",
+          "nasa-lib-jpl-20210419-techf-0001-first-video-of-nasas-ingenuity-mars-helicopter"
+        ]
+      },
+      {
+        "id": "tech-demo-complete",
+        "date": {
+          "value": "2021-05-07",
+          "sourceIds": [
+            "nasa-science-ingenuity"
+          ]
+        },
+        "title": {
+          "en": "Test mission accomplished",
+          "fr": "Mission d’essai réussie"
+        },
+        "description": {
+          "en": "Ingenuity was designed for at most five test flights in 30 days. The test phase is a success — and it keeps going.",
+          "fr": "Ingenuity était prévu pour cinq vols d’essai au maximum en 30 jours. La phase de test est un succès — et il continue."
+        },
+        "mediaIds": [
+          "ingenuity-tech-demo-complete-pia24647",
+          "nasa-lib-pia24648"
+        ]
+      },
+      {
+        "id": "first-scouting-flight",
+        "date": {
+          "value": "2021-07-24",
+          "sourceIds": [
+            "nasa-science-ingenuity"
+          ]
+        },
+        "title": {
+          "en": "A scout for the rover",
+          "fr": "Un éclaireur pour le rover"
+        },
+        "description": {
+          "en": "Ingenuity becomes the rover’s eye in the sky, flying ahead to photograph the areas the team might explore.",
+          "fr": "Ingenuity devient l’œil du rover dans le ciel : il vole en avant pour photographier les zones que l’équipe pourrait explorer."
+        },
+        "mediaIds": [
+          "ingenuity-first-scouting-flight-pia24688"
+        ]
+      },
+      {
+        "id": "record-flight",
+        "date": {
+          "value": "2022-04-18",
+          "sourceIds": [
+            "nasa-image-video-library"
+          ]
+        },
+        "title": {
+          "en": "Longest and fastest flight",
+          "fr": "Le vol le plus long et le plus rapide"
+        },
+        "description": {
+          "en": "On its 25th flight, Ingenuity covers 704 m at 5.5 m/s — its longest and fastest flight at that time.",
+          "fr": "Lors de son 25ᵉ vol, Ingenuity parcourt 704 m à 5,5 m/s — son vol le plus long et le plus rapide à ce moment-là."
+        },
+        "mediaIds": [
+          "ingenuity-distance-record-pia25321",
+          "nasa-lib-jpl-20220527-m2020f-0001-nasas-ingenuity-mars-helicopter-captures-vide"
+        ]
+      },
+      {
+        "id": "fifty-flights",
+        "date": {
+          "value": "2023-04-13",
+          "sourceIds": [
+            "nasa-science-ingenuity"
+          ]
+        },
+        "title": {
+          "en": "50 flights and more",
+          "fr": "Plus de 50 vols"
+        },
+        "description": {
+          "en": "Ingenuity passes 50 flights, ten times more than planned.",
+          "fr": "Ingenuity dépasse les 50 vols, dix fois plus que prévu."
+        },
+        "mediaIds": [
+          "ingenuity-50-flights-graphic"
+        ]
+      },
+      {
+        "id": "altitude-record",
+        "date": {
+          "value": "2023-10-05",
+          "sourceIds": [
+            "nasa-science-ingenuity"
+          ]
+        },
+        "title": {
+          "en": "Higher than ever",
+          "fr": "Plus haut que jamais"
+        },
+        "description": {
+          "en": "Ingenuity sets its altitude record. Over its whole mission, it flies as high as 24 m.",
+          "fr": "Ingenuity établit son record d’altitude. Sur toute sa mission, il est monté jusqu’à 24 m."
+        },
+        "mediaIds": [
+          "ingenuity-altitude-record-2023"
+        ]
+      },
+      {
+        "id": "last-flight",
+        "date": {
+          "value": "2024-01-18",
+          "sourceIds": [
+            "nssdca-2020-052a",
+            "nasa-science-ingenuity"
+          ]
+        },
+        "title": {
+          "en": "The last flight",
+          "fr": "Le dernier vol"
+        },
+        "description": {
+          "en": "On its 72nd flight, contact is lost just before landing. Ingenuity drops about 1 m and damages its rotors: it can no longer fly.",
+          "fr": "Lors de son 72ᵉ vol, le contact est perdu juste avant l’atterrissage. Ingenuity chute d’environ 1 m et abîme ses rotors : il ne peut plus voler."
+        },
+        "mediaIds": [
+          "nasa-lib-gsfc-20240131-nsl-ingenuity-ep52"
+        ]
+      },
+      {
+        "id": "mission-end",
+        "date": {
+          "value": "2024-01-25",
+          "sourceIds": [
+            "nasa-science-ingenuity"
+          ]
+        },
+        "title": {
+          "en": "Mission complete",
+          "fr": "Mission terminée"
+        },
+        "description": {
+          "en": "NASA ends the mission: 72 flights, 128.8 minutes in the air and 17 km flown in almost three years.",
+          "fr": "La NASA met fin à la mission : 72 vols, 128,8 minutes dans les airs et 17 km parcourus en près de trois ans."
+        },
+        "mediaIds": [
+          "ingenuity-flight-log-by-the-numbers",
+          "ingenuity-72-flights-poster"
+        ]
+      }
+    ]
   }
 ]

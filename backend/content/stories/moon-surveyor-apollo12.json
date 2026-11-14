@@ -1,105 +1,169 @@
 {
   "id": "moon-surveyor-apollo12",
   "kind": "mission",
-  "missionIds": ["surveyor-3", "apollo-12"],
-  "machineIds": ["surveyor-3-lander", "apollo-12-lm-intrepid-descent-stage", "apollo-12-alsep"],
-  "title": { "en": "The robot that had visitors", "fr": "Le robot qui a reçu de la visite" },
+  "missionIds": [
+    "surveyor-3",
+    "apollo-12"
+  ],
+  "machineIds": [
+    "surveyor-3-lander",
+    "apollo-12-lm-intrepid-descent-stage",
+    "apollo-12-alsep"
+  ],
+  "title": {
+    "en": "The robot that had visitors",
+    "fr": "Le robot qui a reçu de la visite"
+  },
   "status": "draft",
   "steps": [
     {
       "key": "signal",
-      "title": { "en": "Signal", "fr": "Signal" },
+      "title": {
+        "en": "Signal",
+        "fr": "Signal"
+      },
       "blocks": [
         {
           "voice": "data",
           "text": {
-            "en": "On 20 April 1967, the robotic lander Surveyor 3 touched down in the Ocean of Storms — after bouncing off the surface twice, because its engines did not shut off in time.",
-            "fr": "Le 20 avril 1967, l'atterrisseur robotisé Surveyor 3 se pose dans l'océan des Tempêtes — après avoir rebondi deux fois, car ses moteurs ne se sont pas coupés à temps."
+            "en": "On 20 April 1967, a robot called Surveyor 3 landed in the Ocean of Storms on the Moon — after bouncing twice, because its engines did not switch off in time.",
+            "fr": "Le 20 avril 1967, un robot nommé Surveyor 3 se pose dans l’océan des Tempêtes, sur la Lune — après avoir rebondi deux fois, car ses moteurs ne se sont pas coupés à temps."
           },
-          "sourceIds": ["nssdca-1967-035a", "nasa-science-surveyor-3"]
+          "sourceIds": [
+            "nssdca-1967-035a",
+            "nasa-science-surveyor-3"
+          ],
+          "mediaIds": [
+            "nasa-lib-s69-57076"
+          ]
         }
       ]
     },
     {
       "key": "why",
-      "title": { "en": "Why", "fr": "Pourquoi" },
+      "title": {
+        "en": "Why",
+        "fr": "Pourquoi"
+      },
       "blocks": [
         {
           "voice": "data",
           "text": {
-            "en": "The Surveyor landers were sent to prepare the crewed Apollo landings: prove that a spacecraft could land softly and check that the Apollo design suited the conditions on the lunar surface.",
-            "fr": "Les atterrisseurs Surveyor devaient préparer les atterrissages habités Apollo : prouver qu'un engin pouvait se poser en douceur et vérifier que la conception d'Apollo convenait aux conditions de la surface lunaire."
+            "en": "Surveyor robots were sent to prepare the Apollo missions with astronauts: prove that a spacecraft could land gently, and check that the Moon’s surface suited the Apollo spacecraft.",
+            "fr": "Les robots Surveyor devaient préparer les missions Apollo avec des astronautes : prouver qu’un engin pouvait se poser en douceur, et vérifier que la surface de la Lune convenait aux vaisseaux Apollo."
           },
-          "sourceIds": ["nssdca-1967-035a"]
+          "sourceIds": [
+            "nssdca-1967-035a"
+          ],
+          "mediaIds": [
+            "nasa-lib-as12-47-6949"
+          ]
         },
         {
           "voice": "interpretation",
           "text": {
-            "en": "In other words: before sending astronauts, engineers needed to know whether the ground would hold.",
-            "fr": "Autrement dit : avant d'envoyer des astronautes, les ingénieurs devaient savoir si le sol tiendrait."
+            "en": "In other words: before sending people, engineers needed to know if the ground would hold.",
+            "fr": "Autrement dit : avant d’envoyer des humains, les ingénieurs devaient savoir si le sol allait tenir."
           },
-          "sourceIds": ["nssdca-1967-035a"]
+          "sourceIds": [
+            "nssdca-1967-035a"
+          ]
         }
       ]
     },
     {
       "key": "how",
-      "title": { "en": "How", "fr": "Comment" },
+      "title": {
+        "en": "How",
+        "fr": "Comment"
+      },
       "blocks": [
         {
           "voice": "data",
           "text": {
-            "en": "For the first time, a Surveyor carried a surface sampler: a small scoop on an arm that could reach 1.5 m and dig up to 18 cm deep. Its TV camera sent back 6,326 pictures.",
-            "fr": "Pour la première fois, un Surveyor emporte un échantillonneur : une petite pelle au bout d'un bras capable d'atteindre 1,5 m et de creuser jusqu'à 18 cm de profondeur. Sa caméra renvoie 6 326 images."
+            "en": "For the first time, a Surveyor carried a small scoop on an arm. It could reach 1.5 m away and dig 18 cm deep. Its camera sent 6,326 pictures back to Earth.",
+            "fr": "Pour la première fois, un Surveyor emporte une petite pelle au bout d’un bras. Elle peut atteindre 1,5 m de distance et creuser à 18 cm de profondeur. Sa caméra envoie 6 326 images vers la Terre."
           },
-          "sourceIds": ["nasa-science-surveyor-3", "nssdca-1967-035a"]
+          "sourceIds": [
+            "nasa-science-surveyor-3",
+            "nssdca-1967-035a"
+          ],
+          "mediaIds": [
+            "nasa-lib-as12-48-7136"
+          ]
         }
       ]
     },
     {
       "key": "discovery",
-      "title": { "en": "Discovery", "fr": "Découverte" },
+      "title": {
+        "en": "Discovery",
+        "fr": "Découverte"
+      },
       "blocks": [
         {
           "voice": "data",
           "text": {
-            "en": "After digging trenches and pressing on the ground, scientists concluded that lunar soil behaves like wet sand and is solid enough to support an Apollo Lunar Module.",
-            "fr": "Après les tranchées et les tests d'appui, les scientifiques concluent que le sol lunaire se comporte comme du sable mouillé et qu'il est assez solide pour supporter un module lunaire Apollo."
+            "en": "After digging trenches and pressing on the ground, scientists found that lunar soil is like wet sand — firm enough to hold an Apollo Lunar Module.",
+            "fr": "Après avoir creusé des tranchées et appuyé sur le sol, les scientifiques découvrent que le sol lunaire ressemble à du sable mouillé — assez ferme pour porter un module lunaire Apollo."
           },
-          "sourceIds": ["nasa-science-surveyor-3"]
+          "sourceIds": [
+            "nasa-science-surveyor-3"
+          ],
+          "mediaIds": [
+            "nasa-lib-as12-48-7133"
+          ]
         },
         {
           "voice": "data",
           "text": {
-            "en": "Surveyor 3 sent its last data on 4 May 1967 and did not wake up after the two-week lunar night.",
-            "fr": "Surveyor 3 envoie ses dernières données le 4 mai 1967 et ne se réveille pas après la nuit lunaire de deux semaines."
+            "en": "Surveyor 3 sent its last data on 4 May 1967. It never woke up after the lunar night, which lasts about two weeks.",
+            "fr": "Surveyor 3 envoie ses dernières données le 4 mai 1967. Il ne se réveille jamais après la nuit lunaire, qui dure environ deux semaines."
           },
-          "sourceIds": ["nssdca-1967-035a"]
+          "sourceIds": [
+            "nssdca-1967-035a"
+          ]
         }
       ]
     },
     {
       "key": "relay",
-      "title": { "en": "Relay", "fr": "Relais" },
-      "relationIds": ["surveyor-3-to-apollo-12-data"],
+      "title": {
+        "en": "Relay",
+        "fr": "Relais"
+      },
+      "relationIds": [
+        "surveyor-3-to-apollo-12-data"
+      ],
       "blocks": [
         {
           "voice": "data",
           "text": {
-            "en": "On 19 November 1969, Apollo 12 landed about 180 m away. On their second moonwalk, astronauts Pete Conrad and Alan Bean walked to Surveyor 3 and removed about 10 kg of parts, including its TV camera and scoop.",
-            "fr": "Le 19 novembre 1969, Apollo 12 se pose à environ 180 m de là. Lors de leur deuxième sortie, les astronautes Pete Conrad et Alan Bean marchent jusqu'à Surveyor 3 et retirent environ 10 kg de pièces, dont sa caméra et sa pelle."
+            "en": "On 19 November 1969, Apollo 12 landed about 180 m away. On their second moonwalk, astronauts Pete Conrad and Alan Bean walked to Surveyor 3 and took about 10 kg of parts, including its camera and scoop.",
+            "fr": "Le 19 novembre 1969, Apollo 12 se pose à environ 180 m de là. Lors de leur deuxième sortie, les astronautes Pete Conrad et Alan Bean marchent jusqu’à Surveyor 3 et prennent environ 10 kg de pièces, dont sa caméra et sa pelle."
           },
-          "sourceIds": ["nssdca-1969-099c", "nssdca-1967-035a", "nasa-science-surveyor-3"],
-          "mediaIds": ["surveyor-3-apollo-12-as12-48-7134", "nssdca-conrad-surveyor-3"]
+          "sourceIds": [
+            "nssdca-1969-099c",
+            "nssdca-1967-035a",
+            "nasa-science-surveyor-3"
+          ],
+          "mediaIds": [
+            "nssdca-conrad-surveyor-3",
+            "surveyor-3-apollo-12-as12-48-7134"
+          ]
         },
         {
           "voice": "data",
           "text": {
-            "en": "Back on Earth, scientists studied these parts to evaluate the effects of nearly two and a half years on the lunar surface.",
-            "fr": "Sur Terre, les scientifiques étudient ces pièces pour évaluer les effets de près de deux ans et demi passés à la surface de la Lune."
+            "en": "Back on Earth, scientists studied these parts to see how almost two and a half years on the Moon had changed them.",
+            "fr": "Sur Terre, les scientifiques étudient ces pièces pour voir comment près de deux ans et demi sur la Lune les ont transformées."
           },
-          "sourceIds": ["nasa-science-surveyor-3"],
-          "mediaIds": ["nssdca-surveyor-3-analysis-1972"]
+          "sourceIds": [
+            "nasa-science-surveyor-3"
+          ],
+          "mediaIds": [
+            "nssdca-surveyor-3-analysis-1972"
+          ]
         },
         {
           "voice": "interpretation",
@@ -107,21 +171,29 @@
             "en": "The relay is direct: the robot opened the way, then humans came to visit it and brought part of it home.",
             "fr": "Le relais est direct : le robot a ouvert la voie, puis des humains sont venus le voir et en ont rapporté une partie."
           },
-          "sourceIds": ["nasa-science-surveyor-3"]
+          "sourceIds": [
+            "nasa-science-surveyor-3"
+          ]
         }
       ]
     },
     {
       "key": "your-turn",
-      "title": { "en": "Your turn", "fr": "À toi" },
+      "title": {
+        "en": "Your turn",
+        "fr": "À toi"
+      },
       "blocks": [
         {
           "voice": "imagination",
           "text": {
-            "en": "Imagine astronauts visiting one of today's robots on Mars many years from now. Which part would you ask them to bring back, and what would you hope to learn from it?",
-            "fr": "Imagine des astronautes qui rendraient visite, dans de nombreuses années, à l'un des robots actuels sur Mars. Quelle pièce leur demanderais-tu de rapporter, et qu'espérerais-tu en apprendre ?"
+            "en": "Imagine astronauts visiting one of today’s robots on Mars many years from now. Which part would you ask them to bring back, and what would you hope to learn from it?",
+            "fr": "Imagine des astronautes qui rendraient visite, dans de nombreuses années, à l’un des robots actuels sur Mars. Quelle pièce leur demanderais-tu de rapporter, et qu’espérerais-tu en apprendre ?"
           },
-          "sourceIds": []
+          "sourceIds": [],
+          "mediaIds": [
+            "nasa-lib-pia23553"
+          ]
         }
       ]
     }

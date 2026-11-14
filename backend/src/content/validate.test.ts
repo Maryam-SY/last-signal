@@ -97,4 +97,71 @@ describe('content integrity (rules)', () => {
     c.machines[0]!.date!.value = '1967-13-40'
     expect(errorsOf(c)).toContainEqual(expect.stringContaining('invalid date'))
   })
+
+  it('requires every media to say what it really shows (photo, artwork, simulation…)', () => {
+    const c = clone()
+    c.media[0]!.depiction = 'painting' as never
+    expect(errorsOf(c)).toContainEqual(expect.stringContaining('depiction must be one of'))
+  })
+
+  it('rejects a timeline event without source', () => {
+    const c = clone()
+    c.missions[0]!.timeline[0]!.date.sourceIds = []
+    expect(errorsOf(c)).toContainEqual(expect.stringContaining('needs at least 1 source'))
+  })
+
+  it('rejects timeline events out of chronological order', () => {
+    const c = clone()
+    const timeline = c.missions.find((m) => m.timeline.length > 2)!.timeline
+    ;[timeline[0], timeline[1]] = [timeline[1]!, timeline[0]!]
+    expect(errorsOf(c)).toContainEqual(expect.stringContaining('chronological order'))
+  })
+
+  it('accepts a partial date right after a full date of the same month', () => {
+    const c = clone()
+    const mission = c.missions.find((m) => m.id === 'surveyor-3')!
+    expect(mission.timeline.map((e) => e.date.value).slice(1, 3)).toEqual(['1967-04-20', '1967-04'])
+    expect(errorsOf(c)).toEqual([])
+  })
+
+  it('rejects a timeline illustration that belongs to another mission', () => {
+    const c = clone()
+    const mission = c.missions.find((m) => m.id === 'apollo-11')!
+    mission.timeline[1]!.mediaIds = ['ingenuity-anatomy']
+    expect(errorsOf(c)).toContainEqual(expect.stringContaining('is not linked to this mission'))
+  })
+})
+
+describe('content for a general audience (real content)', () => {
+  it('illustrates every step of every story', () => {
+    for (const story of real.stories) {
+      for (const step of story.steps) {
+        expect(step.blocks.some((b) => (b.mediaIds ?? []).length > 0), `${story.id}/${step.key}`).toBe(true)
+      }
+    }
+  })
+
+  it('gives every mission a timeline in both languages', () => {
+    for (const mission of real.missions) {
+      expect(mission.timeline.length, mission.id).toBeGreaterThan(0)
+      for (const e of mission.timeline) {
+        expect(e.description.fr.length, `${mission.id}/${e.id}`).toBeGreaterThan(0)
+        expect(e.description.en.length, `${mission.id}/${e.id}`).toBeGreaterThan(0)
+      }
+    }
+  })
+
+  it('has a real French alt text for every media (not the English title copied)', () => {
+    for (const m of real.media) {
+      expect(m.alt.fr, m.id).not.toMatch(/^(Image|Vidéo) de la NASA \(/)
+      expect(m.alt.fr, m.id).not.toBe(m.alt.en)
+    }
+  })
+
+  it('flags artist concepts and simulations instead of passing them off as photos', () => {
+    const byNasaId = (id: string) => real.media.find((m) => m.nasaId === id)!
+    expect(byNasaId('PIA23720').depiction).toBe('artwork')
+    expect(byNasaId('PIA03241').depiction).toBe('simulation')
+    expect(real.media.some((m) => m.credit === 'NASA/JPCaltech')).toBe(false)
+  })
 })

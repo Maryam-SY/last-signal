@@ -66,6 +66,7 @@ Une tâche de développement = **une story `ready`** de `USER_STORIES.md`. Pas d
 - Composants réutilisables, un par fichier, typés ; pas de duplication (ex. une seule fonction `cn`).
 - Aucun texte d'interface en dur : ajouter la clé dans `src/i18n/messages/en.ts` **et** `fr.ts`, puis `t('cle')` via `useTranslation()` (ADR-015).
 - Aucune donnée scientifique dans le code : uniquement dans `frontend/content/`.
+- **Nature des médias (obligatoire)** : chaque média de l'API a un champ `depiction`. Pour toute valeur autre que `photo` et `document`, l'interface affiche un **badge visible** à côté du média, jamais seulement en infobulle : `artwork` → « Vue d'artiste — pas une photo », `simulation` → « Image de synthèse — pas une photo », `diagram` → « Schéma / carte », `mixed` → « Contient des animations ». Une vue d'artiste ne doit jamais être présentée comme une preuve (PRD MEDIA-001).
 - Accessibilité par défaut : éléments natifs (`button`, `a`), focus visible, pas d'info par la couleur seule ni au survol seul, cibles ≥ 44 px, `prefers-reduced-motion` respecté.
 - Mobile-first : vérifier à 360 px avant 1440 px.
 - Ne pas supprimer de fichier, de fonctionnalité ou de test existant sans validation ; ne pas réécrire l'historique Git ; ne pas pousser sur `main` directement.

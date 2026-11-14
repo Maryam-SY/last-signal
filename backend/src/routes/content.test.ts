@@ -117,4 +117,14 @@ describe('content API', () => {
     broken.machines[0]!.status.sourceIds = []
     expect(() => createApp({ content: broken })).toThrow(InvalidContentError)
   })
+
+  it('GET /api/missions/:id returns the timeline with its illustrations resolved', async () => {
+    const res = await request(app).get('/api/missions/mars-2020?lang=fr')
+    expect(res.status).toBe(200)
+    const firstFlight = res.body.timeline.find((e: { id: string }) => e.id === 'first-flight')
+    expect(firstFlight).toMatchObject({ date: { value: '2021-04-19' }, title: 'Premier vol sur une autre planète' })
+    expect(firstFlight.media.length).toBeGreaterThan(0)
+    expect(firstFlight.media[0]).toHaveProperty('depiction')
+    expect(typeof firstFlight.media[0].alt).toBe('string')
+  })
 })

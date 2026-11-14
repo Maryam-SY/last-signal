@@ -1,4 +1,5 @@
 import {
+  DEPICTIONS,
   DESTINATION_IDS,
   LANGS,
   MACHINE_STATUSES,
@@ -108,6 +109,34 @@ export function validateContent(content: Content): ValidationReport {
       else if (!story.missionIds.includes(m.id)) err(w, `main story "${story.id}" does not list this mission (V10)`)
     }
     if (!content.machines.some((machine) => machine.missionId === m.id)) warnings.push(`${w}: mission has no machine`)
+
+    // Timeline (V13): dated, sourced, chronological, bilingual, illustrated with this mission's media.
+    if (!Array.isArray(m.timeline)) err(w, 'timeline must be an array (V13)')
+    else {
+      if (m.timeline.length === 0) warnings.push(`${w}: empty timeline`)
+      const eventIds = new Set<string>()
+      let previous = ''
+      for (const e of m.timeline) {
+        const we = `${w}/timeline/${e.id}`
+        if (!KEBAB.test(e.id) || eventIds.has(e.id)) err(we, 'event id must be unique kebab-case (V13)')
+        eventIds.add(e.id)
+        sourced(`${we}.date`, e.date, (d) => {
+          if (!PARTIAL_DATE.test(d)) err(`${we}.date`, `invalid date "${d}" (V13)`)
+          // Partial dates ("1967-04") are compared at their own precision with the previous event.
+          else if (d < previous.slice(0, d.length)) err(`${we}.date`, 'events must be in chronological order (V13)')
+          else previous = d
+        })
+        if (!e.date) err(we, 'missing date (V13)')
+        text(`${we}.title`, e.title)
+        text(`${we}.description`, e.description)
+        if (e.mediaIds.length === 0) warnings.push(`${we}: no illustration`)
+        for (const id of e.mediaIds) {
+          const media = content.media.find((x) => x.id === id)
+          if (!media) err(we, `unknown media "${id}" (V3)`)
+          else if (!media.missionIds.includes(m.id)) err(we, `media "${id}" is not linked to this mission (V13)`)
+        }
+      }
+    }
   }
 
   // Machines
@@ -160,6 +189,7 @@ export function validateContent(content: Content): ValidationReport {
       const ws = `${w}/${step.key}`
       text(`${ws}.title`, step.title)
       if (step.blocks.length === 0) err(ws, 'step has no block')
+      if (!step.blocks.some((b) => (b.mediaIds ?? []).length > 0)) warnings.push(`${ws}: step has no illustration`)
       if (step.relationIds?.length && step.key !== 'relay') err(ws, 'relationIds are only allowed in the relay step (V7)')
       for (const id of step.relationIds ?? []) if (!relationIds.has(id)) err(ws, `unknown relation "${id}" (V3)`)
       step.blocks.forEach((b, i) => {
@@ -202,6 +232,8 @@ export function validateContent(content: Content): ValidationReport {
     if (m.missionIds.length === 0) err(w, 'needs at least one mission')
     for (const id of m.missionIds) if (!missionIds.has(id)) err(w, `unknown mission "${id}" (V3)`)
     for (const id of m.machineIds) if (!machineIds.has(id)) err(w, `unknown machine "${id}" (V3)`)
+    if (!(DEPICTIONS as readonly string[]).includes(m.depiction)) err(w, `depiction must be one of ${DEPICTIONS.join(', ')}`)
+    if (m.description) text(`${w}.description`, m.description)
     if (m.thumbnailUrl != null && !/^https?:\/\//.test(m.thumbnailUrl)) err(w, 'thumbnailUrl must be http(s)')
     if (m.dateCreated != null && !FULL_DATE.test(m.dateCreated)) err(w, `invalid dateCreated "${m.dateCreated}"`)
   }

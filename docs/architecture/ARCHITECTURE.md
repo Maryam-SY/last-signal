@@ -296,7 +296,7 @@ Pas d'E2E navigateur (Playwright) dans le MVP (ADR-012) ; à reconsidérer en P1
 | `GET /api/health` | `{ status, message }` | — |
 | `GET /api/destinations` | Destinations triées, avec `missionCount` et `machineCount` calculés | — |
 | `GET /api/destinations/:id` | Destination + `missions[]` (triées) avec leurs `machines[]` et `mainStory` | 404 |
-| `GET /api/missions/:id` | Mission + `machines`, `stories`, `relations`, `media` | 404 |
+| `GET /api/missions/:id` | Mission + `timeline` (étapes datées, chacune avec ses `media` résolus), `machines`, `stories`, `relations`, `media` | 404 |
 | `GET /api/machines/:id` | Équipement + `mission`, `destinationId`, `relations`, `media`, `storyTarget` (STORY-003), `sources` résolues | 404 |
 | `GET /api/stories` | Résumés `{ id, title, status, missionIds }` | — |
 | `GET /api/stories/:id` | Récit complet (6 étapes) + `relations`, `media` et `sources` utilisées | 404 |

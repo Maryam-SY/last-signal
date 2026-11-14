@@ -86,6 +86,16 @@ Par mission (un média peut concerner plusieurs missions) : Apollo 11 : 16 · Ap
 - Nouveaux champs facultatifs de `Media` : `thumbnailUrl`, `nasaId`, `dateCreated`.
 - **Liens vérifiés** le 2026-11-14 : 294 URL (fichiers et miniatures) répondent, en ne lisant que le premier octet. Les apostrophes typographiques sont encodées dans les URL.
 
+### 6.1 Mise à jour du 2026-11-14 — accessibilité, nature des médias, chronologies
+
+- **Textes alternatifs** : les 147 médias de la bibliothèque ont maintenant de vrais textes alternatifs en **français et en anglais simples**, écrits à partir du titre et de la description NASA. Les titres illisibles (« PIA05044 », « Space Science », « KSC-… ») ont été remplacés par une description.
+- **Médias retirés** (183 restants) : 19 images en relief anaglyphe (il faut des lunettes 3D) et PIA05287, dont les métadonnées NASA se contredisent (attribuée à Spirit, mais décrit le sol de Meridiani, le site d'Opportunity).
+- **Champ `depiction`** sur chaque média : 131 photos, 12 schémas ou cartes, 6 vues d'artiste, 7 simulations, 25 « mixtes » (vidéos montées, non vérifiées image par image, et une image moitié photo moitié dessin : PIA23553), 2 documents. Le frontend **doit** afficher un badge (PRD MEDIA-001, CLAUDE.md §6). Les GIF fabriqués à partir de vraies images de caméra comptent comme `photo` (ex. PIA25321, d'après sa description NASA).
+- **Crédit erroné retiré** : « NASA/JPCaltech » (PIA05032), une coquille des métadonnées NASA, est remplacé par la provenance « NASA (Image and Video Library, JPL) ».
+- **Chronologies** (TIMELINE-001) : 50 étapes sur 6 missions, chacune avec une date sourcée, un titre et une explication simple en fr/en. 43 ont au moins une image. Formulations retirées faute de source : « de la taille d'un four à micro-ondes » (Sojourner), « plus de mille commandes » (fin d'Opportunity), « nuits glaciales » (Ingenuity), « en l'honneur de son jumeau » (Spirit Point).
+- **Récits réécrits en langage simple** : mots techniques expliqués au passage (sismomètre, prisme en coin de cube, photon, hématite, rover, rotors…). Les faits et les sources sont inchangés et **chacune des 6 étapes de chaque récit a au moins une image**.
+- Étapes de chronologie **sans image** (aucune image fiable trouvée) : lancements de Surveyor 3, d'Apollo 11 et 12 et d'Opportunity, dernier contact de Surveyor 3, silice de Spirit, dernier message de Spirit.
+
 ## 7. Fiche de relecture (à remplir par le relecteur)
 
 | Récit | Relu par | Date | Faits vérifiés OK / KO | Verdict |

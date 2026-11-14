@@ -45,6 +45,20 @@ export interface Mission {
   mainStoryId: string | null
   sourceIds: string[]
   order: number
+  /** Key steps of the mission, oldest first, explained in plain language. */
+  timeline: TimelineEvent[]
+}
+
+/** One dated step of a mission (launch, landing, discovery, end…). */
+export interface TimelineEvent {
+  id: string
+  /** The date is a fact: it is sourced like any other. */
+  date: Sourced<string>
+  title: LocalizedText
+  /** Plain-language explanation for a general audience (10–15 year olds first). */
+  description: LocalizedText
+  /** Illustrations; each must be linked to this mission. */
+  mediaIds: string[]
 }
 
 export const MACHINE_STATUSES = ['operational', 'contact-lost', 'inactive', 'mission-ended', 'unknown'] as const
@@ -140,6 +154,17 @@ export interface Source {
 export const MEDIA_TYPES = ['image', 'animation', 'video', '3d-model', 'document'] as const
 export type MediaType = (typeof MEDIA_TYPES)[number]
 
+/**
+ * - photo: real photograph or real footage (including GIFs built from real camera frames)
+ * - artwork: artist's concept, illustration, poster — NOT a photo
+ * - simulation: computer-generated image, animation, 3D model or software screenshot — NOT a photo
+ * - diagram: map, infographic, labelled diagram, chart
+ * - mixed: combines real footage with drawings or animation (most edited videos, not checked frame by frame)
+ * - document: report or PDF
+ */
+export const DEPICTIONS = ['photo', 'artwork', 'simulation', 'diagram', 'mixed', 'document'] as const
+export type Depiction = (typeof DEPICTIONS)[number]
+
 /** A reference to an external media file (not stored in the repository). */
 export interface Media {
   id: string
@@ -156,6 +181,14 @@ export interface Media {
   machineIds: string[]
   sourceId: string
   aiGenerated: boolean
+  /**
+   * What the media really shows. The frontend MUST display a visible label for anything other
+   * than "photo" or "document" (e.g. "Artist's view — not a photo"), so that a drawing or a
+   * simulation is never mistaken for evidence (CDC §8, CLAUDE.md §7).
+   */
+  depiction: Depiction
+  /** Plain-language explanation for a general audience, when written. */
+  description?: LocalizedText
   /** Small preview image (NASA Image and Video Library items), when available. */
   thumbnailUrl?: string | null
   /** NASA Image and Video Library identifier, when the media comes from it. */
