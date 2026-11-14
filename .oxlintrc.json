@@ -1,0 +1,21 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "unicorn", "oxc", "react", "vitest"],
+  "categories": {
+    "correctness": "error"
+  },
+  "rules": {
+    // Sécurité (cahier des charges §10) : aucune injection de HTML brut, aucun code dynamique.
+    // Le contenu Markdown est rendu en éléments React, jamais en HTML injecté.
+    "react/no-danger": "error",
+    "react/jsx-no-script-url": "error",
+    "react/jsx-no-target-blank": "error",
+    "no-eval": "error",
+    "no-new-func": "error",
+    "typescript/no-explicit-any": "error"
+  },
+  "ignorePatterns": ["**/dist/**"],
+  "env": {
+    "builtin": true
+  }
+}

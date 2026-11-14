@@ -1,0 +1,13 @@
+# Un seul package (la racine). Ce fichier porte les règles de chaîne d'approvisionnement de pnpm.
+
+# Versions exactes dans package.json : une mise à jour est toujours une décision explicite.
+savePrefix: ''
+
+# N'installe pas une version publiée il y a moins de 7 jours (minutes) : un paquet compromis est
+# en général retiré du registre dans ce délai.
+minimumReleaseAge: 10080
+
+# pnpm n'exécute pas les scripts d'installation des dépendances, sauf ceux autorisés ici.
+allowBuilds:
+  esbuild: true
+  lefthook: true
