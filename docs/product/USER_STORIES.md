@@ -146,10 +146,11 @@ Personas : **Visiteur** (10-15 ans, principal), **Curieux** (adulte), **Équipe*
   3. Quand j'appuie sur `Échap` ou « Close », alors la fiche se ferme et le focus revient sur la carte d'origine.
   4. Étant donné l'URL `?machine={id}` chargée directement, alors la fiche s'ouvre au chargement.
   5. Étant donné un équipement sans récit ni récit de mission, alors aucun bouton « Discover its story » n'est affiché.
+- **Modifié par US-5.9 (décision de l'équipe du 2026-11-14)** : la fiche n'a plus d'état ouvert/fermé, tout est affiché au scroll. Critères 1 et 4 → `?machine={id}` **sélectionne** l'équipement (mis en évidence, `aria-current`, amené à l'écran) ; critère 3 (Échap / Close) **sans objet**.
 
 ### US-3.3 — Situer les équipements sur une carte
 - **Story** : En tant que visiteur, je souhaite voir où se trouvent les équipements sur une carte simplifiée afin de me représenter leur emplacement.
-- **Priorité** : P0 · **Exigences** : MAP-001 → 006 · **Statut** : `blocked` (OPEN-15)
+- **Priorité** : P0 · **Exigences** : MAP-001 → 006 · **Statut** : `review` (carte schématique sans image de fond ; la mosaïque NASA/USGS d'OPEN-15 reste à intégrer après vérification de licence — `docs/project/stories/PEDAGOGY-BATCH.md`)
 - **Critères** :
   1. Étant donné les équipements avec coordonnées sourcées, alors un marqueur (ou marqueur de site groupé) est affiché pour chacun ; aucun autre.
   2. Quand je navigue au clavier, alors chaque marqueur reçoit le focus et est annoncé « {nom}, {mission} ».
@@ -157,7 +158,7 @@ Personas : **Visiteur** (10-15 ans, principal), **Curieux** (adulte), **Équipe*
 
 ### US-3.4 — Carte et galerie synchronisées
 - **Story** : En tant que visiteur, je souhaite que la carte et la liste se répondent afin de faire le lien entre un lieu et un équipement.
-- **Priorité** : P0 · **Exigences** : SYNC-001, SYNC-002, SYNC-003
+- **Priorité** : P0 · **Exigences** : SYNC-001, SYNC-002, SYNC-003 · **Statut** : `review` (`docs/project/stories/PEDAGOGY-BATCH.md`)
 - **Critères** :
   1. Quand j'active un marqueur, alors la carte de galerie correspondante est mise en évidence et défile dans la vue.
   2. Quand j'active une carte de galerie dont l'équipement est localisé, alors son marqueur passe à l'état sélectionné (forme + contour, pas seulement couleur).
@@ -272,6 +273,38 @@ Personas : **Visiteur** (10-15 ans, principal), **Curieux** (adulte), **Équipe*
   2. Récit : 6 scènes dans un même scroll ; `?step=` suit la scène visible ; rail d'étapes, Previous/Next, Exit et touches ← → toujours disponibles.
   3. En-tête : sélecteur EN/FR mémorisé ; aucun débordement horizontal à 360 px.
   4. Sous `prefers-reduced-motion` : aucune animation, contenu complet.
+
+### US-5.7 — Vraies photos et récit pédagogique
+- **Story** : En tant que visiteur de 10-15 ans, je souhaite voir de vraies photos et comprendre les mots et les voix du récit afin d'apprendre sans me sentir perdu.
+- **Priorité** : P0 (décision de l'équipe du 2026-11-14) · **Exigences** : EQUIP-002, EQUIP-005, STORY-007, MEDIA-001 · **Statut** : `review` (`docs/project/stories/PEDAGOGY-BATCH.md`)
+- **Critères** :
+  1. Chaque carte d'équipement et chaque récit montrent une photo de couverture `depiction: "photo"` avec son crédit ; jamais un dessin ou une simulation.
+  2. Le récit explique ses trois voix avant la première étape ; chaque étape propose les « mots à connaître » qu'elle emploie, avec définition sourcée (glossaire V14, en `draft` tant qu'il n'est pas relu).
+  3. L'étape « À toi » propose un carnet de bord gardé sur l'appareil uniquement (rien n'est envoyé).
+  4. La relation de l'étape Relais est dessinée « De → À » ; la légende des statuts explique chaque statut en mots.
+
+### US-5.8 — Frise Lune + Mars et carnet d'explorateur
+- **Story** : En tant que visiteur, je souhaite situer les machines dans le temps et voir ma progression afin de relier les deux mondes et d'avoir envie de tout explorer.
+- **Priorité** : P0 (décision de l'équipe du 2026-11-14 ; ajouté à SCOPE) · **Exigences** : DATA-004, NFR-LEGAL-001 · **Statut** : `review` (`docs/project/stories/PEDAGOGY-BATCH.md`)
+- **Critères** :
+  1. Une frise commune montre toutes les machines datées (dates sourcées seulement), la Lune d'un côté et Mars de l'autre, avec l'écart en années entre deux dates.
+  2. Le carnet d'explorateur compte mondes visités, récits terminés et machines examinées, et attribue 4 badges ; il est stocké dans le navigateur uniquement et peut être remis à zéro.
+
+### US-5.9 — Destination racontée au scroll, sans clic
+- **Story** : En tant que visiteur, je souhaite qu'en faisant défiler une planète chaque mission me soit racontée du lancement à la fin, avec ses images et ses machines, sans avoir à cliquer, et passer d'une mission à l'autre avec des boutons à droite.
+- **Priorité** : P0 (décision de l'équipe du 2026-11-14) · **Exigences** : TIMELINE-001, EQUIP-002, SOURCE-002, MEDIA-001 · **Statut** : `review` (`docs/project/stories/PEDAGOGY-BATCH.md`)
+- **Critères** :
+  1. Chaque mission affiche directement son journal (étapes datées, récit en langage simple), avec **une** image par étape légendée « Ce que tu vois », puis ses sources ; aucun bouton « étape par étape ».
+  2. Chaque équipement est raconté en chapitres (ce qu'il a fait, ce qu'il est devenu, ce qu'il a transmis) avec une photo et ses sources ; aucune galerie, aucun bouton « Photos, vidéos et sources ».
+  3. Un rail à droite (pastille en bas à droite sur téléphone) donne « précédent / suivant » et un accès direct à chaque mission.
+
+### US-5.10 — L'histoire derrière chaque image
+- **Story** : En tant que visiteur, je souhaite que chaque image du journal de mission me raconte ce qu'elle montre et pourquoi elle compte, afin de ne pas voir des photos sans histoire.
+- **Priorité** : P0 (décision de l'équipe du 2026-11-14) · **Exigences** : MEDIA-001, SOURCE-001 · **Statut** : `review` (`docs/project/stories/PEDAGOGY-BATCH.md`)
+- **Critères** :
+  1. Chaque image affichée dans un journal de mission porte, quand sa légende source le permet, une courte histoire bilingue (`Media.description`) qui ne reprend que ce que dit cette légende.
+  2. Ces histoires sont en `descriptionStatus: "draft"` (règle V15) et l'interface le signale ; seul un humain les passe en `reviewed`.
+  3. Pour chaque moment, l'image affichée est celle dont on peut raconter l'histoire, sinon la première.
 
 ### US-5.5 — Mise en production et démo
 - **Priorité** : P0 · **Exigences** : DEPLOY-001, indicateurs PRD §11

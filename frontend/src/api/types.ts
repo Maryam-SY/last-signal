@@ -44,6 +44,7 @@ export interface Media {
   license: string
   depiction: Depiction
   description?: string
+  descriptionStatus?: 'draft' | 'reviewed'
   missionIds: string[]
   machineIds: string[]
   sourceId: string
@@ -69,6 +70,8 @@ export interface Machine {
   status: Sourced<MachineStatus>
   scienceSummary: Sourced<string> | null
   storyIds: string[]
+  /** First real photo of the machine (never a drawing), on destination and mission lists. */
+  cover?: Media | null
 }
 
 export interface TimelineEvent {
@@ -134,6 +137,8 @@ export interface MissionDetail extends Omit<Mission, 'timeline'> {
   stories: StorySummary[]
   relations: Relation[]
   media: Media[]
+  /** Sources of the mission and of every dated step (resolved by the API). */
+  sources?: Source[]
 }
 
 export interface MachineDetail extends Machine {
@@ -171,7 +176,33 @@ export interface StoryDetail {
   missions: { id: string; name: string; destinationId: DestinationId }[]
   /** Machines cited by the story (STORY-008), with the destination where each one is. */
   machines: { id: string; name: string; destinationId: DestinationId | null }[]
+  /** Opening photo of the story (first real photo among its media). */
+  cover?: Media | null
   relations: Relation[]
   media: Media[]
   sources: Source[]
+}
+
+/** A word explained next to the story steps (GET /api/glossary, rule V14). */
+export interface GlossaryEntry {
+  id: string
+  status: 'draft' | 'reviewed'
+  /** Forms of the word in the story texts — not localized by the API: pick `terms[locale]`. */
+  terms: { en: string[]; fr: string[] }
+  label: string
+  definition: string
+  sourceIds: string[]
+  sources: Source[]
+}
+
+/** One dated machine on the Moon + Mars timeline (GET /api/timeline). */
+export interface TimelineEntry {
+  machineId: string
+  name: string
+  missionId: string
+  missionName: string
+  destinationId: DestinationId
+  date: Sourced<string>
+  dateLabel: 'landing' | 'deployment' | 'impact' | 'last-contact' | null
+  status: Sourced<MachineStatus>
 }

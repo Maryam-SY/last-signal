@@ -59,6 +59,10 @@
 4. **Vidéos** : les titres des 5 vidéos YouTube n'ont pas pu être récupérés. Ils sont à renseigner à la main.
 5. **Médias du fil chronologique d'Ingenuity** : la légende indique l'entrée de la chronologie associée sur la page NASA, et non une légende officielle de l'image.
 6. **Source de presse** : la phrase « my battery is low… » s'appuie sur ABC7. Il est préférable de remplacer cette source par le reportage d'origine (LAist) s'il devient accessible.
+7. **Glossaire (US-5.7)** : 10 définitions en `draft` dans `backend/content/glossary.json`, reprises de la formulation des récits et citant les mêmes sources. À relire comme un récit avant de passer en `reviewed`.
+8. **Carte** : les rovers sont placés à leur site d'atterrissage ; la carte le dit (« où une machine s'est posée »).
+9. **Histoires d'images (US-5.10)** : 36 `description` en `draft` dans `media.json`, rédigées **uniquement** à partir de la légende source de chaque média (`caption`), avec conversions d'unités arrondies (600 ft ≈ 180 m, 17 ft ≈ 5 m, 1 000 ft ≈ 300 m). Les médias dont la légende n'est qu'un titre de chronologie (ex. Ingenuity « First Night ») ou vide n'ont pas d'histoire. À relire avant de passer en `reviewed`.
+10. **Illustration à revoir** : l'étape `surveyor-3/digging` (avril 1967) est illustrée par `nasa-lib-as12-48-7133`, une photo prise par Apollo 12 le 20 novembre 1969. Maintenant que l'image raconte son histoire, le décalage de date est visible : choisir une image de 1967 (Surveyor 3) ou déplacer celle-ci vers `apollo-12-visit`.
 
 ## 6. Médias de la NASA Image and Video Library (ajout du 2026-11-14)
 

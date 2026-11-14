@@ -226,6 +226,22 @@
   }
 }
 
+/* Relay chain: a signal travels from the giver to the receiver (StoryPedagogy.tsx). */
+@keyframes relay {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+  15%,
+  85% {
+    opacity: 1;
+  }
+  100% {
+    left: calc(100% - 0.5rem);
+    opacity: 0;
+  }
+}
+
 /* Halo behind each destination planet on the home page ("planets in the spotlight"). */
 .planet-glow {
   position: relative;

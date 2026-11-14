@@ -1,18 +1,19 @@
-import { useEffect, useId, useState } from 'react'
-import { BookOpenText, ListOrdered } from 'lucide-react'
+import { useEffect } from 'react'
+import { BookOpenText } from 'lucide-react'
 import { Link, useLocation } from 'react-router'
 import { api } from '@/api/client'
 import type { DestinationDetail } from '@/api/types'
 import { paths } from '@/app/paths'
 import { LoadState } from '@/components/common/LoadState'
+import { StatusHelp } from '@/components/machine/StatusHelp'
 import { Reveal } from '@/components/motion/Reveal'
 import { MachineJourney } from '@/components/journey/MachineJourney'
 import { MissionScene } from '@/components/journey/MissionScene'
 import { useApi, type ApiState } from '@/hooks/useApi'
 import { useTranslation } from '@/i18n'
 import { formatPartialDate } from '@/lib/formatDate'
-import { bestStill } from '@/lib/journey'
-import { ctaGhost, ctaPrimary, eyebrow } from '@/lib/styles'
+import { missionCover, toldPicture } from '@/lib/journey'
+import { ctaPrimary, eyebrow } from '@/lib/styles'
 import { cn } from '@/lib/utils'
 import { MissionTimeline } from './MissionTimeline'
 
@@ -64,6 +65,7 @@ function GalleryContent({ destination }: { destination: DestinationDetail }) {
       <p className={cn(eyebrow, 'mt-2 text-moon-dust')}>
         {t('destination.missionsCount', { missions: destination.missionCount, machines: destination.machineCount })}
       </p>
+      <StatusHelp className="mt-6 max-w-2xl" />
 
       {/* The orbital track: one node per mission along a glowing line. */}
       <div className="relative mt-8 border-l border-world/25 pl-6 sm:pl-10">
@@ -84,8 +86,6 @@ interface MissionSectionProps {
 
 function MissionSection({ mission, number, total }: MissionSectionProps) {
   const { t, locale } = useTranslation()
-  const [timelineOpen, setTimelineOpen] = useState(false)
-  const timelineId = useId()
   const titleId = `mission-${mission.id}-title`
   const period = mission.period?.value
   const padded = String(number).padStart(2, '0')
@@ -93,12 +93,19 @@ function MissionSection({ mission, number, total }: MissionSectionProps) {
   // machine in 3D with what it did). Until they arrive, each machine shows its plain card.
   const detail = useApi(`mission:${mission.id}`, (lang, signal) => api.mission(mission.id, lang, signal))
   const missionDetail = detail.status === 'success' ? detail.data : null
+  // US-5.9: the mission log tells every step; the machines' scenes must not tell them again.
+  const told = missionDetail
+    ? {
+        eventIds: new Set(missionDetail.timeline.map((event) => event.id)),
+        mediaIds: new Set(missionDetail.timeline.flatMap((event) => toldPicture(event.media)?.id ?? [])),
+      }
+    : undefined
 
   return (
     <section
       id={`mission-${mission.id}`}
       aria-labelledby={titleId}
-      className="relative flex min-h-[85dvh] scroll-mt-20 flex-col justify-center py-16 sm:py-24"
+      className="relative scroll-mt-20 py-16 sm:py-24"
     >
       <span
         aria-hidden="true"
@@ -111,7 +118,7 @@ function MissionSection({ mission, number, total }: MissionSectionProps) {
         {padded}
       </span>
 
-      <MissionScene cover={missionDetail ? bestStill(missionDetail.media) : undefined}>
+      <MissionScene cover={missionDetail ? missionCover(missionDetail) : undefined}>
       <Reveal>
         <p className={cn(eyebrow, 'text-world')}>
           {t('destination.missionNumber', { number: padded, total: String(total).padStart(2, '0') })}
@@ -126,37 +133,26 @@ function MissionSection({ mission, number, total }: MissionSectionProps) {
               : t('destination.since', { start: formatPartialDate(period.start, locale) })}
           </p>
         )}
-        <p className="mt-4 max-w-3xl text-starlight/90 sm:text-lg">{mission.summary}</p>
-
-        <div className="mt-6 flex flex-wrap gap-3">
-          {mission.mainStory && (
-            <Link to={paths.story(mission.mainStory.id)} className={ctaPrimary}>
-              <BookOpenText aria-hidden="true" className="size-4" />
-              {t('destination.readStory', { title: mission.mainStory.title })}
-            </Link>
-          )}
-          <button
-            type="button"
-            aria-expanded={timelineOpen}
-            aria-controls={timelineId}
-            onClick={() => setTimelineOpen((v) => !v)}
-            className={ctaGhost}
-          >
-            <ListOrdered aria-hidden="true" className="size-4" />
-            {timelineOpen ? t('destination.timelineHide') : t('destination.timelineShow')}
-          </button>
-        </div>
+        <p className="mt-4 max-w-3xl text-starlight/90 sm:text-xl">{mission.summary}</p>
+        {mission.mainStory && (
+          <Link to={paths.story(mission.mainStory.id)} className={cn(ctaPrimary, 'mt-6 w-fit')}>
+            <BookOpenText aria-hidden="true" className="size-4" />
+            {t('destination.readStory', { title: mission.mainStory.title })}
+          </Link>
+        )}
       </Reveal>
       </MissionScene>
 
-      <div id={timelineId} hidden={!timelineOpen} className="mt-8">
-        {timelineOpen && <MissionTimeline missionId={mission.id} />}
+      {/* US-5.9: the whole mission, step by step, right in the scroll — nothing to unfold. */}
+      <div className="mt-10">
+        {missionDetail ? <MissionTimeline mission={missionDetail} /> : <LoadState status={detail.status === 'error' ? 'error' : 'loading'} onRetry={detail.retry} />}
       </div>
 
+      <p className={cn(eyebrow, 'mt-20 text-world')}>{t('destination.machinesLeft')}</p>
       <h4 className="sr-only">{t('destination.machinesTitle')}</h4>
-      <div className="mt-12 space-y-24">
+      <div className="mt-8 space-y-24">
         {mission.machines.map((machine) => (
-          <MachineJourney key={machine.id} machine={machine} mission={missionDetail} story={mission.mainStory} />
+          <MachineJourney key={machine.id} machine={machine} mission={missionDetail} story={mission.mainStory} told={told} />
         ))}
       </div>
     </section>

@@ -17,6 +17,9 @@
 | Accueil immersif « depth journey » (Lune et Mars au centre, caméra en profondeur au scroll, survol animé, morph vers la destination) — décision de l'équipe du 2026-11-14 | DEST-001 → 005, NFR-A11Y-006 | US-2.1 · [ADR-018](../architecture/TECHNICAL_DECISIONS.md) |
 | Vidéo d'introduction de l'équipe qui se fond dans l'accueil ; ciel de la vidéo comme fond du site — décision de l'équipe du 2026-11-14 | DEST-001, NFR-A11Y-006 | US-2.4 · [ADR-021](../architecture/TECHNICAL_DECISIONS.md) |
 | Destination et récit en scroll immersif continu (planète épinglée, scènes, HUD discret, EN/FR dans l'en-tête) — décision de l'équipe du 2026-11-14 | NAV-001, STORY-004 → 009, NFR-A11Y-006 | US-5.6 · [ADR-019](../architecture/TECHNICAL_DECISIONS.md) |
+| Photos de couverture, récit pédagogique (3 voix expliquées, mots à connaître, carnet « À toi », relais dessiné, statuts expliqués) — décision de l'équipe du 2026-11-14 | EQUIP-002, EQUIP-005, STORY-007, MEDIA-001 | US-5.7 |
+| Frise commune Lune + Mars et carnet d'explorateur local (badges) — décision de l'équipe du 2026-11-14 | DATA-004, NFR-LEGAL-001 | US-5.8 |
+| Destination racontée au scroll : journal de chaque mission et machines toujours affichés, une image par moment raconté, rail précédent / suivant — décision de l'équipe du 2026-11-14 | TIMELINE-001, EQUIP-002, MEDIA-001 | US-5.9 |
 | Espace Lune | EXPL-001, EQUIP-*, MAP-* | E3 |
 | Espace Mars | EXPL-001, EQUIP-*, MAP-* | E3 |
 | Carte interactive 2D (SVG, schématique) | MAP-001 → 006 | US-3.3, US-3.6 |

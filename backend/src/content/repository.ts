@@ -1,4 +1,4 @@
-import type { Content, EntityRef, Machine, Media, Mission, Relation, Source, Story } from './types.js'
+import type { Content, EntityRef, GlossaryEntry, Machine, Media, Mission, Relation, Source, Story } from './types.js'
 
 export interface StorySummary {
   id: string
@@ -17,6 +17,21 @@ export interface EntityLabel {
 
 /** A relation with its two ends named (no extra request needed to say "from … to …"). */
 export type NamedRelation = Relation & { fromEntity: EntityLabel | null; toEntity: EntityLabel | null }
+
+/** A machine as listed in a gallery, with the photo that represents it (US-5.7). */
+export type MachineSummary = Machine & { cover: Media | null }
+
+/** One dated machine on the Moon + Mars timeline (US-5.8): only sourced dates. */
+export interface TimelineEntry {
+  machineId: string
+  name: string
+  missionId: string
+  missionName: string
+  destinationId: Mission['destinationId']
+  date: NonNullable<Machine['date']>
+  dateLabel: Machine['dateLabel'] | null
+  status: Machine['status']
+}
 
 export interface MediaFilter {
   missionId?: string
@@ -78,6 +93,8 @@ export class ContentRepository {
       stories: this.content.stories.filter((s) => s.missionIds.includes(id)).map((s) => this.summary(s)),
       relations: this.relationsOf({ kind: 'mission', id }),
       media: this.listMedia({ missionId: id }),
+      // Shown under the mission's step-by-step log, without another request (US-5.9).
+      sources: this.sourcesCitedBy(mission),
     }
   }
 
@@ -128,8 +145,37 @@ export class ContentRepository {
         .map(({ id: machineId, name, destinationId }) => ({ id: machineId, name, destinationId })),
       relations,
       media: [...mediaIds].map((mid) => this.media.get(mid)).filter((m): m is Media => m !== undefined),
+      // Opening image of the story: the first real photo it shows (never a drawing).
+      cover: this.firstPhoto([...mediaIds].map((mid) => this.media.get(mid)).filter((m): m is Media => m !== undefined)),
       sources: this.sourcesCitedBy({ story, relations }),
     }
+  }
+
+  /** Words explained next to the story steps (V14), with their sources resolved. */
+  listGlossary(): Array<GlossaryEntry & { sources: Source[] }> {
+    return this.content.glossary.map((entry) => ({ ...entry, sources: this.sourcesCitedBy(entry) }))
+  }
+
+  /** Every machine with a sourced date, on both worlds, oldest first (US-5.8). */
+  getTimeline(): TimelineEntry[] {
+    return this.content.machines
+      .flatMap((machine) => {
+        const mission = this.missions.get(machine.missionId)
+        if (!machine.date || !mission) return []
+        return [
+          {
+            machineId: machine.id,
+            name: machine.name,
+            missionId: mission.id,
+            missionName: mission.name,
+            destinationId: mission.destinationId,
+            date: machine.date,
+            dateLabel: machine.dateLabel ?? null,
+            status: machine.status,
+          },
+        ]
+      })
+      .sort((a, b) => a.date.value.localeCompare(b.date.value) || a.name.localeCompare(b.name))
   }
 
   listSources(): Source[] {
@@ -167,8 +213,15 @@ export class ContentRepository {
     return { ...relation, fromEntity: this.label(relation.from), toEntity: this.label(relation.to) }
   }
 
-  private machinesOf(missionId: string): Machine[] {
-    return this.content.machines.filter((m) => m.missionId === missionId)
+  private machinesOf(missionId: string): MachineSummary[] {
+    return this.content.machines
+      .filter((m) => m.missionId === missionId)
+      .map((machine) => ({ ...machine, cover: this.firstPhoto(this.listMedia({ machineId: machine.id })) }))
+  }
+
+  /** First real photograph (still image) of a list: covers are never drawings or simulations. */
+  private firstPhoto(media: Media[]): Media | null {
+    return media.find((m) => m.type === 'image' && m.depiction === 'photo') ?? null
   }
 
   private relationsOf(ref: EntityRef): Relation[] {

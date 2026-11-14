@@ -220,6 +220,7 @@ export function validateContent(content: Content): ValidationReport {
   }
 
   // Media
+  let draftDescriptions = 0
   for (const m of content.media) {
     const w = `media/${m.id}`
     if (!(MEDIA_TYPES as readonly string[]).includes(m.type)) err(w, `unknown type "${m.type}"`)
@@ -233,10 +234,34 @@ export function validateContent(content: Content): ValidationReport {
     for (const id of m.missionIds) if (!missionIds.has(id)) err(w, `unknown mission "${id}" (V3)`)
     for (const id of m.machineIds) if (!machineIds.has(id)) err(w, `unknown machine "${id}" (V3)`)
     if (!(DEPICTIONS as readonly string[]).includes(m.depiction)) err(w, `depiction must be one of ${DEPICTIONS.join(', ')}`)
-    if (m.description) text(`${w}.description`, m.description)
+    if (m.description) {
+      text(`${w}.description`, m.description)
+      // V15: a picture story always says whether it has been checked.
+      if (m.descriptionStatus !== 'draft' && m.descriptionStatus !== 'reviewed') err(w, 'description needs descriptionStatus draft|reviewed (V15)')
+      else if (m.descriptionStatus === 'draft') draftDescriptions += 1
+    } else if (m.descriptionStatus !== undefined) err(w, 'descriptionStatus without description (V15)')
     if (m.thumbnailUrl != null && !/^https?:\/\//.test(m.thumbnailUrl)) err(w, 'thumbnailUrl must be http(s)')
     if (m.dateCreated != null && !FULL_DATE.test(m.dateCreated)) err(w, `invalid dateCreated "${m.dateCreated}"`)
   }
+
+  // Glossary (V14): bilingual label and definition, at least one form per language, sourced.
+  ids('glossary', content.glossary ?? [])
+  for (const g of content.glossary ?? []) {
+    const w = `glossary/${g.id}`
+    text(`${w}.label`, g.label)
+    text(`${w}.definition`, g.definition)
+    for (const lang of LANGS) {
+      const forms = g.terms?.[lang]
+      if (!Array.isArray(forms) || forms.length === 0 || forms.some((f) => typeof f !== 'string' || f.trim() === '')) {
+        err(`${w}.terms`, `needs at least one "${lang}" form (V14)`)
+      }
+    }
+    sources(`${w}.sourceIds`, g.sourceIds)
+    if (g.status !== 'draft' && g.status !== 'reviewed') err(w, `unknown status "${String(g.status)}" (V14)`)
+    else if (g.status === 'draft') warnings.push(`${w}: draft — needs scientific review before publication`)
+  }
+
+  if (draftDescriptions > 0) warnings.push(`media: ${draftDescriptions} picture stories in draft — need review before publication (V15)`)
 
   for (const id of sourceIds) if (!citedSources.has(id)) warnings.push(`sources/${id}: never cited`)
 

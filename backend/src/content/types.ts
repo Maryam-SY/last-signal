@@ -187,13 +187,32 @@ export interface Media {
    * simulation is never mistaken for evidence (CDC §8, CLAUDE.md §7).
    */
   depiction: Depiction
-  /** Plain-language explanation for a general audience, when written. */
+  /**
+   * The story behind the picture, for a general audience (US-5.10): restates only what the
+   * media's own caption says. Shown next to the picture in the mission log.
+   */
   description?: LocalizedText
+  /** Required with `description`: only a human reviewer may set "reviewed" (CLAUDE.md §7). */
+  descriptionStatus?: 'draft' | 'reviewed'
   /** Small preview image (NASA Image and Video Library items), when available. */
   thumbnailUrl?: string | null
   /** NASA Image and Video Library identifier, when the media comes from it. */
   nasaId?: string
   dateCreated?: string | null
+}
+
+/**
+ * A word a 10–15 year old may not know, explained in one or two sentences taken from the
+ * stories' own wording and sourced like them. Shown next to the story steps that use it.
+ */
+export interface GlossaryEntry {
+  id: string
+  status: 'draft' | 'reviewed'
+  /** Forms of the word as they appear in the story texts, per language (case-insensitive). */
+  terms: { en: string[]; fr: string[] }
+  label: LocalizedText
+  definition: LocalizedText
+  sourceIds: string[]
 }
 
 export interface Content {
@@ -204,4 +223,5 @@ export interface Content {
   stories: Story[]
   sources: Source[]
   media: Media[]
+  glossary: GlossaryEntry[]
 }

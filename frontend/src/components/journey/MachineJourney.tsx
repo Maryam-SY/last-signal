@@ -7,7 +7,7 @@ import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { useTranslation } from '@/i18n'
 import { formatPartialDate } from '@/lib/formatDate'
-import { bestStill, machineChapters, mediaOfMachine, modelOf, type JourneyChapter } from '@/lib/journey'
+import { machineChapters, machineCover, modelOf, type JourneyChapter, type Told } from '@/lib/journey'
 import { cn } from '@/lib/utils'
 import { MachineStage } from './MachineStage'
 import { ModelViewer3D } from './ModelViewer3D'
@@ -18,6 +18,8 @@ interface MachineJourneyProps {
   /** Photos and timeline of the mission; null while they load (or if they cannot be loaded). */
   mission: MissionDetail | null
   story: StorySummary | null
+  /** What the mission log above already tells (US-5.9): not repeated in this scene. */
+  told?: Told
 }
 
 /**
@@ -26,12 +28,14 @@ interface MachineJourneyProps {
  * step bringing its own picture onto the stage. The text stays in reading order for screen
  * readers; under reduced motion each picture is simply shown inside its step.
  */
-export function MachineJourney({ machine, mission, story }: MachineJourneyProps) {
+export function MachineJourney({ machine, mission, story, told }: MachineJourneyProps) {
   const { t } = useTranslation()
   const reduced = useReducedMotion()
   const sceneRef = useSceneMotion<HTMLElement>(!reduced)
-  const cover = mission ? bestStill(mediaOfMachine(mission, machine.id)) : undefined
-  const chapters = mission ? machineChapters(machine, mission, cover) : []
+  // The machine's own photo on the stage (#16 rules), avoiding pictures the mission log above
+  // has already told; the API cover when the mission has no picture of this machine.
+  const cover = (mission ? machineCover(mission, machine.id, told?.mediaIds) : undefined) ?? machine.cover ?? undefined
+  const chapters = mission ? machineChapters(machine, mission, cover, 4, told) : []
   const model = mission ? modelOf(mission, machine.id) : undefined
   const [showModel, setShowModel] = useState(false)
   // The 3D model takes the sticky stage only on large screens. On phones the stage is too
@@ -79,7 +83,7 @@ export function MachineJourney({ machine, mission, story }: MachineJourneyProps)
             className={cn('flex flex-col justify-center', staged && 'min-h-[85vh] max-lg:justify-end max-lg:pb-10')}
           >
             {!staged && !modelInFlow && cover && <MediaFigure media={cover} className="mb-4" />}
-            <MachineCard machine={machine} story={story} />
+            <MachineCard machine={machine} story={story} showCover={false} />
             {model && (
               <button
                 type="button"

@@ -125,6 +125,9 @@ describe('content API', () => {
     expect(firstFlight).toMatchObject({ date: { value: '2021-04-19' }, title: 'Premier vol sur une autre planète' })
     expect(firstFlight.media.length).toBeGreaterThan(0)
     expect(firstFlight.media[0]).toHaveProperty('depiction')
+    // The sources of the mission and of every dated step are resolved.
+    const sourceIds = new Set(res.body.sources.map((s: { id: string }) => s.id))
+    for (const event of res.body.timeline) for (const id of event.date.sourceIds) expect(sourceIds.has(id)).toBe(true)
     expect(typeof firstFlight.media[0].alt).toBe('string')
   })
 
@@ -135,6 +138,46 @@ describe('content API', () => {
     const relation = res.body.relations.find((r: { id: string }) => r.id === 'surveyor-3-to-apollo-12-data')
     expect(relation.fromEntity).toMatchObject({ kind: 'machine', id: 'surveyor-3-lander', destinationId: 'moon' })
     expect(relation.toEntity).toMatchObject({ kind: 'mission', id: 'apollo-12', name: 'Apollo 12' })
+  })
+
+  it('gives each machine of a destination a real photo as cover, never a drawing (US-5.7)', async () => {
+    const res = await request(app).get('/api/destinations/moon')
+    const machines = res.body.missions.flatMap((m: { machines: unknown[] }) => m.machines) as {
+      id: string
+      cover: { type: string; depiction: string; machineIds: string[] } | null
+    }[]
+    expect(machines.length).toBeGreaterThan(0)
+    for (const machine of machines) {
+      if (!machine.cover) continue
+      expect(machine.cover).toMatchObject({ type: 'image', depiction: 'photo' })
+      expect(machine.cover.machineIds).toContain(machine.id)
+    }
+    expect(machines.some((m) => m.cover !== null)).toBe(true)
+  })
+
+  it('gives a story a photo cover taken from its own media', async () => {
+    const res = await request(app).get('/api/stories/moon-apollo11-retroreflectors')
+    expect(res.body.cover).toMatchObject({ type: 'image', depiction: 'photo' })
+    expect(res.body.media.map((m: { id: string }) => m.id)).toContain(res.body.cover.id)
+  })
+
+  it('GET /api/glossary returns sourced, localized definitions (V14)', async () => {
+    const res = await request(app).get('/api/glossary?lang=fr')
+    expect(res.status).toBe(200)
+    const seismometer = res.body.find((g: { id: string }) => g.id === 'seismometer')
+    expect(seismometer).toMatchObject({ label: 'Sismomètre', status: 'draft', terms: { fr: ['sismomètre'] } })
+    expect(typeof seismometer.definition).toBe('string')
+    expect(seismometer.sources.length).toBeGreaterThan(0)
+  })
+
+  it('GET /api/timeline lists dated machines of both worlds, oldest first (US-5.8)', async () => {
+    const res = await request(app).get('/api/timeline')
+    expect(res.status).toBe(200)
+    const dates = res.body.map((e: { date: { value: string } }) => e.date.value)
+    expect(dates).toEqual([...dates].sort())
+    expect(new Set(res.body.map((e: { destinationId: string }) => e.destinationId))).toEqual(new Set(['moon', 'mars']))
+    expect(res.body[0]).toMatchObject({ machineId: 'surveyor-3-lander', missionName: 'Surveyor 3' })
+    for (const entry of res.body) expect(entry.date.sourceIds.length).toBeGreaterThan(0)
   })
 
   it('GET /api/machines/:id names relation ends and resolves the sources they cite', async () => {

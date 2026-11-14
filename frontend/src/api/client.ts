@@ -1,11 +1,14 @@
 import type {
   DestinationDetail,
   DestinationSummary,
+  GlossaryEntry,
   Lang,
   MachineDetail,
   MissionDetail,
   Source,
   StoryDetail,
+  StorySummary,
+  TimelineEntry,
 } from './types'
 
 /**
@@ -47,7 +50,10 @@ export const api = {
     apiGet<MissionDetail>(`/missions/${id(missionId)}`, lang, signal),
   machine: (machineId: string, lang: Lang, signal?: AbortSignal) =>
     apiGet<MachineDetail>(`/machines/${id(machineId)}`, lang, signal),
+  stories: (lang: Lang, signal?: AbortSignal) => apiGet<StorySummary[]>('/stories', lang, signal),
   story: (storyId: string, lang: Lang, signal?: AbortSignal) =>
     apiGet<StoryDetail>(`/stories/${id(storyId)}`, lang, signal),
   sources: (lang: Lang, signal?: AbortSignal) => apiGet<Source[]>('/sources', lang, signal),
+  glossary: (lang: Lang, signal?: AbortSignal) => apiGet<GlossaryEntry[]>('/glossary', lang, signal),
+  timeline: (lang: Lang, signal?: AbortSignal) => apiGet<TimelineEntry[]>('/timeline', lang, signal),
 }

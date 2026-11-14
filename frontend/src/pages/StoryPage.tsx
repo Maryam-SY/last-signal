@@ -6,17 +6,21 @@ import type { StoryDetail } from '@/api/types'
 import { paths } from '@/app/paths'
 import { SpaceBackdrop } from '@/components/celestial/SpaceBackdrop'
 import { LoadState } from '@/components/common/LoadState'
+import { CoverPhoto } from '@/components/media/CoverPhoto'
 import { ScrollProgress } from '@/components/motion/ScrollProgress'
 import { StepRail } from '@/components/story/StepRail'
 import { StepScene } from '@/components/story/StepScene'
 import { STEP_ACCENT, stepSectionId } from '@/components/story/storySteps'
 import { StoryControls } from '@/components/story/StoryControls'
 import { StoryEnd } from '@/components/story/StoryEnd'
+import { VoicesLegend } from '@/components/story/StoryPedagogy'
 import { useActiveSection, scrollToSection } from '@/hooks/useActiveSection'
 import { useApi } from '@/hooks/useApi'
 import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { useTranslation } from '@/i18n'
+import { record } from '@/lib/explorerLog'
+import { wordsIn } from '@/lib/glossary'
 import { ctaGhost, ctaPrimary, eyebrow } from '@/lib/styles'
 import { cn } from '@/lib/utils'
 
@@ -80,6 +84,16 @@ function StoryExperience({ story }: { story: StoryDetail }) {
   const current = Number.isInteger(requested) && requested >= 1 && requested <= total ? requested : 1
   const step = story.steps[current - 1]!
   const from = params.get('from')
+
+  const { locale } = useTranslation()
+  // Words to know (US-5.7): optional — the story stays complete if the glossary fails to load.
+  const glossary = useApi('glossary', (lang, signal) => api.glossary(lang, signal))
+  const entries = glossary.status === 'success' ? glossary.data : []
+
+  // Explorer log (US-5.8): reaching the last step completes the story.
+  useEffect(() => {
+    if (current === total) record('stories', story.id)
+  }, [current, total, story.id])
 
   const headingRefs = useRef<Array<HTMLHeadingElement | null>>([])
   const firstRender = useRef(true)
@@ -184,6 +198,12 @@ function StoryExperience({ story }: { story: StoryDetail }) {
         <header className="flex min-h-[calc(100dvh-4rem)] flex-col justify-center pt-20 pb-10 xl:pt-10">
           <p className={cn(eyebrow, 'text-world')}>{story.missions.map((m) => m.name).join(' · ')}</p>
           <h1 className="text-glow mt-3 font-heading text-5xl leading-[0.95] font-bold sm:text-7xl">{story.title}</h1>
+          {story.cover && (
+            <CoverPhoto
+              media={story.cover}
+              className="mt-8 aspect-[16/9] rounded-3xl border border-white/10 shadow-[0_30px_80px_-30px_var(--world-accent)]"
+            />
+          )}
 
           {story.status === 'draft' && (
             <p className="glass mt-8 flex items-start gap-3 rounded-2xl border-stellar-gold/40 p-4 text-sm">
@@ -191,6 +211,9 @@ function StoryExperience({ story }: { story: StoryDetail }) {
               {t('story.draftNotice')}
             </p>
           )}
+          <div className="mt-6">
+            <VoicesLegend />
+          </div>
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <button type="button" onClick={() => goTo(1)} className={cn(ctaPrimary, 'group')}>
@@ -217,6 +240,12 @@ function StoryExperience({ story }: { story: StoryDetail }) {
             mediaById={mediaById}
             sourceById={sourceById}
             relations={s.key === 'relay' && s.relationIds ? story.relations.filter((r) => s.relationIds!.includes(r.id)) : []}
+            words={wordsIn(
+              s.blocks.map((b) => b.text),
+              entries,
+              locale,
+            )}
+            storyId={story.id}
           />
         ))}
 
