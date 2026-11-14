@@ -202,6 +202,8 @@ export function validateContent(content: Content): ValidationReport {
     if (m.missionIds.length === 0) err(w, 'needs at least one mission')
     for (const id of m.missionIds) if (!missionIds.has(id)) err(w, `unknown mission "${id}" (V3)`)
     for (const id of m.machineIds) if (!machineIds.has(id)) err(w, `unknown machine "${id}" (V3)`)
+    if (m.thumbnailUrl != null && !/^https?:\/\//.test(m.thumbnailUrl)) err(w, 'thumbnailUrl must be http(s)')
+    if (m.dateCreated != null && !FULL_DATE.test(m.dateCreated)) err(w, `invalid dateCreated "${m.dateCreated}"`)
   }
 
   for (const id of sourceIds) if (!citedSources.has(id)) warnings.push(`sources/${id}: never cited`)

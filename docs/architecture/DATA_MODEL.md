@@ -9,6 +9,7 @@
 > - `Mission.nssdcaIds: string[]` ; `Machine.scienceSummary: Sourced<LocalizedText>`.
 > - `Source.type` : nssdca, nasa-mission-page, nasa-news, press, paper ou other ; `Source.publishedOn` (date ou null).
 > - **Nouvelle entité `Media`** (`media.json`) : référence externe `{ id, type (image, animation, video, 3d-model, document), url, pageUrl, title, caption (recopiée de la source), alt {en,fr}, credit ou null, license, missionIds, machineIds, sourceId, aiGenerated }`. Elle remplace `Media`/`creditId` de la §4.7 (ADR-017). Les blocs de récit peuvent citer des `mediaIds`.
+> - `Media` accepte aussi les champs facultatifs `thumbnailUrl`, `nasaId` et `dateCreated` (médias de la NASA Image and Video Library).
 > - Validation : règles V1–V12 implémentées dans `backend/src/content/validate.ts`, sans dépendance (zod non ajouté, OPEN-17 toujours ouverte).
 >
 > ⚠️ **Tous les exemples JSON ci-dessous illustrent la structure.** Les valeurs entre chevrons (`<…>`) et `null` sont des emplacements à remplir **à partir de sources vérifiées**. Aucun exemple ne doit être copié tel quel dans `content/`.

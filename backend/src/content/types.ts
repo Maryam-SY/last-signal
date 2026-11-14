@@ -156,6 +156,11 @@ export interface Media {
   machineIds: string[]
   sourceId: string
   aiGenerated: boolean
+  /** Small preview image (NASA Image and Video Library items), when available. */
+  thumbnailUrl?: string | null
+  /** NASA Image and Video Library identifier, when the media comes from it. */
+  nasaId?: string
+  dateCreated?: string | null
 }
 
 export interface Content {

@@ -159,5 +159,18 @@
       "en": "Press source, used only to explain where the famous sentence comes from. The original reporting by science reporter Jacob Margolis could not be retrieved.",
       "fr": "Source de presse, utilisée uniquement pour expliquer l'origine de la phrase célèbre. Le reportage d'origine du journaliste scientifique Jacob Margolis n'a pas pu être consulté."
     }
+  },
+  {
+    "id": "nasa-image-video-library",
+    "organization": "NASA",
+    "title": "NASA Image and Video Library (images.nasa.gov), searched through its public API",
+    "url": "https://images.nasa.gov/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-14",
+    "note": {
+      "en": "Each media item links to its own page (pageUrl). Titles, descriptions and credits are copied from the library metadata; long descriptions are shortened and end with […].",
+      "fr": "Chaque média renvoie à sa propre page (pageUrl). Titres, descriptions et crédits sont recopiés depuis les métadonnées de la bibliothèque ; les descriptions longues sont raccourcies et se terminent par […]."
+    }
   }
 ]

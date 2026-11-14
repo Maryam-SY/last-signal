@@ -92,7 +92,11 @@ describe('content API', () => {
 
   it('GET /api/media filters by type and mission', async () => {
     const videos = await request(app).get('/api/media?type=video')
-    expect(videos.body).toHaveLength(5)
+    expect(videos.body.length).toBeGreaterThanOrEqual(5)
+    expect(videos.body.every((m: { type: string }) => m.type === 'video')).toBe(true)
+    const apollo12 = await request(app).get('/api/media?missionId=apollo-12')
+    expect(apollo12.body.length).toBeGreaterThan(0)
+    expect(apollo12.body.every((m: { missionIds: string[] }) => m.missionIds.includes('apollo-12'))).toBe(true)
     const ingenuity = await request(app).get('/api/media?missionId=mars-2020&type=3d-model')
     expect(ingenuity.body.map((m: { id: string }) => m.id)).toEqual(['ingenuity-3d-model'])
   })

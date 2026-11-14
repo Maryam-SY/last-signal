@@ -60,7 +60,33 @@
 5. **Médias du fil chronologique d'Ingenuity** : la légende indique l'entrée de la chronologie associée sur la page NASA, et non une légende officielle de l'image.
 6. **Source de presse** : la phrase « my battery is low… » s'appuie sur ABC7. Il est préférable de remplacer cette source par le reportage d'origine (LAist) s'il devient accessible.
 
-## 6. Fiche de relecture (à remplir par le relecteur)
+## 6. Médias de la NASA Image and Video Library (ajout du 2026-11-14)
+
+Recherche faite avec l'API publique `images-api.nasa.gov`, sur 12 requêtes ciblées (Apollo 11 retroreflector et EASEP, Apollo 11 LM, Surveyor 3, Apollo 12 Surveyor, ALSEP et LM, Mars Pathfinder Sojourner, Mars Exploration Rover, Spirit, Opportunity, Ingenuity). Les URL exactes des fichiers viennent du manifeste officiel `/asset/{nasa_id}` de chaque média. **Aucun fichier n'est téléchargé.**
+
+| | Avant | Ajoutés | Total |
+|---|---|---|---|
+| Images | 42 | 122 | 164 |
+| Vidéos | 5 | 25 | 30 |
+| Animations, modèles 3D, PDF | 9 | 0 | 9 |
+| **Total** | **56** | **147** | **203** |
+
+Par mission (un média peut concerner plusieurs missions) : Apollo 11 : 16 · Apollo 12 : 19 · Surveyor 3 : 8 · Mars Pathfinder : 28 · Spirit et Opportunity : 62 · Ingenuity : 82.
+
+**Règles de sélection**
+- **Lune** : choix manuel, une image après l'autre (EASEP et réflecteur, module lunaire, visite de Surveyor 3, déploiement de l'ALSEP, sismogramme de l'impact de l'étage de remontée d'Apollo 12). Les cérémonies de 2014, les lancements, les récupérations et les vues de la Terre sont exclus.
+- **Mars (images)** : sélection automatique, puis relecture des titres. Pathfinder : images de 1996 à 1999 qui citent Pathfinder ou Sojourner, 20 au maximum. Spirit et Opportunity : 20 au maximum par rover, en excluant les autres missions. Ingenuity : 30 au maximum, avec « Ingenuity » ou « Mars Helicopter » dans le titre. Correction manuelle : les images de « Spirit Point » et de « Spirit Mound » sont des photos d'**Opportunity**.
+- **Vidéos** : choix manuel. 1 vidéo Spirit et 24 vidéos Ingenuity (vols, tests, bilans, dernière transmission de données). Les vidéos hors sujet (Perseverance seul, bande-annonce de podcast) sont exclues. La bibliothèque ne contient aucune vidéo pertinente pour la Lune.
+
+**À savoir avant publication**
+- **Textes alternatifs en français** : générés sur le modèle « Image de la NASA (mission) : « titre anglais » ». Ils sont à traduire ou à réécrire.
+- **Légendes** : recopiées depuis la description NASA et **raccourcies à environ 700 caractères** (48 médias, marqués par `[…]`). Le texte complet est sur `pageUrl`.
+- **Crédits** : repris des métadonnées (`photographer`, `secondary_creator` ou mention « credit » dans la description). Sinon, la provenance est indiquée (« NASA (Image and Video Library, centre) »). Une coquille de la NASA est conservée telle quelle : « NASA/JPCaltech » (PIA05032).
+- **Images non photographiques** : certaines sont des **vues d'artiste, des illustrations ou des simulations**, et leur titre l'indique (« Artist's Concept », « Illustration », « Simulated »). Le frontend doit les signaler pour ne pas les confondre avec des photos.
+- Nouveaux champs facultatifs de `Media` : `thumbnailUrl`, `nasaId`, `dateCreated`.
+- **Liens vérifiés** le 2026-11-14 : 294 URL (fichiers et miniatures) répondent, en ne lisant que le premier octet. Les apostrophes typographiques sont encodées dans les URL.
+
+## 7. Fiche de relecture (à remplir par le relecteur)
 
 | Récit | Relu par | Date | Faits vérifiés OK / KO | Verdict |
 |---|---|---|---|---|
