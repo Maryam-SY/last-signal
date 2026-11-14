@@ -1,0 +1,145 @@
+{
+  "id": "moon-apollo11-retroreflectors",
+  "kind": "mission",
+  "missionIds": ["apollo-11"],
+  "machineIds": ["apollo-11-lrrr", "apollo-11-easep", "apollo-11-lm-eagle-descent-stage", "apollo-12-alsep"],
+  "title": { "en": "The machine that still answers", "fr": "La machine qui répond encore" },
+  "status": "draft",
+  "steps": [
+    {
+      "key": "signal",
+      "title": { "en": "Signal", "fr": "Signal" },
+      "blocks": [
+        {
+          "voice": "data",
+          "text": {
+            "en": "On 21 July 1969, about an hour before the end of their moonwalk, Apollo 11 astronauts Neil Armstrong and Buzz Aldrin left a flat panel of 100 small prisms at Tranquility Base.",
+            "fr": "Le 21 juillet 1969, environ une heure avant la fin de leur sortie sur la Lune, les astronautes d'Apollo 11 Neil Armstrong et Buzz Aldrin laissent sur la base Tranquillité un panneau plat de 100 petits prismes."
+          },
+          "sourceIds": ["jpl-llr-2004", "nssdca-1969-059c"],
+          "mediaIds": ["llr-easep-aldrin-as11-40-5949"]
+        }
+      ]
+    },
+    {
+      "key": "why",
+      "title": { "en": "Why", "fr": "Pourquoi" },
+      "blocks": [
+        {
+          "voice": "data",
+          "text": {
+            "en": "The crew had little time on the surface, so they set up a small package of experiments, the EASEP: a seismometer and a dust detector powered by solar panels.",
+            "fr": "L'équipage avait peu de temps à la surface : il installe donc un petit ensemble d'expériences, l'EASEP, avec un sismomètre et un détecteur de poussière alimentés par des panneaux solaires."
+          },
+          "sourceIds": ["jpl-llr-2004", "nssdca-1969-059c"]
+        },
+        {
+          "voice": "data",
+          "text": {
+            "en": "The reflector had another goal: time the round trip of a laser pulse fired from Earth, to measure the Earth–Moon distance with great precision.",
+            "fr": "Le réflecteur avait un autre but : chronométrer l'aller-retour d'une impulsion laser tirée depuis la Terre, pour mesurer très précisément la distance Terre-Lune."
+          },
+          "sourceIds": ["jpl-llr-1999", "jpl-llr-2004"]
+        }
+      ]
+    },
+    {
+      "key": "how",
+      "title": { "en": "How", "fr": "Comment" },
+      "blocks": [
+        {
+          "voice": "data",
+          "text": {
+            "en": "Each prism is a “corner cube”: it sends light back in exactly the direction it came from. Unlike the other experiments left on the Moon, the reflector needs no power.",
+            "fr": "Chaque prisme est un « coin de cube » : il renvoie la lumière exactement dans la direction d'où elle vient. Contrairement aux autres expériences laissées sur la Lune, le réflecteur n'a besoin d'aucune énergie."
+          },
+          "sourceIds": ["jpl-llr-2004"],
+          "mediaIds": ["llr-retroreflector-array", "llr-corner-cube-prisms"]
+        },
+        {
+          "voice": "data",
+          "text": {
+            "en": "Observatories in Texas and in France aim a laser through a telescope at the reflector. Under good conditions, about one photon comes back every few seconds.",
+            "fr": "Des observatoires au Texas et en France visent le réflecteur avec un laser à travers un télescope. Dans de bonnes conditions, environ un photon revient toutes les quelques secondes."
+          },
+          "sourceIds": ["jpl-llr-2004"]
+        }
+      ]
+    },
+    {
+      "key": "discovery",
+      "title": { "en": "Discovery", "fr": "Découverte" },
+      "blocks": [
+        {
+          "voice": "data",
+          "text": {
+            "en": "Laser ranging showed that the Moon is moving away from Earth by about 3.8 cm per year.",
+            "fr": "Les mesures laser ont montré que la Lune s'éloigne de la Terre d'environ 3,8 cm par an."
+          },
+          "sourceIds": ["jpl-llr-1999"]
+        },
+        {
+          "voice": "data",
+          "text": {
+            "en": "The same data helped show that the Moon has a fluid core and confirmed predictions of Einstein's theory of relativity.",
+            "fr": "Les mêmes données ont aidé à montrer que la Lune possède un noyau fluide et ont confirmé des prédictions de la théorie de la relativité d'Einstein."
+          },
+          "sourceIds": ["jpl-llr-2004"]
+        },
+        {
+          "voice": "interpretation",
+          "text": {
+            "en": "Such a small drift can only be measured because each laser measurement is accurate to about 2 cm over a distance of about 385,000 km.",
+            "fr": "Un éloignement aussi faible n'est mesurable que parce que chaque mesure laser est précise à environ 2 cm, sur une distance d'environ 385 000 km."
+          },
+          "sourceIds": ["jpl-llr-2004"]
+        }
+      ]
+    },
+    {
+      "key": "relay",
+      "title": { "en": "Relay", "fr": "Relais" },
+      "relationIds": ["easep-to-alsep-technology"],
+      "blocks": [
+        {
+          "voice": "data",
+          "text": {
+            "en": "The EASEP stopped on 27 August 1969. It was the forerunner of the ALSEP stations left by later Apollo missions, which were all shut down on 30 September 1977.",
+            "fr": "L'EASEP s'arrête le 27 août 1969. C'était l'ancêtre des stations ALSEP laissées par les missions Apollo suivantes, toutes arrêtées le 30 septembre 1977."
+          },
+          "sourceIds": ["nssdca-1969-059c", "nssdca-1969-099c"]
+        },
+        {
+          "voice": "data",
+          "text": {
+            "en": "The reflector kept going: in 2004, 35 years after it was installed, NASA described it as still functioning perfectly.",
+            "fr": "Le réflecteur, lui, continue : en 2004, 35 ans après son installation, la NASA le décrivait comme fonctionnant toujours parfaitement."
+          },
+          "sourceIds": ["jpl-llr-2004"]
+        },
+        {
+          "voice": "interpretation",
+          "text": {
+            "en": "Here the relay crosses time: an object left in 1969 was still answering scientists 35 years later.",
+            "fr": "Ici, le relais traverse le temps : un objet laissé en 1969 répondait encore aux scientifiques 35 ans plus tard."
+          },
+          "sourceIds": ["jpl-llr-2004"]
+        }
+      ]
+    },
+    {
+      "key": "your-turn",
+      "title": { "en": "Your turn", "fr": "À toi" },
+      "blocks": [
+        {
+          "voice": "imagination",
+          "text": {
+            "en": "If you could leave one object on the Moon that would still be useful in 50 years, what would it be? Would it need energy to work?",
+            "fr": "Si tu pouvais laisser sur la Lune un objet encore utile dans 50 ans, lequel choisirais-tu ? Aurait-il besoin d'énergie pour fonctionner ?"
+          },
+          "sourceIds": []
+        }
+      ]
+    }
+  ]
+}

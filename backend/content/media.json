@@ -1,0 +1,1246 @@
+[
+  {
+    "id": "nssdca-apollo-11-lm-as11-40-5927",
+    "type": "image",
+    "url": "https://nssdc.gsfc.nasa.gov/planetary/image/ap11_lm_as11_40_5927.jpg",
+    "pageUrl": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1969-059C",
+    "title": null,
+    "caption": "Image of the Apollo 11 Lunar Module / EASEP spacecraft.",
+    "alt": {
+      "en": "The Apollo 11 Lunar Module on the Moon.",
+      "fr": "Le module lunaire d’Apollo 11 sur la Lune."
+    },
+    "credit": "NASA",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "apollo-11"
+    ],
+    "machineIds": [
+      "apollo-11-lm-eagle-descent-stage"
+    ],
+    "sourceId": "nssdca-1969-059c",
+    "aiGenerated": false
+  },
+  {
+    "id": "nssdca-apollo-lm-diagram",
+    "type": "image",
+    "url": "https://nssdc.gsfc.nasa.gov/image/spacecraft/apollo_lm_diagram.gif",
+    "pageUrl": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1969-059C",
+    "title": null,
+    "caption": "Diagram of the Apollo Lunar Module. (Courtesy of NASA History Office.)",
+    "alt": {
+      "en": "Labelled diagram of the Apollo Lunar Module.",
+      "fr": "Schéma annoté du module lunaire Apollo."
+    },
+    "credit": "NASA History Office",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "apollo-11",
+      "apollo-12"
+    ],
+    "machineIds": [
+      "apollo-11-lm-eagle-descent-stage",
+      "apollo-12-lm-intrepid-descent-stage"
+    ],
+    "sourceId": "nssdca-1969-059c",
+    "aiGenerated": false
+  },
+  {
+    "id": "llr-easep-aldrin-as11-40-5949",
+    "type": "image",
+    "url": "https://d2pn8kiwq2w21t.cloudfront.net/images/imagesapollo11-browse.width-1024.jpg",
+    "pageUrl": "https://www.jpl.nasa.gov/news/apollo-11-experiment-still-going-strong-after-35-years/",
+    "title": null,
+    "caption": "In the few hours that Aldrin and Armstrong were on the Moon, there was little time to set up scientific experiments, but a small package (the EASEP, or Early Apollo Scientific Experiments Package) was deployed. Aldrin is shown here setting up the Passive Seismic Experiments Package. Back to the left is the Laser Ranging Retro-Reflector. More extensive scientific studies were done on later Apollo missions. (NASA photo ID AS11-40-5949)",
+    "alt": {
+      "en": "Buzz Aldrin setting up the seismometer on the Moon, with the laser reflector in the background.",
+      "fr": "Buzz Aldrin installe le sismomètre sur la Lune, avec le réflecteur laser à l’arrière-plan."
+    },
+    "credit": "NASA",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "apollo-11"
+    ],
+    "machineIds": [
+      "apollo-11-easep",
+      "apollo-11-lrrr"
+    ],
+    "sourceId": "jpl-llr-2004",
+    "aiGenerated": false
+  },
+  {
+    "id": "llr-retroreflector-array",
+    "type": "image",
+    "url": "https://d2pn8kiwq2w21t.cloudfront.net/images/imagesapollo11retro-browse.width-1024.jpg",
+    "pageUrl": "https://www.jpl.nasa.gov/news/apollo-11-experiment-still-going-strong-after-35-years/",
+    "title": null,
+    "caption": "The Apollo 11 retroreflector array, consisting of 100 corner-cube prisms in a 10×10 array. Each corner cube is made of fused silica (quartz) and is 3.8 cm (1.5 inches) in diameter.",
+    "alt": {
+      "en": "The Apollo 11 laser reflector: a square panel of 100 small prisms.",
+      "fr": "Le réflecteur laser d’Apollo 11 : un panneau carré de 100 petits prismes."
+    },
+    "credit": null,
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "apollo-11"
+    ],
+    "machineIds": [
+      "apollo-11-lrrr"
+    ],
+    "sourceId": "jpl-llr-2004",
+    "aiGenerated": false
+  },
+  {
+    "id": "llr-corner-cube-prisms",
+    "type": "image",
+    "url": "https://d2pn8kiwq2w21t.cloudfront.net/images/imagesretroprism-browse.width-1024.jpg",
+    "pageUrl": "https://www.jpl.nasa.gov/news/apollo-11-experiment-still-going-strong-after-35-years/",
+    "title": null,
+    "caption": "Retroreflectors, or corner-cube prisms, are optical devices that return any incident light back in exactly the direction from which it came. They make up part of the Apollo 11 lunar laser reflector array and can be found in automobile tail-light covers, bike reflectors and paints for road signs.",
+    "alt": {
+      "en": "Close-up of corner-cube prisms like those of the Apollo 11 reflector.",
+      "fr": "Gros plan sur des prismes en coin de cube semblables à ceux du réflecteur d’Apollo 11."
+    },
+    "credit": null,
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "apollo-11"
+    ],
+    "machineIds": [
+      "apollo-11-lrrr"
+    ],
+    "sourceId": "jpl-llr-2004",
+    "aiGenerated": false
+  },
+  {
+    "id": "surveyor-3-apollo-12-as12-48-7134",
+    "type": "image",
+    "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/07/as12-48-7134_1280.jpg",
+    "pageUrl": "https://science.nasa.gov/mission/surveyor-3/",
+    "title": null,
+    "caption": "This unusual photograph, taken during the second Apollo 12 extravehicular activity (EVA), shows two U.S. spacecraft on the surface of the Moon. The Apollo 12 Lunar Module (LM) is in the background. The unmanned Surveyor 3 spacecraft is in the foreground.",
+    "alt": {
+      "en": "An Apollo 12 astronaut next to Surveyor 3, with the Lunar Module in the background.",
+      "fr": "Un astronaute d’Apollo 12 à côté de Surveyor 3, avec le module lunaire à l’arrière-plan."
+    },
+    "credit": "NASA",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "surveyor-3",
+      "apollo-12"
+    ],
+    "machineIds": [
+      "surveyor-3-lander",
+      "apollo-12-lm-intrepid-descent-stage"
+    ],
+    "sourceId": "nasa-science-surveyor-3",
+    "aiGenerated": false
+  },
+  {
+    "id": "nssdca-conrad-surveyor-3",
+    "type": "image",
+    "url": "https://nssdc.gsfc.nasa.gov/planetary/news/image/conrad_19990709_c.jpg",
+    "pageUrl": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1969-099C",
+    "title": null,
+    "caption": "Apollo 12 astronaut Pete Conrad standing next to the Surveyor 3 spacecraft.",
+    "alt": {
+      "en": "Pete Conrad standing next to Surveyor 3 on the Moon.",
+      "fr": "Pete Conrad debout à côté de Surveyor 3 sur la Lune."
+    },
+    "credit": "NASA",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "surveyor-3",
+      "apollo-12"
+    ],
+    "machineIds": [
+      "surveyor-3-lander"
+    ],
+    "sourceId": "nssdca-1969-099c",
+    "aiGenerated": false
+  },
+  {
+    "id": "nssdca-apollo-12-lm",
+    "type": "image",
+    "url": "https://nssdc.gsfc.nasa.gov/planetary/image/apollo12_lunar_module.jpg",
+    "pageUrl": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1969-099C",
+    "title": null,
+    "caption": "Image of the Apollo 12 Lunar Module / ALSEP spacecraft.",
+    "alt": {
+      "en": "The Apollo 12 Lunar Module on the Moon.",
+      "fr": "Le module lunaire d’Apollo 12 sur la Lune."
+    },
+    "credit": "NASA",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "apollo-12"
+    ],
+    "machineIds": [
+      "apollo-12-lm-intrepid-descent-stage"
+    ],
+    "sourceId": "nssdca-1969-099c",
+    "aiGenerated": false
+  },
+  {
+    "id": "nssdca-surveyor-3-analysis-1972",
+    "type": "document",
+    "url": "https://nssdc.gsfc.nasa.gov/misc/documents/b16023.pdf",
+    "pageUrl": "https://nssdc.gsfc.nasa.gov/nmc/publicationDisplay.do?id=B16023-000A",
+    "title": "Analysis of Surveyor 3 material and photographs returned by Apollo 12 (NASA SP-284, 1972)",
+    "caption": null,
+    "alt": {
+      "en": "NASA report (PDF) analysing the Surveyor 3 parts brought back by Apollo 12.",
+      "fr": "Rapport de la NASA (PDF) analysant les pièces de Surveyor 3 rapportées par Apollo 12."
+    },
+    "credit": "NASA",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "surveyor-3",
+      "apollo-12"
+    ],
+    "machineIds": [
+      "surveyor-3-lander"
+    ],
+    "sourceId": "nssdca-1969-099c",
+    "aiGenerated": false
+  },
+  {
+    "id": "pathfinder-presidential-panorama",
+    "type": "image",
+    "url": "https://science.nasa.gov/wp-content/uploads/2024/03/mars-pathfinder-presidential-panorama-lg.jpg",
+    "pageUrl": "https://science.nasa.gov/mission/mars-pathfinder/",
+    "title": null,
+    "caption": "This is the \"gallery\" or \"presidential\" panorama taken by the Pathfinder lander. Roughly 100 frames have been stitched manually to produce this seamless image. The color has been processed to retain as much of the dynamic range of the original color filters as possible while still keeping the hues in the color space of JPL's calibrated color images. The goal of the color balancing was to provide a view of the terrain that as clearly as possible showed differentiations in rock and soil types. The sky and a small area near the low-gain antenna have been retouched.",
+    "alt": {
+      "en": "Panorama of the rocky Ares Vallis landing site seen from the Pathfinder lander.",
+      "fr": "Panorama du site rocheux d’Ares Vallis vu depuis l’atterrisseur Pathfinder."
+    },
+    "credit": "NASA/JPL-Caltech",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-pathfinder"
+    ],
+    "machineIds": [
+      "mars-pathfinder-lander",
+      "sojourner"
+    ],
+    "sourceId": "nasa-science-mars-pathfinder",
+    "aiGenerated": false
+  },
+  {
+    "id": "pathfinder-360-video",
+    "type": "video",
+    "url": "https://www.youtube.com/watch?v=9HGRReKUzfU",
+    "pageUrl": "https://science.nasa.gov/mission/mars-pathfinder/",
+    "title": null,
+    "caption": null,
+    "alt": {
+      "en": "Video embedded on the NASA Science Mars Pathfinder page (360-degree view section).",
+      "fr": "Vidéo intégrée à la page NASA Science de Mars Pathfinder (section vue à 360 degrés)."
+    },
+    "credit": null,
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-pathfinder"
+    ],
+    "machineIds": [
+      "mars-pathfinder-lander",
+      "sojourner"
+    ],
+    "sourceId": "nasa-science-mars-pathfinder",
+    "aiGenerated": false
+  },
+  {
+    "id": "pathfinder-airbag-test",
+    "type": "image",
+    "url": "https://science.nasa.gov/wp-content/uploads/2024/08/5277460495-c6d046d5a9-o.jpg",
+    "pageUrl": "https://science.nasa.gov/mission/mars-pathfinder/",
+    "title": null,
+    "caption": "Engineers tested these huge, multi-lobed air bags, which enveloped and protected the Mars Pathfinder spacecraft before it impacted the surface of Mars. The air bags are composed of four large bags with six smaller, interconnected spheres within each bag. The bags measure 17 feet (5 meters) tall and about 17 feet (5 meters) in diameter.",
+    "alt": {
+      "en": "Engineers testing the giant multi-lobed airbags of Mars Pathfinder.",
+      "fr": "Des ingénieurs testent les airbags géants à plusieurs lobes de Mars Pathfinder."
+    },
+    "credit": null,
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-pathfinder",
+      "mars-exploration-rovers"
+    ],
+    "machineIds": [
+      "mars-pathfinder-lander"
+    ],
+    "sourceId": "nasa-science-mars-pathfinder",
+    "aiGenerated": false
+  },
+  {
+    "id": "pathfinder-sojourner-sol-2-pia01551",
+    "type": "image",
+    "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/09/p/i/a/0/PIA01551-1.jpg",
+    "pageUrl": "https://science.nasa.gov/mission/mars-pathfinder/",
+    "title": null,
+    "caption": "This eight-image mosaic was acquired during the late afternoon on Sol 2 as part of the predeploy 'insurance panorama' and shows the newly deployed rover sitting on the Martian surface. The insurance panorama was designed as 'insurance' against camera failure upon deployment. Had the camera failed, the losslessly compressed, multispectral insurance panorama would have been the main source of image data from the Imager for Mars Pathfinder.",
+    "alt": {
+      "en": "The Sojourner rover on the Martian surface just after leaving the lander.",
+      "fr": "Le rover Sojourner sur le sol martien juste après avoir quitté l’atterrisseur."
+    },
+    "credit": "NASA/JPL-Caltech",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-pathfinder"
+    ],
+    "machineIds": [
+      "sojourner"
+    ],
+    "sourceId": "nasa-science-mars-pathfinder",
+    "aiGenerated": false
+  },
+  {
+    "id": "pathfinder-ares-vallis-boulders-pia00609",
+    "type": "image",
+    "url": "https://science.nasa.gov/wp-content/uploads/2024/03/pia00609-1e7c7c.jpg",
+    "pageUrl": "https://science.nasa.gov/mission/mars-pathfinder/",
+    "title": null,
+    "caption": "Large boulders are visible in this enlargement of pictures taken by the Imager for Mars Pathfinder (IMP) lander camera on July 4, 1997. The landing site is in the dry flood channel named Ares Valles. The boulders probably represent deposits from one of the catastrophic floods that carved the ancient channel. Between the rocks is brownish windblown soil. The gray-tan sky results from dust particles in the atmosphere.",
+    "alt": {
+      "en": "Large boulders on a rust-coloured plain under a dusty sky at Ares Vallis.",
+      "fr": "De gros rochers sur une plaine couleur rouille sous un ciel poussiéreux à Ares Vallis."
+    },
+    "credit": "NASA/JPL-Caltech",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-pathfinder"
+    ],
+    "machineIds": [
+      "mars-pathfinder-lander"
+    ],
+    "sourceId": "nasa-science-mars-pathfinder",
+    "aiGenerated": false
+  },
+  {
+    "id": "pathfinder-sojourner-apxs-animation",
+    "type": "animation",
+    "url": "https://assets.science.nasa.gov/content/dam/science/psd/mars/resources/detail_files/8/8782_mars-rover-pathfinder-sol14_S0050J-full2.gif",
+    "pageUrl": "https://science.nasa.gov/mission/mars-pathfinder/",
+    "title": null,
+    "caption": "This animated image is of the Mars Pathfinder rover deploying its Alpha Proton X-Ray Spectrometer.",
+    "alt": {
+      "en": "Animation of Sojourner deploying its spectrometer against the ground.",
+      "fr": "Animation de Sojourner déployant son spectromètre contre le sol."
+    },
+    "credit": "NASA/JPL-Caltech",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-pathfinder"
+    ],
+    "machineIds": [
+      "sojourner"
+    ],
+    "sourceId": "nasa-science-mars-pathfinder",
+    "aiGenerated": false
+  },
+  {
+    "id": "mer-by-the-numbers-infographic",
+    "type": "image",
+    "url": "https://science.nasa.gov/wp-content/uploads/2024/03/mer-bythenumbers-infographic-feb2019.jpg",
+    "pageUrl": "https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/",
+    "title": null,
+    "caption": "This infographic highlights NASA’s twin robot geologists, the Mars Exploration Rovers (MER) Spirit and Opportunity. The rovers landed on the Red Planet in 2004, in search of answers about the history of water on Mars. Spirit concluded its mission in 2010. Opportunity last communicated with Earth on June 10, 2018, as a planet-wide dust storm blanketed the solar-powered rover's location on Mars.",
+    "alt": {
+      "en": "Infographic summarising the Spirit and Opportunity missions in numbers.",
+      "fr": "Infographie résumant en chiffres les missions de Spirit et d’Opportunity."
+    },
+    "credit": "NASA/JPL-Caltech",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-exploration-rovers"
+    ],
+    "machineIds": [
+      "spirit",
+      "opportunity"
+    ],
+    "sourceId": "nasa-science-mer",
+    "aiGenerated": false
+  },
+  {
+    "id": "mer-3d-model",
+    "type": "3d-model",
+    "url": "https://solarsystem.nasa.gov/gltf_embed/2370/?height=450&rotate=true&cc=true&fs=true&target=&orbit=",
+    "pageUrl": "https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/",
+    "title": "Mars Exploration Rovers 3D Model",
+    "caption": "A 3D model of the twin Mars Exploration Rovers, Spirit and Opportunity.",
+    "alt": {
+      "en": "Interactive 3D model of the Spirit and Opportunity rovers.",
+      "fr": "Modèle 3D interactif des rovers Spirit et Opportunity."
+    },
+    "credit": "NASA Visualization Technology Applications and Development (VTAD)",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-exploration-rovers"
+    ],
+    "machineIds": [
+      "spirit",
+      "opportunity"
+    ],
+    "sourceId": "nasa-science-mer",
+    "aiGenerated": false
+  },
+  {
+    "id": "mer-opportunity-self-portrait-2014",
+    "type": "image",
+    "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/internal_resources/3447/solar_panels_on_rover_seen_from_above.jpeg",
+    "pageUrl": "https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/",
+    "title": null,
+    "caption": "This self-portrait of Opportunity shows how the wind had cleaned much of the dust off the rover's solar panels. It combines multiple frames taken by Opportunity's panoramic camera (Pancam) through three different color filters from March 22 to March 24, 2014.",
+    "alt": {
+      "en": "Opportunity seen from above, with its solar panels mostly clean.",
+      "fr": "Opportunity vu d’en haut, avec ses panneaux solaires presque propres."
+    },
+    "credit": "NASA/JPL-Caltech/Cornell Univ./Arizona State Univ.",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-exploration-rovers"
+    ],
+    "machineIds": [
+      "opportunity"
+    ],
+    "sourceId": "nasa-science-mer",
+    "aiGenerated": false
+  },
+  {
+    "id": "mer-spirit-landing-site-pia05117",
+    "type": "image",
+    "url": "https://science.nasa.gov/wp-content/uploads/2024/03/sol016-lander-pan-pia05117.jpg",
+    "pageUrl": "https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/",
+    "title": null,
+    "caption": "This image mosaic taken by the panoramic camera onboard the Mars Exploration Rover Spirit shows the rover's landing site, the Columbia Memorial Station, at Gusev Crater, Mars. This spectacular view may encapsulate Spirit's entire journey, from lander to its possible final destination toward the east hills. On its way, the rover will travel 250 meters (820 feet) northeast to a large crater approximately 200 meters (660 feet) across, the ridge of which can be seen to the left of this image. To the right are the east hills, about 3 kilometers (2 miles) away from the lander. The picture was taken on the 16th martian day, or sol, of the mission (Jan. 18/19, 2004). A portion of Spirit's solar panels appear in the foreground. Data from the panoramic camera's green, blue and infrared filters were combined to create this approximate true color image.",
+    "alt": {
+      "en": "Spirit’s landing platform surrounded by crumpled airbags in Gusev Crater.",
+      "fr": "La plateforme d’atterrissage de Spirit entourée d’airbags froissés dans le cratère Gusev."
+    },
+    "credit": "NASA/JPL-Caltech/Cornell",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-exploration-rovers"
+    ],
+    "machineIds": [
+      "spirit"
+    ],
+    "sourceId": "nasa-science-mer",
+    "aiGenerated": false
+  },
+  {
+    "id": "mer-lion-king-panorama-pia05755",
+    "type": "image",
+    "url": "https://science.nasa.gov/wp-content/uploads/2024/03/sol058-to-060-lion-king-pia05755.jpg",
+    "pageUrl": "https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/",
+    "title": null,
+    "caption": "This image shows the middle section of an approximate true-color panorama, dubbed \"Lion King,\" showing \"Eagle Crater\" and the surrounding plains of Meridiani Planum. It was obtained by the Mars Exploration Rover Opportunity's panoramic camera on sols 58 and 60 using infrared (750-nanometer), green (530-nanometer) and blue (430-nanometer) filters. The full panorama comprises 558 images and more than 75 megabytes of data, the largest panorama captured by either of the Mars Exploration Rovers in 2004. It depicts a story of exploration including the Opportunity rover's lander, a thorough examination of the outcrop behind, a study of the soils at the near-side of the lander, a successful exit from Eagle Crater, and finally the rover's next desination, the large crater dubbed \"Endurance.\" Original image and full panorama: https://photojournal.jpl.nasa.gov/catalog/PIA05755",
+    "alt": {
+      "en": "Panorama of Eagle Crater and the plains of Meridiani Planum taken by Opportunity.",
+      "fr": "Panorama du cratère Eagle et des plaines de Meridiani Planum pris par Opportunity."
+    },
+    "credit": "NASA/JPL/Cornell",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-exploration-rovers"
+    ],
+    "machineIds": [
+      "opportunity"
+    ],
+    "sourceId": "nasa-science-mer",
+    "aiGenerated": false
+  },
+  {
+    "id": "mer-blueberries-pia19113",
+    "type": "image",
+    "url": "https://science.nasa.gov/wp-content/uploads/2024/03/pia19113.jpg",
+    "pageUrl": "https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/science-highlights/",
+    "title": null,
+    "caption": "The small spherules on the Martian surface in this close-up image are near Fram Crater, visited by NASA's Mars Exploration Rover Opportunity during April 2004. The area shown is 1.2 inches (3 centimeters) across. The view comes from the microscopic imager on Opportunity's robotic arm, with color information added from the rover's panoramic camera.",
+    "alt": {
+      "en": "Close-up of small grey spheres, nicknamed “blueberries”, on the Martian surface.",
+      "fr": "Gros plan sur de petites sphères grises surnommées « myrtilles », sur le sol martien."
+    },
+    "credit": "NASA/JPL-Caltech/Cornell/USGS",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-exploration-rovers"
+    ],
+    "machineIds": [
+      "opportunity"
+    ],
+    "sourceId": "nasa-science-mer-highlights",
+    "aiGenerated": false
+  },
+  {
+    "id": "mer-comanche-spirit",
+    "type": "image",
+    "url": "https://science.nasa.gov/wp-content/uploads/2024/03/comanche-no-label-falsecolor.jpg",
+    "pageUrl": "https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/science-highlights/",
+    "title": null,
+    "caption": "Lengthy detective work with data NASA's Mars Exploration Rover Spirit collected in late 2005 has confirmed that an outcrop called \"Comanche\" contains a mineral indicating that a past environment was wet and non-acidic, possibly favorable to life.",
+    "alt": {
+      "en": "False-colour view of the “Comanche” rock outcrop studied by Spirit.",
+      "fr": "Vue en fausses couleurs de l’affleurement rocheux « Comanche » étudié par Spirit."
+    },
+    "credit": null,
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-exploration-rovers"
+    ],
+    "machineIds": [
+      "spirit"
+    ],
+    "sourceId": "nasa-science-mer-highlights",
+    "aiGenerated": false
+  },
+  {
+    "id": "mer-homestake-vein-pia15033",
+    "type": "image",
+    "url": "https://science.nasa.gov/wp-content/uploads/2024/03/pia15033-pancam.jpg",
+    "pageUrl": "https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/science-highlights/",
+    "title": null,
+    "caption": "This color view of a mineral vein called \"Homestake\" comes from the panoramic camera (Pancam) on NASA's Mars Exploration Rover Opportunity.",
+    "alt": {
+      "en": "A bright mineral vein called “Homestake” crossing the rock near Endeavour Crater.",
+      "fr": "Une veine minérale claire appelée « Homestake » qui traverse la roche près du cratère Endeavour."
+    },
+    "credit": "NASA/JPL-Caltech/Cornell/ASU",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-exploration-rovers"
+    ],
+    "machineIds": [
+      "opportunity"
+    ],
+    "sourceId": "nasa-science-mer-highlights",
+    "aiGenerated": false
+  },
+  {
+    "id": "mer-opportunity-traverse-map-pia19154",
+    "type": "image",
+    "url": "https://science.nasa.gov/wp-content/uploads/2024/03/7009-mars-rover-opportunity-traverse-map-pia19154-full2-3646a2.jpg",
+    "pageUrl": "https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/science-highlights/",
+    "title": null,
+    "caption": "The gold line on this image shows Opportunity's route from the landing site inside Eagle Crater, in upper left, to its location after the Sol 3968 drive. The mission has been investigating on the western rim of Endeavour Crater since August 2011.",
+    "alt": {
+      "en": "Map with a gold line showing Opportunity’s route across Meridiani Planum.",
+      "fr": "Carte avec une ligne dorée montrant le trajet d’Opportunity à travers Meridiani Planum."
+    },
+    "credit": "NASA/JPL-Caltech/MSSS/NMMNHS",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-exploration-rovers"
+    ],
+    "machineIds": [
+      "opportunity"
+    ],
+    "sourceId": "nasa-science-mer-highlights",
+    "aiGenerated": false
+  },
+  {
+    "id": "mer-opportunity-clean-vs-dusty-2014",
+    "type": "image",
+    "url": "https://science.nasa.gov/wp-content/uploads/2024/03/main-comparison.jpg",
+    "pageUrl": "https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/science-highlights/",
+    "title": null,
+    "caption": "A self-portrait of NASA's Mars Exploration Rover Opportunity taken in late March 2014 (right) shows that much of the dust on the rover's solar arrays has been removed since a similar portrait from January 2014 (left). Both were taken by Opportunity's panoramic camera (Pancam).",
+    "alt": {
+      "en": "Two self-portraits of Opportunity side by side: dusty solar panels on the left, cleaner panels on the right.",
+      "fr": "Deux autoportraits d’Opportunity côte à côte : panneaux solaires poussiéreux à gauche, plus propres à droite."
+    },
+    "credit": "NASA/JPL-Caltech/Cornell Univ./Arizona State Univ.",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-exploration-rovers"
+    ],
+    "machineIds": [
+      "opportunity"
+    ],
+    "sourceId": "nasa-science-mer-highlights",
+    "aiGenerated": false
+  },
+  {
+    "id": "mer-opportunity-dusty-selfie-pia17759",
+    "type": "image",
+    "url": "https://science.nasa.gov/wp-content/uploads/2024/03/opportunity-dusty-selfie-pia17759.jpg",
+    "pageUrl": "https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/science-highlights/",
+    "title": null,
+    "caption": "NASA's Mars Exploration Rover Opportunity recorded the component images for this self-portrait about three weeks before completing a decade of work on Mars. The rover's panoramic camera (Pancam) took the images during the interval Jan. 3, 2014, to Jan. 6, 2014, a few days after winds removed some of the dust that had been accumulating on the rover's solar panels. Opportunity landed on Mars on Jan. 25, 2004, Universal Time (Jan. 24, 2004, PST) for a mission that was planned to last three months. It is still active 10 Earth years later. This image is presented as a vertical projection. The mast on which the Pancam is mounted does not appear in the image, though its shadow does.",
+    "alt": {
+      "en": "Self-portrait of Opportunity with dust on its solar panels, January 2014.",
+      "fr": "Autoportrait d’Opportunity avec de la poussière sur ses panneaux solaires, janvier 2014."
+    },
+    "credit": "NASA/JPL-Caltech/Cornell/Arizona State University",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-exploration-rovers"
+    ],
+    "machineIds": [
+      "opportunity"
+    ],
+    "sourceId": "nasa-science-mer-highlights",
+    "aiGenerated": false
+  },
+  {
+    "id": "jpl-opportunity-shadow-pia06739",
+    "type": "image",
+    "url": "https://d2pn8kiwq2w21t.cloudfront.net/original_images/jpegPIA06739.jpg",
+    "pageUrl": "https://www.jpl.nasa.gov/news/nasas-opportunity-rover-mission-on-mars-comes-to-end/",
+    "title": null,
+    "caption": "This self-portrait of NASA's Mars Exploration Rover Opportunity comes courtesy of the Sun and the rover's front hazard-avoidance camera. The dramatic snapshot of Opportunity's shadow was taken as the rover continues to move farther into Endurance Crater.",
+    "alt": {
+      "en": "Opportunity’s long shadow on the floor of Endurance Crater.",
+      "fr": "La longue ombre d’Opportunity au fond du cratère Endurance."
+    },
+    "credit": "NASA/JPL",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-exploration-rovers"
+    ],
+    "machineIds": [
+      "opportunity"
+    ],
+    "sourceId": "jpl-opportunity-end-2019",
+    "aiGenerated": false
+  },
+  {
+    "id": "jpl-opportunity-last-commands-2019",
+    "type": "image",
+    "url": "https://d2pn8kiwq2w21t.cloudfront.net/original_images/imagesmer20190213mer20190213-16.jpg",
+    "pageUrl": "https://www.jpl.nasa.gov/news/nasas-opportunity-rover-mission-on-mars-comes-to-end/",
+    "title": null,
+    "caption": "Late on Feb. 12, 2019, mission controllers at NASA's Jet Propulsion Laboratory in Pasadena, California, sent the last commands to ask NASA's Opportunity rover on Mars to call home.",
+    "alt": {
+      "en": "Mission controllers at JPL sending the last commands to Opportunity.",
+      "fr": "Des contrôleurs de mission du JPL envoient les derniers ordres à Opportunity."
+    },
+    "credit": "NASA/JPL-Caltech",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-exploration-rovers"
+    ],
+    "machineIds": [
+      "opportunity"
+    ],
+    "sourceId": "jpl-opportunity-end-2019",
+    "aiGenerated": false
+  },
+  {
+    "id": "ingenuity-on-mars-pia24581",
+    "type": "image",
+    "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/downloadable_items/4/5/45954_PIA24581.jpg",
+    "pageUrl": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+    "title": null,
+    "caption": null,
+    "alt": {
+      "en": "The small Ingenuity helicopter standing on a flat plain on Mars.",
+      "fr": "Le petit hélicoptère Ingenuity posé sur une plaine de Mars."
+    },
+    "credit": null,
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-2020"
+    ],
+    "machineIds": [
+      "ingenuity"
+    ],
+    "sourceId": "nasa-science-ingenuity",
+    "aiGenerated": false
+  },
+  {
+    "id": "ingenuity-four-feet-on-mars-pia24548",
+    "type": "animation",
+    "url": "https://assets.science.nasa.gov/content/dam/science/psd/mars/resources/detail_files/2/5/25792_PIA24548-1200.gif",
+    "pageUrl": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+    "title": null,
+    "caption": "Ingenuity timeline entry on the NASA Science page: “April 3, 2021 — Four Feet on Mars”.",
+    "alt": {
+      "en": "Animation of Ingenuity being lowered from the rover onto the ground.",
+      "fr": "Animation d’Ingenuity déposé au sol depuis le rover."
+    },
+    "credit": null,
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-2020"
+    ],
+    "machineIds": [
+      "ingenuity"
+    ],
+    "sourceId": "nasa-science-ingenuity",
+    "aiGenerated": false
+  },
+  {
+    "id": "ingenuity-first-night-pia24541",
+    "type": "image",
+    "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/resources/detail_files/2/5/25781_1-PIA24541-web.jpg",
+    "pageUrl": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+    "title": null,
+    "caption": "Ingenuity timeline entry on the NASA Science page: “April 4, 2021 — Surviving the First Night”.",
+    "alt": {
+      "en": "Ingenuity alone on the Martian ground before its first night.",
+      "fr": "Ingenuity seul sur le sol martien avant sa première nuit."
+    },
+    "credit": null,
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-2020"
+    ],
+    "machineIds": [
+      "ingenuity"
+    ],
+    "sourceId": "nasa-science-ingenuity",
+    "aiGenerated": false
+  },
+  {
+    "id": "ingenuity-rotor-spin-test",
+    "type": "animation",
+    "url": "https://assets.science.nasa.gov/content/dam/science/psd/mars/resources/detail_files/2/5/25796_heli-movement-far.gif",
+    "pageUrl": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+    "title": null,
+    "caption": "Ingenuity timeline entry on the NASA Science page: “April 8, 2021 — First Rotor Spin Tests”.",
+    "alt": {
+      "en": "Animation of Ingenuity beginning to spin its blades.",
+      "fr": "Animation d’Ingenuity commençant à faire tourner ses pales."
+    },
+    "credit": null,
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-2020"
+    ],
+    "machineIds": [
+      "ingenuity"
+    ],
+    "sourceId": "nasa-science-ingenuity",
+    "aiGenerated": false
+  },
+  {
+    "id": "ingenuity-first-flight-shadow-pia24584",
+    "type": "image",
+    "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/internal_resources/4784/PIA24584_Ingenuity_First_Flight-640x480-1.jpg",
+    "pageUrl": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+    "title": null,
+    "caption": "Ingenuity timeline entry on the NASA Science page: “April 19, 2021 — First Flight”.",
+    "alt": {
+      "en": "Black-and-white image of Ingenuity’s shadow on the Martian ground during its first flight.",
+      "fr": "Image en noir et blanc de l’ombre d’Ingenuity sur le sol martien pendant son premier vol."
+    },
+    "credit": null,
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-2020"
+    ],
+    "machineIds": [
+      "ingenuity"
+    ],
+    "sourceId": "nasa-science-ingenuity",
+    "aiGenerated": false
+  },
+  {
+    "id": "ingenuity-first-photo-of-rover-pia24625",
+    "type": "image",
+    "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/internal_resources/details/original/1044_PIA24625_-_Figure_B.jpeg",
+    "pageUrl": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+    "title": null,
+    "caption": "Ingenuity timeline entry on the NASA Science page: “April 25, 2021 — First Photo of Rover”.",
+    "alt": {
+      "en": "Aerial view of the Perseverance rover taken by Ingenuity.",
+      "fr": "Vue aérienne du rover Perseverance prise par Ingenuity."
+    },
+    "credit": null,
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-2020"
+    ],
+    "machineIds": [
+      "ingenuity"
+    ],
+    "sourceId": "nasa-science-ingenuity",
+    "aiGenerated": false
+  },
+  {
+    "id": "ingenuity-tech-demo-complete-pia24647",
+    "type": "image",
+    "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/resources/detail_files/2/5/25898_PIA24647-web.jpg",
+    "pageUrl": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+    "title": null,
+    "caption": "Ingenuity timeline entry on the NASA Science page: “May 7, 2021 — Tech Demo Complete”.",
+    "alt": {
+      "en": "View of the Martian surface linked to the end of Ingenuity’s technology demonstration.",
+      "fr": "Vue de la surface martienne liée à la fin de la démonstration technologique d’Ingenuity."
+    },
+    "credit": null,
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-2020"
+    ],
+    "machineIds": [
+      "ingenuity"
+    ],
+    "sourceId": "nasa-science-ingenuity",
+    "aiGenerated": false
+  },
+  {
+    "id": "ingenuity-flight-9-pia24730",
+    "type": "image",
+    "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/internal_resources/5029/pia24730-ingenuity-spots-rover-tracks-during-ninth-flight-640x480-1.jpg",
+    "pageUrl": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+    "title": null,
+    "caption": "Ingenuity timeline entry on the NASA Science page: “July 5, 2021 — Venturing to New Territory”.",
+    "alt": {
+      "en": "Aerial image from Ingenuity’s ninth flight showing rover tracks.",
+      "fr": "Image aérienne du neuvième vol d’Ingenuity montrant des traces du rover."
+    },
+    "credit": null,
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-2020"
+    ],
+    "machineIds": [
+      "ingenuity"
+    ],
+    "sourceId": "nasa-science-ingenuity",
+    "aiGenerated": false
+  },
+  {
+    "id": "ingenuity-first-scouting-flight-pia24688",
+    "type": "image",
+    "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/resources/detail_files/2/6/26107_PIA24688-web.jpg",
+    "pageUrl": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+    "title": null,
+    "caption": "Ingenuity timeline entry on the NASA Science page: “July 24, 2021 — First Scouting Flight”.",
+    "alt": {
+      "en": "Aerial view of Martian terrain from a scouting flight.",
+      "fr": "Vue aérienne d’un terrain martien lors d’un vol de repérage."
+    },
+    "credit": null,
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-2020"
+    ],
+    "machineIds": [
+      "ingenuity"
+    ],
+    "sourceId": "nasa-science-ingenuity",
+    "aiGenerated": false
+  },
+  {
+    "id": "ingenuity-south-seitah-pia24793",
+    "type": "image",
+    "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/resources/detail_files/2/6/26128_PIA24793-1-1041.jpg",
+    "pageUrl": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+    "title": null,
+    "caption": "Ingenuity timeline entry on the NASA Science page: “August 4, 2021 — Another Rover Sighting”.",
+    "alt": {
+      "en": "The “South Séítah” region of Jezero Crater seen from Ingenuity.",
+      "fr": "La région « South Séítah » du cratère Jezero vue par Ingenuity."
+    },
+    "credit": null,
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-2020"
+    ],
+    "machineIds": [
+      "ingenuity"
+    ],
+    "sourceId": "nasa-science-ingenuity",
+    "aiGenerated": false
+  },
+  {
+    "id": "ingenuity-distance-record-pia25321",
+    "type": "animation",
+    "url": "https://assets.science.nasa.gov/content/dam/science/psd/mars/internal_resources/details/original/1341_PIA25321_Animated_GIF.gif",
+    "pageUrl": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+    "title": null,
+    "caption": "Ingenuity timeline entry on the NASA Science page: “April 8, 2022 — Setting the Distance Record”.",
+    "alt": {
+      "en": "Animation of Ingenuity in flight.",
+      "fr": "Animation d’Ingenuity en vol."
+    },
+    "credit": null,
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-2020"
+    ],
+    "machineIds": [
+      "ingenuity"
+    ],
+    "sourceId": "nasa-science-ingenuity",
+    "aiGenerated": false
+  },
+  {
+    "id": "ingenuity-landing-gear-debris-pia25219",
+    "type": "image",
+    "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/resources/detail_files/2/6/26694_1-PIA25219-web.jpg",
+    "pageUrl": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+    "title": null,
+    "caption": "Ingenuity timeline entry on the NASA Science page: “April 19, 2022 — Sighting Rover’s Landing Hardware”.",
+    "alt": {
+      "en": "Debris field from Perseverance’s landing gear seen by Ingenuity.",
+      "fr": "Débris de l’équipement d’atterrissage de Perseverance vus par Ingenuity."
+    },
+    "credit": null,
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-2020"
+    ],
+    "machineIds": [
+      "ingenuity"
+    ],
+    "sourceId": "nasa-science-ingenuity",
+    "aiGenerated": false
+  },
+  {
+    "id": "ingenuity-50-flights-graphic",
+    "type": "image",
+    "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/resources/detail_files/2/7/27397_202304_Ingenuity_50_Flights.jpg",
+    "pageUrl": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+    "title": null,
+    "caption": "Ingenuity timeline entry on the NASA Science page: “April 13, 2023 — 50 Flights and Beyond”.",
+    "alt": {
+      "en": "Graphic celebrating Ingenuity’s 50 flights.",
+      "fr": "Visuel célébrant les 50 vols d’Ingenuity."
+    },
+    "credit": null,
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-2020"
+    ],
+    "machineIds": [
+      "ingenuity"
+    ],
+    "sourceId": "nasa-science-ingenuity",
+    "aiGenerated": false
+  },
+  {
+    "id": "ingenuity-altitude-record-2023",
+    "type": "image",
+    "url": "https://science.nasa.gov/wp-content/uploads/2024/03/20231005-heli-400x300-1.jpg",
+    "pageUrl": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+    "title": null,
+    "caption": "Ingenuity timeline entry on the NASA Science page: “October 5, 2023 — Setting the Altitude Record”.",
+    "alt": {
+      "en": "Aerial view of Mars from Ingenuity.",
+      "fr": "Vue aérienne de Mars prise par Ingenuity."
+    },
+    "credit": null,
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-2020"
+    ],
+    "machineIds": [
+      "ingenuity"
+    ],
+    "sourceId": "nasa-science-ingenuity",
+    "aiGenerated": false
+  },
+  {
+    "id": "ingenuity-groundspeed-record-2023",
+    "type": "image",
+    "url": "https://science.nasa.gov/wp-content/uploads/2024/03/20231012-heli-400x300-1.jpg",
+    "pageUrl": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+    "title": null,
+    "caption": "Ingenuity timeline entry on the NASA Science page: “October 12, 2023 — Setting the Groundspeed Record”.",
+    "alt": {
+      "en": "Aerial view of Mars from Ingenuity.",
+      "fr": "Vue aérienne de Mars prise par Ingenuity."
+    },
+    "credit": null,
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-2020"
+    ],
+    "machineIds": [
+      "ingenuity"
+    ],
+    "sourceId": "nasa-science-ingenuity",
+    "aiGenerated": false
+  },
+  {
+    "id": "ingenuity-deployed-pia24443",
+    "type": "image",
+    "url": "https://science.nasa.gov/wp-content/uploads/2024/03/25762-pia24443-1200-0657a5.jpg",
+    "pageUrl": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+    "title": null,
+    "caption": "NASA’s Ingenuity Mars Helicopter extends vertically into place after being rotated outward from its horizontal position on the belly of the Perseverance rover on March 29, 2021. This image was taken by the WATSON (Wide Angle Topographic Sensor for Operations and eNgineering) camera on the SHERLOC (Scanning Habitable Environments with Raman and Luminescence for Organics and Chemicals) instrument, located at the end of the rover’s long robotic arm.",
+    "alt": {
+      "en": "Ingenuity unfolded beneath the Perseverance rover, just before being set down.",
+      "fr": "Ingenuity déplié sous le rover Perseverance, juste avant d’être déposé."
+    },
+    "credit": "NASA/JPL-Caltech/MSSS",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-2020"
+    ],
+    "machineIds": [
+      "ingenuity"
+    ],
+    "sourceId": "nasa-science-ingenuity",
+    "aiGenerated": false
+  },
+  {
+    "id": "ingenuity-anatomy",
+    "type": "image",
+    "url": "https://science.nasa.gov/wp-content/uploads/2024/03/anatomy-of-ingenuity-mars-helicopter.jpg",
+    "pageUrl": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+    "title": null,
+    "caption": null,
+    "alt": {
+      "en": "Annotated diagram of the parts of the Ingenuity helicopter.",
+      "fr": "Schéma annoté des différentes parties de l’hélicoptère Ingenuity."
+    },
+    "credit": null,
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-2020"
+    ],
+    "machineIds": [
+      "ingenuity"
+    ],
+    "sourceId": "nasa-science-ingenuity",
+    "aiGenerated": false
+  },
+  {
+    "id": "ingenuity-3d-model",
+    "type": "3d-model",
+    "url": "https://mars.nasa.gov/gltf_embed/25043",
+    "pageUrl": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+    "title": "ingenuity",
+    "caption": "Interactive 3D model of the Mars Ingenuity Helicopter. This model can also be viewed in augmented reality on mobile devices using NASA's Spacecraft AR app.",
+    "alt": {
+      "en": "Interactive 3D model of the Ingenuity helicopter.",
+      "fr": "Modèle 3D interactif de l’hélicoptère Ingenuity."
+    },
+    "credit": null,
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-2020"
+    ],
+    "machineIds": [
+      "ingenuity"
+    ],
+    "sourceId": "nasa-science-ingenuity",
+    "aiGenerated": false
+  },
+  {
+    "id": "ingenuity-flight-six-animation-pia24598",
+    "type": "animation",
+    "url": "https://assets.science.nasa.gov/content/dam/science/psd/mars/downloadable_items/4/6/46152_PIA24598-IngenuityFlightSix.gif",
+    "pageUrl": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+    "title": null,
+    "caption": "NASA’s Ingenuity Mars Helicopter navigation camera depicts the last 29 seconds of the rotorcraft’s sixth flight.",
+    "alt": {
+      "en": "Sequence of navigation-camera images from the end of Ingenuity’s sixth flight.",
+      "fr": "Séquence d’images de la caméra de navigation à la fin du sixième vol d’Ingenuity."
+    },
+    "credit": "NASA/JPL-Caltech",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-2020"
+    ],
+    "machineIds": [
+      "ingenuity"
+    ],
+    "sourceId": "nasa-science-ingenuity",
+    "aiGenerated": false
+  },
+  {
+    "id": "ingenuity-flight-log-by-the-numbers",
+    "type": "image",
+    "url": "https://science.nasa.gov/wp-content/uploads/2024/03/ingenuity-flight-log-by-the-numbers.jpg",
+    "pageUrl": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+    "title": null,
+    "caption": "Recap of Ingenuity's 72 flights, including duration, distance, speed, and altitude.",
+    "alt": {
+      "en": "Infographic: 72 flights, about 128.8 minutes of flight, 17 km flown, top altitude 24 m.",
+      "fr": "Infographie : 72 vols, environ 128,8 minutes de vol, 17 km parcourus, altitude maximale 24 m."
+    },
+    "credit": null,
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-2020"
+    ],
+    "machineIds": [
+      "ingenuity"
+    ],
+    "sourceId": "nasa-science-ingenuity",
+    "aiGenerated": false
+  },
+  {
+    "id": "ingenuity-flight-log-pdf",
+    "type": "document",
+    "url": "https://science.nasa.gov/wp-content/uploads/2024/06/ingenuity-helicopter-flight-log.pdf",
+    "pageUrl": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+    "title": "Ingenuity's Flight Log Details (PDF, Jun 21, 2024)",
+    "caption": null,
+    "alt": {
+      "en": "NASA PDF listing the details of Ingenuity’s 72 flights.",
+      "fr": "PDF de la NASA détaillant les 72 vols d’Ingenuity."
+    },
+    "credit": "NASA/JPL-Caltech",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-2020"
+    ],
+    "machineIds": [
+      "ingenuity"
+    ],
+    "sourceId": "nasa-science-ingenuity",
+    "aiGenerated": false
+  },
+  {
+    "id": "ingenuity-72-flights-poster",
+    "type": "image",
+    "url": "https://science.nasa.gov/wp-content/uploads/2024/08/mars-ingenuity-72-pathbreaking-flights-poster-front-web-updated.jpg",
+    "pageUrl": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+    "title": null,
+    "caption": null,
+    "alt": {
+      "en": "Poster celebrating Ingenuity’s 72 flights.",
+      "fr": "Affiche célébrant les 72 vols d’Ingenuity."
+    },
+    "credit": null,
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-2020"
+    ],
+    "machineIds": [
+      "ingenuity"
+    ],
+    "sourceId": "nasa-science-ingenuity",
+    "aiGenerated": false
+  },
+  {
+    "id": "ingenuity-poster",
+    "type": "image",
+    "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/resources/detail_files/2/7/27897_ingenuity_poster-horizontal-web.jpg",
+    "pageUrl": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+    "title": null,
+    "caption": null,
+    "alt": {
+      "en": "Illustrated poster of the Ingenuity Mars Helicopter.",
+      "fr": "Affiche illustrée de l’hélicoptère martien Ingenuity."
+    },
+    "credit": null,
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-2020"
+    ],
+    "machineIds": [
+      "ingenuity"
+    ],
+    "sourceId": "nasa-science-ingenuity",
+    "aiGenerated": false
+  },
+  {
+    "id": "ingenuity-by-the-numbers-infographic",
+    "type": "image",
+    "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/resources/detail_files/2/7/27896_ingenuity_numbers1.24_0R1-web.jpg",
+    "pageUrl": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+    "title": null,
+    "caption": null,
+    "alt": {
+      "en": "Infographic: Ingenuity Mars Helicopter by the numbers.",
+      "fr": "Infographie : l’hélicoptère martien Ingenuity en chiffres."
+    },
+    "credit": null,
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-2020"
+    ],
+    "machineIds": [
+      "ingenuity"
+    ],
+    "sourceId": "nasa-science-ingenuity",
+    "aiGenerated": false
+  },
+  {
+    "id": "ingenuity-video-1",
+    "type": "video",
+    "url": "https://www.youtube.com/watch?v=wMnOo2zcjXA",
+    "pageUrl": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+    "title": null,
+    "caption": null,
+    "alt": {
+      "en": "Video embedded on the NASA Science Ingenuity page.",
+      "fr": "Vidéo intégrée à la page NASA Science d’Ingenuity."
+    },
+    "credit": null,
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-2020"
+    ],
+    "machineIds": [
+      "ingenuity"
+    ],
+    "sourceId": "nasa-science-ingenuity",
+    "aiGenerated": false
+  },
+  {
+    "id": "ingenuity-video-2",
+    "type": "video",
+    "url": "https://www.youtube.com/watch?v=qMbHE_VXI-8",
+    "pageUrl": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+    "title": null,
+    "caption": null,
+    "alt": {
+      "en": "Video embedded on the NASA Science Ingenuity page.",
+      "fr": "Vidéo intégrée à la page NASA Science d’Ingenuity."
+    },
+    "credit": null,
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-2020"
+    ],
+    "machineIds": [
+      "ingenuity"
+    ],
+    "sourceId": "nasa-science-ingenuity",
+    "aiGenerated": false
+  },
+  {
+    "id": "ingenuity-video-3",
+    "type": "video",
+    "url": "https://www.youtube.com/watch?v=TYasUWRkv4E",
+    "pageUrl": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+    "title": null,
+    "caption": null,
+    "alt": {
+      "en": "Video embedded on the NASA Science Ingenuity page.",
+      "fr": "Vidéo intégrée à la page NASA Science d’Ingenuity."
+    },
+    "credit": null,
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-2020"
+    ],
+    "machineIds": [
+      "ingenuity"
+    ],
+    "sourceId": "nasa-science-ingenuity",
+    "aiGenerated": false
+  },
+  {
+    "id": "ingenuity-video-4",
+    "type": "video",
+    "url": "https://www.youtube.com/watch?v=U7DFnNimSfw",
+    "pageUrl": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+    "title": null,
+    "caption": null,
+    "alt": {
+      "en": "Video embedded on the NASA Science Ingenuity page.",
+      "fr": "Vidéo intégrée à la page NASA Science d’Ingenuity."
+    },
+    "credit": null,
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-2020"
+    ],
+    "machineIds": [
+      "ingenuity"
+    ],
+    "sourceId": "nasa-science-ingenuity",
+    "aiGenerated": false
+  }
+]

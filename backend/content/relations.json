@@ -1,0 +1,66 @@
+[
+  {
+    "id": "easep-to-alsep-technology",
+    "from": { "kind": "machine", "id": "apollo-11-easep" },
+    "to": { "kind": "machine", "id": "apollo-12-alsep" },
+    "type": "technology",
+    "transmitted": {
+      "en": "The idea of a science station set up by astronauts and left on the lunar surface.",
+      "fr": "L'idée d'une station scientifique installée par les astronautes et laissée à la surface de la Lune."
+    },
+    "evidence": {
+      "en": "NSSDCA describes the EASEP as “the forerunner of the ALSEP experiment packages used on the later Apollo missions”.",
+      "fr": "La NSSDCA décrit l'EASEP comme « le précurseur des ensembles d'expériences ALSEP utilisés lors des missions Apollo suivantes »."
+    },
+    "sourceIds": ["nssdca-1969-059c", "nssdca-1969-099c"],
+    "showOnMap": false
+  },
+  {
+    "id": "surveyor-3-to-apollo-12-data",
+    "from": { "kind": "machine", "id": "surveyor-3-lander" },
+    "to": { "kind": "mission", "id": "apollo-12" },
+    "type": "data",
+    "transmitted": {
+      "en": "About 10 kg of parts, including its TV camera and scoop, brought back to Earth to study the effects of about two and a half years on the Moon.",
+      "fr": "Environ 10 kg de pièces, dont sa caméra et sa pelle, rapportées sur Terre pour étudier les effets d'environ deux ans et demi passés sur la Lune."
+    },
+    "evidence": {
+      "en": "NSSDCA and NASA Science both report that the Apollo 12 astronauts visited Surveyor 3 on their second moonwalk and removed parts for study on Earth.",
+      "fr": "La NSSDCA et NASA Science indiquent que les astronautes d'Apollo 12 ont rejoint Surveyor 3 lors de leur deuxième sortie et retiré des pièces pour les étudier sur Terre."
+    },
+    "sourceIds": ["nssdca-1967-035a", "nssdca-1969-099c", "nasa-science-surveyor-3"],
+    "showOnMap": false
+  },
+  {
+    "id": "pathfinder-to-mer-airbags",
+    "from": { "kind": "mission", "id": "mars-pathfinder" },
+    "to": { "kind": "mission", "id": "mars-exploration-rovers" },
+    "type": "technology",
+    "transmitted": {
+      "en": "The airbag landing system, first used on Mars by Pathfinder in 1997.",
+      "fr": "Le système d'atterrissage par airbags, utilisé pour la première fois sur Mars par Pathfinder en 1997."
+    },
+    "evidence": {
+      "en": "JPL (2002) states that the Mars Exploration Rovers “are using the same type airbag landing system that Mars Pathfinder used in 1997”; NSSDCA confirms that both rovers landed cushioned by airbags.",
+      "fr": "Le JPL (2002) indique que les Mars Exploration Rovers utilisent « le même type de système d'atterrissage par airbags que Mars Pathfinder en 1997 » ; la NSSDCA confirme que les deux rovers ont atterri amortis par des airbags."
+    },
+    "sourceIds": ["jpl-mer-airbags-2002", "nasa-science-mars-pathfinder", "nssdca-2003-027a", "nssdca-2003-032a"],
+    "showOnMap": false
+  },
+  {
+    "id": "mer-to-mars-2020-technology",
+    "from": { "kind": "mission", "id": "mars-exploration-rovers" },
+    "to": { "kind": "mission", "id": "mars-2020" },
+    "type": "technology",
+    "transmitted": {
+      "en": "The technical legacy of the Mars Exploration Rovers.",
+      "fr": "L'héritage technique des Mars Exploration Rovers."
+    },
+    "evidence": {
+      "en": "In NASA's end-of-mission release, project manager John Callas says the rovers' technical legacy “is carried aboard Curiosity and the upcoming Mars 2020 mission”.",
+      "fr": "Dans le communiqué de fin de mission de la NASA, le chef de projet John Callas indique que l'héritage technique des rovers est « embarqué à bord de Curiosity et de la future mission Mars 2020 »."
+    },
+    "sourceIds": ["jpl-opportunity-end-2019"],
+    "showOnMap": false
+  }
+]

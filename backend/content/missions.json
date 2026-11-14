@@ -1,0 +1,122 @@
+[
+  {
+    "id": "surveyor-3",
+    "name": "Surveyor 3",
+    "destinationId": "moon",
+    "agency": ["NASA"],
+    "nssdcaIds": ["1967-035A"],
+    "period": {
+      "value": { "start": "1967-04-20", "end": "1967-05-04" },
+      "sourceIds": ["nssdca-1967-035a", "nasa-science-surveyor-3"],
+      "note": { "en": "From landing to last contact (UT).", "fr": "De l'atterrissage au dernier contact (UT)." }
+    },
+    "summary": {
+      "en": "A robotic lander sent to prepare the crewed Apollo landings. It was the first Surveyor to carry a scoop to dig into the lunar soil.",
+      "fr": "Un atterrisseur robotisé envoyé pour préparer les atterrissages habités Apollo. C'est le premier Surveyor équipé d'une pelle pour creuser le sol lunaire."
+    },
+    "mainStoryId": "moon-surveyor-apollo12",
+    "sourceIds": ["nssdca-1967-035a", "nasa-science-surveyor-3"],
+    "order": 1
+  },
+  {
+    "id": "apollo-11",
+    "name": "Apollo 11",
+    "destinationId": "moon",
+    "agency": ["NASA"],
+    "nssdcaIds": ["1969-059C"],
+    "period": {
+      "value": { "start": "1969-07-20", "end": "1969-07-21" },
+      "sourceIds": ["nssdca-1969-059c"],
+      "note": { "en": "Time spent on the lunar surface (UT).", "fr": "Séjour à la surface de la Lune (UT)." }
+    },
+    "summary": {
+      "en": "The first crewed landing on the Moon. Before leaving the Sea of Tranquility, the crew set up a small package of experiments and a laser reflector.",
+      "fr": "Le premier atterrissage habité sur la Lune. Avant de quitter la mer de la Tranquillité, l'équipage a installé un petit ensemble d'expériences et un réflecteur laser."
+    },
+    "mainStoryId": "moon-apollo11-retroreflectors",
+    "sourceIds": ["nssdca-1969-059c", "jpl-llr-2004"],
+    "order": 2
+  },
+  {
+    "id": "apollo-12",
+    "name": "Apollo 12",
+    "destinationId": "moon",
+    "agency": ["NASA"],
+    "nssdcaIds": ["1969-099C"],
+    "period": {
+      "value": { "start": "1969-11-19", "end": "1969-11-20" },
+      "sourceIds": ["nssdca-1969-099c"],
+      "note": { "en": "Time spent on the lunar surface (UT).", "fr": "Séjour à la surface de la Lune (UT)." }
+    },
+    "summary": {
+      "en": "The second crewed landing on the Moon, about 180 m from Surveyor 3. The crew installed a science station (ALSEP) and brought back parts of Surveyor 3.",
+      "fr": "Le deuxième atterrissage habité sur la Lune, à environ 180 m de Surveyor 3. L'équipage a installé une station scientifique (ALSEP) et rapporté des pièces de Surveyor 3."
+    },
+    "mainStoryId": "moon-surveyor-apollo12",
+    "sourceIds": ["nssdca-1969-099c"],
+    "order": 3
+  },
+  {
+    "id": "mars-pathfinder",
+    "name": "Mars Pathfinder",
+    "destinationId": "mars",
+    "agency": ["NASA"],
+    "nssdcaIds": ["1996-068A"],
+    "period": {
+      "value": { "start": "1997-07-04", "end": "1997-09-27" },
+      "sourceIds": ["nasa-science-mars-pathfinder"],
+      "note": { "en": "From landing to the final data transmission.", "fr": "De l'atterrissage à la dernière transmission de données." }
+    },
+    "summary": {
+      "en": "A technology demonstration that tested a new way to land on Mars, cushioned by airbags, and delivered the first robotic rover, Sojourner.",
+      "fr": "Une démonstration technologique qui a testé une nouvelle façon d'atterrir sur Mars, amortie par des airbags, et a déposé le premier rover robotisé, Sojourner."
+    },
+    "mainStoryId": null,
+    "sourceIds": ["nasa-science-mars-pathfinder", "nssdca-1996-068a"],
+    "order": 1
+  },
+  {
+    "id": "mars-exploration-rovers",
+    "name": "Mars Exploration Rovers (Spirit and Opportunity)",
+    "destinationId": "mars",
+    "agency": ["NASA"],
+    "nssdcaIds": ["2003-027A", "2003-032A"],
+    "period": {
+      "value": { "start": "2004-01-04", "end": "2018-06-10" },
+      "sourceIds": ["nssdca-2003-027a", "nssdca-2003-032a"],
+      "note": {
+        "en": "From Spirit's landing (UT) to Opportunity's final communication.",
+        "fr": "De l'atterrissage de Spirit (UT) à la dernière communication d'Opportunity."
+      }
+    },
+    "summary": {
+      "en": "Twin robot geologists sent to opposite sides of Mars to look for signs of past water.",
+      "fr": "Deux robots géologues jumeaux envoyés de part et d'autre de Mars pour chercher des traces d'eau ancienne."
+    },
+    "mainStoryId": "mars-spirit-opportunity",
+    "sourceIds": ["nasa-science-mer", "nssdca-2003-027a", "nssdca-2003-032a"],
+    "order": 2
+  },
+  {
+    "id": "mars-2020",
+    "name": "Mars 2020 (Perseverance and Ingenuity)",
+    "destinationId": "mars",
+    "agency": ["NASA"],
+    "nssdcaIds": ["2020-052A"],
+    "period": {
+      "value": { "start": "2021-02-18", "end": null },
+      "sourceIds": ["nssdca-2020-052a", "nasa-science-mer"],
+      "note": {
+        "en": "Landing date. The Perseverance rover is still operating; AeroReborn only presents the Ingenuity helicopter, whose mission has ended.",
+        "fr": "Date d'atterrissage. Le rover Perseverance fonctionne encore ; AeroReborn ne présente que l'hélicoptère Ingenuity, dont la mission est terminée."
+      }
+    },
+    "summary": {
+      "en": "A rover mission that also carried Ingenuity, a small helicopter strapped beneath the rover, to test flight on Mars.",
+      "fr": "Une mission de rover qui transportait aussi Ingenuity, un petit hélicoptère accroché sous le rover, pour tester le vol sur Mars."
+    },
+    "mainStoryId": "mars-ingenuity",
+    "sourceIds": ["nssdca-2020-052a", "nasa-science-ingenuity"],
+    "order": 3
+  }
+]

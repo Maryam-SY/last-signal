@@ -1,0 +1,163 @@
+[
+  {
+    "id": "nssdca-1969-059c",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "Apollo 11 Lunar Module / EASEP (1969-059C)",
+    "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1969-059C",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-14"
+  },
+  {
+    "id": "nssdca-1969-099c",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "Apollo 12 Lunar Module / ALSEP (1969-099C)",
+    "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1969-099C",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-14"
+  },
+  {
+    "id": "nssdca-1967-035a",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "Surveyor 3 (1967-035A)",
+    "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1967-035A",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-14"
+  },
+  {
+    "id": "nasa-science-surveyor-3",
+    "organization": "NASA Science",
+    "title": "Surveyor 3",
+    "url": "https://science.nasa.gov/mission/surveyor-3/",
+    "type": "nasa-mission-page",
+    "publishedOn": null,
+    "accessedOn": "2026-11-14"
+  },
+  {
+    "id": "jpl-llr-1999",
+    "organization": "NASA Jet Propulsion Laboratory (JPL)",
+    "title": "Apollo 11 Experiment Continues to Return Valuable Data",
+    "url": "https://www.jpl.nasa.gov/news/apollo-11-experiment-continues-to-return-valuable-data/",
+    "type": "nasa-news",
+    "publishedOn": "1999-07-19",
+    "accessedOn": "2026-11-14"
+  },
+  {
+    "id": "jpl-llr-2004",
+    "organization": "NASA Jet Propulsion Laboratory (JPL)",
+    "title": "Apollo 11 Experiment Still Going Strong after 35 Years",
+    "url": "https://www.jpl.nasa.gov/news/apollo-11-experiment-still-going-strong-after-35-years/",
+    "type": "nasa-news",
+    "publishedOn": "2004-07-20",
+    "accessedOn": "2026-11-14"
+  },
+  {
+    "id": "nssdca-1996-068a",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "Mars Pathfinder (1996-068A)",
+    "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1996-068A",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-14"
+  },
+  {
+    "id": "nasa-science-mars-pathfinder",
+    "organization": "NASA Science",
+    "title": "Mars Pathfinder",
+    "url": "https://science.nasa.gov/mission/mars-pathfinder/",
+    "type": "nasa-mission-page",
+    "publishedOn": null,
+    "accessedOn": "2026-11-14"
+  },
+  {
+    "id": "nssdca-2003-027a",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "Spirit (2003-027A)",
+    "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2003-027A",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-14"
+  },
+  {
+    "id": "nssdca-2003-032a",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "Opportunity (2003-032A)",
+    "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2003-032A",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-14"
+  },
+  {
+    "id": "nasa-science-mer",
+    "organization": "NASA Science",
+    "title": "Mars Exploration Rovers: Spirit and Opportunity",
+    "url": "https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/",
+    "type": "nasa-mission-page",
+    "publishedOn": null,
+    "accessedOn": "2026-11-14"
+  },
+  {
+    "id": "nasa-science-mer-highlights",
+    "organization": "NASA Science",
+    "title": "Mars Exploration Rovers — Science Highlights",
+    "url": "https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/science-highlights/",
+    "type": "nasa-mission-page",
+    "publishedOn": null,
+    "accessedOn": "2026-11-14"
+  },
+  {
+    "id": "jpl-opportunity-end-2019",
+    "organization": "NASA Jet Propulsion Laboratory (JPL)",
+    "title": "NASA's Opportunity Rover Mission on Mars Comes to End",
+    "url": "https://www.jpl.nasa.gov/news/nasas-opportunity-rover-mission-on-mars-comes-to-end/",
+    "type": "nasa-news",
+    "publishedOn": "2019-02-13",
+    "accessedOn": "2026-11-14"
+  },
+  {
+    "id": "jpl-mer-airbags-2002",
+    "organization": "NASA Jet Propulsion Laboratory (JPL)",
+    "title": "How to Land Softly on a Hard Planet",
+    "url": "https://www.jpl.nasa.gov/news/how-to-land-softly-on-a-hard-planet/",
+    "type": "nasa-news",
+    "publishedOn": "2002-03-25",
+    "accessedOn": "2026-11-14",
+    "note": {
+      "en": "Written before launch (2002); the rovers' airbag landings are confirmed by the NSSDCA Spirit and Opportunity pages.",
+      "fr": "Article publié avant le lancement (2002) ; les atterrissages sur airbags des rovers sont confirmés par les pages NSSDCA de Spirit et d'Opportunity."
+    }
+  },
+  {
+    "id": "nssdca-2020-052a",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "Mars 2020 (2020-052A)",
+    "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2020-052A",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-14"
+  },
+  {
+    "id": "nasa-science-ingenuity",
+    "organization": "NASA Science",
+    "title": "Ingenuity Mars Helicopter",
+    "url": "https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/",
+    "type": "nasa-mission-page",
+    "publishedOn": null,
+    "accessedOn": "2026-11-14"
+  },
+  {
+    "id": "abc7-opportunity-quote-2019",
+    "organization": "ABC7 San Francisco (KGO-TV)",
+    "title": "'My battery is low and it's getting dark': Mars rover Opportunity's last message to scientists",
+    "url": "https://abc7news.com/post/my-battery-is-low-and-its-getting-dark-opportunitys-last-message-to-scientists/5137455/",
+    "type": "press",
+    "publishedOn": "2019-02-14",
+    "accessedOn": "2026-11-14",
+    "note": {
+      "en": "Press source, used only to explain where the famous sentence comes from. The original reporting by science reporter Jacob Margolis could not be retrieved.",
+      "fr": "Source de presse, utilisée uniquement pour expliquer l'origine de la phrase célèbre. Le reportage d'origine du journaliste scientifique Jacob Margolis n'a pas pu être consulté."
+    }
+  }
+]

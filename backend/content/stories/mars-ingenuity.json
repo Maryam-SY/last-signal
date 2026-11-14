@@ -1,0 +1,131 @@
+{
+  "id": "mars-ingenuity",
+  "kind": "mission",
+  "missionIds": ["mars-2020"],
+  "machineIds": ["ingenuity"],
+  "title": { "en": "The first flight on another world", "fr": "Le premier vol sur un autre monde" },
+  "status": "draft",
+  "steps": [
+    {
+      "key": "signal",
+      "title": { "en": "Signal", "fr": "Signal" },
+      "blocks": [
+        {
+          "voice": "data",
+          "text": {
+            "en": "On 19 April 2021, in Jezero Crater, a small helicopter called Ingenuity lifted off: the first powered, controlled flight on another planet.",
+            "fr": "Le 19 avril 2021, dans le cratère Jezero, un petit hélicoptère nommé Ingenuity décolle : c'est le premier vol motorisé et contrôlé sur une autre planète."
+          },
+          "sourceIds": ["nasa-science-ingenuity", "nssdca-2020-052a"],
+          "mediaIds": ["ingenuity-first-flight-shadow-pia24584"]
+        }
+      ]
+    },
+    {
+      "key": "why",
+      "title": { "en": "Why", "fr": "Pourquoi" },
+      "blocks": [
+        {
+          "voice": "data",
+          "text": {
+            "en": "Ingenuity rode to Mars strapped beneath the Perseverance rover. It was a technology demonstration: it carried no science instruments and was designed for no more than five test flights in 30 days.",
+            "fr": "Ingenuity a voyagé jusqu'à Mars accroché sous le rover Perseverance. C'était une démonstration technologique : il n'emportait aucun instrument scientifique et était prévu pour cinq vols d'essai au maximum en 30 jours."
+          },
+          "sourceIds": ["nasa-science-ingenuity", "nssdca-2020-052a"],
+          "mediaIds": ["ingenuity-deployed-pia24443"]
+        }
+      ]
+    },
+    {
+      "key": "how",
+      "title": { "en": "How", "fr": "Comment" },
+      "blocks": [
+        {
+          "voice": "data",
+          "text": {
+            "en": "The Martian atmosphere is less than 1% as dense as Earth's. To fly, Ingenuity's two counter-rotating rotors spun at almost 3,000 revolutions per minute.",
+            "fr": "L'atmosphère de Mars est moins de 1 % aussi dense que celle de la Terre. Pour voler, les deux rotors contrarotatifs d'Ingenuity tournaient à près de 3 000 tours par minute."
+          },
+          "sourceIds": ["nasa-science-ingenuity", "nssdca-2020-052a"],
+          "mediaIds": ["ingenuity-anatomy"]
+        },
+        {
+          "voice": "data",
+          "text": {
+            "en": "It weighs about 1.8 kg. A solar panel recharged its batteries, giving enough energy for one 90-second flight per Martian day.",
+            "fr": "Il pèse environ 1,8 kg. Un panneau solaire rechargeait ses batteries, avec assez d'énergie pour un vol de 90 secondes par jour martien."
+          },
+          "sourceIds": ["nasa-science-ingenuity"]
+        }
+      ]
+    },
+    {
+      "key": "discovery",
+      "title": { "en": "Discovery", "fr": "Découverte" },
+      "blocks": [
+        {
+          "voice": "data",
+          "text": {
+            "en": "It went far beyond the plan: 72 flights, 128.8 minutes in the air, 17 km covered and altitudes up to 24 m.",
+            "fr": "Il va bien au-delà du plan : 72 vols, 128,8 minutes dans les airs, 17 km parcourus et des altitudes jusqu'à 24 m."
+          },
+          "sourceIds": ["nasa-science-ingenuity"],
+          "mediaIds": ["ingenuity-flight-log-by-the-numbers"]
+        },
+        {
+          "voice": "data",
+          "text": {
+            "en": "It became an aerial scout, previewing areas of Mars that the Perseverance rover might explore.",
+            "fr": "Il devient un éclaireur aérien, qui repère des zones de Mars que le rover Perseverance pourrait explorer."
+          },
+          "sourceIds": ["nasa-science-ingenuity"],
+          "mediaIds": ["ingenuity-south-seitah-pia24793"]
+        }
+      ]
+    },
+    {
+      "key": "relay",
+      "title": { "en": "Relay", "fr": "Relais" },
+      "blocks": [
+        {
+          "voice": "data",
+          "text": {
+            "en": "During a flight on 18 January 2024, contact was lost just before landing; Ingenuity dropped about 1 m and damaged its rotors, so it could no longer fly. NASA ended the mission on 25 January 2024.",
+            "fr": "Lors d'un vol le 18 janvier 2024, le contact est perdu juste avant l'atterrissage ; Ingenuity chute d'environ 1 m et endommage ses rotors, il ne peut plus voler. La NASA met fin à la mission le 25 janvier 2024."
+          },
+          "sourceIds": ["nssdca-2020-052a", "nasa-science-ingenuity"]
+        },
+        {
+          "voice": "data",
+          "text": {
+            "en": "NASA's SkyFall mission is designed to build on Ingenuity's success, with a team of new Mars helicopters.",
+            "fr": "La mission SkyFall de la NASA doit s'appuyer sur le succès d'Ingenuity, avec une équipe de nouveaux hélicoptères martiens."
+          },
+          "sourceIds": ["nasa-science-ingenuity"]
+        },
+        {
+          "voice": "interpretation",
+          "text": {
+            "en": "Ingenuity no longer flies, but it is not a wreck: it is the proof that flying on another world works.",
+            "fr": "Ingenuity ne vole plus, mais ce n'est pas une épave : c'est la preuve qu'on peut voler sur un autre monde."
+          },
+          "sourceIds": ["nasa-science-ingenuity"]
+        }
+      ]
+    },
+    {
+      "key": "your-turn",
+      "title": { "en": "Your turn", "fr": "À toi" },
+      "blocks": [
+        {
+          "voice": "imagination",
+          "text": {
+            "en": "Where would you send the next flying explorer — on Mars or on another world — and what would you want it to see first?",
+            "fr": "Où enverrais-tu le prochain explorateur volant — sur Mars ou sur un autre monde — et que voudrais-tu qu'il voie en premier ?"
+          },
+          "sourceIds": []
+        }
+      ]
+    }
+  ]
+}

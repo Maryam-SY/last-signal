@@ -1,0 +1,147 @@
+{
+  "id": "mars-spirit-opportunity",
+  "kind": "mission",
+  "missionIds": ["mars-exploration-rovers"],
+  "machineIds": ["spirit", "opportunity", "mars-pathfinder-lander", "sojourner"],
+  "title": { "en": "The twins that beat every expectation", "fr": "Les jumeaux qui ont dépassé toutes les attentes" },
+  "status": "draft",
+  "steps": [
+    {
+      "key": "signal",
+      "title": { "en": "Signal", "fr": "Signal" },
+      "blocks": [
+        {
+          "voice": "data",
+          "text": {
+            "en": "In January 2004, two identical rovers landed on opposite sides of Mars: Spirit in Gusev Crater, then Opportunity at Meridiani Planum.",
+            "fr": "En janvier 2004, deux rovers identiques se posent de part et d'autre de Mars : Spirit dans le cratère Gusev, puis Opportunity à Meridiani Planum."
+          },
+          "sourceIds": ["nasa-science-mer", "nssdca-2003-027a", "nssdca-2003-032a"],
+          "mediaIds": ["mer-spirit-landing-site-pia05117"]
+        }
+      ]
+    },
+    {
+      "key": "why",
+      "title": { "en": "Why", "fr": "Pourquoi" },
+      "blocks": [
+        {
+          "voice": "data",
+          "text": {
+            "en": "Their mission: look for signs of past water. Gusev looked like an old lake bed; Meridiani had minerals suggesting a wet history.",
+            "fr": "Leur mission : chercher des traces d'eau ancienne. Gusev ressemblait à un ancien fond de lac ; Meridiani présentait des minéraux suggérant un passé humide."
+          },
+          "sourceIds": ["nasa-science-mer"]
+        }
+      ]
+    },
+    {
+      "key": "how",
+      "title": { "en": "How", "fr": "Comment" },
+      "blocks": [
+        {
+          "voice": "data",
+          "text": {
+            "en": "The rovers ran on solar power and were designed for a mission of about 90 Martian days — roughly three months.",
+            "fr": "Les rovers fonctionnaient à l'énergie solaire et étaient conçus pour une mission d'environ 90 jours martiens, soit à peu près trois mois."
+          },
+          "sourceIds": ["jpl-opportunity-end-2019", "nasa-science-mer-highlights"]
+        },
+        {
+          "voice": "data",
+          "text": {
+            "en": "Martian wind sometimes cleaned much of the dust off their solar panels, as Opportunity's self-portraits from 2014 show.",
+            "fr": "Le vent martien a parfois nettoyé une grande partie de la poussière de leurs panneaux solaires, comme le montrent les autoportraits d'Opportunity de 2014."
+          },
+          "sourceIds": ["nasa-science-mer", "nasa-science-mer-highlights"],
+          "mediaIds": ["mer-opportunity-clean-vs-dusty-2014"]
+        }
+      ]
+    },
+    {
+      "key": "discovery",
+      "title": { "en": "Discovery", "fr": "Découverte" },
+      "blocks": [
+        {
+          "voice": "data",
+          "text": {
+            "en": "Opportunity found small spheres of hematite nicknamed “blueberries” — a mineral that typically forms in water — and, later, veins of gypsum left by water flowing through cracks in the rock.",
+            "fr": "Opportunity trouve de petites billes d'hématite surnommées « myrtilles » — un minéral qui se forme généralement dans l'eau — puis des veines de gypse laissées par de l'eau qui circulait dans les fissures de la roche."
+          },
+          "sourceIds": ["nasa-science-mer-highlights"],
+          "mediaIds": ["mer-blueberries-pia19113", "mer-homestake-vein-pia15033"]
+        },
+        {
+          "voice": "data",
+          "text": {
+            "en": "At “Home Plate”, Spirit found soil that is 90% pure silica. On Earth, this kind of deposit usually forms in hot springs or steam vents.",
+            "fr": "À « Home Plate », Spirit trouve un sol composé à 90 % de silice pure. Sur Terre, ce type de dépôt se forme généralement dans des sources chaudes ou des fumerolles."
+          },
+          "sourceIds": ["nasa-science-mer-highlights"]
+        },
+        {
+          "voice": "interpretation",
+          "text": {
+            "en": "Together, these finds show that Mars was once much wetter than today — even if some of that water was acidic and harsh for life.",
+            "fr": "Ensemble, ces découvertes montrent que Mars a été bien plus humide qu'aujourd'hui — même si une partie de cette eau était acide et peu favorable à la vie."
+          },
+          "sourceIds": ["nasa-science-mer-highlights"]
+        }
+      ]
+    },
+    {
+      "key": "relay",
+      "title": { "en": "Relay", "fr": "Relais" },
+      "relationIds": ["pathfinder-to-mer-airbags", "mer-to-mars-2020-technology"],
+      "blocks": [
+        {
+          "voice": "data",
+          "text": {
+            "en": "The twins landed cushioned by the same type of airbag system first used by Mars Pathfinder, which had delivered the first rover, Sojourner, in 1997.",
+            "fr": "Les jumeaux ont atterri amortis par le même type d'airbags que Mars Pathfinder, qui avait déposé le premier rover, Sojourner, en 1997."
+          },
+          "sourceIds": ["jpl-mer-airbags-2002", "nasa-science-mars-pathfinder", "nssdca-2003-027a", "nssdca-2003-032a"],
+          "mediaIds": ["pathfinder-airbag-test"]
+        },
+        {
+          "voice": "data",
+          "text": {
+            "en": "Spirit got stuck in soft sand in 2009 and sent its last transmission on 22 March 2010, after 7.73 km. Opportunity drove more than 45 km in more than 14 years; its last communication came on 10 June 2018, during a planet-wide dust storm.",
+            "fr": "Spirit s'enlise dans un sable meuble en 2009 et transmet pour la dernière fois le 22 mars 2010, après 7,73 km. Opportunity parcourt plus de 45 km en plus de 14 ans ; sa dernière communication arrive le 10 juin 2018, pendant une tempête de poussière planétaire."
+          },
+          "sourceIds": ["nssdca-2003-027a", "nssdca-2003-032a", "jpl-opportunity-end-2019"]
+        },
+        {
+          "voice": "data",
+          "text": {
+            "en": "“My battery is low and it's getting dark” was not a message from the rover, which sent data, not words. A science reporter used the sentence to sum up what NASA scientists told him the last data meant.",
+            "fr": "« My battery is low and it's getting dark » n'est pas un message du rover, qui envoyait des données et non des mots. Un journaliste scientifique a utilisé cette phrase pour résumer ce que des scientifiques de la NASA lui avaient dit des dernières données."
+          },
+          "sourceIds": ["abc7-opportunity-quote-2019"]
+        },
+        {
+          "voice": "data",
+          "text": {
+            "en": "NASA says the rovers' technical legacy is carried aboard the Curiosity rover and the Mars 2020 mission.",
+            "fr": "Selon la NASA, l'héritage technique des rovers est embarqué à bord du rover Curiosity et de la mission Mars 2020."
+          },
+          "sourceIds": ["jpl-opportunity-end-2019"]
+        }
+      ]
+    },
+    {
+      "key": "your-turn",
+      "title": { "en": "Your turn", "fr": "À toi" },
+      "blocks": [
+        {
+          "voice": "imagination",
+          "text": {
+            "en": "They were designed for three months and worked for years. If you were designing the next rover, what would you change to help it get through a dust storm?",
+            "fr": "Conçus pour trois mois, ils ont fonctionné pendant des années. Si tu concevais le prochain rover, que changerais-tu pour l'aider à traverser une tempête de poussière ?"
+          },
+          "sourceIds": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+import request from 'supertest'
+import { describe, expect, it } from 'vitest'
+import { createApp, InvalidContentError } from '../app.js'
+import { loadContent } from '../content/load.js'
+
+const app = createApp()
+
+describe('content API', () => {
+  it('GET /api/destinations lists the Moon then Mars with computed counts', async () => {
+    const res = await request(app).get('/api/destinations')
+    expect(res.status).toBe(200)
+    expect(res.body.map((d: { id: string }) => d.id)).toEqual(['moon', 'mars'])
+    expect(res.body[0]).toMatchObject({ name: 'Moon', missionCount: 3, machineCount: 6 })
+    expect(res.body[1]).toMatchObject({ name: 'Mars', missionCount: 3, machineCount: 5 })
+  })
+
+  it('localizes every text with ?lang=fr', async () => {
+    const res = await request(app).get('/api/destinations/moon?lang=fr')
+    expect(res.status).toBe(200)
+    expect(res.body.name).toBe('Lune')
+    expect(typeof res.body.missions[0].summary).toBe('string')
+    expect(JSON.stringify(res.body)).not.toContain('"fr":')
+  })
+
+  it('falls back to English for an unsupported language', async () => {
+    const res = await request(app).get('/api/destinations/moon?lang=de')
+    expect(res.body.name).toBe('Moon')
+  })
+
+  it('GET /api/destinations/:id groups machines by mission, in order', async () => {
+    const res = await request(app).get('/api/destinations/mars')
+    expect(res.body.missions.map((m: { id: string }) => m.id)).toEqual([
+      'mars-pathfinder',
+      'mars-exploration-rovers',
+      'mars-2020',
+    ])
+    const mer = res.body.missions[1]
+    expect(mer.machines.map((m: { id: string }) => m.id)).toEqual(['spirit', 'opportunity'])
+    expect(mer.mainStory).toMatchObject({ id: 'mars-spirit-opportunity', status: 'draft' })
+  })
+
+  it('returns 404 for an unknown destination', async () => {
+    const res = await request(app).get('/api/destinations/pluto')
+    expect(res.status).toBe(404)
+    expect(res.body).toEqual({ error: 'Destination not found' })
+  })
+
+  it('GET /api/machines/:id resolves mission, story, relations, media and sources', async () => {
+    const res = await request(app).get('/api/machines/surveyor-3-lander')
+    expect(res.status).toBe(200)
+    expect(res.body).toMatchObject({
+      destinationId: 'moon',
+      mission: { id: 'surveyor-3' },
+      storyTarget: { id: 'moon-surveyor-apollo12' },
+      coordinates: { value: { lat: -3.0162, lon: -23.418 } },
+    })
+    expect(res.body.relations.map((r: { id: string }) => r.id)).toContain('surveyor-3-to-apollo-12-data')
+    expect(res.body.media.length).toBeGreaterThan(0)
+    expect(res.body.sources.map((s: { id: string }) => s.id)).toContain('nssdca-1967-035a')
+  })
+
+  it('keeps coordinates null when no reliable position is published', async () => {
+    const res = await request(app).get('/api/machines/ingenuity')
+    expect(res.body.coordinates).toBeNull()
+    expect(res.body.storyTarget).toMatchObject({ id: 'mars-ingenuity' })
+  })
+
+  it('GET /api/stories/:id returns the six steps with their sources and media', async () => {
+    const res = await request(app).get('/api/stories/mars-spirit-opportunity?lang=fr')
+    expect(res.status).toBe(200)
+    expect(res.body.title).toBe('Les jumeaux qui ont dépassé toutes les attentes')
+    expect(res.body.steps.map((s: { key: string }) => s.key)).toEqual([
+      'signal',
+      'why',
+      'how',
+      'discovery',
+      'relay',
+      'your-turn',
+    ])
+    expect(res.body.relations.map((r: { id: string }) => r.id)).toEqual([
+      'pathfinder-to-mer-airbags',
+      'mer-to-mars-2020-technology',
+    ])
+    expect(res.body.sources.length).toBeGreaterThan(0)
+    expect(res.body.media.length).toBeGreaterThan(0)
+  })
+
+  it('GET /api/stories lists summaries', async () => {
+    const res = await request(app).get('/api/stories')
+    expect(res.body).toHaveLength(4)
+  })
+
+  it('GET /api/media filters by type and mission', async () => {
+    const videos = await request(app).get('/api/media?type=video')
+    expect(videos.body).toHaveLength(5)
+    const ingenuity = await request(app).get('/api/media?missionId=mars-2020&type=3d-model')
+    expect(ingenuity.body.map((m: { id: string }) => m.id)).toEqual(['ingenuity-3d-model'])
+  })
+
+  it('rejects an unknown media type', async () => {
+    const res = await request(app).get('/api/media?type=hologram')
+    expect(res.status).toBe(400)
+  })
+
+  it('GET /api/sources lists every source with its consultation date', async () => {
+    const res = await request(app).get('/api/sources')
+    expect(res.body.length).toBeGreaterThan(0)
+    for (const s of res.body) expect(s.accessedOn).toMatch(/^\d{4}-\d{2}-\d{2}$/)
+  })
+
+  it('refuses to start with invalid content', () => {
+    const broken = loadContent()
+    broken.machines[0]!.status.sourceIds = []
+    expect(() => createApp({ content: broken })).toThrow(InvalidContentError)
+  })
+})
