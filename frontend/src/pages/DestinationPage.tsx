@@ -26,7 +26,7 @@ function DestinationView({ destinationId }: { destinationId: DestinationId }) {
   useDocumentTitle(name)
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-x-clip">
       <Starfield />
       <div className="relative z-10">
         <section className="mx-auto flex min-h-[70vh] max-w-5xl flex-col justify-center px-5 py-16">

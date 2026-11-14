@@ -9,7 +9,9 @@ import { useApi } from '@/hooks/useApi'
 import { useTranslation } from '@/i18n'
 import { formatPartialDate } from '@/lib/formatDate'
 import type { DestinationId } from '@/types/content'
-import { MachineCard } from './MachineCard'
+import { MachineJourney } from '@/components/journey/MachineJourney'
+import { MissionScene } from '@/components/journey/MissionScene'
+import { bestStill } from '@/lib/journey'
 import { MissionTimeline } from './MissionTimeline'
 
 /**
@@ -88,9 +90,14 @@ function MissionSection({ mission }: { mission: DestinationDetail['missions'][nu
   const timelineId = useId()
   const titleId = `mission-${mission.id}-title`
   const period = mission.period?.value
+  // Photos and timeline of the mission feed the scroll journey; until they arrive (or if they
+  // cannot be loaded) the machines are shown as plain cards, so the gallery always works.
+  const detail = useApi(`mission:${mission.id}`, (lang, signal) => api.mission(mission.id, lang, signal))
+  const cover = detail.status === 'success' ? bestStill(detail.data.media) : undefined
 
   return (
     <section id={`mission-${mission.id}`} aria-labelledby={titleId} className="scroll-mt-24">
+      <MissionScene cover={cover}>
       <h3 id={titleId} tabIndex={-1} className="font-heading text-2xl font-bold sm:text-3xl">
         {mission.name}
       </h3>
@@ -124,14 +131,21 @@ function MissionSection({ mission }: { mission: DestinationDetail['missions'][nu
         </button>
       </div>
 
+      </MissionScene>
+
       <div id={timelineId} hidden={!timelineOpen} className="mt-6">
         {timelineOpen && <MissionTimeline missionId={mission.id} />}
       </div>
 
       <h4 className="sr-only">{t('destination.machinesTitle')}</h4>
-      <div className="mt-6 grid gap-4 md:grid-cols-2">
+      <div className="mt-10 space-y-24">
         {mission.machines.map((machine) => (
-          <MachineCard key={machine.id} machine={machine} story={mission.mainStory} />
+          <MachineJourney
+            key={machine.id}
+            machine={machine}
+            mission={detail.status === 'success' ? detail.data : null}
+            story={mission.mainStory}
+          />
         ))}
       </div>
     </section>

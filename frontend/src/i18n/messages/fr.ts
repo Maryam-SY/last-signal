@@ -133,6 +133,9 @@ export const fr: Messages = {
     period: '{start} – {end}',
     since: 'Depuis le {start}',
   },
+  journey: {
+    anotherLook: 'Un autre regard',
+  },
   machineType: {
     lander: 'Atterrisseur',
     rover: 'Rover',

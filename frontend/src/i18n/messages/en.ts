@@ -135,6 +135,9 @@ export const en = {
     period: '{start} – {end}',
     since: 'Since {start}',
   },
+  journey: {
+    anotherLook: 'Another look',
+  },
   machineType: {
     lander: 'Lander',
     rover: 'Rover',
