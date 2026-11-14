@@ -23,7 +23,8 @@
 | ADR-013 | Déploiement Vercel + CI GitHub Actions | CI acceptée ; hébergement à réexaminer | OPEN-05, OPEN-18 |
 | ADR-014 | Moteur narratif découplé de la technique d'animation | Acceptée | OPEN-10 |
 | ADR-015 | Internationalisation : dictionnaires typés, sans librairie i18n | Acceptée | OPEN-06 |
-| ADR-016 | Architecture frontend + backend (site dynamique) | Acceptée (rôle de l'API ouvert) | OPEN-03, OPEN-18 |
+| ADR-016 | Architecture frontend + backend (site dynamique) | Acceptée ; rôle de l'API tranché (OPEN-18) | OPEN-03, OPEN-18 |
+| ADR-017 | Médias référencés par URL, pas stockés dans le dépôt | Proposée | — |
 
 ---
 
@@ -205,3 +206,21 @@
   - Le contrat d'API (routes, formats, erreurs) devra être documenté avant son implémentation (OPEN-18).
   - Exigence de résilience : si l'API est indisponible, l'interface affiche un message clair et ne doit jamais afficher de donnée non sourcée.
   - Écart assumé avec le CDC §7, tracé ici.
+
+### ADR-016 — complément (2026-11-14, OPEN-18 tranchée)
+
+- Le contenu vit dans `backend/content/` (JSON versionnés, relus par PR). Le backend le charge au démarrage, le **valide** (règles V1–V12) et **refuse de démarrer** en cas d'erreur.
+- API en lecture seule, localisée par `?lang=en` ou `?lang=fr` : contrat dans ARCHITECTURE §16.
+- Toujours pas de base de données : la traçabilité scientifique passe par l'historique Git.
+
+## ADR-017 — Médias référencés par URL, pas stockés dans le dépôt
+
+- **Statut** : Proposée (choix fait pour le lot de contenu du 2026-11-14, à valider)
+- **Problème** : l'équipe veut « tous les types d'images et de vidéos » des missions. Les vidéos et les images pleine résolution pèsent des centaines de Mo, et chaque média doit rester crédité et traçable.
+- **Options** : (a) télécharger les fichiers dans `frontend/public/images/` ; (b) référencer les URL officielles (NASA, JPL, YouTube) avec légende, crédit et page source ; (c) mélange : références par défaut, copies optimisées uniquement pour les images affichées en premier.
+- **Analyse** :
+  - (a) Fonctionne même si les sites NASA sont indisponibles et donne le contrôle du poids. − Dépôt alourdi, droits à suivre fichier par fichier, travail d'optimisation.
+  - (b) Rapide, toujours fidèle à la source, aucune donnée lourde dans Git. − Dépend de la disponibilité des sites NASA (les URL peuvent changer), pas de contrôle du poids des images.
+  - (c) Bon compromis pour la démo. − Demande de trier les médias « de couverture ».
+- **Décision proposée** : (b) maintenant, puis (c) en phase 5 pour les images de couverture (téléchargement **après accord humain**).
+- **Conséquences** : entité `Media` (type, url, pageUrl, caption recopiée, alt fr/en, credit, license, missionIds, machineIds, sourceId). Contrôle des liens (QG-LINKS) indispensable avant la release ; jpl.nasa.gov renvoie 403 aux robots, donc ses pages se vérifient à la main.

@@ -58,7 +58,7 @@ Personas : **Visiteur** (10-15 ans, principal), **Curieux** (adulte), **Équipe*
 
 ### US-1.5 — Modèle de contenu et contrôle d'intégrité
 - **Story** : En tant qu'équipe, je souhaite des types et un test d'intégrité du contenu afin qu'aucune donnée non sourcée ou incohérente n'atteigne l'interface.
-- **Priorité** : P0 · **Exigences** : DATA-001 → 006, SOURCE-001, SOURCE-003, MAP-003 · **Statut** : `blocked` (OPEN-17, OPEN-18 : emplacement du contenu et chargement via API ou bundle)
+- **Priorité** : P0 · **Exigences** : DATA-001 → 006, SOURCE-001, SOURCE-003, MAP-003 · **Statut** : `review` côté backend (types, validation, API, tests) ; `check:links` et accès frontend restent à faire
 - **Critères** :
   1. Étant donné `frontend/content/`, alors les fichiers de [DATA_MODEL.md](../architecture/DATA_MODEL.md) existent (éventuellement vides).
   2. Quand un fait référence une source inexistante, alors `npm test` échoue avec un message citant l'identifiant fautif.
@@ -80,7 +80,7 @@ Personas : **Visiteur** (10-15 ans, principal), **Curieux** (adulte), **Équipe*
 
 ### US-1.8 — Catalogue scientifique Lune/Mars (piste contenu)
 - **Story** : En tant que rédacteur, je souhaite établir la liste sourcée des missions et équipements Lune/Mars afin que l'interface affiche uniquement des faits vérifiés.
-- **Priorité** : P0 · **Exigences** : DATA-002, DATA-004, DATA-005, SOURCE-001, SOURCE-003 · **Statut** : `ready` (peut démarrer dès validation de la phase 0)
+- **Priorité** : P0 · **Exigences** : DATA-002, DATA-004, DATA-005, SOURCE-001, SOURCE-003 · **Statut** : `in-progress` — lot 1 (6 missions, 11 équipements, 17 sources, 56 médias) dans `backend/content/`, relecture humaine à faire (`docs/content/CONTENT_REVIEW.md`)
 - **Critères** :
   1. Chaque mission et équipement retenu a un identifiant, une destination et ≥ 1 source NASA/NSSDCA avec date de consultation.
   2. Les champs non vérifiés valent `null`.
@@ -212,7 +212,7 @@ Personas : **Visiteur** (10-15 ans, principal), **Curieux** (adulte), **Équipe*
 
 ### US-4.5 — Récit Lune *(contenu)*
 - **Story** : En tant que visiteur, je souhaite découvrir l'histoire d'une mission lunaire et de ce qu'elle a transmis afin de comprendre l'héritage des machines laissées sur la Lune.
-- **Priorité** : P0 · **Exigences** : STORY-002, STORY-010, SOURCE-005 · **Statut** : `blocked` (OPEN-08, OPEN-16)
+- **Priorité** : P0 · **Exigences** : STORY-002, STORY-010, SOURCE-005 · **Statut** : `review` — 2 récits Lune en `draft` : `moon-apollo11-retroreflectors`, `moon-surveyor-apollo12`
 - **Critères** :
   1. Le récit (recommandé : Apollo 12 avec Surveyor 3) contient les 6 étapes et passe le test d'intégrité.
   2. Toute relation évoquée dans l'étape Relay existe dans `relations.json` avec preuve et source.
@@ -220,7 +220,7 @@ Personas : **Visiteur** (10-15 ans, principal), **Curieux** (adulte), **Équipe*
 
 ### US-4.6 — Récit Mars *(contenu)*
 - **Story** : En tant que visiteur, je souhaite découvrir l'histoire des rovers martiens et de ce qui a été transmis d'une mission à l'autre afin de comprendre la continuité de l'exploration.
-- **Priorité** : P0 · **Exigences** : STORY-002, STORY-010, SOURCE-005 · **Statut** : `blocked` (OPEN-08, OPEN-16)
+- **Priorité** : P0 · **Exigences** : STORY-002, STORY-010, SOURCE-005 · **Statut** : `review` — 2 récits Mars en `draft` : `mars-spirit-opportunity`, `mars-ingenuity` (Ingenuity passe en P0, OPEN-08)
 - **Critères** : identiques à US-4.5 pour le récit recommandé Mars Exploration Rover (Spirit, Opportunity) avec relais documenté depuis Sojourner.
 
 ### US-4.7 — Terminer un récit et approfondir

@@ -3,6 +3,14 @@
 > Rôle BMAD : Architect · Version 1.0 (Phase 0) · Statut : **en attente de validation**
 > Exigences : DATA-001 → 006, SOURCE-001 → 005, MAP-003, STORY-001/002/007.
 >
+> **Mise à jour 2026-11-14 (OPEN-16, OPEN-18)** — le modèle implémenté est `backend/src/content/types.ts` (source de vérité), le contenu réel est dans `backend/content/`. Écarts avec les sections ci-dessous :
+> - **Textes bilingues** : tout texte éditorial est un `LocalizedText` `{ en, fr }` (résumés, intro, notes, récits, relations, alt). Les noms propres restent des chaînes simples.
+> - **Récits multi-missions** : `Story.missionIds: string[]` remplace `missionId`. Une mission a au plus un `mainStoryId`, qui doit lister cette mission (ex. `moon-surveyor-apollo12` est le récit principal de `surveyor-3` **et** d'`apollo-12`).
+> - `Mission.nssdcaIds: string[]` ; `Machine.scienceSummary: Sourced<LocalizedText>`.
+> - `Source.type` : nssdca, nasa-mission-page, nasa-news, press, paper ou other ; `Source.publishedOn` (date ou null).
+> - **Nouvelle entité `Media`** (`media.json`) : référence externe `{ id, type (image, animation, video, 3d-model, document), url, pageUrl, title, caption (recopiée de la source), alt {en,fr}, credit ou null, license, missionIds, machineIds, sourceId, aiGenerated }`. Elle remplace `Media`/`creditId` de la §4.7 (ADR-017). Les blocs de récit peuvent citer des `mediaIds`.
+> - Validation : règles V1–V12 implémentées dans `backend/src/content/validate.ts`, sans dépendance (zod non ajouté, OPEN-17 toujours ouverte).
+>
 > ⚠️ **Tous les exemples JSON ci-dessous illustrent la structure.** Les valeurs entre chevrons (`<…>`) et `null` sont des emplacements à remplir **à partir de sources vérifiées**. Aucun exemple ne doit être copié tel quel dans `content/`.
 
 ## 1. Entités et relations
