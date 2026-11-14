@@ -12,7 +12,8 @@ export function LanguageSwitcher() {
   const { locale, setLocale, t } = useTranslation()
 
   return (
-    <div role="group" aria-label={t('language.label')} className="flex items-center rounded-md border border-moon-dust/40 p-0.5">
+    <fieldset className="flex items-center rounded-md border border-moon-dust/40 p-0.5">
+      <legend className="sr-only">{t('language.label')}</legend>
       {ORDER.map((code) => {
         const active = code === locale
         return (
@@ -32,6 +33,6 @@ export function LanguageSwitcher() {
           </button>
         )
       })}
-    </div>
+    </fieldset>
   )
 }
