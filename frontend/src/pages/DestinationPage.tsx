@@ -1,8 +1,9 @@
 import { ArrowLeft } from 'lucide-react'
 import { Link, useParams } from 'react-router'
 import { paths } from '@/app/paths'
-import { Planet } from '@/components/celestial/Planet'
+import { LivePlanet } from '@/components/celestial/LivePlanet'
 import { Starfield } from '@/components/celestial/Starfield'
+import { WORLD_TRANSITION_NAME } from '@/components/home/worldTransition'
 import { getBodyByDestination } from '@/content/celestialBodies'
 import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 import { useTranslation } from '@/i18n'
@@ -30,6 +31,7 @@ function DestinationView({ destinationId }: { destinationId: DestinationId }) {
         <section className="mx-auto flex min-h-[70vh] max-w-5xl flex-col justify-center px-5 py-16">
           <Link
             to={paths.home()}
+            viewTransition
             className="inline-flex min-h-11 w-fit items-center gap-2 text-sm font-medium text-cosmic-indigo hover:underline"
           >
             <ArrowLeft className="size-4" />
@@ -51,8 +53,11 @@ function DestinationView({ destinationId }: { destinationId: DestinationId }) {
             </div>
 
             {body && (
-              <div className="mx-auto w-full max-w-[26rem]">
-                <Planet body={body} />
+              <div
+                className="order-first mx-auto w-[min(72vw,40vh,28rem)] lg:order-none lg:w-full"
+                style={{ viewTransitionName: WORLD_TRANSITION_NAME }}
+              >
+                <LivePlanet body={body} arrivalRipple />
               </div>
             )}
           </div>

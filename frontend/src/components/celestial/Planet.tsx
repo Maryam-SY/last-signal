@@ -1,11 +1,27 @@
-import { useEffect, useId, useRef } from 'react'
+import { useEffect, useId, useImperativeHandle, useRef, type CSSProperties, type Ref } from 'react'
 import type { CelestialBody } from '@/content/celestialBodies'
 import { useScrollFrame } from '@/hooks/useScrollFrame'
 import { cn } from '@/lib/utils'
 
+/** Imperative controls used by animated wrappers (see LivePlanet). All values are cheap DOM writes. */
+export interface PlanetHandle {
+  /** Turns the photographed surface under the fixed light (degrees) and nudges it (SVG units). */
+  setSurface: (rotateDeg: number, offsetX: number, offsetY: number) => void
+  /** Moves the specular highlight; values are percentages of the disc. */
+  setLight: (cxPercent: number, cyPercent: number) => void
+  /** Displacement strength of the warp filter (0 disables the filter). Requires `distortion`. */
+  setDistortion: (scale: number) => void
+}
+
 interface PlanetProps {
   body: CelestialBody
   className?: string
+  style?: CSSProperties
+  /** Built-in scroll drift. Turn off when a parent drives the surface through `handleRef`. */
+  parallax?: boolean
+  /** Renders a turbulence/displacement filter that `setDistortion` can drive. */
+  distortion?: boolean
+  handleRef?: Ref<PlanetHandle>
 }
 
 function ringArc(rx: number, ry: number, half: 'back' | 'front'): string {
@@ -19,11 +35,51 @@ function ringArc(rx: number, ry: number, half: 'back' | 'front'): string {
  * the photo drifts slightly on scroll behind the fixed shading. Rings are split into
  * back/front arcs. Bodies that are not spheres (comets, asteroids) are shown framed.
  */
-export function Planet({ body, className }: PlanetProps) {
+export function Planet({
+  body,
+  className,
+  style,
+  parallax = true,
+  distortion = false,
+  handleRef,
+}: PlanetProps) {
   const uid = useId().replace(/[^a-zA-Z0-9_-]/g, '')
   const wrapperRef = useRef<HTMLDivElement>(null)
   const surfaceRef = useRef<SVGGElement>(null)
+  const shadeRef = useRef<SVGRadialGradientElement>(null)
+  const warpGroupRef = useRef<SVGGElement>(null)
+  const displacementRef = useRef<SVGFEDisplacementMapElement>(null)
   const visibleRef = useRef(true)
+  const warpId = `warp-${uid}`
+
+  useImperativeHandle(
+    handleRef,
+    () => ({
+      setSurface(rotateDeg, offsetX, offsetY) {
+        surfaceRef.current?.setAttribute(
+          'transform',
+          `translate(${offsetX.toFixed(2)} ${offsetY.toFixed(2)}) rotate(${rotateDeg.toFixed(2)})`,
+        )
+      },
+      setLight(cxPercent, cyPercent) {
+        shadeRef.current?.setAttribute('cx', `${cxPercent.toFixed(1)}%`)
+        shadeRef.current?.setAttribute('cy', `${cyPercent.toFixed(1)}%`)
+      },
+      setDistortion(scale) {
+        const group = warpGroupRef.current
+        const displacement = displacementRef.current
+        if (!group || !displacement) return
+        // Only pay for the filter while it is visible.
+        if (scale < 0.15) {
+          group.removeAttribute('filter')
+          return
+        }
+        displacement.setAttribute('scale', scale.toFixed(2))
+        group.setAttribute('filter', `url(#${warpId})`)
+      },
+    }),
+    [warpId],
+  )
 
   useEffect(() => {
     const wrapper = wrapperRef.current
@@ -40,7 +96,7 @@ export function Planet({ body, className }: PlanetProps) {
   }, [])
 
   useScrollFrame(({ viewportH }) => {
-    if (!visibleRef.current) return
+    if (!parallax || !visibleRef.current) return
     const wrapper = wrapperRef.current
     const surface = surfaceRef.current
     if (!wrapper || !surface) return
@@ -61,7 +117,7 @@ export function Planet({ body, className }: PlanetProps) {
   const isSphere = imageMode === 'sphere'
 
   return (
-    <div ref={wrapperRef} className={cn('relative aspect-square', className)}>
+    <div ref={wrapperRef} className={cn('relative aspect-square', className)} style={style}>
       <div
         aria-hidden="true"
         className="absolute inset-[6%] rounded-full blur-3xl"
@@ -78,7 +134,7 @@ export function Planet({ body, className }: PlanetProps) {
             <clipPath id={clipId}>
               <circle r={82} />
             </clipPath>
-            <radialGradient id={shadeId} cx="32%" cy="26%" r="78%">
+            <radialGradient ref={shadeRef} id={shadeId} cx="32%" cy="26%" r="78%">
               <stop offset="0%" stopColor="#ffffff" stopOpacity="0.22" />
               <stop offset="40%" stopColor="#ffffff" stopOpacity="0" />
               <stop offset="74%" stopColor={palette.dark} stopOpacity="0.12" />
@@ -92,6 +148,19 @@ export function Planet({ body, className }: PlanetProps) {
               <stop offset="58%" stopColor="#ffffff" stopOpacity="1" />
               <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
             </radialGradient>
+            {distortion && (
+              <filter id={warpId} x="-15%" y="-15%" width="130%" height="130%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.018 0.05" numOctaves={2} seed={7} result="noise" />
+                <feDisplacementMap
+                  ref={displacementRef}
+                  in="SourceGraphic"
+                  in2="noise"
+                  scale={0}
+                  xChannelSelector="R"
+                  yChannelSelector="G"
+                />
+              </filter>
+            )}
             <mask id={maskId}>
               <rect x={-110} y={-110} width={220} height={220} fill={`url(#${fadeId})`} />
             </mask>
@@ -113,6 +182,7 @@ export function Planet({ body, className }: PlanetProps) {
             </g>
           )}
 
+          <g ref={warpGroupRef}>
           {isSphere ? (
             <>
               <circle r={82} fill={palette.base} />
@@ -144,6 +214,7 @@ export function Planet({ body, className }: PlanetProps) {
               />
             </g>
           )}
+          </g>
 
           {rings && (
             <g transform={`rotate(${rings.tilt})`} opacity={rings.opacity} aria-hidden="true">

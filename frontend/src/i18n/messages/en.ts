@@ -21,13 +21,14 @@ export const en = {
       'Human-made machines stayed behind on these worlds after their missions ended. Pick one to discover what they left — and what they passed on.',
     destinationsLabel: 'Destinations',
     eyebrow: 'A field guide to the machines we left behind',
-    scrollHint: 'Scroll to travel',
-    openDestination: 'Enter destination',
-    bodiesLabel: 'Celestial bodies',
-    indexLabel: 'Jump to a world',
-    outroTitle: 'The rest is still out there',
-    outroBody:
-      'Every world on this page holds something we built, then left. The Moon and Mars are open to visit; the rest are waiting for their archive.',
+    scrollHint: 'Scroll — the worlds come to you',
+    journeyLabel: 'Journey',
+    sceneDeparture: 'Departure',
+    sceneMotto: 'Transmission',
+    chapter: 'Destination {number}',
+    mottoEyebrow: 'What they passed on',
+    motto: 'Every machine left more than a trace: it passed something on.',
+    backToStart: 'Back to the start',
   },
   bodies: {
     mercury: {
@@ -107,10 +108,12 @@ export const en = {
     moon: {
       name: 'Moon',
       cta: 'Explore the Moon',
+      land: 'Land on the Moon',
     },
     mars: {
       name: 'Mars',
       cta: 'Explore Mars',
+      land: 'Land on Mars',
     },
   },
   destination: {

@@ -95,7 +95,79 @@
   }
 }
 
+/* ---------------------------------------------------------------------------------------
+   Home depth journey (components/motion/DepthJourney.tsx).
+   The scroll moves a camera, not the page: the native scrollbar is hidden (a journey
+   indicator replaces it) and each scene snaps into focus. Only active on the home page,
+   never under reduced motion. Layer variables: --pass (0→1 once the camera passes the
+   layer), --approach (0 at focus → 1 one scene away), --vel (signed scroll speed).
+   --------------------------------------------------------------------------------------- */
+html.depth-mode {
+  scrollbar-width: none;
+  scroll-snap-type: y proximity;
+}
+html.depth-mode::-webkit-scrollbar {
+  display: none;
+}
+
+.scatter-letter {
+  display: inline-block;
+  transform: translate3d(
+      calc(var(--sx) * var(--pass, 0) * 1px),
+      calc(var(--sy) * var(--pass, 0) * 1px),
+      0
+    )
+    rotate(calc(var(--sr) * var(--pass, 0) * 1deg));
+  opacity: calc(1 - var(--pass, 0) * 0.9);
+}
+
+.scatter-fade {
+  opacity: calc(1 - var(--pass, 0) * 1.6);
+}
+
+.velocity-skew {
+  transform: skewX(calc(var(--vel, 0) * -0.3deg));
+}
+
+.portal-slot[data-side='left'] {
+  transform: translate3d(calc(var(--pass, 0) * -45vw), 0, 0) rotate(calc(var(--pass, 0) * -18deg));
+}
+.portal-slot[data-side='right'] {
+  transform: translate3d(calc(var(--pass, 0) * 45vw), 0, 0) rotate(calc(var(--pass, 0) * 18deg));
+}
+
+.chapter-planet {
+  transform: scale(calc(1 + var(--pass, 0) * 0.9));
+}
+
+.world-echo {
+  -webkit-text-stroke: 1px rgb(148 163 184 / 0.22);
+  transform: translate3d(calc((var(--approach, 0) - 0.5) * 30vw), 0, 0);
+}
+
+.motto-word {
+  display: inline-block;
+  opacity: calc(0.15 + 0.85 * clamp(0, (1 - var(--approach, 0) * 2.4) * var(--n) - var(--i), 1));
+}
+
+/* Planet → destination morph (react-router `viewTransition`, see home/worldTransition.ts). */
+::view-transition-group(world-focus) {
+  animation-duration: 900ms;
+  animation-timing-function: cubic-bezier(0.7, 0, 0.2, 1);
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 450ms;
+}
+
 /* NFR-A11Y-006: no non-essential motion when the user asks for less */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
