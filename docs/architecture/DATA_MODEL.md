@@ -13,6 +13,9 @@
 > - **`Media.depiction`** (obligatoire) : `photo` | `artwork` (vue d'artiste, illustration, affiche) | `simulation` (image de synthèse, animation, modèle 3D, capture de logiciel) | `diagram` (carte, infographie, schéma) | `mixed` (vidéo montée mêlant images réelles et animations, ou image composite) | `document`. Le frontend **doit** afficher un badge pour tout ce qui n'est pas `photo` ou `document` (MEDIA-001). **`Media.description`** facultatif : explication grand public `{ en, fr }`.
 > - **`Mission.timeline: TimelineEvent[]`** (TIMELINE-001) : `{ id, date: Sourced<PartialDate>, title {en,fr}, description {en,fr} (langage simple), mediaIds[] }`. Règle **V13** : identifiants uniques, dates sourcées et chronologiques (une date partielle se compare à sa propre précision), textes bilingues, images rattachées à la mission. Une étape sans image ne déclenche qu'un avertissement.
 > - Récits : une étape sans image déclenche un avertissement (objectif : au moins une image par étape).
+> - **Nouvelle entité `GlossaryEntry`** (`glossary.json`, US-5.7) : `{ id, status: draft|reviewed, terms: { en: string[], fr: string[] }, label {en,fr}, definition {en,fr}, sourceIds[] }`. Les définitions reprennent la formulation des récits et citent les mêmes sources. Règle **V14** : identifiant kebab-case unique, libellé et définition bilingues, au moins une forme par langue, au moins une source ; `draft` = avertissement.
+> - **`Media.descriptionStatus`** (US-5.10) : `draft` | `reviewed`, obligatoire dès qu'une `description` (histoire de l'image) existe. Règle **V15** : `description` sans statut, ou statut sans `description` = erreur ; histoires en `draft` = un avertissement groupé.
+> - **Champs calculés par l'API** (aucune donnée nouvelle) : `cover` sur chaque équipement des listes et sur chaque récit = premier média `type: image` et `depiction: photo` qui lui est rattaché, sinon `null` ; `GET /api/timeline` = équipements ayant une `date` sourcée, triés par date.
 > - Validation : règles V1–V12 implémentées dans `backend/src/content/validate.ts`, sans dépendance (zod non ajouté, OPEN-17 toujours ouverte).
 >
 > ⚠️ **Tous les exemples JSON ci-dessous illustrent la structure.** Les valeurs entre chevrons (`<…>`) et `null` sont des emplacements à remplir **à partir de sources vérifiées**. Aucun exemple ne doit être copié tel quel dans `content/`.
@@ -352,6 +355,9 @@ Le test `content-integrity.test.ts` lit **le contenu réel** et échoue si :
 | V10 | `kind: "machine"` sans `machineId` ; `mainStoryId` pointant vers un récit d'une autre mission | STORY-002 |
 | V11 | Date `PartialDate` invalide ; `end` antérieur à `start` | DATA-004 |
 | V12 | Média sans `creditId` ou `alt` absent | ABOUT-001, NFR-A11Y-008 |
+| V13 | Étape de chronologie de mission non datée, non sourcée ou hors ordre | TIMELINE-001 |
+| V14 | Entrée de glossaire sans source, sans forme dans une langue, ou texte manquant | STORY-007 (US-5.7) |
+| V15 | Histoire d'image (`description`) sans `descriptionStatus`, ou l'inverse | MEDIA-001 (US-5.10) |
 
 Avertissements (non bloquants, listés dans la sortie) : source jamais citée, mission sans équipement, équipement sans `scienceSummary`, récit en `draft`.
 

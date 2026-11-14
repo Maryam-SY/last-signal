@@ -28,6 +28,7 @@ export function loadContent(dir: string = process.env.CONTENT_DIR ?? DEFAULT_CON
     relations: readJson(join(dir, 'relations.json')),
     sources: readJson(join(dir, 'sources.json')),
     media: readJson(join(dir, 'media.json')),
+    glossary: readJson(join(dir, 'glossary.json')),
     stories,
   }
 }

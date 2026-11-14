@@ -8,52 +8,51 @@ describe('destination page (connected to the API)', () => {
     renderRoute('/explore/mars')
     expect(await screen.findByRole('heading', { level: 3, name: 'Test Mission' })).toBeInTheDocument()
     expect(screen.getByRole('heading', { level: 4, name: 'Test Rover' })).toBeInTheDocument()
-    expect(screen.getByText('Mission ended')).toBeInTheDocument()
+    // Scoped to the card: the status legend and the timeline also show status labels.
+    const card = screen.getByRole('heading', { level: 4, name: 'Test Rover' }).closest('article')!
+    expect(within(card).getByText('Mission ended')).toBeInTheDocument()
     expect(screen.getByText('Location not mapped')).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'Test Mission' })).toHaveAttribute('href', '#mission-mission-a')
     expect(screen.getByRole('link', { name: 'Discover its story' })).toHaveAttribute('href', '/stories/story-a?from=machine-a')
   })
 
-  it('loads photos and sources of a machine on demand, labelling non-photos', async () => {
-    const user = userEvent.setup()
+  it('tells each machine as a short story — what it did, what it passed on, its sources — without any click (US-5.9)', async () => {
     renderRoute('/explore/mars')
-    const toggle = await screen.findByRole('button', { name: 'Photos, videos and sources' })
-    expect(toggle).toHaveAttribute('aria-expanded', 'false')
-    await user.click(toggle)
-    expect(toggle).toHaveAttribute('aria-expanded', 'true')
-    expect(await screen.findByAltText('Drawing of a helicopter')).toBeInTheDocument()
-    expect(screen.getByText('Artist’s view — not a photo')).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: /Test source page/ })).toHaveAttribute('href', 'https://example.org/source')
+    const card = (await screen.findByRole('heading', { level: 4, name: 'Test Rover' })).closest('article')!
+    expect(within(card).getByRole('heading', { level: 5, name: 'What it did' })).toBeInTheDocument()
+    expect(within(card).getByText('It found traces of ancient water.')).toBeInTheDocument()
+    // What it passed on, with both ends named.
+    expect(await within(card).findByText('The airbag landing system.')).toBeInTheDocument()
+    expect(within(card).getByText('Earlier Mission')).toBeInTheDocument()
+    expect(within(card).getByRole('link', { name: /Test source page/ })).toHaveAttribute('href', 'https://example.org/source')
+    // No gallery and no button to unfold anything.
+    expect(within(card).queryByRole('img')).not.toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: 'Photos, videos and sources' })).not.toBeInTheDocument()
   })
 
-  it('keeps the open machine in the URL, closes it with Escape and gives the focus back (US-3.2)', async () => {
-    const user = userEvent.setup()
-    const { router } = renderRoute('/explore/mars')
-    const toggle = await screen.findByRole('button', { name: 'Photos, videos and sources' })
-    await user.click(toggle)
-    expect(router.state.location.search).toBe('?machine=machine-a')
-    // Relations of the machine, with both ends named.
-    expect(await screen.findByText('The airbag landing system.')).toBeInTheDocument()
-    expect(screen.getByText('Earlier Mission')).toBeInTheDocument()
-
-    // Escape from a link inside the details closes them and returns the focus to the toggle.
-    screen.getByRole('link', { name: /Test source page/ }).focus()
-    await user.keyboard('{Escape}')
-    expect(toggle).toHaveAttribute('aria-expanded', 'false')
-    expect(router.state.location.search).toBe('')
-    expect(toggle).toHaveFocus()
-
-    // And from the toggle itself, right after opening.
-    await user.click(toggle)
-    await user.keyboard('{Escape}')
-    expect(toggle).toHaveAttribute('aria-expanded', 'false')
+  it('illustrates each moment of the mission log with one captioned picture, labelling non-photos (MEDIA-001)', async () => {
+    renderRoute('/explore/mars')
+    const timeline = await screen.findByRole('list', { name: 'Step by step' })
+    expect(within(timeline).getAllByRole('listitem')).toHaveLength(2)
+    expect(within(timeline).getByAltText('A rover on the ground')).toBeInTheDocument()
+    expect(within(timeline).getByAltText('Drawing of a helicopter')).toBeInTheDocument()
+    expect(within(timeline).getByText('Artist’s view — not a photo')).toBeInTheDocument()
+    // One picture per moment: the second picture of "A plan for later" is not shown.
+    expect(within(timeline).getAllByRole('img')).toHaveLength(2)
+    expect(within(timeline).getAllByText('What you see:')).toHaveLength(2)
   })
 
-  it('opens the machine details directly from ?machine=', async () => {
+  it('tells the story behind a picture, marked as a draft until reviewed (US-5.10)', async () => {
+    renderRoute('/explore/mars')
+    const timeline = await screen.findByRole('list', { name: 'Step by step' })
+    expect(within(timeline).getByText('An artist drew this helicopter years before one flew.')).toBeInTheDocument()
+    expect(screen.getByText(/stories told with these pictures are drafts/)).toBeInTheDocument()
+  })
+
+  it('highlights the machine named in ?machine= (US-3.2, map, "Exit story")', async () => {
     renderRoute('/explore/mars?machine=machine-a')
-    const toggle = await screen.findByRole('button', { name: 'Hide photos and sources' })
-    expect(toggle).toHaveAttribute('aria-expanded', 'true')
-    expect(await screen.findByAltText('Drawing of a helicopter')).toBeInTheDocument()
+    const card = (await screen.findByRole('heading', { level: 4, name: 'Test Rover' })).closest('article')!
+    expect(card).toHaveAttribute('aria-current', 'true')
   })
 
   it('replaces a remote image that cannot load by a message', async () => {
@@ -62,13 +61,14 @@ describe('destination page (connected to the API)', () => {
     expect(screen.getAllByText(/This image cannot be shown right now/).length).toBeGreaterThan(0)
   })
 
-  it('shows the mission step by step', async () => {
-    const user = userEvent.setup()
+  it('tells the mission step by step, with dates and pictures, as the visitor scrolls', async () => {
     renderRoute('/explore/mars')
-    await user.click(await screen.findByRole('button', { name: 'Show the mission step by step' }))
     const timeline = await screen.findByRole('list', { name: 'Step by step' })
     expect(within(timeline).getByText('The rover bounces on its airbags.')).toBeInTheDocument()
     expect(within(timeline).getByText('4 January 2004')).toBeInTheDocument()
+    expect(within(timeline).getByAltText('A rover on the ground')).toBeInTheDocument()
+    expect(screen.getByRole('region', { name: 'Sources of this mission (1)' })).toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: 'Show the mission step by step' })).not.toBeInTheDocument()
   })
 
   it('brings the visitor back to the machine they came from (anchor after loading)', async () => {
@@ -84,8 +84,10 @@ describe('destination page (connected to the API)', () => {
   it('shows a clear error with a retry button when the API does not answer', async () => {
     vi.stubGlobal('fetch', vi.fn(async () => new Response('down', { status: 503 })))
     renderRoute('/explore/moon')
-    expect(await screen.findByRole('alert')).toHaveTextContent('This content could not be loaded.')
-    expect(screen.getByRole('button', { name: 'Try again' })).toBeInTheDocument()
+    // Scoped to the missions: the timeline, a separate request, reports its own error too.
+    const missions = await screen.findByRole('region', { name: 'Missions and machines' })
+    expect(await within(missions).findByRole('alert')).toHaveTextContent('This content could not be loaded.')
+    expect(within(missions).getByRole('button', { name: 'Try again' })).toBeInTheDocument()
   })
 
   it('asks the API in French when the interface is in French', async () => {
@@ -165,7 +167,8 @@ describe('story page (connected to the API)', () => {
 
   it('offers a way back to the machine and to the other destination at the end', async () => {
     renderRoute('/stories/story-a?step=6&from=machine-a')
-    expect(await screen.findByText('Imagine')).toBeInTheDocument()
+    // Scoped to the last step: the voices legend at the top also names "Imagine".
+    expect(within(await screen.findByRole('region', { name: 'Your turn' })).getByText('Imagine')).toBeInTheDocument()
     // US-4.2 (3): back to the machine the visitor came from, with its details open.
     expect(screen.getByRole('link', { name: 'Back to the machines of Mars' })).toHaveAttribute(
       'href',

@@ -8,6 +8,10 @@ import { DepictionBadge } from './DepictionBadge'
 interface MediaFigureProps {
   media: Media
   className?: string
+  /** Short lead-in before the description of the picture (e.g. "What you see:"). */
+  lead?: string
+  /** Tell the story behind the picture (`media.description`) above what it shows. */
+  withStory?: boolean
 }
 
 /**
@@ -15,7 +19,7 @@ interface MediaFigureProps {
  * depiction label, credit and a link to the original NASA page. Files are never copied:
  * they are loaded from NASA servers (ADR-017).
  */
-export function MediaFigure({ media, className }: MediaFigureProps) {
+export function MediaFigure({ media, className, lead, withStory = false }: MediaFigureProps) {
   const { t } = useTranslation()
 
   return (
@@ -27,7 +31,11 @@ export function MediaFigure({ media, className }: MediaFigureProps) {
         </div>
       </div>
       <figcaption className="space-y-1 p-3 text-sm">
-        <p>{media.alt}</p>
+        {withStory && media.description && <p className="text-base leading-relaxed text-starlight">{media.description}</p>}
+        <p className={cn(withStory && media.description && 'text-xs text-moon-dust')}>
+          {lead && <span className="font-semibold text-world">{lead} </span>}
+          {media.alt}
+        </p>
         <p className="text-xs text-moon-dust">
           {media.credit ? t('media.credit', { credit: media.credit }) : t('media.noCredit')}
           {' · '}

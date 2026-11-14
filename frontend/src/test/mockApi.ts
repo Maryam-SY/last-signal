@@ -1,12 +1,14 @@
 import { vi } from 'vitest'
 import type {
   DestinationDetail,
+  GlossaryEntry,
   Machine,
   MachineDetail,
   Media,
   MissionDetail,
   Source,
   StoryDetail,
+  TimelineEntry,
 } from '@/api/types'
 
 /** Small, hand-written fixtures shaped like the real API responses (not real content). */
@@ -36,7 +38,15 @@ const photo: Media = {
   sourceId: 'src-1',
 }
 
-const artwork: Media = { ...photo, id: 'media-art', alt: 'Drawing of a helicopter', depiction: 'artwork', credit: null }
+const artwork: Media = {
+  ...photo,
+  id: 'media-art',
+  alt: 'Drawing of a helicopter',
+  depiction: 'artwork',
+  credit: null,
+  description: 'An artist drew this helicopter years before one flew.',
+  descriptionStatus: 'draft',
+}
 
 const machine: Machine = {
   id: 'machine-a',
@@ -51,6 +61,18 @@ const machine: Machine = {
   status: { value: 'mission-ended', sourceIds: ['src-1'] },
   scienceSummary: { value: 'It found traces of ancient water.', sourceIds: ['src-1'] },
   storyIds: [],
+}
+
+/** On the Moon fixture the machine has sourced coordinates and a cover photo (site map, US-5.7). */
+const mappedMachine: Machine = {
+  ...machine,
+  id: 'machine-m',
+  name: 'Test Lander',
+  type: 'lander',
+  locationName: { value: 'Test Sea', sourceIds: ['src-1'] },
+  coordinates: { value: { lat: 0.67, lon: 23.47 }, sourceIds: ['src-1'] },
+  status: { value: 'inactive', sourceIds: ['src-1'] },
+  cover: { ...photo, id: 'media-cover', alt: 'A lander on grey ground', machineIds: ['machine-m'] },
 }
 
 const destination = (id: 'moon' | 'mars', name: string): DestinationDetail => ({
@@ -74,7 +96,7 @@ const destination = (id: 'moon' | 'mars', name: string): DestinationDetail => ({
       sourceIds: ['src-1'],
       order: 1,
       timeline: [],
-      machines: [machine],
+      machines: id === 'moon' ? [mappedMachine] : [machine],
       mainStory: { id: 'story-a', title: 'The test story', status: 'draft', missionIds: ['mission-a'] },
     },
   ],
@@ -91,10 +113,19 @@ const mission: MissionDetail = {
       mediaIds: ['media-photo'],
       media: [photo],
     },
+    {
+      id: 'helicopter-plan',
+      date: { value: '2004-02', sourceIds: ['src-1'] },
+      title: 'A plan for later',
+      description: 'Engineers draw a future helicopter.',
+      mediaIds: ['media-art', 'media-photo'],
+      media: [artwork, photo],
+    },
   ],
   stories: [],
   relations: [],
   media: [photo],
+  sources: [source],
 }
 
 const machineDetail: MachineDetail = {
@@ -161,7 +192,49 @@ const story: StoryDetail = {
   sources: [source],
 }
 
+const glossary: GlossaryEntry[] = [
+  {
+    id: 'signal-word',
+    status: 'draft',
+    terms: { en: ['signal'], fr: ['signal'] },
+    label: 'Signal',
+    definition: 'A test definition of a signal.',
+    sourceIds: ['src-1'],
+    sources: [source],
+  },
+]
+
+const timeline: TimelineEntry[] = [
+  {
+    machineId: 'machine-m',
+    name: 'Test Lander',
+    missionId: 'mission-a',
+    missionName: 'Test Mission',
+    destinationId: 'moon',
+    date: { value: '1969-07-20', sourceIds: ['src-1'] },
+    dateLabel: 'landing',
+    status: { value: 'inactive', sourceIds: ['src-1'] },
+  },
+  {
+    machineId: 'machine-a',
+    name: 'Test Rover',
+    missionId: 'mission-a',
+    missionName: 'Test Mission',
+    destinationId: 'mars',
+    date: { value: '2004-01-04', sourceIds: ['src-1'] },
+    dateLabel: 'landing',
+    status: { value: 'mission-ended', sourceIds: ['src-1'] },
+  },
+]
+
 const ROUTES: Record<string, unknown> = {
+  '/api/destinations': [
+    { ...destination('moon', 'Moon'), missions: undefined },
+    { ...destination('mars', 'Mars'), missions: undefined },
+  ],
+  '/api/stories': [{ id: 'story-a', title: 'The test story', status: 'draft', missionIds: ['mission-a'] }],
+  '/api/glossary': glossary,
+  '/api/timeline': timeline,
   '/api/destinations/moon': destination('moon', 'Moon'),
   '/api/destinations/mars': destination('mars', 'Mars'),
   '/api/missions/mission-a': mission,

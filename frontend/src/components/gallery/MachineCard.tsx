@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef } from 'react'
+import { useEffect, useRef, type ReactNode } from 'react'
 import { ArrowRight, MapPin } from 'lucide-react'
 import { Link, useSearchParams } from 'react-router'
 import { api } from '@/api/client'
@@ -6,13 +6,14 @@ import type { Machine, StorySummary } from '@/api/types'
 import { paths } from '@/app/paths'
 import { LoadState } from '@/components/common/LoadState'
 import { StatusBadge } from '@/components/machine/StatusBadge'
-import { MediaFigure } from '@/components/media/MediaFigure'
+import { CoverPhoto } from '@/components/media/CoverPhoto'
 import { RelationEnds } from '@/components/relations/RelationEnds'
 import { SourceList } from '@/components/sources/SourceList'
 import { useApi } from '@/hooks/useApi'
 import { useTranslation } from '@/i18n'
+import { record } from '@/lib/explorerLog'
 import { formatPartialDate } from '@/lib/formatDate'
-import { ctaGhost, ctaPrimary, eyebrow } from '@/lib/styles'
+import { ctaPrimary, eyebrow } from '@/lib/styles'
 import { cn } from '@/lib/utils'
 
 interface MachineCardProps {
@@ -22,110 +23,114 @@ interface MachineCardProps {
 }
 
 /**
- * EQUIP-002: summary of one machine; photos, videos, relations and sources load when the
- * visitor asks. The open card lives in the URL (?machine=<id>, US-3.2): it can be shared,
- * reloaded, and reached from "Exit story". Escape closes it and gives the focus back.
+ * EQUIP-002, told as a short story (US-5.9): one photo of the machine, then what it did,
+ * what became of it and what it passed on — each a sourced fact from the content, under a
+ * plain heading. No gallery: pictures belong to the moments of the mission log above.
+ * `?machine=<id>` (US-3.2, map, "Exit story") selects it: highlighted and brought into view.
  */
 export function MachineCard({ machine, story }: MachineCardProps) {
   const { t, locale } = useTranslation()
-  const [params, setParams] = useSearchParams()
-  const open = params.get('machine') === machine.id
-  const panelId = useId()
-  const toggleRef = useRef<HTMLButtonElement>(null)
+  const [params] = useSearchParams()
+  const selected = params.get('machine') === machine.id
   const cardRef = useRef<HTMLElement>(null)
 
-  const setOpen = (value: boolean) => {
-    const next = new URLSearchParams(params)
-    if (value) next.set('machine', machine.id)
-    else next.delete('machine')
-    // replace: opening details is a selection, not a new page in the history (ARCHITECTURE §4).
-    setParams(next, { replace: true, preventScrollReset: true })
-  }
-
-  // Escape closes the open details when the focus is anywhere in this card (US-3.2 criterion 3).
-  const closeRef = useRef(() => setOpen(false))
+  // Explorer log (US-5.8): a machine scrolled into view, or selected, has been examined.
   useEffect(() => {
-    closeRef.current = () => setOpen(false)
-  })
-  useEffect(() => {
-    if (!open) return
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key !== 'Escape' || !cardRef.current?.contains(document.activeElement)) return
-      closeRef.current()
-      toggleRef.current?.focus()
-    }
-    document.addEventListener('keydown', onKeyDown)
-    return () => document.removeEventListener('keydown', onKeyDown)
-  }, [open])
+    const card = cardRef.current
+    if (selected) record('machines', machine.id)
+    if (!card || typeof IntersectionObserver === 'undefined') return
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (!entries[0]?.isIntersecting) return
+        record('machines', machine.id)
+        observer.disconnect()
+      },
+      { threshold: 0.35 },
+    )
+    observer.observe(card)
+    return () => observer.disconnect()
+  }, [machine.id, selected])
 
   return (
     <article
       ref={cardRef}
       id={`machine-${machine.id}`}
-      className="glass group/card relative h-full scroll-mt-24 overflow-hidden rounded-2xl p-5 transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:border-world/60 hover:shadow-[0_12px_40px_-16px_var(--world-accent)] focus-within:border-world/60 sm:p-6"
+      aria-current={selected ? 'true' : undefined}
+      className={cn(
+        'glass relative scroll-mt-24 overflow-hidden rounded-3xl transition-[border-color,box-shadow] duration-300',
+        // SYNC-001/002: the selected machine stands out (outline + glow, not colour alone).
+        selected && 'border-world shadow-[0_0_0_2px_var(--world-accent),0_20px_60px_-20px_var(--world-accent)]',
+      )}
     >
-      {/* Light sweep along the top edge on hover: decoration only. */}
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-world to-transparent opacity-40 transition-opacity group-hover/card:opacity-100"
-      />
-      <p className={cn(eyebrow, 'text-world')}>{t(`machineType.${machine.type}`)}</p>
-      <h4 className="mt-2 font-heading text-2xl font-bold">{machine.name}</h4>
+      <div className="grid lg:grid-cols-[1.1fr_1fr]">
+        {machine.cover && <CoverPhoto media={machine.cover} className="aspect-[16/10] lg:order-2 lg:aspect-auto lg:min-h-full" />}
 
-      <dl className="mt-3 space-y-1.5 text-sm">
-        {machine.date && (
-          <div className="flex flex-wrap gap-x-2">
-            <dt className="text-moon-dust">{t(`dateLabel.${machine.dateLabel ?? 'landing'}`)}</dt>
-            <dd className="font-mono">
-              <time dateTime={machine.date.value}>{formatPartialDate(machine.date.value, locale)}</time>
-            </dd>
-          </div>
-        )}
-        <div className="flex flex-wrap items-center gap-x-2">
-          <dt className="sr-only">{t('status.label')}</dt>
-          <dd>
-            <StatusBadge status={machine.status.value} />
-          </dd>
+        <div className="p-5 sm:p-8">
+          <p className={cn(eyebrow, 'text-world')}>{t(`machineType.${machine.type}`)}</p>
+          <h4 className="mt-2 font-heading text-3xl font-bold sm:text-4xl">{machine.name}</h4>
+
+          <dl className="mt-4 space-y-2 text-sm">
+            {machine.date && (
+              <div className="flex flex-wrap gap-x-2">
+                <dt className="text-moon-dust">{t(`dateLabel.${machine.dateLabel ?? 'landing'}`)}</dt>
+                <dd className="font-mono">
+                  <time dateTime={machine.date.value}>{formatPartialDate(machine.date.value, locale)}</time>
+                </dd>
+              </div>
+            )}
+            <div className="flex flex-wrap items-center gap-x-2">
+              <dt className="sr-only">{t('status.label')}</dt>
+              <dd>
+                <StatusBadge status={machine.status.value} />
+              </dd>
+            </div>
+            <div className="flex items-start gap-1.5 text-moon-dust">
+              <dt className="sr-only">{t('destination.location')}</dt>
+              <MapPin aria-hidden="true" className="mt-0.5 size-4 shrink-0" />
+              <dd>
+                {machine.locationName?.value}
+                {!machine.coordinates && <span className="block text-xs">{t('destination.locationNotMapped')}</span>}
+              </dd>
+            </div>
+          </dl>
+
+          {machine.scienceSummary && (
+            <Chapter title={t('destination.whatItDid')}>
+              <p className="text-lg leading-relaxed">{machine.scienceSummary.value}</p>
+            </Chapter>
+          )}
+          {machine.status.note && (
+            <Chapter title={t('destination.whatBecame')}>
+              <p className="leading-relaxed text-starlight/90">{machine.status.note}</p>
+            </Chapter>
+          )}
+
+          {story && (
+            <Link to={`${paths.story(story.id)}?from=${encodeURIComponent(machine.id)}`} className={cn(ctaPrimary, 'mt-6')}>
+              {t('destination.discoverStory')}
+              <ArrowRight aria-hidden="true" className="size-4" />
+            </Link>
+          )}
         </div>
-        <div className="flex items-start gap-1.5 text-moon-dust">
-          <dt className="sr-only">{t('destination.location')}</dt>
-          <MapPin aria-hidden="true" className="mt-0.5 size-4 shrink-0" />
-          <dd>
-            {machine.locationName?.value}
-            {!machine.coordinates && <span className="block text-xs">{t('destination.locationNotMapped')}</span>}
-          </dd>
-        </div>
-      </dl>
-
-      {machine.scienceSummary && <p className="mt-3">{machine.scienceSummary.value}</p>}
-      {machine.status.note && <p className="mt-2 text-sm text-moon-dust">{machine.status.note}</p>}
-
-      <div className="mt-4 flex flex-wrap gap-2">
-        {story && (
-          <Link to={`${paths.story(story.id)}?from=${encodeURIComponent(machine.id)}`} className={ctaPrimary}>
-            {t('destination.discoverStory')}
-            <ArrowRight aria-hidden="true" className="size-4" />
-          </Link>
-        )}
-        <button
-          ref={toggleRef}
-          type="button"
-          aria-expanded={open}
-          aria-controls={panelId}
-          onClick={() => setOpen(!open)}
-          className={ctaGhost}
-        >
-          {open ? t('destination.detailsHide') : t('destination.detailsShow')}
-        </button>
       </div>
 
-      <div id={panelId} hidden={!open} className="mt-4">
-        {open && <MachineDetails machineId={machine.id} />}
+      <div className="border-t border-white/5 p-5 sm:p-8">
+        <MachineDetails machineId={machine.id} />
       </div>
     </article>
   )
 }
 
+function Chapter({ title, children }: { title: string; children: ReactNode }) {
+  return (
+    <section className="mt-6">
+      <h5 className={cn(eyebrow, 'text-moon-dust')}>{title}</h5>
+      <div className="mt-2">{children}</div>
+    </section>
+  )
+}
+
+/** What the machine passed on (relations) and its sources — loaded with the machine's details. */
 function MachineDetails({ machineId }: { machineId: string }) {
   const { t } = useTranslation()
   const detail = useApi(`machine:${machineId}`, (lang, signal) => api.machine(machineId, lang, signal))
@@ -133,22 +138,13 @@ function MachineDetails({ machineId }: { machineId: string }) {
   if (detail.status !== 'success') return <LoadState status={detail.status} onRetry={detail.retry} />
 
   return (
-    <div className="space-y-4">
-      {detail.data.media.length === 0 ? (
-        <p className="text-sm text-moon-dust">{t('destination.noMedia')}</p>
-      ) : (
-        <div className="grid gap-3 sm:grid-cols-2">
-          {detail.data.media.map((m) => (
-            <MediaFigure key={m.id} media={m} />
-          ))}
-        </div>
-      )}
+    <div className="space-y-8">
       {detail.data.relations.length > 0 && (
-        <section>
-          <h5 className="mb-2 text-sm font-semibold">{t('story.relationsTitle')}</h5>
-          <ul className="space-y-3">
+        <section aria-label={t('story.relationsTitle')}>
+          <h5 className={cn(eyebrow, 'mb-3 text-moon-dust')}>{t('story.relationsTitle')}</h5>
+          <ul className="grid gap-3 md:grid-cols-2">
             {detail.data.relations.map((relation) => (
-              <li key={relation.id} className="rounded-xl border border-world/30 bg-void/40 p-3 text-sm">
+              <li key={relation.id} className="rounded-2xl border border-world/30 bg-void/40 p-4 text-sm">
                 <RelationEnds relation={relation} />
                 <p className="mt-1">{relation.transmitted}</p>
                 <p className="mt-1 text-moon-dust">
@@ -160,8 +156,9 @@ function MachineDetails({ machineId }: { machineId: string }) {
           </ul>
         </section>
       )}
-      <section>
-        <h5 className="mb-2 text-sm font-semibold">{t('sources.count', { count: detail.data.sources.length })}</h5>
+
+      <section aria-label={t('sources.count', { count: detail.data.sources.length })}>
+        <p className={cn(eyebrow, 'mb-3 text-moon-dust')}>{t('sources.count', { count: detail.data.sources.length })}</p>
         <SourceList sources={detail.data.sources} />
       </section>
     </div>

@@ -4,7 +4,7 @@ import { useTranslation } from '@/i18n'
 import { cn } from '@/lib/utils'
 
 const linkClass =
-  'relative inline-flex min-h-11 items-center rounded-full px-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground sm:px-3 aria-[current=page]:text-foreground after:absolute after:inset-x-3 after:bottom-1.5 after:h-0.5 after:origin-center after:scale-x-0 after:rounded-full after:bg-stellar-cyan after:transition-transform aria-[current=page]:after:scale-x-100'
+  'relative inline-flex min-h-11 items-center rounded-full whitespace-nowrap px-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground sm:px-3 aria-[current=page]:text-foreground after:absolute after:inset-x-3 after:bottom-1.5 after:h-0.5 after:origin-center after:scale-x-0 after:rounded-full after:bg-stellar-cyan after:transition-transform aria-[current=page]:after:scale-x-100'
 
 export function SiteNavigation() {
   const { t } = useTranslation()
