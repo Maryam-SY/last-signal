@@ -65,6 +65,6 @@ Les deux fichiers sont servis par `assets.science.nasa.gov` avec `Access-Control
 ## Points ouverts
 
 - Le PO doit acter cette fonctionnalité P2 dans SCOPE.md.
-- La piste contenu doit supprimer ou remplacer `mer-3d-model` (lien mort, pas de modèle NASA trouvé pour les rovers MER).
+- ~~La piste contenu doit supprimer ou remplacer `mer-3d-model`~~ — **fait le 2026-11-14 à la demande de l'équipe** : média supprimé (lien mort, aucun modèle NASA pour les rovers MER). Spirit et Opportunity sont représentés par leurs photos. La photo `nasa-lib-pia05044` (Spirit vu d'en haut sur son atterrisseur) passe avant celle du site d'atterrissage, pour que le parcours montre le rover lui-même.
 - Des textures non visibles sur les captures pourraient porter un logo : à revoir en faisant tourner les modèles.
 - Vérifier sur un vrai téléphone la fluidité du rendu WebGL dans la page déjà animée.
