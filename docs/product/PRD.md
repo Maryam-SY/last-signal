@@ -409,7 +409,7 @@ Le détail des niveaux de priorité est dans [SCOPE.md](SCOPE.md).
 - Destinations autres que Lune et Mars, objets de l'espace profond, orbite solaire, Vesta, Cérès, Éros ; **Pioneer 10**.
 - Comptes, authentification, base de données, CMS, analytics personnelles.
 - Carte 3D, globe, moteur cartographique (Leaflet, MapLibre…).
-- Audio, quiz, PWA hors ligne, traduction française complète, animations scroll/parallax avancées (P2).
+- Audio, quiz, PWA hors ligne, traduction française complète, animations scroll/parallax avancées dans les récits (P2 ; l'accueil fait exception, ADR-018).
 - Toute fonctionnalité P1 tant que le P0 n'a pas passé les gates de phase (voir [SCOPE.md](SCOPE.md)).
 
 ## 13. Traçabilité

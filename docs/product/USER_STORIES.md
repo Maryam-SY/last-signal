@@ -93,7 +93,7 @@ Personas : **Visiteur** (10-15 ans, principal), **Curieux** (adulte), **Équipe*
 
 ### US-2.1 — Choisir sa destination
 - **Story** : En tant que visiteur, je souhaite voir clairement les deux destinations et en choisir une afin de commencer mon exploration.
-- **Priorité** : P0 · **Exigences** : DEST-001, DEST-003, DEST-004, DEST-005, NFR-A11Y-001/005/006/007
+- **Priorité** : P0 · **Exigences** : DEST-001, DEST-003, DEST-004, DEST-005, NFR-A11Y-001/005/006/007 · **Statut** : `review` (fusionnée sur `main` via PR #3 ; accueil « depth journey », ADR-018 ; passage en `done` par un humain)
 - **Critères** :
   1. Étant donné l'accueil sur un téléphone de 360 px, alors les deux destinations, leur nom et leur action sont visibles sans défilement horizontal.
   2. Quand j'active la carte « Mars » à la souris, au toucher ou au clavier, alors j'arrive sur `/explore/mars`.
