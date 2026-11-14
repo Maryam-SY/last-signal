@@ -1,9 +1,16 @@
 import '@testing-library/jest-dom/vitest'
-import { afterEach } from 'vitest'
+import { afterEach, beforeEach, vi } from 'vitest'
 import { cleanup } from '@testing-library/react'
+import { installMockApi } from './mockApi'
+
+// Every test talks to a fake API built from fixtures; tests can override it with vi.stubGlobal.
+beforeEach(() => {
+  installMockApi()
+})
 
 afterEach(() => {
   cleanup()
+  vi.unstubAllGlobals()
 })
 
 // jsdom has no canvas implementation; WarpField simply skips drawing when there is no context.

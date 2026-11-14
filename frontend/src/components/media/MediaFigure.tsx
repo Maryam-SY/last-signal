@@ -1,0 +1,81 @@
+import { Box, ExternalLink, FileText, PlayCircle } from 'lucide-react'
+import type { Media } from '@/api/types'
+import { useTranslation } from '@/i18n'
+import { cn } from '@/lib/utils'
+import { DepictionBadge } from './DepictionBadge'
+
+interface MediaFigureProps {
+  media: Media
+  className?: string
+}
+
+/**
+ * Displays one media reference (image, animation, video, 3D model or document) with its
+ * depiction label, credit and a link to the original NASA page. Files are never copied:
+ * they are loaded from NASA servers (ADR-017).
+ */
+export function MediaFigure({ media, className }: MediaFigureProps) {
+  const { t } = useTranslation()
+
+  return (
+    <figure className={cn('overflow-hidden rounded-lg border border-stellar-border/60 bg-deep-space', className)}>
+      <div className="relative">
+        <MediaBody media={media} />
+        <div className="pointer-events-none absolute top-2 left-2">
+          <DepictionBadge depiction={media.depiction} />
+        </div>
+      </div>
+      <figcaption className="space-y-1 p-3 text-sm">
+        <p>{media.alt}</p>
+        <p className="text-xs text-moon-dust">
+          {media.credit ? t('media.credit', { credit: media.credit }) : t('media.noCredit')}
+          {' · '}
+          <a
+            href={media.pageUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-cosmic-indigo hover:underline"
+          >
+            {t('media.viewOriginal')}
+            <ExternalLink aria-hidden="true" className="size-3" />
+            <span className="sr-only">{t('media.newTab')}</span>
+          </a>
+        </p>
+      </figcaption>
+    </figure>
+  )
+}
+
+function MediaBody({ media }: { media: Media }) {
+  const { t } = useTranslation()
+  const isYoutube = /youtube\.com|youtu\.be/.test(media.url)
+
+  if (media.type === 'image' || media.type === 'animation') {
+    return <img src={media.url} alt={media.alt} loading="lazy" decoding="async" className="aspect-video w-full object-cover" />
+  }
+
+  if (media.type === 'video' && !isYoutube) {
+    return (
+      <video controls preload="none" poster={media.thumbnailUrl ?? undefined} className="aspect-video w-full bg-void" aria-label={media.alt}>
+        <source src={media.url} type="video/mp4" />
+        {t('media.videoUnsupported')}
+      </video>
+    )
+  }
+
+  // YouTube videos, 3D models and documents open on their official page (no third-party embed).
+  const label = media.type === '3d-model' ? t('media.open3d') : media.type === 'document' ? t('media.openDocument') : t('media.openVideo')
+  const Icon = media.type === '3d-model' ? Box : media.type === 'document' ? FileText : PlayCircle
+  return (
+    <a
+      href={media.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex aspect-video w-full flex-col items-center justify-center gap-2 bg-nebula-surface text-center text-sm font-medium text-cosmic-indigo hover:underline"
+    >
+      <Icon aria-hidden="true" className="size-10" />
+      {label}
+      <span className="sr-only">{t('media.newTab')}</span>
+    </a>
+  )
+}

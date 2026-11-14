@@ -2,6 +2,7 @@ import { ArrowLeft } from 'lucide-react'
 import { Link, useParams } from 'react-router'
 import { paths } from '@/app/paths'
 import { LivePlanet } from '@/components/celestial/LivePlanet'
+import { MissionGallery } from '@/components/gallery/MissionGallery'
 import { Starfield } from '@/components/celestial/Starfield'
 import { WORLD_TRANSITION_NAME } from '@/components/home/worldTransition'
 import { getBodyByDestination } from '@/content/celestialBodies'
@@ -47,9 +48,12 @@ function DestinationView({ destinationId }: { destinationId: DestinationId }) {
               <p className="mt-5 max-w-xl text-moon-dust">
                 {t(`bodies.${destinationId}.description`)}
               </p>
-              <p className="mt-8 max-w-xl rounded-lg border border-stellar-border/60 bg-nebula-surface/40 p-4 text-sm text-moon-dust">
-                {t('destination.placeholder', { destination: name })}
-              </p>
+              <a
+                href="#missions-title"
+                className="mt-8 inline-flex min-h-11 items-center rounded-md border border-stellar-cyan/60 px-4 text-sm font-medium hover:bg-nebula-surface"
+              >
+                {t('destination.missionsTitle')}
+              </a>
             </div>
 
             {body && (
@@ -62,6 +66,7 @@ function DestinationView({ destinationId }: { destinationId: DestinationId }) {
             )}
           </div>
         </section>
+        <MissionGallery destinationId={destinationId} />
       </div>
     </div>
   )

@@ -96,8 +96,15 @@ export class ContentRepository {
     const mediaIds = new Set(story.steps.flatMap((step) => step.blocks.flatMap((b) => b.mediaIds ?? [])))
     const relationIds = new Set(story.steps.flatMap((step) => step.relationIds ?? []))
     const relations = this.content.relations.filter((r) => relationIds.has(r.id))
+    const firstMission = this.missions.get(story.missionIds[0] ?? '')
     return {
       ...story,
+      // Lets the interface offer "back to the Moon / Mars" without another request.
+      destinationId: firstMission?.destinationId ?? null,
+      missions: story.missionIds
+        .map((mid) => this.missions.get(mid))
+        .filter((m): m is Mission => m !== undefined)
+        .map((m) => ({ id: m.id, name: m.name, destinationId: m.destinationId })),
       relations,
       media: [...mediaIds].map((mid) => this.media.get(mid)).filter((m): m is Media => m !== undefined),
       sources: this.sourcesCitedBy({ story, relations }),

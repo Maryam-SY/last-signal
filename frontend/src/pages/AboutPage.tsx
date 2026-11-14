@@ -1,3 +1,7 @@
+import { api } from '@/api/client'
+import { LoadState } from '@/components/common/LoadState'
+import { SourceList } from '@/components/sources/SourceList'
+import { useApi } from '@/hooks/useApi'
 import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 import { useTranslation, type MessageKey } from '@/i18n'
 
@@ -21,7 +25,7 @@ export function AboutPage() {
           <h2 id={`about-${id}`} className="text-xl font-semibold">
             {t(titleKey)}
           </h2>
-          <p className="mt-2 text-muted-foreground">{t('about.comingSoon')}</p>
+          {id === 'sources' ? <AllSources /> : <p className="mt-2 text-muted-foreground">{t('about.comingSoon')}</p>}
           {id === 'credits' && (
             <p className="mt-3 text-sm text-muted-foreground">
               {t('about.imagesCredit')}{' '}
@@ -38,5 +42,18 @@ export function AboutPage() {
         </section>
       ))}
     </div>
+  )
+}
+
+/** SOURCE-004: every source used on the site, each with its own #source-{id} anchor. */
+function AllSources() {
+  const { t } = useTranslation()
+  const sources = useApi('sources', (lang, signal) => api.sources(lang, signal))
+  if (sources.status !== 'success') return <LoadState status={sources.status} onRetry={sources.retry} />
+  return (
+    <>
+      <p className="mt-2 mb-4 text-muted-foreground">{t('about.sourcesIntro')}</p>
+      <SourceList sources={sources.data} />
+    </>
   )
 }
