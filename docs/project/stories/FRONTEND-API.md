@@ -31,7 +31,14 @@
 ## Limites connues
 
 - **Sous-titres vidéo** : les vidéos NASA n'ont pas de piste `<track>` (avertissement lint `media-has-caption`). Les manifestes NASA fournissent parfois des fichiers `.srt`/`.vtt` : à ajouter au modèle `Media`.
-- **Pas de sélecteur de langue** : l'interface et l'API gèrent `fr`/`en`, mais rien ne permet encore de changer de langue à l'écran (OPEN-06).
+- ~~Pas de sélecteur de langue~~ → **ajouté** (voir ci-dessous).
+
+## Ajout : sélecteur de langue EN / FR (2026-11-14)
+
+- Deux boutons dans l'en-tête (`LanguageSwitcher`) : `aria-pressed`, nom accessible « English (EN) » / « Français (FR) » avec `lang` correspondant, cibles de 44 × 44 px. Sur mobile, ils sont sur la même ligne que le logo.
+- Changer de langue traduit toute l'interface, met à jour `<html lang>` et **recharge le contenu de l'API** dans la nouvelle langue (`useApi` dépend de la langue).
+- **Langue au premier passage** (proposition, OPEN-06) : le choix enregistré s'il existe, sinon la **première langue supportée** dans l'ordre de préférence du navigateur (`["en-US","fr-FR"]` → anglais ; `["wo-SN","fr"]` → français), sinon l'anglais. Le choix est mémorisé dans le navigateur (`localStorage`, clé `aeroreborn.locale`), sans erreur si le stockage est bloqué.
+- Vérifié dans le navigateur avec le vrai backend : bascule FR, puis contenu de l'API en français (« 20 avril 1967 », « Atterrisseur »), choix conservé après rechargement ; en-tête sur 2 lignes à 375 px (101 px) et sur 1 ligne à 1280 px (66 px), sans débordement. 7 tests ajoutés (38 au total).
 - **Pas de carte 2D** (US-3.3/3.4).
 - **Production** : `VITE_API_BASE_URL` doit pointer vers l'API déployée ; l'hébergement de l'API reste à décider (OPEN-05).
 - **Lighthouse** non exécuté.

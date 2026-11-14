@@ -15,6 +15,11 @@ export const en = {
     explore: 'Explore',
     about: 'About & Sources',
   },
+  language: {
+    label: 'Language',
+    en: 'English',
+    fr: 'Français',
+  },
   explore: {
     title: 'Choose your destination',
     intro:

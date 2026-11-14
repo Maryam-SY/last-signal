@@ -1,4 +1,5 @@
 import { Link, Outlet, useMatch } from 'react-router'
+import { LanguageSwitcher } from '@/components/navigation/LanguageSwitcher'
 import { SiteNavigation } from '@/components/navigation/SiteNavigation'
 import { useTranslation } from '@/i18n'
 import { cn } from '@/lib/utils'
@@ -26,11 +27,17 @@ export function Layout() {
             : 'relative border-b border-border bg-deep-space',
         )}
       >
-        <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-2 px-4 py-2">
-          <Link to={paths.home()} className="inline-flex min-h-11 items-center font-heading text-lg font-bold">
+        {/* Mobile: logo + language on the first row, navigation below. Desktop: one row. */}
+        <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-x-2 px-4 py-1 sm:py-2">
+          <Link to={paths.home()} className="order-1 inline-flex min-h-11 items-center font-heading text-lg font-bold">
             {t('app.name')}
           </Link>
-          <SiteNavigation />
+          <div className="order-3 w-full sm:order-2 sm:ml-auto sm:w-auto">
+            <SiteNavigation />
+          </div>
+          <div className="order-2 sm:order-3">
+            <LanguageSwitcher />
+          </div>
         </div>
       </header>
 

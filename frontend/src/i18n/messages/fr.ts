@@ -13,6 +13,11 @@ export const fr: Messages = {
     explore: 'Explorer',
     about: 'À propos et sources',
   },
+  language: {
+    label: 'Langue',
+    en: 'English',
+    fr: 'Français',
+  },
   explore: {
     title: 'Choisis ta destination',
     intro:
