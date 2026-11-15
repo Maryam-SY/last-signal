@@ -44,6 +44,8 @@ export interface GlobeConfig {
   map: string
   /** 4096×2048 colour map, used when the globe is drawn large. */
   mapHd?: string
+  /** 1024×512 colour map for phones and tablets (light graphics: 4 to 5 times lighter to download). */
+  mapLite?: string
   /** Elevation map used as relief (grey levels). */
   bump?: string
   bumpScale?: number
@@ -81,6 +83,7 @@ export const CELESTIAL_BODIES: readonly CelestialBody[] = [
     // NASA SVS CGI Moon Kit: LRO camera colour mosaic + LOLA elevation (public domain).
     globe: {
       map: '/planets/globe/moon-2k.webp',
+      mapLite: '/planets/globe/moon-1k.webp',
       mapHd: '/planets/globe/moon-4k.webp',
       bump: '/planets/globe/moon-relief.webp',
       bumpScale: 2.2,
@@ -97,6 +100,7 @@ export const CELESTIAL_BODIES: readonly CelestialBody[] = [
     // USGS Astrogeology: Viking MDIM 2.1 colourised global mosaic (NASA/JPL/USGS, public domain).
     globe: {
       map: '/planets/globe/mars-2k.webp',
+      mapLite: '/planets/globe/mars-1k.webp',
       mapHd: '/planets/globe/mars-4k.webp',
       axialTilt: 25.2,
       atmosphere: { color: '#ffb186', strength: 1.9 },

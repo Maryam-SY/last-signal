@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { SkipForward, Volume2 } from 'lucide-react'
 import { useTranslation, type MessageKey } from '@/i18n'
 import { createIntroScore, type IntroScore } from '@/lib/introSound'
+import { liteGraphics } from '@/lib/device'
 import { audioContextClass } from '@/lib/spaceAudio'
 import { FADE_MS, markIntroSeen } from './introSession'
 
@@ -47,6 +48,8 @@ export function IntroVideo({ onReveal, onDone }: IntroVideoProps) {
   const [soundOn, setSoundOn] = useState(false)
   // The browser can make sound at all (Web Audio): the "turn sound on" button is offered.
   const [hasScore] = useState(() => audioContextClass() !== undefined)
+  // Phones and tablets: the same footage in 540p (0.8 MB instead of 1.8 MB, 1969 TV quality either way).
+  const [videoSrc] = useState(() => (liteGraphics() ? '/media/intro-nasa-mobile.mp4' : '/media/intro-nasa.mp4'))
   const finaleTimer = useRef<number | undefined>(undefined)
   const doneTimer = useRef<number | undefined>(undefined)
 
@@ -147,7 +150,7 @@ export function IntroVideo({ onReveal, onDone }: IntroVideoProps) {
     >
       <video
         ref={videoRef}
-        src="/media/intro-nasa.mp4"
+        src={videoSrc}
         poster="/media/intro-nasa-poster.jpg"
         muted
         playsInline

@@ -218,7 +218,7 @@ function MachineLife({ machine, mission, destination, story }: MachineLifeProps)
         >
           {cover && (
             <div className="absolute inset-0 -z-10" style={{ viewTransitionName: MACHINE_TRANSITION_NAME }}>
-              <img src={sceneSrc(cover)} alt={cover.alt} decoding="async" className="machine-hero-photo size-full object-cover" />
+              <img src={sceneSrc(cover)} alt={cover.alt} decoding="async" fetchPriority="high" className="machine-hero-photo size-full object-cover" />
               <span aria-hidden="true" className="hero-scan" />
               <span className="absolute top-20 left-5 sm:left-8">
                 <DepictionBadge depiction={cover.depiction} />

@@ -232,12 +232,13 @@
   background-image:
     radial-gradient(ellipse at 50% 45%, transparent 35%, rgb(8 11 18 / 0.75) 100%),
     linear-gradient(rgb(8 11 18 / var(--sky-veil, 0.5)), rgb(8 11 18 / var(--sky-veil, 0.5))),
-    url('/media/sky-milkyway-pano.webp');
+    url('/media/sky-milkyway-pano-1k.webp');
   background-size: cover;
   background-position: center;
   will-change: transform;
 }
-@media (min-width: 900px), (min-resolution: 2dppx) {
+/* Large screens: the 2048 px sky (phones keep the 1024 px one: 7 times lighter). */
+@media (min-width: 1024px) {
   .space-sky::before {
     background-image:
       radial-gradient(ellipse at 50% 45%, transparent 35%, rgb(8 11 18 / 0.75) 100%),

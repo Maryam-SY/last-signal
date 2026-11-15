@@ -67,7 +67,7 @@ function loadImage(url: string): Promise<HTMLImageElement> {
 
 /** Starts fetching a globe's textures before any canvas exists (e.g. while the intro plays). */
 export function preloadGlobe(config: GlobeConfig): void {
-  void loadImage(config.map).catch(() => undefined)
+  void loadImage(liteGraphics() ? (config.mapLite ?? config.map) : config.map).catch(() => undefined)
   if (config.bump) void loadImage(config.bump).catch(() => undefined)
 }
 
@@ -106,7 +106,8 @@ export function globePixelRatio(): number {
 
 /** Picks the 4k map when the globe is drawn larger than ~760 device pixels. */
 export function globeMapUrl(config: GlobeConfig, devicePixels: number): string {
-  return config.mapHd && devicePixels > 760 && !liteGraphics() ? config.mapHd : config.map
+  if (liteGraphics()) return config.mapLite ?? config.map
+  return config.mapHd && devicePixels > 760 ? config.mapHd : config.map
 }
 
 /**

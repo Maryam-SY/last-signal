@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useMotionLoop } from '@/hooks/useMotionLoop'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
-import { canUseWebGL } from '@/lib/device'
+import { canUseWebGL, liteGraphics } from '@/lib/device'
 import { cn } from '@/lib/utils'
 import type { SpaceScene as SpaceSceneInstance } from './space/createSpaceScene'
 import { Starfield } from './Starfield'
@@ -34,7 +34,9 @@ export function SpaceScene({ bright = false }: SpaceSceneProps) {
   const [stillRetired, setStillRetired] = useState(false)
   const motion = useRef({ time: 0, travel: 0, brightness: bright ? 1 : 0.35, scrollY: 0 })
   const brightRef = useRef(bright)
-  const webgl = canUseWebGL()
+  // Phones and tablets keep the still sky (photograph + CSS stars): no 3D library to download
+  // and no GPU work for a background that sits dimmed behind the text.
+  const [webgl] = useState(() => canUseWebGL() && !liteGraphics())
 
   useEffect(() => {
     brightRef.current = bright
