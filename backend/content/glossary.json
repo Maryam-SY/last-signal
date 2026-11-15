@@ -2,111 +2,1013 @@
   {
     "id": "rover",
     "status": "draft",
-    "terms": { "en": ["rover", "rovers"], "fr": ["rover", "rovers"] },
-    "label": { "en": "Rover", "fr": "Rover" },
+    "terms": {
+      "en": [
+        "rover",
+        "rovers"
+      ],
+      "fr": [
+        "rover",
+        "rovers"
+      ]
+    },
+    "label": {
+      "en": "Rover",
+      "fr": "Rover"
+    },
     "definition": {
       "en": "A robot on wheels that can drive around on the surface of another world.",
       "fr": "Un robot à roues qui peut se déplacer à la surface d’un autre monde."
     },
-    "sourceIds": ["nasa-science-mer", "nssdca-2003-027a", "nssdca-2003-032a"]
+    "sourceIds": [
+      "nasa-science-mer",
+      "nssdca-2003-027a",
+      "nssdca-2003-032a"
+    ]
   },
   {
     "id": "seismometer",
     "status": "draft",
-    "terms": { "en": ["seismometer"], "fr": ["sismomètre"] },
-    "label": { "en": "Seismometer", "fr": "Sismomètre" },
+    "terms": {
+      "en": [
+        "seismometer"
+      ],
+      "fr": [
+        "sismomètre"
+      ]
+    },
+    "label": {
+      "en": "Seismometer",
+      "fr": "Sismomètre"
+    },
     "definition": {
       "en": "An instrument that “listens” for quakes — on the Moon, moonquakes.",
       "fr": "Un instrument qui « écoute » les tremblements du sol — sur la Lune, les tremblements de Lune."
     },
-    "sourceIds": ["jpl-llr-2004", "nssdca-1969-059c"]
+    "sourceIds": [
+      "jpl-llr-2004",
+      "nssdca-1969-059c"
+    ]
   },
   {
     "id": "corner-cube-prism",
     "status": "draft",
-    "terms": { "en": ["prism", "prisms"], "fr": ["prisme", "prismes"] },
-    "label": { "en": "Corner-cube prism", "fr": "Prisme en coin de cube" },
+    "terms": {
+      "en": [
+        "prism",
+        "prisms"
+      ],
+      "fr": [
+        "prisme",
+        "prismes"
+      ]
+    },
+    "label": {
+      "en": "Corner-cube prism",
+      "fr": "Prisme en coin de cube"
+    },
     "definition": {
       "en": "A glass prism shaped like the corner of a cube. Whatever direction light comes from, it sends it straight back — like the reflectors on a bike — without any electricity.",
       "fr": "Un prisme en verre en forme de coin de cube. D’où que vienne la lumière, il la renvoie tout droit — comme les catadioptres d’un vélo — sans aucune électricité."
     },
-    "sourceIds": ["jpl-llr-2004"]
+    "sourceIds": [
+      "jpl-llr-2004"
+    ]
   },
   {
     "id": "photon",
     "status": "draft",
-    "terms": { "en": ["photon"], "fr": ["photon"] },
-    "label": { "en": "Photon", "fr": "Photon" },
+    "terms": {
+      "en": [
+        "photon"
+      ],
+      "fr": [
+        "photon"
+      ]
+    },
+    "label": {
+      "en": "Photon",
+      "fr": "Photon"
+    },
     "definition": {
       "en": "A particle of light.",
       "fr": "Une particule de lumière."
     },
-    "sourceIds": ["jpl-llr-2004"]
+    "sourceIds": [
+      "jpl-llr-2004"
+    ]
   },
   {
     "id": "easep",
     "status": "draft",
-    "terms": { "en": ["EASEP"], "fr": ["EASEP"] },
-    "label": { "en": "EASEP", "fr": "EASEP" },
+    "terms": {
+      "en": [
+        "EASEP"
+      ],
+      "fr": [
+        "EASEP"
+      ]
+    },
+    "label": {
+      "en": "EASEP",
+      "fr": "EASEP"
+    },
     "definition": {
       "en": "The small kit of experiments set up by the Apollo 11 astronauts, including a seismometer powered by solar panels.",
       "fr": "Le petit ensemble d’expériences installé par les astronautes d’Apollo 11, dont un sismomètre alimenté par des panneaux solaires."
     },
-    "sourceIds": ["jpl-llr-2004", "nssdca-1969-059c"]
+    "sourceIds": [
+      "jpl-llr-2004",
+      "nssdca-1969-059c"
+    ]
   },
   {
     "id": "alsep",
     "status": "draft",
-    "terms": { "en": ["ALSEP"], "fr": ["ALSEP"] },
-    "label": { "en": "ALSEP", "fr": "ALSEP" },
+    "terms": {
+      "en": [
+        "ALSEP"
+      ],
+      "fr": [
+        "ALSEP"
+      ]
+    },
+    "label": {
+      "en": "ALSEP",
+      "fr": "ALSEP"
+    },
     "definition": {
       "en": "The science stations left by the later Apollo missions. They worked until they were all switched off on 30 September 1977.",
       "fr": "Les stations scientifiques laissées par les missions Apollo suivantes. Elles ont fonctionné jusqu’à leur arrêt général le 30 septembre 1977."
     },
-    "sourceIds": ["nssdca-1969-059c", "nssdca-1969-099c"]
+    "sourceIds": [
+      "nssdca-1969-059c",
+      "nssdca-1969-099c"
+    ]
   },
   {
     "id": "solar-panel",
     "status": "draft",
-    "terms": { "en": ["solar panel", "solar panels", "solar-powered"], "fr": ["panneau solaire", "panneaux solaires"] },
-    "label": { "en": "Solar panel", "fr": "Panneau solaire" },
+    "terms": {
+      "en": [
+        "solar panel",
+        "solar panels",
+        "solar-powered"
+      ],
+      "fr": [
+        "panneau solaire",
+        "panneaux solaires"
+      ]
+    },
+    "label": {
+      "en": "Solar panel",
+      "fr": "Panneau solaire"
+    },
     "definition": {
       "en": "A panel that lets a machine run on sunlight.",
       "fr": "Un panneau qui permet à une machine de fonctionner grâce à la lumière du Soleil."
     },
-    "sourceIds": ["jpl-opportunity-end-2019", "nasa-science-mer-highlights"]
+    "sourceIds": [
+      "jpl-opportunity-end-2019",
+      "nasa-science-mer-highlights"
+    ]
   },
   {
     "id": "hematite",
     "status": "draft",
-    "terms": { "en": ["hematite"], "fr": ["hématite"] },
-    "label": { "en": "Hematite", "fr": "Hématite" },
+    "terms": {
+      "en": [
+        "hematite"
+      ],
+      "fr": [
+        "hématite"
+      ]
+    },
+    "label": {
+      "en": "Hematite",
+      "fr": "Hématite"
+    },
     "definition": {
       "en": "A mineral that usually forms in water. On Mars, Opportunity found it as small grey balls nicknamed “blueberries”.",
       "fr": "Un minéral qui se forme généralement dans l’eau. Sur Mars, Opportunity en a trouvé sous forme de petites billes grises surnommées « myrtilles »."
     },
-    "sourceIds": ["nasa-science-mer-highlights"]
+    "sourceIds": [
+      "nasa-science-mer-highlights"
+    ]
   },
   {
     "id": "gypsum",
     "status": "draft",
-    "terms": { "en": ["gypsum"], "fr": ["gypse"] },
-    "label": { "en": "Gypsum", "fr": "Gypse" },
+    "terms": {
+      "en": [
+        "gypsum"
+      ],
+      "fr": [
+        "gypse"
+      ]
+    },
+    "label": {
+      "en": "Gypsum",
+      "fr": "Gypse"
+    },
     "definition": {
       "en": "A mineral. On Mars, Opportunity found veins of it left by water flowing through cracks in the rock.",
       "fr": "Un minéral. Sur Mars, Opportunity en a trouvé des veines laissées par de l’eau qui coulait dans les fissures de la roche."
     },
-    "sourceIds": ["nasa-science-mer-highlights"]
+    "sourceIds": [
+      "nasa-science-mer-highlights"
+    ]
   },
   {
     "id": "lunar-night",
     "status": "draft",
-    "terms": { "en": ["lunar night"], "fr": ["nuit lunaire"] },
-    "label": { "en": "Lunar night", "fr": "Nuit lunaire" },
+    "terms": {
+      "en": [
+        "lunar night"
+      ],
+      "fr": [
+        "nuit lunaire"
+      ]
+    },
+    "label": {
+      "en": "Lunar night",
+      "fr": "Nuit lunaire"
+    },
     "definition": {
       "en": "Night on the Moon. It lasts about two weeks — too long for Surveyor 3, which never woke up after it.",
       "fr": "La nuit sur la Lune. Elle dure environ deux semaines — trop longtemps pour Surveyor 3, qui ne s’est jamais réveillé ensuite."
     },
-    "sourceIds": ["nssdca-1967-035a"]
+    "sourceIds": [
+      "nssdca-1967-035a"
+    ]
+  },
+  {
+    "id": "laser-ranging",
+    "status": "draft",
+    "terms": {
+      "en": [
+        "laser ranging",
+        "Laser ranging"
+      ],
+      "fr": [
+        "télémétrie laser"
+      ]
+    },
+    "label": {
+      "en": "Laser ranging",
+      "fr": "Télémétrie laser"
+    },
+    "definition": {
+      "en": "Measuring a distance by timing a laser flash there and back.",
+      "fr": "Mesurer une distance en chronométrant l'aller-retour d'un éclair laser."
+    },
+    "sourceIds": [
+      "jpl-llr-2004"
+    ]
+  },
+  {
+    "id": "nuclear-generator",
+    "status": "draft",
+    "terms": {
+      "en": [
+        "nuclear generator",
+        "nuclear-powered",
+        "radioisotope heater",
+        "radioisotope generator",
+        "SNAP-27",
+        "RTG"
+      ],
+      "fr": [
+        "générateur nucléaire",
+        "réchauffeur radio-isotopique",
+        "générateur à radio-isotope",
+        "SNAP-27"
+      ]
+    },
+    "label": {
+      "en": "Nuclear (radioisotope) generator",
+      "fr": "Générateur nucléaire (à radio-isotope)"
+    },
+    "definition": {
+      "en": "A device that makes electricity or heat from a slowly decaying radioactive material.",
+      "fr": "Un appareil qui tire électricité ou chaleur d'une matière radioactive."
+    },
+    "sourceIds": [
+      "nasa-programs-radioisotope-power-systems"
+    ]
+  },
+  {
+    "id": "thermocouple",
+    "status": "draft",
+    "terms": {
+      "en": [
+        "thermocouple",
+        "thermocouples"
+      ],
+      "fr": [
+        "thermocouple",
+        "thermocouples"
+      ]
+    },
+    "label": {
+      "en": "Thermocouple",
+      "fr": "Thermocouple"
+    },
+    "definition": {
+      "en": "A small part that turns heat straight into electricity.",
+      "fr": "Une petite pièce qui transforme directement la chaleur en électricité."
+    },
+    "sourceIds": [
+      "nasa-page"
+    ]
+  },
+  {
+    "id": "magnetometer",
+    "status": "draft",
+    "terms": {
+      "en": [
+        "magnetometer"
+      ],
+      "fr": [
+        "magnétomètre"
+      ]
+    },
+    "label": {
+      "en": "Magnetometer",
+      "fr": "Magnétomètre"
+    },
+    "definition": {
+      "en": "An instrument that measures magnetic fields.",
+      "fr": "Un instrument qui mesure les champs magnétiques."
+    },
+    "sourceIds": [
+      "nssdca-1969-099c"
+    ]
+  },
+  {
+    "id": "solar-wind",
+    "status": "draft",
+    "terms": {
+      "en": [
+        "solar wind"
+      ],
+      "fr": [
+        "vent solaire"
+      ]
+    },
+    "label": {
+      "en": "Solar wind",
+      "fr": "Vent solaire"
+    },
+    "definition": {
+      "en": "A stream of tiny charged particles blowing out from the Sun.",
+      "fr": "Un flot de minuscules particules chargées qui s'échappe du Soleil."
+    },
+    "sourceIds": [
+      "nasa-heat-topics"
+    ]
+  },
+  {
+    "id": "spectrometer",
+    "status": "draft",
+    "terms": {
+      "en": [
+        "spectrometer",
+        "spectrometers"
+      ],
+      "fr": [
+        "spectromètre",
+        "spectromètres"
+      ]
+    },
+    "label": {
+      "en": "Spectrometer",
+      "fr": "Spectromètre"
+    },
+    "definition": {
+      "en": "An instrument that reveals what a rock or a gas is made of.",
+      "fr": "Un instrument qui révèle de quoi une roche ou un gaz est fait."
+    },
+    "sourceIds": [
+      "nasa-mars-2020-perseverance-rover-compone"
+    ]
+  },
+  {
+    "id": "infrared",
+    "status": "draft",
+    "terms": {
+      "en": [
+        "infrared"
+      ],
+      "fr": [
+        "infrarouge"
+      ]
+    },
+    "label": {
+      "en": "Infrared",
+      "fr": "Infrarouge"
+    },
+    "definition": {
+      "en": "Light our eyes cannot see, which we feel as heat.",
+      "fr": "Une lumière invisible pour nos yeux, que nous sentons comme de la chaleur."
+    },
+    "sourceIds": [
+      "nasa-ems-07-infraredwaves"
+    ]
+  },
+  {
+    "id": "ion",
+    "status": "draft",
+    "terms": {
+      "en": [
+        "ion",
+        "ions"
+      ],
+      "fr": [
+        "ion",
+        "ions"
+      ]
+    },
+    "label": {
+      "en": "Ion",
+      "fr": "Ion"
+    },
+    "definition": {
+      "en": "An atom that carries an electric charge.",
+      "fr": "Un atome qui porte une charge électrique."
+    },
+    "sourceIds": [
+      "nasa-education-ielect-html"
+    ]
+  },
+  {
+    "id": "oxidizer",
+    "status": "draft",
+    "terms": {
+      "en": [
+        "oxidizer"
+      ],
+      "fr": [
+        "oxydant",
+        "comburant"
+      ]
+    },
+    "label": {
+      "en": "Oxidizer",
+      "fr": "Oxydant"
+    },
+    "definition": {
+      "en": "A chemical that supplies oxygen so the fuel can burn in space.",
+      "fr": "Un produit qui fournit l'oxygène pour que le carburant brûle dans l'espace."
+    },
+    "sourceIds": [
+      "nasa-trcrocket-practical-rocketry-html"
+    ]
+  },
+  {
+    "id": "propellant",
+    "status": "draft",
+    "terms": {
+      "en": [
+        "propellant"
+      ],
+      "fr": [
+        "ergols",
+        "ergol"
+      ]
+    },
+    "label": {
+      "en": "Propellant",
+      "fr": "Ergols"
+    },
+    "definition": {
+      "en": "Everything a rocket burns: the fuel plus its oxidizer.",
+      "fr": "Tout ce qu'une fusée brûle : le carburant et son oxydant."
+    },
+    "sourceIds": [
+      "nasa-trcrocket-practical-rocketry-html"
+    ]
+  },
+  {
+    "id": "retrorocket",
+    "status": "draft",
+    "terms": {
+      "en": [
+        "retrorocket",
+        "retrorockets"
+      ],
+      "fr": [
+        "rétrofusée",
+        "rétrofusées",
+        "fusée de freinage"
+      ]
+    },
+    "label": {
+      "en": "Retrorocket",
+      "fr": "Rétrofusée"
+    },
+    "definition": {
+      "en": "A rocket fired to brake a spacecraft as it comes down.",
+      "fr": "Une fusée allumée pour freiner un vaisseau qui descend."
+    },
+    "sourceIds": [
+      "nssdca-1967-035a"
+    ]
+  },
+  {
+    "id": "silica",
+    "status": "draft",
+    "terms": {
+      "en": [
+        "silica"
+      ],
+      "fr": [
+        "silice"
+      ]
+    },
+    "label": {
+      "en": "Silica",
+      "fr": "Silice"
+    },
+    "definition": {
+      "en": "The main ingredient of sand and of window glass.",
+      "fr": "Le principal ingrédient du sable et du verre des fenêtres."
+    },
+    "sourceIds": [
+      "nasa-science-photojournal-silica-rich-soil-found-by-s"
+    ]
+  },
+  {
+    "id": "sulfate",
+    "status": "draft",
+    "terms": {
+      "en": [
+        "sulfate",
+        "sulfates"
+      ],
+      "fr": [
+        "sulfate",
+        "sulfates"
+      ]
+    },
+    "label": {
+      "en": "Sulfate",
+      "fr": "Sulfate"
+    },
+    "definition": {
+      "en": "A salt rich in sulfur, often left behind by water.",
+      "fr": "Un sel riche en soufre, souvent laissé par l'eau."
+    },
+    "sourceIds": [
+      "nasa-news-merb-pr-20040302-html"
+    ]
+  },
+  {
+    "id": "carbonate",
+    "status": "draft",
+    "terms": {
+      "en": [
+        "carbonate",
+        "carbonates"
+      ],
+      "fr": [
+        "carbonate",
+        "carbonates"
+      ]
+    },
+    "label": {
+      "en": "Carbonate",
+      "fr": "Carbonate"
+    },
+    "definition": {
+      "en": "Minerals that form where carbon dioxide and water mix.",
+      "fr": "Des minéraux qui se forment là où gaz carbonique et eau se mélangent."
+    },
+    "sourceIds": [
+      "jpl-news-nasa-rover-finds-clue-to-mars-past"
+    ]
+  },
+  {
+    "id": "basalt",
+    "status": "draft",
+    "terms": {
+      "en": [
+        "basalt"
+      ],
+      "fr": [
+        "basalte",
+        "basaltes"
+      ]
+    },
+    "label": {
+      "en": "Basalt",
+      "fr": "Basalte"
+    },
+    "definition": {
+      "en": "A common kind of dark volcanic rock.",
+      "fr": "Une roche volcanique sombre très courante."
+    },
+    "sourceIds": [
+      "nasa-science-photojournal-adirondacks-inner-self"
+    ]
+  },
+  {
+    "id": "conglomerate",
+    "status": "draft",
+    "terms": {
+      "en": [
+        "conglomerate",
+        "conglomerates"
+      ],
+      "fr": [
+        "conglomérat",
+        "conglomérats"
+      ]
+    },
+    "label": {
+      "en": "Conglomerate",
+      "fr": "Conglomérat"
+    },
+    "definition": {
+      "en": "A rock made of pebbles and sand cemented together.",
+      "fr": "Une roche faite de galets et de sable cimentés ensemble."
+    },
+    "sourceIds": [
+      "nasa-news-nasa-rover-finds-old-streambed"
+    ]
+  },
+  {
+    "id": "sediment",
+    "status": "draft",
+    "terms": {
+      "en": [
+        "sediment",
+        "sediments",
+        "sedimentation"
+      ],
+      "fr": [
+        "sédiment",
+        "sédiments",
+        "sédimentation"
+      ]
+    },
+    "label": {
+      "en": "Sediment",
+      "fr": "Sédiment"
+    },
+    "definition": {
+      "en": "Sand, mud or dust that settles and piles up, often in water.",
+      "fr": "Du sable, de la boue ou de la poussière qui se déposent, souvent dans l'eau."
+    },
+    "sourceIds": [
+      "usgs-science-dictionary-water-terms"
+    ]
+  },
+  {
+    "id": "outcrop",
+    "status": "draft",
+    "terms": {
+      "en": [
+        "outcrop",
+        "outcrops"
+      ],
+      "fr": [
+        "affleurement",
+        "affleurements"
+      ]
+    },
+    "label": {
+      "en": "Outcrop",
+      "fr": "Affleurement"
+    },
+    "definition": {
+      "en": "A place where bare rock shows at the surface.",
+      "fr": "Un endroit où la roche nue apparaît à la surface."
+    },
+    "sourceIds": [
+      "nasa-news-merb-pr-20040302-html"
+    ]
+  },
+  {
+    "id": "sol",
+    "status": "draft",
+    "terms": {
+      "en": [
+        "sol",
+        "sols"
+      ],
+      "fr": [
+        "sol",
+        "sols"
+      ]
+    },
+    "label": {
+      "en": "Sol (Martian day)",
+      "fr": "Sol (jour martien)"
+    },
+    "definition": {
+      "en": "A Martian day: about 24 hours 39 minutes.",
+      "fr": "Un jour martien : environ 24 h 39 min."
+    },
+    "sourceIds": [
+      "nasa-mars-facts"
+    ]
+  },
+  {
+    "id": "dust-devil",
+    "status": "draft",
+    "terms": {
+      "en": [
+        "dust devil",
+        "dust devils"
+      ],
+      "fr": [
+        "tourbillon de poussière",
+        "tourbillons de poussière"
+      ]
+    },
+    "label": {
+      "en": "Dust devil",
+      "fr": "Tourbillon de poussière"
+    },
+    "definition": {
+      "en": "A small whirlwind that lifts dust, like a mini tornado.",
+      "fr": "Un petit tourbillon qui soulève la poussière, comme une mini-tornade."
+    },
+    "sourceIds": [
+      "nasa-science-photojournal-spirit-captures-two-dust-de"
+    ]
+  },
+  {
+    "id": "heat-shield",
+    "status": "draft",
+    "terms": {
+      "en": [
+        "heat shield"
+      ],
+      "fr": [
+        "bouclier thermique"
+      ]
+    },
+    "label": {
+      "en": "Heat shield",
+      "fr": "Bouclier thermique"
+    },
+    "definition": {
+      "en": "A protective cover that takes the heat of entering the atmosphere.",
+      "fr": "Une protection qui encaisse la chaleur de l'entrée dans l'atmosphère."
+    },
+    "sourceIds": [
+      "nasa-resource-protecting-nasas-perseveran"
+    ]
+  },
+  {
+    "id": "backshell",
+    "status": "draft",
+    "terms": {
+      "en": [
+        "backshell"
+      ],
+      "fr": [
+        "bouclier arrière"
+      ]
+    },
+    "label": {
+      "en": "Backshell",
+      "fr": "Bouclier arrière"
+    },
+    "definition": {
+      "en": "The cone-shaped back half of the protective capsule.",
+      "fr": "La moitié arrière, en forme de cône, de la capsule protectrice."
+    },
+    "sourceIds": [
+      "nasa-resource-protecting-nasas-perseveran"
+    ]
+  },
+  {
+    "id": "rotor",
+    "status": "draft",
+    "terms": {
+      "en": [
+        "rotor",
+        "rotors"
+      ],
+      "fr": [
+        "rotor",
+        "rotors"
+      ]
+    },
+    "label": {
+      "en": "Rotor",
+      "fr": "Rotor"
+    },
+    "definition": {
+      "en": "The spinning blades that lift a helicopter.",
+      "fr": "Les pales tournantes qui soulèvent un hélicoptère."
+    },
+    "sourceIds": [
+      "jpl-mission-spacecraft"
+    ]
+  },
+  {
+    "id": "river-delta",
+    "status": "draft",
+    "terms": {
+      "en": [
+        "river delta",
+        "delta"
+      ],
+      "fr": [
+        "delta de rivière",
+        "delta"
+      ]
+    },
+    "label": {
+      "en": "River delta",
+      "fr": "Delta"
+    },
+    "definition": {
+      "en": "A fan of sand and mud a river leaves where it meets a lake.",
+      "fr": "L'éventail de sable et de boue qu'une rivière dépose en arrivant dans un lac."
+    },
+    "sourceIds": [
+      "nasa-resource-perseverance-view-of-the-de"
+    ]
+  },
+  {
+    "id": "microbe",
+    "status": "draft",
+    "terms": {
+      "en": [
+        "microbe",
+        "microbes",
+        "microbial"
+      ],
+      "fr": [
+        "microbe",
+        "microbes",
+        "microbienne"
+      ]
+    },
+    "label": {
+      "en": "Microbe",
+      "fr": "Microbe"
+    },
+    "definition": {
+      "en": "A tiny living thing, like a bacterium.",
+      "fr": "Un être vivant minuscule, comme une bactérie."
+    },
+    "sourceIds": [
+      "nasa-news-microbes-could-survive-thin-air"
+    ]
+  },
+  {
+    "id": "geologist",
+    "status": "draft",
+    "terms": {
+      "en": [
+        "geologist",
+        "geologists"
+      ],
+      "fr": [
+        "géologue",
+        "géologues"
+      ]
+    },
+    "label": {
+      "en": "Geologist",
+      "fr": "Géologue"
+    },
+    "definition": {
+      "en": "A scientist who studies rocks and how the ground formed.",
+      "fr": "Un scientifique qui étudie les roches et l'histoire du sol."
+    },
+    "sourceIds": [
+      "nasa-science-mer"
+    ]
+  },
+  {
+    "id": "radiation",
+    "status": "draft",
+    "terms": {
+      "en": [
+        "radiation"
+      ],
+      "fr": [
+        "rayonnement",
+        "rayonnements",
+        "radiation",
+        "radiations"
+      ]
+    },
+    "label": {
+      "en": "Radiation",
+      "fr": "Rayonnement"
+    },
+    "definition": {
+      "en": "Energy travelling as waves or tiny fast particles; it can damage things.",
+      "fr": "De l'énergie en ondes ou en particules très rapides, qui peut abîmer."
+    },
+    "sourceIds": [
+      "nasa-page-2"
+    ]
+  },
+  {
+    "id": "rocker-bogie",
+    "status": "draft",
+    "terms": {
+      "en": [
+        "rocker-bogie"
+      ],
+      "fr": [
+        "rocker-bogie"
+      ]
+    },
+    "label": {
+      "en": "Rocker-bogie suspension",
+      "fr": "Suspension rocker-bogie"
+    },
+    "definition": {
+      "en": "Jointed arms that let all six wheels roll over rocks as big as a wheel.",
+      "fr": "Des bras articulés qui laissent les six roues franchir des rochers."
+    },
+    "sourceIds": [
+      "nasa-mars-2020-perseverance-rover-compone"
+    ]
+  },
+  {
+    "id": "autonomous",
+    "status": "draft",
+    "terms": {
+      "en": [
+        "autonomous",
+        "semi-autonomous",
+        "autonomy"
+      ],
+      "fr": [
+        "autonome",
+        "semi-autonome",
+        "autonomie"
+      ]
+    },
+    "label": {
+      "en": "Autonomous",
+      "fr": "Autonome"
+    },
+    "definition": {
+      "en": "Able to act on its own, without a human steering it.",
+      "fr": "Capable d'agir seul, sans qu'un humain le pilote."
+    },
+    "sourceIds": [
+      "jpl-mission-spacecraft"
+    ]
+  },
+  {
+    "id": "general-relativity",
+    "status": "draft",
+    "terms": {
+      "en": [
+        "general relativity",
+        "theory of relativity"
+      ],
+      "fr": [
+        "relativité générale",
+        "théorie de la relativité"
+      ]
+    },
+    "label": {
+      "en": "General relativity",
+      "fr": "Relativité générale"
+    },
+    "definition": {
+      "en": "Einstein's theory of gravity: heavy objects bend space and time.",
+      "fr": "La théorie de la gravité d'Einstein : les objets lourds courbent l'espace-temps."
+    },
+    "sourceIds": [
+      "nasa-solar-system-10-things-einstein-got"
+    ]
+  },
+  {
+    "id": "mantle",
+    "status": "draft",
+    "terms": {
+      "en": [
+        "mantle"
+      ],
+      "fr": [
+        "manteau"
+      ]
+    },
+    "label": {
+      "en": "Mantle",
+      "fr": "Manteau"
+    },
+    "definition": {
+      "en": "The thick layer of rock between a world's crust and its core.",
+      "fr": "L'épaisse couche de roche entre la croûte et le noyau d'un monde."
+    },
+    "sourceIds": [
+      "nasa-moon-composition"
+    ]
   }
 ]

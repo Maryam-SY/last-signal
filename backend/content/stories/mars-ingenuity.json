@@ -71,8 +71,8 @@
         {
           "voice": "data",
           "text": {
-            "en": "The air on Mars is less than 1% as thick as on Earth, so there is very little air to push on. Ingenuity’s two rotors spun in opposite directions at almost 3,000 turns per minute.",
-            "fr": "L’air de Mars est moins de 1 % aussi épais que celui de la Terre : il y a très peu d’air sur lequel s’appuyer. Les deux rotors d’Ingenuity tournaient en sens inverse à près de 3 000 tours par minute."
+            "en": "The air on Mars is less than 1% as thick as on Earth, so there is very little air to push on. Ingenuity’s two rotors (sets of spinning blades) spun in opposite directions at almost 3,000 turns per minute.",
+            "fr": "L’air de Mars est moins de 1 % aussi épais que celui de la Terre : il y a très peu d’air sur lequel s’appuyer. Les deux rotors (les pales tournantes) d’Ingenuity tournaient en sens inverse à près de 3 000 tours par minute."
           },
           "sourceIds": [
             "nasa-science-ingenuity",

@@ -10092,5 +10092,1355 @@
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA26318/PIA26318~thumb.jpg",
     "nasaId": "PIA26318"
+  },
+  {
+    "id": "bio-surveyor-3-lander-surveyor",
+    "type": "image",
+    "url": "https://nssdc.gsfc.nasa.gov/image/spacecraft/surveyor.jpg",
+    "pageUrl": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1967-035A",
+    "title": "Surveyor spacecraft",
+    "caption": null,
+    "alt": {
+      "en": "A Surveyor lander photographed on Earth before flight: its three legs with round footpads, the tall mast carrying the solar panel and antenna, and the equipment boxes and small engines fixed to the frame.",
+      "fr": "Un atterrisseur Surveyor photographié sur Terre avant le vol : ses trois pieds à semelles rondes, le grand mât qui porte le panneau solaire et l’antenne, et les boîtiers et petits moteurs fixés sur la structure."
+    },
+    "credit": "NASA",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "surveyor-3"
+    ],
+    "machineIds": [
+      "surveyor-3-lander"
+    ],
+    "sourceId": "nssdca-1967-035a",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "A Surveyor lander photographed on Earth before flight: its three legs with round footpads, the tall mast carrying the solar panel and antenna, and the equipment boxes and small engines fixed to the frame.",
+      "fr": "Un atterrisseur Surveyor photographié sur Terre avant le vol : ses trois pieds à semelles rondes, le grand mât qui porte le panneau solaire et l’antenne, et les boîtiers et petits moteurs fixés sur la structure."
+    },
+    "descriptionStatus": "draft"
+  },
+  {
+    "id": "bio-surveyor-3-lander-surveyor-beach",
+    "type": "image",
+    "url": "https://nssdc.gsfc.nasa.gov/image/spacecraft/surveyor_beach.jpg",
+    "pageUrl": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1967-035A",
+    "title": "Surveyor spacecraft at the beach",
+    "caption": null,
+    "alt": {
+      "en": "A Surveyor lander standing on a beach on Earth during tests, with its three legs, its solar panel tilted on top of the mast and its television camera on the frame.",
+      "fr": "Un atterrisseur Surveyor posé sur une plage, sur Terre, pendant des essais : ses trois pieds, son panneau solaire incliné en haut du mât et sa caméra de télévision sur la structure."
+    },
+    "credit": "NASA",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "surveyor-3"
+    ],
+    "machineIds": [
+      "surveyor-3-lander"
+    ],
+    "sourceId": "nssdca-1967-035a",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "A Surveyor lander standing on a beach on Earth during tests, with its three legs, its solar panel tilted on top of the mast and its television camera on the frame.",
+      "fr": "Un atterrisseur Surveyor posé sur une plage, sur Terre, pendant des essais : ses trois pieds, son panneau solaire incliné en haut du mât et sa caméra de télévision sur la structure."
+    },
+    "descriptionStatus": "draft"
+  },
+  {
+    "id": "bio-surveyor-3-lander-67-h-876",
+    "type": "image",
+    "url": "https://apollojournals.org/alsj/a12/NASA67-H-876-s.jpg",
+    "pageUrl": "https://apollojournals.org/alsj/a12/images12.html#Surv3",
+    "title": "Surveyor III photo mosaic (NASA 67-H-876)",
+    "caption": null,
+    "alt": {
+      "en": "A mosaic of television pictures taken by Surveyor 3 from inside its crater in 1967; the small Block Crater appears just below the rim of Surveyor Crater, right of centre.",
+      "fr": "Une mosaïque d’images de télévision prises par Surveyor 3 depuis l’intérieur de son cratère en 1967 ; le petit cratère Block apparaît juste sous le bord du cratère Surveyor, à droite du centre."
+    },
+    "credit": "NASA (scan: Lunar and Planetary Institute / Apollo Lunar Surface Journal)",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "surveyor-3"
+    ],
+    "machineIds": [
+      "surveyor-3-lander"
+    ],
+    "sourceId": "apollojournals-a12-images12-html-surv3",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "A mosaic of television pictures taken by Surveyor 3 from inside its crater in 1967; the small Block Crater appears just below the rim of Surveyor Crater, right of centre.",
+      "fr": "Une mosaïque d’images de télévision prises par Surveyor 3 depuis l’intérieur de son cratère en 1967 ; le petit cratère Block apparaît juste sous le bord du cratère Surveyor, à droite du centre."
+    },
+    "descriptionStatus": "draft",
+    "nasaId": "67-H-876"
+  },
+  {
+    "id": "bio-surveyor-3-lander-surveyr2",
+    "type": "image",
+    "url": "https://apollojournals.org/alsj/a12/surveyr2.jpg",
+    "pageUrl": "https://apollojournals.org/alsj/a12/images12.html#Surv3",
+    "title": "Surveyor III scoop marks (drawing)",
+    "caption": null,
+    "alt": {
+      "en": "A drawing of the ground around Surveyor 3: the three footpads and, between them, the trenches, bearing tests and impact points made by the scoop of its soil sampler.",
+      "fr": "Un dessin du sol autour de Surveyor 3 : les trois semelles et, entre elles, les tranchées, les tests d’appui et les points d’impact faits par la pelle de son échantillonneur de sol."
+    },
+    "credit": "NASA",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "surveyor-3"
+    ],
+    "machineIds": [
+      "surveyor-3-lander"
+    ],
+    "sourceId": "apollojournals-a12-images12-html-surv3",
+    "aiGenerated": false,
+    "depiction": "diagram",
+    "description": {
+      "en": "A drawing of the ground around Surveyor 3: the three footpads and, between them, the trenches, bearing tests and impact points made by the scoop of its soil sampler.",
+      "fr": "Un dessin du sol autour de Surveyor 3 : les trois semelles et, entre elles, les tranchées, les tests d’appui et les points d’impact faits par la pelle de son échantillonneur de sol."
+    },
+    "descriptionStatus": "draft"
+  },
+  {
+    "id": "bio-apollo-11-lm-eagle-desce-624073main-1969-04-04-full",
+    "type": "image",
+    "url": "https://images-assets.nasa.gov/image/624073main_1969-04-04_full/624073main_1969-04-04_full~orig.jpg",
+    "pageUrl": "https://images.nasa.gov/details/624073main_1969-04-04_full",
+    "title": "Apollo 11 Lunar Module",
+    "caption": null,
+    "alt": {
+      "en": "The Apollo 11 Lunar Module, with its four legs and the eight-sided descent stage under the crew cabin, lifted off its landing-gear fixture at Kennedy Space Center in April 1969 before being mated to its adapter.",
+      "fr": "Le module lunaire d’Apollo 11, avec ses quatre pieds et l’étage de descente à huit côtés sous la cabine, soulevé de son bâti de train d’atterrissage au Centre spatial Kennedy en avril 1969, avant d’être fixé dans son adaptateur."
+    },
+    "credit": "NASA",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "apollo-11"
+    ],
+    "machineIds": [
+      "apollo-11-lm-eagle-descent-stage"
+    ],
+    "sourceId": "nasa-details-624073main-1969-04-04-full",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "The Apollo 11 Lunar Module, with its four legs and the eight-sided descent stage under the crew cabin, lifted off its landing-gear fixture at Kennedy Space Center in April 1969 before being mated to its adapter.",
+      "fr": "Le module lunaire d’Apollo 11, avec ses quatre pieds et l’étage de descente à huit côtés sous la cabine, soulevé de son bâti de train d’atterrissage au Centre spatial Kennedy en avril 1969, avant d’être fixé dans son adaptateur."
+    },
+    "descriptionStatus": "draft",
+    "thumbnailUrl": "https://images-assets.nasa.gov/image/624073main_1969-04-04_full/624073main_1969-04-04_full~thumb.jpg",
+    "largeUrl": "https://images-assets.nasa.gov/image/624073main_1969-04-04_full/624073main_1969-04-04_full~large.jpg",
+    "nasaId": "624073main_1969-04-04_full",
+    "dateCreated": "1969-04-04"
+  },
+  {
+    "id": "bio-apollo-11-lm-eagle-desce-s69-39961",
+    "type": "image",
+    "url": "https://images-assets.nasa.gov/image/S69-39961/S69-39961~orig.jpg",
+    "pageUrl": "https://images.nasa.gov/details/S69-39961",
+    "title": "Liftoff of the Apollo 11 lunar landing mission",
+    "caption": null,
+    "alt": {
+      "en": "The Saturn V rocket lifts off from Pad 39A on 16 July 1969 with Apollo 11; Eagle travelled folded inside the adapter below the command module, near the top of the rocket.",
+      "fr": "La fusée Saturn V décolle du pas de tir 39A le 16 juillet 1969 avec Apollo 11 ; Eagle voyage replié dans l’adaptateur sous le module de commande, près du sommet de la fusée."
+    },
+    "credit": "NASA",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "apollo-11"
+    ],
+    "machineIds": [
+      "apollo-11-lm-eagle-descent-stage"
+    ],
+    "sourceId": "nasa-details-s69-39961",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "The Saturn V rocket lifts off from Pad 39A on 16 July 1969 with Apollo 11; Eagle travelled folded inside the adapter below the command module, near the top of the rocket.",
+      "fr": "La fusée Saturn V décolle du pas de tir 39A le 16 juillet 1969 avec Apollo 11 ; Eagle voyage replié dans l’adaptateur sous le module de commande, près du sommet de la fusée."
+    },
+    "descriptionStatus": "draft",
+    "thumbnailUrl": "https://images-assets.nasa.gov/image/S69-39961/S69-39961~thumb.jpg",
+    "largeUrl": "https://images-assets.nasa.gov/image/S69-39961/S69-39961~large.jpg",
+    "nasaId": "S69-39961",
+    "dateCreated": "1969-07-16"
+  },
+  {
+    "id": "bio-apollo-11-lm-eagle-desce-s69-32396",
+    "type": "image",
+    "url": "https://images-assets.nasa.gov/image/S69-32396/S69-32396~orig.jpg",
+    "pageUrl": "https://images.nasa.gov/details/S69-32396",
+    "title": "Lunar Module 5 moved for mating with its adapter",
+    "caption": null,
+    "alt": {
+      "en": "Lunar Module 5, the future Eagle, hangs from a crane in the Manned Spacecraft Operations Building at Kennedy Space Center on 4 April 1969, on its way to be mated with the adapter that would carry it to the Moon.",
+      "fr": "Le module lunaire n°5, le futur Eagle, suspendu à une grue dans le bâtiment des opérations des vaisseaux habités du Centre spatial Kennedy le 4 avril 1969, avant d’être fixé dans l’adaptateur qui l’emportera vers la Lune."
+    },
+    "credit": "NASA",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "apollo-11"
+    ],
+    "machineIds": [
+      "apollo-11-lm-eagle-descent-stage"
+    ],
+    "sourceId": "nasa-details-s69-32396",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "Lunar Module 5, the future Eagle, hangs from a crane in the Manned Spacecraft Operations Building at Kennedy Space Center on 4 April 1969, on its way to be mated with the adapter that would carry it to the Moon.",
+      "fr": "Le module lunaire n°5, le futur Eagle, suspendu à une grue dans le bâtiment des opérations des vaisseaux habités du Centre spatial Kennedy le 4 avril 1969, avant d’être fixé dans l’adaptateur qui l’emportera vers la Lune."
+    },
+    "descriptionStatus": "draft",
+    "thumbnailUrl": "https://images-assets.nasa.gov/image/S69-32396/S69-32396~thumb.jpg",
+    "largeUrl": "https://images-assets.nasa.gov/image/S69-32396/S69-32396~large.jpg",
+    "nasaId": "S69-32396",
+    "dateCreated": "1969-04-04"
+  },
+  {
+    "id": "bio-apollo-11-lm-eagle-desce-a11-mrfig5-5",
+    "type": "image",
+    "url": "https://apollojournals.org/alsj/a11/a11.mrFig5-5.gif",
+    "pageUrl": "https://apollojournals.org/alsj/a11/a11.landing.html",
+    "title": "Apollo 11 Mission Report, Figure 5-5: pitch attitude during descent",
+    "caption": null,
+    "alt": {
+      "en": "A graph from the Apollo 11 Mission Report showing how Eagle tilted (its pitch angle) minute by minute during the powered descent, from the start of braking to touchdown.",
+      "fr": "Un graphique du rapport de mission d’Apollo 11 montrant comment Eagle s’inclinait (son angle de tangage) minute par minute pendant la descente propulsée, du début du freinage jusqu’au contact."
+    },
+    "credit": "NASA (Apollo 11 Mission Report)",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "apollo-11"
+    ],
+    "machineIds": [
+      "apollo-11-lm-eagle-descent-stage"
+    ],
+    "sourceId": "apollojournals-a11-a11-landing-html",
+    "aiGenerated": false,
+    "depiction": "diagram",
+    "description": {
+      "en": "A graph from the Apollo 11 Mission Report showing how Eagle tilted (its pitch angle) minute by minute during the powered descent, from the start of braking to touchdown.",
+      "fr": "Un graphique du rapport de mission d’Apollo 11 montrant comment Eagle s’inclinait (son angle de tangage) minute par minute pendant la descente propulsée, du début du freinage jusqu’au contact."
+    },
+    "descriptionStatus": "draft"
+  },
+  {
+    "id": "bio-apollo-11-easep-as11-40-5949",
+    "type": "image",
+    "url": "https://nssdc.gsfc.nasa.gov/imgcat/higher_res/apollo/as11_40_5949.jpg",
+    "pageUrl": "https://nssdc.gsfc.nasa.gov/imgcat/html/object_page/a11_h_40_5949.html",
+    "title": "Astronaut setting up scientific experiments package on the Moon (AS11-40-5949)",
+    "caption": null,
+    "alt": {
+      "en": "Buzz Aldrin sets up the seismometer of the EASEP at Tranquility Base on 21 July 1969 (UT), with the Lunar Module Eagle and the flag in the background.",
+      "fr": "Buzz Aldrin installe le sismomètre de l’EASEP à la base de la Tranquillité le 21 juillet 1969 (TU), avec le module lunaire Eagle et le drapeau à l’arrière-plan."
+    },
+    "credit": "NASA",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "apollo-11"
+    ],
+    "machineIds": [
+      "apollo-11-easep"
+    ],
+    "sourceId": "nasa-object-page-a11-h-40-5949-html",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "Buzz Aldrin sets up the seismometer of the EASEP at Tranquility Base on 21 July 1969 (UT), with the Lunar Module Eagle and the flag in the background.",
+      "fr": "Buzz Aldrin installe le sismomètre de l’EASEP à la base de la Tranquillité le 21 juillet 1969 (TU), avec le module lunaire Eagle et le drapeau à l’arrière-plan."
+    },
+    "descriptionStatus": "draft",
+    "largeUrl": "https://nssdc.gsfc.nasa.gov/imgcat/hires/a11_h_40_5949.gif",
+    "nasaId": "AS11-40-5949",
+    "dateCreated": "1969-07-21"
+  },
+  {
+    "id": "bio-apollo-11-easep-pia12909",
+    "type": "image",
+    "url": "https://images-assets.nasa.gov/image/PIA12909/PIA12909~orig.jpg",
+    "pageUrl": "https://photojournal.jpl.nasa.gov/catalog/PIA12909",
+    "title": "Apollo 11: Second Look",
+    "caption": null,
+    "alt": {
+      "en": "Tranquility Base seen from lunar orbit by the Lunar Reconnaissance Orbiter in 2009, with labels marking Eagle’s descent stage, Little West crater and the spot where the seismometer and retroreflector (PSE, LRRR) were left.",
+      "fr": "La base de la Tranquillité vue depuis l’orbite lunaire par Lunar Reconnaissance Orbiter en 2009 ; des étiquettes indiquent l’étage de descente d’Eagle, le cratère Little West et l’endroit où le sismomètre et le réflecteur (PSE, LRRR) ont été laissés."
+    },
+    "credit": "NASA/GSFC/Arizona State University",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "apollo-11"
+    ],
+    "machineIds": [
+      "apollo-11-easep"
+    ],
+    "sourceId": "nasa-catalog-pia12909",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "Tranquility Base seen from lunar orbit by the Lunar Reconnaissance Orbiter in 2009, with labels marking Eagle’s descent stage, Little West crater and the spot where the seismometer and retroreflector (PSE, LRRR) were left.",
+      "fr": "La base de la Tranquillité vue depuis l’orbite lunaire par Lunar Reconnaissance Orbiter en 2009 ; des étiquettes indiquent l’étage de descente d’Eagle, le cratère Little West et l’endroit où le sismomètre et le réflecteur (PSE, LRRR) ont été laissés."
+    },
+    "descriptionStatus": "draft",
+    "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA12909/PIA12909~thumb.jpg",
+    "nasaId": "PIA12909",
+    "dateCreated": "2009-09-29"
+  },
+  {
+    "id": "bio-apollo-11-lrrr-gsfc-20171208-archive-e00197",
+    "type": "image",
+    "url": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001973/GSFC_20171208_Archive_e001973~orig.jpg",
+    "pageUrl": "https://images.nasa.gov/details/GSFC_20171208_Archive_e001973",
+    "title": "Goddard Laser Ranging Facility laser toward the Moon",
+    "caption": null,
+    "alt": {
+      "en": "A green laser beam leaves the Laser Ranging Facility at NASA Goddard toward the Moon on the night of 18 September 2010; that evening the station was ranging to the Lunar Reconnaissance Orbiter.",
+      "fr": "Un faisceau laser vert part de la station de télémétrie laser de la NASA à Goddard vers la Lune, dans la nuit du 18 septembre 2010 ; ce soir-là, la station mesurait la distance de la sonde Lunar Reconnaissance Orbiter."
+    },
+    "credit": "NASA/Goddard",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "apollo-11"
+    ],
+    "machineIds": [
+      "apollo-11-lrrr"
+    ],
+    "sourceId": "nasa-details-gsfc-20171208-archive-e00197",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "A green laser beam leaves the Laser Ranging Facility at NASA Goddard toward the Moon on the night of 18 September 2010; that evening the station was ranging to the Lunar Reconnaissance Orbiter.",
+      "fr": "Un faisceau laser vert part de la station de télémétrie laser de la NASA à Goddard vers la Lune, dans la nuit du 18 septembre 2010 ; ce soir-là, la station mesurait la distance de la sonde Lunar Reconnaissance Orbiter."
+    },
+    "descriptionStatus": "draft",
+    "thumbnailUrl": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001973/GSFC_20171208_Archive_e001973~thumb.jpg",
+    "largeUrl": "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001973/GSFC_20171208_Archive_e001973~large.jpg",
+    "nasaId": "GSFC_20171208_Archive_e001973",
+    "dateCreated": "2010-09-18"
+  },
+  {
+    "id": "bio-apollo-11-lrrr-as11-40-5952",
+    "type": "image",
+    "url": "https://apollojournals.org/alsj/a11/AS11-40-5952HR.jpg",
+    "pageUrl": "https://apollojournals.org/alsj/a11/images11.html",
+    "title": "Post-deployment photo of the LRRR (AS11-40-5952)",
+    "caption": null,
+    "alt": {
+      "en": "Close-up of the laser ranging retroreflector deployed on the Moon on 21 July 1969 (UT): its square panel of corner-cube prisms is tilted toward Earth, and the stereo close-up camera stands on a rock behind it.",
+      "fr": "Gros plan du réflecteur laser déployé sur la Lune le 21 juillet 1969 (TU) : son panneau carré de prismes en coin de cube est incliné vers la Terre, et la caméra stéréo de gros plan est posée sur un rocher derrière lui."
+    },
+    "credit": "NASA",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "apollo-11"
+    ],
+    "machineIds": [
+      "apollo-11-lrrr"
+    ],
+    "sourceId": "apollojournals-a11-images11-html",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "Close-up of the laser ranging retroreflector deployed on the Moon on 21 July 1969 (UT): its square panel of corner-cube prisms is tilted toward Earth, and the stereo close-up camera stands on a rock behind it.",
+      "fr": "Gros plan du réflecteur laser déployé sur la Lune le 21 juillet 1969 (TU) : son panneau carré de prismes en coin de cube est incliné vers la Terre, et la caméra stéréo de gros plan est posée sur un rocher derrière lui."
+    },
+    "descriptionStatus": "draft",
+    "largeUrl": "https://apollojournals.org/alsj/a11/AS11-40-5952.jpg",
+    "nasaId": "AS11-40-5952",
+    "dateCreated": "1969-07-21"
+  },
+  {
+    "id": "bio-apollo-11-lrrr-s92-52043",
+    "type": "image",
+    "url": "https://images-assets.nasa.gov/image/S92-52043/S92-52043~orig.jpg",
+    "pageUrl": "https://images.nasa.gov/details/S92-52043",
+    "title": "Galileo view of the Moon orbiting the Earth",
+    "caption": null,
+    "alt": {
+      "en": "The Moon in its orbit around the Earth, photographed in one frame by the Galileo spacecraft on 16 December 1992 as it looked back from 6.2 million kilometres.",
+      "fr": "La Lune sur son orbite autour de la Terre, photographiée en une seule image par la sonde Galileo le 16 décembre 1992, en regardant en arrière depuis 6,2 millions de kilomètres."
+    },
+    "credit": "NASA/JPL",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "apollo-11"
+    ],
+    "machineIds": [
+      "apollo-11-lrrr"
+    ],
+    "sourceId": "nasa-details-s92-52043",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "The Moon in its orbit around the Earth, photographed in one frame by the Galileo spacecraft on 16 December 1992 as it looked back from 6.2 million kilometres.",
+      "fr": "La Lune sur son orbite autour de la Terre, photographiée en une seule image par la sonde Galileo le 16 décembre 1992, en regardant en arrière depuis 6,2 millions de kilomètres."
+    },
+    "descriptionStatus": "draft",
+    "thumbnailUrl": "https://images-assets.nasa.gov/image/S92-52043/S92-52043~thumb.jpg",
+    "largeUrl": "https://images-assets.nasa.gov/image/S92-52043/S92-52043~large.jpg",
+    "nasaId": "S92-52043",
+    "dateCreated": "1992-12-16"
+  },
+  {
+    "id": "bio-apollo-11-lrrr-pia00342",
+    "type": "image",
+    "url": "https://images-assets.nasa.gov/image/PIA00342/PIA00342~orig.jpg",
+    "pageUrl": "https://photojournal.jpl.nasa.gov/catalog/PIA00342",
+    "title": "The Earth & Moon",
+    "caption": null,
+    "alt": {
+      "en": "The Earth, centred on the Pacific Ocean, and the Moon with the bright rays of the crater Tycho, photographed by Galileo in 1992; two separate images were combined to make this single view.",
+      "fr": "La Terre, centrée sur l’océan Pacifique, et la Lune avec les rayons clairs du cratère Tycho, photographiées par Galileo en 1992 ; deux images distinctes ont été assemblées pour former cette vue."
+    },
+    "credit": "NASA/JPL/USGS",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "apollo-11"
+    ],
+    "machineIds": [
+      "apollo-11-lrrr"
+    ],
+    "sourceId": "nasa-catalog-pia00342",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "The Earth, centred on the Pacific Ocean, and the Moon with the bright rays of the crater Tycho, photographed by Galileo in 1992; two separate images were combined to make this single view.",
+      "fr": "La Terre, centrée sur l’océan Pacifique, et la Lune avec les rayons clairs du cratère Tycho, photographiées par Galileo en 1992 ; deux images distinctes ont été assemblées pour former cette vue."
+    },
+    "descriptionStatus": "draft",
+    "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA00342/PIA00342~thumb.jpg",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA00342/PIA00342~medium.jpg",
+    "nasaId": "PIA00342"
+  },
+  {
+    "id": "bio-apollo-12-lm-intrepid-de-apollo-12-23-lm-ascent-durin",
+    "type": "image",
+    "url": "https://www.nasa.gov/wp-content/uploads/2024/11/apollo-12-23-lm-ascent-during-rv-3.jpg",
+    "pageUrl": "https://www.nasa.gov/history/55-years-ago-apollo-12-makes-a-pinpoint-landing-on-the-moon/",
+    "title": "Intrepid ascent stage approaching Yankee Clipper (16 mm film still)",
+    "caption": null,
+    "alt": {
+      "en": "A frame from the 16-mm film shot aboard Yankee Clipper on 20 November 1969: Intrepid’s ascent stage, alone, approaches to dock above the Moon, its descent stage left behind on the surface.",
+      "fr": "Une image du film 16 mm tourné à bord de Yankee Clipper le 20 novembre 1969 : l’étage de remontée d’Intrepid, seul, s’approche pour s’amarrer au-dessus de la Lune, son étage de descente resté au sol."
+    },
+    "credit": "NASA",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "apollo-12"
+    ],
+    "machineIds": [
+      "apollo-12-lm-intrepid-descent-stage"
+    ],
+    "sourceId": "nasa-history-55-years-ago-apollo-12-makes-a-p",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "A frame from the 16-mm film shot aboard Yankee Clipper on 20 November 1969: Intrepid’s ascent stage, alone, approaches to dock above the Moon, its descent stage left behind on the surface.",
+      "fr": "Une image du film 16 mm tourné à bord de Yankee Clipper le 20 novembre 1969 : l’étage de remontée d’Intrepid, seul, s’approche pour s’amarrer au-dessus de la Lune, son étage de descente resté au sol."
+    },
+    "descriptionStatus": "draft",
+    "dateCreated": "1969-11-20"
+  },
+  {
+    "id": "bio-apollo-12-alsep-as12-47-6928",
+    "type": "image",
+    "url": "https://apollojournals.org/alsj/a12/AS12-47-6928HR.jpg",
+    "pageUrl": "https://apollojournals.org/alsj/a12/images12.html",
+    "title": "ALSEP Central Station with the LM in the background (AS12-47-6928)",
+    "caption": null,
+    "alt": {
+      "en": "The ALSEP central station with its antenna pointed at Earth on 19 November 1969; the seismometer is to its right, the magnetometer to the left, and the Lunar Module Intrepid stands in the background.",
+      "fr": "La station centrale de l’ALSEP, son antenne pointée vers la Terre, le 19 novembre 1969 ; le sismomètre est à sa droite, le magnétomètre à gauche, et le module lunaire Intrepid se dresse à l’arrière-plan."
+    },
+    "credit": "NASA",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "apollo-12"
+    ],
+    "machineIds": [
+      "apollo-12-alsep"
+    ],
+    "sourceId": "apollojournals-a12-images12-html",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "The ALSEP central station with its antenna pointed at Earth on 19 November 1969; the seismometer is to its right, the magnetometer to the left, and the Lunar Module Intrepid stands in the background.",
+      "fr": "La station centrale de l’ALSEP, son antenne pointée vers la Terre, le 19 novembre 1969 ; le sismomètre est à sa droite, le magnétomètre à gauche, et le module lunaire Intrepid se dresse à l’arrière-plan."
+    },
+    "descriptionStatus": "draft",
+    "largeUrl": "https://apollojournals.org/alsj/a12/AS12-47-6928.jpg",
+    "nasaId": "AS12-47-6928",
+    "dateCreated": "1969-11-19"
+  },
+  {
+    "id": "bio-apollo-12-alsep-as12-46-6814",
+    "type": "image",
+    "url": "https://apollojournals.org/alsj/a12/AS12-46-6814HR.jpg",
+    "pageUrl": "https://apollojournals.org/alsj/a12/images12.html",
+    "title": "Across the top of the Central Station toward the magnetometer (AS12-46-6814)",
+    "caption": null,
+    "alt": {
+      "en": "Looking across the top of the central station toward the magnetometer: the antenna, the fittings that held the experiment packages during the trip, and the solar wind spectrometer in the middle distance.",
+      "fr": "Vue par-dessus la station centrale vers le magnétomètre : l’antenne, les fixations qui tenaient les instruments pendant le voyage, et le spectromètre de vent solaire à mi-distance."
+    },
+    "credit": "NASA",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "apollo-12"
+    ],
+    "machineIds": [
+      "apollo-12-alsep"
+    ],
+    "sourceId": "apollojournals-a12-images12-html",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "Looking across the top of the central station toward the magnetometer: the antenna, the fittings that held the experiment packages during the trip, and the solar wind spectrometer in the middle distance.",
+      "fr": "Vue par-dessus la station centrale vers le magnétomètre : l’antenne, les fixations qui tenaient les instruments pendant le voyage, et le spectromètre de vent solaire à mi-distance."
+    },
+    "descriptionStatus": "draft",
+    "largeUrl": "https://apollojournals.org/alsj/a12/AS12-46-6814.jpg",
+    "nasaId": "AS12-46-6814",
+    "dateCreated": "1969-11-19"
+  },
+  {
+    "id": "bio-apollo-12-alsep-as12-47-6916",
+    "type": "image",
+    "url": "https://apollojournals.org/alsj/a12/AS12-47-6916HR.jpg",
+    "pageUrl": "https://apollojournals.org/alsj/a12/images12.html",
+    "title": "Passive Seismic Experiment with its thermal skirt (AS12-47-6916)",
+    "caption": null,
+    "alt": {
+      "en": "The passive seismometer of Apollo 12 on 19 November 1969, surrounded by its silver thermal skirt that shields the ground beneath it from the swings of temperature.",
+      "fr": "Le sismomètre passif d’Apollo 12 le 19 novembre 1969, entouré de sa jupe thermique argentée qui protège le sol sous l’instrument des écarts de température."
+    },
+    "credit": "NASA",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "apollo-12"
+    ],
+    "machineIds": [
+      "apollo-12-alsep"
+    ],
+    "sourceId": "apollojournals-a12-images12-html",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "The passive seismometer of Apollo 12 on 19 November 1969, surrounded by its silver thermal skirt that shields the ground beneath it from the swings of temperature.",
+      "fr": "Le sismomètre passif d’Apollo 12 le 19 novembre 1969, entouré de sa jupe thermique argentée qui protège le sol sous l’instrument des écarts de température."
+    },
+    "descriptionStatus": "draft",
+    "largeUrl": "https://apollojournals.org/alsj/a12/AS12-47-6916.jpg",
+    "nasaId": "AS12-47-6916",
+    "dateCreated": "1969-11-19"
+  },
+  {
+    "id": "bio-apollo-12-alsep-as12-46-6812",
+    "type": "image",
+    "url": "https://apollojournals.org/alsj/a12/AS12-46-6812HR.jpg",
+    "pageUrl": "https://apollojournals.org/alsj/a12/images12.html",
+    "title": "Solar Wind Spectrometer (AS12-46-6812)",
+    "caption": null,
+    "alt": {
+      "en": "The solar wind spectrometer of the Apollo 12 ALSEP, photographed just after it was set up on 19 November 1969; its seven cup-shaped detectors sit under the dust cover on top.",
+      "fr": "Le spectromètre de vent solaire de l’ALSEP d’Apollo 12, photographié juste après son installation le 19 novembre 1969 ; ses sept détecteurs en forme de coupelle sont sous le couvercle, sur le dessus."
+    },
+    "credit": "NASA",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "apollo-12"
+    ],
+    "machineIds": [
+      "apollo-12-alsep"
+    ],
+    "sourceId": "apollojournals-a12-images12-html",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "The solar wind spectrometer of the Apollo 12 ALSEP, photographed just after it was set up on 19 November 1969; its seven cup-shaped detectors sit under the dust cover on top.",
+      "fr": "Le spectromètre de vent solaire de l’ALSEP d’Apollo 12, photographié juste après son installation le 19 novembre 1969 ; ses sept détecteurs en forme de coupelle sont sous le couvercle, sur le dessus."
+    },
+    "descriptionStatus": "draft",
+    "largeUrl": "https://apollojournals.org/alsj/a12/AS12-46-6812.jpg",
+    "nasaId": "AS12-46-6812",
+    "dateCreated": "1969-11-19"
+  },
+  {
+    "id": "bio-apollo-12-alsep-as12-47-6922",
+    "type": "image",
+    "url": "https://apollojournals.org/alsj/a12/AS12-47-6922HR.jpg",
+    "pageUrl": "https://apollojournals.org/alsj/a12/images12.html",
+    "title": "Close-up of the SIDE/CCIG (AS12-47-6922)",
+    "caption": null,
+    "alt": {
+      "en": "Close-up of the suprathermal ion detector and the cold cathode gauge standing on their legs on 19 November 1969, with their ground screen spread on the soil beneath.",
+      "fr": "Gros plan du détecteur d’ions suprathermiques et de la jauge à cathode froide, posés sur leurs pieds le 19 novembre 1969, avec leur grille de sol étalée sur la poussière en dessous."
+    },
+    "credit": "NASA",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "apollo-12"
+    ],
+    "machineIds": [
+      "apollo-12-alsep"
+    ],
+    "sourceId": "apollojournals-a12-images12-html",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "Close-up of the suprathermal ion detector and the cold cathode gauge standing on their legs on 19 November 1969, with their ground screen spread on the soil beneath.",
+      "fr": "Gros plan du détecteur d’ions suprathermiques et de la jauge à cathode froide, posés sur leurs pieds le 19 novembre 1969, avec leur grille de sol étalée sur la poussière en dessous."
+    },
+    "descriptionStatus": "draft",
+    "largeUrl": "https://apollojournals.org/alsj/a12/AS12-47-6922.jpg",
+    "nasaId": "AS12-47-6922",
+    "dateCreated": "1969-11-19"
+  },
+  {
+    "id": "bio-apollo-12-alsep-s71-17609",
+    "type": "image",
+    "url": "https://images-assets.nasa.gov/image/S71-17609/S71-17609~orig.jpg",
+    "pageUrl": "https://images.nasa.gov/details/S71-17609",
+    "title": "Activity in the Mission Control Center ALSEP Room during Apollo 14 S-IVB impact",
+    "caption": null,
+    "alt": {
+      "en": "In the ALSEP room of Mission Control on 4 February 1971, two scientists read the seismic trace recorded when the Apollo 14 rocket stage was crashed onto the Moon near the Apollo 12 seismometer.",
+      "fr": "Dans la salle ALSEP du centre de contrôle, le 4 février 1971, deux scientifiques lisent le tracé sismique enregistré quand l’étage de fusée d’Apollo 14 a été écrasé sur la Lune, près du sismomètre d’Apollo 12."
+    },
+    "credit": "NASA",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "apollo-12"
+    ],
+    "machineIds": [
+      "apollo-12-alsep"
+    ],
+    "sourceId": "nasa-details-s71-17609",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "In the ALSEP room of Mission Control on 4 February 1971, two scientists read the seismic trace recorded when the Apollo 14 rocket stage was crashed onto the Moon near the Apollo 12 seismometer.",
+      "fr": "Dans la salle ALSEP du centre de contrôle, le 4 février 1971, deux scientifiques lisent le tracé sismique enregistré quand l’étage de fusée d’Apollo 14 a été écrasé sur la Lune, près du sismomètre d’Apollo 12."
+    },
+    "descriptionStatus": "draft",
+    "thumbnailUrl": "https://images-assets.nasa.gov/image/S71-17609/S71-17609~thumb.jpg",
+    "largeUrl": "https://images-assets.nasa.gov/image/S71-17609/S71-17609~large.jpg",
+    "nasaId": "S71-17609",
+    "dateCreated": "1971-02-04"
+  },
+  {
+    "id": "bio-apollo-12-alsep-moon-landing-map",
+    "type": "image",
+    "url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/moon_landing_map.jpg",
+    "pageUrl": "https://nssdc.gsfc.nasa.gov/planetary/lunar/surveyor.html",
+    "title": "Moon landing sites map",
+    "caption": null,
+    "alt": {
+      "en": "A map of the near side of the Moon marking the landing sites of the Luna, Surveyor and Apollo missions with numbered triangles.",
+      "fr": "Une carte de la face visible de la Lune indiquant, par des triangles numérotés, les sites d’atterrissage des missions Luna, Surveyor et Apollo."
+    },
+    "credit": "NASA/NSSDCA",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "apollo-12"
+    ],
+    "machineIds": [
+      "apollo-12-alsep"
+    ],
+    "sourceId": "nasa-lunar-surveyor-html",
+    "aiGenerated": false,
+    "depiction": "diagram",
+    "description": {
+      "en": "A map of the near side of the Moon marking the landing sites of the Luna, Surveyor and Apollo missions with numbered triangles.",
+      "fr": "Une carte de la face visible de la Lune indiquant, par des triangles numérotés, les sites d’atterrissage des missions Luna, Surveyor et Apollo."
+    },
+    "descriptionStatus": "draft"
+  },
+  {
+    "id": "bio-apollo-12-alsep-as12-46-6785",
+    "type": "image",
+    "url": "https://apollojournals.org/alsj/a12/AS12-46-6785HR.jpg",
+    "pageUrl": "https://apollojournals.org/alsj/a12/images12.html",
+    "title": "RTG package on the ground (AS12-46-6785)",
+    "caption": null,
+    "alt": {
+      "en": "Alan Bean beside the package holding the radioisotope generator, set on the ground on 19 November 1969; the cooling fins of the generator that will power the station are visible.",
+      "fr": "Alan Bean à côté du paquet contenant le générateur à radio-isotopes, posé au sol le 19 novembre 1969 ; on voit les ailettes de refroidissement du générateur qui alimentera la station."
+    },
+    "credit": "NASA",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "apollo-12"
+    ],
+    "machineIds": [
+      "apollo-12-alsep"
+    ],
+    "sourceId": "apollojournals-a12-images12-html",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "Alan Bean beside the package holding the radioisotope generator, set on the ground on 19 November 1969; the cooling fins of the generator that will power the station are visible.",
+      "fr": "Alan Bean à côté du paquet contenant le générateur à radio-isotopes, posé au sol le 19 novembre 1969 ; on voit les ailettes de refroidissement du générateur qui alimentera la station."
+    },
+    "descriptionStatus": "draft",
+    "largeUrl": "https://apollojournals.org/alsj/a12/AS12-46-6785.jpg",
+    "nasaId": "AS12-46-6785",
+    "dateCreated": "1969-11-19"
+  },
+  {
+    "id": "bio-apollo-12-alsep-as12-46-6788",
+    "type": "image",
+    "url": "https://apollojournals.org/alsj/a12/AS12-46-6788HR.jpg",
+    "pageUrl": "https://apollojournals.org/alsj/a12/images12.html",
+    "title": "Bean removes the dome of the RTG fuel cask (AS12-46-6788)",
+    "caption": null,
+    "alt": {
+      "en": "Alan Bean at the Lunar Module on 19 November 1969, setting aside the protective dome of the cask that carried the generator’s plutonium fuel element.",
+      "fr": "Alan Bean au module lunaire le 19 novembre 1969, écartant le dôme de protection du conteneur qui transportait l’élément de combustible au plutonium du générateur."
+    },
+    "credit": "NASA",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "apollo-12"
+    ],
+    "machineIds": [
+      "apollo-12-alsep"
+    ],
+    "sourceId": "apollojournals-a12-images12-html",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "Alan Bean at the Lunar Module on 19 November 1969, setting aside the protective dome of the cask that carried the generator’s plutonium fuel element.",
+      "fr": "Alan Bean au module lunaire le 19 novembre 1969, écartant le dôme de protection du conteneur qui transportait l’élément de combustible au plutonium du générateur."
+    },
+    "descriptionStatus": "draft",
+    "largeUrl": "https://apollojournals.org/alsj/a12/AS12-46-6788.jpg",
+    "nasaId": "AS12-46-6788",
+    "dateCreated": "1969-11-19"
+  },
+  {
+    "id": "bio-mars-pathfinder-lander-marspath-entry",
+    "type": "image",
+    "url": "https://nssdc.gsfc.nasa.gov/planetary/image/marspath_entry.jpg",
+    "pageUrl": "https://nssdc.gsfc.nasa.gov/planetary/marsentry.html",
+    "title": "Mars Pathfinder entry, descent and landing sequence",
+    "caption": null,
+    "alt": {
+      "en": "A diagram of Pathfinder’s arrival: cruise stage separation, entry, parachute, heat-shield release, lowering on the bridle, airbag inflation, rocket firing, the bounces and the opening of the petals.",
+      "fr": "Un schéma de l’arrivée de Pathfinder : séparation de l’étage de croisière, entrée, parachute, largage du bouclier thermique, descente au bout du câble, gonflage des airbags, mise à feu des rétrofusées, rebonds et ouverture des pétales."
+    },
+    "credit": "NASA/JPL",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-pathfinder"
+    ],
+    "machineIds": [
+      "mars-pathfinder-lander"
+    ],
+    "sourceId": "nasa-planetary-marsentry-html",
+    "aiGenerated": false,
+    "depiction": "diagram",
+    "description": {
+      "en": "A diagram of Pathfinder’s arrival: cruise stage separation, entry, parachute, heat-shield release, lowering on the bridle, airbag inflation, rocket firing, the bounces and the opening of the petals.",
+      "fr": "Un schéma de l’arrivée de Pathfinder : séparation de l’étage de croisière, entrée, parachute, largage du bouclier thermique, descente au bout du câble, gonflage des airbags, mise à feu des rétrofusées, rebonds et ouverture des pétales."
+    },
+    "descriptionStatus": "draft"
+  },
+  {
+    "id": "bio-mars-pathfinder-lander-pia00775",
+    "type": "image",
+    "url": "https://images-assets.nasa.gov/image/PIA00775/PIA00775~orig.jpg",
+    "pageUrl": "https://photojournal.jpl.nasa.gov/catalog/PIA00775",
+    "title": "Airbag Bounce Marks",
+    "caption": null,
+    "alt": {
+      "en": "Looking east from the lander: the last bounce marks left in the soil as the airbag-wrapped Pathfinder rolled to a stop on 4 July 1997, the farthest about 11 metres away.",
+      "fr": "Vue vers l’est depuis l’atterrisseur : les dernières traces de rebond laissées dans le sol quand Pathfinder, enveloppé dans ses airbags, a roulé jusqu’à l’arrêt le 4 juillet 1997 ; la plus lointaine est à environ 11 mètres."
+    },
+    "credit": "NASA/JPL",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-pathfinder"
+    ],
+    "machineIds": [
+      "mars-pathfinder-lander"
+    ],
+    "sourceId": "nasa-catalog-pia00775",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "Looking east from the lander: the last bounce marks left in the soil as the airbag-wrapped Pathfinder rolled to a stop on 4 July 1997, the farthest about 11 metres away.",
+      "fr": "Vue vers l’est depuis l’atterrisseur : les dernières traces de rebond laissées dans le sol quand Pathfinder, enveloppé dans ses airbags, a roulé jusqu’à l’arrêt le 4 juillet 1997 ; la plus lointaine est à environ 11 mètres."
+    },
+    "descriptionStatus": "draft",
+    "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA00775/PIA00775~thumb.jpg",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA00775/PIA00775~medium.jpg",
+    "nasaId": "PIA00775",
+    "dateCreated": "1997-07-22"
+  },
+  {
+    "id": "bio-mars-pathfinder-lander-marspath1",
+    "type": "image",
+    "url": "https://nssdc.gsfc.nasa.gov/planetary/image/marspath1.jpg",
+    "pageUrl": "https://nssdc.gsfc.nasa.gov/planetary/marspath_images_h.html",
+    "title": "First image returned by Mars Pathfinder",
+    "caption": null,
+    "alt": {
+      "en": "The first image Pathfinder sent back on 4 July 1997: a narrow black-and-white strip showing Sojourner still stowed on a lander petal and the rocky ground beyond.",
+      "fr": "La première image renvoyée par Pathfinder le 4 juillet 1997 : une étroite bande en noir et blanc où l’on voit Sojourner encore rangé sur un pétale de l’atterrisseur et le sol rocheux au-delà."
+    },
+    "credit": "NASA/JPL",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-pathfinder"
+    ],
+    "machineIds": [
+      "mars-pathfinder-lander"
+    ],
+    "sourceId": "nasa-planetary-marspath-images-h-html",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "The first image Pathfinder sent back on 4 July 1997: a narrow black-and-white strip showing Sojourner still stowed on a lander petal and the rocky ground beyond.",
+      "fr": "La première image renvoyée par Pathfinder le 4 juillet 1997 : une étroite bande en noir et blanc où l’on voit Sojourner encore rangé sur un pétale de l’atterrisseur et le sol rocheux au-delà."
+    },
+    "descriptionStatus": "draft",
+    "dateCreated": "1997-07-04"
+  },
+  {
+    "id": "bio-mars-pathfinder-lander-pia00977",
+    "type": "image",
+    "url": "https://images-assets.nasa.gov/image/PIA00977/PIA00977~orig.jpg",
+    "pageUrl": "https://photojournal.jpl.nasa.gov/catalog/PIA00977",
+    "title": "MPF Lander Measured Surface Pressure",
+    "caption": null,
+    "alt": {
+      "en": "A graph of the air pressure measured by the lander on sols 79 to 81, in late September 1997, showing the rise as a weather front passed over the site a few days before the last transmission.",
+      "fr": "Un graphique de la pression de l’air mesurée par l’atterrisseur aux sols 79 à 81, fin septembre 1997, montrant la hausse due au passage d’un front météo quelques jours avant la dernière transmission."
+    },
+    "credit": "NASA/JPL/ASU",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-pathfinder"
+    ],
+    "machineIds": [
+      "mars-pathfinder-lander"
+    ],
+    "sourceId": "nasa-catalog-pia00977",
+    "aiGenerated": false,
+    "depiction": "diagram",
+    "description": {
+      "en": "A graph of the air pressure measured by the lander on sols 79 to 81, in late September 1997, showing the rise as a weather front passed over the site a few days before the last transmission.",
+      "fr": "Un graphique de la pression de l’air mesurée par l’atterrisseur aux sols 79 à 81, fin septembre 1997, montrant la hausse due au passage d’un front météo quelques jours avant la dernière transmission."
+    },
+    "descriptionStatus": "draft",
+    "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA00977/PIA00977~thumb.jpg",
+    "nasaId": "PIA00977"
+  },
+  {
+    "id": "bio-sojourner-pia01122",
+    "type": "image",
+    "url": "https://images-assets.nasa.gov/image/PIA01122/PIA01122~orig.jpg",
+    "pageUrl": "https://photojournal.jpl.nasa.gov/catalog/PIA01122",
+    "title": "Sojourner Rover Near “The Dice”",
+    "caption": null,
+    "alt": {
+      "en": "Sojourner on Mars on sol 22 (July 1997), near the three small rocks called “The Dice” and the big rock Yogi: its solar panel, its six wheels and the spectrometer at the rear, with its tracks in the red soil.",
+      "fr": "Sojourner sur Mars au sol 22 (juillet 1997), près des trois petits rochers appelés « The Dice » et du gros rocher Yogi : son panneau solaire, ses six roues et le spectromètre à l’arrière, avec ses traces dans le sol rouge."
+    },
+    "credit": "NASA/JPL",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-pathfinder"
+    ],
+    "machineIds": [
+      "sojourner"
+    ],
+    "sourceId": "nasa-catalog-pia01122",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "Sojourner on Mars on sol 22 (July 1997), near the three small rocks called “The Dice” and the big rock Yogi: its solar panel, its six wheels and the spectrometer at the rear, with its tracks in the red soil.",
+      "fr": "Sojourner sur Mars au sol 22 (juillet 1997), près des trois petits rochers appelés « The Dice » et du gros rocher Yogi : son panneau solaire, ses six roues et le spectromètre à l’arrière, avec ses traces dans le sol rouge."
+    },
+    "descriptionStatus": "draft",
+    "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA01122/PIA01122~thumb.jpg",
+    "nasaId": "PIA01122"
+  },
+  {
+    "id": "bio-sojourner-pia04421",
+    "type": "image",
+    "url": "https://images-assets.nasa.gov/image/PIA04421/PIA04421~orig.jpg",
+    "pageUrl": "https://photojournal.jpl.nasa.gov/catalog/PIA04421",
+    "title": "Rover Family Photo",
+    "caption": null,
+    "alt": {
+      "en": "Marie Curie, the flight spare of Sojourner, next to a much larger Mars Exploration Rover at JPL in February 2003, with members of the assembly team standing behind in clean-room suits.",
+      "fr": "Marie Curie, l’exemplaire de rechange de Sojourner, à côté d’un Mars Exploration Rover bien plus grand au JPL en février 2003, avec des membres de l’équipe d’assemblage en combinaison de salle blanche derrière."
+    },
+    "credit": "NASA/JPL",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-pathfinder"
+    ],
+    "machineIds": [
+      "sojourner"
+    ],
+    "sourceId": "nasa-catalog-pia04421",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "Marie Curie, the flight spare of Sojourner, next to a much larger Mars Exploration Rover at JPL in February 2003, with members of the assembly team standing behind in clean-room suits.",
+      "fr": "Marie Curie, l’exemplaire de rechange de Sojourner, à côté d’un Mars Exploration Rover bien plus grand au JPL en février 2003, avec des membres de l’équipe d’assemblage en combinaison de salle blanche derrière."
+    },
+    "descriptionStatus": "draft",
+    "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA04421/PIA04421~thumb.jpg",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA04421/PIA04421~large.jpg",
+    "nasaId": "PIA04421",
+    "dateCreated": "2003-02-26"
+  },
+  {
+    "id": "bio-sojourner-pia00966",
+    "type": "image",
+    "url": "https://images-assets.nasa.gov/image/PIA00966/PIA00966~orig.jpg",
+    "pageUrl": "https://photojournal.jpl.nasa.gov/catalog/PIA00966",
+    "title": "Sojourner’s APXS at “Moe” – Right Eye",
+    "caption": null,
+    "alt": {
+      "en": "Sojourner with its spectrometer pressed against the rock Moe on the afternoon of sol 64 (7 September 1997); the rocks Shark and Half Dome, measured earlier, are just to its left and behind it.",
+      "fr": "Sojourner, son spectromètre appuyé contre le rocher Moe, l’après-midi du sol 64 (7 septembre 1997) ; les rochers Shark et Half Dome, mesurés plus tôt, sont juste à sa gauche et derrière lui."
+    },
+    "credit": "NASA/JPL",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-pathfinder"
+    ],
+    "machineIds": [
+      "sojourner"
+    ],
+    "sourceId": "nasa-catalog-pia00966",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "Sojourner with its spectrometer pressed against the rock Moe on the afternoon of sol 64 (7 September 1997); the rocks Shark and Half Dome, measured earlier, are just to its left and behind it.",
+      "fr": "Sojourner, son spectromètre appuyé contre le rocher Moe, l’après-midi du sol 64 (7 septembre 1997) ; les rochers Shark et Half Dome, mesurés plus tôt, sont juste à sa gauche et derrière lui."
+    },
+    "descriptionStatus": "draft",
+    "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA00966/PIA00966~thumb.jpg",
+    "nasaId": "PIA00966",
+    "dateCreated": "1997-09-07"
+  },
+  {
+    "id": "bio-sojourner-marspath-apxs-sites",
+    "type": "image",
+    "url": "https://nssdc.gsfc.nasa.gov/planetary/image/marspath_apxs_sites.jpg",
+    "pageUrl": "https://nssdc.gsfc.nasa.gov/planetary/marspath_images.html",
+    "title": "Mars Pathfinder APXS measurement sites",
+    "caption": null,
+    "alt": {
+      "en": "A labelled mosaic of lander images showing the rocks and patches of soil where Sojourner placed its spectrometer (APXS) to measure what they are made of.",
+      "fr": "Une mosaïque légendée d’images de l’atterrisseur montrant les rochers et les zones de sol où Sojourner a posé son spectromètre (APXS) pour mesurer leur composition."
+    },
+    "credit": "NASA/JPL",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-pathfinder"
+    ],
+    "machineIds": [
+      "sojourner"
+    ],
+    "sourceId": "nasa-planetary-marspath-images-html",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "A labelled mosaic of lander images showing the rocks and patches of soil where Sojourner placed its spectrometer (APXS) to measure what they are made of.",
+      "fr": "Une mosaïque légendée d’images de l’atterrisseur montrant les rochers et les zones de sol où Sojourner a posé son spectromètre (APXS) pour mesurer leur composition."
+    },
+    "descriptionStatus": "draft"
+  },
+  {
+    "id": "bio-sojourner-pia00970",
+    "type": "image",
+    "url": "https://images-assets.nasa.gov/image/PIA00970/PIA00970~orig.jpg",
+    "pageUrl": "https://photojournal.jpl.nasa.gov/catalog/PIA00970",
+    "title": "Sojourner APXS at Chimp – Left Eye",
+    "caption": null,
+    "alt": {
+      "en": "Sojourner on the morning of sol 80 (23 September 1997), its spectrometer against the rock Chimp, with the rim of Big Crater on the left horizon 2.2 km away; one of its last measurements.",
+      "fr": "Sojourner au matin du sol 80 (23 septembre 1997), son spectromètre contre le rocher Chimp, avec le bord de Big Crater à l’horizon à gauche, à 2,2 km ; l’une de ses dernières mesures."
+    },
+    "credit": "NASA/JPL",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-pathfinder"
+    ],
+    "machineIds": [
+      "sojourner"
+    ],
+    "sourceId": "nasa-catalog-pia00970",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "Sojourner on the morning of sol 80 (23 September 1997), its spectrometer against the rock Chimp, with the rim of Big Crater on the left horizon 2.2 km away; one of its last measurements.",
+      "fr": "Sojourner au matin du sol 80 (23 septembre 1997), son spectromètre contre le rocher Chimp, avec le bord de Big Crater à l’horizon à gauche, à 2,2 km ; l’une de ses dernières mesures."
+    },
+    "descriptionStatus": "draft",
+    "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA00970/PIA00970~thumb.jpg",
+    "nasaId": "PIA00970",
+    "dateCreated": "1997-09-23"
+  },
+  {
+    "id": "bio-sojourner-pia01238",
+    "type": "image",
+    "url": "https://images-assets.nasa.gov/image/PIA01238/PIA01238~orig.jpg",
+    "pageUrl": "https://photojournal.jpl.nasa.gov/catalog/PIA01238",
+    "title": "Mars Pathfinder Rover Traverse Image",
+    "caption": null,
+    "alt": {
+      "en": "Sojourner’s whole path during its 83 days on Mars, drawn as a white line over a circular projection of the lander’s panorama, with the lander at the centre.",
+      "fr": "Tout le trajet de Sojourner pendant ses 83 jours sur Mars, tracé en blanc sur une projection circulaire du panorama de l’atterrisseur, l’atterrisseur étant au centre."
+    },
+    "credit": "NASA/JPL",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-pathfinder"
+    ],
+    "machineIds": [
+      "sojourner"
+    ],
+    "sourceId": "nasa-catalog-pia01238",
+    "aiGenerated": false,
+    "depiction": "diagram",
+    "description": {
+      "en": "Sojourner’s whole path during its 83 days on Mars, drawn as a white line over a circular projection of the lander’s panorama, with the lander at the centre.",
+      "fr": "Tout le trajet de Sojourner pendant ses 83 jours sur Mars, tracé en blanc sur une projection circulaire du panorama de l’atterrisseur, l’atterrisseur étant au centre."
+    },
+    "descriptionStatus": "draft",
+    "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA01238/PIA01238~thumb.jpg",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA01238/PIA01238~large.jpg",
+    "nasaId": "PIA01238",
+    "dateCreated": "1998-04-21"
+  },
+  {
+    "id": "bio-sojourner-pia01580",
+    "type": "image",
+    "url": "https://images-assets.nasa.gov/image/PIA01580/PIA01580~orig.jpg",
+    "pageUrl": "https://photojournal.jpl.nasa.gov/catalog/PIA01580",
+    "title": "Sojourner Rover Behind “Chimp” – Left Eye",
+    "caption": null,
+    "alt": {
+      "en": "Sojourner seen from the lander behind the rock Chimp on the afternoon of sol 74 (17 September 1997), a record 12.3 metres away; this area near Chimp is its last known position.",
+      "fr": "Sojourner vu depuis l’atterrisseur, derrière le rocher Chimp, l’après-midi du sol 74 (17 septembre 1997), à une distance record de 12,3 mètres ; cette zone près de Chimp est sa dernière position connue."
+    },
+    "credit": "NASA/JPL",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-pathfinder"
+    ],
+    "machineIds": [
+      "sojourner"
+    ],
+    "sourceId": "nasa-catalog-pia01580",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "Sojourner seen from the lander behind the rock Chimp on the afternoon of sol 74 (17 September 1997), a record 12.3 metres away; this area near Chimp is its last known position.",
+      "fr": "Sojourner vu depuis l’atterrisseur, derrière le rocher Chimp, l’après-midi du sol 74 (17 septembre 1997), à une distance record de 12,3 mètres ; cette zone près de Chimp est sa dernière position connue."
+    },
+    "descriptionStatus": "draft",
+    "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA01580/PIA01580~thumb.jpg",
+    "nasaId": "PIA01580",
+    "dateCreated": "1997-09-17"
+  },
+  {
+    "id": "bio-spirit-pia05097",
+    "type": "image",
+    "url": "https://images-assets.nasa.gov/image/PIA05097/PIA05097~orig.jpg",
+    "pageUrl": "https://photojournal.jpl.nasa.gov/catalog/PIA05097",
+    "title": "Spirit Leaves Telling Tracks",
+    "caption": null,
+    "alt": {
+      "en": "Spirit’s rear camera looks back at the lander platform and the fresh wheel tracks in the soil, just after the rover drove about one metre off it on 15 January 2004.",
+      "fr": "La caméra arrière de Spirit regarde la plateforme d’atterrissage et les traces de roues toutes fraîches dans le sol, juste après que le rover en est descendu d’environ un mètre, le 15 janvier 2004."
+    },
+    "credit": "NASA/JPL",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-exploration-rovers"
+    ],
+    "machineIds": [
+      "spirit"
+    ],
+    "sourceId": "nasa-catalog-pia05097",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "Spirit’s rear camera looks back at the lander platform and the fresh wheel tracks in the soil, just after the rover drove about one metre off it on 15 January 2004.",
+      "fr": "La caméra arrière de Spirit regarde la plateforme d’atterrissage et les traces de roues toutes fraîches dans le sol, juste après que le rover en est descendu d’environ un mètre, le 15 janvier 2004."
+    },
+    "descriptionStatus": "draft",
+    "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA05097/PIA05097~thumb.jpg",
+    "nasaId": "PIA05097",
+    "dateCreated": "2004-01-15"
+  },
+  {
+    "id": "bio-opportunity-pia05618",
+    "type": "image",
+    "url": "https://images-assets.nasa.gov/image/PIA05618/PIA05618~orig.jpg",
+    "pageUrl": "https://photojournal.jpl.nasa.gov/catalog/PIA05618",
+    "title": "Looking Back at “Eagle Crater”",
+    "caption": null,
+    "alt": {
+      "en": "Opportunity’s first 360-degree view from outside Eagle Crater, in late March 2004: its wheel tracks lead away from the crater across the rippled plains of Meridiani Planum.",
+      "fr": "Le premier panorama à 360 degrés d’Opportunity depuis l’extérieur du cratère Eagle, fin mars 2004 : ses traces de roues s’éloignent du cratère à travers les plaines ridées de Meridiani Planum."
+    },
+    "credit": "NASA/JPL",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-exploration-rovers"
+    ],
+    "machineIds": [
+      "opportunity"
+    ],
+    "sourceId": "nasa-catalog-pia05618",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "Opportunity’s first 360-degree view from outside Eagle Crater, in late March 2004: its wheel tracks lead away from the crater across the rippled plains of Meridiani Planum.",
+      "fr": "Le premier panorama à 360 degrés d’Opportunity depuis l’extérieur du cratère Eagle, fin mars 2004 : ses traces de roues s’éloignent du cratère à travers les plaines ridées de Meridiani Planum."
+    },
+    "descriptionStatus": "draft",
+    "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA05618/PIA05618~thumb.jpg",
+    "nasaId": "PIA05618",
+    "dateCreated": "2004-03-23"
+  },
+  {
+    "id": "bio-opportunity-pia05632",
+    "type": "image",
+    "url": "https://images-assets.nasa.gov/image/PIA05632/PIA05632~orig.jpg",
+    "pageUrl": "https://photojournal.jpl.nasa.gov/catalog/PIA05632",
+    "title": "A Well-Traveled “Eagle Crater” (left-eye)",
+    "caption": null,
+    "alt": {
+      "en": "Navigation-camera view from Opportunity’s 56th sol, in March 2004, just before it left Eagle Crater; on the right are the tracks of its first, unsuccessful attempt to climb out.",
+      "fr": "Vue de la caméra de navigation au 56e sol d’Opportunity, en mars 2004, juste avant qu’il quitte le cratère Eagle ; à droite, les traces de sa première tentative de sortie, qui avait échoué."
+    },
+    "credit": "NASA/JPL",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-exploration-rovers"
+    ],
+    "machineIds": [
+      "opportunity"
+    ],
+    "sourceId": "nasa-catalog-pia05632",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "Navigation-camera view from Opportunity’s 56th sol, in March 2004, just before it left Eagle Crater; on the right are the tracks of its first, unsuccessful attempt to climb out.",
+      "fr": "Vue de la caméra de navigation au 56e sol d’Opportunity, en mars 2004, juste avant qu’il quitte le cratère Eagle ; à droite, les traces de sa première tentative de sortie, qui avait échoué."
+    },
+    "descriptionStatus": "draft",
+    "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA05632/PIA05632~thumb.jpg",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA05632/PIA05632~large.jpg",
+    "nasaId": "PIA05632",
+    "dateCreated": "2004-03-25"
+  },
+  {
+    "id": "bio-opportunity-pia14750",
+    "type": "image",
+    "url": "https://images-assets.nasa.gov/image/PIA14750/PIA14750~orig.jpg",
+    "pageUrl": "https://photojournal.jpl.nasa.gov/catalog/PIA14750",
+    "title": "Memorial Image Taken on Mars on Sept. 11, 2011",
+    "caption": null,
+    "alt": {
+      "en": "The cable guard of Opportunity’s rock abrasion tool, made from aluminium recovered at the World Trade Center and carrying a small American flag, photographed on Mars on 11 September 2011.",
+      "fr": "Le protège-câble de l’outil d’abrasion d’Opportunity, fabriqué dans de l’aluminium récupéré au World Trade Center et portant un petit drapeau américain, photographié sur Mars le 11 septembre 2011."
+    },
+    "credit": "NASA/JPL-Caltech/Cornell University/Arizona State University",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-exploration-rovers"
+    ],
+    "machineIds": [
+      "opportunity"
+    ],
+    "sourceId": "nasa-catalog-pia14750",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "The cable guard of Opportunity’s rock abrasion tool, made from aluminium recovered at the World Trade Center and carrying a small American flag, photographed on Mars on 11 September 2011.",
+      "fr": "Le protège-câble de l’outil d’abrasion d’Opportunity, fabriqué dans de l’aluminium récupéré au World Trade Center et portant un petit drapeau américain, photographié sur Mars le 11 septembre 2011."
+    },
+    "descriptionStatus": "draft",
+    "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA14750/PIA14750~thumb.jpg",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA14750/PIA14750~large.jpg",
+    "nasaId": "PIA14750",
+    "dateCreated": "2011-09-11"
+  },
+  {
+    "id": "bio-opportunity-pia18614",
+    "type": "image",
+    "url": "https://images-assets.nasa.gov/image/PIA18614/PIA18614~orig.jpg",
+    "pageUrl": "https://photojournal.jpl.nasa.gov/catalog/PIA18614",
+    "title": "Opportunity’s Northward View of “Wdowiak Ridge”",
+    "caption": null,
+    "alt": {
+      "en": "A panorama taken by Opportunity on 17 September 2014, two weeks after its flash memory was reformatted: Wdowiak Ridge on the rim of Endeavour Crater, with the rover’s tracks at right.",
+      "fr": "Un panorama pris par Opportunity le 17 septembre 2014, deux semaines après le reformatage de sa mémoire flash : la crête Wdowiak sur le bord du cratère Endeavour, avec les traces du rover à droite."
+    },
+    "credit": "NASA/JPL-Caltech/Cornell Univ./Arizona State Univ.",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-exploration-rovers"
+    ],
+    "machineIds": [
+      "opportunity"
+    ],
+    "sourceId": "nasa-catalog-pia18614",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "A panorama taken by Opportunity on 17 September 2014, two weeks after its flash memory was reformatted: Wdowiak Ridge on the rim of Endeavour Crater, with the rover’s tracks at right.",
+      "fr": "Un panorama pris par Opportunity le 17 septembre 2014, deux semaines après le reformatage de sa mémoire flash : la crête Wdowiak sur le bord du cratère Endeavour, avec les traces du rover à droite."
+    },
+    "descriptionStatus": "draft",
+    "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA18614/PIA18614~thumb.jpg",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA18614/PIA18614~large.jpg",
+    "nasaId": "PIA18614",
+    "dateCreated": "2014-09-17"
+  },
+  {
+    "id": "bio-ingenuity-pia25068",
+    "type": "image",
+    "url": "https://images-assets.nasa.gov/image/PIA25068/PIA25068~orig.jpg",
+    "pageUrl": "https://photojournal.jpl.nasa.gov/catalog/PIA25068",
+    "title": "Dust Storm and Jezero Crater",
+    "caption": null,
+    "alt": {
+      "en": "A view of Mars assembled from Mars Reconnaissance Orbiter images of 9 January 2022: a regional dust storm covers Syrtis Major and Jezero Crater, marked by the white circle.",
+      "fr": "Une vue de Mars assemblée à partir d’images de Mars Reconnaissance Orbiter du 9 janvier 2022 : une tempête de poussière régionale recouvre Syrtis Major et le cratère Jezero, marqué par le cercle blanc."
+    },
+    "credit": "NASA/JPL-Caltech/MSSS",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-2020"
+    ],
+    "machineIds": [
+      "ingenuity"
+    ],
+    "sourceId": "nasa-catalog-pia25068",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "A view of Mars assembled from Mars Reconnaissance Orbiter images of 9 January 2022: a regional dust storm covers Syrtis Major and Jezero Crater, marked by the white circle.",
+      "fr": "Une vue de Mars assemblée à partir d’images de Mars Reconnaissance Orbiter du 9 janvier 2022 : une tempête de poussière régionale recouvre Syrtis Major et le cratère Jezero, marqué par le cercle blanc."
+    },
+    "descriptionStatus": "draft",
+    "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA25068/PIA25068~thumb.jpg",
+    "nasaId": "PIA25068",
+    "dateCreated": "2022-01-09"
+  },
+  {
+    "id": "bio-ingenuity-pia25174",
+    "type": "image",
+    "url": "https://images-assets.nasa.gov/image/PIA25174/PIA25174~orig.jpg",
+    "pageUrl": "https://photojournal.jpl.nasa.gov/catalog/PIA25174",
+    "title": "MRO’s HiRISE Spots Perseverance and Ingenuity",
+    "caption": null,
+    "alt": {
+      "en": "Perseverance and, about 200 metres to its left, the tiny dot of Ingenuity, photographed from orbit by the HiRISE camera on 26 February 2022, a few weeks after Flight 19.",
+      "fr": "Perseverance et, à environ 200 mètres à sa gauche, le minuscule point d’Ingenuity, photographiés depuis l’orbite par la caméra HiRISE le 26 février 2022, quelques semaines après le vol 19."
+    },
+    "credit": "NASA/JPL-Caltech/University of Arizona",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-2020"
+    ],
+    "machineIds": [
+      "ingenuity"
+    ],
+    "sourceId": "nasa-catalog-pia25174",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "Perseverance and, about 200 metres to its left, the tiny dot of Ingenuity, photographed from orbit by the HiRISE camera on 26 February 2022, a few weeks after Flight 19.",
+      "fr": "Perseverance et, à environ 200 mètres à sa gauche, le minuscule point d’Ingenuity, photographiés depuis l’orbite par la caméra HiRISE le 26 février 2022, quelques semaines après le vol 19."
+    },
+    "descriptionStatus": "draft",
+    "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA25174/PIA25174~thumb.jpg",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA25174/PIA25174~large.jpg",
+    "nasaId": "PIA25174",
+    "dateCreated": "2022-02-26"
+  },
+  {
+    "id": "bio-ingenuity-pia25883",
+    "type": "image",
+    "url": "https://images-assets.nasa.gov/image/PIA25883/PIA25883~orig.jpg",
+    "pageUrl": "https://photojournal.jpl.nasa.gov/catalog/PIA25883",
+    "title": "Ingenuity at “Airfield Mu”",
+    "caption": null,
+    "alt": {
+      "en": "Ingenuity on the ground at “Airfield Mu”, photographed by Perseverance’s Mastcam-Z on 14 April 2023, the day after its 50th flight; the helicopter is a small shape just below and left of centre, 220 metres from the rover.",
+      "fr": "Ingenuity posé à « Airfield Mu », photographié par la Mastcam-Z de Perseverance le 14 avril 2023, le lendemain de son 50e vol ; l’hélicoptère est une petite silhouette juste en bas à gauche du centre, à 220 mètres du rover."
+    },
+    "credit": "NASA/JPL-Caltech/ASU/MSSS",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-2020"
+    ],
+    "machineIds": [
+      "ingenuity"
+    ],
+    "sourceId": "nasa-catalog-pia25883",
+    "aiGenerated": false,
+    "depiction": "photo",
+    "description": {
+      "en": "Ingenuity on the ground at “Airfield Mu”, photographed by Perseverance’s Mastcam-Z on 14 April 2023, the day after its 50th flight; the helicopter is a small shape just below and left of centre, 220 metres from the rover.",
+      "fr": "Ingenuity posé à « Airfield Mu », photographié par la Mastcam-Z de Perseverance le 14 avril 2023, le lendemain de son 50e vol ; l’hélicoptère est une petite silhouette juste en bas à gauche du centre, à 220 mètres du rover."
+    },
+    "descriptionStatus": "draft",
+    "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA25883/PIA25883~thumb.jpg",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA25883/PIA25883~medium.jpg",
+    "nasaId": "PIA25883",
+    "dateCreated": "2023-04-14"
+  },
+  {
+    "id": "bio-ingenuity-pia25961",
+    "type": "image",
+    "url": "https://images-assets.nasa.gov/image/PIA25961/PIA25961~orig.jpg",
+    "pageUrl": "https://photojournal.jpl.nasa.gov/catalog/PIA25961",
+    "title": "Leading Up to Flight 50",
+    "caption": null,
+    "alt": {
+      "en": "A map of the positions of Perseverance and Ingenuity in the days before Flight 50 on 13 April 2023; the helicopter icon is at upper left, and coloured dots mark the rover’s stops.",
+      "fr": "Une carte des positions de Perseverance et d’Ingenuity dans les jours précédant le vol 50, le 13 avril 2023 ; l’icône de l’hélicoptère est en haut à gauche, et des points de couleur marquent les arrêts du rover."
+    },
+    "credit": "NASA/JPL-Caltech",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-2020"
+    ],
+    "machineIds": [
+      "ingenuity"
+    ],
+    "sourceId": "nasa-catalog-pia25961",
+    "aiGenerated": false,
+    "depiction": "diagram",
+    "description": {
+      "en": "A map of the positions of Perseverance and Ingenuity in the days before Flight 50 on 13 April 2023; the helicopter icon is at upper left, and coloured dots mark the rover’s stops.",
+      "fr": "Une carte des positions de Perseverance et d’Ingenuity dans les jours précédant le vol 50, le 13 avril 2023 ; l’icône de l’hélicoptère est en haut à gauche, et des points de couleur marquent les arrêts du rover."
+    },
+    "descriptionStatus": "draft",
+    "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA25961/PIA25961~thumb.jpg",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA25961/PIA25961~medium.jpg",
+    "nasaId": "PIA25961",
+    "dateCreated": "2023-05-26"
   }
 ]

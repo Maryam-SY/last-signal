@@ -263,8 +263,8 @@
           "fr": "Des instruments laissés sur place"
         },
         "description": {
-          "en": "Before leaving, the astronauts set up a seismometer to “listen” to the Moon and a mirror made of 100 prisms for laser beams sent from Earth.",
-          "fr": "Avant de partir, les astronautes installent un sismomètre pour « écouter » la Lune et un miroir de 100 prismes pour les rayons laser envoyés depuis la Terre."
+          "en": "Before leaving, the astronauts set up a seismometer to “listen” to the Moon and a mirror made of 100 prisms (small glass blocks that send light straight back) for laser beams sent from Earth.",
+          "fr": "Avant de partir, les astronautes installent un sismomètre pour « écouter » la Lune et un miroir de 100 prismes (de petits blocs de verre qui renvoient la lumière tout droit) pour les rayons laser envoyés depuis la Terre."
         },
         "mediaIds": [
           "nasa-lib-as11-40-5951",
@@ -439,8 +439,8 @@
           "fr": "Une station scientifique sur la Lune"
         },
         "description": {
-          "en": "Alan Bean sets up the ALSEP, a station with six instruments powered by a small nuclear generator. It sends its measurements to Earth.",
-          "fr": "Alan Bean installe l’ALSEP, une station de six instruments alimentée par un petit générateur nucléaire. Elle envoie ses mesures vers la Terre."
+          "en": "Alan Bean sets up the ALSEP, a station with six instruments powered by a small nuclear generator (it makes electricity from the heat of a radioactive material). It sends its measurements to Earth.",
+          "fr": "Alan Bean installe l’ALSEP, une station de six instruments alimentée par un petit générateur nucléaire (il fabrique de l'électricité avec la chaleur d'une matière radioactive). Elle envoie ses mesures vers la Terre."
         },
         "mediaIds": [
           "nasa-lib-as12-47-6919",
@@ -483,8 +483,8 @@
           "fr": "Un séisme lunaire artificiel"
         },
         "description": {
-          "en": "Once the crew is back in orbit, the empty top part of the Lunar Module is crashed into the Moon on purpose. The seismometer records the shock: the first artificial moonquake ever recorded.",
-          "fr": "Une fois l’équipage revenu en orbite, la partie haute du module lunaire, vide, est volontairement écrasée sur la Lune. Le sismomètre enregistre le choc : le premier séisme lunaire artificiel jamais enregistré."
+          "en": "Once the crew is back in orbit, the empty top part of the Lunar Module is crashed into the Moon on purpose. The seismometer (the instrument that feels the ground shaking) records the shock: the first artificial moonquake ever recorded.",
+          "fr": "Une fois l’équipage revenu en orbite, la partie haute du module lunaire, vide, est volontairement écrasée sur la Lune. Le sismomètre (l'instrument qui sent les tremblements du sol) enregistre le choc : le premier séisme lunaire artificiel jamais enregistré."
         },
         "mediaIds": [
           "nasa-lib-s69-59547"
@@ -681,8 +681,8 @@
       }
     },
     "summary": {
-      "en": "Twin robot geologists sent to opposite sides of Mars to look for signs of past water.",
-      "fr": "Deux robots géologues jumeaux envoyés de part et d'autre de Mars pour chercher des traces d'eau ancienne."
+      "en": "Twin robot geologists (scientists who study rocks) sent to opposite sides of Mars to look for signs of past water.",
+      "fr": "Deux robots géologues (des scientifiques qui étudient les roches) jumeaux envoyés de part et d'autre de Mars pour chercher des traces d'eau ancienne."
     },
     "mainStoryId": "mars-spirit-opportunity",
     "sourceIds": [
@@ -826,8 +826,8 @@
           "fr": "La roue chanceuse de Spirit"
         },
         "description": {
-          "en": "Dragging a wheel it can no longer use, Spirit scrapes up bright soil made of almost pure silica — the kind of deposit that, on Earth, forms in hot springs.",
-          "fr": "En traînant une roue qui ne fonctionne plus, Spirit fait apparaître un sol clair fait de silice presque pure — le genre de dépôt qui, sur Terre, se forme dans des sources chaudes."
+          "en": "Dragging a wheel it can no longer use, Spirit scrapes up bright soil made of almost pure silica (the main ingredient of glass) — the kind of deposit that, on Earth, forms in hot springs.",
+          "fr": "En traînant une roue qui ne fonctionne plus, Spirit fait apparaître un sol clair fait de silice presque pure (le principal ingrédient du verre) — le genre de dépôt qui, sur Terre, se forme dans des sources chaudes."
         },
         "mediaIds": []
       },
@@ -1210,8 +1210,8 @@
           "fr": "Le dernier vol"
         },
         "description": {
-          "en": "On its 72nd flight, contact is lost just before landing. Ingenuity drops about 1 m and damages its rotors: it can no longer fly.",
-          "fr": "Lors de son 72ᵉ vol, le contact est perdu juste avant l’atterrissage. Ingenuity chute d’environ 1 m et abîme ses rotors : il ne peut plus voler."
+          "en": "On its 72nd flight, contact is lost just before landing. Ingenuity drops about 1 m and damages its rotors (its spinning blades): it can no longer fly.",
+          "fr": "Lors de son 72ᵉ vol, le contact est perdu juste avant l’atterrissage. Ingenuity chute d’environ 1 m et abîme ses rotors (ses pales tournantes) : il ne peut plus voler."
         },
         "mediaIds": [
           "nasa-lib-gsfc-20240131-nsl-ingenuity-ep52"

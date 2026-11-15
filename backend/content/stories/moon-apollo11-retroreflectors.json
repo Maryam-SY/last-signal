@@ -26,8 +26,8 @@
         {
           "voice": "data",
           "text": {
-            "en": "On 21 July 1969, about an hour before the end of their moonwalk, Neil Armstrong and Buzz Aldrin left a flat panel covered with 100 small glass prisms on the Moon.",
-            "fr": "Le 21 juillet 1969, environ une heure avant la fin de leur sortie, Neil Armstrong et Buzz Aldrin laissent sur la Lune un panneau plat couvert de 100 petits prismes en verre."
+            "en": "On 21 July 1969, about an hour before the end of their moonwalk, Neil Armstrong and Buzz Aldrin left a flat panel covered with 100 small glass prisms (blocks that send light straight back where it came from) on the Moon.",
+            "fr": "Le 21 juillet 1969, environ une heure avant la fin de leur sortie, Neil Armstrong et Buzz Aldrin laissent sur la Lune un panneau plat couvert de 100 petits prismes en verre (des blocs qui renvoient la lumière tout droit d'où elle vient)."
           },
           "sourceIds": [
             "jpl-llr-2004",
@@ -131,8 +131,8 @@
         {
           "voice": "data",
           "text": {
-            "en": "They also helped show that the Moon has a liquid core and confirmed predictions of Einstein’s theory of relativity.",
-            "fr": "Elles ont aussi aidé à montrer que la Lune possède un noyau liquide et confirmé des prédictions de la théorie de la relativité d’Einstein."
+            "en": "They also helped show that the Moon has a liquid core and confirmed predictions of Einstein’s theory of relativity (his theory of gravity).",
+            "fr": "Elles ont aussi aidé à montrer que la Lune possède un noyau liquide et confirmé des prédictions de la théorie de la relativité d’Einstein (sa théorie de la gravité)."
           },
           "sourceIds": [
             "jpl-llr-2004"

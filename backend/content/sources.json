@@ -3150,5 +3150,437 @@
     "type": "other",
     "publishedOn": null,
     "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "apollojournals-a12-images12-html-surv3",
+    "organization": "Apollo Lunar Surface Journal (NASA History)",
+    "title": "Surveyor III photo mosaic (NASA 67-H-876)",
+    "url": "https://apollojournals.org/alsj/a12/images12.html#Surv3",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-details-624073main-1969-04-04-full",
+    "organization": "NASA Image and Video Library",
+    "title": "Apollo 11 Lunar Module",
+    "url": "https://images.nasa.gov/details/624073main_1969-04-04_full",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-details-s69-39961",
+    "organization": "NASA Image and Video Library",
+    "title": "Liftoff of the Apollo 11 lunar landing mission",
+    "url": "https://images.nasa.gov/details/S69-39961",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-details-s69-32396",
+    "organization": "NASA Image and Video Library",
+    "title": "Lunar Module 5 moved for mating with its adapter",
+    "url": "https://images.nasa.gov/details/S69-32396",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "apollojournals-a11-a11-landing-html",
+    "organization": "Apollo Lunar Surface Journal (NASA History)",
+    "title": "Apollo 11 Mission Report, Figure 5-5: pitch attitude during descent",
+    "url": "https://apollojournals.org/alsj/a11/a11.landing.html",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-object-page-a11-h-40-5949-html",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "Astronaut setting up scientific experiments package on the Moon (AS11-40-5949)",
+    "url": "https://nssdc.gsfc.nasa.gov/imgcat/html/object_page/a11_h_40_5949.html",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-catalog-pia12909",
+    "organization": "NASA Photojournal",
+    "title": "Apollo 11: Second Look",
+    "url": "https://photojournal.jpl.nasa.gov/catalog/PIA12909",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-details-gsfc-20171208-archive-e00197",
+    "organization": "NASA Image and Video Library",
+    "title": "Goddard Laser Ranging Facility laser toward the Moon",
+    "url": "https://images.nasa.gov/details/GSFC_20171208_Archive_e001973",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "apollojournals-a11-images11-html",
+    "organization": "Apollo Lunar Surface Journal (NASA History)",
+    "title": "Post-deployment photo of the LRRR (AS11-40-5952)",
+    "url": "https://apollojournals.org/alsj/a11/images11.html",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-details-s92-52043",
+    "organization": "NASA Image and Video Library",
+    "title": "Galileo view of the Moon orbiting the Earth",
+    "url": "https://images.nasa.gov/details/S92-52043",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-catalog-pia00342",
+    "organization": "NASA Photojournal",
+    "title": "The Earth & Moon",
+    "url": "https://photojournal.jpl.nasa.gov/catalog/PIA00342",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "apollojournals-a12-images12-html",
+    "organization": "Apollo Lunar Surface Journal (NASA History)",
+    "title": "ALSEP Central Station with the LM in the background (AS12-47-6928)",
+    "url": "https://apollojournals.org/alsj/a12/images12.html",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-details-s71-17609",
+    "organization": "NASA Image and Video Library",
+    "title": "Activity in the Mission Control Center ALSEP Room during Apollo 14 S-IVB impact",
+    "url": "https://images.nasa.gov/details/S71-17609",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-lunar-surveyor-html",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "Moon landing sites map",
+    "url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/surveyor.html",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-planetary-marsentry-html",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "Mars Pathfinder entry, descent and landing sequence",
+    "url": "https://nssdc.gsfc.nasa.gov/planetary/marsentry.html",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-catalog-pia00775",
+    "organization": "NASA Photojournal",
+    "title": "Airbag Bounce Marks",
+    "url": "https://photojournal.jpl.nasa.gov/catalog/PIA00775",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-catalog-pia00977",
+    "organization": "NASA Photojournal",
+    "title": "MPF Lander Measured Surface Pressure",
+    "url": "https://photojournal.jpl.nasa.gov/catalog/PIA00977",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-catalog-pia01122",
+    "organization": "NASA Photojournal",
+    "title": "Sojourner Rover Near “The Dice”",
+    "url": "https://photojournal.jpl.nasa.gov/catalog/PIA01122",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-catalog-pia04421",
+    "organization": "NASA Photojournal",
+    "title": "Rover Family Photo",
+    "url": "https://photojournal.jpl.nasa.gov/catalog/PIA04421",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-catalog-pia00966",
+    "organization": "NASA Photojournal",
+    "title": "Sojourner’s APXS at “Moe” – Right Eye",
+    "url": "https://photojournal.jpl.nasa.gov/catalog/PIA00966",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-catalog-pia00970",
+    "organization": "NASA Photojournal",
+    "title": "Sojourner APXS at Chimp – Left Eye",
+    "url": "https://photojournal.jpl.nasa.gov/catalog/PIA00970",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-catalog-pia01238",
+    "organization": "NASA Photojournal",
+    "title": "Mars Pathfinder Rover Traverse Image",
+    "url": "https://photojournal.jpl.nasa.gov/catalog/PIA01238",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-catalog-pia01580",
+    "organization": "NASA Photojournal",
+    "title": "Sojourner Rover Behind “Chimp” – Left Eye",
+    "url": "https://photojournal.jpl.nasa.gov/catalog/PIA01580",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-catalog-pia05097",
+    "organization": "NASA Photojournal",
+    "title": "Spirit Leaves Telling Tracks",
+    "url": "https://photojournal.jpl.nasa.gov/catalog/PIA05097",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-catalog-pia05618",
+    "organization": "NASA Photojournal",
+    "title": "Looking Back at “Eagle Crater”",
+    "url": "https://photojournal.jpl.nasa.gov/catalog/PIA05618",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-catalog-pia05632",
+    "organization": "NASA Photojournal",
+    "title": "A Well-Traveled “Eagle Crater” (left-eye)",
+    "url": "https://photojournal.jpl.nasa.gov/catalog/PIA05632",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-catalog-pia14750",
+    "organization": "NASA Photojournal",
+    "title": "Memorial Image Taken on Mars on Sept. 11, 2011",
+    "url": "https://photojournal.jpl.nasa.gov/catalog/PIA14750",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-catalog-pia18614",
+    "organization": "NASA Photojournal",
+    "title": "Opportunity’s Northward View of “Wdowiak Ridge”",
+    "url": "https://photojournal.jpl.nasa.gov/catalog/PIA18614",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-catalog-pia25068",
+    "organization": "NASA Photojournal",
+    "title": "Dust Storm and Jezero Crater",
+    "url": "https://photojournal.jpl.nasa.gov/catalog/PIA25068",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-catalog-pia25174",
+    "organization": "NASA Photojournal",
+    "title": "MRO’s HiRISE Spots Perseverance and Ingenuity",
+    "url": "https://photojournal.jpl.nasa.gov/catalog/PIA25174",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-catalog-pia25883",
+    "organization": "NASA Photojournal",
+    "title": "Ingenuity at “Airfield Mu”",
+    "url": "https://photojournal.jpl.nasa.gov/catalog/PIA25883",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-catalog-pia25961",
+    "organization": "NASA Photojournal",
+    "title": "Leading Up to Flight 50",
+    "url": "https://photojournal.jpl.nasa.gov/catalog/PIA25961",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-programs-radioisotope-power-systems",
+    "organization": "NASA Science",
+    "title": "Source for « Générateur nucléaire (à radio-isotope) » (glossary)",
+    "url": "https://science.nasa.gov/planetary-science/programs/radioisotope-power-systems/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-page",
+    "organization": "NASA Science",
+    "title": "Source for « Thermocouple » (glossary)",
+    "url": "https://science.nasa.gov/?p=413137",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-heat-topics",
+    "organization": "NASA Science",
+    "title": "Source for « Vent solaire » (glossary)",
+    "url": "https://science.nasa.gov/learn/heat/topics/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-mars-2020-perseverance-rover-compone",
+    "organization": "NASA Science",
+    "title": "Source for « Spectromètre » (glossary)",
+    "url": "https://science.nasa.gov/mission/mars-2020-perseverance/rover-components/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-ems-07-infraredwaves",
+    "organization": "NASA Science",
+    "title": "Source for « Infrarouge » (glossary)",
+    "url": "https://science.nasa.gov/ems/07_infraredwaves/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-education-ielect-html",
+    "organization": "NASA Goddard Space Flight Center",
+    "title": "Source for « Ion » (glossary)",
+    "url": "https://pwg.gsfc.nasa.gov/Education/Ielect.html",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-trcrocket-practical-rocketry-html",
+    "organization": "NASA Glenn Research Center",
+    "title": "Source for « Oxydant » (glossary)",
+    "url": "https://www.grc.nasa.gov/www/K-12/rocket/TRCRocket/practical_rocketry.html",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-news-nasa-rover-finds-old-streambed",
+    "organization": "NASA Jet Propulsion Laboratory",
+    "title": "Source for « Conglomérat » (glossary)",
+    "url": "https://www.jpl.nasa.gov/news/nasa-rover-finds-old-streambed-on-martian-surface",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "usgs-science-dictionary-water-terms",
+    "organization": "U.S. Geological Survey (USGS)",
+    "title": "Source for « Sédiment » (glossary)",
+    "url": "https://www.usgs.gov/special-topics/water-science-school/science/dictionary-water-terms",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-mars-facts",
+    "organization": "NASA Science",
+    "title": "Source for « Sol (jour martien) » (glossary)",
+    "url": "https://science.nasa.gov/mars/facts/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-resource-protecting-nasas-perseveran",
+    "organization": "NASA Science",
+    "title": "Source for « Bouclier thermique » (glossary)",
+    "url": "https://science.nasa.gov/resource/protecting-nasas-perseverance-mars-rover",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-resource-perseverance-view-of-the-de",
+    "organization": "NASA Science",
+    "title": "Source for « Delta » (glossary)",
+    "url": "https://science.nasa.gov/resource/perseverance-view-of-the-delta-in-jezero-crater/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-news-microbes-could-survive-thin-air",
+    "organization": "NASA Astrobiology",
+    "title": "Source for « Microbe » (glossary)",
+    "url": "https://astrobiology.nasa.gov/news/microbes-could-survive-thin-air-of-mars/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-page-2",
+    "organization": "NASA Science",
+    "title": "Source for « Rayonnement » (glossary)",
+    "url": "https://science.nasa.gov/?p=1192087",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-solar-system-10-things-einstein-got",
+    "organization": "NASA Science",
+    "title": "Source for « Relativité générale » (glossary)",
+    "url": "https://science.nasa.gov/solar-system/10-things-einstein-got-right/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-moon-composition",
+    "organization": "NASA Science",
+    "title": "Source for « Manteau » (glossary)",
+    "url": "https://science.nasa.gov/moon/composition/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
   }
 ]

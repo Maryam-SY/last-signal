@@ -8,7 +8,7 @@ import { MediaFigure } from '@/components/media/MediaFigure'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { useScrollFrame } from '@/hooks/useScrollFrame'
 import { useTranslation } from '@/i18n'
-import { sceneSrc } from '@/lib/mediaSrc'
+import { cardSrc, sceneSrc } from '@/lib/mediaSrc'
 import { setBringIntoView } from '@/lib/readAlong'
 import { cn } from '@/lib/utils'
 
@@ -238,7 +238,9 @@ function Flight({ label, items, className }: PhotoFlightProps) {
               >
                 {/* Long flights (40+ pictures): only the pictures around the one in front are
                     mounted; a far picture frees its canvas and is drawn again when it comes near. */}
-                {near && index >= shown - 2 && index <= shown + 4 && (
+                {/* A small copy of the picture shows at once; the large one fades in over it. */}
+                <img src={cardSrc(item.media)} alt="" aria-hidden="true" decoding="async" className="flight-preview absolute inset-0 size-full object-cover" />
+                {near && index >= shown - 1 && index <= shown + 6 && (
                   <FlightImage url={sceneSrc(item.media)} near onError={() => setFailed((previous) => new Set(previous).add(item.id))} />
                 )}
                 <span className="absolute top-3 left-3">
@@ -324,13 +326,20 @@ function Flight({ label, items, className }: PhotoFlightProps) {
 }
 
 /** Longest side (px) a flying picture is drawn at: plenty for a 720 px card on a 2× screen. */
-const MAX_SIDE = 1400
+const MAX_SIDE = 1200
 
-/** Pictures are prepared one after the other, so a fast scroll never decodes ten at once. */
-let preparing: Promise<unknown> = Promise.resolve()
+/**
+ * Pictures are prepared at most three at a time (not one after the other, which left the
+ * picture in front waiting behind older ones; not all at once, which froze the page).
+ */
+const LANES = 3
+const lanes: Promise<unknown>[] = Array.from({ length: LANES }, () => Promise.resolve())
+let nextLane = 0
 function inTurn<T>(task: () => Promise<T>): Promise<T> {
-  const run = preparing.then(task, task)
-  preparing = run.catch(() => undefined)
+  const lane = nextLane
+  nextLane = (nextLane + 1) % LANES
+  const run = lanes[lane]!.then(task, task)
+  lanes[lane] = run.catch(() => undefined)
   return run
 }
 
@@ -397,12 +406,12 @@ function FlightImage({ url, near, onError }: { url: string; near: boolean; onErr
   }, [near, url])
 
   if (mode === 'img') {
-    return <img src={url} alt="" decoding="async" onError={() => onErrorRef.current()} className="size-full object-cover" />
+    return <img src={url} alt="" decoding="async" onError={() => onErrorRef.current()} className="relative size-full object-cover" />
   }
   return (
     <canvas
       ref={canvasRef}
-      className={cn('size-full object-cover transition-opacity duration-500', mode === 'canvas' ? 'opacity-100' : 'opacity-0')}
+      className={cn('relative size-full object-cover transition-opacity duration-500', mode === 'canvas' ? 'opacity-100' : 'opacity-0')}
     />
   )
 }

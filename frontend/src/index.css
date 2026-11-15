@@ -1829,3 +1829,9 @@ html:has(.photo-flight) {
     animation: none;
   }
 }
+
+/* Flight preview: the small copy under the large one, slightly enlarged so its edges never show. */
+.flight-preview {
+  transform: scale(1.04);
+  filter: blur(6px) saturate(1.1);
+}

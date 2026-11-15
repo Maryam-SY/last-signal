@@ -114,12 +114,10 @@
             "fr": "Trois moteurs et une fusée pour freiner"
           },
           "text": {
-            "en": "To land, Surveyor 3 used two kinds of engines. First, a solid-fuel retrorocket in a steel sphere under its body did most of the braking, then it was thrown away together with a radar. After that, three small engines whose power could be adjusted, called verniers, slowed it down to the ground, guided by two other radars. Small jets of nitrogen gas turned it in space during the trip.",
+            "en": "To land, Surveyor 3 used two kinds of engines. First, a solid-fuel retrorocket (a rocket that fires to brake) in a steel sphere under its body did most of the braking, then it was thrown away together with a radar. After that, three small engines whose power could be adjusted, called verniers, slowed it down to the ground, guided by two other radars. Small jets of nitrogen gas turned it in space during the trip.",
             "fr": "Pour se poser, Surveyor 3 utilisait deux sortes de moteurs. D'abord, une fusée de freinage à poudre, dans une sphère d'acier sous son corps, faisait l'essentiel du freinage, puis elle était larguée avec un radar. Ensuite, trois petits moteurs à puissance réglable, appelés verniers, le ralentissaient jusqu'au sol, guidés par deux autres radars. De petits jets d'azote le faisaient pivoter dans l'espace pendant le voyage."
           },
-          "mediaIds": [
-            "bio-surveyor-3-lander-as12-48-7138"
-          ],
+          "mediaIds": ["bio-surveyor-3-lander-as12-48-7138", "bio-surveyor-3-lander-surveyor", "bio-surveyor-3-lander-surveyor-beach"],
           "sourceIds": [
             "nssdca-1967-035a"
           ]
@@ -192,9 +190,7 @@
             "en": "Less than an hour after landing, the first TV pictures arrived on Earth. The camera had two lenses (25 mm and 100 mm) and looked at the landscape through a mirror that could turn up, down and sideways. Sending one simple picture took about 20 seconds. Some pictures were blurred by glare: the mirror had probably been dusted or worn by the engines firing for too long during the landing.",
             "fr": "Moins d'une heure après l'atterrissage, les premières images télévisées sont arrivées sur Terre. La caméra avait deux objectifs (25 mm et 100 mm) et regardait le paysage à travers un miroir qui pouvait pivoter vers le haut, le bas et les côtés. Envoyer une image simple prenait environ 20 secondes. Certaines images étaient voilées par des reflets : le miroir avait sans doute été couvert de poussière ou abîmé par les moteurs, restés allumés trop longtemps pendant l'atterrissage."
           },
-          "mediaIds": [
-            "bio-surveyor-3-lander-as12-48-7100"
-          ],
+          "mediaIds": ["bio-surveyor-3-lander-as12-48-7100", "bio-surveyor-3-lander-67-h-876"],
           "sourceIds": [
             "nssdca-1967-035a",
             "nasa-science-surveyor-3"
@@ -231,9 +227,7 @@
             "en": "The lunar soil turned out to behave a bit like wet sand. It can bear about 0.7 kg on each square centimetre: solid enough to hold an Apollo Lunar Module. Surveyor 3 also photographed an eclipse of the Sun by the Earth, seen from the Moon, and measured temperatures during it. In all, its camera sent back 6,326 pictures, and every objective of the mission was reached.",
             "fr": "Le sol lunaire s'est révélé se comporter un peu comme du sable mouillé. Il peut supporter environ 0,7 kg par centimètre carré : assez solide pour porter un module lunaire Apollo. Surveyor 3 a aussi photographié une éclipse du Soleil par la Terre, vue depuis la Lune, et mesuré les températures pendant celle-ci. Au total, sa caméra a renvoyé 6 326 images, et tous les objectifs de la mission ont été atteints."
           },
-          "mediaIds": [
-            "bio-surveyor-3-lander-as12-48-7129"
-          ],
+          "mediaIds": ["bio-surveyor-3-lander-as12-48-7129", "bio-surveyor-3-lander-surveyr2"],
           "sourceIds": [
             "nasa-science-surveyor-3",
             "nssdca-1967-035a"
@@ -434,8 +428,8 @@
             "fr": "Comment le matériel vieillit dans l'espace"
           },
           "text": {
-            "en": "Its camera, scoop and other parts were brought back to Earth after 31 months on the Moon. Engineers could study what 31 months of sunlight, cold, radiation and dust do to metal, paint and electronics, which helps build machines that last longer in space.",
-            "fr": "Sa caméra, sa pelle et d'autres pièces ont été rapportées sur Terre après 31 mois sur la Lune. Les ingénieurs ont pu étudier ce que 31 mois de soleil, de froid, de rayonnements et de poussière font au métal, à la peinture et à l'électronique, ce qui aide à construire des machines plus durables dans l'espace."
+            "en": "Its camera, scoop and other parts were brought back to Earth after 31 months on the Moon. Engineers could study what 31 months of sunlight, cold, radiation (invisible rays and particles from space) and dust do to metal, paint and electronics, which helps build machines that last longer in space.",
+            "fr": "Sa caméra, sa pelle et d'autres pièces ont été rapportées sur Terre après 31 mois sur la Lune. Les ingénieurs ont pu étudier ce que 31 mois de soleil, de froid, de rayonnements (des rayons et particules invisibles venus de l'espace) et de poussière font au métal, à la peinture et à l'électronique, ce qui aide à construire des machines plus durables dans l'espace."
           },
           "mediaIds": [
             "bio-surveyor-3-lander-apollo-12-62-surveyor-3-came",
@@ -472,8 +466,8 @@
             "fr": "Garder les autres mondes propres"
           },
           "text": {
-            "en": "The bacteria found in the Surveyor 3 camera foam started a long debate: can Earth microbes survive on the Moon, or was the foam contaminated in the laboratory? The question matters for planetary protection, the rules that keep spacecraft from carrying Earth life to other worlds.",
-            "fr": "Les bactéries trouvées dans la mousse de la caméra de Surveyor 3 ont lancé un long débat : des microbes terrestres peuvent-ils survivre sur la Lune, ou la mousse a-t-elle été contaminée au laboratoire ? La question compte pour la « protection planétaire », les règles qui évitent que les vaisseaux transportent la vie terrestre vers d'autres mondes."
+            "en": "The bacteria found in the Surveyor 3 camera foam started a long debate: can Earth microbes (tiny living things like bacteria) survive on the Moon, or was the foam contaminated in the laboratory? The question matters for planetary protection, the rules that keep spacecraft from carrying Earth life to other worlds.",
+            "fr": "Les bactéries trouvées dans la mousse de la caméra de Surveyor 3 ont lancé un long débat : des microbes terrestres (de minuscules êtres vivants, comme des bactéries) peuvent-ils survivre sur la Lune, ou la mousse a-t-elle été contaminée au laboratoire ? La question compte pour la « protection planétaire », les règles qui évitent que les vaisseaux transportent la vie terrestre vers d'autres mondes."
           },
           "mediaIds": [
             "bio-surveyor-3-lander-s69-62290"
@@ -689,8 +683,8 @@
       "status": "draft",
       "description": {
         "value": {
-          "en": "The descent stage was the lower half of Eagle, the Apollo 11 Lunar Module. It was an eight-sided box 4.2 metres wide and 1.7 metres high, standing on four legs whose footpads were 9.4 metres apart; one leg carried the ladder. Inside were the landing engine (up to about 45,000 newtons of thrust, and able to throttle down), its fuel and oxidizer tanks, water, oxygen, four of the six batteries, and bays for tools and experiments. Empty but with its equipment it weighed 2,034 kg, plus 8,248 kg of propellant at the start. On 20 July 1969 it landed Neil Armstrong and Buzz Aldrin in the Sea of Tranquility, then served as a launch pad for the upper stage on 21 July and stayed on the Moon, where it can still be seen from orbit.",
-          "fr": "L'étage de descente était la moitié inférieure d'Eagle, le module lunaire d'Apollo 11. C'était une boîte à huit côtés de 4,2 mètres de large et 1,7 mètre de haut, posée sur quatre jambes dont les pieds étaient écartés de 9,4 mètres ; l'une des jambes portait l'échelle. À l'intérieur se trouvaient le moteur d'atterrissage (jusqu'à environ 45 000 newtons de poussée, et capable de réduire sa puissance), ses réservoirs de carburant et d'oxydant, de l'eau, de l'oxygène, quatre des six batteries et des compartiments pour les outils et les expériences. Vide mais avec son équipement, il pesait 2 034 kg, plus 8 248 kg d'ergols au départ. Le 20 juillet 1969, il a posé Neil Armstrong et Buzz Aldrin dans la mer de la Tranquillité, puis a servi de rampe de lancement à l'étage supérieur le 21 juillet et il est resté sur la Lune, où on peut encore le voir depuis l'orbite."
+          "en": "The descent stage was the lower half of Eagle, the Apollo 11 Lunar Module. It was an eight-sided box 4.2 metres wide and 1.7 metres high, standing on four legs whose footpads were 9.4 metres apart; one leg carried the ladder. Inside were the landing engine (up to about 45,000 newtons of thrust, and able to throttle down), its fuel and oxidizer tanks (the oxidizer is the oxygen supply that lets fuel burn where there is no air), water, oxygen, four of the six batteries, and bays for tools and experiments. Empty but with its equipment it weighed 2,034 kg, plus 8,248 kg of propellant (the fuel and oxidizer it burned) at the start. On 20 July 1969 it landed Neil Armstrong and Buzz Aldrin in the Sea of Tranquility, then served as a launch pad for the upper stage on 21 July and stayed on the Moon, where it can still be seen from orbit.",
+          "fr": "L'étage de descente était la moitié inférieure d'Eagle, le module lunaire d'Apollo 11. C'était une boîte à huit côtés de 4,2 mètres de large et 1,7 mètre de haut, posée sur quatre jambes dont les pieds étaient écartés de 9,4 mètres ; l'une des jambes portait l'échelle. À l'intérieur se trouvaient le moteur d'atterrissage (jusqu'à environ 45 000 newtons de poussée, et capable de réduire sa puissance), ses réservoirs de carburant et d'oxydant (la réserve d'oxygène qui permet au carburant de brûler sans air), de l'eau, de l'oxygène, quatre des six batteries et des compartiments pour les outils et les expériences. Vide mais avec son équipement, il pesait 2 034 kg, plus 8 248 kg d'ergols (le carburant et l'oxydant qu'il brûlait) au départ. Le 20 juillet 1969, il a posé Neil Armstrong et Buzz Aldrin dans la mer de la Tranquillité, puis a servi de rampe de lancement à l'étage supérieur le 21 juillet et il est resté sur la Lune, où on peut encore le voir depuis l'orbite."
         },
         "sourceIds": [
           "nssdca-1969-059c",
@@ -729,10 +723,7 @@
             "en": "The descent stage was an eight-sided box 4.2 metres wide and 1.7 metres high. Four legs held it 1.5 metres above the ground. In its centre was the landing engine, able to change its power, with up to about 45,000 newtons of thrust. Around it were the tanks of fuel and oxidizer, a big water tank, oxygen, four of the six batteries, and storage for tools, the TV camera and the experiments.",
             "fr": "L'étage de descente était une boîte à huit côtés de 4,2 mètres de large et 1,7 mètre de haut. Quatre jambes le tenaient à 1,5 mètre au-dessus du sol. En son centre se trouvait le moteur d'atterrissage, à puissance réglable, avec jusqu'à environ 45 000 newtons de poussée. Autour se trouvaient les réservoirs de carburant et d'oxydant, une grande réserve d'eau, de l'oxygène, quatre des six batteries, et des rangements pour les outils, la caméra de télévision et les expériences."
           },
-          "mediaIds": [
-            "nssdca-apollo-lm-diagram",
-            "nssdca-apollo-11-lm-as11-40-5927"
-          ],
+          "mediaIds": ["nssdca-apollo-lm-diagram", "nssdca-apollo-11-lm-as11-40-5927", "bio-apollo-11-lm-eagle-desce-624073main-1969-04-04-full"],
           "sourceIds": [
             "nssdca-1969-059c",
             "nasa-pdf-a11-presskit-pdf"
@@ -755,9 +746,7 @@
             "en": "Apollo 11 was launched at 13:32 UT. Eagle travelled inside an adapter on top of the rocket's third stage. On the way to the Moon, the command module Columbia turned around, docked with Eagle and pulled it out.",
             "fr": "Apollo 11 a décollé à 13 h 32 UT. Eagle voyageait à l'intérieur d'un adaptateur au sommet du troisième étage de la fusée. En route vers la Lune, le module de commande Columbia a fait demi-tour, s'est amarré à Eagle et l'a extrait."
           },
-          "mediaIds": [
-            "nssdca-apollo-lm-diagram"
-          ],
+          "mediaIds": ["nssdca-apollo-lm-diagram", "bio-apollo-11-lm-eagle-desce-s69-39961", "bio-apollo-11-lm-eagle-desce-s69-32396"],
           "sourceIds": [
             "nasa-lunar-apollo11info-html",
             "nasa-history-apollo-11-mission-overview"
@@ -829,9 +818,7 @@
             "en": "At 20:05 UT the descent engine started its long braking burn, which lasted 756 seconds. After eight minutes, Eagle was at \"high gate\", about 26,000 feet (8 km) up and about five miles (8 km) from the landing site. Its throttle let the crew slow down, and even hover, to pick the best spot.",
             "fr": "À 20 h 05 UT, le moteur de descente a commencé son long freinage, qui a duré 756 secondes. Au bout de huit minutes, Eagle était au « high gate », à environ 26 000 pieds (8 km) d'altitude et à environ huit kilomètres du site d'atterrissage. Sa puissance réglable permettait à l'équipage de ralentir, et même de faire du sur-place, pour choisir le meilleur endroit."
           },
-          "mediaIds": [
-            "bio-apollo-11-lm-eagle-desce-as11-44-6574"
-          ],
+          "mediaIds": ["bio-apollo-11-lm-eagle-desce-as11-44-6574", "bio-apollo-11-lm-eagle-desce-a11-mrfig5-5"],
           "sourceIds": [
             "nssdca-1969-059c",
             "nasa-history-apollo-11-mission-overview",
@@ -985,8 +972,8 @@
             "fr": "Revu depuis l'orbite"
           },
           "text": {
-            "en": "More than four decades later, the camera of the Lunar Reconnaissance Orbiter photographed Tranquility Base: the descent stage is still there, the trails left by the astronauts' boots are still visible, and so are the laser reflector and the seismometer. The descent stage stands at 0.67416° N, 23.47314° E.",
-            "fr": "Plus de quarante ans plus tard, la caméra du Lunar Reconnaissance Orbiter a photographié la base de la Tranquillité : l'étage de descente est toujours là, les traces laissées par les bottes des astronautes sont encore visibles, tout comme le réflecteur laser et le sismomètre. L'étage de descente se trouve à 0,67416° N, 23,47314° E."
+            "en": "More than four decades later, the camera of the Lunar Reconnaissance Orbiter photographed Tranquility Base: the descent stage is still there, the trails left by the astronauts' boots are still visible, and so are the laser reflector and the seismometer (the instrument that feels the ground shaking). The descent stage stands at 0.67416° N, 23.47314° E.",
+            "fr": "Plus de quarante ans plus tard, la caméra du Lunar Reconnaissance Orbiter a photographié la base de la Tranquillité : l'étage de descente est toujours là, les traces laissées par les bottes des astronautes sont encore visibles, tout comme le réflecteur laser et le sismomètre (l'instrument qui sent les tremblements du sol). L'étage de descente se trouve à 0,67416° N, 23,47314° E."
           },
           "mediaIds": [
             "bio-apollo-11-lm-eagle-desce-labeled-version",
@@ -1283,8 +1270,8 @@
     },
     "scienceSummary": {
       "value": {
-        "en": "A solar-powered seismometer and dust detector — the forerunner of the ALSEP stations of later Apollo missions.",
-        "fr": "Un sismomètre et un détecteur de poussière alimentés par panneaux solaires — l'ancêtre des stations ALSEP des missions Apollo suivantes."
+        "en": "A solar-powered seismometer (an instrument that feels the ground shaking) and dust detector — the forerunner of the ALSEP stations of later Apollo missions.",
+        "fr": "Un sismomètre (un instrument qui sent les tremblements du sol) et un détecteur de poussière alimentés par panneaux solaires — l'ancêtre des stations ALSEP des missions Apollo suivantes."
       },
       "sourceIds": ["nssdca-1969-059c"]
     },
@@ -1311,8 +1298,8 @@
       "status": "draft",
       "description": {
         "value": {
-          "en": "EASEP (Early Apollo Scientific Experiments Package) was the first science station placed on the Moon. On a square base it carried a passive seismometer, made of four seismometers that \"listen\" to the ground, and a small dust detector, with an antenna mast and a tiny radioisotope heater to survive the cold night. Two solar panels, facing east and west, powered it, so it could only work in daylight. The unit weighed 48 kg. Buzz Aldrin set it up about 17 metres south of the Lunar Module on 21 July 1969; it sent data on moonquakes and meteorite impacts for about three weeks, until it stopped answering commands in late August 1969. It was the forerunner of the ALSEP stations of later Apollo missions.",
-          "fr": "L'EASEP (Early Apollo Scientific Experiments Package) a été la première station scientifique installée sur la Lune. Sur une base carrée, elle portait un sismomètre passif, composé de quatre sismomètres qui « écoutent » le sol, et un petit détecteur de poussière, avec un mât d'antenne et un minuscule réchauffeur radio-isotopique pour survivre au froid de la nuit. Deux panneaux solaires, tournés vers l'est et l'ouest, l'alimentaient : elle ne pouvait donc fonctionner que le jour. L'ensemble pesait 48 kg. Buzz Aldrin l'a installée à environ 17 mètres au sud du module lunaire le 21 juillet 1969 ; elle a envoyé des données sur les séismes lunaires et les chutes de météorites pendant environ trois semaines, jusqu'à ce qu'elle cesse de répondre aux commandes fin août 1969. C'était l'ancêtre des stations ALSEP des missions Apollo suivantes."
+          "en": "EASEP (Early Apollo Scientific Experiments Package) was the first science station placed on the Moon. On a square base it carried a passive seismometer, made of four seismometers that \"listen\" to the ground, and a small dust detector, with an antenna mast and a tiny radioisotope heater (a heater warmed by a radioactive material) to survive the cold night. Two solar panels, facing east and west, powered it, so it could only work in daylight. The unit weighed 48 kg. Buzz Aldrin set it up about 17 metres south of the Lunar Module on 21 July 1969; it sent data on moonquakes and meteorite impacts for about three weeks, until it stopped answering commands in late August 1969. It was the forerunner of the ALSEP stations of later Apollo missions.",
+          "fr": "L'EASEP (Early Apollo Scientific Experiments Package) a été la première station scientifique installée sur la Lune. Sur une base carrée, elle portait un sismomètre passif, composé de quatre sismomètres qui « écoutent » le sol, et un petit détecteur de poussière, avec un mât d'antenne et un minuscule réchauffeur radio-isotopique (un chauffage tiré de la chaleur d’une matière radioactive) pour survivre au froid de la nuit. Deux panneaux solaires, tournés vers l'est et l'ouest, l'alimentaient : elle ne pouvait donc fonctionner que le jour. L'ensemble pesait 48 kg. Buzz Aldrin l'a installée à environ 17 mètres au sud du module lunaire le 21 juillet 1969 ; elle a envoyé des données sur les séismes lunaires et les chutes de météorites pendant environ trois semaines, jusqu'à ce qu'elle cesse de répondre aux commandes fin août 1969. C'était l'ancêtre des stations ALSEP des missions Apollo suivantes."
         },
         "sourceIds": [
           "nssdca-1969-059c",
@@ -1329,8 +1316,8 @@
             "fr": "Pourquoi écouter la Lune ?"
           },
           "text": {
-            "en": "On Earth, scientists learn what is deep inside the planet by recording earthquakes. The same could be done on the Moon: catch moonquakes and meteorite impacts, and find out whether the Moon has a core and a mantle like Earth. A second, smaller instrument would check how dust and radiation damage solar cells, and whether they need a protective glass cover.",
-            "fr": "Sur Terre, les scientifiques découvrent ce qu'il y a au fond de la planète en enregistrant les séismes. On pouvait faire la même chose sur la Lune : capter les séismes lunaires et les chutes de météorites, et savoir si la Lune a un noyau et un manteau comme la Terre. Un second instrument, plus petit, devait vérifier comment la poussière et les rayonnements abîment les cellules solaires, et s'il faut les protéger avec une vitre."
+            "en": "On Earth, scientists learn what is deep inside the planet by recording earthquakes. The same could be done on the Moon: catch moonquakes and meteorite impacts, and find out whether the Moon has a core and a mantle (the thick rock layer under the crust) like Earth. A second, smaller instrument would check how dust and radiation (invisible rays and particles from space) damage solar cells, and whether they need a protective glass cover.",
+            "fr": "Sur Terre, les scientifiques découvrent ce qu'il y a au fond de la planète en enregistrant les séismes. On pouvait faire la même chose sur la Lune : capter les séismes lunaires et les chutes de météorites, et savoir si la Lune a un noyau et un manteau (l'épaisse couche de roche sous la croûte) comme la Terre. Un second instrument, plus petit, devait vérifier comment la poussière et les rayonnements (des rayons et particules invisibles venus de l'espace) abîment les cellules solaires, et s'il faut les protéger avec une vitre."
           },
           "mediaIds": [
             "nasa-lib-s69-39587"
@@ -1494,12 +1481,10 @@
             "fr": "La première nuit"
           },
           "text": {
-            "en": "As the Sun went down, the solar power began to drop, exactly as expected. About 5 hours before sunset, controllers stopped the transmissions at 10:58 UT, and the seismometer went into stand-by for the long lunar night.",
-            "fr": "Quand le Soleil a commencé à baisser, l'énergie solaire a diminué, exactement comme prévu. Environ 5 heures avant le coucher du Soleil, les contrôleurs ont arrêté les transmissions à 10 h 58 UT, et le sismomètre s'est mis en veille pour la longue nuit lunaire."
+            "en": "As the Sun went down, the solar power began to drop, exactly as expected. About 5 hours before sunset, controllers stopped the transmissions at 10:58 UT, and the seismometer went into stand-by for the long lunar night (about two weeks of darkness).",
+            "fr": "Quand le Soleil a commencé à baisser, l'énergie solaire a diminué, exactement comme prévu. Environ 5 heures avant le coucher du Soleil, les contrôleurs ont arrêté les transmissions à 10 h 58 UT, et le sismomètre s'est mis en veille pour la longue nuit lunaire (environ deux semaines d'obscurité)."
           },
-          "mediaIds": [
-            "nasa-lib-as11-37-5551"
-          ],
+          "mediaIds": ["nasa-lib-as11-37-5551", "bio-apollo-11-easep-as11-40-5949"],
           "sourceIds": [
             "nssdca-1969-059c",
             "nasa-science-apollo11-seismic"
@@ -1516,9 +1501,7 @@
             "en": "EASEP woke up for a second lunar day. But near lunar noon, in late August 1969, it stopped accepting commands from Earth, probably because the midday Sun overheated it, and the experiment was ended. In all it sent data for about three weeks, and the dust detector also stopped in late August.",
             "fr": "L'EASEP s'est réveillée pour une deuxième journée lunaire. Mais vers midi, fin août 1969, elle a cessé d'accepter les commandes envoyées depuis la Terre, sans doute parce que le Soleil de midi l'avait fait surchauffer, et l'expérience a pris fin. En tout, elle a envoyé des données pendant environ trois semaines, et le détecteur de poussière s'est aussi arrêté fin août."
           },
-          "mediaIds": [
-            "nasa-lib-as11-40-5948"
-          ],
+          "mediaIds": ["nasa-lib-as11-40-5948", "bio-apollo-11-easep-pia12909"],
           "sourceIds": [
             "nssdca-1969-059c",
             "nasa-science-apollo11-seismic",
@@ -1731,7 +1714,7 @@
     },
     "scienceSummary": {
       "value": {
-        "en": "Its 100 prisms send laser pulses fired from Earth straight back. Laser ranging showed that the Moon is moving away from Earth by about 3.8 cm per year.",
+        "en": "Its 100 prisms send laser pulses fired from Earth straight back. Laser ranging (timing a laser flash there and back to measure the distance) showed that the Moon is moving away from Earth by about 3.8 cm per year.",
         "fr": "Ses 100 prismes renvoient tout droit les impulsions laser tirées depuis la Terre. Ces mesures ont montré que la Lune s'éloigne de la Terre d'environ 3,8 cm par an."
       },
       "sourceIds": ["jpl-llr-1999", "jpl-llr-2004"]
@@ -1765,8 +1748,8 @@
       "status": "draft",
       "description": {
         "value": {
-          "en": "The Laser Ranging Retroreflector is a panel of 100 small corner-cube prisms made of fused silica (quartz glass), held by a folding stand that points it towards Earth. It has no motor, no electronics and needs no power: each prism simply sends light straight back to where it came from. Observatories on Earth fire laser pulses at it and time how long the light takes to come back, which gives the Earth–Moon distance to within a few millimetres. Armstrong and Aldrin set it up at Tranquility Base, about 5 metres north-north-west of the seismometer, on 21 July 1969. More than 50 years later, it is still used.",
-          "fr": "Le réflecteur laser (Laser Ranging Retroreflector) est un panneau de 100 petits prismes en « coin de cube » faits de silice fondue (verre de quartz), tenu par un support pliant qui l'oriente vers la Terre. Il n'a ni moteur, ni électronique, et n'a besoin d'aucune énergie : chaque prisme renvoie simplement la lumière exactement d'où elle vient. Des observatoires sur Terre y envoient des impulsions laser et chronomètrent le temps que met la lumière pour revenir, ce qui donne la distance Terre-Lune à quelques millimètres près. Armstrong et Aldrin l'ont installé à la base de la Tranquillité, à environ 5 mètres au nord-nord-ouest du sismomètre, le 21 juillet 1969. Plus de 50 ans plus tard, il sert toujours."
+          "en": "The Laser Ranging Retroreflector is a panel of 100 small corner-cube prisms made of fused silica (quartz glass), held by a folding stand that points it towards Earth. It has no motor, no electronics and needs no power: each prism simply sends light straight back to where it came from. Observatories on Earth fire laser pulses at it and time how long the light takes to come back, which gives the Earth–Moon distance to within a few millimetres. Armstrong and Aldrin set it up at Tranquility Base, about 5 metres north-north-west of the seismometer (the instrument that feels the ground shaking), on 21 July 1969. More than 50 years later, it is still used.",
+          "fr": "Le réflecteur laser (Laser Ranging Retroreflector) est un panneau de 100 petits prismes en « coin de cube » faits de silice fondue (verre de quartz), tenu par un support pliant qui l'oriente vers la Terre. Il n'a ni moteur, ni électronique, et n'a besoin d'aucune énergie : chaque prisme renvoie simplement la lumière exactement d'où elle vient. Des observatoires sur Terre y envoient des impulsions laser et chronomètrent le temps que met la lumière pour revenir, ce qui donne la distance Terre-Lune à quelques millimètres près. Armstrong et Aldrin l'ont installé à la base de la Tranquillité, à environ 5 mètres au nord-nord-ouest du sismomètre (l'instrument qui sent les tremblements du sol), le 21 juillet 1969. Plus de 50 ans plus tard, il sert toujours."
         },
         "sourceIds": [
           "nssdca-1969-059c-04",
@@ -1787,9 +1770,7 @@
             "en": "The idea: put a special mirror on the Moon and aim lasers at it from Earth. By timing the light's round trip very precisely, scientists could measure the Earth–Moon distance, follow how the Moon moves and wobbles, measure its size and even learn things about the Earth itself.",
             "fr": "L'idée : poser un miroir spécial sur la Lune et viser dessus avec des lasers depuis la Terre. En chronométrant très précisément l'aller-retour de la lumière, les scientifiques pourraient mesurer la distance Terre-Lune, suivre les mouvements et les oscillations de la Lune, mesurer sa taille et même en apprendre davantage sur la Terre elle-même."
           },
-          "mediaIds": [
-            "llr-corner-cube-prisms"
-          ],
+          "mediaIds": ["llr-corner-cube-prisms", "bio-apollo-11-lrrr-gsfc-20171208-archive-e00197"],
           "sourceIds": [
             "nssdca-1969-059c-04"
           ]
@@ -1805,10 +1786,7 @@
             "en": "The reflector is an array of 100 prisms called corner cubes, made of quartz glass, on a folding support used to aim it at Earth. It needs no power at all, and this simplicity is one reason why it has lasted so long.",
             "fr": "Le réflecteur est un ensemble de 100 prismes appelés « coins de cube », en verre de quartz, sur un support pliant qui sert à le pointer vers la Terre. Il n'a besoin d'aucune énergie, et cette simplicité est l'une des raisons de sa longévité."
           },
-          "mediaIds": [
-            "llr-retroreflector-array",
-            "llr-corner-cube-prisms"
-          ],
+          "mediaIds": ["llr-retroreflector-array", "llr-corner-cube-prisms", "bio-apollo-11-lrrr-as11-40-5952"],
           "sourceIds": [
             "nssdca-1969-059c-04",
             "nasa-solar-system-the-apollo-experiment-that"
@@ -1873,7 +1851,7 @@
           },
           "text": {
             "en": "Three observatories were ready to fire lasers at it: McDonald Observatory in Texas, Lick Observatory in California and the University of Arizona's Catalina Station. McDonald Observatory went on doing lunar laser ranging from 1969 to 2013. It is hard: the Moon is between about 357,000 and 407,000 km away and the returning signal is extremely weak, so only a few stations can do it.",
-            "fr": "Trois observatoires étaient prêts à tirer des lasers vers lui : l'observatoire McDonald au Texas, l'observatoire Lick en Californie et la station Catalina de l'université d'Arizona. L'observatoire McDonald a ensuite fait de la télémétrie laser lunaire de 1969 à 2013. C'est difficile : la Lune est à environ 357 000 à 407 000 km et le signal qui revient est extrêmement faible, si bien que seules quelques stations y arrivent."
+            "fr": "Trois observatoires étaient prêts à tirer des lasers vers lui : l'observatoire McDonald au Texas, l'observatoire Lick en Californie et la station Catalina de l'université d'Arizona. L'observatoire McDonald a ensuite fait de la télémétrie laser lunaire (mesurer la distance de la Lune en chronométrant l'aller-retour d'un éclair laser) de 1969 à 2013. C'est difficile : la Lune est à environ 357 000 à 407 000 km et le signal qui revient est extrêmement faible, si bien que seules quelques stations y arrivent."
           },
           "mediaIds": [
             "llr-easep-aldrin-as11-40-5949"
@@ -1912,9 +1890,7 @@
             "en": "The reflectors showed that the Moon moves 3.8 cm further from Earth every year. The cause is the tides: Earth's oceans bulge, and the pull between these bulges and the Moon slows Earth's spin a little while pushing the Moon forward in its orbit, so it slowly spirals outwards, about 3 mm each month.",
             "fr": "Les réflecteurs ont montré que la Lune s'éloigne de la Terre de 3,8 cm chaque année. La cause, ce sont les marées : les océans terrestres forment des bourrelets, et l'attraction entre ces bourrelets et la Lune freine un peu la rotation de la Terre tout en poussant la Lune vers l'avant sur son orbite, si bien qu'elle s'éloigne lentement en spirale, d'environ 3 mm chaque mois."
           },
-          "mediaIds": [
-            "llr-retroreflector-array"
-          ],
+          "mediaIds": ["llr-retroreflector-array", "bio-apollo-11-lrrr-s92-52043"],
           "sourceIds": [
             "nasa-solar-system-the-apollo-experiment-that"
           ]
@@ -1948,9 +1924,7 @@
             "en": "Einstein's theory says that gravity pulls on all objects the same way, whatever they are made of. Earth contains more iron than the Moon, so if the theory were wrong, the Moon's orbit would show it. The laser measurements found no difference, and they have been used for many other precise tests of gravity.",
             "fr": "La théorie d'Einstein dit que la gravité attire tous les objets de la même façon, quelle que soit leur matière. La Terre contient plus de fer que la Lune : si la théorie était fausse, l'orbite de la Lune le montrerait. Les mesures laser n'ont trouvé aucune différence, et elles ont servi à bien d'autres tests précis de la gravité."
           },
-          "mediaIds": [
-            "llr-corner-cube-prisms"
-          ],
+          "mediaIds": ["llr-corner-cube-prisms", "bio-apollo-11-lrrr-pia00342"],
           "sourceIds": [
             "nasa-solar-system-the-apollo-experiment-that",
             "nasa-current-missions-ap11-general-html"
@@ -2067,8 +2041,8 @@
             "fr": "Vérifier la gravité d'Einstein"
           },
           "text": {
-            "en": "Laser ranging to the Moon is one of the most powerful tests of Einstein's general relativity: it checks that gravity pulls the iron-rich Earth and the rockier Moon in exactly the same way.",
-            "fr": "La télémétrie laser lunaire est l'un des tests les plus puissants de la relativité générale d'Einstein : elle vérifie que la gravité attire exactement de la même façon la Terre, riche en fer, et la Lune, plus rocheuse."
+            "en": "Laser ranging to the Moon is one of the most powerful tests of Einstein's general relativity (his theory of gravity): it checks that gravity pulls the iron-rich Earth and the rockier Moon in exactly the same way.",
+            "fr": "La télémétrie laser lunaire est l'un des tests les plus puissants de la relativité générale d'Einstein (sa théorie de la gravité) : elle vérifie que la gravité attire exactement de la même façon la Terre, riche en fer, et la Lune, plus rocheuse."
           },
           "mediaIds": [
             "llr-corner-cube-prisms"
@@ -2219,8 +2193,8 @@
       "status": "draft",
       "description": {
         "value": {
-          "en": "The descent stage was the lower half of Intrepid, the Apollo 12 Lunar Module: an eight-sided box 4.2 metres wide and 1.7 metres high on four legs, with a throttleable landing engine of about 45,000 newtons. With its stowed equipment it weighed 2,118 kg empty, plus 8,359 kg of propellant at the start. Besides its tanks it carried the ALSEP science station, the fuel cask for the station's nuclear generator and a colour TV camera. On 19 November 1969 it made the first precision landing on the Moon, in the Ocean of Storms, close enough to Surveyor 3 for the astronauts to walk there. After 31 hours and 31 minutes it served as a launch pad for the upper stage, and it is still there today.",
-          "fr": "L'étage de descente était la moitié inférieure d'Intrepid, le module lunaire d'Apollo 12 : une boîte à huit côtés de 4,2 mètres de large et 1,7 mètre de haut sur quatre jambes, avec un moteur d'atterrissage réglable d'environ 45 000 newtons. Avec son équipement, il pesait 2 118 kg à vide, plus 8 359 kg d'ergols au départ. En plus de ses réservoirs, il transportait la station scientifique ALSEP, le conteneur du combustible de son générateur nucléaire et une caméra de télévision couleur. Le 19 novembre 1969, il a réalisé le premier atterrissage de précision sur la Lune, dans l'océan des Tempêtes, assez près de Surveyor 3 pour que les astronautes puissent s'y rendre à pied. Après 31 heures et 31 minutes, il a servi de rampe de lancement à l'étage supérieur, et il est toujours là aujourd'hui."
+          "en": "The descent stage was the lower half of Intrepid, the Apollo 12 Lunar Module: an eight-sided box 4.2 metres wide and 1.7 metres high on four legs, with a throttleable landing engine of about 45,000 newtons. With its stowed equipment it weighed 2,118 kg empty, plus 8,359 kg of propellant (the fuel and oxidizer it burned) at the start. Besides its tanks it carried the ALSEP science station, the fuel cask for the station's nuclear generator (it makes electricity from the heat of a radioactive material) and a colour TV camera. On 19 November 1969 it made the first precision landing on the Moon, in the Ocean of Storms, close enough to Surveyor 3 for the astronauts to walk there. After 31 hours and 31 minutes it served as a launch pad for the upper stage, and it is still there today.",
+          "fr": "L'étage de descente était la moitié inférieure d'Intrepid, le module lunaire d'Apollo 12 : une boîte à huit côtés de 4,2 mètres de large et 1,7 mètre de haut sur quatre jambes, avec un moteur d'atterrissage réglable d'environ 45 000 newtons. Avec son équipement, il pesait 2 118 kg à vide, plus 8 359 kg d'ergols (le carburant et l'oxydant qu'il brûlait) au départ. En plus de ses réservoirs, il transportait la station scientifique ALSEP, le conteneur du combustible de son générateur nucléaire (il fabrique de l'électricité avec la chaleur d'une matière radioactive) et une caméra de télévision couleur. Le 19 novembre 1969, il a réalisé le premier atterrissage de précision sur la Lune, dans l'océan des Tempêtes, assez près de Surveyor 3 pour que les astronautes puissent s'y rendre à pied. Après 31 heures et 31 minutes, il a servi de rampe de lancement à l'étage supérieur, et il est toujours là aujourd'hui."
         },
         "sourceIds": [
           "nssdca-1969-099c",
@@ -2525,12 +2499,10 @@
             "fr": "Une rampe de lancement abandonnée"
           },
           "text": {
-            "en": "The plan was a stay of no more than 31.5 hours, and that is exactly what happened: after 31 hours and 31 minutes, at 14:25 UT, the ascent stage fired its engine and lifted off from the descent stage, which stayed on the Moon. \"Liftoff! And away we go!\", Conrad called out. Later, the empty ascent stage was deliberately crashed into the Moon to shake the seismometer the crew had left behind.",
-            "fr": "Le plan prévoyait un séjour de 31,5 heures au maximum, et c'est exactement ce qui s'est passé : après 31 heures et 31 minutes, à 14 h 25 UT, l'étage de remontée a allumé son moteur et décollé de l'étage de descente, qui est resté sur la Lune. « Décollage ! Et c'est parti ! », a lancé Conrad. Plus tard, l'étage de remontée vide a été écrasé volontairement sur la Lune pour secouer le sismomètre laissé par l'équipage."
+            "en": "The plan was a stay of no more than 31.5 hours, and that is exactly what happened: after 31 hours and 31 minutes, at 14:25 UT, the ascent stage fired its engine and lifted off from the descent stage, which stayed on the Moon. \"Liftoff! And away we go!\", Conrad called out. Later, the empty ascent stage was deliberately crashed into the Moon to shake the seismometer (the instrument that feels the ground shaking) the crew had left behind.",
+            "fr": "Le plan prévoyait un séjour de 31,5 heures au maximum, et c'est exactement ce qui s'est passé : après 31 heures et 31 minutes, à 14 h 25 UT, l'étage de remontée a allumé son moteur et décollé de l'étage de descente, qui est resté sur la Lune. « Décollage ! Et c'est parti ! », a lancé Conrad. Plus tard, l'étage de remontée vide a été écrasé volontairement sur la Lune pour secouer le sismomètre (l'instrument qui sent les tremblements du sol) laissé par l'équipage."
           },
-          "mediaIds": [
-            "bio-apollo-12-lm-intrepid-de-as12-48-7169"
-          ],
+          "mediaIds": ["bio-apollo-12-lm-intrepid-de-as12-48-7169", "bio-apollo-12-lm-intrepid-de-apollo-12-23-lm-ascent-durin"],
           "sourceIds": [
             "nasa-apollo12-presskit-1969",
             "nssdca-1969-099c",
@@ -2845,8 +2817,8 @@
     },
     "scienceSummary": {
       "value": {
-        "en": "A nuclear-powered station with six instruments. Its seismometer recorded the first artificial moonquake, when the Apollo 12 ascent stage was deliberately crashed into the Moon.",
-        "fr": "Une station alimentée par un générateur nucléaire, avec six instruments. Son sismomètre a enregistré le premier séisme lunaire artificiel, provoqué par l'impact volontaire de l'étage de remontée d'Apollo 12."
+        "en": "A nuclear-powered station (it runs on the heat of a radioactive material) with six instruments. Its seismometer (an instrument that feels the ground shaking) recorded the first artificial moonquake, when the Apollo 12 ascent stage was deliberately crashed into the Moon.",
+        "fr": "Une station alimentée par un générateur nucléaire (il fabrique de l'électricité avec la chaleur d'une matière radioactive), avec six instruments. Son sismomètre (un instrument qui sent les tremblements du sol) a enregistré le premier séisme lunaire artificiel, provoqué par l'impact volontaire de l'étage de remontée d'Apollo 12."
       },
       "sourceIds": ["nssdca-1969-099c"]
     },
@@ -2884,8 +2856,8 @@
       "status": "draft",
       "description": {
         "value": {
-          "en": "ALSEP (Apollo Lunar Surface Experiments Package) was a science station left on the Moon by Apollo 12. A 25 kg central station, with an antenna pointed at Earth, received orders and sent back data; it was powered by a nuclear generator (SNAP-27) that turned the heat of about 4 kg of plutonium-238 into about 70 watts of electricity, day and night. Six instruments were connected to it by cables: a seismometer, a magnetometer, a solar wind spectrometer, an ion detector, an ion gauge to look for an atmosphere, and a dust detector. Alan Bean and Pete Conrad set it up on 19 November 1969, about 130 metres north-west of their Lunar Module. It sent data for almost eight years, until all the Apollo stations were shut down on 30 September 1977.",
-          "fr": "L'ALSEP (Apollo Lunar Surface Experiments Package) était une station scientifique laissée sur la Lune par Apollo 12. Une station centrale de 25 kg, avec une antenne pointée vers la Terre, recevait des ordres et renvoyait les données ; elle était alimentée par un générateur nucléaire (SNAP-27) qui transformait la chaleur d'environ 4 kg de plutonium 238 en environ 70 watts d'électricité, de jour comme de nuit. Six instruments y étaient reliés par des câbles : un sismomètre, un magnétomètre, un spectromètre du vent solaire, un détecteur d'ions, une jauge à ions pour chercher une atmosphère et un détecteur de poussière. Alan Bean et Pete Conrad l'ont installée le 19 novembre 1969, à environ 130 mètres au nord-ouest de leur module lunaire. Elle a envoyé des données pendant presque huit ans, jusqu'à l'arrêt de toutes les stations Apollo le 30 septembre 1977."
+          "en": "ALSEP (Apollo Lunar Surface Experiments Package) was a science station left on the Moon by Apollo 12. A 25 kg central station, with an antenna pointed at Earth, received orders and sent back data; it was powered by a nuclear generator (SNAP-27) that turned the heat of about 4 kg of plutonium-238 into about 70 watts of electricity, day and night. Six instruments were connected to it by cables. One felt the ground shake (a seismometer), one measured magnetism (a magnetometer), one caught the particles blowing out from the Sun (a solar wind spectrometer), one counted tiny electrically charged particles (an ion detector), one looked for an atmosphere (an ion gauge), and the last one measured dust (a dust detector). Alan Bean and Pete Conrad set it up on 19 November 1969, about 130 metres north-west of their Lunar Module. It sent data for almost eight years, until all the Apollo stations were shut down on 30 September 1977.",
+          "fr": "L'ALSEP (Apollo Lunar Surface Experiments Package) était une station scientifique laissée sur la Lune par Apollo 12. Une station centrale de 25 kg, avec une antenne pointée vers la Terre, recevait des ordres et renvoyait les données ; elle était alimentée par un générateur nucléaire (SNAP-27) qui transformait la chaleur d'environ 4 kg de plutonium 238 en environ 70 watts d'électricité, de jour comme de nuit. Six instruments y étaient reliés par des câbles. L’un sentait le sol trembler (un sismomètre), un autre mesurait le magnétisme (un magnétomètre), un troisième captait les particules qui s’échappent du Soleil (un spectromètre du vent solaire), un quatrième comptait de minuscules particules chargées d’électricité (un détecteur d’ions), un cinquième cherchait une atmosphère (une jauge à ions) et le dernier mesurait la poussière (un détecteur de poussière). Alan Bean et Pete Conrad l'ont installée le 19 novembre 1969, à environ 130 mètres au nord-ouest de leur module lunaire. Elle a envoyé des données pendant presque huit ans, jusqu'à l'arrêt de toutes les stations Apollo le 30 septembre 1977."
         },
         "sourceIds": [
           "nssdca-1969-099c",
@@ -2921,8 +2893,8 @@
             "fr": "Une pile nucléaire"
           },
           "text": {
-            "en": "To work through the two-week lunar night, ALSEP used a SNAP-27 generator: a 17 kg cylinder with eight fins. Inside, the heat of a plutonium-238 fuel rod was turned directly into electricity by 442 small thermocouples: about 70 watts at the start and 63.5 watts after a year. Plutonium-238 loses half its strength only every 89.6 years. The generator was designed to last two years.",
-            "fr": "Pour traverser la nuit lunaire de deux semaines, l'ALSEP utilisait un générateur SNAP-27 : un cylindre de 17 kg muni de huit ailettes. À l'intérieur, la chaleur d'un barreau de combustible au plutonium 238 était transformée directement en électricité par 442 petits thermocouples : environ 70 watts au début et 63,5 watts au bout d'un an. Le plutonium 238 ne perd la moitié de sa puissance que tous les 89,6 ans. Le générateur était conçu pour durer deux ans."
+            "en": "To work through the two-week lunar night, ALSEP used a SNAP-27 generator: a 17 kg cylinder with eight fins. Inside, the heat of a plutonium-238 fuel rod was turned directly into electricity by 442 small thermocouples (small parts that turn heat into electricity): about 70 watts at the start and 63.5 watts after a year. Plutonium-238 loses half its strength only every 89.6 years. The generator was designed to last two years.",
+            "fr": "Pour traverser la nuit lunaire de deux semaines, l'ALSEP utilisait un générateur SNAP-27 : un cylindre de 17 kg muni de huit ailettes. À l'intérieur, la chaleur d'un barreau de combustible au plutonium 238 était transformée directement en électricité par 442 petits thermocouples (de petites pièces qui transforment la chaleur en électricité) : environ 70 watts au début et 63,5 watts au bout d'un an. Le plutonium 238 ne perd la moitié de sa puissance que tous les 89,6 ans. Le générateur était conçu pour durer deux ans."
           },
           "mediaIds": [
             "bio-apollo-12-alsep-as12-46-6789",
@@ -2944,10 +2916,7 @@
             "en": "The central station was a 25 kg box with a 58 cm antenna that the astronauts pointed at Earth. It received orders from Earth and sent back the data. Six instruments were plugged in by cables: a seismometer, a magnetometer, a solar wind spectrometer, a suprathermal ion detector, a cold cathode ion gauge and a dust detector.",
             "fr": "La station centrale était une boîte de 25 kg avec une antenne de 58 cm que les astronautes pointaient vers la Terre. Elle recevait les ordres de la Terre et renvoyait les données. Six instruments y étaient branchés par des câbles : un sismomètre, un magnétomètre, un spectromètre du vent solaire, un détecteur d'ions suprathermiques, une jauge à ions à cathode froide et un détecteur de poussière."
           },
-          "mediaIds": [
-            "nasa-lib-6903621",
-            "nasa-lib-6903633"
-          ],
+          "mediaIds": ["nasa-lib-6903621", "nasa-lib-6903633", "bio-apollo-12-alsep-as12-47-6928", "bio-apollo-12-alsep-as12-46-6814"],
           "sourceIds": [
             "nssdca-1969-099c"
           ]
@@ -3055,9 +3024,7 @@
             "en": "On the second moonwalk, the seismometer picked up Conrad's footsteps when he walked over to check it, and the vibrations of two rocks he rolled into a crater. About an hour after Intrepid took off, the covers of the solar wind spectrometer opened automatically.",
             "fr": "Pendant la deuxième sortie, le sismomètre a capté les pas de Conrad venu le vérifier, et les vibrations de deux pierres qu'il a fait rouler dans un cratère. Environ une heure après le décollage d'Intrepid, les capots du spectromètre du vent solaire se sont ouverts automatiquement."
           },
-          "mediaIds": [
-            "nasa-lib-6903621"
-          ],
+          "mediaIds": ["nasa-lib-6903621", "bio-apollo-12-alsep-as12-47-6916"],
           "sourceIds": [
             "nasa-history-55-years-ago-apollo-12-makes-a-p",
             "nssdca-1969-099c-02"
@@ -3126,9 +3093,7 @@
             "en": "The solar wind spectrometer used seven cup-shaped detectors pointing at different parts of the sky to catch the electrons and protons streaming from the Sun. The ion detector studied charged particles near the surface, including gas from the Lunar Module's own exhaust and particles thrown up by impacts.",
             "fr": "Le spectromètre du vent solaire utilisait sept détecteurs en forme de coupelle tournés vers différentes parties du ciel pour capter les électrons et les protons qui arrivent du Soleil. Le détecteur d'ions étudiait les particules chargées près du sol, y compris les gaz rejetés par le moteur du module lunaire et les particules soulevées par des impacts."
           },
-          "mediaIds": [
-            "nasa-lib-6903621"
-          ],
+          "mediaIds": ["nasa-lib-6903621", "bio-apollo-12-alsep-as12-46-6812", "bio-apollo-12-alsep-as12-47-6922"],
           "sourceIds": [
             "nssdca-1969-099c-02",
             "nssdca-1969-099c-05"
@@ -3145,9 +3110,7 @@
             "en": "From the end of 1972, the Apollo 12 station was part of a network of five science stations spread across the near side of the Moon, all sending data at the same time. Using artificial impacts recorded by the Apollo 12 and 14 stations, scientists found that the lunar crust in this region has two layers and is about 60 km thick.",
             "fr": "À partir de la fin de 1972, la station d'Apollo 12 faisait partie d'un réseau de cinq stations scientifiques réparties sur la face visible de la Lune, qui envoyaient toutes des données en même temps. Grâce aux impacts artificiels enregistrés par les stations d'Apollo 12 et 14, les scientifiques ont découvert que la croûte lunaire de cette région a deux couches et mesure environ 60 km d'épaisseur."
           },
-          "mediaIds": [
-            "nasa-lib-s69-59547"
-          ],
+          "mediaIds": ["nasa-lib-s69-59547", "bio-apollo-12-alsep-s71-17609", "bio-apollo-12-alsep-moon-landing-map"],
           "sourceIds": [
             "nasa-downloads-20190032593-pdf",
             "nasa-downloads-19790014808-pdf"
@@ -3170,9 +3133,7 @@
             "en": "Over the years, the generator produced less and less electricity. To save energy, controllers put instruments to sleep one by one: the ion detector was switched off on 3 May 1976 for lack of power, and the solar wind spectrometer was turned off on 15 January 1977 to keep the central station warm enough.",
             "fr": "Au fil des années, le générateur a produit de moins en moins d'électricité. Pour économiser l'énergie, les contrôleurs ont endormi les instruments un par un : le détecteur d'ions a été éteint le 3 mai 1976 faute d'énergie, et le spectromètre du vent solaire a été arrêté le 15 janvier 1977 pour garder la station centrale assez chaude."
           },
-          "mediaIds": [
-            "bio-apollo-12-alsep-as12-47-6921"
-          ],
+          "mediaIds": ["bio-apollo-12-alsep-as12-47-6921", "bio-apollo-12-alsep-as12-46-6785", "bio-apollo-12-alsep-as12-46-6788"],
           "sourceIds": [
             "nssdca-1969-099c-05",
             "nssdca-1969-099c-02"
@@ -3252,8 +3213,8 @@
             "fr": "Les séismes lunaires et l'intérieur de la Lune"
           },
           "text": {
-            "en": "The Apollo stations discovered moonquakes. With their seismometers, scientists found the Moon's crust, about 60 km thick in the Ocean of Storms, and learned about its mantle and deep interior, which helps explain how the Moon and the Earth formed.",
-            "fr": "Les stations Apollo ont découvert les séismes lunaires. Grâce à leurs sismomètres, les scientifiques ont mis en évidence la croûte de la Lune, épaisse d'environ 60 km dans l'océan des Tempêtes, et ont appris des choses sur son manteau et son intérieur profond, ce qui aide à comprendre comment la Lune et la Terre se sont formées."
+            "en": "The Apollo stations discovered moonquakes. With their seismometers, scientists found the Moon's crust, about 60 km thick in the Ocean of Storms, and learned about its mantle (the thick rock layer under the crust) and deep interior, which helps explain how the Moon and the Earth formed.",
+            "fr": "Les stations Apollo ont découvert les séismes lunaires. Grâce à leurs sismomètres, les scientifiques ont mis en évidence la croûte de la Lune, épaisse d'environ 60 km dans l'océan des Tempêtes, et ont appris des choses sur son manteau (l'épaisse couche de roche sous la croûte) et son intérieur profond, ce qui aide à comprendre comment la Lune et la Terre se sont formées."
           },
           "mediaIds": [
             "nasa-lib-s69-59547",
@@ -3583,12 +3544,10 @@
             "fr": "Plonger vers Mars emballé dans des airbags"
           },
           "text": {
-            "en": "On 4 July 1997, Pathfinder dived straight into the Martian atmosphere at about 7,300 metres per second, without first going into orbit. A heat shield and then a parachute slowed it down; just before the ground, huge airbags inflated around the lander and three small rockets fired. The ball of airbags hit the surface at about 18 metres per second at 16:56:55 UT, bounced at least 15 more times and rolled for about two and a half minutes, stopping about 1 km from where it first touched down. It was the first time airbags were used to land on Mars.",
-            "fr": "Le 4 juillet 1997, Pathfinder a plongé directement dans l’atmosphère martienne à environ 7 300 mètres par seconde, sans se mettre d’abord en orbite. Un bouclier thermique puis un parachute l’ont freiné ; juste avant le sol, d’énormes airbags se sont gonflés autour de l’atterrisseur et trois petites fusées se sont allumées. La boule d’airbags a touché le sol à environ 18 mètres par seconde, à 16 h 56 min 55 s UT, a rebondi au moins 15 fois encore et a roulé pendant environ deux minutes et demie, pour s’arrêter à environ 1 km de son premier point d’impact. C’était la première fois qu’on utilisait des airbags pour se poser sur Mars."
+            "en": "On 4 July 1997, Pathfinder dived straight into the Martian atmosphere at about 7,300 metres per second, without first going into orbit. A heat shield (a cover that takes the heat of entering the atmosphere) and then a parachute slowed it down; just before the ground, huge airbags inflated around the lander and three small rockets fired. The ball of airbags hit the surface at about 18 metres per second at 16:56:55 UT, bounced at least 15 more times and rolled for about two and a half minutes, stopping about 1 km from where it first touched down. It was the first time airbags were used to land on Mars.",
+            "fr": "Le 4 juillet 1997, Pathfinder a plongé directement dans l’atmosphère martienne à environ 7 300 mètres par seconde, sans se mettre d’abord en orbite. Un bouclier thermique (une protection qui encaisse la chaleur de l'entrée dans l'atmosphère) puis un parachute l’ont freiné ; juste avant le sol, d’énormes airbags se sont gonflés autour de l’atterrisseur et trois petites fusées se sont allumées. La boule d’airbags a touché le sol à environ 18 mètres par seconde, à 16 h 56 min 55 s UT, a rebondi au moins 15 fois encore et a roulé pendant environ deux minutes et demie, pour s’arrêter à environ 1 km de son premier point d’impact. C’était la première fois qu’on utilisait des airbags pour se poser sur Mars."
           },
-          "mediaIds": [
-            "pathfinder-airbag-test"
-          ],
+          "mediaIds": ["pathfinder-airbag-test", "bio-mars-pathfinder-lander-marspath-entry", "bio-mars-pathfinder-lander-pia00775"],
           "sourceIds": [
             "nssdca-1996-068a",
             "nasa-science-mars-pathfinder"
@@ -3688,9 +3647,7 @@
             "en": "Pathfinder was the first NASA mission to use the Internet as a main way to share its news and pictures with the public. To cope with the crowds, twenty mirror websites around the world carried copies of the mission site. On landing day, 4 July 1997, the site received about 30 million hits, and on 8 July a record 47 million hits were logged in a single day. Between 1 July and 4 August, the mirror sites counted more than 565 million hits.",
             "fr": "Pathfinder a été la première mission de la NASA à utiliser Internet comme moyen principal de partager ses nouvelles et ses images avec le public. Pour faire face à la foule, vingt sites miroirs dans le monde hébergeaient des copies du site de la mission. Le jour de l’atterrissage, le 4 juillet 1997, le site a reçu environ 30 millions de connexions (« hits »), et le 8 juillet un record de 47 millions a été enregistré en une seule journée. Entre le 1er juillet et le 4 août, les sites miroirs ont compté plus de 565 millions de connexions."
           },
-          "mediaIds": [
-            "nasa-lib-pia00616"
-          ],
+          "mediaIds": ["nasa-lib-pia00616", "bio-mars-pathfinder-lander-marspath1"],
           "sourceIds": [
             "nasa-specials-pathfinder20",
             "jpl-news-mars-pathfinder-concludes-primary-s"
@@ -3704,7 +3661,7 @@
             "fr": "Une station météo sur Mars"
           },
           "text": {
-            "en": "Every day the lander measured temperature, pressure and wind, with temperature sensors at 25, 50 and 100 cm above the ground. The top sensor usually peaked at about 263 K (around −10 °C) in the early afternoon and fell to about 197 K (around −76 °C) before dawn. One 24-hour series showed jumps of 30–40 °F (roughly 17–22 °C) in just minutes, and small pressure dips around noon were probably dust devils passing by. The air pressure slowly rose during the mission, because the south polar cap was shrinking and releasing carbon dioxide gas. In total, the mission collected about 8.5 million temperature, pressure and wind measurements.",
+            "en": "Every day the lander measured temperature, pressure and wind, with temperature sensors at 25, 50 and 100 cm above the ground. The top sensor usually peaked at about 263 K (around −10 °C) in the early afternoon and fell to about 197 K (around −76 °C) before dawn. One 24-hour series showed jumps of 30–40 °F (roughly 17–22 °C) in just minutes, and small pressure dips around noon were probably dust devils (small whirlwinds of dust) passing by. The air pressure slowly rose during the mission, because the south polar cap was shrinking and releasing carbon dioxide gas. In total, the mission collected about 8.5 million temperature, pressure and wind measurements.",
             "fr": "Chaque jour, l’atterrisseur mesurait la température, la pression et le vent, avec des capteurs de température placés à 25, 50 et 100 cm au-dessus du sol. Le capteur du haut montait en général jusqu’à environ 263 K (vers −10 °C) en début d’après-midi et descendait à environ 197 K (vers −76 °C) avant l’aube. Une série de 24 heures a montré des sauts de 30 à 40 °F (environ 17 à 22 °C) en quelques minutes, et de petites baisses de pression vers midi étaient sans doute des tourbillons de poussière qui passaient. La pression de l’air a lentement augmenté pendant la mission, parce que la calotte polaire sud fondait et libérait du gaz carbonique. Au total, la mission a recueilli environ 8,5 millions de mesures de température, de pression et de vent."
           },
           "mediaIds": [
@@ -3774,8 +3731,8 @@
             "fr": "Ce que l’atterrisseur a permis de découvrir"
           },
           "text": {
-            "en": "Rounded pebbles and possible conglomerate rocks around the lander suggested that liquid water once flowed here, in a warmer past. The dust floating in the air turned out to be magnetic, perhaps because of a very magnetic iron mineral that may have formed when water was active. By tracking the lander's radio signal, scientists measured precisely how Mars spins and estimated that its metal core has a radius between about 1,300 and 2,000 km. Together, these clues pointed to a Mars that may once have been warm and wet.",
-            "fr": "Des galets arrondis et de possibles conglomérats autour de l’atterrisseur laissaient penser que de l’eau liquide avait coulé ici, à une époque plus chaude. La poussière en suspension dans l’air s’est révélée magnétique, peut-être à cause d’un minéral de fer très magnétique qui aurait pu se former quand l’eau était active. En suivant le signal radio de l’atterrisseur, les scientifiques ont mesuré avec précision la rotation de Mars et estimé que son noyau métallique a un rayon compris entre environ 1 300 et 2 000 km. Ensemble, ces indices décrivaient une planète Mars qui a peut-être été autrefois chaude et humide."
+            "en": "Rounded pebbles and possible conglomerate rocks (pebbles and sand cemented together) around the lander suggested that liquid water once flowed here, in a warmer past. The dust floating in the air turned out to be magnetic, perhaps because of a very magnetic iron mineral that may have formed when water was active. By tracking the lander's radio signal, scientists measured precisely how Mars spins and estimated that its metal core has a radius between about 1,300 and 2,000 km. Together, these clues pointed to a Mars that may once have been warm and wet.",
+            "fr": "Des galets arrondis et de possibles conglomérats (des roches faites de galets et de sable cimentés ensemble) autour de l’atterrisseur laissaient penser que de l’eau liquide avait coulé ici, à une époque plus chaude. La poussière en suspension dans l’air s’est révélée magnétique, peut-être à cause d’un minéral de fer très magnétique qui aurait pu se former quand l’eau était active. En suivant le signal radio de l’atterrisseur, les scientifiques ont mesuré avec précision la rotation de Mars et estimé que son noyau métallique a un rayon compris entre environ 1 300 et 2 000 km. Ensemble, ces indices décrivaient une planète Mars qui a peut-être été autrefois chaude et humide."
           },
           "mediaIds": [
             "bio-mars-pathfinder-lander-pia00975",
@@ -3804,9 +3761,7 @@
             "en": "The last successful data transmission from Pathfinder ended on 27 September 1997 at 3:23 a.m. Pacific time (10:23 UTC), on sol 83. The team believes the battery failed first; without it, the lander got colder every night and probably stopped working. Engineers picked up only a faint carrier signal on 1 and 6 October, with no data. By then the lander had worked nearly three times its planned 30 days and sent more than 16,500 images.",
             "fr": "La dernière transmission de données réussie de Pathfinder s’est terminée le 27 septembre 1997 à 3 h 23, heure du Pacifique (10 h 23 UTC), au sol 83. L’équipe pense que la batterie a lâché la première ; sans elle, l’atterrisseur se refroidissait chaque nuit davantage et a probablement fini par s’arrêter. Les ingénieurs n’ont capté qu’un faible signal porteur les 1er et 6 octobre, sans aucune donnée. L’atterrisseur avait alors fonctionné près de trois fois plus longtemps que les 30 jours prévus et envoyé plus de 16 500 images."
           },
-          "mediaIds": [
-            "bio-mars-pathfinder-lander-pia01121"
-          ],
+          "mediaIds": ["bio-mars-pathfinder-lander-pia01121", "bio-mars-pathfinder-lander-pia00977"],
           "sourceIds": [
             "jpl-pathfinder-winds-down-1997",
             "nasa-science-photojournal-sojourners-apxs-studies-bar",
@@ -3853,8 +3808,8 @@
             "fr": "Retrouvé depuis l’orbite"
           },
           "text": {
-            "en": "On 21 December 2006, the HiRISE camera on NASA's Mars Reconnaissance Orbiter photographed the landing site from about 285 km away. Zooming in, you can make out the lander's ramps, its science deck and parts of its airbags, with the backshell and parachute to the south. The image shows that the silent lander is still sitting where it came to rest in Ares Vallis.",
-            "fr": "Le 21 décembre 2006, la caméra HiRISE de la sonde Mars Reconnaissance Orbiter de la NASA a photographié le site d’atterrissage depuis environ 285 km. En zoomant, on distingue les rampes de l’atterrisseur, son plateau d’instruments et des morceaux de ses airbags, avec le bouclier arrière et le parachute au sud. L’image montre que l’atterrisseur, devenu muet, est toujours là où il s’est immobilisé, dans Ares Vallis."
+            "en": "On 21 December 2006, the HiRISE camera on NASA's Mars Reconnaissance Orbiter photographed the landing site from about 285 km away. Zooming in, you can make out the lander's ramps, its science deck and parts of its airbags, with the backshell (the back half of its protective capsule) and parachute to the south. The image shows that the silent lander is still sitting where it came to rest in Ares Vallis.",
+            "fr": "Le 21 décembre 2006, la caméra HiRISE de la sonde Mars Reconnaissance Orbiter de la NASA a photographié le site d’atterrissage depuis environ 285 km. En zoomant, on distingue les rampes de l’atterrisseur, son plateau d’instruments et des morceaux de ses airbags, avec le bouclier arrière (la moitié arrière de sa capsule protectrice) et le parachute au sud. L’image montre que l’atterrisseur, devenu muet, est toujours là où il s’est immobilisé, dans Ares Vallis."
           },
           "mediaIds": [
             "bio-mars-pathfinder-lander-pia09105"
@@ -4143,12 +4098,10 @@
             "fr": "Un minuscule rover à six roues"
           },
           "text": {
-            "en": "Sojourner was a six-wheeled robot car only 63 cm long, 48 cm wide and 28 cm high, mounted on a suspension called \"rocker-bogie\". Its brain was an 8-bit Intel 80C85 processor running about 100,000 instructions per second, and its power came from 0.2 square metres of solar cells, with non-rechargeable batteries as backup. It crawled at no more than about 1 cm per second. Because a message took 10 to 15 minutes to travel between Earth and Mars, it had a hazard-avoidance system to make some decisions on its own. Its body, which held the electronics and batteries, was wrapped in an ultra-light insulating material called aerogel to keep it warm.",
-            "fr": "Sojourner était un petit robot à six roues de seulement 63 cm de long, 48 cm de large et 28 cm de haut, monté sur une suspension appelée « rocker-bogie ». Son cerveau était un processeur Intel 80C85 de 8 bits qui exécutait environ 100 000 instructions par seconde, et son énergie venait de 0,2 mètre carré de cellules solaires, avec des piles non rechargeables en secours. Il avançait à 1 cm par seconde au maximum environ. Comme un message mettait 10 à 15 minutes pour aller de la Terre à Mars, il possédait un système d’évitement des obstacles pour prendre certaines décisions tout seul. Sa caisse, qui contenait l’électronique et les batteries, était isolée par un matériau ultra-léger appelé aérogel pour la garder au chaud."
+            "en": "Sojourner was a six-wheeled robot car only 63 cm long, 48 cm wide and 28 cm high, mounted on a suspension called \"rocker-bogie\" (jointed arms that let the wheels climb over rocks). Its brain was an 8-bit Intel 80C85 processor running about 100,000 instructions per second, and its power came from 0.2 square metres of solar cells, with non-rechargeable batteries as backup. It crawled at no more than about 1 cm per second. Because a message took 10 to 15 minutes to travel between Earth and Mars, it had a hazard-avoidance system to make some decisions on its own. Its body, which held the electronics and batteries, was wrapped in an ultra-light insulating material called aerogel to keep it warm.",
+            "fr": "Sojourner était un petit robot à six roues de seulement 63 cm de long, 48 cm de large et 28 cm de haut, monté sur une suspension appelée « rocker-bogie » (des bras articulés qui laissent les roues franchir les rochers). Son cerveau était un processeur Intel 80C85 de 8 bits qui exécutait environ 100 000 instructions par seconde, et son énergie venait de 0,2 mètre carré de cellules solaires, avec des piles non rechargeables en secours. Il avançait à 1 cm par seconde au maximum environ. Comme un message mettait 10 à 15 minutes pour aller de la Terre à Mars, il possédait un système d’évitement des obstacles pour prendre certaines décisions tout seul. Sa caisse, qui contenait l’électronique et les batteries, était isolée par un matériau ultra-léger appelé aérogel pour la garder au chaud."
           },
-          "mediaIds": [
-            "pathfinder-sojourner-sol-2-pia01551"
-          ],
+          "mediaIds": ["pathfinder-sojourner-sol-2-pia01551", "bio-sojourner-pia01122", "bio-sojourner-pia04421"],
           "sourceIds": [
             "nssdca-mesurpr",
             "nasa-history-25-years-ago-mars-pathfinder-lau",
@@ -4259,8 +4212,8 @@
             "fr": "« Six roues sur le sol ! »"
           },
           "text": {
-            "en": "On sol 2, Sojourner stood up to its full height of about 30 cm and rolled down the lander's rear ramp, which was tilted at 20 degrees. A lander image taken on 6 July 1997 at about 05:40 UT showed it stopped about 10 cm past the end of the ramp, all six wheels on Martian soil. It was the first wheeled vehicle ever operated on another planet.",
-            "fr": "Au sol 2, Sojourner s’est dressé à sa pleine hauteur, environ 30 cm, et a descendu la rampe arrière de l’atterrisseur, inclinée à 20 degrés. Une image de l’atterrisseur prise le 6 juillet 1997 vers 5 h 40 UT le montrait arrêté environ 10 cm après le bout de la rampe, ses six roues sur le sol martien. C’était le premier véhicule à roues jamais piloté sur une autre planète."
+            "en": "On sol 2 (its second Martian day), Sojourner stood up to its full height of about 30 cm and rolled down the lander's rear ramp, which was tilted at 20 degrees. A lander image taken on 6 July 1997 at about 05:40 UT showed it stopped about 10 cm past the end of the ramp, all six wheels on Martian soil. It was the first wheeled vehicle ever operated on another planet.",
+            "fr": "Au sol 2 (son deuxième jour martien), Sojourner s’est dressé à sa pleine hauteur, environ 30 cm, et a descendu la rampe arrière de l’atterrisseur, inclinée à 20 degrés. Une image de l’atterrisseur prise le 6 juillet 1997 vers 5 h 40 UT le montrait arrêté environ 10 cm après le bout de la rampe, ses six roues sur le sol martien. C’était le premier véhicule à roues jamais piloté sur une autre planète."
           },
           "mediaIds": [
             "nasa-lib-pia00623",
@@ -4280,8 +4233,8 @@
             "fr": "Barnacle Bill, le premier rocher"
           },
           "text": {
-            "en": "Sojourner's first target was the soil right under it; then, on sol 3, it began the first-ever analysis of a rock on Mars: Barnacle Bill, a nearby rock named for its rough surface. The tracks it left on the way showed that the soil is made of very fine particles. The APXS found that Barnacle Bill has the chemistry of an andesitic volcanic rock, although it might also have formed by sedimentation or a meteorite impact.",
-            "fr": "La première cible de Sojourner était le sol juste sous lui ; puis, au sol 3, il a commencé la toute première analyse d’un rocher sur Mars : Barnacle Bill, un rocher voisin nommé ainsi à cause de sa surface rugueuse. Les traces laissées en chemin ont montré que le sol est fait de particules très fines. L’APXS a révélé que Barnacle Bill a la composition chimique d’une roche volcanique de type andésite, même s’il pouvait aussi s’être formé par sédimentation ou lors de l’impact d’une météorite."
+            "en": "Sojourner's first target was the soil right under it; then, on sol 3, it began the first-ever analysis of a rock on Mars: Barnacle Bill, a nearby rock named for its rough surface. The tracks it left on the way showed that the soil is made of very fine particles. The APXS found that Barnacle Bill has the chemistry of an andesitic volcanic rock, although it might also have formed by sedimentation (grains settling in water or air) or a meteorite impact.",
+            "fr": "La première cible de Sojourner était le sol juste sous lui ; puis, au sol 3, il a commencé la toute première analyse d’un rocher sur Mars : Barnacle Bill, un rocher voisin nommé ainsi à cause de sa surface rugueuse. Les traces laissées en chemin ont montré que le sol est fait de particules très fines. L’APXS a révélé que Barnacle Bill a la composition chimique d’une roche volcanique de type andésite, même s’il pouvait aussi s’être formé par sédimentation (des grains qui se déposent dans l'eau ou l'air) ou lors de l’impact d’une météorite."
           },
           "mediaIds": [
             "bio-sojourner-pia00633",
@@ -4309,7 +4262,7 @@
             "fr": "Une rencontre musclée avec Yogi"
           },
           "text": {
-            "en": "Next came Yogi, a big rock near the lander. On sol 6 (9 July 1997, US time), Sojourner backed up a little too far while trying to place its spectrometer and its left rear wheel climbed onto Yogi. The team repositioned it, and on sol 10 a successful drive brought it up to the rock. Close-up pictures showed that Yogi has a \"two-toned\" surface, possibly dust blown by the wind or a broken face, which scientists could not explain for sure. Its first results showed that Yogi was poorer in quartz than Barnacle Bill and looked more like the common basalt rocks found on Earth.",
+            "en": "Next came Yogi, a big rock near the lander. On sol 6 (9 July 1997, US time), Sojourner backed up a little too far while trying to place its spectrometer and its left rear wheel climbed onto Yogi. The team repositioned it, and on sol 10 a successful drive brought it up to the rock. Close-up pictures showed that Yogi has a \"two-toned\" surface, possibly dust blown by the wind or a broken face, which scientists could not explain for sure. Its first results showed that Yogi was poorer in quartz than Barnacle Bill and looked more like the common basalt rocks (common dark volcanic rocks) found on Earth.",
             "fr": "Ensuite est venu Yogi, un gros rocher près de l’atterrisseur. Au sol 6 (le 9 juillet 1997, heure des États-Unis), Sojourner a reculé un peu trop loin en essayant de placer son spectromètre, et sa roue arrière gauche est montée sur Yogi. L’équipe l’a repositionné, et au sol 10 une nouvelle manœuvre réussie l’a amené contre le rocher. Les photos rapprochées ont montré que Yogi a une surface « bicolore », peut-être due à de la poussière apportée par le vent ou à une face cassée, sans que les scientifiques puissent l’expliquer avec certitude. Ses premiers résultats ont montré que Yogi contenait moins de quartz que Barnacle Bill et ressemblait davantage aux basaltes, des roches volcaniques courantes sur Terre."
           },
           "mediaIds": [
@@ -4441,13 +4394,10 @@
             "fr": "Ce que Sojourner a découvert"
           },
           "text": {
-            "en": "Sojourner's spectrometer showed that the soils looked chemically like those measured earlier by the two Viking landers. The rocks were rich in silica and potassium and poor in magnesium, similar to andesites, a type of volcanic rock on Earth. This was new: these rocks were different from the Martian meteorites found on Earth, which until then were the main clue about Martian rocks.",
-            "fr": "Le spectromètre de Sojourner a montré que les sols ressemblaient, par leur chimie, à ceux mesurés auparavant par les deux atterrisseurs Viking. Les rochers étaient riches en silice et en potassium et pauvres en magnésium, comme les andésites, un type de roche volcanique sur Terre. C’était nouveau : ces roches étaient différentes des météorites martiennes trouvées sur Terre, qui étaient jusque-là le principal indice sur les roches de Mars."
+            "en": "Sojourner's spectrometer showed that the soils looked chemically like those measured earlier by the two Viking landers. The rocks were rich in silica (the main ingredient of glass) and potassium and poor in magnesium, similar to andesites, a type of volcanic rock on Earth. This was new: these rocks were different from the Martian meteorites found on Earth, which until then were the main clue about Martian rocks.",
+            "fr": "Le spectromètre de Sojourner a montré que les sols ressemblaient, par leur chimie, à ceux mesurés auparavant par les deux atterrisseurs Viking. Les rochers étaient riches en silice (le principal ingrédient du verre) et en potassium et pauvres en magnésium, comme les andésites, un type de roche volcanique sur Terre. C’était nouveau : ces roches étaient différentes des météorites martiennes trouvées sur Terre, qui étaient jusque-là le principal indice sur les roches de Mars."
           },
-          "mediaIds": [
-            "bio-sojourner-pia00634",
-            "bio-sojourner-pia00766"
-          ],
+          "mediaIds": ["bio-sojourner-pia00634", "bio-sojourner-pia00766", "bio-sojourner-pia00966", "bio-sojourner-marspath-apxs-sites"],
           "sourceIds": [
             "nssdca-mesurpr-01",
             "nasa-science-photojournal-pathfinder-on-mars"
@@ -4501,9 +4451,7 @@
             "en": "Sojourner worked for 83 days instead of the 7 planned: 12 times its design lifetime. It drove about 100 metres in 230 commanded moves, visited 16 science locations and never went more than about 12 metres (39 feet) from the lander. It sent 550 images back to Earth through the lander. It paved the way for the bigger rovers that followed.",
             "fr": "Sojourner a fonctionné pendant 83 jours au lieu des 7 prévus : 12 fois sa durée de vie prévue. Il a parcouru environ 100 mètres en 230 déplacements commandés, visité 16 sites scientifiques et ne s’est jamais éloigné de plus d’environ 12 mètres (39 pieds) de l’atterrisseur. Il a envoyé 550 images vers la Terre par l’intermédiaire de l’atterrisseur. Il a ouvert la voie aux rovers plus grands qui ont suivi."
           },
-          "mediaIds": [
-            "bio-sojourner-pia00998"
-          ],
+          "mediaIds": ["bio-sojourner-pia00998", "bio-sojourner-pia00970", "bio-sojourner-pia01238"],
           "sourceIds": [
             "nasa-science-photojournal-sojourners-apxs-studies-bar",
             "jpl-pathfinder-winds-down-1997",
@@ -4529,7 +4477,7 @@
             "en": "When scientists compared the HiRISE orbital image of 21 December 2006 with the old ground-level panoramas, they marked Sojourner's last known position near the rock Chimp. In the orbital image, a feature about the right size for Sojourner appeared at another spot where nothing had been before, so it was tentatively labelled \"Sojourner?\". This is only a possibility: no one knows for sure where the rover is today.",
             "fr": "En comparant l’image orbitale prise par HiRISE le 21 décembre 2006 avec les anciens panoramas pris au sol, les scientifiques ont repéré la dernière position connue de Sojourner, près du rocher Chimp. Sur l’image orbitale, un objet à peu près de la taille de Sojourner apparaissait à un autre endroit, où il n’y avait rien auparavant : il a donc été marqué, avec prudence, « Sojourner? ». Ce n’est qu’une possibilité : personne ne sait avec certitude où se trouve le rover aujourd’hui."
           },
-          "mediaIds": [],
+          "mediaIds": ["bio-sojourner-pia01580"],
           "sourceIds": [
             "nasa-science-photojournal-mars-pathfinder-landing-sit"
           ]
@@ -4562,8 +4510,8 @@
             "fr": "Des robots qui évitent le danger tout seuls"
           },
           "text": {
-            "en": "Sojourner proved that a small rover could spot hazards on another planet and act on its own to get around them. It was the first semi-autonomous rover delivered to the surface of another planet to do science. Its success showed engineers that they were on the right track to build smarter and tougher rovers for future missions.",
-            "fr": "Sojourner a prouvé qu’un petit rover pouvait repérer des obstacles sur une autre planète et agir seul pour les contourner. C’était le premier rover semi-autonome déposé à la surface d’une autre planète pour faire de la science. Sa réussite a montré aux ingénieurs qu’ils étaient sur la bonne voie pour construire des rovers plus intelligents et plus robustes pour les missions futures."
+            "en": "Sojourner proved that a small rover could spot hazards on another planet and act on its own to get around them. It was the first semi-autonomous rover (it could make some decisions by itself) delivered to the surface of another planet to do science. Its success showed engineers that they were on the right track to build smarter and tougher rovers for future missions.",
+            "fr": "Sojourner a prouvé qu’un petit rover pouvait repérer des obstacles sur une autre planète et agir seul pour les contourner. C’était le premier rover semi-autonome (capable de prendre certaines décisions seul) déposé à la surface d’une autre planète pour faire de la science. Sa réussite a montré aux ingénieurs qu’ils étaient sur la bonne voie pour construire des rovers plus intelligents et plus robustes pour les missions futures."
           },
           "mediaIds": [
             "bio-sojourner-pia00998",
@@ -4733,8 +4681,8 @@
     },
     "scienceSummary": {
       "value": {
-        "en": "At “Home Plate” it found soil that is 90% pure silica — on Earth, this kind of deposit usually forms in hot springs or steam vents.",
-        "fr": "À « Home Plate », il a trouvé un sol composé à 90 % de silice pure — sur Terre, ce type de dépôt se forme généralement dans des sources chaudes ou des fumerolles."
+        "en": "At “Home Plate” it found soil that is 90% pure silica (the main ingredient of glass) — on Earth, this kind of deposit usually forms in hot springs or steam vents.",
+        "fr": "À « Home Plate », il a trouvé un sol composé à 90 % de silice pure (le principal ingrédient du verre) — sur Terre, ce type de dépôt se forme généralement dans des sources chaudes ou des fumerolles."
       },
       "sourceIds": ["nasa-science-mer-highlights"]
     },
@@ -4792,8 +4740,8 @@
       "status": "draft",
       "description": {
         "value": {
-          "en": "Spirit (also called MER-A) was a six-wheeled robot geologist about the size of a golf cart, with a mass of 185 kg, powered by solar panels that gave up to 140 watts in full sunlight. NASA sent it to Gusev Crater, a giant crater that may once have held a lake, to look for rocks and soils holding clues to past water on Mars. On a mast about 1.5 m high it carried its Pancam and navigation cameras and a periscope for the Mini-TES infrared spectrometer; on its robotic arm it carried a microscopic imager, two spectrometers (APXS and Mössbauer) and a rock abrasion tool (RAT) to grind into rocks. Built for a 90-sol mission, Spirit worked for 6 years, 2 months and 19 days and drove 7.73 km before getting stuck in soft sand next to a plateau called Home Plate, where it still rests.",
-          "fr": "Spirit (aussi appelé MER-A) était un robot géologue à six roues, de la taille d’une voiturette de golf, d’une masse de 185 kg, alimenté par des panneaux solaires qui fournissaient jusqu’à 140 watts en plein soleil. La NASA l’a envoyé dans le cratère Gusev, un cratère géant qui a peut-être abrité un lac, pour chercher des roches et des sols gardant des traces d’eau passée sur Mars. Sur un mât d’environ 1,5 m, il portait sa caméra panoramique (Pancam), ses caméras de navigation et un périscope pour le spectromètre infrarouge Mini-TES ; au bout de son bras robotique, il avait un microscope (imageur microscopique), deux spectromètres (APXS et Mössbauer) et un outil d’abrasion (RAT) pour meuler les roches. Prévu pour une mission de 90 sols, Spirit a fonctionné 6 ans, 2 mois et 19 jours et parcouru 7,73 km avant de s’enliser dans un sable meuble à côté d’un plateau appelé Home Plate, où il repose toujours."
+          "en": "Spirit (also called MER-A) was a six-wheeled robot geologist (a geologist studies rocks) about the size of a golf cart, with a mass of 185 kg, powered by solar panels that gave up to 140 watts in full sunlight. NASA sent it to Gusev Crater, a giant crater that may once have held a lake, to look for rocks and soils holding clues to past water on Mars. On a mast about 1.5 m high it carried its Pancam and navigation cameras and a periscope for the Mini-TES infrared spectrometer (an instrument that uses invisible heat light to tell what rocks are made of); on its robotic arm it carried a microscopic imager, two spectrometers (APXS and Mössbauer) and a rock abrasion tool (RAT) to grind into rocks. Built for a 90-sol mission (a sol is a Martian day of 24 h 39 min), Spirit worked for 6 years, 2 months and 19 days and drove 7.73 km before getting stuck in soft sand next to a plateau called Home Plate, where it still rests.",
+          "fr": "Spirit (aussi appelé MER-A) était un robot géologue (un géologue étudie les roches) à six roues, de la taille d’une voiturette de golf, d’une masse de 185 kg, alimenté par des panneaux solaires qui fournissaient jusqu’à 140 watts en plein soleil. La NASA l’a envoyé dans le cratère Gusev, un cratère géant qui a peut-être abrité un lac, pour chercher des roches et des sols gardant des traces d’eau passée sur Mars. Sur un mât d’environ 1,5 m, il portait sa caméra panoramique (Pancam), ses caméras de navigation et un périscope pour le spectromètre infrarouge Mini-TES (un instrument qui lit une lumière invisible, la chaleur, pour dire de quoi les roches sont faites) ; au bout de son bras robotique, il avait un microscope (imageur microscopique), deux spectromètres (APXS et Mössbauer) et un outil d’abrasion (RAT) pour meuler les roches. Prévu pour une mission de 90 sols (des jours martiens de 24 h 39 min), Spirit a fonctionné 6 ans, 2 mois et 19 jours et parcouru 7,73 km avant de s’enliser dans un sable meuble à côté d’un plateau appelé Home Plate, où il repose toujours."
         },
         "sourceIds": [
           "nssdca-2003-027a",
@@ -4847,8 +4795,8 @@
             "fr": "Des rebonds dans le cratère Gusev"
           },
           "text": {
-            "en": "On 4 January 2004 (still 3 January in US time zones), Spirit’s capsule dived into the thin Martian air. A heat shield and a parachute slowed it down, then retrorockets fired and big airbags inflated all around the lander. It hit the ground at about 50 km/h and bounced 28 times before rolling to a stop inside Gusev Crater. The landing site was named Columbia Memorial Station, in honour of the seven astronauts killed in the space shuttle Columbia accident on 1 February 2003.",
-            "fr": "Le 4 janvier 2004 (encore le 3 janvier aux États-Unis), la capsule de Spirit plonge dans la fine atmosphère martienne. Un bouclier thermique et un parachute la freinent, puis des rétrofusées s’allument et de gros airbags se gonflent tout autour de l’atterrisseur. Il touche le sol à environ 50 km/h et rebondit 28 fois avant de s’arrêter en roulant dans le cratère Gusev. Le site est baptisé Columbia Memorial Station, en hommage aux sept astronautes morts dans l’accident de la navette Columbia le 1er février 2003."
+            "en": "On 4 January 2004 (still 3 January in US time zones), Spirit’s capsule dived into the thin Martian air. A heat shield (a cover that takes the heat of entering the atmosphere) and a parachute slowed it down, then retrorockets (rockets that fire to brake) fired and big airbags inflated all around the lander. It hit the ground at about 50 km/h and bounced 28 times before rolling to a stop inside Gusev Crater. The landing site was named Columbia Memorial Station, in honour of the seven astronauts killed in the space shuttle Columbia accident on 1 February 2003.",
+            "fr": "Le 4 janvier 2004 (encore le 3 janvier aux États-Unis), la capsule de Spirit plonge dans la fine atmosphère martienne. Un bouclier thermique (une protection qui encaisse la chaleur de l'entrée dans l'atmosphère) et un parachute la freinent, puis des rétrofusées (des fusées qui freinent la descente) s’allument et de gros airbags se gonflent tout autour de l’atterrisseur. Il touche le sol à environ 50 km/h et rebondit 28 fois avant de s’arrêter en roulant dans le cratère Gusev. Le site est baptisé Columbia Memorial Station, en hommage aux sept astronautes morts dans l’accident de la navette Columbia le 1er février 2003."
           },
           "mediaIds": [
             "nasa-lib-pia05248"
@@ -4904,9 +4852,7 @@
             "en": "On 15 January 2004, Spirit drove off its landing platform and rolled onto the soil of Mars. The short drive moved it 3 metres in 78 seconds. Its first picture looking back at the now-empty lander, with wheel tracks in the dirt, set off cheers in the control room on Earth. A few days later it took a colour panorama of the empty lander and of the hills, about 3 km away, that it hoped to explore.",
             "fr": "Le 15 janvier 2004, Spirit descend de sa plateforme d’atterrissage et roule sur le sol de Mars. Ce petit trajet le fait avancer de 3 mètres en 78 secondes. Sa première photo de l’atterrisseur désormais vide, avec des traces de roues dans la poussière, déclenche des applaudissements dans la salle de contrôle sur Terre. Quelques jours plus tard, il prend un panorama en couleur de l’atterrisseur vide et des collines, à environ 3 km, qu’il espère explorer."
           },
-          "mediaIds": [
-            "mer-spirit-landing-site-pia05117"
-          ],
+          "mediaIds": ["mer-spirit-landing-site-pia05117", "bio-spirit-pia05097"],
           "sourceIds": [
             "nssdca-2003-027a",
             "nasa-text-mer-pr-20040115-txt",
@@ -5041,7 +4987,7 @@
             "fr": "Enfin les Columbia Hills"
           },
           "text": {
-            "en": "After a long drive across the plain, Spirit reached the foot of the Columbia Hills on sol 156 (11 June 2004), with more than 3.4 km on its odometer. These hills, which had looked like tiny bumps on the horizon from the landing site, rise about 90 metres above the plain. There Spirit found a surprising variety of bedrock, some of it altered by water, and odd rocks that seemed to be “rotting”, with soft insides and hard crusts. Later, its instruments revealed goethite in the bedrock, a mineral that forms only in the presence of water. Already, its right front wheel was drawing two to three times more electric current than the others, a first sign of wear.",
+            "en": "After a long drive across the plain, Spirit reached the foot of the Columbia Hills on sol 156 (11 June 2004), with more than 3.4 km on its odometer. These hills, which had looked like tiny bumps on the horizon from the landing site, rise about 90 metres above the plain. There Spirit found a surprising variety of bedrock (the solid rock under the soil), some of it altered by water, and odd rocks that seemed to be “rotting”, with soft insides and hard crusts. Later, its instruments revealed goethite in the bedrock, a mineral that forms only in the presence of water. Already, its right front wheel was drawing two to three times more electric current than the others, a first sign of wear.",
             "fr": "Après une longue route à travers la plaine, Spirit atteint le pied des Columbia Hills au sol 156 (11 juin 2004), avec plus de 3,4 km au compteur. Ces collines, qui ressemblaient à de minuscules bosses à l’horizon depuis le site d’atterrissage, s’élèvent à environ 90 mètres au-dessus de la plaine. Spirit y découvre une étonnante variété de roches, dont certaines ont été transformées par l’eau, et de drôles de roches qui semblent « pourrir », avec un cœur tendre et une croûte dure. Plus tard, ses instruments révèlent de la goethite dans la roche, un minéral qui ne se forme qu’en présence d’eau. Déjà, sa roue avant droite consomme deux à trois fois plus de courant électrique que les autres : un premier signe d’usure."
           },
           "mediaIds": [
@@ -5163,8 +5109,8 @@
             "fr": "La descente de l’autre côté"
           },
           "text": {
-            "en": "In October 2005, before leaving the summit area, Spirit looked back at the long, winding trail of wheel tracks it had made on the way up. It spent several days perched on a steep, rocky slope next to an outcrop nicknamed “Hillary”, as the team adjusted its wheels to give it a solid grip. Then it headed down toward the area it would explore for more than four years, including a low plateau called Home Plate. Around New Year 2006 it stopped to photograph “El Dorado”, a field of sand dunes covered in delicate ripples.",
-            "fr": "En octobre 2005, avant de quitter le sommet, Spirit regarde derrière lui la longue trace sinueuse laissée par ses roues pendant la montée. Il passe plusieurs jours perché sur une pente raide et rocheuse, à côté d’un affleurement surnommé « Hillary », pendant que l’équipe ajuste ses roues pour qu’il tienne bien. Puis il descend vers la zone qu’il explorera pendant plus de quatre ans, dont un plateau bas appelé Home Plate. Autour du Nouvel An 2006, il s’arrête pour photographier « El Dorado », un champ de dunes de sable couvert de fines ondulations."
+            "en": "In October 2005, before leaving the summit area, Spirit looked back at the long, winding trail of wheel tracks it had made on the way up. It spent several days perched on a steep, rocky slope next to an outcrop (bare rock sticking out of the ground) nicknamed “Hillary”, as the team adjusted its wheels to give it a solid grip. Then it headed down toward the area it would explore for more than four years, including a low plateau called Home Plate. Around New Year 2006 it stopped to photograph “El Dorado”, a field of sand dunes covered in delicate ripples.",
+            "fr": "En octobre 2005, avant de quitter le sommet, Spirit regarde derrière lui la longue trace sinueuse laissée par ses roues pendant la montée. Il passe plusieurs jours perché sur une pente raide et rocheuse, à côté d’un affleurement (de la roche nue qui sort du sol) surnommé « Hillary », pendant que l’équipe ajuste ses roues pour qu’il tienne bien. Puis il descend vers la zone qu’il explorera pendant plus de quatre ans, dont un plateau bas appelé Home Plate. Autour du Nouvel An 2006, il s’arrête pour photographier « El Dorado », un champ de dunes de sable couvert de fines ondulations."
           },
           "mediaIds": [
             "bio-spirit-pia03059",
@@ -5191,8 +5137,8 @@
             "fr": "Comanche : une eau plus douce"
           },
           "text": {
-            "en": "On its way down from Husband Hill, Spirit photographed a dark reddish outcrop called Comanche on 11 December 2005 (sol 689) and studied it with three spectrometers that month. The answer took years of detective work: in June 2010 scientists announced that about a quarter of Comanche is made of carbonate minerals, ten times more than in any Martian rock studied before. Carbonates form in wet, near-neutral water but dissolve in acid. So this was the first clear sign from either rover of an ancient environment that may have been friendlier to life than the acidic water found earlier.",
-            "fr": "En descendant de Husband Hill, Spirit photographie le 11 décembre 2005 (sol 689) un affleurement sombre et rougeâtre appelé Comanche, et l’étudie avec trois spectromètres ce mois-là. La réponse demande des années d’enquête : en juin 2010, des scientifiques annoncent qu’environ un quart de Comanche est fait de carbonates, dix fois plus que dans toutes les roches martiennes étudiées auparavant. Les carbonates se forment dans une eau humide et presque neutre, mais se dissolvent dans l’acide. C’est donc le premier signe clair, chez l’un ou l’autre rover, d’un environnement ancien peut-être plus favorable à la vie que l’eau acide trouvée jusque-là."
+            "en": "On its way down from Husband Hill, Spirit photographed a dark reddish outcrop called Comanche on 11 December 2005 (sol 689) and studied it with three spectrometers that month. The answer took years of detective work: in June 2010 scientists announced that about a quarter of Comanche is made of carbonate minerals (minerals that form where carbon dioxide and water mix), ten times more than in any Martian rock studied before. Carbonates form in wet, near-neutral water but dissolve in acid. So this was the first clear sign from either rover of an ancient environment that may have been friendlier to life than the acidic water found earlier.",
+            "fr": "En descendant de Husband Hill, Spirit photographie le 11 décembre 2005 (sol 689) un affleurement sombre et rougeâtre appelé Comanche, et l’étudie avec trois spectromètres ce mois-là. La réponse demande des années d’enquête : en juin 2010, des scientifiques annoncent qu’environ un quart de Comanche est fait de carbonates (des minéraux qui se forment quand le gaz carbonique se mélange à l'eau), dix fois plus que dans toutes les roches martiennes étudiées auparavant. Les carbonates se forment dans une eau humide et presque neutre, mais se dissolvent dans l’acide. C’est donc le premier signe clair, chez l’un ou l’autre rover, d’un environnement ancien peut-être plus favorable à la vie que l’eau acide trouvée jusque-là."
           },
           "mediaIds": [
             "bio-spirit-pia13175"
@@ -5309,8 +5255,8 @@
             "fr": "La roue cassée trouve de la silice"
           },
           "text": {
-            "en": "On 29 March 2007 (sol 1,150), Spirit’s dragged wheel scraped open a patch of bright soil nicknamed “Gertrude Weise”. Its instruments showed it was about 90% silica, the main ingredient of window glass, with the composition of opal. On Earth such deposits form in hot springs or in steam vents, places that teem with microbes. It was strong evidence that ancient Mars was much wetter than today, and scientists count it among the most important discoveries of either rover.",
-            "fr": "Le 29 mars 2007 (sol 1 150), la roue traînée de Spirit gratte et ouvre une plaque de sol très clair surnommée « Gertrude Weise ». Ses instruments montrent qu’elle contient environ 90 % de silice, le principal ingrédient du verre des fenêtres, avec la composition de l’opale. Sur Terre, de tels dépôts se forment dans des sources chaudes ou des fumerolles, des lieux qui grouillent de microbes. C’est une preuve forte que Mars était autrefois beaucoup plus humide qu’aujourd’hui, et les scientifiques la classent parmi les découvertes les plus importantes des deux rovers."
+            "en": "On 29 March 2007 (sol 1,150), Spirit’s dragged wheel scraped open a patch of bright soil nicknamed “Gertrude Weise”. Its instruments showed it was about 90% silica, the main ingredient of window glass, with the composition of opal. On Earth such deposits form in hot springs or in steam vents, places that teem with microbes (tiny living things like bacteria). It was strong evidence that ancient Mars was much wetter than today, and scientists count it among the most important discoveries of either rover.",
+            "fr": "Le 29 mars 2007 (sol 1 150), la roue traînée de Spirit gratte et ouvre une plaque de sol très clair surnommée « Gertrude Weise ». Ses instruments montrent qu’elle contient environ 90 % de silice, le principal ingrédient du verre des fenêtres, avec la composition de l’opale. Sur Terre, de tels dépôts se forment dans des sources chaudes ou des fumerolles, des lieux qui grouillent de microbes (de minuscules êtres vivants, comme des bactéries). C’est une preuve forte que Mars était autrefois beaucoup plus humide qu’aujourd’hui, et les scientifiques la classent parmi les découvertes les plus importantes des deux rovers."
           },
           "mediaIds": [
             "bio-spirit-pia09491",
@@ -5429,8 +5375,8 @@
             "fr": "Étudier le piège de sable"
           },
           "text": {
-            "en": "Stuck at Troy, Spirit became a geologist working in one spot. On 13 June 2009, a camera orbiting Mars photographed it as a bright dot beside Home Plate. Spirit was straddling the edge of a small buried crater, about 8 metres wide, filled long ago with sulfate-rich sand formed in hot water or steam. The soft soil churned up by its wheels had the highest sulfur content ever measured on Mars, adding to the evidence that this place once had hot springs or steam vents.",
-            "fr": "Coincé à Troy, Spirit devient un géologue qui travaille sur place. Le 13 juin 2009, une caméra en orbite autour de Mars le photographie : un point brillant à côté de Home Plate. Spirit est à cheval sur le bord d’un petit cratère enfoui, d’environ 8 mètres de large, rempli il y a très longtemps de sable riche en sulfates formé dans de l’eau chaude ou de la vapeur. Le sol meuble retourné par ses roues présente la plus forte teneur en soufre jamais mesurée sur Mars, ce qui renforce l’idée que ce lieu a connu des sources chaudes ou des fumerolles."
+            "en": "Stuck at Troy, Spirit became a geologist working in one spot. On 13 June 2009, a camera orbiting Mars photographed it as a bright dot beside Home Plate. Spirit was straddling the edge of a small buried crater, about 8 metres wide, filled long ago with sulfate-rich sand (sulfates are sulfur salts often left behind by water) formed in hot water or steam. The soft soil churned up by its wheels had the highest sulfur content ever measured on Mars, adding to the evidence that this place once had hot springs or steam vents.",
+            "fr": "Coincé à Troy, Spirit devient un géologue qui travaille sur place. Le 13 juin 2009, une caméra en orbite autour de Mars le photographie : un point brillant à côté de Home Plate. Spirit est à cheval sur le bord d’un petit cratère enfoui, d’environ 8 mètres de large, rempli il y a très longtemps de sable riche en sulfates (des sels riches en soufre, souvent laissés par l'eau) formé dans de l’eau chaude ou de la vapeur. Le sol meuble retourné par ses roues présente la plus forte teneur en soufre jamais mesurée sur Mars, ce qui renforce l’idée que ce lieu a connu des sources chaudes ou des fumerolles."
           },
           "mediaIds": [
             "bio-spirit-pia12205",
@@ -5813,8 +5759,8 @@
     },
     "scienceSummary": {
       "value": {
-        "en": "It found hematite “blueberries” and gypsum veins: signs that water once soaked and flowed through the rocks.",
-        "fr": "Il a trouvé des « myrtilles » d'hématite et des veines de gypse : des signes que de l'eau a autrefois imprégné les roches et circulé dedans."
+        "en": "It found small grey balls of hematite, nicknamed “blueberries”, and veins of gypsum: two minerals that usually form in water. They show that water once soaked and flowed through these rocks.",
+        "fr": "Il a trouvé de petites billes grises d’hématite, surnommées « myrtilles », et des veines de gypse : deux minéraux qui se forment en général dans l’eau. Ils montrent que de l’eau a autrefois imprégné ces roches et circulé dedans."
       },
       "sourceIds": ["nasa-science-mer-highlights"]
     },
@@ -5863,8 +5809,8 @@
       "status": "draft",
       "description": {
         "value": {
-          "en": "Opportunity (also called MER-B) was the second of NASA’s twin Mars Exploration Rovers: a six-wheeled robot geologist about the size of a golf cart, with a mass of 185 kg, powered by solar panels that gave up to 140 watts in full sunlight. NASA sent it to Meridiani Planum, nicknamed the “Hematite Site” because hematite, an iron-rich mineral that usually forms in water, had been detected there from orbit. It carried the Pancam and navigation cameras and the Mini-TES spectrometer on its mast, and a microscopic imager, two spectrometers (APXS and Mössbauer) and a rock abrasion tool (RAT) on its robotic arm. Designed for 90 Martian days and about 1 km of driving, it explored for almost 15 years, drove 45.16 km and sent back more than 217,000 images.",
-          "fr": "Opportunity (aussi appelé MER-B) était le second des rovers jumeaux de la NASA : un robot géologue à six roues, de la taille d’une voiturette de golf, d’une masse de 185 kg, alimenté par des panneaux solaires qui fournissaient jusqu’à 140 watts en plein soleil. La NASA l’a envoyé à Meridiani Planum, surnommé le « site de l’hématite » parce qu’on y avait repéré depuis l’orbite de l’hématite, un minéral riche en fer qui se forme généralement dans l’eau. Il portait sur son mât la caméra panoramique (Pancam), des caméras de navigation et le spectromètre Mini-TES, et au bout de son bras robotique un imageur microscopique, deux spectromètres (APXS et Mössbauer) et un outil d’abrasion (RAT). Conçu pour 90 jours martiens et environ 1 km de route, il a exploré Mars pendant près de 15 ans, parcouru 45,16 km et envoyé plus de 217 000 images."
+          "en": "Opportunity (also called MER-B) was the second of NASA’s twin Mars Exploration Rovers: a six-wheeled robot geologist (a geologist studies rocks) about the size of a golf cart, with a mass of 185 kg, powered by solar panels that gave up to 140 watts in full sunlight. NASA sent it to Meridiani Planum, nicknamed the “Hematite Site” because hematite, an iron-rich mineral that usually forms in water, had been detected there from orbit. It carried the Pancam and navigation cameras and the Mini-TES spectrometer (an instrument that tells what rocks are made of) on its mast, and a microscopic imager, two spectrometers (APXS and Mössbauer) and a rock abrasion tool (RAT) on its robotic arm. Designed for 90 Martian days and about 1 km of driving, it explored for almost 15 years, drove 45.16 km and sent back more than 217,000 images.",
+          "fr": "Opportunity (aussi appelé MER-B) était le second des rovers jumeaux de la NASA : un robot géologue (un géologue étudie les roches) à six roues, de la taille d’une voiturette de golf, d’une masse de 185 kg, alimenté par des panneaux solaires qui fournissaient jusqu’à 140 watts en plein soleil. La NASA l’a envoyé à Meridiani Planum, surnommé le « site de l’hématite » parce qu’on y avait repéré depuis l’orbite de l’hématite, un minéral riche en fer qui se forme généralement dans l’eau. Il portait sur son mât la caméra panoramique (Pancam), des caméras de navigation et le spectromètre Mini-TES (un instrument qui dit de quoi les roches sont faites), et au bout de son bras robotique un imageur microscopique, deux spectromètres (APXS et Mössbauer) et un outil d’abrasion (RAT). Conçu pour 90 jours martiens et environ 1 km de route, il a exploré Mars pendant près de 15 ans, parcouru 45,16 km et envoyé plus de 217 000 images."
         },
         "sourceIds": [
           "nssdca-2003-032a",
@@ -5920,8 +5866,8 @@
             "fr": "Un trou en un"
           },
           "text": {
-            "en": "On 25 January 2004 (24 January in US time), Opportunity’s lander, wrapped in airbags, hit the plains of Meridiani Planum, bounced at least 26 times and rolled right into a small crater about 20 metres wide, later called Eagle Crater. Scientists called it a “hole in one”, because the lander stopped right next to an exposed slice of bedrock, exactly what geologists wanted to study. The first colour pictures showed the darkest landing site ever visited by a spacecraft on Mars, with rock outcrops scattered around the crater. The site was named Challenger Memorial Station, in tribute to the crew of the space shuttle Challenger lost in 1986.",
-            "fr": "Le 25 janvier 2004 (le 24 janvier à l’heure américaine), l’atterrisseur d’Opportunity, enveloppé dans ses airbags, frappe les plaines de Meridiani Planum, rebondit au moins 26 fois et roule jusque dans un petit cratère d’environ 20 mètres de large, plus tard baptisé cratère Eagle. Les scientifiques parlent d’un « trou en un » (comme au golf), car l’atterrisseur s’est arrêté juste à côté d’une tranche de roche à nu, exactement ce que les géologues voulaient étudier. Les premières images en couleurs montrent le site d’atterrissage le plus sombre jamais visité par un engin sur Mars, avec des affleurements rocheux dispersés dans le cratère. Le site est baptisé Challenger Memorial Station, en hommage à l’équipage de la navette spatiale Challenger disparu en 1986."
+            "en": "On 25 January 2004 (24 January in US time), Opportunity’s lander, wrapped in airbags, hit the plains of Meridiani Planum, bounced at least 26 times and rolled right into a small crater about 20 metres wide, later called Eagle Crater. Scientists called it a “hole in one”, because the lander stopped right next to an exposed slice of bedrock (the solid rock under the soil), exactly what geologists wanted to study. The first colour pictures showed the darkest landing site ever visited by a spacecraft on Mars, with rock outcrops (bare rock sticking out of the ground) scattered around the crater. The site was named Challenger Memorial Station, in tribute to the crew of the space shuttle Challenger lost in 1986.",
+            "fr": "Le 25 janvier 2004 (le 24 janvier à l’heure américaine), l’atterrisseur d’Opportunity, enveloppé dans ses airbags, frappe les plaines de Meridiani Planum, rebondit au moins 26 fois et roule jusque dans un petit cratère d’environ 20 mètres de large, plus tard baptisé cratère Eagle. Les scientifiques parlent d’un « trou en un » (comme au golf), car l’atterrisseur s’est arrêté juste à côté d’une tranche de roche à nu, exactement ce que les géologues voulaient étudier. Les premières images en couleurs montrent le site d’atterrissage le plus sombre jamais visité par un engin sur Mars, avec des affleurements rocheux (de la roche nue qui sort du sol) dispersés dans le cratère. Le site est baptisé Challenger Memorial Station, en hommage à l’équipage de la navette spatiale Challenger disparu en 1986."
           },
           "mediaIds": [
             "bio-opportunity-pia05152"
@@ -5942,8 +5888,8 @@
             "fr": "Descendre de l’atterrisseur et creuser la roche"
           },
           "text": {
-            "en": "During its first four days on Mars, Opportunity raised its camera mast, pointed its antenna, stood up on its wheels and finally drove off its lander onto the Martian soil. Nearby lay a puzzling outcrop of layered rocks only about 10 centimetres tall, which might be volcanic ash or sediments carried by water or wind. In the following weeks, at a part of the outcrop called El Capitan, the rover used its rock abrasion tool to grind small holes into targets named McKittrick and Guadalupe. Grinding removed the dusty, weathered surface so its instruments could study fresh rock: over the whole mission, Opportunity exposed the insides of 52 rocks this way.",
-            "fr": "Pendant ses quatre premiers jours sur Mars, Opportunity dresse son mât à caméras, déploie son antenne, se relève sur ses roues et descend enfin de son atterrisseur sur le sol martien. Tout près se trouve un étrange affleurement de roches en couches, haut d’environ 10 centimètres seulement, qui pourrait être fait de cendres volcaniques ou de sédiments apportés par l’eau ou le vent. Dans les semaines suivantes, sur une partie de l’affleurement appelée El Capitan, le rover utilise son outil d’abrasion pour creuser de petits trous dans des cibles nommées McKittrick et Guadalupe. Le meulage enlève la surface poussiéreuse pour que les instruments étudient la roche fraîche : pendant toute sa mission, Opportunity mettra ainsi à nu l’intérieur de 52 roches."
+            "en": "During its first four days on Mars, Opportunity raised its camera mast, pointed its antenna, stood up on its wheels and finally drove off its lander onto the Martian soil. Nearby lay a puzzling outcrop of layered rocks only about 10 centimetres tall, which might be volcanic ash or sediments (settled grains of sand or mud) carried by water or wind. In the following weeks, at a part of the outcrop called El Capitan, the rover used its rock abrasion tool to grind small holes into targets named McKittrick and Guadalupe. Grinding removed the dusty, weathered surface so its instruments could study fresh rock: over the whole mission, Opportunity exposed the insides of 52 rocks this way.",
+            "fr": "Pendant ses quatre premiers jours sur Mars, Opportunity dresse son mât à caméras, déploie son antenne, se relève sur ses roues et descend enfin de son atterrisseur sur le sol martien. Tout près se trouve un étrange affleurement de roches en couches, haut d’environ 10 centimètres seulement, qui pourrait être fait de cendres volcaniques ou de sédiments (des grains de sable ou de boue qui se sont déposés) apportés par l’eau ou le vent. Dans les semaines suivantes, sur une partie de l’affleurement appelée El Capitan, le rover utilise son outil d’abrasion pour creuser de petits trous dans des cibles nommées McKittrick et Guadalupe. Le meulage enlève la surface poussiéreuse pour que les instruments étudient la roche fraîche : pendant toute sa mission, Opportunity mettra ainsi à nu l’intérieur de 52 roches."
           },
           "mediaIds": [
             "bio-opportunity-pia05160",
@@ -5971,8 +5917,8 @@
             "fr": "La preuve d’une eau ancienne"
           },
           "text": {
-            "en": "For weeks, Opportunity studied the rock outcrop inside Eagle Crater with the instruments on its arm. Its APXS found a very high amount of sulfur, in the form of sulfate salts, and another instrument detected jarosite, an iron sulfate mineral that contains water; the rocks also had small holes where crystals had grown. On 2 March 2004 the mission team announced that this part of Mars had been “soaking wet” in the past, although the water was acidic, which made life harder. Opportunity also found many small balls rich in hematite, nicknamed “blueberries”, another sign of an ancient watery environment.",
-            "fr": "Pendant des semaines, Opportunity étudie l’affleurement rocheux du cratère Eagle avec les instruments de son bras. Son APXS y trouve une très grande quantité de soufre, sous forme de sels de sulfate, et un autre instrument détecte de la jarosite, un sulfate de fer qui contient de l’eau ; les roches portent aussi de petits creux où des cristaux ont poussé. Le 2 mars 2004, l’équipe de la mission annonce que cette région de Mars a été « trempée » d’eau par le passé, même si cette eau était acide, ce qui rendait la vie plus difficile. Opportunity découvre aussi une multitude de petites billes riches en hématite, surnommées les « myrtilles » (blueberries), un autre signe d’un ancien environnement aquatique."
+            "en": "For weeks, Opportunity studied the rock outcrop inside Eagle Crater with the instruments on its arm. Its APXS found a very high amount of sulfur, in the form of sulfate salts (salts rich in sulfur, often left behind by water), and another instrument detected jarosite, an iron sulfate mineral that contains water; the rocks also had small holes where crystals had grown. On 2 March 2004 the mission team announced that this part of Mars had been “soaking wet” in the past, although the water was acidic, which made life harder. Opportunity also found many small balls rich in hematite, nicknamed “blueberries”, another sign of an ancient watery environment.",
+            "fr": "Pendant des semaines, Opportunity étudie l’affleurement rocheux du cratère Eagle avec les instruments de son bras. Son APXS y trouve une très grande quantité de soufre, sous forme de sels de sulfate (des sels riches en soufre, souvent laissés par l'eau), et un autre instrument détecte de la jarosite, un sulfate de fer qui contient de l’eau ; les roches portent aussi de petits creux où des cristaux ont poussé. Le 2 mars 2004, l’équipe de la mission annonce que cette région de Mars a été « trempée » d’eau par le passé, même si cette eau était acide, ce qui rendait la vie plus difficile. Opportunity découvre aussi une multitude de petites billes riches en hématite, surnommées les « myrtilles » (blueberries), un autre signe d’un ancien environnement aquatique."
           },
           "mediaIds": [
             "mer-blueberries-pia19113"
@@ -5998,12 +5944,10 @@
             "fr": "Au revoir, cratère Eagle"
           },
           "text": {
-            "en": "On 22 March 2004 Opportunity climbed over the edge of Eagle Crater and set off for a much bigger one, Endurance Crater, about 750 metres away. Soon afterwards it took its biggest panorama yet, nicknamed “Lion King”: 558 images showing Eagle Crater and the plains around it. From outside, it could look back at the abandoned landing site, where the lander, the backshell and the parachute were still visible. In April 2004 the twin rovers completed their planned three-month missions, and Opportunity simply kept on going.",
-            "fr": "Le 22 mars 2004, Opportunity franchit le bord du cratère Eagle et part vers un cratère bien plus grand, Endurance, à environ 750 mètres. Peu après, il réalise son plus grand panorama jusque-là, surnommé « Lion King » : 558 images montrant le cratère Eagle et les plaines qui l’entourent. De l’extérieur, il peut regarder le site d’atterrissage abandonné, où l’on voit encore l’atterrisseur, le bouclier arrière et le parachute. En avril 2004, les deux rovers jumeaux terminent leur mission prévue de trois mois, et Opportunity continue tout simplement sa route."
+            "en": "On 22 March 2004 Opportunity climbed over the edge of Eagle Crater and set off for a much bigger one, Endurance Crater, about 750 metres away. Soon afterwards it took its biggest panorama yet, nicknamed “Lion King”: 558 images showing Eagle Crater and the plains around it. From outside, it could look back at the abandoned landing site, where the lander, the backshell (the back half of its protective capsule) and the parachute were still visible. In April 2004 the twin rovers completed their planned three-month missions, and Opportunity simply kept on going.",
+            "fr": "Le 22 mars 2004, Opportunity franchit le bord du cratère Eagle et part vers un cratère bien plus grand, Endurance, à environ 750 mètres. Peu après, il réalise son plus grand panorama jusque-là, surnommé « Lion King » : 558 images montrant le cratère Eagle et les plaines qui l’entourent. De l’extérieur, il peut regarder le site d’atterrissage abandonné, où l’on voit encore l’atterrisseur, le bouclier arrière (la moitié arrière de sa capsule protectrice) et le parachute. En avril 2004, les deux rovers jumeaux terminent leur mission prévue de trois mois, et Opportunity continue tout simplement sa route."
           },
-          "mediaIds": [
-            "mer-lion-king-panorama-pia05755"
-          ],
+          "mediaIds": ["mer-lion-king-panorama-pia05755", "bio-opportunity-pia05618", "bio-opportunity-pia05632"],
           "sourceIds": [
             "nasa-science-mission-mer-opportunity",
             "nasa-science-photojournal-opportunity-captures-lion-k",
@@ -6024,8 +5968,8 @@
             "fr": "Dans le cratère Endurance"
           },
           "text": {
-            "en": "On 26 July 2004 (sol 180), the day it reached twice its planned 90-sol mission, Opportunity was driving deeper into Endurance Crater and photographed its own long shadow. The inner walls of Endurance showed many layers of bedrock to study with its cameras and its infrared spectrometer. By 6 November 2004 it had reached the foot of Burns Cliff, a wall of layered rock, standing on a slope of about 30 degrees. After a few days of study there, the team turned the rover around to head out of the crater.",
-            "fr": "Le 26 juillet 2004 (sol 180), jour où il atteint le double de sa mission prévue de 90 sols, Opportunity s’enfonce dans le cratère Endurance et photographie sa propre ombre allongée. Les parois intérieures d’Endurance montrent de nombreuses couches de roche à étudier avec ses caméras et son spectromètre infrarouge. Le 6 novembre 2004, il atteint le pied de Burns Cliff, une paroi de roche en couches, en se tenant sur une pente d’environ 30 degrés. Après quelques jours d’étude, l’équipe fait demi-tour pour ressortir du cratère."
+            "en": "On 26 July 2004 (sol 180, its 180th Martian day), the day it reached twice its planned 90-sol mission, Opportunity was driving deeper into Endurance Crater and photographed its own long shadow. The inner walls of Endurance showed many layers of bedrock to study with its cameras and its infrared spectrometer (it reads invisible heat light). By 6 November 2004 it had reached the foot of Burns Cliff, a wall of layered rock, standing on a slope of about 30 degrees. After a few days of study there, the team turned the rover around to head out of the crater.",
+            "fr": "Le 26 juillet 2004 (sol 180, son 180e jour martien), jour où il atteint le double de sa mission prévue de 90 sols, Opportunity s’enfonce dans le cratère Endurance et photographie sa propre ombre allongée. Les parois intérieures d’Endurance montrent de nombreuses couches de roche à étudier avec ses caméras et son spectromètre infrarouge (il lit une lumière invisible, la chaleur). Le 6 novembre 2004, il atteint le pied de Burns Cliff, une paroi de roche en couches, en se tenant sur une pente d’environ 30 degrés. Après quelques jours d’étude, l’équipe fait demi-tour pour ressortir du cratère."
           },
           "mediaIds": [
             "jpl-opportunity-shadow-pia06739",
@@ -6340,9 +6284,7 @@
             "en": "In September 2011, ten years after the attacks of 11 September 2001, NASA revealed that both rovers carried a memorial. The aluminium cuff that shielded a cable on each rover’s rock abrasion tool had been made from aluminium recovered from the World Trade Center towers in New York. Honeybee Robotics, the company that helped build the grinding tool, had its offices not far from the attacks that day. JPL and Honeybee placed this metal on the Mars rovers in memory of the victims.",
             "fr": "En septembre 2011, dix ans après les attentats du 11 septembre 2001, la NASA révèle que les deux rovers portent un mémorial. La bague en aluminium qui protégeait un câble sur l’outil d’abrasion de chaque rover avait été fabriquée avec de l’aluminium récupéré dans les tours du World Trade Center, à New York. Honeybee Robotics, l’entreprise qui a aidé à construire cet outil, avait ses bureaux non loin des attentats ce jour-là. Le JPL et Honeybee ont placé ce métal sur les rovers martiens en mémoire des victimes."
           },
-          "mediaIds": [
-            "nasa-lib-pia05513"
-          ],
+          "mediaIds": ["nasa-lib-pia05513", "bio-opportunity-pia14750"],
           "sourceIds": [
             "nasa-science-mission-mer-opportunity"
           ]
@@ -6387,8 +6329,8 @@
             "fr": "Esperance : l’eau la plus accueillante"
           },
           "text": {
-            "en": "Orbiting spacecraft had detected clay minerals at Matijevic Hill, part of Endeavour’s rim, and in late 2012 Opportunity went on a “walkabout” there to choose the most interesting rocks. In May 2013 it examined a pale rock called Esperance, higher in aluminium and silica and lower in calcium and iron than any other rock it had studied in nine years. The team spent several weeks on this single measurement, even though the rover had to leave soon for a sunnier slope before winter. Esperance had been strongly changed by water flowing through cracks, and scientists think that water offered better conditions for life than any other wet environment recorded in the rocks Opportunity had seen.",
-            "fr": "Des sondes en orbite avaient détecté des argiles à Matijevic Hill, une partie du bord d’Endeavour, et fin 2012 Opportunity y fait une « tournée de reconnaissance » pour choisir les roches les plus intéressantes. En mai 2013, il examine une roche pâle appelée Esperance, plus riche en aluminium et en silice et plus pauvre en calcium et en fer que toutes les roches étudiées en neuf ans. L’équipe consacre plusieurs semaines à cette seule mesure, alors que le rover doit bientôt partir vers une pente plus ensoleillée avant l’hiver. Esperance a été fortement transformée par de l’eau qui circulait dans des fissures, et les scientifiques pensent que cette eau offrait de meilleures conditions pour la vie que tous les autres milieux humides enregistrés dans les roches vues par Opportunity."
+            "en": "Orbiting spacecraft had detected clay minerals at Matijevic Hill, part of Endeavour’s rim, and in late 2012 Opportunity went on a “walkabout” there to choose the most interesting rocks. In May 2013 it examined a pale rock called Esperance, higher in aluminium and silica (the main ingredient of glass) and lower in calcium and iron than any other rock it had studied in nine years. The team spent several weeks on this single measurement, even though the rover had to leave soon for a sunnier slope before winter. Esperance had been strongly changed by water flowing through cracks, and scientists think that water offered better conditions for life than any other wet environment recorded in the rocks Opportunity had seen.",
+            "fr": "Des sondes en orbite avaient détecté des argiles à Matijevic Hill, une partie du bord d’Endeavour, et fin 2012 Opportunity y fait une « tournée de reconnaissance » pour choisir les roches les plus intéressantes. En mai 2013, il examine une roche pâle appelée Esperance, plus riche en aluminium et en silice (le principal ingrédient du verre) et plus pauvre en calcium et en fer que toutes les roches étudiées en neuf ans. L’équipe consacre plusieurs semaines à cette seule mesure, alors que le rover doit bientôt partir vers une pente plus ensoleillée avant l’hiver. Esperance a été fortement transformée par de l’eau qui circulait dans des fissures, et les scientifiques pensent que cette eau offrait de meilleures conditions pour la vie que tous les autres milieux humides enregistrés dans les roches vues par Opportunity."
           },
           "mediaIds": [
             "bio-opportunity-pia16703",
@@ -6449,9 +6391,7 @@
             "en": "In 2014 Opportunity’s computer kept restarting, which got in the way of its science work. The problem came from its flash memory, the kind of memory that keeps data even when the power is off, and was traced to one of its seven memory banks. On 4 September 2014 engineers reformatted that memory from Earth, and the same day the mission was extended by two more years to explore Marathon Valley. The trouble came back, so by May 2015 the team had set the rover to work in “RAM-only” mode, without using its 256-megabyte flash memory.",
             "fr": "En 2014, l’ordinateur d’Opportunity redémarre sans cesse, ce qui gêne son travail scientifique. Le problème vient de sa mémoire flash, le type de mémoire qui garde les données même quand le courant est coupé, et il est localisé dans l’une de ses sept banques de mémoire. Le 4 septembre 2014, les ingénieurs reformatent cette mémoire depuis la Terre, et le même jour la mission est prolongée de deux ans pour explorer Marathon Valley. Le problème revient, alors en mai 2015 l’équipe fait travailler le rover en mode « RAM seulement », sans utiliser sa mémoire flash de 256 mégaoctets."
           },
-          "mediaIds": [
-            "bio-opportunity-pia18079"
-          ],
+          "mediaIds": ["bio-opportunity-pia18079", "bio-opportunity-pia18614"],
           "sourceIds": [
             "nasa-science-mission-mer-opportunity",
             "jpl-opportunity-end-2019"
@@ -6706,8 +6646,8 @@
             "fr": "Apprendre aux robots à décider seuls"
           },
           "text": {
-            "en": "Opportunity’s long life let engineers test new robot autonomy on Mars itself, such as the AEGIS software that chooses interesting rocks without waiting for orders from Earth. After its first use on Opportunity in 2010, AEGIS won a NASA Software of the Year Award in 2011. It was later used on the Curiosity rover to pick targets for its rock-zapping laser. This is especially useful when scientists on Earth cannot be in the loop, for example in the middle of a long drive or when schedules on Earth and Mars delay the exchange of information.",
-            "fr": "La longue vie d’Opportunity a permis aux ingénieurs de tester sur Mars même de nouvelles formes d’autonomie robotique, comme le logiciel AEGIS qui choisit des roches intéressantes sans attendre les ordres de la Terre. Après sa première utilisation sur Opportunity en 2010, AEGIS a reçu en 2011 un prix NASA du logiciel de l’année. Il a ensuite été utilisé sur le rover Curiosity pour choisir les cibles de son laser qui analyse les roches. C’est très utile quand les scientifiques sur Terre ne peuvent pas intervenir, par exemple au milieu d’un long trajet ou quand les horaires sur Terre et sur Mars retardent l’échange d’informations."
+            "en": "Opportunity’s long life let engineers test new robot autonomy (robots deciding by themselves) on Mars itself, such as the AEGIS software that chooses interesting rocks without waiting for orders from Earth. After its first use on Opportunity in 2010, AEGIS won a NASA Software of the Year Award in 2011. It was later used on the Curiosity rover to pick targets for its rock-zapping laser. This is especially useful when scientists on Earth cannot be in the loop, for example in the middle of a long drive or when schedules on Earth and Mars delay the exchange of information.",
+            "fr": "La longue vie d’Opportunity a permis aux ingénieurs de tester sur Mars même de nouvelles formes d’autonomie robotique (des robots qui décident seuls), comme le logiciel AEGIS qui choisit des roches intéressantes sans attendre les ordres de la Terre. Après sa première utilisation sur Opportunity en 2010, AEGIS a reçu en 2011 un prix NASA du logiciel de l’année. Il a ensuite été utilisé sur le rover Curiosity pour choisir les cibles de son laser qui analyse les roches. C’est très utile quand les scientifiques sur Terre ne peuvent pas intervenir, par exemple au milieu d’un long trajet ou quand les horaires sur Terre et sur Mars retardent l’échange d’informations."
           },
           "mediaIds": [
             "bio-opportunity-pia12975"
@@ -6963,8 +6903,8 @@
       "status": "draft",
       "description": {
         "value": {
-          "en": "Ingenuity was a small robotic helicopter, the first aircraft to make a powered, controlled flight on another planet. It weighed 1.8 kg, stood 49 cm tall and had two 1.2-metre rotors spinning in opposite directions at about 2,400 revolutions per minute, with a solar panel on top that charged six lithium-ion batteries. It carried no science instruments, only two cameras, and flew on its own because commands take too long to travel between Earth and Mars. It travelled to Mars under the belly of the Perseverance rover and landed in Jezero Crater on 18 February 2021. Planned for at most five test flights in 30 days, it made 72 flights in nearly three years, until a damaged rotor ended its mission on 25 January 2024.",
-          "fr": "Ingenuity était un petit hélicoptère robot, le premier appareil à réaliser un vol motorisé et contrôlé sur une autre planète. Il pesait 1,8 kg, mesurait 49 cm de haut et avait deux rotors de 1,2 mètre tournant en sens inverse à environ 2 400 tours par minute, avec au sommet un panneau solaire qui rechargeait six batteries lithium-ion. Il n'emportait aucun instrument scientifique, seulement deux caméras, et volait tout seul, car les commandes mettent trop de temps à voyager entre la Terre et Mars. Il est parti vers Mars sous le ventre du rover Perseverance et s'est posé dans le cratère Jezero le 18 février 2021. Prévu pour au plus cinq vols d'essai en 30 jours, il a réalisé 72 vols en près de trois ans, jusqu'à ce qu'un rotor abîmé mette fin à sa mission le 25 janvier 2024."
+          "en": "Ingenuity was a small robotic helicopter, the first aircraft to make a powered, controlled flight on another planet. It weighed 1.8 kg, stood 49 cm tall and had two 1.2-metre rotors (the spinning blades that lift it) spinning in opposite directions at about 2,400 revolutions per minute, with a solar panel on top that charged six lithium-ion batteries. It carried no science instruments, only two cameras, and flew on its own because commands take too long to travel between Earth and Mars. It travelled to Mars under the belly of the Perseverance rover and landed in Jezero Crater on 18 February 2021. Planned for at most five test flights in 30 days, it made 72 flights in nearly three years, until a damaged rotor ended its mission on 25 January 2024.",
+          "fr": "Ingenuity était un petit hélicoptère robot, le premier appareil à réaliser un vol motorisé et contrôlé sur une autre planète. Il pesait 1,8 kg, mesurait 49 cm de haut et avait deux rotors de 1,2 mètre (les pales tournantes qui le soulèvent) tournant en sens inverse à environ 2 400 tours par minute, avec au sommet un panneau solaire qui rechargeait six batteries lithium-ion. Il n'emportait aucun instrument scientifique, seulement deux caméras, et volait tout seul, car les commandes mettent trop de temps à voyager entre la Terre et Mars. Il est parti vers Mars sous le ventre du rover Perseverance et s'est posé dans le cratère Jezero le 18 février 2021. Prévu pour au plus cinq vols d'essai en 30 jours, il a réalisé 72 vols en près de trois ans, jusqu'à ce qu'un rotor abîmé mette fin à sa mission le 25 janvier 2024."
         },
         "sourceIds": [
           "nasa-science-ingenuity",
@@ -7297,8 +7237,8 @@
             "fr": "Un éclaireur volant pour les scientifiques"
           },
           "text": {
-            "en": "On 24 July 2021, on its tenth flight, Ingenuity photographed the “Raised Ridges”, rocky ridges the rover team was thinking of visiting; on Earth, similar cracks in deserts can be a clue that liquid water once flowed. With 10 waypoints and a cruising height of 12 metres, it was its most complex flight yet. On 16 August, its 12th flight took 10 colour images of the boulders and outcrops of “South Séítah” to help scientists decide where to send the rover. Ingenuity had become a real tool for exploration, not just a test.",
-            "fr": "Le 24 juillet 2021, lors de son dixième vol, Ingenuity photographie les « Raised Ridges », des crêtes rocheuses que l’équipe du rover pensait visiter ; sur Terre, des fractures semblables dans les déserts peuvent indiquer qu’il a coulé de l’eau liquide. Avec 10 points de passage et une altitude de croisière de 12 mètres, c’est alors son vol le plus complexe. Le 16 août, son 12e vol rapporte 10 images en couleur des rochers et affleurements de « South Séítah » pour aider les scientifiques à choisir où envoyer le rover. Ingenuity est devenu un véritable outil d’exploration, plus seulement un essai."
+            "en": "On 24 July 2021, on its tenth flight, Ingenuity photographed the “Raised Ridges”, rocky ridges the rover team was thinking of visiting; on Earth, similar cracks in deserts can be a clue that liquid water once flowed. With 10 waypoints and a cruising height of 12 metres, it was its most complex flight yet. On 16 August, its 12th flight took 10 colour images of the boulders and outcrops (bare rock sticking out of the ground) of “South Séítah” to help scientists decide where to send the rover. Ingenuity had become a real tool for exploration, not just a test.",
+            "fr": "Le 24 juillet 2021, lors de son dixième vol, Ingenuity photographie les « Raised Ridges », des crêtes rocheuses que l’équipe du rover pensait visiter ; sur Terre, des fractures semblables dans les déserts peuvent indiquer qu’il a coulé de l’eau liquide. Avec 10 points de passage et une altitude de croisière de 12 mètres, c’est alors son vol le plus complexe. Le 16 août, son 12e vol rapporte 10 images en couleur des rochers et affleurements (de la roche nue qui sort du sol) de « South Séítah » pour aider les scientifiques à choisir où envoyer le rover. Ingenuity est devenu un véritable outil d’exploration, plus seulement un essai."
           },
           "mediaIds": [
             "bio-ingenuity-pia24689",
@@ -7351,9 +7291,7 @@
             "en": "In January 2022 an unexpected dust storm made the air thinner and reduced the power from Ingenuity’s solar panel, delaying its 19th flight. The helicopter kept waking up and talking to Perseverance during the storm, but it was left with a dirty navigation camera window and dust and sand in the mechanisms that tilt its blades. The team told its navigation software to ignore the dirty edges of the camera image, and moved the blade mechanisms back and forth until the dust cleared. On 7 February 2022, Flight 19 succeeded and Ingenuity landed safely in its target zone.",
             "fr": "En janvier 2022, une tempête de poussière inattendue rend l’air plus léger et réduit l’énergie fournie par le panneau solaire d’Ingenuity, ce qui retarde son 19e vol. L’hélicoptère continue de se réveiller et de communiquer avec Perseverance pendant la tempête, mais il en ressort avec la vitre de sa caméra de navigation salie, et de la poussière et du sable dans les mécanismes qui inclinent ses pales. L’équipe demande à son logiciel de navigation d’ignorer les bords sales de l’image, puis fait bouger les mécanismes des pales d’avant en arrière jusqu’à ce que la poussière s’en aille. Le 7 février 2022, le vol 19 réussit et Ingenuity se pose sans problème dans sa zone d’atterrissage."
           },
-          "mediaIds": [
-            "bio-ingenuity-pia24812"
-          ],
+          "mediaIds": ["bio-ingenuity-pia24812", "bio-ingenuity-pia25068", "bio-ingenuity-pia25174"],
           "sourceIds": [
             "nasa-science-blog-dusty-flight-19-completed-and-looki"
           ]
@@ -7374,8 +7312,8 @@
             "fr": "Des records, et un coup d'œil au matériel d'atterrissage"
           },
           "text": {
-            "en": "In March 2022 NASA extended Ingenuity’s flights so that it could help Perseverance explore the ancient river delta of Jezero Crater. On its 25th flight, in April 2022, it flew 704 metres at 5.5 metres per second (about 20 km/h), its longest and fastest flight so far. On 19 April 2022, exactly one year after its first flight, Flight 26 photographed from the air the parachute and the cone-shaped backshell that had helped Perseverance land. Engineers preparing future missions had asked for these pictures; the 21.5-metre parachute, the biggest ever used on Mars, showed no sign of damage.",
-            "fr": "En mars 2022, la NASA prolonge les vols d’Ingenuity pour qu’il aide Perseverance à explorer l’ancien delta de rivière du cratère Jezero. Lors de son 25e vol, en avril 2022, il parcourt 704 mètres à 5,5 mètres par seconde (environ 20 km/h), son vol le plus long et le plus rapide jusque-là. Le 19 avril 2022, un an jour pour jour après son premier vol, le vol 26 photographie depuis le ciel le parachute et le bouclier arrière en forme de cône qui avaient aidé Perseverance à se poser. Des ingénieurs qui préparent de futures missions avaient demandé ces images ; le parachute de 21,5 mètres, le plus grand jamais utilisé sur Mars, ne montrait aucun signe de dégât."
+            "en": "In March 2022 NASA extended Ingenuity’s flights so that it could help Perseverance explore the ancient river delta (the fan of sand and mud a river left where it met a lake) of Jezero Crater. On its 25th flight, in April 2022, it flew 704 metres at 5.5 metres per second (about 20 km/h), its longest and fastest flight so far. On 19 April 2022, exactly one year after its first flight, Flight 26 photographed from the air the parachute and the cone-shaped backshell (the back half of its protective capsule) that had helped Perseverance land. Engineers preparing future missions had asked for these pictures; the 21.5-metre parachute, the biggest ever used on Mars, showed no sign of damage.",
+            "fr": "En mars 2022, la NASA prolonge les vols d’Ingenuity pour qu’il aide Perseverance à explorer l’ancien delta de rivière (l'éventail de sable et de boue qu'une rivière a déposé en arrivant dans un lac) du cratère Jezero. Lors de son 25e vol, en avril 2022, il parcourt 704 mètres à 5,5 mètres par seconde (environ 20 km/h), son vol le plus long et le plus rapide jusque-là. Le 19 avril 2022, un an jour pour jour après son premier vol, le vol 26 photographie depuis le ciel le parachute et le bouclier arrière en forme de cône (la moitié arrière de sa capsule protectrice) qui avaient aidé Perseverance à se poser. Des ingénieurs qui préparent de futures missions avaient demandé ces images ; le parachute de 21,5 mètres, le plus grand jamais utilisé sur Mars, ne montrait aucun signe de dégât."
           },
           "mediaIds": [
             "ingenuity-landing-gear-debris-pia25219"
@@ -7431,9 +7369,7 @@
             "en": "On 19 January 2023 Ingenuity left the fairly flat floor of Jezero Crater to fly over the rough, rocky remains of an ancient river delta, filled with dunes and boulders. On 13 April 2023 it completed its 50th flight, travelling 322 metres and reaching a new altitude record of 18 metres. Built with many off-the-shelf parts such as smartphone processors and cameras, it was by then 23 months and 45 flights beyond its expected lifetime. It still browned out at night, so each morning the rover had to search for its signal, and it now used new software to pick safe landing spots by itself.",
             "fr": "Le 19 janvier 2023, Ingenuity quitte le fond assez plat du cratère Jezero pour survoler les restes accidentés et rocheux d’un ancien delta de rivière, rempli de dunes et de rochers. Le 13 avril 2023, il termine son 50e vol, en parcourant 322 mètres et en atteignant un nouveau record d’altitude de 18 mètres. Construit avec de nombreuses pièces du commerce, comme des processeurs et des caméras de smartphone, il avait alors dépassé de 23 mois et de 45 vols la durée de vie prévue. Il continuait de s’éteindre la nuit, si bien que chaque matin le rover devait rechercher son signal, et il utilisait désormais un nouveau logiciel pour choisir tout seul des endroits sûrs où se poser."
           },
-          "mediaIds": [
-            "bio-ingenuity-pia25881"
-          ],
+          "mediaIds": ["bio-ingenuity-pia25881", "bio-ingenuity-pia25883", "bio-ingenuity-pia25961"],
           "sourceIds": [
             "nasa-ingenuity-helicopter-nasas-ingenuity-mar-2",
             "nasa-news-release-after-three-years-on-mars-n"
@@ -7686,8 +7622,8 @@
             "fr": "Des pièces de téléphone qui ont survécu à Mars"
           },
           "text": {
-            "en": "To save money and weight while having plenty of computing power, Ingenuity used commercial, off-the-shelf parts, many from the smartphone industry: it was the first mission to fly ordinary cellphone processors in deep space. After years of operation on Mars, its project manager concluded that not everything sent to space needs to be bigger, heavier and specially protected against radiation. Inspired by its long life, NASA engineers began testing smaller, lighter electronics for future Mars vehicles.",
-            "fr": "Pour économiser de l’argent et du poids tout en ayant beaucoup de puissance de calcul, Ingenuity utilisait des pièces du commerce, dont beaucoup venaient de l’industrie des smartphones : c’est la première mission à avoir fait voler des processeurs de téléphone ordinaires dans l’espace lointain. Après des années de fonctionnement sur Mars, son chef de projet en a conclu que tout ce qu’on envoie dans l’espace n’a pas besoin d’être plus gros, plus lourd et spécialement protégé contre les radiations. Inspirés par sa longévité, des ingénieurs de la NASA ont commencé à tester une électronique plus petite et plus légère pour de futurs véhicules martiens."
+            "en": "To save money and weight while having plenty of computing power, Ingenuity used commercial, off-the-shelf parts, many from the smartphone industry: it was the first mission to fly ordinary cellphone processors in deep space. After years of operation on Mars, its project manager concluded that not everything sent to space needs to be bigger, heavier and specially protected against radiation (invisible rays and particles from space). Inspired by its long life, NASA engineers began testing smaller, lighter electronics for future Mars vehicles.",
+            "fr": "Pour économiser de l’argent et du poids tout en ayant beaucoup de puissance de calcul, Ingenuity utilisait des pièces du commerce, dont beaucoup venaient de l’industrie des smartphones : c’est la première mission à avoir fait voler des processeurs de téléphone ordinaires dans l’espace lointain. Après des années de fonctionnement sur Mars, son chef de projet en a conclu que tout ce qu’on envoie dans l’espace n’a pas besoin d’être plus gros, plus lourd et spécialement protégé contre les radiations (des rayons et particules invisibles venus de l'espace). Inspirés par sa longévité, des ingénieurs de la NASA ont commencé à tester une électronique plus petite et plus légère pour de futurs véhicules martiens."
           },
           "mediaIds": [
             "bio-ingenuity-pia25881"
@@ -7704,8 +7640,8 @@
             "fr": "Les prochains hélicoptères martiens"
           },
           "text": {
-            "en": "Ingenuity’s design is the starting point for the next generation of Mars aircraft. Sample Recovery Helicopters, modelled on it with wheels and a small gripper, were designed as a backup way to pick up rock samples left by Perseverance. NASA’s SkyFall mission, announced in March 2026, plans to send three helicopters evolved from Ingenuity to map ice hidden under the ground and scout landing sites for future explorers, reusing its structure, rotors, motors, landing gear, flight software and autonomous navigation.",
-            "fr": "La conception d’Ingenuity sert de point de départ à la nouvelle génération d’engins volants martiens. Des hélicoptères de récupération d’échantillons, inspirés de lui mais avec des roues et une petite pince, ont été conçus comme solution de secours pour ramasser les tubes d’échantillons laissés par Perseverance. La mission SkyFall de la NASA, annoncée en mars 2026, prévoit d’envoyer trois hélicoptères dérivés d’Ingenuity pour cartographier la glace cachée sous le sol et repérer des sites d’atterrissage pour de futurs explorateurs, en reprenant sa structure, ses rotors, ses moteurs, son train d’atterrissage, son logiciel de vol et sa navigation autonome."
+            "en": "Ingenuity’s design is the starting point for the next generation of Mars aircraft. Sample Recovery Helicopters, modelled on it with wheels and a small gripper, were designed as a backup way to pick up rock samples left by Perseverance. NASA’s SkyFall mission, announced in March 2026, plans to send three helicopters evolved from Ingenuity to map ice hidden under the ground and scout landing sites for future explorers, reusing its structure, rotors, motors, landing gear, flight software and autonomous navigation (finding its way by itself).",
+            "fr": "La conception d’Ingenuity sert de point de départ à la nouvelle génération d’engins volants martiens. Des hélicoptères de récupération d’échantillons, inspirés de lui mais avec des roues et une petite pince, ont été conçus comme solution de secours pour ramasser les tubes d’échantillons laissés par Perseverance. La mission SkyFall de la NASA, annoncée en mars 2026, prévoit d’envoyer trois hélicoptères dérivés d’Ingenuity pour cartographier la glace cachée sous le sol et repérer des sites d’atterrissage pour de futurs explorateurs, en reprenant sa structure, ses rotors, ses moteurs, son train d’atterrissage, son logiciel de vol et sa navigation autonome (il trouve son chemin seul)."
           },
           "mediaIds": [
             "bio-ingenuity-pia26079"

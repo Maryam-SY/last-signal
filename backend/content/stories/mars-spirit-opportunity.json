@@ -124,8 +124,8 @@
         {
           "voice": "data",
           "text": {
-            "en": "At a place called “Home Plate”, Spirit found soil made of 90% silica. On Earth, this kind of deposit usually forms in hot springs.",
-            "fr": "À un endroit appelé « Home Plate », Spirit trouve un sol composé à 90 % de silice. Sur Terre, ce type de dépôt se forme généralement dans des sources chaudes."
+            "en": "At a place called “Home Plate”, Spirit found soil made of 90% silica (the main ingredient of glass). On Earth, this kind of deposit usually forms in hot springs.",
+            "fr": "À un endroit appelé « Home Plate », Spirit trouve un sol composé à 90 % de silice (le principal ingrédient du verre). Sur Terre, ce type de dépôt se forme généralement dans des sources chaudes."
           },
           "sourceIds": [
             "nasa-science-mer-highlights"
