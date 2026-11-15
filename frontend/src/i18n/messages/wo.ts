@@ -1,0 +1,131 @@
+import type { Messages } from '../types'
+import { fr } from './fr'
+
+/**
+ * Wolof — DRAFT (US-5.12, team decision of 2026-11-14): the interface's buttons, menus and
+ * headings, to be checked by a native speaker before release. Long paragraphs and every story
+ * stay in French until they are translated and reviewed (the API serves French content).
+ */
+export const wo: Messages = {
+  ...fr,
+  app: {
+    ...fr.app,
+    skipToContent: 'Dem ci li ëmb',
+  },
+  nav: {
+    ...fr.nav,
+    label: 'Njëkk',
+    explore: 'Wër',
+    about: 'Ñun ak cosaan yi',
+    home: 'AeroReborn — kër gi',
+  },
+  lang: {
+    ...fr.lang,
+    label: 'Làkk',
+    woDraft: 'Wolof : firi bu ñu ngi koy saytu. Léeb yi ci farañse lañu nekk léegi.',
+  },
+  intro: {
+    ...fr.intro,
+    skip: 'Jàll ndoorte li',
+    cue1: 'Benn bés, dem nanu.',
+    cue2: 'Dox nanu ci Weer wi.',
+    cue3: 'Wàcc nanu ci Mars.',
+    cue4: 'Sunuy masin ñu nga fa ba tey.',
+  },
+  explore: {
+    ...fr.explore,
+    title: 'Tànnal fi nga jëm',
+    scrollHint: 'Wàcceel — àdduna yi ñu ngi lay ñëw',
+    journeyLabel: 'Tukki',
+    sceneDeparture: 'Dem',
+    statWorlds: 'àdduna',
+    statMissions: 'liggéey',
+    statMachines: 'masin yu fa des',
+    stepsEyebrow: 'Sa tukki',
+    stepsTitle: 'Ñetti dooraat, soxlaa xam dara',
+    step1Title: 'Tànnal benn àdduna',
+    step2Title: 'Wàcc ba ci suuf si',
+    step3Title: 'Toppal sinaal bi',
+    startCta: 'Tàmbali ci Weer wi',
+    backToStart: 'Dellu ci ndoorte li',
+  },
+  destinations: {
+    moon: { name: 'Weer', cta: 'Wër Weer wi', land: 'Wàcc ci Weer wi' },
+    mars: { name: 'Mars', cta: 'Wër Mars', land: 'Wàcc ci Mars' },
+  },
+  destination: {
+    ...fr.destination,
+    backToDestinations: 'Dellu ci fi ñuy jëm',
+    orbit: 'Ci asamaan',
+    nextWorld: 'Àdduna bi ci topp',
+    nextWorldTitle: 'Tukki bi ngi wéy',
+    statMissions: 'liggéey',
+    statMachines: 'masin yu fa des',
+  },
+  status: {
+    ...fr.status,
+    label: 'Fan la tollu',
+    operational: 'Mi ngi liggéey ba tey',
+    'contact-lost': 'Jokkoo bi dagg na',
+    'mission-ended': 'Liggéeyam jeex na',
+  },
+  loading: {
+    ...fr.loading,
+    message: 'Ñu ngi koy indi…',
+    retry: 'Jéemaatal',
+    signalLost: 'Sinaal bi réer na',
+  },
+  story: {
+    ...fr.story,
+    exit: 'Génn ci léeb wi',
+    previous: 'Dooraat bi wees',
+    next: 'Dooraat bi ci topp',
+    previousShort: 'Ginnaaw',
+    nextShort: 'Kanam',
+    begin: 'Tàmbali léeb wi',
+  },
+  sound: {
+    label: 'Riiru asamaan',
+  },
+  narration: {
+    listen: 'Déglul taariixam',
+    stop: 'Taxawal wax ji',
+  },
+  video: {
+    ...fr.video,
+    label: 'Widewo yu {name}',
+    play: 'Tàmbali',
+    pause: 'Taxawal',
+    sound: 'Baat',
+    next: 'Widewo bi ci topp',
+  },
+  hangar: {
+    ...fr.hangar,
+    eyebrow: 'Hangar bi',
+    title: 'Tànnal benn masin',
+    open: 'Yee {name}',
+    openYears: 'Yee {name} ({start} ba {end})',
+    wake: 'Yee ko',
+    today: 'tey',
+  },
+  machine: {
+    ...fr.machine,
+    back: 'Dellu ci hangar bu {destination}',
+    arrival: 'Agsi',
+    born: 'Agsi na ci',
+    lastSignal: 'Sinaal bu mujj',
+    stillWorking: 'Mi ngi liggéey ba tey',
+    planned: 'Dund gi ñu ko waajal',
+    real: 'Dund gu dëgg',
+    lifeEyebrow: 'Dundam',
+    didEyebrow: 'Li mu def',
+    videosEyebrow: 'Muy yëngu',
+    modelEyebrow: 'Ci 3D',
+    legacyEyebrow: 'Ndonoom',
+    legacyTitle: 'Li mu bàyyi',
+    endEyebrow: 'Mujj gi',
+    endTitle: 'Sinaalam bu mujj',
+    endAlive: 'Mi ngi tontu ba tey',
+    next: 'Masin bi ci topp',
+  },
+}

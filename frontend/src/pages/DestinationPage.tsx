@@ -4,15 +4,13 @@ import { Link, useParams } from 'react-router'
 import { api } from '@/api/client'
 import { paths } from '@/app/paths'
 import { SpaceBackdrop } from '@/components/celestial/SpaceBackdrop'
-import { ErrorBoundary } from '@/components/common/ErrorBoundary'
 import { LoadState } from '@/components/common/LoadState'
 import { PinnedDestinationPlanet, StaticDestinationPlanet } from '@/components/destination/DestinationPlanet'
 import { NextWorld } from '@/components/destination/NextWorld'
+import { MachineHangar } from '@/components/hangar/MachineHangar'
 import { Scene } from '@/components/destination/Scene'
-import { MissionGallery } from '@/components/gallery/MissionGallery'
 import { CountUp } from '@/components/motion/CountUp'
 import { ScrollProgress } from '@/components/motion/ScrollProgress'
-import { SiteMap } from '@/components/map/SiteMap'
 import { JourneyRail } from '@/components/navigation/JourneyRail'
 import { WorldsTimeline } from '@/components/timeline/WorldsTimeline'
 import { getBodyByDestination } from '@/content/celestialBodies'
@@ -35,9 +33,9 @@ export function DestinationPage() {
 }
 
 /**
- * A destination as one continuous descent (US-5.6): the planet stays pinned while the
- * visitor scrolls from orbit through each mission down to the next world. The only
- * navigation is a discreet rail; everything else is reached by scrolling.
+ * A destination (US-5.6, US-5.12): the planet stays pinned while the visitor descends from
+ * orbit to the hangar, where they choose one machine — each machine then has its own page with
+ * its whole life. The Moon + Mars timeline and the next world close the page.
  */
 function DestinationView({ destinationId }: { destinationId: DestinationId }) {
   const { t } = useTranslation()
@@ -51,10 +49,7 @@ function DestinationView({ destinationId }: { destinationId: DestinationId }) {
 
   const railItems = [
     { id: 'orbit', label: t('destination.orbit') },
-    { id: 'site-map', label: t('map.rail') },
-    ...(destination.status === 'success'
-      ? destination.data.missions.map((mission) => ({ id: `mission-${mission.id}`, label: mission.name }))
-      : []),
+    { id: 'hangar', label: t('hangar.rail') },
     { id: 'timeline', label: t('timeline.rail') },
     ...(other ? [{ id: 'next-world', label: t('destination.nextWorld') }] : []),
   ]
@@ -99,8 +94,8 @@ function DestinationView({ destinationId }: { destinationId: DestinationId }) {
                 <Stat value={destination.status === 'success' ? destination.data.machineCount : null} label={t('destination.statMachines')} />
               </dl>
 
-              <a href="#missions-title" className={cn(ctaPrimary, 'mt-8')}>
-                {t('destination.missionsTitle')}
+              <a href="#hangar" className={cn(ctaPrimary, 'mt-8')}>
+                {t('hangar.title')}
                 <ChevronsDown aria-hidden="true" className="size-4" />
               </a>
             </div>
@@ -116,17 +111,13 @@ function DestinationView({ destinationId }: { destinationId: DestinationId }) {
           </p>
         </section>
 
-        <Scene id="site-map" eyebrow={t('map.eyebrow')} title={t('map.title')} intro={t('map.intro')}>
-          {destination.status === 'success' ? (
-            <ErrorBoundary fallback={<p role="alert" className="glass rounded-2xl p-5 text-sm">{t('map.error')}</p>}>
-              <SiteMap destination={destination.data} />
-            </ErrorBoundary>
-          ) : destination.status === 'loading' ? (
-            <LoadState status="loading" />
-          ) : null /* the missions section below reports the error, with its retry button */}
-        </Scene>
-
-        <MissionGallery state={destination} />
+        {destination.status === 'success' ? (
+          <MachineHangar destination={destination.data} />
+        ) : (
+          <div className="mx-auto max-w-6xl px-5 py-20">
+            <LoadState status={destination.status} onRetry={destination.retry} variant="cards" />
+          </div>
+        )}
 
         <Scene id="timeline" eyebrow={t('timeline.eyebrow')} title={t('timeline.title')} intro={t('timeline.intro')}>
           <WorldsTimeline current={destinationId} />

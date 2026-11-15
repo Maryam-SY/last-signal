@@ -216,7 +216,13 @@ export class ContentRepository {
   private machinesOf(missionId: string): MachineSummary[] {
     return this.content.machines
       .filter((m) => m.missionId === missionId)
-      .map((machine) => ({ ...machine, cover: this.firstPhoto(this.listMedia({ machineId: machine.id })) }))
+      .map((machine) => {
+        const media = this.listMedia({ machineId: machine.id })
+        // US-5.12: each machine of the hangar shows itself — a photo of it alone first, so two
+        // machines of one mission (lander and rover) do not share the same picture.
+        const own = media.filter((m) => m.machineIds.length === 1)
+        return { ...machine, cover: this.firstPhoto(own) ?? this.firstPhoto(media) }
+      })
   }
 
   /** First real photograph (still image) of a list: covers are never drawings or simulations. */

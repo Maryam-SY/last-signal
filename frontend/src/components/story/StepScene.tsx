@@ -1,8 +1,7 @@
 import type { CSSProperties, Ref } from 'react'
-import type { GlossaryEntry, Media, Relation, Source, StoryBlock, StoryStep, Voice } from '@/api/types'
+import type { GlossaryEntry, Media, Relation, StoryBlock, StoryStep, Voice } from '@/api/types'
 import { MediaFigure } from '@/components/media/MediaFigure'
 import { Reveal } from '@/components/motion/Reveal'
-import { SourceList } from '@/components/sources/SourceList'
 import { VoiceTag } from '@/components/sources/VoiceTag'
 import { useTranslation } from '@/i18n'
 import { eyebrow } from '@/lib/styles'
@@ -16,7 +15,6 @@ interface StepSceneProps {
   total: number
   headingRef: Ref<HTMLHeadingElement>
   mediaById: Map<string, Media>
-  sourceById: Map<string, Source>
   relations: Relation[]
   /** Glossary words used in this step (US-5.7). */
   words: GlossaryEntry[]
@@ -31,7 +29,7 @@ const VOICE_BAR: Record<Voice, string> = {
 }
 
 /** One step of a story as a full-screen scene of the scroll (US-5.6). */
-export function StepScene({ step, number, total, headingRef, mediaById, sourceById, relations, words, storyId }: StepSceneProps) {
+export function StepScene({ step, number, total, headingRef, mediaById, relations, words, storyId }: StepSceneProps) {
   const { t } = useTranslation()
   const titleId = `${stepSectionId(number)}-title`
   const accent = { '--scene-accent': STEP_ACCENT[step.key] } as CSSProperties
@@ -62,26 +60,25 @@ export function StepScene({ step, number, total, headingRef, mediaById, sourceBy
       <div className="relative mt-8 space-y-6">
         {step.blocks.map((block, index) => (
           <Reveal key={index} delay={index * 100}>
-            <VoiceBlock block={block} mediaById={mediaById} sourceById={sourceById} />
+            <VoiceBlock block={block} mediaById={mediaById} />
           </Reveal>
         ))}
       </div>
 
-      {relations.length > 0 && <Relations relations={relations} sourceById={sourceById} />}
+      {relations.length > 0 && <Relations relations={relations} />}
       <WordsToKnow words={words} />
       {step.key === 'your-turn' && <Logbook storyId={storyId} />}
     </section>
   )
 }
 
-function VoiceBlock({ block, mediaById, sourceById }: { block: StoryBlock; mediaById: Map<string, Media>; sourceById: Map<string, Source> }) {
+function VoiceBlock({ block, mediaById }: { block: StoryBlock; mediaById: Map<string, Media> }) {
   return (
     <div className="glass relative space-y-4 overflow-hidden rounded-2xl p-5 pl-6 sm:p-7 sm:pl-8">
       <span aria-hidden="true" className={cn('absolute inset-y-5 left-0 w-1 rounded-r-full', VOICE_BAR[block.voice])} />
       <VoiceTag voice={block.voice} />
       <p className={cn('text-lg leading-relaxed sm:text-xl', block.voice === 'imagination' && 'italic')}>{block.text}</p>
       <BlockMedia ids={block.mediaIds ?? []} mediaById={mediaById} />
-      <BlockSources ids={block.sourceIds} sourceById={sourceById} />
     </div>
   )
 }
@@ -98,24 +95,7 @@ function BlockMedia({ ids, mediaById }: { ids: string[]; mediaById: Map<string, 
   )
 }
 
-/** SOURCE-002: sources of a fact, one click away, without leaving the step. */
-function BlockSources({ ids, sourceById }: { ids: string[]; sourceById: Map<string, Source> }) {
-  const { t } = useTranslation()
-  const sources = ids.map((id) => sourceById.get(id)).filter((s): s is Source => s !== undefined)
-  if (sources.length === 0) return null
-  return (
-    <details className="group rounded-xl border border-white/10 bg-void/40 px-4 py-1">
-      <summary className="min-h-11 cursor-pointer content-center text-sm font-medium text-cosmic-indigo marker:text-moon-dust">
-        {t('sources.count', { count: sources.length })}
-      </summary>
-      <div className="pt-1 pb-3">
-        <SourceList sources={sources} />
-      </div>
-    </details>
-  )
-}
-
-function Relations({ relations, sourceById }: { relations: Relation[]; sourceById: Map<string, Source> }) {
+function Relations({ relations }: { relations: Relation[] }) {
   const { t } = useTranslation()
   return (
     <Reveal className="mt-8">
@@ -133,7 +113,6 @@ function Relations({ relations, sourceById }: { relations: Relation[]; sourceByI
                 {r.evidence}
               </p>
               <div className="mt-3">
-                <BlockSources ids={r.sourceIds} sourceById={sourceById} />
               </div>
             </li>
           ))}

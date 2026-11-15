@@ -319,6 +319,16 @@ Personas : **Visiteur** (10-15 ans, principal), **Curieux** (adulte), **Équipe*
   6. *(2e passe)* Dans le journal d'une mission et les chapitres d'une machine, les images défilent en « vol de photos » 3D (inspiration konkelectrical.com) ; l'accueil reste inchangé.
 - **Modifie** : US-5.7 critère 1 (« avec son crédit » → crédit sur About), US-2.4 critère 3.
 
+### US-5.12 — Faire revivre chaque machine
+- **Story** : En tant que visiteur, je souhaite choisir une machine comme on choisit une planète et écouter toute sa vie, de son arrivée à son dernier signal, afin de sentir que chaque appareil abandonné a une histoire à lui.
+- **Priorité** : P0 (décision de l'équipe du 2026-11-14) · **Exigences** : EQUIP-002, MEDIA-001, ABOUT-001, NFR-A11Y-006 · **Statut** : `review` (ADR-023 ; `docs/project/stories/US-5.12.md`)
+- **Critères** :
+  1. La page d'une planète présente un hangar : une carte par machine (photo, années de vie, statut), surbrillance au survol et au focus, la machine tourne avant d'ouvrir sa page.
+  2. Chaque machine a sa propre page, sans contenu d'une autre machine : arrivée, vie prévue et réelle (sourcées, `draft`), ce qu'elle a fait, vidéos, modèle 3D, héritage, dernier signal, machine suivante.
+  3. Les vidéos se lancent seules (muettes), décrites à l'écran, et enchaînent ; un son d'ambiance optionnel et une narration par la voix du navigateur sont proposés.
+  4. Interface disponible en wolof (brouillon signalé) ; plus de carte des sites ni de sources dans le récit ; intro faite d'images NASA réelles.
+- **Modifie** : US-3.3/3.4 (carte retirée du parcours), US-5.9 (défilement des missions remplacé par les pages machine), SOURCE-002 (sources sur About uniquement), US-2.4 (nouvelle intro).
+
 ### US-5.5 — Mise en production et démo
 - **Priorité** : P0 · **Exigences** : DEPLOY-001, indicateurs PRD §11
 - **Critères** : URL publique vérifiée en navigation privée sur 1 ordinateur et 2 formats de téléphone ; parcours de démo chronométré < 3 min ; plan de secours (galerie seule) répété.

@@ -48,6 +48,18 @@ const artwork: Media = {
   descriptionStatus: 'draft',
 }
 
+/** A NASA video file of the rover (US-5.12 video reel). */
+const video: Media = {
+  ...photo,
+  id: 'media-video',
+  type: 'video',
+  url: 'https://example.org/videos/rover~medium.mp4',
+  title: 'Rover video',
+  alt: 'Video of the test rover',
+  depiction: 'mixed',
+  description: 'The rover rolls off its lander.',
+}
+
 const model: Media = {
   ...photo,
   id: 'media-model',
@@ -72,6 +84,14 @@ const machine: Machine = {
   status: { value: 'mission-ended', sourceIds: ['src-1'] },
   scienceSummary: { value: 'It found traces of ancient water.', sourceIds: ['src-1'] },
   storyIds: [],
+  lifespan: {
+    status: 'draft',
+    planned: { value: { amount: 90, unit: 'sols' }, sourceIds: ['src-1'] },
+    lastContact: { value: '2010-03-22', sourceIds: ['src-1'] },
+    missionEnd: null,
+    stillWorking: null,
+    achievements: [{ value: 'It drove 7.73 kilometres.', sourceIds: ['src-1'] }],
+  },
 }
 
 /** On the Moon fixture the machine has sourced coordinates and a cover photo (site map, US-5.7). */
@@ -156,7 +176,7 @@ const machineDetail: MachineDetail = {
       toEntity: { kind: 'machine', id: 'machine-a', name: 'Test Rover', destinationId: 'mars' },
     },
   ],
-  media: [photo, artwork],
+  media: [photo, artwork, video],
   storyTarget: { id: 'story-a', title: 'The test story', status: 'draft', missionIds: ['mission-a'] },
   sources: [source],
 }

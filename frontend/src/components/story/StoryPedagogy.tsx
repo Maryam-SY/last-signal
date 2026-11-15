@@ -1,7 +1,6 @@
 import { useEffect, useId, useState } from 'react'
 import { ArrowRight, BookA, Check, Copy, Eraser, NotebookPen } from 'lucide-react'
 import type { GlossaryEntry, Relation, Voice } from '@/api/types'
-import { SourceList } from '@/components/sources/SourceList'
 import { VoiceTag } from '@/components/sources/VoiceTag'
 import { useTranslation, type MessageKey } from '@/i18n'
 import { eyebrow } from '@/lib/styles'
@@ -36,7 +35,7 @@ export function VoicesLegend() {
 }
 
 /**
- * "Words to know" of one step: each word opens its definition and sources in place
+ * "Words to know" of one step: each word opens its definition in place (sources: About page)
  * (a native disclosure — never a hover-only tooltip).
  */
 export function WordsToKnow({ words }: { words: GlossaryEntry[] }) {
@@ -57,7 +56,6 @@ export function WordsToKnow({ words }: { words: GlossaryEntry[] }) {
               <summary className="flex min-h-11 cursor-pointer items-center px-4 text-sm font-semibold">{word.label}</summary>
               <div className="space-y-2 px-4 pb-4 text-sm">
                 <p>{word.definition}</p>
-                <SourceList sources={word.sources} />
               </div>
             </details>
           </li>

@@ -78,6 +78,8 @@ interface Sourced<T> {
 
 Un champ « fait » vaut soit `Sourced<T>`, soit `null`.
 
+> - **`Machine.lifespan`** (US-5.12, optionnel) : `{ status: draft|reviewed, planned: Sourced<{ amount, unit }> | null, lastContact: Sourced<date> | null, missionEnd: Sourced<date> | null, stillWorking: Sourced<boolean> | null, achievements: Sourced<LocalizedText>[] }`. Vie prévue et fin réelle d'une machine ; les durées affichées ne sont que des calculs sur ces valeurs. Règle **V16**.
+
 ## 4. Fichiers et schémas
 
 ### 4.1 `content/destinations.json`
@@ -358,6 +360,7 @@ Le test `content-integrity.test.ts` lit **le contenu réel** et échoue si :
 | V13 | Étape de chronologie de mission non datée, non sourcée ou hors ordre | TIMELINE-001 |
 | V14 | Entrée de glossaire sans source, sans forme dans une langue, ou texte manquant | STORY-007 (US-5.7) |
 | V15 | Histoire d'image (`description`) sans `descriptionStatus`, ou l'inverse | MEDIA-001 (US-5.10) |
+| V16 | `Machine.lifespan` : chaque valeur `Sourced` ; `planned.amount` > 0 et `unit` ∈ days, sols, flights, years ; `lastContact` / `missionEnd` en date complète, jamais avant l'arrivée ; pas de date de fin si `stillWorking` ; `status` `draft` → avertissement | US-5.12 |
 
 Avertissements (non bloquants, listés dans la sortie) : source jamais citée, mission sans équipement, équipement sans `scienceSummary`, récit en `draft`.
 

@@ -1,14 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
 import { SkipForward } from 'lucide-react'
-import { DepictionBadge } from '@/components/media/DepictionBadge'
-import { useTranslation } from '@/i18n'
+import { useTranslation, type MessageKey } from '@/i18n'
 import { FADE_MS, markIntroSeen } from './introSession'
 
 /**
- * US-2.4: the team's intro video, full screen, when the visitor arrives on the site. It ends
- * on the Moon and Mars over the Milky Way, then fades into the home page, which shows the same
- * two worlds on the same sky. Muted (browsers only autoplay silent videos), skippable at any
- * time (button or Escape), and skipped entirely if the browser refuses to play it.
+ * US-2.4 / US-5.12: the intro, full screen, when the visitor arrives on the site — real NASA
+ * footage (public domain): a Saturn V lifting off, the restored Apollo 11 moonwalk, then the
+ * ground of Mars rushing up under Perseverance, filmed by its own camera. Short sentences appear
+ * over the pictures (written, so they work without sound and are translated). It then fades
+ * into the home page. Muted (browsers only autoplay silent videos), skippable at any time
+ * (button or Escape), skipped entirely if the browser refuses to play it.
  */
 interface IntroVideoProps {
   /** The fade-out starts: the home page can light up underneath (true cross-fade). */
@@ -17,11 +18,20 @@ interface IntroVideoProps {
   onDone: () => void
 }
 
+/** Sentences shown over the footage, in seconds of the edited video (public/media/intro-nasa.mp4). */
+const CUES: ReadonlyArray<{ from: number; to: number; key: MessageKey }> = [
+  { from: 0.4, to: 4.6, key: 'intro.cue1' },
+  { from: 5.4, to: 8.2, key: 'intro.cue2' },
+  { from: 8.8, to: 11.9, key: 'intro.cue3' },
+  { from: 12.3, to: 99, key: 'intro.cue4' },
+]
+
 export function IntroVideo({ onReveal, onDone }: IntroVideoProps) {
   const { t } = useTranslation()
   const videoRef = useRef<HTMLVideoElement>(null)
   const skipRef = useRef<HTMLButtonElement>(null)
   const [leaving, setLeaving] = useState(false)
+  const [cue, setCue] = useState(-1)
   const doneRef = useRef(false)
 
   const finish = (fade: boolean) => {
@@ -58,6 +68,12 @@ export function IntroVideo({ onReveal, onDone }: IntroVideoProps) {
     return () => window.removeEventListener('keydown', onKey)
   }, [])
 
+  const onTimeUpdate = () => {
+    const time = videoRef.current?.currentTime ?? 0
+    const index = CUES.findIndex((entry) => time >= entry.from && time < entry.to)
+    if (index !== cue) setCue(index)
+  }
+
   return (
     <section
       aria-label={t('intro.label')}
@@ -66,19 +82,28 @@ export function IntroVideo({ onReveal, onDone }: IntroVideoProps) {
     >
       <video
         ref={videoRef}
-        src="/media/intro.mp4"
-        poster="/media/intro-poster.jpg"
+        src="/media/intro-nasa.mp4"
+        poster="/media/intro-nasa-poster.jpg"
         muted
         playsInline
         preload="auto"
+        onTimeUpdate={onTimeUpdate}
         onEnded={() => finish(true)}
         onError={() => finish(false)}
         aria-hidden="true"
-        className="size-full object-cover portrait:object-contain"
+        className="size-full object-cover"
       />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(0,0,0,0.65)_100%)]" />
       <p className="sr-only">{t('intro.description')}</p>
-      <div className="pointer-events-none absolute top-20 left-4 sm:left-6">
-        <DepictionBadge depiction="mixed" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-[18%] flex justify-center px-6 text-center">
+        {CUES.map((entry, index) => (
+          <p
+            key={entry.key}
+            className={`intro-cue absolute max-w-3xl font-heading text-[clamp(1.6rem,4.5vw,3.6rem)] leading-tight font-bold text-white ${index === cue ? 'is-on' : ''}`}
+          >
+            {t(entry.key)}
+          </p>
+        ))}
       </div>
       <button
         ref={skipRef}

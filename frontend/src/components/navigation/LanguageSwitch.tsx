@@ -1,15 +1,16 @@
 import { Languages } from 'lucide-react'
 import { useTranslation, type Locale } from '@/i18n'
 
-const LOCALES: readonly Locale[] = ['en', 'fr']
+const LOCALES: readonly Locale[] = ['en', 'fr', 'wo']
 
 /**
- * EN / FR switch (ADR-015). From `sm` up: a two-button group, the pressed one is current.
+ * EN / FR / WO switch (ADR-015, Wolof: US-5.12). From `sm` up: a two-button group, the pressed one is current.
  * On phones, where the header is narrow: one button that switches to the other language.
  */
 export function LanguageSwitch({ className }: { className?: string }) {
   const { t, locale, setLocale } = useTranslation()
-  const other: Locale = locale === 'en' ? 'fr' : 'en'
+  // Phones: one button that goes to the next language (EN → FR → WO → EN).
+  const other: Locale = LOCALES[(LOCALES.indexOf(locale) + 1) % LOCALES.length] ?? 'en'
 
   return (
     <div className={className}>

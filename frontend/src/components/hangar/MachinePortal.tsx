@@ -1,0 +1,123 @@
+import { useRef, type CSSProperties, type MouseEvent, type PointerEvent } from 'react'
+import { ArrowRight } from 'lucide-react'
+import { Link, useNavigate } from 'react-router'
+import type { Machine } from '@/api/types'
+import { paths } from '@/app/paths'
+import { DepictionBadge } from '@/components/media/DepictionBadge'
+import { StatusBadge } from '@/components/machine/StatusBadge'
+import { useReducedMotion } from '@/hooks/useReducedMotion'
+import { useTranslation } from '@/i18n'
+import { lastSignal } from '@/lib/lifespan'
+import type { DestinationId } from '@/types/content'
+
+/** Shared with the machine page's hero picture, so the browser morphs one into the other. */
+export const MACHINE_TRANSITION_NAME = 'machine-focus'
+/** Length of the "wake up" turn before flying to the machine's page (ms). */
+const LAUNCH_MS = 750
+
+interface MachinePortalProps {
+  machine: Machine
+  missionName: string
+  destinationId: DestinationId
+  index: number
+}
+
+/**
+ * One machine in the hangar (US-5.12), chosen like a planet on the home page: hovering (or
+ * focusing) lights it up and tilts it toward the pointer; activating it makes it turn on
+ * itself, then its picture flies into the machine's own page (View Transitions). The whole
+ * card is one link; nothing depends on hover alone.
+ */
+export function MachinePortal({ machine, missionName, destinationId, index }: MachinePortalProps) {
+  const { t } = useTranslation()
+  const reduced = useReducedMotion()
+  const navigate = useNavigate()
+  const cardRef = useRef<HTMLAnchorElement>(null)
+  const pictureRef = useRef<HTMLDivElement>(null)
+  const to = paths.machine(destinationId, machine.id)
+  const start = machine.date?.value.slice(0, 4)
+  const end = machine.lifespan?.stillWorking?.value ? t('hangar.today') : lastSignal(machine.lifespan)?.value.slice(0, 4)
+
+  const onPointerMove = (event: PointerEvent<HTMLAnchorElement>) => {
+    const card = cardRef.current
+    if (!card || reduced) return
+    const rect = card.getBoundingClientRect()
+    const x = (event.clientX - rect.left) / rect.width - 0.5
+    const y = (event.clientY - rect.top) / rect.height - 0.5
+    card.style.setProperty('--ry', `${(x * 14).toFixed(2)}deg`)
+    card.style.setProperty('--rx', `${(-y * 12).toFixed(2)}deg`)
+    card.style.setProperty('--gx', `${((x + 0.5) * 100).toFixed(1)}%`)
+    card.style.setProperty('--gy', `${((y + 0.5) * 100).toFixed(1)}%`)
+  }
+  const onPointerLeave = () => {
+    const card = cardRef.current
+    if (!card) return
+    card.style.setProperty('--rx', '0deg')
+    card.style.setProperty('--ry', '0deg')
+  }
+
+  const onClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (pictureRef.current) pictureRef.current.style.viewTransitionName = MACHINE_TRANSITION_NAME
+    if (reduced || event.metaKey || event.ctrlKey || event.shiftKey || event.button !== 0) return
+    event.preventDefault()
+    cardRef.current?.classList.add('is-launching')
+    window.setTimeout(() => navigate(to, { viewTransition: true }), LAUNCH_MS)
+  }
+
+  return (
+    <Link
+      ref={cardRef}
+      to={to}
+      viewTransition
+      onClick={onClick}
+      onPointerMove={onPointerMove}
+      onPointerLeave={onPointerLeave}
+      aria-label={start ? t('hangar.openYears', { name: machine.name, start, end: end ?? '?' }) : t('hangar.open', { name: machine.name })}
+      className="machine-portal group relative block rounded-3xl outline-offset-4"
+      style={{ '--i': index } as CSSProperties}
+    >
+      <div className="machine-portal-body relative aspect-[3/4] overflow-hidden rounded-3xl border border-white/10 bg-deep-space">
+        <div ref={pictureRef} className="absolute inset-0">
+          {machine.cover ? (
+            <img
+              src={machine.cover.thumbnailUrl ?? machine.cover.url}
+              alt=""
+              loading="lazy"
+              decoding="async"
+              className="machine-portal-photo size-full object-cover"
+            />
+          ) : (
+            <div className="size-full bg-gradient-to-br from-nebula-surface to-void" />
+          )}
+        </div>
+        <span aria-hidden="true" className="machine-portal-glare pointer-events-none absolute inset-0" />
+        <span aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-t from-void via-void/40 to-transparent" />
+        {machine.cover && (
+          <span className="absolute top-3 left-3">
+            <DepictionBadge depiction={machine.cover.depiction} />
+          </span>
+        )}
+        <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
+          <p className="font-mono text-[0.6rem] tracking-[0.25em] text-world uppercase">{missionName}</p>
+          <p className="mt-1 font-heading text-2xl leading-tight font-bold sm:text-[1.7rem]">{machine.name}</p>
+          <p className="mt-1 text-xs text-moon-dust">{t(`machineType.${machine.type}`)}</p>
+          {start && (
+            <p className="mt-3 font-mono text-sm text-starlight">
+              {start}
+              <span aria-hidden="true" className="machine-portal-beam mx-2 inline-block h-px w-8 align-middle bg-world" />
+              {end ?? '?'}
+            </p>
+          )}
+          <div className="mt-2 text-starlight/80">
+            <StatusBadge status={machine.status.value} />
+          </div>
+          <span className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-full border border-white/20 px-4 text-sm font-semibold transition-colors group-hover:border-world group-hover:bg-world group-hover:text-void group-focus-visible:border-world group-focus-visible:bg-world group-focus-visible:text-void">
+            {t('hangar.wake')}
+            <ArrowRight aria-hidden="true" className="size-4 transition-transform group-hover:translate-x-1" />
+          </span>
+        </div>
+      </div>
+    </Link>
+  )
+}
+

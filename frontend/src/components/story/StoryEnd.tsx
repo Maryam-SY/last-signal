@@ -79,7 +79,7 @@ export function StoryEnd({ story, exitHref }: { story: StoryDetail; exitHref: st
             <ul className="mt-3 flex flex-wrap justify-center gap-2">
               {story.missions.map((mission) => (
                 <li key={mission.id}>
-                  <Link to={`${paths.destination(mission.destinationId)}#mission-${encodeURIComponent(mission.id)}`} className={chip}>
+                  <Link to={`${paths.destination(mission.destinationId)}#hangar`} className={chip}>
                     {mission.name}
                   </Link>
                 </li>

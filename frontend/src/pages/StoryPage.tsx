@@ -4,6 +4,7 @@ import { Link, useParams, useSearchParams } from 'react-router'
 import { ApiError, api } from '@/api/client'
 import type { StoryDetail } from '@/api/types'
 import { paths } from '@/app/paths'
+import { NarrationButton } from '@/components/audio/NarrationButton'
 import { SpaceBackdrop } from '@/components/celestial/SpaceBackdrop'
 import { LoadState } from '@/components/common/LoadState'
 import { CoverPhoto } from '@/components/media/CoverPhoto'
@@ -185,7 +186,6 @@ function StoryExperience({ story }: { story: StoryDetail }) {
       : `${paths.destination(destinationId)}#missions-title`
     : paths.home()
   const mediaById = new Map(story.media.map((m) => [m.id, m]))
-  const sourceById = new Map(story.sources.map((s) => [s.id, s]))
   const ambient = { '--step-accent': STEP_ACCENT[step.key] } as CSSProperties
 
   return (
@@ -220,6 +220,8 @@ function StoryExperience({ story }: { story: StoryDetail }) {
               {t('story.begin')}
               <ChevronsDown aria-hidden="true" className="size-4 transition-transform group-hover:translate-y-0.5" />
             </button>
+            {/* US-5.12: the whole story read aloud by the browser's voice, step after step. */}
+            <NarrationButton paragraphs={[story.title, ...story.steps.flatMap((s) => [s.title, ...s.blocks.map((block) => block.text)])]} />
             <p className="hidden text-sm text-moon-dust lg:block">{t('story.keyboardHint')}</p>
           </div>
           <p aria-hidden="true" className={cn(eyebrow, 'mt-16 flex items-center gap-2 text-moon-dust/80')}>
@@ -238,7 +240,6 @@ function StoryExperience({ story }: { story: StoryDetail }) {
               headingRefs.current[index] = element
             }}
             mediaById={mediaById}
-            sourceById={sourceById}
             relations={s.key === 'relay' && s.relationIds ? story.relations.filter((r) => s.relationIds!.includes(r.id)) : []}
             words={wordsIn(
               s.blocks.map((b) => b.text),

@@ -4,9 +4,8 @@ import type { DestinationId } from '@/types/content'
 export const paths = {
   home: () => '/',
   destination: (id: DestinationId) => `/explore/${id}`,
-  /** A destination with one machine selected: its details open and the page jumps to it (US-3.2). */
-  machine: (destinationId: DestinationId, machineId: string) =>
-    `/explore/${destinationId}?machine=${encodeURIComponent(machineId)}#machine-${encodeURIComponent(machineId)}`,
+  /** One machine's own page: its whole life, from launch to its last signal (US-5.12). */
+  machine: (destinationId: DestinationId, machineId: string) => `/explore/${destinationId}/${encodeURIComponent(machineId)}`,
   story: (storyId: string) => `/stories/${encodeURIComponent(storyId)}`,
   about: () => '/about',
 } as const

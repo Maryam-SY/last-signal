@@ -1,4 +1,4 @@
-import { act, fireEvent, screen, waitFor } from '@testing-library/react'
+import { act, fireEvent, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { renderRoute } from '@/test/renderRoute'
@@ -20,9 +20,11 @@ describe('intro video (US-2.4)', () => {
     renderRoute('/')
     const intro = screen.getByRole('region', { name: 'Introduction' })
     const video = intro.querySelector('video')!
-    expect(video).toHaveAttribute('src', '/media/intro.mp4')
+    // US-5.12: real NASA footage (no animation label), with its sentences written over it.
+    expect(video).toHaveAttribute('src', '/media/intro-nasa.mp4')
     expect(video.muted).toBe(true)
-    expect(screen.getByText('Contains animation')).toBeInTheDocument()
+    expect(screen.queryByText('Contains animation')).not.toBeInTheDocument()
+    expect(within(intro).getByText('We walked on the Moon.')).toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'Skip intro' })).toHaveFocus()
   })
 

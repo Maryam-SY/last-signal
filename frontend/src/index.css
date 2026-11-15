@@ -681,3 +681,214 @@ html.depth-mode::-webkit-scrollbar {
     perspective-origin: 64% 50%;
   }
 }
+
+/* ---------------------------------------------------------------------------------------
+   US-5.12 — machine hangar, machine page, sound and video.
+   --------------------------------------------------------------------------------------- */
+
+/* Hangar: cards rise in one after the other, tilt toward the pointer, glow on hover/focus. */
+.machine-portal {
+  --rx: 0deg;
+  --ry: 0deg;
+  --gx: 50%;
+  --gy: 30%;
+  transform-style: preserve-3d;
+}
+.machine-portal-body {
+  transform: rotateX(var(--rx)) rotateY(var(--ry));
+  transition:
+    transform 400ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 400ms,
+    border-color 400ms;
+  will-change: transform;
+}
+.machine-portal:hover .machine-portal-body,
+.machine-portal:focus-visible .machine-portal-body {
+  border-color: color-mix(in srgb, var(--world-accent) 70%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--world-accent) 50%, transparent),
+    0 30px 80px -30px color-mix(in srgb, var(--world-accent) 70%, transparent);
+}
+.machine-portal-photo {
+  transition:
+    transform 900ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 600ms;
+  filter: saturate(0.75) brightness(0.8);
+}
+.machine-portal:hover .machine-portal-photo,
+.machine-portal:focus-visible .machine-portal-photo {
+  transform: scale(1.08);
+  filter: saturate(1.1) brightness(1);
+}
+.machine-portal-glare {
+  background: radial-gradient(circle at var(--gx) var(--gy), rgb(255 255 255 / 0.18), transparent 45%);
+  opacity: 0;
+  transition: opacity 400ms;
+  mix-blend-mode: soft-light;
+}
+.machine-portal:hover .machine-portal-glare {
+  opacity: 1;
+}
+.machine-portal-beam {
+  transform-origin: left;
+  transition: transform 500ms;
+}
+.machine-portal:hover .machine-portal-beam {
+  transform: scaleX(1.6);
+}
+/* Selected: the machine turns on itself before flying to its page. */
+.machine-portal.is-launching .machine-portal-body {
+  animation: machine-wake 750ms cubic-bezier(0.6, 0, 0.3, 1) forwards;
+}
+@keyframes machine-wake {
+  0% {
+    transform: rotateX(var(--rx)) rotateY(var(--ry));
+  }
+  60% {
+    transform: rotateY(200deg) scale(1.06);
+  }
+  100% {
+    transform: rotateY(360deg) scale(1.12);
+    opacity: 0.85;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .machine-hangar > li {
+    animation: hangar-in 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  .machine-hangar > li:nth-child(2) { animation-delay: 70ms; }
+  .machine-hangar > li:nth-child(3) { animation-delay: 140ms; }
+  .machine-hangar > li:nth-child(4) { animation-delay: 210ms; }
+  .machine-hangar > li:nth-child(5) { animation-delay: 280ms; }
+  .machine-hangar > li:nth-child(6) { animation-delay: 350ms; }
+}
+@keyframes hangar-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 40px, -80px);
+  }
+}
+
+/* Machine page hero: the photo slowly comes closer (transform only). */
+@media (prefers-reduced-motion: no-preference) {
+  .machine-hero-photo {
+    animation: hero-drift 24s ease-out both;
+  }
+}
+@keyframes hero-drift {
+  from {
+    transform: scale(1.18);
+  }
+  to {
+    transform: scale(1.02);
+  }
+}
+::view-transition-group(machine-focus) {
+  animation-duration: 800ms;
+  animation-timing-function: cubic-bezier(0.7, 0, 0.2, 1);
+}
+
+/* Heartbeat of a life: traced once; it keeps beating only for a machine still working. */
+.heartbeat-line,
+.flatline-path {
+  fill: none;
+  stroke: var(--world-accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 6px var(--world-accent));
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .heartbeat-line,
+  .flatline-path {
+    animation: trace-line 3.2s ease-out both;
+  }
+  .is-alive .heartbeat-line,
+  .is-alive .flatline-path {
+    stroke-dasharray: 0.35 0.65;
+    animation: pulse-line 2.4s linear infinite;
+  }
+}
+@keyframes trace-line {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+@keyframes pulse-line {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Video reel controls and captions written on the video. */
+.video-control {
+  display: inline-flex;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 1px solid rgb(255 255 255 / 0.25);
+  background: rgb(8 11 18 / 0.6);
+  color: var(--cosmos-starlight);
+  transition: border-color 200ms, color 200ms;
+}
+.video-control:hover,
+.video-control[aria-pressed='true'] {
+  border-color: var(--world-accent);
+  color: var(--world-accent);
+}
+.video-caption {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-shadow: 0 1px 12px rgb(0 0 0 / 0.8);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .video-caption {
+    animation: caption-in 900ms ease-out both;
+  }
+}
+@keyframes caption-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+  }
+}
+
+/* Sound switch: a soft ring breathes while the sound is on. */
+@media (prefers-reduced-motion: no-preference) {
+  .sound-wave {
+    animation: sound-wave 2.4s ease-out infinite;
+  }
+}
+@keyframes sound-wave {
+  from {
+    opacity: 0.8;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.4);
+  }
+}
+
+/* Intro sentences over the NASA footage (fade + rise, transform/opacity only). */
+.intro-cue {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  transition:
+    opacity 700ms ease,
+    transform 700ms ease;
+  text-shadow: 0 2px 24px rgb(0 0 0 / 0.85);
+}
+.intro-cue.is-on {
+  opacity: 1;
+  transform: none;
+}

@@ -1,10 +1,16 @@
 import { en } from './messages/en'
 import { fr } from './messages/fr'
+import { wo } from './messages/wo'
 import type { Locale, MessageKey, Messages, TranslateVars } from './types'
 
 export const DEFAULT_LOCALE: Locale = 'en'
 
-export const LOCALES: Record<Locale, Messages> = { en, fr }
+export const LOCALES: Record<Locale, Messages> = { en, fr, wo }
+
+/** Language of the content asked to the API: Wolof stories are not written yet (French meanwhile). */
+export function contentLang(locale: Locale): 'en' | 'fr' {
+  return locale === 'wo' ? 'fr' : locale
+}
 
 export function isLocale(value: unknown): value is Locale {
   return typeof value === 'string' && Object.hasOwn(LOCALES, value)

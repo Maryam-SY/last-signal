@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import type { Lang } from '@/api/types'
 import { useTranslation } from '@/i18n'
+import { contentLang } from '@/i18n/translate'
 
 export type ApiState<T> =
   | { status: 'loading'; data: null; error: null }
@@ -33,7 +34,7 @@ export function useApi<T>(
   useEffect(() => {
     if (!enabled) return
     const controller = new AbortController()
-    loadRef.current(locale, controller.signal).then(
+    loadRef.current(contentLang(locale), controller.signal).then(
       (data) => {
         if (!controller.signal.aborted) setResult({ requestKey, data, error: null })
       },

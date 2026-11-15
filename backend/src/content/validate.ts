@@ -2,6 +2,7 @@ import {
   DEPICTIONS,
   DESTINATION_IDS,
   LANGS,
+  LIFESPAN_UNITS,
   MACHINE_STATUSES,
   MACHINE_TYPES,
   MEDIA_TYPES,
@@ -159,6 +160,30 @@ export function validateContent(content: Content): ValidationReport {
     sourced(`${w}.scienceSummary`, m.scienceSummary, (t) => text(`${w}.scienceSummary`, t))
     if (!m.scienceSummary) warnings.push(`${w}: no science summary`)
     for (const id of m.storyIds) if (!storyIds.has(id)) err(w, `unknown story "${id}" (V3)`)
+
+    // V16 — lifespan: sourced amounts and full dates, in order.
+    const life = m.lifespan
+    if (life) {
+      const lw = `${w}.lifespan`
+      if (life.status !== 'draft' && life.status !== 'reviewed') err(lw, `invalid status "${String(life.status)}" (V16)`)
+      if (life.status === 'draft') warnings.push(`${lw}: draft — needs scientific review before publication (V16)`)
+      sourced(`${lw}.planned`, life.planned, (p) => {
+        if (typeof p.amount !== 'number' || !(p.amount > 0)) err(`${lw}.planned`, 'amount must be a positive number (V16)')
+        if (!(LIFESPAN_UNITS as readonly string[]).includes(p.unit)) err(`${lw}.planned`, `unknown unit "${p.unit}" (V16)`)
+      })
+      for (const key of ['lastContact', 'missionEnd'] as const) {
+        sourced(`${lw}.${key}`, life[key], (v) => {
+          if (!FULL_DATE.test(v)) err(`${lw}.${key}`, `must be a full date YYYY-MM-DD, got "${v}" (V16)`)
+          if (m.date && FULL_DATE.test(m.date.value) && v < m.date.value) err(`${lw}.${key}`, 'ends before the machine arrived (V16)')
+        })
+      }
+      sourced(`${lw}.stillWorking`, life.stillWorking, (v) => {
+        if (typeof v !== 'boolean') err(`${lw}.stillWorking`, 'must be a boolean (V16)')
+      })
+      if (life.stillWorking?.value && (life.lastContact || life.missionEnd)) err(lw, 'a machine still working has no end date (V16)')
+      if (!Array.isArray(life.achievements)) err(lw, 'achievements must be a list (V16)')
+      else life.achievements.forEach((a, i) => sourced(`${lw}.achievements[${i}]`, a, (t) => text(`${lw}.achievements[${i}]`, t)))
+    }
   }
 
   // Relations

@@ -12,6 +12,7 @@ const SITE_VISUALS = [
   { key: 'about.visualMoon', url: 'https://svs.gsfc.nasa.gov/4720' },
   { key: 'about.visualMars', url: 'https://astrogeology.usgs.gov/search/map/mars_viking_colorized_global_mosaic_232m' },
   { key: 'about.visualPlanets', url: 'https://nssdc.gsfc.nasa.gov/photo_gallery/' },
+  { key: 'about.visualIntro', url: 'https://images.nasa.gov/' },
 ] as const
 
 /**

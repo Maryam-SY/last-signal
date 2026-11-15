@@ -72,6 +72,26 @@ export interface Machine {
   storyIds: string[]
   /** First real photo of the machine (never a drawing), on destination and mission lists. */
   cover?: Media | null
+  /** Planned life and real end (US-5.12); absent while the content does not tell it. */
+  lifespan?: Lifespan | null
+}
+
+export type LifespanUnit = 'days' | 'sols' | 'flights' | 'years'
+
+/** How long a machine was meant to live, and when it really fell silent (US-5.12). */
+export interface Lifespan {
+  /** "draft" until a human has checked these figures (rule V16). */
+  status: 'draft' | 'reviewed'
+  /** Designed / primary-mission duration announced before launch. */
+  planned: Sourced<{ amount: number; unit: LifespanUnit }> | null
+  /** Last signal received from the machine. */
+  lastContact: Sourced<string> | null
+  /** Official end of its mission, when it differs from the last contact. */
+  missionEnd: Sourced<string> | null
+  /** Still in use today (e.g. a laser reflector). */
+  stillWorking: Sourced<boolean> | null
+  /** What it achieved beyond the plan, in plain words (each sourced). */
+  achievements: Sourced<string>[]
 }
 
 export interface TimelineEvent {

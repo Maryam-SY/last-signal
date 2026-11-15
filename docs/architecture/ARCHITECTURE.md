@@ -116,7 +116,8 @@ Règles : un composant par fichier ; un dossier de composants = un domaine ; `pa
 | Route | Page | Paramètres d'état | Exigences |
 |---|---|---|---|
 | `/` | ExplorePage | — | DEST-001 → 005 |
-| `/explore/:destinationId` | DestinationPage | `?machine=:machineId` (sélection + fiche ouverte), `#mission-:missionId` (ancre) | EXPL, EQUIP, MAP, SYNC |
+| `/explore/:destinationId` | DestinationPage | `#hangar` (choix de la machine, US-5.12) | EXPL, EQUIP |
+| `/explore/:destinationId/:machineId` | MachinePage | — (une machine, toute sa vie, US-5.12) | EQUIP, MEDIA, TIMELINE |
 | `/stories/:storyId` | StoryPage | `?step=1..6` (défaut 1), `?from=:machineId` (retour) | STORY-* |
 | `/about` | AboutPage | `#source-:sourceId` | ABOUT-*, SOURCE-004 |
 | `*` (et ids inconnus) | NotFoundPage | — | NAV-004 |

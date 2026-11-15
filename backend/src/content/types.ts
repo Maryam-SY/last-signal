@@ -72,6 +72,27 @@ export interface Coordinates {
   lon: number
 }
 
+export const LIFESPAN_UNITS = ['days', 'sols', 'flights', 'years'] as const
+export type LifespanUnit = (typeof LIFESPAN_UNITS)[number]
+
+/**
+ * How long a machine was meant to live and when it really fell silent (US-5.12, rule V16).
+ * Every value is sourced; `status` stays "draft" until a human has checked it.
+ */
+export interface Lifespan {
+  status: 'draft' | 'reviewed'
+  /** Designed / primary-mission duration announced by NASA. */
+  planned: Sourced<{ amount: number; unit: LifespanUnit }> | null
+  /** Last signal received from the machine. */
+  lastContact: Sourced<string> | null
+  /** Official end of its mission or of its active role. */
+  missionEnd: Sourced<string> | null
+  /** Still in use today (e.g. a laser retroreflector). */
+  stillWorking: Sourced<boolean> | null
+  /** What it achieved beyond the plan, in plain words. */
+  achievements: Sourced<LocalizedText>[]
+}
+
 export interface Machine {
   id: string
   name: string
@@ -85,6 +106,7 @@ export interface Machine {
   status: Sourced<MachineStatus>
   scienceSummary: Sourced<LocalizedText> | null
   storyIds: string[]
+  lifespan?: Lifespan | null
 }
 
 export const RELATION_TYPES = ['method', 'technology', 'data', 'knowledge', 'inspiration'] as const

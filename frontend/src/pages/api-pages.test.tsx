@@ -1,4 +1,4 @@
-import { fireEvent, screen, within } from '@testing-library/react'
+import { screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it, vi } from 'vitest'
 import { renderRoute } from '@/test/renderRoute'
@@ -6,151 +6,90 @@ import { renderRoute } from '@/test/renderRoute'
 // <model-viewer> needs WebGL: in jsdom its module is replaced by an empty one (the element stays inert).
 vi.mock('@google/model-viewer', () => ({}))
 
-describe('destination page (connected to the API)', () => {
-  it('shows the missions and their machines', async () => {
+describe('destination hangar (US-5.12)', () => {
+  it('lists every machine of the world as a card to wake up, without the landing map', async () => {
     renderRoute('/explore/mars')
-    expect(await screen.findByRole('heading', { level: 3, name: 'Test Mission' })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { level: 4, name: 'Test Rover' })).toBeInTheDocument()
-    // Scoped to the card: the status legend and the timeline also show status labels.
-    const card = screen.getByRole('heading', { level: 4, name: 'Test Rover' }).closest('article')!
+    expect(await screen.findByRole('heading', { level: 2, name: 'Choose a machine' })).toBeInTheDocument()
+    const card = await screen.findByRole('link', { name: 'Wake up Test Rover (2004 to 2010)' })
+    expect(card).toHaveAttribute('href', '/explore/mars/machine-a')
+    expect(within(card).getByText('Test Mission')).toBeInTheDocument()
     expect(within(card).getByText('Mission ended')).toBeInTheDocument()
-    expect(screen.getByText('Location not mapped')).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: 'Test Mission' })).toHaveAttribute('href', '#mission-mission-a')
-    expect(screen.getByRole('link', { name: 'Discover its story' })).toHaveAttribute('href', '/stories/story-a?from=machine-a')
-  })
-
-  it('tells each machine as a short story — what it did, what it passed on, its sources — without any click (US-5.9)', async () => {
-    renderRoute('/explore/mars')
-    const card = (await screen.findByRole('heading', { level: 4, name: 'Test Rover' })).closest('article')!
-    expect(within(card).getByRole('heading', { level: 5, name: 'What it did' })).toBeInTheDocument()
-    expect(within(card).getByText('It found traces of ancient water.')).toBeInTheDocument()
-    // What it passed on, with both ends named.
-    expect(await within(card).findByText('The airbag landing system.')).toBeInTheDocument()
-    expect(within(card).getByText('Earlier Mission')).toBeInTheDocument()
-    expect(within(card).getByRole('link', { name: /Test source page/ })).toHaveAttribute('href', 'https://example.org/source')
-    // One photo of the machine (US-5.11: in its card), no gallery, no button to unfold anything.
-    expect(within(card).getAllByRole('img').length).toBeLessThanOrEqual(1)
-    expect(screen.queryByRole('button', { name: 'Photos, videos and sources' })).not.toBeInTheDocument()
-  })
-
-  it('illustrates each moment of the mission log with one captioned picture, labelling non-photos (MEDIA-001)', async () => {
-    renderRoute('/explore/mars')
-    const timeline = await screen.findByRole('list', { name: 'Step by step' })
-    expect(within(timeline).getAllByRole('listitem')).toHaveLength(2)
-    expect(within(timeline).getByAltText('A rover on the ground')).toBeInTheDocument()
-    expect(within(timeline).getByAltText('Drawing of a helicopter')).toBeInTheDocument()
-    expect(within(timeline).getByText('Artist’s view — not a photo')).toBeInTheDocument()
-    // One picture per moment: the second picture of "A plan for later" is not shown.
-    expect(within(timeline).getAllByRole('img')).toHaveLength(2)
-    expect(within(timeline).getAllByText('What you see:')).toHaveLength(2)
-  })
-
-  it('flies through the pictures of the mission log, keeping them readable (US-5.11)', async () => {
-    renderRoute('/explore/mars')
-    const timeline = await screen.findByRole('list', { name: 'Step by step' })
-    const flight = timeline.closest('.photo-flight')!
-    // The corridor of pictures is decorative: hidden from screen readers, labelled for the eyes.
-    const corridor = flight.querySelector('.photo-flight-world')!
-    expect(corridor).toHaveAttribute('aria-hidden', 'true')
-    expect(corridor.querySelectorAll('figure')).toHaveLength(2)
-    expect(within(corridor as HTMLElement).getByText('Artist’s view — not a photo')).toBeInTheDocument()
-  })
-
-  it('tells the story behind a picture, marked as a draft until reviewed (US-5.10)', async () => {
-    renderRoute('/explore/mars')
-    const timeline = await screen.findByRole('list', { name: 'Step by step' })
-    expect(within(timeline).getByText('An artist drew this helicopter years before one flew.')).toBeInTheDocument()
-    expect(screen.getByText(/stories told with these pictures are drafts/)).toBeInTheDocument()
-  })
-
-  it('highlights the machine named in ?machine= (US-3.2, map, "Exit story")', async () => {
-    renderRoute('/explore/mars?machine=machine-a')
-    const card = (await screen.findByRole('heading', { level: 4, name: 'Test Rover' })).closest('article')!
-    expect(card).toHaveAttribute('aria-current', 'true')
-  })
-
-  it('replaces a remote image that cannot load by a message', async () => {
-    renderRoute('/explore/mars?machine=machine-a')
-    fireEvent.error(await screen.findByAltText('Drawing of a helicopter'))
-    expect(screen.getAllByText(/This image cannot be shown right now/).length).toBeGreaterThan(0)
-  })
-
-  it('gives each machine its scroll scene without repeating what the mission log told (US-5.9)', async () => {
-    renderRoute('/explore/mars')
-    const mission = await screen.findByRole('region', { name: 'Test Mission' })
-    const machineScene = await within(mission).findByRole('region', { name: 'Test Rover' })
-    // The machine's picture is in its card (US-5.11)…
-    expect((await within(machineScene).findAllByAltText('A rover on the ground')).length).toBeGreaterThan(0)
-    expect(within(machineScene).getByRole('heading', { level: 4, name: 'Test Rover' })).toBeInTheDocument()
-    // …but the steps already told by the mission log are not told again.
-    expect(within(machineScene).queryByText('The rover bounces on its airbags.')).not.toBeInTheDocument()
-    expect(within(machineScene).queryByAltText('Drawing of a helicopter')).not.toBeInTheDocument()
-  })
-
-  it('shows the machine picture inline, without the animated stage, under reduced motion', async () => {
-    vi.stubGlobal('matchMedia', (query: string) => ({
-      matches: query.includes('reduce'),
-      media: query,
-      addEventListener: () => {},
-      removeEventListener: () => {},
-    }))
-    renderRoute('/explore/mars')
-    const machineScene = await screen.findByRole('region', { name: 'Test Rover' })
-    expect(await within(machineScene).findByAltText('A rover on the ground')).toBeInTheDocument()
-    expect(machineScene.querySelector('.journey-card')).toBeNull()
-  })
-
-  it('loads the NASA 3D model only when the visitor asks for it', async () => {
-    const user = userEvent.setup()
-    renderRoute('/explore/mars')
-    const button = await screen.findByRole('button', { name: 'Turn it in 3D' })
-    expect(document.querySelector('model-viewer')).toBeNull()
-    await user.click(button)
-    expect(button).toHaveAttribute('aria-pressed', 'true')
-    const viewer = await waitForViewer()
-    expect(viewer).toHaveAttribute('src', 'https://example.org/models/Test%20Rover.glb')
-    expect(viewer).toHaveAttribute('alt', '3D model of the test rover')
-    expect(viewer).toHaveAttribute('disable-zoom')
-    expect(screen.getByText('Computer image — not a photo')).toBeInTheDocument()
-    expect(screen.getByText('A fictional 3D model.')).toBeInTheDocument()
-    await user.click(screen.getByRole('button', { name: 'Back to the photos' }))
-    expect(document.querySelector('model-viewer')).toBeNull()
-  })
-
-  it('tells the mission step by step, with dates and pictures, as the visitor scrolls', async () => {
-    renderRoute('/explore/mars')
-    const timeline = await screen.findByRole('list', { name: 'Step by step' })
-    expect(within(timeline).getByText('The rover bounces on its airbags.')).toBeInTheDocument()
-    expect(within(timeline).getByText('4 January 2004')).toBeInTheDocument()
-    expect(within(timeline).getByAltText('A rover on the ground')).toBeInTheDocument()
-    expect(screen.getByRole('region', { name: 'Sources of this mission (1)' })).toBeInTheDocument()
-    expect(screen.queryByRole('button', { name: 'Show the mission step by step' })).not.toBeInTheDocument()
-  })
-
-  it('brings the visitor back to the machine they came from (anchor after loading)', async () => {
-    const scrollIntoView = vi.fn()
-    Element.prototype.scrollIntoView = scrollIntoView
-    renderRoute('/explore/mars#machine-machine-a')
-    const card = await screen.findByRole('heading', { level: 4, name: 'Test Rover' })
-    const article = card.closest('article')!
-    expect(article).toHaveFocus()
-    expect(scrollIntoView).toHaveBeenCalled()
+    // US-5.12 (team decision): the landing-site map and the long mission scroll are gone.
+    expect(screen.queryByRole('heading', { name: 'Where did they land?' })).not.toBeInTheDocument()
+    expect(screen.queryByRole('list', { name: 'Step by step' })).not.toBeInTheDocument()
   })
 
   it('shows a clear error with a retry button when the API does not answer', async () => {
     vi.stubGlobal('fetch', vi.fn(async () => new Response('down', { status: 503 })))
     renderRoute('/explore/moon')
-    // Scoped to the missions: the timeline, a separate request, reports its own error too.
-    const missions = await screen.findByRole('region', { name: 'Missions and machines' })
-    expect(await within(missions).findByRole('alert')).toHaveTextContent('This content could not be loaded.')
-    expect(within(missions).getByRole('button', { name: 'Try again' })).toBeInTheDocument()
+    const alerts = await screen.findAllByRole('alert')
+    expect(alerts[0]).toHaveTextContent('This content could not be loaded.')
+    expect(screen.getAllByRole('button', { name: 'Try again' }).length).toBeGreaterThan(0)
   })
 
-  it('asks the API in French when the interface is in French', async () => {
+  it('asks the API in French when the interface is in French, and in Wolof too (stories not translated yet)', async () => {
     const fetchMock = vi.mocked(fetch)
     renderRoute('/explore/moon', 'fr')
-    await screen.findByRole('heading', { level: 3, name: 'Test Mission' })
+    await screen.findByRole('link', { name: /Réveiller Test Lander/ })
     expect(String(fetchMock.mock.calls[0]?.[0])).toContain('lang=fr')
+
+    fetchMock.mockClear()
+    renderRoute('/explore/moon', 'wo')
+    await screen.findAllByRole('link', { name: /Yee Test Lander/ })
+    expect(fetchMock.mock.calls.every(([url]) => !String(url).includes('lang=wo'))).toBe(true)
+  })
+})
+
+describe('machine page (US-5.12)', () => {
+  it('tells one machine its whole life: arrival, planned and real life, legacy, last signal', async () => {
+    renderRoute('/explore/mars/machine-a')
+    expect(await screen.findByRole('heading', { level: 1, name: 'Test Rover' })).toBeInTheDocument()
+    expect(screen.getByText('It found traces of ancient water.')).toBeInTheDocument()
+    // Planned vs real life (arithmetic on sourced dates only), still in draft.
+    const life = screen.getByRole('region', { name: 'How long Test Rover lived' })
+    expect(within(life).getByText('90 Martian days')).toBeInTheDocument()
+    expect(within(life).getByText('6 years, 2 months')).toBeInTheDocument()
+    expect(within(life).getByText('It drove 7.73 kilometres.')).toBeInTheDocument()
+    expect(within(life).getByText(/being checked by our team/)).toBeInTheDocument()
+    // What it passed on, both ends named; then its last signal.
+    const legacy = screen.getByRole('region', { name: 'What it passed on' })
+    expect(within(legacy).getByText('The airbag landing system.')).toBeInTheDocument()
+    expect(within(legacy).getByText('Earlier Mission')).toBeInTheDocument()
+    const end = screen.getByRole('region', { name: 'Its last signal' })
+    expect(within(end).getByText('22 March 2010')).toBeInTheDocument()
+    // Sources are listed on the About page only (team decision), never inside the story.
+    expect(screen.queryByRole('link', { name: /Test source page/ })).not.toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'Read its story in 6 steps' })).toHaveAttribute('href', '/stories/story-a?from=machine-a')
+  })
+
+  it('flies through the pictures of what it did, keeping them readable (US-5.11)', async () => {
+    renderRoute('/explore/mars/machine-a')
+    const list = await screen.findByRole('list', { name: 'In pictures: Test Rover' })
+    expect(within(list).getAllByRole('listitem')).toHaveLength(2)
+    expect(within(list).getAllByText('What you see:')).toHaveLength(2)
+    const corridor = list.closest('.photo-flight')!.querySelector('.photo-flight-world')!
+    expect(corridor).toHaveAttribute('aria-hidden', 'true')
+    expect(corridor.querySelectorAll('figure')).toHaveLength(2)
+  })
+
+  it('plays its videos as a reel, with what they show written on them (MEDIA-001 label kept)', async () => {
+    renderRoute('/explore/mars/machine-a')
+    const reel = await screen.findByRole('region', { name: 'Videos of Test Rover' })
+    expect(within(reel).getByText('The rover rolls off its lander.')).toBeInTheDocument()
+    expect(within(reel).getByText('Contains animation')).toBeInTheDocument()
+    expect(reel.querySelector('video')).toHaveAttribute('src', 'https://example.org/videos/rover~medium.mp4')
+  })
+
+  it('shows its NASA 3D model in its own chapter', async () => {
+    renderRoute('/explore/mars/machine-a')
+    const viewer = await waitForViewer()
+    expect(viewer).toHaveAttribute('src', 'https://example.org/models/Test%20Rover.glb')
+    expect(screen.getByText('Computer image — not a photo')).toBeInTheDocument()
+  })
+
+  it('says when the machine is not on that world', async () => {
+    renderRoute('/explore/moon/machine-a')
+    expect(await screen.findByRole('heading', { level: 1, name: 'Page not found' })).toBeInTheDocument()
   })
 })
 
@@ -210,8 +149,8 @@ describe('story page (connected to the API)', () => {
   it('offers the missions and machines of the story at the end (US-4.7)', async () => {
     renderRoute('/stories/story-a?step=6')
     expect(await screen.findByRole('heading', { level: 3, name: 'The missions of this story' })).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: 'Test Mission' })).toHaveAttribute('href', '/explore/mars#mission-mission-a')
-    expect(screen.getByRole('link', { name: 'Test Rover' })).toHaveAttribute('href', '/explore/mars?machine=machine-a#machine-machine-a')
+    expect(screen.getByRole('link', { name: 'Test Mission' })).toHaveAttribute('href', '/explore/mars#hangar')
+    expect(screen.getByRole('link', { name: 'Test Rover' })).toHaveAttribute('href', '/explore/mars/machine-a')
   })
 
   it('shows what was passed on at the relay step, with its evidence', async () => {
@@ -226,10 +165,7 @@ describe('story page (connected to the API)', () => {
     // Scoped to the last step: the voices legend at the top also names "Imagine".
     expect(within(await screen.findByRole('region', { name: 'Your turn' })).getByText('Imagine')).toBeInTheDocument()
     // US-4.2 (3): back to the machine the visitor came from, with its details open.
-    expect(screen.getByRole('link', { name: 'Back to the machines of Mars' })).toHaveAttribute(
-      'href',
-      '/explore/mars?machine=machine-a#machine-machine-a',
-    )
+    expect(screen.getByRole('link', { name: 'Back to the machines of Mars' })).toHaveAttribute('href', '/explore/mars/machine-a')
     expect(screen.getByRole('link', { name: 'Explore Moon' })).toHaveAttribute('href', '/explore/moon')
     expect(screen.queryByRole('button', { name: 'Next step' })).not.toBeInTheDocument()
   })

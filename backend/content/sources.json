@@ -198,5 +198,50 @@
       "en": "NASA 3D Resources page of the Ingenuity model (GLB file, source NASA/Brian E. Kumanchik).",
       "fr": "Page « 3D Resources » de la NASA pour le modèle d’Ingenuity (fichier GLB, source NASA/Brian E. Kumanchik)."
     }
+  },
+  {
+    "id": "jpl-pathfinder-winds-down-1997",
+    "organization": "NASA Jet Propulsion Laboratory",
+    "title": "Mars Pathfinder Winds Down After Phenomenal Mission",
+    "url": "https://www.jpl.nasa.gov/news/mars-pathfinder-winds-down-after-phenomenal-mission/",
+    "type": "nasa-news",
+    "publishedOn": "1997-11-04",
+    "accessedOn": "2026-11-14"
+  },
+  {
+    "id": "nasa-science-mer-spirit",
+    "organization": "NASA Science",
+    "title": "Spirit",
+    "url": "https://science.nasa.gov/mission/mer-spirit/",
+    "type": "nasa-mission-page",
+    "publishedOn": null,
+    "accessedOn": "2026-11-14"
+  },
+  {
+    "id": "nasa-apollo11-50th-litho",
+    "organization": "NASA",
+    "title": "Apollo 11 Moon Landing: 50th Anniversary – Legacy of the Apollo 11 Moon Landing (lithograph)",
+    "url": "https://assets.science.nasa.gov/content/dam/science/psd/lunar-science/2023/09/Apollo11AnniversaryLitho_updated.pdf",
+    "type": "nasa-mission-page",
+    "publishedOn": null,
+    "accessedOn": "2026-11-14"
+  },
+  {
+    "id": "nasa-apollo12-presskit-1969",
+    "organization": "NASA",
+    "title": "Apollo 12 Press Kit (Release 69-148)",
+    "url": "https://www.nasa.gov/wp-content/uploads/static/apollo50th/pdf/A12_PressKit.pdf",
+    "type": "press",
+    "publishedOn": "1969-11-05",
+    "accessedOn": "2026-11-14"
+  },
+  {
+    "id": "nasa-science-apollo11-seismic",
+    "organization": "NASA Science",
+    "title": "Apollo 11 Seismic Experiment",
+    "url": "https://science.nasa.gov/resource/apollo-11-seismic-experiment/",
+    "type": "nasa-mission-page",
+    "publishedOn": null,
+    "accessedOn": "2026-11-14"
   }
 ]

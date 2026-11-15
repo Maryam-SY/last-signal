@@ -31,7 +31,30 @@
       },
       "sourceIds": ["nasa-science-surveyor-3"]
     },
-    "storyIds": []
+    "storyIds": [],
+    "lifespan": {
+      "status": "draft",
+      "planned": null,
+      "lastContact": {
+        "value": "1967-05-04",
+        "sourceIds": [
+          "nssdca-1967-035a"
+        ]
+      },
+      "missionEnd": null,
+      "stillWorking": null,
+      "achievements": [
+        {
+          "value": {
+            "en": "It sent 6,326 television pictures back to Earth.",
+            "fr": "Il a renvoyé 6 326 images de télévision vers la Terre."
+          },
+          "sourceIds": [
+            "nasa-science-surveyor-3"
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "apollo-11-lm-eagle-descent-stage",
@@ -65,7 +88,24 @@
       },
       "sourceIds": ["nssdca-1969-059c"]
     },
-    "storyIds": []
+    "storyIds": [],
+    "lifespan": {
+      "status": "draft",
+      "planned": null,
+      "lastContact": null,
+      "missionEnd": {
+        "value": "1969-07-21",
+        "sourceIds": [
+          "nssdca-1969-059c"
+        ],
+        "note": {
+          "en": "End of its active role: the ascent stage lifted off from it on 21 July 1969, leaving it on the Moon.",
+          "fr": "Fin de son rôle actif : l'étage de remontée a décollé depuis lui le 21 juillet 1969, en le laissant sur la Lune."
+        }
+      },
+      "stillWorking": null,
+      "achievements": []
+    }
   },
   {
     "id": "apollo-11-easep",
@@ -95,7 +135,25 @@
       },
       "sourceIds": ["nssdca-1969-059c"]
     },
-    "storyIds": []
+    "storyIds": [],
+    "lifespan": {
+      "status": "draft",
+      "planned": null,
+      "lastContact": null,
+      "missionEnd": {
+        "value": "1969-08-27",
+        "sourceIds": [
+          "nssdca-1969-059c",
+          "nasa-science-apollo11-seismic"
+        ],
+        "note": {
+          "en": "Date given by NSSDCA, when the experiment no longer accepted commands; NASA Science gives 25 August 1969 and says it returned data for about three weeks.",
+          "fr": "Date donnée par la NSSDCA, quand l'expérience n'acceptait plus de commandes ; NASA Science indique le 25 août 1969 et parle d'environ trois semaines de données."
+        }
+      },
+      "stillWorking": null,
+      "achievements": []
+    }
   },
   {
     "id": "apollo-11-lrrr",
@@ -122,7 +180,31 @@
       },
       "sourceIds": ["jpl-llr-1999", "jpl-llr-2004"]
     },
-    "storyIds": []
+    "storyIds": [],
+    "lifespan": {
+      "status": "draft",
+      "planned": null,
+      "lastContact": null,
+      "missionEnd": null,
+      "stillWorking": {
+        "value": true,
+        "sourceIds": [
+          "jpl-llr-2004",
+          "nasa-apollo11-50th-litho"
+        ]
+      },
+      "achievements": [
+        {
+          "value": {
+            "en": "It needs no power: observatories still bounce laser beams off it to measure the distance to the Moon.",
+            "fr": "Il n'a besoin d'aucune énergie : des observatoires y renvoient encore des tirs laser pour mesurer la distance Terre-Lune."
+          },
+          "sourceIds": [
+            "jpl-llr-2004"
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "apollo-12-lm-intrepid-descent-stage",
@@ -156,7 +238,24 @@
       },
       "sourceIds": ["nssdca-1969-099c"]
     },
-    "storyIds": []
+    "storyIds": [],
+    "lifespan": {
+      "status": "draft",
+      "planned": null,
+      "lastContact": null,
+      "missionEnd": {
+        "value": "1969-11-20",
+        "sourceIds": [
+          "nssdca-1969-099c"
+        ],
+        "note": {
+          "en": "End of its active role: the ascent stage lifted off from it on 20 November 1969, after 31 hours 31 minutes on the Moon.",
+          "fr": "Fin de son rôle actif : l'étage de remontée a décollé depuis lui le 20 novembre 1969, après 31 heures 31 minutes sur la Lune."
+        }
+      },
+      "stillWorking": null,
+      "achievements": []
+    }
   },
   {
     "id": "apollo-12-alsep",
@@ -187,7 +286,36 @@
       },
       "sourceIds": ["nssdca-1969-099c"]
     },
-    "storyIds": []
+    "storyIds": [],
+    "lifespan": {
+      "status": "draft",
+      "planned": {
+        "value": {
+          "amount": 1,
+          "unit": "years"
+        },
+        "sourceIds": [
+          "nasa-apollo12-presskit-1969"
+        ],
+        "note": {
+          "en": "Announced as “at least a year” in the 1969 press kit.",
+          "fr": "Annoncé comme « au moins un an » dans le dossier de presse de 1969."
+        }
+      },
+      "lastContact": null,
+      "missionEnd": {
+        "value": "1977-09-30",
+        "sourceIds": [
+          "nssdca-1969-099c"
+        ],
+        "note": {
+          "en": "Shut down with all the other Apollo surface stations on 30 September 1977.",
+          "fr": "Éteinte avec toutes les autres stations Apollo le 30 septembre 1977."
+        }
+      },
+      "stillWorking": null,
+      "achievements": []
+    }
   },
   {
     "id": "mars-pathfinder-lander",
@@ -214,7 +342,48 @@
       },
       "sourceIds": ["nasa-science-mars-pathfinder"]
     },
-    "storyIds": []
+    "storyIds": [],
+    "lifespan": {
+      "status": "draft",
+      "planned": {
+        "value": {
+          "amount": 30,
+          "unit": "days"
+        },
+        "sourceIds": [
+          "jpl-pathfinder-winds-down-1997"
+        ]
+      },
+      "lastContact": {
+        "value": "1997-09-27",
+        "sourceIds": [
+          "nasa-science-mars-pathfinder",
+          "jpl-pathfinder-winds-down-1997"
+        ]
+      },
+      "missionEnd": null,
+      "stillWorking": null,
+      "achievements": [
+        {
+          "value": {
+            "en": "It worked nearly three times its design lifetime.",
+            "fr": "Il a fonctionné près de trois fois plus longtemps que prévu."
+          },
+          "sourceIds": [
+            "jpl-pathfinder-winds-down-1997"
+          ]
+        },
+        {
+          "value": {
+            "en": "More than 16,500 images came from the lander.",
+            "fr": "Plus de 16 500 images sont venues de l'atterrisseur."
+          },
+          "sourceIds": [
+            "nasa-science-mars-pathfinder"
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "sojourner",
@@ -238,7 +407,51 @@
       },
       "sourceIds": ["nasa-science-mars-pathfinder"]
     },
-    "storyIds": []
+    "storyIds": [],
+    "lifespan": {
+      "status": "draft",
+      "planned": {
+        "value": {
+          "amount": 7,
+          "unit": "days"
+        },
+        "sourceIds": [
+          "jpl-pathfinder-winds-down-1997"
+        ]
+      },
+      "lastContact": {
+        "value": "1997-09-27",
+        "sourceIds": [
+          "nasa-science-mars-pathfinder"
+        ],
+        "note": {
+          "en": "Last transmission of Pathfinder: the rover's data reached Earth through the lander.",
+          "fr": "Dernière transmission de Pathfinder : les données du rover passaient par l'atterrisseur."
+        }
+      },
+      "missionEnd": null,
+      "stillWorking": null,
+      "achievements": [
+        {
+          "value": {
+            "en": "It worked 12 times its design lifetime of seven days.",
+            "fr": "Il a fonctionné 12 fois plus longtemps que les sept jours prévus."
+          },
+          "sourceIds": [
+            "jpl-pathfinder-winds-down-1997"
+          ]
+        },
+        {
+          "value": {
+            "en": "It sent 550 images.",
+            "fr": "Il a envoyé 550 images."
+          },
+          "sourceIds": [
+            "nasa-science-mars-pathfinder"
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "spirit",
@@ -276,7 +489,56 @@
       },
       "sourceIds": ["nasa-science-mer-highlights"]
     },
-    "storyIds": []
+    "storyIds": [],
+    "lifespan": {
+      "status": "draft",
+      "planned": {
+        "value": {
+          "amount": 90,
+          "unit": "sols"
+        },
+        "sourceIds": [
+          "nasa-science-mer-spirit"
+        ]
+      },
+      "lastContact": {
+        "value": "2010-03-22",
+        "sourceIds": [
+          "nssdca-2003-027a"
+        ]
+      },
+      "missionEnd": {
+        "value": "2011-05-25",
+        "sourceIds": [
+          "nasa-science-mer-spirit"
+        ],
+        "note": {
+          "en": "NASA ended its efforts to contact the stuck rover and declared its mission complete.",
+          "fr": "La NASA a cessé d'essayer de contacter le rover enlisé et a déclaré sa mission terminée."
+        }
+      },
+      "stillWorking": null,
+      "achievements": [
+        {
+          "value": {
+            "en": "It lasted more than 25 times its intended lifetime.",
+            "fr": "Il a duré plus de 25 fois sa durée de vie prévue."
+          },
+          "sourceIds": [
+            "nasa-science-mer-spirit"
+          ]
+        },
+        {
+          "value": {
+            "en": "It drove 7.73 kilometres.",
+            "fr": "Il a parcouru 7,73 kilomètres."
+          },
+          "sourceIds": [
+            "nasa-science-mer-spirit"
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "opportunity",
@@ -314,7 +576,47 @@
       },
       "sourceIds": ["nasa-science-mer-highlights"]
     },
-    "storyIds": []
+    "storyIds": [],
+    "lifespan": {
+      "status": "draft",
+      "planned": {
+        "value": {
+          "amount": 90,
+          "unit": "sols"
+        },
+        "sourceIds": [
+          "jpl-opportunity-end-2019"
+        ],
+        "note": {
+          "en": "Designed to last 90 Martian days and to travel about 1 kilometre.",
+          "fr": "Conçu pour durer 90 jours martiens et parcourir environ 1 kilomètre."
+        }
+      },
+      "lastContact": {
+        "value": "2018-06-10",
+        "sourceIds": [
+          "jpl-opportunity-end-2019"
+        ]
+      },
+      "missionEnd": {
+        "value": "2019-02-13",
+        "sourceIds": [
+          "jpl-opportunity-end-2019"
+        ]
+      },
+      "stillWorking": null,
+      "achievements": [
+        {
+          "value": {
+            "en": "It drove more than 45 kilometres instead of the 1 kilometre planned.",
+            "fr": "Il a parcouru plus de 45 kilomètres au lieu du kilomètre prévu."
+          },
+          "sourceIds": [
+            "jpl-opportunity-end-2019"
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "ingenuity",
@@ -341,6 +643,54 @@
       },
       "sourceIds": ["nasa-science-ingenuity"]
     },
-    "storyIds": []
+    "storyIds": [],
+    "lifespan": {
+      "status": "draft",
+      "planned": {
+        "value": {
+          "amount": 5,
+          "unit": "flights"
+        },
+        "sourceIds": [
+          "nasa-science-ingenuity"
+        ],
+        "note": {
+          "en": "No more than five test flights within 30 days.",
+          "fr": "Pas plus de cinq vols d'essai en 30 jours."
+        }
+      },
+      "lastContact": null,
+      "missionEnd": {
+        "value": "2024-01-25",
+        "sourceIds": [
+          "nasa-science-ingenuity"
+        ],
+        "note": {
+          "en": "It flew for the last time on 18 January 2024.",
+          "fr": "Il a volé pour la dernière fois le 18 janvier 2024."
+        }
+      },
+      "stillWorking": null,
+      "achievements": [
+        {
+          "value": {
+            "en": "72 flights across nearly three years, instead of five.",
+            "fr": "72 vols en près de trois ans, au lieu de cinq."
+          },
+          "sourceIds": [
+            "nasa-science-ingenuity"
+          ]
+        },
+        {
+          "value": {
+            "en": "128.8 minutes in the air and 17 kilometres covered.",
+            "fr": "128,8 minutes dans les airs et 17 kilomètres parcourus."
+          },
+          "sourceIds": [
+            "nasa-science-ingenuity"
+          ]
+        }
+      ]
+    }
   }
 ]

@@ -9,43 +9,10 @@ beforeEach(() => {
   __resetExplorerLogCache()
 })
 
-describe('site map (US-3.3, US-3.4)', () => {
-  it('shows one named marker per located machine, with the schematic disclaimer', async () => {
-    renderRoute('/explore/moon')
-    const map = await screen.findByRole('group', { name: 'Map of the machines on Moon' })
-    expect(within(map).getByRole('button', { name: 'Test Lander, Test Mission' })).toBeInTheDocument()
-    expect(screen.getByText('Simplified map — positions are approximate.')).toBeInTheDocument()
-    expect(screen.getByText(/not a satellite image/)).toBeInTheDocument()
-  })
-
-  it('selects the machine from its marker: URL, open card and coordinates readout (SYNC-001)', async () => {
-    const user = userEvent.setup()
-    const { router } = renderRoute('/explore/moon')
-    const marker = await screen.findByRole('button', { name: 'Test Lander, Test Mission' })
-    await user.click(marker)
-    expect(router.state.location.search).toBe('?machine=machine-m')
-    expect(marker).toHaveAttribute('aria-pressed', 'true')
-    expect(screen.getByRole('heading', { level: 4, name: 'Test Lander' }).closest('article')).toHaveAttribute('aria-current', 'true')
-    expect(screen.getByText('Latitude 0.67° N · Longitude 23.47° E')).toBeInTheDocument()
-  })
-
-  it('lights up the marker when the card is opened from the gallery (SYNC-002)', async () => {
-    renderRoute('/explore/moon?machine=machine-m')
-    expect(await screen.findByRole('button', { name: 'Test Lander, Test Mission' })).toHaveAttribute('aria-pressed', 'true')
-  })
-
-  it('lists the machines it cannot place, and draws no marker for them (MAP-003)', async () => {
-    renderRoute('/explore/mars')
-    await screen.findByRole('group', { name: 'Map of the machines on Mars' })
-    expect(screen.getByText(/Not on the map .*Test Rover/)).toBeInTheDocument()
-    expect(screen.queryByRole('button', { name: 'Test Rover, Test Mission' })).not.toBeInTheDocument()
-  })
-})
-
 describe('photos, statuses and timeline', () => {
-  it('shows the cover photo of a machine, without a credit line under it (US-5.7, US-5.11)', async () => {
-    renderRoute('/explore/moon')
-    expect(await screen.findByAltText('A lander on grey ground')).toBeInTheDocument()
+  it('shows the photo of a machine, without a credit line under it (US-5.7, US-5.11)', async () => {
+    renderRoute('/explore/mars/machine-a')
+    expect((await screen.findAllByAltText('A rover on the ground')).length).toBeGreaterThan(0)
     // US-5.11 (team decision 2026-11-14): picture credits are listed once, on the About page.
     expect(screen.queryByText(/(Credit|Photo): NASA\/JPL/)).not.toBeInTheDocument()
   })
@@ -62,7 +29,7 @@ describe('photos, statuses and timeline', () => {
 
   it('explains every status in words', async () => {
     renderRoute('/explore/mars')
-    await screen.findByRole('heading', { level: 3, name: 'Test Mission' })
+    await screen.findByRole('heading', { level: 2, name: 'Choose a machine' })
     expect(screen.getByText('What do the statuses mean?')).toBeInTheDocument()
     expect(screen.getByText('Switched off or no longer used, but still in place.')).toBeInTheDocument()
   })
@@ -73,7 +40,7 @@ describe('photos, statuses and timeline', () => {
     expect(within(timeline).getByText('35 years later')).toBeInTheDocument()
     expect(within(timeline).getByRole('link', { name: /Test Lander/ })).toHaveAttribute(
       'href',
-      '/explore/moon?machine=machine-m#machine-machine-m',
+      '/explore/moon/machine-m',
     )
     expect(within(timeline).getByText('You are here', { exact: false })).toBeInTheDocument()
   })
@@ -114,7 +81,7 @@ describe('story pedagogy (US-5.7)', () => {
 describe('explorer log (US-5.8)', () => {
   it('records the world visited and the story finished, and awards badges', async () => {
     renderRoute('/explore/mars')
-    await screen.findByRole('heading', { level: 3, name: 'Test Mission' })
+    await screen.findByRole('heading', { level: 2, name: 'Choose a machine' })
     expect(JSON.parse(window.localStorage.getItem('aeroreborn.explorer-log')!)).toMatchObject({ worlds: ['mars'] })
 
     renderRoute('/stories/story-a?step=6')

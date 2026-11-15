@@ -180,6 +180,18 @@ describe('content API', () => {
     for (const entry of res.body) expect(entry.date.sourceIds.length).toBeGreaterThan(0)
   })
 
+  it('GET /api/machines/:id gives the machine lifespan, localized, with its sources (US-5.12)', async () => {
+    const res = await request(app).get('/api/machines/opportunity?lang=fr')
+    expect(res.status).toBe(200)
+    const life = res.body.lifespan
+    expect(life.planned.value).toEqual({ amount: 90, unit: 'sols' })
+    expect(life.lastContact.value).toBe('2018-06-10')
+    expect(life.missionEnd.value).toBe('2019-02-13')
+    expect(life.achievements[0].value).toMatch(/kilomètres/)
+    const sourceIds = res.body.sources.map((s: { id: string }) => s.id)
+    expect(sourceIds).toContain('jpl-opportunity-end-2019')
+  })
+
   it('GET /api/machines/:id names relation ends and resolves the sources they cite', async () => {
     const res = await request(app).get('/api/machines/surveyor-3-lander')
     const sourceIds = new Set(res.body.sources.map((s: { id: string }) => s.id))

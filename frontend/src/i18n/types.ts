@@ -12,7 +12,8 @@ type Leaves<T, Prefix extends string = ''> = {
 
 export type MessageKey = Leaves<Messages>
 
-export type Locale = 'en' | 'fr'
+/** Wolof (`wo`) covers the interface; content is served in French until translated (US-5.12). */
+export type Locale = 'en' | 'fr' | 'wo'
 
 export type TranslateVars = Record<string, string | number>
 

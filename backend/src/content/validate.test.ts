@@ -126,6 +126,35 @@ describe('content integrity (rules)', () => {
     expect(errorsOf(c)).toContainEqual(expect.stringContaining('depiction must be one of'))
   })
 
+  it('keeps every machine lifespan sourced and in draft until a human reviews it (V16)', () => {
+    const lives = real.machines.flatMap((m) => (m.lifespan ? [m.lifespan] : []))
+    expect(lives).toHaveLength(real.machines.length)
+    expect(lives.every((l) => l.status === 'draft')).toBe(true)
+    expect(validateContent(real).warnings.some((w) => w.includes('lifespan: draft'))).toBe(true)
+  })
+
+  it('rejects a lifespan with a bad date, an end before arrival, or an end on a working machine (V16)', () => {
+    const c = clone()
+    const spirit = c.machines.find((m) => m.id === 'spirit')!
+    spirit.lifespan!.lastContact = { value: '2010-03', sourceIds: ['nssdca-2003-027a'] }
+    spirit.lifespan!.missionEnd = { value: '1999-01-01', sourceIds: ['nssdca-2003-027a'] }
+    const lrrr = c.machines.find((m) => m.id === 'apollo-11-lrrr')!
+    lrrr.lifespan!.missionEnd = { value: '2020-01-01', sourceIds: ['jpl-llr-2004'] }
+    const errors = errorsOf(c).join(' | ')
+    expect(errors).toMatch(/spirit\.lifespan\.lastContact: must be a full date/)
+    expect(errors).toMatch(/spirit\.lifespan\.missionEnd: ends before the machine arrived/)
+    expect(errors).toMatch(/apollo-11-lrrr\.lifespan: a machine still working has no end date/)
+  })
+
+  it('rejects a lifespan fact without source or with an unknown unit (V16)', () => {
+    const c = clone()
+    const ingenuity = c.machines.find((m) => m.id === 'ingenuity')!
+    ingenuity.lifespan!.planned = { value: { amount: 5, unit: 'hops' as never }, sourceIds: [] }
+    const errors = errorsOf(c).join(' | ')
+    expect(errors).toMatch(/ingenuity\.lifespan\.planned/)
+    expect(errors).toMatch(/unknown unit "hops"/)
+  })
+
   it('rejects a timeline event without source', () => {
     const c = clone()
     c.missions[0]!.timeline[0]!.date.sourceIds = []
