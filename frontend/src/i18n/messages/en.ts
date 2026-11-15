@@ -7,6 +7,8 @@ export const en = {
   app: {
     name: 'AeroReborn',
     documentTitle: '{page} · AeroReborn',
+    description:
+      'An independent, educational journey through the machines left on the Moon and Mars: their missions, their discoveries and what they passed on. Every fact comes from NASA sources.',
     skipToContent: 'Skip to content',
     disclaimer: 'Independent project, not affiliated with or endorsed by NASA.',
   },

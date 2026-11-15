@@ -45,7 +45,7 @@ function DestinationView({ destinationId }: { destinationId: DestinationId }) {
   const name = t(`bodies.${destinationId}.name`)
   const destination = useApi(`destination:${destinationId}`, (lang, signal) => api.destination(destinationId, lang, signal))
   const other = DESTINATION_IDS.find((id) => id !== destinationId)
-  useDocumentTitle(name)
+  useDocumentTitle(name, destination.status === 'success' ? destination.data.intro : null)
   useEffect(() => record('worlds', destinationId), [destinationId])
 
   const railItems = [

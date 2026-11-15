@@ -5,6 +5,8 @@ export const fr: Messages = {
   app: {
     name: 'AeroReborn',
     documentTitle: '{page} · AeroReborn',
+    description:
+      'Un voyage éducatif et indépendant parmi les machines laissées sur la Lune et sur Mars : leurs missions, leurs découvertes et ce qu’elles ont transmis. Chaque fait vient de sources NASA.',
     skipToContent: 'Aller au contenu',
     disclaimer: 'Projet indépendant, ni affilié à la NASA ni approuvé par elle.',
   },

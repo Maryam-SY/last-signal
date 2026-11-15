@@ -1190,24 +1190,18 @@ html.depth-mode::-webkit-scrollbar {
     .scene-blend {
       animation: scene-blend linear both;
       animation-timeline: view();
-      animation-range: entry 0% exit 100%;
+      animation-range: entry 0% entry 45%;
     }
   }
 }
 @keyframes scene-blend {
-  0% {
+  from {
     opacity: 0;
     transform: translateY(6vh);
   }
-  18% {
+  to {
     opacity: 1;
     transform: none;
-  }
-  85% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.25;
   }
 }
 /* The pinned photo flight fades in and out at its edges instead of starting with a cut. */
@@ -1215,24 +1209,10 @@ html.depth-mode::-webkit-scrollbar {
   mask-image: linear-gradient(to bottom, transparent 0, black 9%, black 91%, transparent 100%);
 }
 
-/* US-5.13 — phones: the picture is the background of the text, under a mask that keeps the
-   text readable (dark at the bottom where the text sits, clear at the top). */
-.flight-backdrop-image {
-  opacity: 0;
-  transform: scale(1.06);
-  transition:
-    opacity 700ms ease,
-    transform 6s ease-out;
-}
-.flight-backdrop-image.is-active {
-  opacity: 1;
-  transform: scale(1);
-}
-.flight-backdrop::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgb(5 7 13 / 0.35) 0%, rgb(5 7 13 / 0) 18%, rgb(5 7 13 / 0.62) 42%, rgb(5 7 13 / 0.92) 62%, rgb(5 7 13 / 0.97) 100%);
+/* Phones: the swipe feed — each moment's picture behind its text, under a mask that keeps
+   the text readable (dark at the bottom where the text sits, clear at the top). */
+.feed-shade {
+  background: linear-gradient(to bottom, rgb(5 7 13 / 0.35) 0%, rgb(5 7 13 / 0) 18%, rgb(5 7 13 / 0.55) 42%, rgb(5 7 13 / 0.9) 62%, rgb(5 7 13 / 0.97) 100%);
 }
 .flight-panel {
   color: var(--cosmos-starlight);
@@ -1244,13 +1224,6 @@ html.depth-mode::-webkit-scrollbar {
     border: 1px solid rgb(148 163 184 / 0.18);
     box-shadow: 0 30px 70px -30px rgb(0 0 0 / 0.9);
     text-shadow: none;
-  }
-}
-@media (max-width: 1023.98px) {
-  /* The 3D corridor stays for large screens; on phones the reading panel sits on the photo. */
-  .flight-panel {
-    padding-left: 0;
-    padding-right: 0;
   }
 }
 .slide-backdrop::after {
@@ -1268,7 +1241,7 @@ html.depth-mode::-webkit-scrollbar {
 /* US-5.13 — scroll length per flight moment; phones: shorter, and each moment snaps into place. */
 .photo-flight {
   --flight-per: 0.7;
-  /* One more screen while the pinned stage scrolls away (wide screens). */
+  /* One more screen while the pinned stage scrolls away. */
   --flight-tail: 1;
 }
 /* One wheel notch or swipe = one moment: the page settles on each snap point. */
@@ -1297,17 +1270,10 @@ html:has(.photo-flight) {
 html[data-flight-snap] {
   scroll-snap-type: y mandatory;
 }
-html[data-flight-snap] .flight-snap,
+html[data-flight-snap] .feed-slide,
 html[data-flight-snap] .flight-snap-edge {
   scroll-snap-align: start;
   scroll-snap-stop: always;
-}
-@media (max-width: 1023.98px) {
-  .photo-flight {
-    /* Moment i is exactly i screens down; the rest of the page one screen after the last. */
-    --flight-per: 1;
-    --flight-tail: 0;
-  }
 }
 
 /* US-5.13: the reading panel is as tall as the text in front only (the other moments are laid
@@ -1356,12 +1322,6 @@ html[data-flight-snap] .flight-snap-edge {
   .cinema-grain {
     animation: grain-breathe 1.6s steps(4) infinite;
   }
-}
-/* Phones: the small copy under a background photo is not blurred (a full-screen blur filter
-   costs a lot of memory on iPhone). */
-.flight-backdrop .flight-preview {
-  filter: none;
-  transform: none;
 }
 /* Phones: a still grain the size of the screen (no animated layer larger than the screen). */
 @media (pointer: coarse), (max-width: 1023.98px) {
@@ -1868,4 +1828,30 @@ html[data-flight-snap] .flight-snap-edge {
 .flight-preview {
   transform: scale(1.04);
   filter: blur(6px) saturate(1.1);
+}
+
+/* The AeroReborn mark: its two signal arcs light up in turn, faster when the logo is hovered. */
+.logo-wave-far {
+  opacity: 0.55;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .logo-wave {
+    animation: logo-signal 2.8s ease-in-out infinite;
+  }
+  .logo-wave-far {
+    animation-delay: 0.35s;
+  }
+  .group:hover .logo-wave,
+  .group:focus-visible .logo-wave {
+    animation-duration: 1.2s;
+  }
+}
+@keyframes logo-signal {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  30% {
+    opacity: 1;
+  }
 }

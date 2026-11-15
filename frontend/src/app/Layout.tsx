@@ -67,26 +67,25 @@ export function Layout() {
   )
 }
 
-/** Orbit mark: a world and its satellite. Decorative (the link carries the name). */
+/**
+ * The AeroReborn mark (2026-11-15): a lander shaped like the letter A, standing on a world's
+ * horizon and still sending its signal — every machine passed something on. Decorative (the
+ * link carries the name); the signal arcs light up in turn, unless motion is reduced.
+ */
 function LogoMark() {
   return (
-    <svg aria-hidden="true" viewBox="0 0 32 32" className="size-7 shrink-0">
-      <defs>
-        <radialGradient id="logo-world" cx="35%" cy="35%" r="70%">
-          <stop offset="0%" stopColor="#f1f5f9" />
-          <stop offset="55%" stopColor="#8b9dff" />
-          <stop offset="100%" stopColor="#1c2638" />
-        </radialGradient>
-      </defs>
-      <ellipse cx="16" cy="16" rx="14" ry="5.5" fill="none" stroke="#61d6e8" strokeOpacity="0.6" strokeWidth="1.2" transform="rotate(-24 16 16)" />
-      <circle cx="16" cy="16" r="7" fill="url(#logo-world)" />
-      <circle
-        cx="28.2"
-        cy="10.4"
-        r="1.8"
-        fill="#d97757"
-        className="origin-[16px_16px] motion-safe:animate-[spin_9s_linear_infinite] motion-safe:group-hover:animate-[spin_2s_linear_infinite]"
-      />
+    <svg aria-hidden="true" viewBox="0 0 64 64" className="logo-mark size-8 shrink-0">
+      <path d="M6 56 Q32 44 58 56" fill="none" stroke="#e5c58d" strokeWidth="2.4" strokeLinecap="round" opacity="0.85" />
+      <g fill="none" stroke="#f1f5f9" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M19 47 L30 20 L41 47" strokeWidth="4.8" />
+        <path d="M23.4 37 H36.6" strokeWidth="4" />
+        <path d="M15.5 47.5 H22.5 M37.5 47.5 H44.5" strokeWidth="3" />
+      </g>
+      <g fill="none" stroke="#61d6e8" strokeLinecap="round" strokeWidth="3.4">
+        <path className="logo-wave" d="M36 13.6 A9 9 0 0 1 40.2 22.5" />
+        <path className="logo-wave logo-wave-far" d="M40.5 7.8 A16 16 0 0 1 47.6 23.5" />
+      </g>
+      <circle cx="30" cy="20" r="3.8" fill="#61d6e8" />
     </svg>
   )
 }

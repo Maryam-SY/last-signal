@@ -68,7 +68,10 @@ function MachineView({ destinationId, machineId }: { destinationId: DestinationI
   // US-5.13: its story is told on this page (no separate "6 steps" page from here).
   const storyId = machine.status === 'success' ? (machine.data.storyTarget?.id ?? null) : null
   const story = useApi(`story:${storyId}`, (lang, signal) => api.story(storyId ?? '', lang, signal), { enabled: storyId !== null })
-  useDocumentTitle(machine.status === 'success' ? machine.data.name : t('machine.title'))
+  useDocumentTitle(
+    machine.status === 'success' ? machine.data.name : t('machine.title'),
+    machine.status === 'success' ? (machine.data.biography?.description.value ?? machine.data.scienceSummary?.value ?? null) : null,
+  )
   useEffect(() => record('machines', machineId), [machineId])
 
   if (machine.status === 'error' && machine.error instanceof ApiError && machine.error.status === 404) return <NotFoundPage />

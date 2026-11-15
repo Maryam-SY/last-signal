@@ -52,8 +52,149 @@ const clamp = (value: number, min = 0, max = 1) => Math.min(max, Math.max(min, v
  */
 export function PhotoFlight({ label, items, className }: PhotoFlightProps) {
   const reduced = useReducedMotion()
+  const wide = useWideScreen()
   if (items.length === 0) return null
-  return reduced ? <StaticMoments label={label} items={items} className={className} /> : <Flight label={label} items={items} className={className} />
+  if (reduced) return <StaticMoments label={label} items={items} className={className} />
+  return wide ? <Flight label={label} items={items} className={className} /> : <PhoneFeed label={label} items={items} className={className} />
+}
+
+/** Wide screens fly down the corridor; phones and tablets swipe a feed (same breakpoint as `lg:`). */
+function useWideScreen(): boolean {
+  const [wide, setWide] = useState(() => typeof window === 'undefined' || !window.matchMedia || window.matchMedia(WIDE).matches)
+  useEffect(() => {
+    if (!window.matchMedia) return
+    const query = window.matchMedia(WIDE)
+    const update = () => setWide(query.matches)
+    query.addEventListener('change', update)
+    return () => query.removeEventListener('change', update)
+  }, [])
+  return wide
+}
+
+/**
+ * Phones and tablets, like a feed of short videos (team requests: "like TikTok", then "the
+ * swipe is slow"): every moment is a real full-screen slide, its picture behind its text, that
+ * moves with the finger. While the feed fills the screen the page stops on every slide (one
+ * swipe = one moment); elsewhere it scrolls freely. Only the slides next to the one in front
+ * get their picture, shrunk before display (iPhone memory).
+ */
+function PhoneFeed({ label, items, className }: PhotoFlightProps) {
+  const { t } = useTranslation()
+  const listRef = useRef<HTMLOListElement>(null)
+  const slideRefs = useRef<Array<HTMLLIElement | null>>([])
+  const [current, setCurrent] = useState(0)
+  const [near, setNear] = useState(() => typeof IntersectionObserver === 'undefined')
+  const [zoom, setZoom] = useState<Media | null>(null)
+  const [failed, setFailed] = useState<ReadonlySet<string>>(new Set())
+  const count = items.length
+  const pad = (n: number) => String(n).padStart(2, '0')
+
+  useEffect(() => {
+    const list = listRef.current
+    if (!list || near) return
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (!entries[0]?.isIntersecting) return
+        setNear(true)
+        observer.disconnect()
+      },
+      { rootMargin: '150% 0px' },
+    )
+    observer.observe(list)
+    return () => observer.disconnect()
+  }, [near])
+
+  // Read-along (US-5.12): the narration reaches a moment → bring its slide to the screen.
+  useEffect(() => {
+    const unregister = slideRefs.current.map((slide) =>
+      slide ? setBringIntoView(slide, (behavior) => slide.scrollIntoView({ behavior, block: 'start' })) : undefined,
+    )
+    return () => unregister.forEach((off) => off?.())
+  }, [count])
+
+  const feed = useRef(false)
+  useEffect(
+    () => () => {
+      if (feed.current) delete document.documentElement.dataset.flightSnap
+    },
+    [],
+  )
+
+  useScrollFrame(({ viewportH }) => {
+    const list = listRef.current
+    if (!list) return
+    const rect = list.getBoundingClientRect()
+    // Stop on every slide only while the feed fills most of the screen.
+    const on = rect.top < viewportH * 0.6 && rect.bottom > viewportH * 0.4
+    if (on !== feed.current) {
+      feed.current = on
+      if (on) document.documentElement.dataset.flightSnap = ''
+      else delete document.documentElement.dataset.flightSnap
+    }
+    if (rect.bottom < 0 || rect.top > viewportH) return
+    const middle = viewportH / 2
+    const index = slideRefs.current.findIndex((slide) => {
+      const box = slide?.getBoundingClientRect()
+      return box ? box.top <= middle && box.bottom > middle : false
+    })
+    if (index >= 0) setCurrent((previous) => (previous === index ? previous : index))
+  })
+
+  return (
+    <div className={cn('phone-feed relative', className)}>
+      {/* A stop one screen before the feed, so a swipe up from the first slide can leave it. */}
+      <span aria-hidden="true" className="flight-snap-edge" style={{ top: '-100dvh' }} />
+      <ol ref={listRef} aria-label={label}>
+        {items.map((item, index) => {
+          const media = item.media && !failed.has(item.id) ? item.media : undefined
+          const loaded = near && Math.abs(index - current) <= 1
+          return (
+            <li
+              key={item.id}
+              ref={(element) => {
+                slideRefs.current[index] = element
+              }}
+              className={cn('feed-slide relative flex min-h-dvh flex-col justify-end overflow-hidden', index === current && 'is-current')}
+            >
+              {media && loaded && (
+                <div aria-hidden="true" className="absolute inset-0">
+                  <img src={cardSrc(media)} alt="" decoding="async" className="absolute inset-0 size-full object-cover" />
+                  <FlightImage url={sceneSrc(media)} near onError={() => setFailed((previous) => new Set(previous).add(item.id))} />
+                </div>
+              )}
+              <div aria-hidden="true" className="feed-shade absolute inset-0" />
+              {media && (
+                <span className="absolute top-20 left-4">
+                  <DepictionBadge depiction={media.depiction} />
+                </span>
+              )}
+              {media && (
+                <button
+                  type="button"
+                  onClick={() => setZoom(media)}
+                  aria-label={t('lightbox.open')}
+                  className="glass-blur absolute top-20 right-4 inline-flex size-11 items-center justify-center rounded-full text-starlight transition-colors hover:border-world hover:text-world sm:right-10"
+                >
+                  <ZoomIn aria-hidden="true" className="size-5" />
+                </button>
+              )}
+              <div className="flight-panel feed-text relative px-5 pt-32 pb-[max(1.75rem,env(safe-area-inset-bottom))] sm:px-10">
+                {item.hud && <p className="flight-hud mb-2 font-mono text-xs tracking-[0.2em] text-world uppercase">{item.hud}</p>}
+                <p aria-hidden="true" className="mb-3 flex items-baseline gap-2 font-mono text-xs tracking-[0.3em] text-world">
+                  <span>{pad(index + 1)}</span>
+                  <span className="text-moon-dust">/ {pad(count)}</span>
+                </p>
+                {item.content}
+              </div>
+            </li>
+          )
+        })}
+      </ol>
+      {/* And a stop just after it: the next swipe brings the rest of the page. */}
+      <span aria-hidden="true" className="flight-snap-edge" style={{ top: '100%' }} />
+      <Lightbox media={zoom} onClose={() => setZoom(null)} />
+    </div>
+  )
 }
 
 function StaticMoments({ label, items, className }: PhotoFlightProps) {
@@ -91,18 +232,6 @@ function Flight({ label, items, className }: PhotoFlightProps) {
   // Pictures are fetched only when the flight is about to be reached.
   const [near, setNear] = useState(() => typeof IntersectionObserver === 'undefined')
   const count = items.length
-  // Wide screens show the corridor of pictures, phones and tablets the picture as background:
-  // a hidden layout must not download its pictures (CSS hiding does not stop the download).
-  const [wide, setWide] = useState(() => typeof window === 'undefined' || !window.matchMedia || window.matchMedia(WIDE).matches)
-
-  useEffect(() => {
-    if (!window.matchMedia) return
-    const query = window.matchMedia(WIDE)
-    const update = () => setWide(query.matches)
-    query.addEventListener('change', update)
-    return () => query.removeEventListener('change', update)
-  }, [])
-
   useEffect(() => {
     const section = sectionRef.current
     if (!section || near) return
@@ -143,50 +272,26 @@ function Flight({ label, items, className }: PhotoFlightProps) {
         ? setBringIntoView(item, (behavior) => {
             const rect = section.getBoundingClientRect()
             const progress = clamp((index + 0.02) / count)
-            const top = wide
-              ? window.scrollY + rect.top + progress * Math.max(1, rect.height - window.innerHeight)
-              : window.scrollY + rect.top + (index * rect.height) / count
+            const top = window.scrollY + rect.top + progress * Math.max(1, rect.height - window.innerHeight)
             window.scrollTo({ top, behavior })
           })
         : undefined,
     )
     return () => unregister.forEach((off) => off?.())
-  }, [count, wide])
-
-  // Phones, like a feed of short videos: while the stage is pinned, the page must stop on
-  // every moment (one swipe = one moment), and only there — elsewhere it scrolls freely.
-  const feed = useRef(false)
-  const setFeed = (on: boolean) => {
-    if (feed.current === on) return
-    feed.current = on
-    if (on) document.documentElement.dataset.flightSnap = ''
-    else delete document.documentElement.dataset.flightSnap
-  }
-  const setFeedRef = useRef(setFeed)
-  useEffect(() => {
-    setFeedRef.current = setFeed
-  })
-  useEffect(() => () => setFeedRef.current(false), [])
+  }, [count])
 
   useScrollFrame(({ viewportH }) => {
     const section = sectionRef.current
     const world = worldRef.current
     if (!section || !world) return
     const rect = section.getBoundingClientRect()
-    // On as soon as the flight fills most of the screen (from above or from below), so the
-    // first swipe into it lands on its first or last moment instead of skipping it.
-    setFeed(!wide && rect.top < viewportH * 0.6 && rect.bottom > viewportH * 0.4)
     if (rect.bottom < -viewportH || rect.top > viewportH * 1.5) return
 
     // 0 → 1 while the pinned stage is crossed. US-5.15: no continuous zoom any more — the
     // scroll only decides WHICH moment is in front; the change itself is a clean transition
     // (CSS), the pictures keep their size.
     const progress = clamp(-rect.top / Math.max(1, rect.height - viewportH))
-    // Phones: one screen per moment (the section is `count` screens tall), measured on the
-    // section itself so iOS's moving toolbar (100vh ≠ innerHeight) cannot shift the count.
-    const current = wide
-      ? Math.min(count - 1, Math.floor(progress * count + 0.0001))
-      : Math.min(count - 1, Math.max(0, Math.floor((-rect.top + 2) / (rect.height / count))))
+    const current = Math.min(count - 1, Math.floor(progress * count + 0.0001))
     if (current !== active.current) {
       const previous = active.current
       active.current = current
@@ -225,42 +330,16 @@ function Flight({ label, items, className }: PhotoFlightProps) {
       className={cn('photo-flight relative', className)}
       style={{ '--count': count, height: 'calc((var(--count) * var(--flight-per) + var(--flight-tail)) * 100vh)' } as CSSProperties}
     >
-      {/* Phones: one screen and one stop per moment (one swipe = one moment), plus a stop just
-          before and just after the flight so a swipe can leave it in both directions. */}
-      {!wide && <span aria-hidden="true" className="flight-snap-edge" style={{ top: '-100vh' }} />}
-      {!wide && <span aria-hidden="true" className="flight-snap-edge" style={{ top: '100%' }} />}
       {items.map((item, index) => (
         <span
           key={`snap-${item.id}`}
           aria-hidden="true"
           className="flight-snap"
-          style={{
-            top: wide ? `calc(var(--count) * var(--flight-per) * 100vh * ${((index + 0.02) / count).toFixed(5)})` : `${((index / count) * 100).toFixed(4)}%`,
-          }}
+          style={{ top: `calc(var(--count) * var(--flight-per) * 100vh * ${((index + 0.02) / count).toFixed(5)})` }}
         />
       ))}
       <div className="photo-flight-stage sticky top-0 h-dvh overflow-hidden" style={{ perspective: `${PERSPECTIVE}px` }}>
         {/* The corridor of pictures (decorative: the list below carries the same content). */}
-        {/* Phones and tablets: the moment's picture is the background of its text, under a
-            dark mask; pictures next to the one in front are loaded ahead. */}
-        <div aria-hidden="true" className="flight-backdrop absolute inset-0 lg:hidden">
-          {items.map((item, index) =>
-            item.media && !wide && Math.abs(index - shown) <= 1 ? (
-              // Shrunk to MAX_SIDE before display, like the corridor: some NASA originals are
-              // 5000 px wide (~70 MB once decoded), three at once closed Safari on iPhone.
-              <div key={item.id} className={cn('flight-backdrop-image absolute inset-0', index === shown && 'is-active')}>
-                <img src={cardSrc(item.media)} alt="" aria-hidden="true" decoding="async" className="flight-preview absolute inset-0 size-full object-cover" />
-                <FlightImage url={sceneSrc(item.media)} near onError={() => setFailed((previous) => new Set(previous).add(item.id))} />
-              </div>
-            ) : null,
-          )}
-          {items[shown]?.media && (
-            <span className="absolute top-20 left-4">
-              <DepictionBadge depiction={items[shown]!.media!.depiction} />
-            </span>
-          )}
-        </div>
-
         <div ref={worldRef} aria-hidden="true" className="photo-flight-world absolute inset-0 max-lg:hidden">
           {items.map((item, index) => {
             if (!item.media || failed.has(item.id)) return null
@@ -280,10 +359,10 @@ function Flight({ label, items, className }: PhotoFlightProps) {
                 {/* A small copy of the picture shows at once; the large one fades in over it. Only
                     the pictures around the one in front are downloaded: a page of 48 pictures no
                     longer asks for all of them at once on arrival (slow connections lagged). */}
-                {near && wide && index >= shown - 2 && index <= shown + LOOK_AHEAD + 3 && (
+                {near && index >= shown - 2 && index <= shown + LOOK_AHEAD + 3 && (
                   <img src={cardSrc(item.media)} alt="" aria-hidden="true" decoding="async" className="flight-preview absolute inset-0 size-full object-cover" />
                 )}
-                {near && wide && index >= shown - 1 && index <= shown + LOOK_AHEAD && (
+                {near && index >= shown - 1 && index <= shown + LOOK_AHEAD && (
                   <FlightImage url={sceneSrc(item.media)} near onError={() => setFailed((previous) => new Set(previous).add(item.id))} />
                 )}
                 <span className="absolute top-3 left-3">

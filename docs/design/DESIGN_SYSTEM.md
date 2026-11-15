@@ -88,3 +88,10 @@ Le guide fournit des couleurs par **famille d'objets** (étoiles, planètes roch
 
 - Conserver la variable `--radius` existante (0,625 rem) et l'échelle d'espacement Tailwind.
 - Espacement minimal entre cibles tactiles : 8 px.
+
+## 6. Logo (2026-11-15)
+
+- **Idée** : un atterrisseur en forme de lettre **A**, posé sur l'horizon d'un monde, qui **émet encore son signal** — chaque machine a transmis quelque chose. Pas de logo ni d'élément graphique de la NASA.
+- **Couleurs** : A en `starlight` (#f1f5f9), balise et ondes en `stellar-cyan` (#61d6e8, l'onde lointaine à 55 %), horizon en `stellar-gold` (#e5c58d), fond de tuile du `#18223a` au `void-black`.
+- **Fichiers** (`frontend/public/`) : `favicon.svg` (tuile arrondie), `favicon.ico` (16, 32, 48), `apple-touch-icon.png` (180, plein cadre), `icon-192.png`, `icon-512.png`, `icon-maskable-512.png` (dessin dans la zone sûre de 80 %, pieds sur l'horizon), `og-image.jpg` (1200 × 630, aperçu de partage). Dans l'en-tête : `LogoMark` (`app/Layout.tsx`), version sans tuile ; les deux ondes s'allument tour à tour (coupé sous `prefers-reduced-motion`).
+- **Lisibilité** : reconnaissable à 16 px (vérifié sur fond sombre et clair).
