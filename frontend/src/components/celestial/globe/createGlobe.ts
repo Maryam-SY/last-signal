@@ -17,6 +17,7 @@ import {
   Vector3,
   WebGLRenderer,
 } from 'three'
+import { liteGraphics } from '@/lib/device'
 import type { GlobeConfig } from '@/content/celestialBodies'
 
 /**
@@ -100,12 +101,28 @@ const ATMOSPHERE_FRAGMENT = /* glsl */ `
 const MAX_CSS_SIZE = 720
 
 export function globePixelRatio(): number {
-  return Math.min(window.devicePixelRatio || 1, 2)
+  return Math.min(window.devicePixelRatio || 1, liteGraphics() ? 1.5 : 2)
 }
 
 /** Picks the 4k map when the globe is drawn larger than ~760 device pixels. */
 export function globeMapUrl(config: GlobeConfig, devicePixels: number): string {
-  return config.mapHd && devicePixels > 760 ? config.mapHd : config.map
+  return config.mapHd && devicePixels > 760 && !liteGraphics() ? config.mapHd : config.map
+}
+
+/**
+ * Phones: the map is shrunk to 1024 px wide before it reaches the GPU (4× less memory than the
+ * 2k map; a globe on a phone is under 600 device pixels wide, the difference does not show).
+ */
+function textureSource(image: HTMLImageElement, lite: boolean): HTMLImageElement | HTMLCanvasElement {
+  const maxWidth = 1024
+  if (!lite || image.naturalWidth <= maxWidth) return image
+  const canvas = document.createElement('canvas')
+  canvas.width = maxWidth
+  canvas.height = Math.round((image.naturalHeight * maxWidth) / image.naturalWidth)
+  const context = canvas.getContext('2d')
+  if (!context) return image
+  context.drawImage(image, 0, 0, canvas.width, canvas.height)
+  return canvas
 }
 
 const RIM_FRAGMENT = /* glsl */ `
@@ -121,7 +138,9 @@ const RIM_FRAGMENT = /* glsl */ `
 `
 
 export async function createGlobe(canvas: HTMLCanvasElement, config: GlobeConfig, mapUrl = config.map): Promise<GlobeInstance> {
-  const renderer = new WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'default' })
+  const lite = liteGraphics()
+  // Phones: no multisampling (the smaller, lighter scene stays smooth enough at 1.5×).
+  const renderer = new WebGLRenderer({ canvas, antialias: !lite, alpha: true, powerPreference: 'default' })
   renderer.outputColorSpace = SRGBColorSpace
   renderer.setClearColor(0x000000, 0)
 
@@ -142,19 +161,19 @@ export async function createGlobe(canvas: HTMLCanvasElement, config: GlobeConfig
     config.bump ? loadImage(config.bump).catch(() => null) : Promise.resolve(null),
   ])
 
-  const anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy())
-  const map = new Texture(mapImage)
+  const anisotropy = Math.min(lite ? 2 : 8, renderer.capabilities.getMaxAnisotropy())
+  const map = new Texture(textureSource(mapImage, lite))
   map.colorSpace = SRGBColorSpace
   map.anisotropy = anisotropy
   map.minFilter = LinearMipmapLinearFilter
   map.needsUpdate = true
-  const bumpMap = bumpImage ? new Texture(bumpImage) : null
+  const bumpMap = bumpImage ? new Texture(textureSource(bumpImage, lite)) : null
   if (bumpMap) {
     bumpMap.anisotropy = anisotropy
     bumpMap.needsUpdate = true
   }
 
-  const geometry = new SphereGeometry(1, 128, 96)
+  const geometry = lite ? new SphereGeometry(1, 64, 48) : new SphereGeometry(1, 128, 96)
   const material = new MeshStandardMaterial({
     map,
     bumpMap,
@@ -173,7 +192,7 @@ export async function createGlobe(canvas: HTMLCanvasElement, config: GlobeConfig
   scene.add(lean)
 
   // Cool rim light on the night side: the whole disc stays readable against the sky.
-  const rimGeometry = new SphereGeometry(1.004, 96, 64)
+  const rimGeometry = new SphereGeometry(1.004, lite ? 48 : 96, lite ? 32 : 64)
   const rimMaterial = new ShaderMaterial({
     vertexShader: ATMOSPHERE_VERTEX,
     fragmentShader: RIM_FRAGMENT,
@@ -186,7 +205,7 @@ export async function createGlobe(canvas: HTMLCanvasElement, config: GlobeConfig
 
   let atmosphere: { geometry: SphereGeometry; material: ShaderMaterial } | null = null
   if (config.atmosphere) {
-    const atmosphereGeometry = new SphereGeometry(1.06, 96, 64)
+    const atmosphereGeometry = new SphereGeometry(1.06, lite ? 48 : 96, lite ? 32 : 64)
     const atmosphereMaterial = new ShaderMaterial({
       vertexShader: ATMOSPHERE_VERTEX,
       fragmentShader: ATMOSPHERE_FRAGMENT,

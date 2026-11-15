@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type CSSProperties, type RefObject } from 'react'
 import type { CelestialBody } from '@/content/celestialBodies'
 import { useMotionLoop } from '@/hooks/useMotionLoop'
+import { liteGraphics } from '@/lib/device'
 import { cn } from '@/lib/utils'
 import type { GlobeInstance } from './globe/createGlobe'
 import { Planet, type PlanetHandle } from './Planet'
@@ -66,6 +67,14 @@ export function LivePlanet({
   /** The photo planet leaves the DOM once the globe has faded in over it. */
   const [photoRetired, setPhotoRetired] = useState(false)
   const useGlobe = body.globe !== undefined && canUseWebGL()
+  // Phones: a globe exists only while it is actually seen, and is released (its WebGL context
+  // and textures freed) a moment after it leaves the screen; the photo planet stands in.
+  const [lite] = useState(liteGraphics)
+  const [live, setLive] = useState(false)
+  // A released WebGL context stays lost on its canvas: each new globe gets a fresh <canvas>.
+  const [generation, setGeneration] = useState(0)
+  const liveRef = useRef(false)
+  const hiddenSince = useRef<number | null>(null)
   // US-5.13: worlds with a known rotation turn at their real relative speed (1 s = 1 h), always.
   const realSpin = body.rotationHours ? 360 / body.rotationHours : null
   const state = useRef({
@@ -101,7 +110,7 @@ export function LivePlanet({
   useEffect(() => {
     const config = body.globe
     const canvas = canvasRef.current
-    if (!useGlobe || !seen || !config || !canvas) return
+    if (!useGlobe || !seen || !config || !canvas || (lite && !live)) return
     let cancelled = false
     let instance: GlobeInstance | null = null
 
@@ -140,7 +149,7 @@ export function LivePlanet({
       instance?.dispose()
       globeRef.current = null
     }
-  }, [useGlobe, seen, body.globe, hd])
+  }, [useGlobe, seen, body.globe, hd, lite, live, generation])
 
   useEffect(() => {
     if (!globeReady) return
@@ -155,6 +164,28 @@ export function LivePlanet({
   }, [active])
 
   useMotionLoop(({ dt, velocity }) => {
+    if (lite) {
+      const layer = layerRef.current
+      const drawn = visibleRef.current && !(layer && Number(layer.style.opacity || '0') < 0.02)
+      if (drawn) {
+        hiddenSince.current = null
+        if (!liveRef.current) {
+          liveRef.current = true
+          setLive(true)
+        }
+      } else if (liveRef.current) {
+        const now = performance.now()
+        hiddenSince.current ??= now
+        if (now - hiddenSince.current > 1500) {
+          liveRef.current = false
+          globeRef.current = null
+          setLive(false)
+          setGeneration((value) => value + 1)
+          setGlobeReady(false)
+          setPhotoRetired(false)
+        }
+      }
+    }
     if (!visibleRef.current) return
     // Every scene of the home journey is "on screen"; only draw the ones the camera can see.
     const layer = layerRef.current
@@ -201,11 +232,12 @@ export function LivePlanet({
   return (
     <div ref={tiltRef} className={cn('relative aspect-square will-change-transform', className)} style={style}>
       {globeReady && (
-        // Soft light around the world, in its own colour.
+        // Soft light around the world, in its own colour (a wide gradient, no blur filter: a
+        // blurred layer per globe cost a lot of memory on phones).
         <div
           aria-hidden="true"
-          className="absolute inset-[8%] rounded-full blur-3xl"
-          style={{ background: `radial-gradient(circle, ${body.palette.base}50, transparent 70%)` }}
+          className="absolute -inset-[12%] rounded-full"
+          style={{ background: `radial-gradient(circle, ${body.palette.base}40 30%, transparent 68%)` }}
         />
       )}
       {!photoRetired && (
@@ -219,6 +251,7 @@ export function LivePlanet({
       )}
       {useGlobe && (
         <canvas
+          key={generation}
           ref={canvasRef}
           aria-hidden="true"
           className={cn(

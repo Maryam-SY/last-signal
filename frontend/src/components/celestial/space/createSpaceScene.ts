@@ -15,6 +15,7 @@ import {
   Vector2,
   WebGLRenderer,
 } from 'three'
+import { liteGraphics } from '@/lib/device'
 
 /**
  * The site's living sky (US-5.11): the NASA map of the Milky Way's glow (SVS "Deep Star Maps
@@ -282,8 +283,9 @@ export function createSpaceScene(canvas: HTMLCanvasElement, skyImage: HTMLImageE
     if (nextW === width && nextH === height) return
     width = nextW
     height = nextH
-    // A soft background: 1.5× is plenty, and keeps the fill cost low on retina screens.
-    const ratio = Math.min(window.devicePixelRatio || 1, 1.5)
+    // A soft background: 1.5× is plenty, and keeps the fill cost low on retina screens
+    // (1× on phones, to spare their memory).
+    const ratio = Math.min(window.devicePixelRatio || 1, liteGraphics() ? 1 : 1.5)
     renderer.setPixelRatio(ratio)
     renderer.setSize(width, height, false)
     camera.aspect = width / height

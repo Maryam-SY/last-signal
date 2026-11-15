@@ -1357,6 +1357,13 @@ html[data-flight-snap] .flight-snap-edge {
     animation: grain-breathe 1.6s steps(4) infinite;
   }
 }
+/* Phones: a still grain the size of the screen (no animated layer larger than the screen). */
+@media (pointer: coarse), (max-width: 1023.98px) {
+  .cinema-grain {
+    inset: 0;
+    animation: none !important;
+  }
+}
 @keyframes grain-breathe {
   0% {
     opacity: 0.045;
