@@ -16,6 +16,11 @@ export const fr: Messages = {
     about: 'À propos et sources',
     aboutShort: 'À propos',
     home: 'AeroReborn — accueil',
+    brandLine: 'Lune · Mars',
+    aboutHint: 'Sources, crédits, le projet',
+    menu: 'Menu',
+    menuTitle: 'Menu du site',
+    close: 'Fermer le menu',
   },
   lang: {
     label: 'Langue',
@@ -26,6 +31,13 @@ export const fr: Messages = {
   footer: {
     tagline: 'Lune · Mars — les machines que nous avons laissées',
     sources: 'Toutes les sources',
+    explore: 'Explorer',
+    project: 'Le projet',
+    journey: 'Le voyage',
+    credits: 'Crédits des images',
+    ai: 'Utilisation de l’IA',
+    top: 'Haut de page',
+    sourcesNote: 'Chaque fait affiché vient des archives de la NASA et il est sourcé ; chaque image est un original de la NASA.',
   },
   intro: {
     label: 'Introduction',

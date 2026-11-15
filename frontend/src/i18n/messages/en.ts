@@ -18,6 +18,11 @@ export const en = {
     about: 'About & Sources',
     aboutShort: 'About',
     home: 'AeroReborn — home',
+    brandLine: 'Moon · Mars',
+    aboutHint: 'Sources, credits, the project',
+    menu: 'Menu',
+    menuTitle: 'Site menu',
+    close: 'Close the menu',
   },
   lang: {
     label: 'Language',
@@ -28,6 +33,13 @@ export const en = {
   footer: {
     tagline: 'Moon · Mars — the machines we left behind',
     sources: 'All sources',
+    explore: 'Explore',
+    project: 'The project',
+    journey: 'The journey',
+    credits: 'Picture credits',
+    ai: 'Use of AI',
+    top: 'Back to top',
+    sourcesNote: 'Every fact shown comes from NASA archives and is sourced; every picture is a NASA original.',
   },
   intro: {
     label: 'Introduction',

@@ -53,8 +53,10 @@ describe('routes', () => {
     renderRoute('/about')
     const nav = screen.getByRole('navigation', { name: 'Main' })
     expect(nav).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: 'About & Sources' })).toHaveAttribute('aria-current', 'page')
-    expect(screen.getByRole('link', { name: 'Explore' })).not.toHaveAttribute('aria-current')
+    // Header (2026-11-15): the two worlds and "About & Sources".
+    expect(within(nav).getByRole('link', { name: 'About & Sources' })).toHaveAttribute('aria-current', 'page')
+    expect(within(nav).getByRole('link', { name: 'Moon' })).not.toHaveAttribute('aria-current')
+    expect(within(nav).getByRole('link', { name: 'Mars' })).not.toHaveAttribute('aria-current')
   })
 
   it('offers a skip link to the main content', () => {
