@@ -3,6 +3,12 @@
   "installCommand": "npm ci --prefix frontend && npm ci --prefix backend",
   "buildCommand": "npm run build --prefix backend && npm run build --prefix frontend",
   "outputDirectory": "frontend/dist",
+  "git": {
+    "deploymentEnabled": {
+      "front": false,
+      "back": false
+    }
+  },
   "functions": {
     "api/index.mjs": {
       "includeFiles": "backend/content/**"
