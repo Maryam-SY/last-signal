@@ -74,6 +74,53 @@ export interface Machine {
   cover?: Media | null
   /** Planned life and real end (US-5.12); absent while the content does not tell it. */
   lifespan?: Lifespan | null
+  /** The machine's own life story (US-5.13); absent while the content does not tell it. */
+  biography?: Biography | null
+  parts?: MachineParts | null
+}
+
+/** One dated moment of a single machine's life, in full sentences (US-5.13). */
+export interface MachineChapter {
+  id: string
+  date: Sourced<string> | null
+  title: string
+  text: string
+  mediaIds: string[]
+  sourceIds: string[]
+}
+
+export interface Biography {
+  status: 'draft' | 'reviewed'
+  description: Sourced<string>
+  chapters: MachineChapter[]
+  /** What it brought to people on Earth or to human progress (US-5.13). */
+  forEarth?: EarthBenefit[]
+}
+
+export interface EarthBenefit {
+  id: string
+  title: string
+  text: string
+  mediaIds: string[]
+  sourceIds: string[]
+}
+
+/** Touch points on the machine's photo and 3D model (US-5.13, rule V18). */
+export interface MachineParts {
+  status: 'draft' | 'reviewed'
+  photoMediaId: string | null
+  modelMediaId: string | null
+  items: MachinePart[]
+}
+
+export interface MachinePart {
+  id: string
+  name: string
+  description: string
+  sourceIds: string[]
+  photo: { x: number; y: number } | null
+  modelNode: string | null
+  modelPosition?: { x: number; y: number; z: number } | null
 }
 
 export type LifespanUnit = 'days' | 'sols' | 'flights' | 'years'

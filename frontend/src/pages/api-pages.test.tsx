@@ -50,7 +50,8 @@ describe('machine page (US-5.12)', () => {
     expect(within(life).getByText('90 Martian days')).toBeInTheDocument()
     expect(within(life).getByText('6 years, 2 months')).toBeInTheDocument()
     expect(within(life).getByText('It drove 7.73 kilometres.')).toBeInTheDocument()
-    expect(within(life).getByText(/being checked by our team/)).toBeInTheDocument()
+    // No "being checked against its sources" line inside the story: that lives on the About page.
+    expect(within(life).queryByText(/being checked by our team/)).not.toBeInTheDocument()
     // What it passed on, both ends named; then its last signal.
     const legacy = screen.getByRole('region', { name: 'What it passed on' })
     expect(within(legacy).getByText('The airbag landing system.')).toBeInTheDocument()
@@ -59,7 +60,11 @@ describe('machine page (US-5.12)', () => {
     expect(within(end).getByText('22 March 2010')).toBeInTheDocument()
     // Sources are listed on the About page only (team decision), never inside the story.
     expect(screen.queryByRole('link', { name: /Test source page/ })).not.toBeInTheDocument()
-    expect(screen.getByRole('link', { name: 'Read its story in 6 steps' })).toHaveAttribute('href', '/stories/story-a?from=machine-a')
+    // US-5.13: its story is told on the page itself, as slides — no "6 steps" button.
+    expect(screen.queryByRole('link', { name: /6 steps/ })).not.toBeInTheDocument()
+    const story = await screen.findByRole('region', { name: 'The test story' })
+    expect(within(story).getByText('Text of step signal.')).toBeInTheDocument()
+    expect(within(story).getByText('Text of step your-turn.')).toBeInTheDocument()
   })
 
   it('flies through the pictures of what it did, keeping them readable (US-5.11)', async () => {
@@ -85,6 +90,54 @@ describe('machine page (US-5.12)', () => {
     const viewer = await waitForViewer()
     expect(viewer).toHaveAttribute('src', 'https://example.org/models/Test%20Rover.glb')
     expect(screen.getByText('Computer image — not a photo')).toBeInTheDocument()
+  })
+
+  it('tells its own biography when the content has one, never its twin steps (US-5.13)', async () => {
+    const original = globalThis.fetch
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (input: RequestInfo | URL) => {
+        const response = await original(input)
+        if (!new URL(String(input), 'http://localhost').pathname.endsWith('/api/machines/machine-a')) return response
+        const machine = await response.json()
+        machine.biography = {
+          status: 'draft',
+          description: { value: 'Test Rover is a six-wheeled robot geologist powered by the Sun.', sourceIds: ['src-1'] },
+          chapters: [
+            {
+              id: 'drive',
+              date: { value: '2004-01-15', sourceIds: ['src-1'] },
+              title: 'It rolls off',
+              text: 'Eleven days after landing, it drives onto the ground for the first time.',
+              mediaIds: [machine.media[0].id],
+              sourceIds: ['src-1'],
+            },
+          ],
+          forEarth: [{ id: 'airbags', title: 'Safer landings', text: 'Its airbags showed how to land softly.', mediaIds: [], sourceIds: ['src-1'] }],
+        }
+        machine.parts = {
+          status: 'draft',
+          photoMediaId: machine.media[0].id,
+          // Parts are shown only for machines with a real 3D model (team decision, US-5.13).
+          modelMediaId: 'media-model',
+          items: [{ id: 'mast', name: 'Camera mast', description: 'Holds its two eyes, high above the ground.', sourceIds: ['src-1'], photo: { x: 50, y: 20 }, modelNode: null }],
+        }
+        return new Response(JSON.stringify(machine), { status: 200, headers: { 'Content-Type': 'application/json' } })
+      }),
+    )
+    renderRoute('/explore/mars/machine-a')
+    const who = await screen.findByRole('region', { name: 'Meet Test Rover' })
+    expect(within(who).getByText('Test Rover is a six-wheeled robot geologist powered by the Sun.')).toHaveAttribute('data-narrate')
+    const list = screen.getByRole('list', { name: 'In pictures: Test Rover' })
+    expect(within(list).getAllByRole('listitem')).toHaveLength(1)
+    expect(within(list).getByRole('heading', { name: 'It rolls off' })).toBeInTheDocument()
+    // What it brought to Earth, and its parts to touch on its portrait.
+    const earth = screen.getByRole('region', { name: 'What it brought back to us on Earth' })
+    expect(within(earth).getByText('Its airbags showed how to land softly.')).toBeInTheDocument()
+    const parts = within(who).getByRole('list', { name: 'Parts of the machine' })
+    await userEvent.setup().click(within(parts).getByRole('button', { name: 'Camera mast' }))
+    // Once under the photo (read by screen readers), once on the photo on large screens.
+    expect(within(who).getAllByText('Holds its two eyes, high above the ground.').length).toBeGreaterThan(0)
   })
 
   it('says when the machine is not on that world', async () => {
@@ -153,11 +206,11 @@ describe('story page (connected to the API)', () => {
     expect(screen.getByRole('link', { name: 'Test Rover' })).toHaveAttribute('href', '/explore/mars/machine-a')
   })
 
-  it('shows what was passed on at the relay step, with its evidence', async () => {
+  it('shows what was passed on at the relay step, without a "how do we know" line (US-5.13)', async () => {
     renderRoute('/stories/story-a?step=5')
     expect(await screen.findByRole('heading', { level: 3, name: 'What was passed on' })).toBeInTheDocument()
     expect(screen.getByText('The airbag landing system.')).toBeInTheDocument()
-    expect(screen.getByText('A test document says so.')).toBeInTheDocument()
+    expect(screen.queryByText('A test document says so.')).not.toBeInTheDocument()
   })
 
   it('offers a way back to the machine and to the other destination at the end', async () => {

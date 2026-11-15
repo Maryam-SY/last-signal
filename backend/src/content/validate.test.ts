@@ -155,6 +155,99 @@ describe('content integrity (rules)', () => {
     expect(errors).toMatch(/unknown unit "hops"/)
   })
 
+  const biography = (): NonNullable<Content['machines'][number]['biography']> => ({
+    status: 'draft',
+    description: { value: { en: 'A rover.', fr: 'Un rover.' }, sourceIds: ['nssdca-2003-032a'] },
+    chapters: [
+      {
+        id: 'landing',
+        date: { value: '2004-01-25', sourceIds: ['nssdca-2003-032a'] },
+        title: { en: 'Landing', fr: 'Atterrissage' },
+        text: { en: 'It lands.', fr: 'Il se pose.' },
+        mediaIds: ['mer-lion-king-panorama-pia05755'],
+        sourceIds: ['nssdca-2003-032a'],
+      },
+      {
+        id: 'blueberries',
+        date: { value: '2004-03', sourceIds: ['nasa-science-mer-highlights'] },
+        title: { en: 'Blueberries', fr: 'Myrtilles' },
+        text: { en: 'It finds them.', fr: 'Il les trouve.' },
+        mediaIds: ['mer-blueberries-pia19113'],
+        sourceIds: ['nasa-science-mer-highlights'],
+      },
+    ],
+  })
+
+  it('accepts a sourced machine biography in draft (V17)', () => {
+    const c = clone()
+    c.machines.find((m) => m.id === 'opportunity')!.biography = biography()
+    expect(errorsOf(c)).toEqual([])
+    expect(validateContent(c).warnings.some((w) => w.includes('opportunity.biography: draft'))).toBe(true)
+  })
+
+  it("rejects biography chapters out of order, unsourced, or showing another machine's picture (V17)", () => {
+    const c = clone()
+    const bio = biography()
+    bio.chapters.reverse()
+    bio.chapters[0]!.sourceIds = []
+    bio.chapters[1]!.mediaIds = ['nasa-lib-pia05044']
+    c.machines.find((m) => m.id === 'opportunity')!.biography = bio
+    const errors = errorsOf(c).join(' | ')
+    expect(errors).toMatch(/opportunity\.biography\/landing\.date: chapters must be in chronological order/)
+    expect(errors).toMatch(/opportunity\.biography\/blueberries\.sourceIds: needs at least 1 source/)
+    expect(errors).toMatch(/media "nasa-lib-pia05044" does not show this machine/)
+  })
+
+  it('accepts sourced "for Earth" items and parts placed on a photo of the machine (V17, V18)', () => {
+    const c = clone()
+    const opportunity = c.machines.find((m) => m.id === 'opportunity')!
+    opportunity.biography = {
+      ...biography(),
+      forEarth: [{ id: 'water', title: { en: 'Water', fr: 'Eau' }, text: { en: 'It showed water.', fr: 'Il a montré de l’eau.' }, mediaIds: [], sourceIds: ['nasa-science-mer-highlights'] }],
+    }
+    opportunity.parts = {
+      status: 'draft',
+      photoMediaId: 'mer-lion-king-panorama-pia05755',
+      modelMediaId: null,
+      items: [
+        {
+          id: 'pancam',
+          name: { en: 'Pancam', fr: 'Pancam' },
+          description: { en: 'Its eyes.', fr: 'Ses yeux.' },
+          sourceIds: ['nssdca-2003-032a'],
+          photo: { x: 40, y: 30 },
+          modelNode: null,
+        },
+      ],
+    }
+    expect(errorsOf(c)).toEqual([])
+    expect(validateContent(c).warnings.some((w) => w.includes('opportunity.parts: draft'))).toBe(true)
+  })
+
+  it("rejects parts out of the photo, unsourced, unplaced, or on another machine's photo (V18)", () => {
+    const c = clone()
+    const opportunity = c.machines.find((m) => m.id === 'opportunity')!
+    const part = (id: string, photo: { x: number; y: number } | null, sourceIds = ['nssdca-2003-032a']) => ({
+      id,
+      name: { en: id, fr: id },
+      description: { en: 'A part.', fr: 'Une pièce.' },
+      sourceIds,
+      photo,
+      modelNode: null,
+    })
+    opportunity.parts = {
+      status: 'draft',
+      photoMediaId: 'nasa-lib-pia05044',
+      modelMediaId: null,
+      items: [part('off-photo', { x: 140, y: 20 }), part('no-source', { x: 10, y: 10 }, []), part('nowhere', null)],
+    }
+    const errors = errorsOf(c).join(' | ')
+    expect(errors).toMatch(/photo "nasa-lib-pia05044" must exist and show this machine/)
+    expect(errors).toMatch(/off-photo: photo position must be in percent/)
+    expect(errors).toMatch(/no-source\.sourceIds: needs at least 1 source/)
+    expect(errors).toMatch(/nowhere: must be placed on the photo or on the 3D model/)
+  })
+
   it('rejects a timeline event without source', () => {
     const c = clone()
     c.missions[0]!.timeline[0]!.date.sourceIds = []

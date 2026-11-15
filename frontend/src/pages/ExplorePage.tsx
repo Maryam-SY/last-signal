@@ -97,19 +97,13 @@ function Departure({ revealed }: { revealed: boolean }) {
   })
 
   return (
-    <div className="mx-auto flex w-full max-w-5xl flex-col items-center px-4 text-center">
-      <p
-        className={cn('font-mono text-[0.6rem] tracking-[0.3em] text-stellar-cyan uppercase sm:text-[0.68rem] sm:tracking-[0.35em]', appear(300).className)}
-        style={appear(300).style}
-      >
-        {t('explore.eyebrow')}
-      </p>
-      <h1 className="text-glow mt-3 font-heading text-[clamp(2rem,min(7vw,8.5vh),5.5rem)] leading-[0.95] font-bold sm:mt-4">
+    <div className="mx-auto flex w-full max-w-6xl flex-col items-center px-4 text-center">
+      <h1 className="text-glow font-heading text-[clamp(2rem,min(7vw,8.5vh),5.5rem)] leading-[0.95] font-bold sm:mt-4">
         <ScatterText text={title} typed={revealed ? shown : 0} />
       </h1>
       <p
         className={cn(
-          'scatter-fade mt-3 hidden max-w-xl px-6 text-sm text-moon-dust sm:px-0 sm:mt-5 sm:text-base [@media(min-height:700px)]:block',
+          'scatter-fade text-legible mt-3 hidden max-w-xl px-6 text-sm text-starlight/85 sm:px-0 sm:mt-5 sm:text-base [@media(min-height:1050px)]:block',
           appear(1400).className,
         )}
         style={appear(1400).style}
@@ -117,36 +111,37 @@ function Departure({ revealed }: { revealed: boolean }) {
         {t('explore.intro')}
       </p>
 
-      <ul
-        aria-label={t('explore.destinationsLabel')}
-        className="mt-4 grid w-full max-w-3xl grid-cols-2 gap-2 sm:mt-8 sm:gap-10"
-      >
-        {DESTINATION_IDS.map((id, index) => (
-          <li key={id} className="portal-slot flex justify-center" data-side={id === 'moon' ? 'left' : 'right'}>
-            <div
-              className={cn(
-                'planet-glow flex w-full max-w-[min(100%,20rem)] justify-center transition-[opacity,transform] duration-1000 ease-out',
-                revealed ? 'scale-100 opacity-100' : 'scale-90 opacity-0',
-              )}
-              style={{ '--glow': id === 'moon' ? '#e2e8f0' : '#d97757', transitionDelay: `${index * 150}ms` } as CSSProperties}
+      <div className="relative mt-2 grid w-full grid-cols-2 items-center gap-2 sm:mt-6 sm:gap-8">
+        <ul aria-label={t('explore.destinationsLabel')} className="contents">
+          {DESTINATION_IDS.map((id, index) => (
+            <li
+              key={id}
+              className="portal-slot flex justify-center"
+              data-side={id === 'moon' ? 'left' : 'right'}
             >
-              <WorldPortal id={id} label={t(`destinations.${id}.cta`)} className="w-full" />
-            </div>
-          </li>
-        ))}
-      </ul>
+              <div
+                className={cn(
+                  'planet-glow flex w-full max-w-[min(100%,32rem)] justify-center transition-[opacity,transform] duration-1000 ease-out',
+                  revealed ? 'scale-100 opacity-100' : 'scale-90 opacity-0',
+                )}
+                style={{ '--glow': id === 'moon' ? '#e2e8f0' : '#d97757', transitionDelay: `${index * 150}ms` } as CSSProperties}
+              >
+                <WorldPortal id={id} label={t(`destinations.${id}.cta`)} className="w-full" />
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
 
       <HomeStats revealed={revealed} className={cn('scatter-fade', appear(1600).className)} style={appear(1600).style} />
 
+      {/* US-5.13: a clear invitation to scroll, bigger than a hint. */}
       <p
-        className={cn(
-          'scatter-fade mt-3 hidden items-center [@media(min-height:640px)]:flex gap-2 font-mono text-[0.6rem] tracking-[0.25em] text-moon-dust/80 uppercase sm:mt-6 sm:text-[0.68rem]',
-          appear(1800).className,
-        )}
+        className={cn('scroll-cue mt-3 flex flex-col items-center gap-2 sm:mt-6', appear(1800).className)}
         style={appear(1800).style}
       >
-        <ChevronsDown className="size-4 motion-safe:animate-bounce" />
-        {t('explore.scrollHint')}
+        <span className="font-heading text-base font-semibold tracking-wide text-starlight sm:text-lg">{t('explore.scrollHint')}</span>
+        <ChevronsDown aria-hidden="true" className="size-6 text-stellar-cyan motion-safe:animate-bounce" />
       </p>
     </div>
   )
@@ -167,7 +162,7 @@ function HomeStats({ revealed, className, style }: { revealed: boolean; classNam
   return (
     <dl
       aria-label={t('explore.statsLabel')}
-      className={cn('mt-4 hidden items-end justify-center gap-6 sm:gap-12 [@media(min-height:760px)]:flex', className)}
+      className={cn('mt-4 hidden items-end justify-center gap-6 sm:gap-12 [@media(min-height:1120px)]:flex', className)}
       style={style}
     >
       {stats.map((stat) => (

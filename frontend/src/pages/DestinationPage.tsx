@@ -12,7 +12,7 @@ import { Scene } from '@/components/destination/Scene'
 import { CountUp } from '@/components/motion/CountUp'
 import { ScrollProgress } from '@/components/motion/ScrollProgress'
 import { JourneyRail } from '@/components/navigation/JourneyRail'
-import { WorldsTimeline } from '@/components/timeline/WorldsTimeline'
+import { WorldTimeline } from '@/components/timeline/WorldTimeline'
 import { getBodyByDestination } from '@/content/celestialBodies'
 import { useApi } from '@/hooks/useApi'
 import { useDocumentTitle } from '@/hooks/useDocumentTitle'
@@ -119,9 +119,17 @@ function DestinationView({ destinationId }: { destinationId: DestinationId }) {
           </div>
         )}
 
-        <Scene id="timeline" eyebrow={t('timeline.eyebrow')} title={t('timeline.title')} intro={t('timeline.intro')}>
-          <WorldsTimeline current={destinationId} />
-        </Scene>
+        {/* US-5.13: the timeline of this world only. */}
+        {destination.status === 'success' && (
+          <Scene
+            id="timeline"
+            eyebrow={t('timeline.eyebrow')}
+            title={t('timeline.worldTitle', { destination: destination.data.name })}
+            intro={t('timeline.worldIntro', { destination: destination.data.name })}
+          >
+            <WorldTimeline destination={destination.data} />
+          </Scene>
+        )}
 
         {other && <NextWorld id={other} />}
       </div>

@@ -106,6 +106,12 @@ const mappedMachine: Machine = {
   cover: { ...photo, id: 'media-cover', alt: 'A lander on grey ground', machineIds: ['machine-m'] },
 }
 
+/** Dated steps of the Mars test mission, shown on the world's own timeline (US-5.13). */
+const marsEvents = [
+  { id: 'launch', date: { value: '1969-07-16', sourceIds: ['src-1'] }, title: 'Launch', description: 'A rocket leaves Earth.', mediaIds: [] },
+  { id: 'arrival', date: { value: '2004-01-04', sourceIds: ['src-1'] }, title: 'Arrival', description: 'The rover lands on Mars.', mediaIds: [] },
+]
+
 const destination = (id: 'moon' | 'mars', name: string): DestinationDetail => ({
   id,
   name,
@@ -126,7 +132,7 @@ const destination = (id: 'moon' | 'mars', name: string): DestinationDetail => ({
       mainStoryId: 'story-a',
       sourceIds: ['src-1'],
       order: 1,
-      timeline: [],
+      timeline: id === 'mars' ? marsEvents : [],
       machines: id === 'moon' ? [mappedMachine] : [machine],
       mainStory: { id: 'story-a', title: 'The test story', status: 'draft', missionIds: ['mission-a'] },
     },

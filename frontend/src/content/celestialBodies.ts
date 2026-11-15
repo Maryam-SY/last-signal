@@ -75,7 +75,16 @@ export interface CelestialBody {
   palette: PlanetPalette
   rings?: PlanetRing
   globe?: GlobeConfig
+  /**
+   * Sidereal rotation period in hours (one turn on itself), from the NASA NSSDCA planetary
+   * fact sheets (nssdc.gsfc.nasa.gov/planetary/factsheet/, consulted 2026-11-15). The globes
+   * spin at their real relative speed: 1 second on screen = 1 hour (US-5.13).
+   */
+  rotationHours?: number
 }
+
+/** Earth's sidereal rotation period (hours), NSSDCA Earth fact sheet: the reference to compare. */
+export const EARTH_ROTATION_HOURS = 23.9345
 
 export const CELESTIAL_BODIES: readonly CelestialBody[] = [
   {
@@ -95,6 +104,7 @@ export const CELESTIAL_BODIES: readonly CelestialBody[] = [
     image: '/planets/earth.webp',
     imageMode: 'sphere',
     palette: { light: '#8fd0ff', base: '#2f7fd1', dark: '#082a52', accent: '#5ec27a' },
+    rotationHours: EARTH_ROTATION_HOURS,
   },
   {
     id: 'moon',
@@ -110,6 +120,7 @@ export const CELESTIAL_BODIES: readonly CelestialBody[] = [
       bumpScale: 2.2,
       axialTilt: 6.7,
     },
+    rotationHours: 655.72,
   },
   {
     id: 'mars',
@@ -124,6 +135,7 @@ export const CELESTIAL_BODIES: readonly CelestialBody[] = [
       axialTilt: 25.2,
       atmosphere: { color: '#ffb186', strength: 1.9 },
     },
+    rotationHours: 24.6229,
   },
   {
     id: 'asteroids',

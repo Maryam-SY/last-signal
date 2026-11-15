@@ -243,5 +243,2912 @@
     "type": "nasa-mission-page",
     "publishedOn": null,
     "accessedOn": "2026-11-14"
+  },
+  {
+    "id": "nasa-images-details-ksc-03pd1897",
+    "organization": "NASA Image and Video Library",
+    "title": "KSC-03pd1897",
+    "url": "https://images.nasa.gov/details/KSC-03pd1897",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-adirondacks-true-self",
+    "organization": "NASA Photojournal",
+    "title": "Adirondack's True Self",
+    "url": "https://science.nasa.gov/photojournal/adirondacks-true-self/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-spirit-captures-two-dust-de",
+    "organization": "NASA Photojournal",
+    "title": "Spirit Captures Two Dust Devils On the Move",
+    "url": "https://science.nasa.gov/photojournal/spirit-captures-two-dust-devils-on-the-move/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-nasas-mars-rover-spirits-vi",
+    "organization": "NASA Photojournal",
+    "title": "NASA's Mars Rover Spirit's View Southward from Husband Hill",
+    "url": "https://science.nasa.gov/photojournal/nasas-mars-rover-spirits-view-southward-from-husband-hill/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-home-plate-evidence-for-an",
+    "organization": "NASA Photojournal",
+    "title": "'Home Plate' Evidence for an Explosive Past",
+    "url": "https://science.nasa.gov/photojournal/home-plate-evidence-for-an-explosive-past/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-silica-rich-soil-found-by-s",
+    "organization": "NASA Photojournal",
+    "title": "Silica-Rich Soil Found by Spirit",
+    "url": "https://science.nasa.gov/photojournal/silica-rich-soil-found-by-spirit/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-spirits-view-from-troy",
+    "organization": "NASA Photojournal",
+    "title": "Spirit's View from “Troy”",
+    "url": "https://science.nasa.gov/photojournal/spirits-view-from-troy/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-spirit-traverse-map-sol-247",
+    "organization": "NASA Photojournal",
+    "title": "Spirit Traverse Map, Sol 2471",
+    "url": "https://science.nasa.gov/photojournal/spirit-traverse-map-sol-2471/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-mer-nasa-celebrates-decade-of-mars-explo",
+    "organization": "NASA",
+    "title": "NASA Celebrates Decade of Mars Exploration by Spirit, Opportunity",
+    "url": "https://www.nasa.gov/missions/mer/nasa-celebrates-decade-of-mars-exploration-by-spirit-opportunity/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-adirondacks-inner-self",
+    "organization": "NASA Photojournal",
+    "title": "Adirondack's Inner Self",
+    "url": "https://science.nasa.gov/photojournal/adirondacks-inner-self/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-spirits-paige-panorama-of-t",
+    "organization": "NASA Photojournal",
+    "title": "Spirit's 'Paige' Panorama of the Interior of 'Home Plate'",
+    "url": "https://science.nasa.gov/photojournal/spirits-paige-panorama-of-the-interior-of-home-plate/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-spirit-slipping-in-soft-gro",
+    "organization": "NASA Photojournal",
+    "title": "Spirit Slipping in Soft Ground, Sol 1889",
+    "url": "https://science.nasa.gov/photojournal/spirit-slipping-in-soft-ground-sol-1889/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "jpl-images-pia12497-movement-during-backward",
+    "organization": "NASA Jet Propulsion Laboratory",
+    "title": "Movement During Backward Drive, Sols 2147 (PIA12497)",
+    "url": "https://www.jpl.nasa.gov/images/pia12497-movement-during-backward-drive-sols-2147/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "jpl-news-nasa-concludes-attempts-to-contact",
+    "organization": "NASA Jet Propulsion Laboratory",
+    "title": "NASA Concludes Attempts to Contact Mars Rover Spirit (24 May 2011)",
+    "url": "https://www.jpl.nasa.gov/news/nasa-concludes-attempts-to-contact-mars-rover-spirit/",
+    "type": "nasa-news",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-mgs-moc-image-of-mars-explo",
+    "organization": "NASA Photojournal",
+    "title": "MGS MOC Image of Mars Exploration Rover, Spirit, on Mars",
+    "url": "https://science.nasa.gov/photojournal/mgs-moc-image-of-mars-exploration-rover-spirit-on-mars/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-at-base-of-burns-cliff",
+    "organization": "NASA Photojournal",
+    "title": "At Base of 'Burns Cliff'",
+    "url": "https://science.nasa.gov/photojournal/at-base-of-burns-cliff/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-the-opportunity-rover-at-vi",
+    "organization": "NASA Photojournal",
+    "title": "The Opportunity Rover at 'Victoria Crater'",
+    "url": "https://science.nasa.gov/photojournal/the-opportunity-rover-at-victoria-crater/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-panorama-from-cape-verde",
+    "organization": "NASA Photojournal",
+    "title": "Panorama from 'Cape Verde'",
+    "url": "https://science.nasa.gov/photojournal/panorama-from-cape-verde/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-opportunitys-last-message",
+    "organization": "NASA Photojournal",
+    "title": "Opportunity's Last Message",
+    "url": "https://science.nasa.gov/photojournal/opportunitys-last-message/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-opportunity-legacy-pan-true",
+    "organization": "NASA Photojournal",
+    "title": "Opportunity Legacy Pan (True Color)",
+    "url": "https://science.nasa.gov/photojournal/opportunity-legacy-pan-true-color/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-rovers-landing-hardware-at",
+    "organization": "NASA Photojournal",
+    "title": "Rover's Landing Hardware at Eagle Crater, Mars",
+    "url": "https://science.nasa.gov/photojournal/rovers-landing-hardware-at-eagle-crater-mars/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-mission-mer-opportunity",
+    "organization": "NASA",
+    "title": "Opportunity - NASA Science",
+    "url": "https://science.nasa.gov/mission/mer-opportunity/",
+    "type": "nasa-mission-page",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-news-merb-pr-20040302-html",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "Opportunity Rover Finds Strong Evidence Meridiani Planum Was Wet (2 March 2004, NSSDCA copy of NASA/JPL release)",
+    "url": "https://nssdc.gsfc.nasa.gov/planetary/news/merb_pr_20040302.html",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-martian-concretions-near-fr",
+    "organization": "NASA Photojournal",
+    "title": "Martian Concretions Near Fram Crater",
+    "url": "https://science.nasa.gov/photojournal/martian-concretions-near-fram-crater/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-opportunity-catches-its-sha",
+    "organization": "NASA Photojournal",
+    "title": "Opportunity Catches its Shadow on Sol 180",
+    "url": "https://science.nasa.gov/photojournal/opportunity-catches-its-shadow-on-sol-180/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-pia14134",
+    "organization": "NASA Image and Video Library",
+    "title": "Opportunity First Goal at Endeavour Crater: Spirit Point (PIA14134)",
+    "url": "https://images.nasa.gov/details/PIA14134",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-pia19154",
+    "organization": "NASA Image and Video Library",
+    "title": "Opportunity Rover Full Marathon-Length Traverse (PIA19154)",
+    "url": "https://images.nasa.gov/details/PIA19154",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-dust-storm-covers-opportuni",
+    "organization": "NASA Photojournal",
+    "title": "Dust Storm Covers Opportunity",
+    "url": "https://science.nasa.gov/photojournal/dust-storm-covers-opportunity/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-a-rovers-eye-view-of-the-la",
+    "organization": "NASA Photojournal",
+    "title": "https://science.nasa.gov/photojournal/a-rovers-eye-view-of-the-lander/",
+    "url": "https://science.nasa.gov/photojournal/a-rovers-eye-view-of-the-lander/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-sojourner-rover-view-of-pat",
+    "organization": "NASA Photojournal",
+    "title": "https://science.nasa.gov/photojournal/sojourner-rover-view-of-pathfinder-lander/",
+    "url": "https://science.nasa.gov/photojournal/sojourner-rover-view-of-pathfinder-lander/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-sunset-over-twin-peaks",
+    "organization": "NASA Photojournal",
+    "title": "Sunset over \"Twin Peaks\" (PIA00783)",
+    "url": "https://science.nasa.gov/photojournal/sunset-over-twin-peaks/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-pia00975",
+    "organization": "NASA Image and Video Library",
+    "title": "PIA00975",
+    "url": "https://images.nasa.gov/details/PIA00975",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-mars-pathfinder-landing-sit",
+    "organization": "NASA Photojournal",
+    "title": "Mars Pathfinder Landing Site and Surroundings (PIA09105)",
+    "url": "https://science.nasa.gov/photojournal/mars-pathfinder-landing-site-and-surroundings/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-history-25-years-ago-mars-pathfinder-lau",
+    "organization": "NASA",
+    "title": "25 Years Ago: Mars Pathfinder Launches to Mars to Deploy Sojourner, the First Planetary Rover",
+    "url": "https://www.nasa.gov/history/25-years-ago-mars-pathfinder-launches-to-mars-to-deploy-sojourner-the-first-planetary-rover/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nssdca-1996-068a-02",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "Atmospheric Structure Instrument / Meteorology Package (ASI/MET)",
+    "url": "https://nssdc.gsfc.nasa.gov/nmc/experiment/display.action?id=1996-068A-02",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nssdca-1996-068a-03",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "Wind Sock Investigation",
+    "url": "https://nssdc.gsfc.nasa.gov/nmc/experiment/display.action?id=1996-068A-03",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-planetary-marspath-images-html",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "Mars Pathfinder Images",
+    "url": "https://nssdc.gsfc.nasa.gov/planetary/marspath_images.html",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nssdca-mesurpr",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "Mars Pathfinder Rover (NSSDCA ID: MESURPR)",
+    "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=MESURPR",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "jpl-news-mars-pathfinder-concludes-primary-s",
+    "organization": "NASA Jet Propulsion Laboratory",
+    "title": "Mars Pathfinder Concludes Primary Science Mission (Aug. 8, 1997)",
+    "url": "https://www.jpl.nasa.gov/news/mars-pathfinder-concludes-primary-science-mission/",
+    "type": "nasa-news",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-pathfinder-on-mars",
+    "organization": "NASA Photojournal",
+    "title": "Pathfinder on Mars (PIA01120)",
+    "url": "https://science.nasa.gov/photojournal/pathfinder-on-mars/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-sojourners-apxs-studies-bar",
+    "organization": "NASA Photojournal",
+    "title": "Sojourner's APXS studies \"Barnacle Bill\" (PIA00634)",
+    "url": "https://science.nasa.gov/photojournal/sojourners-apxs-studies-barnacle-bill/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-text-marspath-status-txt",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "Mars Pathfinder Mission Status, March 10, 1998",
+    "url": "https://nssdc.gsfc.nasa.gov/planetary/text/marspath_status.txt",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-rover-tracks",
+    "organization": "NASA Photojournal",
+    "title": "Rover Tracks (PIA00633)",
+    "url": "https://science.nasa.gov/photojournal/rover-tracks/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-sojourners-view-of-yogi",
+    "organization": "NASA Photojournal",
+    "title": "https://science.nasa.gov/photojournal/sojourners-view-of-yogi/",
+    "url": "https://science.nasa.gov/photojournal/sojourners-view-of-yogi/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-sojourner-at-mermaid-dune",
+    "organization": "NASA Photojournal",
+    "title": "Sojourner at \"Mermaid Dune\" (PIA00794)",
+    "url": "https://science.nasa.gov/photojournal/sojourner-at-mermaid-dune/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-sojourner-at-wedge-2",
+    "organization": "NASA Photojournal",
+    "title": "Sojourner at \"Wedge\" (PIA00905)",
+    "url": "https://science.nasa.gov/photojournal/sojourner-at-wedge-2/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-sojourner-doing-a-wheelie-o",
+    "organization": "NASA Photojournal",
+    "title": "Sojourner Doing a Wheelie on \"Wedge\" (PIA00913)",
+    "url": "https://science.nasa.gov/photojournal/sojourner-doing-a-wheelie-on-wedge/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-sojourner-sits-near-rock-ga",
+    "organization": "NASA Photojournal",
+    "title": "https://science.nasa.gov/photojournal/sojourner-sits-near-rock-garden/",
+    "url": "https://science.nasa.gov/photojournal/sojourner-sits-near-rock-garden/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-sojourners-apxs-at-chimp-ri",
+    "organization": "NASA Photojournal",
+    "title": "Sojourner APXS at Chimp - Right Eye (PIA01585)",
+    "url": "https://science.nasa.gov/photojournal/sojourners-apxs-at-chimp-right-eye/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nssdca-mesurpr-02",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "Mars Pathfinder Rover Imaging Cameras",
+    "url": "https://nssdc.gsfc.nasa.gov/nmc/experiment/display.action?id=MESURPR++-02",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nssdca-mesurpr-01",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "Mars Pathfinder Rover Alpha Proton X-ray Spectrometer (APXS)",
+    "url": "https://nssdc.gsfc.nasa.gov/nmc/experiment/display.action?id=MESURPR++-01",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nssdca-mesurpr-03",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "Mars Pathfinder Rover Materials Adherence Experiment (MAE)",
+    "url": "https://nssdc.gsfc.nasa.gov/nmc/experiment/display.action?id=MESURPR++-03",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nssdca-mesurpr-04",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "Mars Pathfinder Rover Wheel Abrasion Experiment",
+    "url": "https://nssdc.gsfc.nasa.gov/nmc/experiment/display.action?id=MESURPR++-04",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-planetary-marspath-images-h-html",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "Historical Mars Pathfinder Images",
+    "url": "https://nssdc.gsfc.nasa.gov/planetary/marspath_images_h.html",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-resource-sojourner-barnacle-bill-yogi",
+    "organization": "NASA",
+    "title": "Sojourner, \"Barnacle Bill,\" & \"Yogi\"",
+    "url": "https://science.nasa.gov/resource/sojourner-barnacle-bill-yogi/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-planetary-marspath-images-2-html",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "More Color Mars Pathfinder Images",
+    "url": "https://nssdc.gsfc.nasa.gov/planetary/marspath_images_2.html",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-mastcam-z-captures-ingenuit",
+    "organization": "NASA Photojournal",
+    "title": "Mastcam-Z Captures Ingenuity's Blades Spinning (PIA24549)",
+    "url": "https://science.nasa.gov/photojournal/mastcam-z-captures-ingenuitys-blades-spinning/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-perseverances-navcam-view-o",
+    "organization": "NASA Photojournal",
+    "title": "https://science.nasa.gov/photojournal/perseverances-navcam-view-of-ingenuitys-first-flight/",
+    "url": "https://science.nasa.gov/photojournal/perseverances-navcam-view-of-ingenuitys-first-flight/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-first-aerial-color-image-of",
+    "organization": "NASA Photojournal",
+    "title": "First Aerial Color Image of Mars (PIA24593)",
+    "url": "https://science.nasa.gov/photojournal/first-aerial-color-image-of-mars/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-swatch-of-wright-brothers-f",
+    "organization": "NASA Photojournal",
+    "title": "Swatch of Wright Brothers Flyer 1 Attached to Mars Helicopter (PIA24291)",
+    "url": "https://science.nasa.gov/photojournal/swatch-of-wright-brothers-flyer-1-attached-to-mars-helicopter/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-ingenuity-spots-the-shadow",
+    "organization": "NASA Photojournal",
+    "title": "https://science.nasa.gov/photojournal/ingenuity-spots-the-shadow-of-its-damaged-rotor-blade/",
+    "url": "https://science.nasa.gov/photojournal/ingenuity-spots-the-shadow-of-its-damaged-rotor-blade/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-supercams-rmi-spots-ingenui",
+    "organization": "NASA Photojournal",
+    "title": "https://science.nasa.gov/photojournal/supercams-rmi-spots-ingenuitys-broken-rotor/",
+    "url": "https://science.nasa.gov/photojournal/supercams-rmi-spots-ingenuitys-broken-rotor/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-ingenuity-at-valinor-hills",
+    "organization": "NASA Photojournal",
+    "title": "https://science.nasa.gov/photojournal/ingenuity-at-valinor-hills/",
+    "url": "https://science.nasa.gov/photojournal/ingenuity-at-valinor-hills/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-ingenuitys-hard-landing",
+    "organization": "NASA Photojournal",
+    "title": "https://science.nasa.gov/photojournal/ingenuitys-hard-landing/",
+    "url": "https://science.nasa.gov/photojournal/ingenuitys-hard-landing/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "jpl-mission-spacecraft",
+    "organization": "NASA Jet Propulsion Laboratory",
+    "title": "Ingenuity Landing Press Kit – Mission Spacecraft",
+    "url": "https://www.jpl.nasa.gov/news/press_kits/ingenuity/landing/mission/spacecraft/",
+    "type": "nasa-mission-page",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "jpl-landing-quick-facts",
+    "organization": "NASA Jet Propulsion Laboratory",
+    "title": "Ingenuity Landing Press Kit – Quick Facts",
+    "url": "https://www.jpl.nasa.gov/news/press_kits/ingenuity/landing/quick_facts/",
+    "type": "nasa-news",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-news-release-nasas-ingenuity-mars-helico",
+    "organization": "NASA",
+    "title": "NASA's Ingenuity Mars Helicopter Succeeds in Historic First Flight (Apr 19, 2021)",
+    "url": "https://www.nasa.gov/news-release/nasas-ingenuity-mars-helicopter-succeeds-in-historic-first-flight/",
+    "type": "nasa-news",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-ingenuity-helicopter-nasas-ingenuity-mar",
+    "organization": "NASA",
+    "title": "NASA's Ingenuity Mars Helicopter Captures Video of Record Flight (May 27, 2022)",
+    "url": "https://www.nasa.gov/missions/mars-2020-perseverance/ingenuity-helicopter/nasas-ingenuity-mars-helicopter-captures-video-of-record-flight/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-news-release-after-three-years-on-mars-n",
+    "organization": "NASA",
+    "title": "After Three Years on Mars, NASA's Ingenuity Helicopter Mission Ends (Jan 25, 2024)",
+    "url": "https://www.nasa.gov/news-release/after-three-years-on-mars-nasas-ingenuity-helicopter-mission-ends/",
+    "type": "nasa-news",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-solar-system-nasas-mars-helicopter-survi",
+    "organization": "NASA",
+    "title": "NASA's Mars Helicopter Survives First Cold Martian Night on Its Own (Apr 5, 2021)",
+    "url": "https://www.nasa.gov/solar-system/nasas-mars-helicopter-survives-first-cold-martian-night-on-its-own/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-resource-ingenuitys-complete-deployment",
+    "organization": "NASA",
+    "title": "Ingenuity's Complete Deployment (Apr 13, 2021)",
+    "url": "https://science.nasa.gov/resource/ingenuitys-complete-deployment/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-resource-ingenuity-begins-to-spin-its-bl",
+    "organization": "NASA",
+    "title": "Ingenuity Begins to Spin Its Blades (Apr 9, 2021)",
+    "url": "https://science.nasa.gov/resource/ingenuity-begins-to-spin-its-blades/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-resource-ingenuity-spots-perseverance-fr",
+    "organization": "NASA",
+    "title": "Ingenuity Spots Perseverance From the Air (Apr 27, 2021)",
+    "url": "https://science.nasa.gov/resource/ingenuity-spots-perseverance-from-the-air/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-solar-system-nasas-ingenuity-mars-helico",
+    "organization": "NASA",
+    "title": "NASA's Ingenuity Mars Helicopter Completes First One-Way Trip (May 8, 2021)",
+    "url": "https://www.nasa.gov/solar-system/nasas-ingenuity-mars-helicopter-completes-first-one-way-trip/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-mars-2020-perseverance-nasas-ingenuity-h",
+    "organization": "NASA",
+    "title": "NASA's Ingenuity Helicopter to Begin New Demonstration Phase (Apr 30, 2021)",
+    "url": "https://science.nasa.gov/missions/mars-2020-perseverance/nasas-ingenuity-helicopter-to-begin-new-demonstration-phase/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-ingenuity-helicopter-nasas-mars-helicopt",
+    "organization": "NASA",
+    "title": "NASA's Mars Helicopter Spots Gear That Helped Perseverance Rover Land (Apr 27, 2022)",
+    "url": "https://www.nasa.gov/missions/mars-2020-perseverance/ingenuity-helicopter/nasas-mars-helicopter-spots-gear-that-helped-perseverance-rover-land/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-ingenuity-helicopter-nasas-ingenuity-mar-2",
+    "organization": "NASA",
+    "title": "NASA's Ingenuity Mars Helicopter Completes 50th Flight (Apr 13, 2023)",
+    "url": "https://www.nasa.gov/missions/mars-2020-perseverance/ingenuity-helicopter/nasas-ingenuity-mars-helicopter-completes-50th-flight/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-blog-unlocking-the-martian-skies-using-i",
+    "organization": "NASA",
+    "title": "Unlocking the Martian Skies – Using Ingenuity as a Martian Testbed for Future Rotorcraft (Mar 29, 2024)",
+    "url": "https://science.nasa.gov/blog/unlocking-the-martian-skies-using-ingenuity-as-a-martian-testbed-for-future-rotorcraft/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-ingenuity-helicopter-nasa-performs-first",
+    "organization": "NASA",
+    "title": "NASA Performs First Aircraft Accident Investigation on Another World (Dec 11, 2024)",
+    "url": "https://www.nasa.gov/missions/mars-2020-perseverance/ingenuity-helicopter/nasa-performs-first-aircraft-accident-investigation-on-another-world/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-resource-perseverance-spots-ingenuity-at",
+    "organization": "NASA",
+    "title": "Perseverance Spots Ingenuity at Its Final Airfield (Feb 6, 2024)",
+    "url": "https://science.nasa.gov/resource/perseverance-spots-ingenuity-at-its-final-airfield/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-as12-48-7121",
+    "organization": "NASA Image and Video Library",
+    "title": "as12-48-7121",
+    "url": "https://images.nasa.gov/details/as12-48-7121",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-as12-48-7110",
+    "organization": "NASA Image and Video Library",
+    "title": "as12-48-7110",
+    "url": "https://images.nasa.gov/details/as12-48-7110",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-object-page-a12-h-48-7129-html",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "a12_h_48_7129.html",
+    "url": "https://nssdc.gsfc.nasa.gov/imgcat/html/object_page/a12_h_48_7129.html",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-object-page-a12-h-48-7138-html",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "a12_h_48_7138.html",
+    "url": "https://nssdc.gsfc.nasa.gov/imgcat/html/object_page/a12_h_48_7138.html",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-as12-48-7099",
+    "organization": "NASA Image and Video Library",
+    "title": "as12-48-7099",
+    "url": "https://images.nasa.gov/details/as12-48-7099",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-first-look-apollo-12-and-su",
+    "organization": "NASA Photojournal",
+    "title": "First Look: Apollo 12 and Surveyor 3 (PIA12903)",
+    "url": "https://science.nasa.gov/photojournal/first-look-apollo-12-and-surveyor-3/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-ksc-2011-7762",
+    "organization": "NASA Image and Video Library",
+    "title": "KSC-2011-7762",
+    "url": "https://images.nasa.gov/details/KSC-2011-7762",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-humans-in-space-lunar-encore-leads-to-fi",
+    "organization": "NASA",
+    "title": "Lunar Encore Leads to First Precision Extraterrestrial Landing",
+    "url": "https://www.nasa.gov/humans-in-space/lunar-encore-leads-to-first-precision-extraterrestrial-landing",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-history-55-years-ago-apollo-12-makes-a-p",
+    "organization": "NASA",
+    "title": "55 Years Ago: Apollo 12 Makes a Pinpoint Landing on the Moon",
+    "url": "https://www.nasa.gov/history/55-years-ago-apollo-12-makes-a-pinpoint-landing-on-the-moon",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-downloads-20100036597-pdf",
+    "organization": "NASA",
+    "title": "In Situ Biological Contamination Studies of the Moon: Implications for Future Planetary Protection and Life Detection Missions (Glavin et al.)",
+    "url": "https://ntrs.nasa.gov/api/citations/20100036597/downloads/20100036597.pdf",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-object-page-a11-h-44-6574-html",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "a11_h_44_6574.html",
+    "url": "https://nssdc.gsfc.nasa.gov/imgcat/html/object_page/a11_h_44_6574.html",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-as11-40-5899",
+    "organization": "NASA Image and Video Library",
+    "title": "as11-40-5899",
+    "url": "https://images.nasa.gov/details/as11-40-5899",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-as11-40-5868",
+    "organization": "NASA Image and Video Library",
+    "title": "as11-40-5868",
+    "url": "https://images.nasa.gov/details/as11-40-5868",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-resource-apollo-11-landing-site",
+    "organization": "NASA",
+    "title": "Apollo 11 Landing Site (LROC image)",
+    "url": "https://science.nasa.gov/resource/apollo-11-landing-site/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-lunar-apollo11info-html",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "Apollo 11 (mission summary page)",
+    "url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/apollo11info.html",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-history-apollo-11-mission-overview",
+    "organization": "NASA",
+    "title": "Apollo 11 Mission Overview",
+    "url": "https://www.nasa.gov/history/apollo-11-mission-overview/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-4185",
+    "organization": "NASA",
+    "title": "The Apollo 11 Landing Site (LRO visualization)",
+    "url": "https://svs.gsfc.nasa.gov/4185/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-pdf-a11-presskit-pdf",
+    "organization": "NASA",
+    "title": "Apollo 11 Press Kit (1969)",
+    "url": "https://www.nasa.gov/wp-content/uploads/static/apollo50th/pdf/A11_PressKit.pdf",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-lunar-lunar-sites-html",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "Apollo Landing Site Coordinates",
+    "url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-object-page-a11-h-40-5947-html",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "a11_h_40_5947.html",
+    "url": "https://nssdc.gsfc.nasa.gov/imgcat/html/object_page/a11_h_40_5947.html",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-as11-40-5931",
+    "organization": "NASA Image and Video Library",
+    "title": "as11-40-5931",
+    "url": "https://images.nasa.gov/details/as11-40-5931",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nssdca-1969-059c-05",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "Lunar Dust Detector (1969-059C-05)",
+    "url": "https://nssdc.gsfc.nasa.gov/nmc/experiment/display.action?id=1969-059C-05",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nssdca-1969-059c-04",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "Laser Ranging Retroreflector (1969-059C-04)",
+    "url": "https://nssdc.gsfc.nasa.gov/nmc/experiment/display.action?id=1969-059C-04",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-solar-system-the-apollo-experiment-that",
+    "organization": "NASA",
+    "title": "The Apollo Experiment That Keeps on Giving (2019)",
+    "url": "https://www.nasa.gov/solar-system/the-apollo-experiment-that-keeps-on-giving/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-as11-40-5942",
+    "organization": "NASA Image and Video Library",
+    "title": "as11-40-5942",
+    "url": "https://images.nasa.gov/details/as11-40-5942",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-current-missions-ap11-general-html",
+    "organization": "NASA",
+    "title": "Apollo and Luna Reflectors (Apollo 11)",
+    "url": "https://ilrs.gsfc.nasa.gov/missions/satellite_missions/current_missions/ap11_general.html",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-as12-51-7507",
+    "organization": "NASA Image and Video Library",
+    "title": "as12-51-7507",
+    "url": "https://images.nasa.gov/details/as12-51-7507",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-as12-46-6729",
+    "organization": "NASA Image and Video Library",
+    "title": "as12-46-6729",
+    "url": "https://images.nasa.gov/details/as12-46-6729",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-as12-47-6988",
+    "organization": "NASA Image and Video Library",
+    "title": "as12-47-6988",
+    "url": "https://images.nasa.gov/details/as12-47-6988",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-as12-48-7034",
+    "organization": "NASA Image and Video Library",
+    "title": "as12-48-7034",
+    "url": "https://images.nasa.gov/details/as12-48-7034",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-object-page-a12-h-48-7169-html",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "a12_h_48_7169.html",
+    "url": "https://nssdc.gsfc.nasa.gov/imgcat/html/object_page/a12_h_48_7169.html",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-apollo-12-second-look-midda",
+    "organization": "NASA Photojournal",
+    "title": "Apollo 12 Second Look: Midday on the Ocean of Storms (PIA12922)",
+    "url": "https://science.nasa.gov/photojournal/apollo-12-second-look-midday-on-the-ocean-of-storms/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-lunar-apollo12info-html",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "Apollo 12 (mission summary page)",
+    "url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/apollo12info.html",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-object-page-a12-h-47-6921-html",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "a12_h_47_6921.html",
+    "url": "https://nssdc.gsfc.nasa.gov/imgcat/html/object_page/a12_h_47_6921.html",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-downloads-19790014808-pdf",
+    "organization": "NASA",
+    "title": "ALSEP Termination Report, NASA Reference Publication 1036 (Bates, Lauderdale, Kernaghan, April 1979)",
+    "url": "https://ntrs.nasa.gov/api/citations/19790014808/downloads/19790014808.pdf",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-as12-46-6790",
+    "organization": "NASA Image and Video Library",
+    "title": "as12-46-6790",
+    "url": "https://images.nasa.gov/details/as12-46-6790",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nssdca-1969-099c-03",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "Passive Seismic Experiment (PSE) (1969-099C-03)",
+    "url": "https://nssdc.gsfc.nasa.gov/nmc/experiment/display.action?id=1969-099C-03",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nssdca-1969-099c-02",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "Solar Wind Spectrometer (1969-099C-02)",
+    "url": "https://nssdc.gsfc.nasa.gov/nmc/experiment/display.action?id=1969-099C-02",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nssdca-1969-099c-05",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "Suprathermal Ion Detector Experiment (SIDE) (1969-099C-05)",
+    "url": "https://nssdc.gsfc.nasa.gov/nmc/experiment/display.action?id=1969-099C-05",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-lunar-apollo-impact-html",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "Impact Sites of Apollo LM Ascent and SIVB Stages",
+    "url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/apollo_impact.html",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-object-page-a12-h-48-7100-html",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "a12_h_48_7100.html",
+    "url": "https://nssdc.gsfc.nasa.gov/imgcat/html/object_page/a12_h_48_7100.html",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-ksc-2011-7761",
+    "organization": "NASA Image and Video Library",
+    "title": "KSC-2011-7761",
+    "url": "https://images.nasa.gov/details/KSC-2011-7761",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-ksc-2011-7763",
+    "organization": "NASA Image and Video Library",
+    "title": "KSC-2011-7763",
+    "url": "https://images.nasa.gov/details/KSC-2011-7763",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-as11-37-5437",
+    "organization": "NASA Image and Video Library",
+    "title": "as11-37-5437",
+    "url": "https://images.nasa.gov/details/as11-37-5437",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-as11-37-5458",
+    "organization": "NASA Image and Video Library",
+    "title": "as11-37-5458",
+    "url": "https://images.nasa.gov/details/as11-37-5458",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-as11-37-5505",
+    "organization": "NASA Image and Video Library",
+    "title": "as11-37-5505",
+    "url": "https://images.nasa.gov/details/as11-37-5505",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-as11-40-5866",
+    "organization": "NASA Image and Video Library",
+    "title": "as11-40-5866",
+    "url": "https://images.nasa.gov/details/as11-40-5866",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-as11-40-5903",
+    "organization": "NASA Image and Video Library",
+    "title": "as11-40-5903",
+    "url": "https://images.nasa.gov/details/as11-40-5903",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-as11-40-5915",
+    "organization": "NASA Image and Video Library",
+    "title": "as11-40-5915",
+    "url": "https://images.nasa.gov/details/as11-40-5915",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-as11-40-5917",
+    "organization": "NASA Image and Video Library",
+    "title": "as11-40-5917",
+    "url": "https://images.nasa.gov/details/as11-40-5917",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-history-apollos-lunar-module-bridged-tec",
+    "organization": "NASA",
+    "title": "Apollo's Lunar Module Bridged Technological Leap to the Moon",
+    "url": "https://www.nasa.gov/history/apollos-lunar-module-bridged-technological-leap-to-the-moon/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-s69-17211",
+    "organization": "NASA Image and Video Library",
+    "title": "S69-17211",
+    "url": "https://images.nasa.gov/details/S69-17211",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-6900960",
+    "organization": "NASA Image and Video Library",
+    "title": "6900960",
+    "url": "https://images.nasa.gov/details/6900960",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-6900957",
+    "organization": "NASA Image and Video Library",
+    "title": "6900957",
+    "url": "https://images.nasa.gov/details/6900957",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-s69-39587",
+    "organization": "NASA Image and Video Library",
+    "title": "S69-39587",
+    "url": "https://images.nasa.gov/details/S69-39587",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-downloads-20190032593-pdf",
+    "organization": "NASA",
+    "title": "Recovery, Restoration and Archiving of Previously Lost Data and Metadata from the Apollo Lunar Surface Experiments Package (ALSEP) (Nagihara et al.)",
+    "url": "https://ntrs.nasa.gov/api/citations/20190032593/downloads/20190032593.pdf",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-radioisotope-power-systems-missions",
+    "organization": "NASA",
+    "title": "Radioisotope Power Systems – Missions",
+    "url": "https://science.nasa.gov/planetary-science/programs/radioisotope-power-systems/missions/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-116-rps-60th-alsep-shareable",
+    "organization": "NASA",
+    "title": "Radioisotope Power Systems (RPS) program site",
+    "url": "https://rps.nasa.gov/resources/116/rps-60th-alsep-shareable/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-6900959",
+    "organization": "NASA Image and Video Library",
+    "title": "6900959",
+    "url": "https://images.nasa.gov/details/6900959",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-nglr-20payload-20edit",
+    "organization": "NASA Image and Video Library",
+    "title": "NASA Anticipates Lunar Findings from Artemis Retroreflector (NGLR-1)",
+    "url": "https://images.nasa.gov/details/NGLR%20Payload%20EDIT",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-s69-39262",
+    "organization": "NASA Image and Video Library",
+    "title": "S69-39262",
+    "url": "https://images.nasa.gov/details/S69-39262",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-s69-58879",
+    "organization": "NASA Image and Video Library",
+    "title": "S69-58879",
+    "url": "https://images.nasa.gov/details/S69-58879",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-s69-60068",
+    "organization": "NASA Image and Video Library",
+    "title": "S69-60068",
+    "url": "https://images.nasa.gov/details/S69-60068",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-as12-50-7328",
+    "organization": "NASA Image and Video Library",
+    "title": "as12-50-7328",
+    "url": "https://images.nasa.gov/details/as12-50-7328",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-as12-46-6749",
+    "organization": "NASA Image and Video Library",
+    "title": "as12-46-6749",
+    "url": "https://images.nasa.gov/details/as12-46-6749",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-as12-47-6913",
+    "organization": "NASA Image and Video Library",
+    "title": "as12-47-6913",
+    "url": "https://images.nasa.gov/details/as12-47-6913",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-as12-48-7160",
+    "organization": "NASA Image and Video Library",
+    "title": "as12-48-7160",
+    "url": "https://images.nasa.gov/details/as12-48-7160",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-s69-39323",
+    "organization": "NASA Image and Video Library",
+    "title": "S69-39323",
+    "url": "https://images.nasa.gov/details/S69-39323",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-radioisotope-power-systems-timeline",
+    "organization": "NASA",
+    "title": "Radioisotope Power Systems – Timeline",
+    "url": "https://science.nasa.gov/planetary-science/programs/radioisotope-power-systems/timeline/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-radioisotope-power-systems-legacy-system",
+    "organization": "NASA",
+    "title": "Radioisotope Power Systems – Legacy Systems",
+    "url": "https://science.nasa.gov/planetary-science/programs/radioisotope-power-systems/legacy-systems/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-details-as12-48-7134",
+    "organization": "NASA Image and Video Library",
+    "title": "AS12-48-7134 — Astronaut Alan L. Bean, lunar module pilot, and two U.S. spacecraft (caption)",
+    "url": "https://images.nasa.gov/details/as12-48-7134",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-details-ksc-as11-40-5927",
+    "organization": "NASA Image and Video Library",
+    "title": "KSC-as11-40-5927 (caption)",
+    "url": "https://images.nasa.gov/details/KSC-as11-40-5927",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-details-as11-40-5948",
+    "organization": "NASA Image and Video Library",
+    "title": "AS11-40-5948 — Astronaut Edwin Aldrin after deployment of EASEP on surface of moon (caption)",
+    "url": "https://images.nasa.gov/details/as11-40-5948",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-details-as12-47-6918",
+    "organization": "NASA Image and Video Library",
+    "title": "AS12-47-6918 — View of part of the deployed Apollo Lunar Surface Experiment Package (ALSEP) (caption)",
+    "url": "https://images.nasa.gov/details/as12-47-6918",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-details-pia00625",
+    "organization": "NASA Image and Video Library",
+    "title": "PIA00625 — High-gain Antenna & Terrain (caption)",
+    "url": "https://images.nasa.gov/details/PIA00625",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-planetary-marspath-postland-html",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "Mars Pathfinder Post-Landing Schedule",
+    "url": "https://nssdc.gsfc.nasa.gov/planetary/marspath_postland.html",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-document-insthost-htm",
+    "organization": "NASA Planetary Data System",
+    "title": "Mars Pathfinder Rover Description (PDS instrument host document)",
+    "url": "https://pds.nasa.gov/data/mpfr-m-apxs-2-edr-v1.0/mprv_0001/document/insthost.htm",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-ksc-03pd1569",
+    "organization": "NASA Image and Video Library",
+    "title": "images.nasa.gov KSC-03pd1569",
+    "url": "https://images.nasa.gov/details/KSC-03pd1569",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-first-color-image-from-spir",
+    "organization": "NASA Photojournal",
+    "title": "First Color Image from Spirit (PIA04995)",
+    "url": "https://science.nasa.gov/photojournal/first-color-image-from-spirit/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-back-in-action",
+    "organization": "NASA Photojournal",
+    "title": "Back in Action (PIA05220)",
+    "url": "https://science.nasa.gov/photojournal/back-in-action/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-you-are-here-earth-as-seen",
+    "organization": "NASA Photojournal",
+    "title": "You are here: Earth as seen from Mars (PIA05547)",
+    "url": "https://science.nasa.gov/photojournal/you-are-here-earth-as-seen-from-mars/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-stars-and-cosmic-rays-obser",
+    "organization": "NASA Photojournal",
+    "title": "Stars and Cosmic Rays Observed from Mars (PIA05551)",
+    "url": "https://science.nasa.gov/photojournal/stars-and-cosmic-rays-observed-from-mars/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-bonneville-in-color",
+    "organization": "NASA Photojournal",
+    "title": "“Bonneville in Color” (PIA05570)",
+    "url": "https://science.nasa.gov/photojournal/bonneville-in-color/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-columbia-hills-at-last",
+    "organization": "NASA Photojournal",
+    "title": "'Columbia Hills' at Last! (PIA06279)",
+    "url": "https://science.nasa.gov/photojournal/columbia-hills-at-last/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-spirits-view-of-columbia-hi",
+    "organization": "NASA Photojournal",
+    "title": "Spirit's View of 'Columbia Hills' (PIA06915)",
+    "url": "https://science.nasa.gov/photojournal/spirits-view-of-columbia-hills/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-lookout-panorama-from-spiri",
+    "organization": "NASA Photojournal",
+    "title": "'Lookout Panorama' from Spirit (PIA07882)",
+    "url": "https://science.nasa.gov/photojournal/lookout-panorama-from-spirit/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-a-moment-frozen-in-time",
+    "organization": "NASA Photojournal",
+    "title": "A Moment Frozen in Time (PIA07997)",
+    "url": "https://science.nasa.gov/photojournal/a-moment-frozen-in-time/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-phobos-viewed-from-mars",
+    "organization": "NASA Photojournal",
+    "title": "Phobos Viewed from Mars (PIA06335)",
+    "url": "https://science.nasa.gov/photojournal/phobos-viewed-from-mars/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-spirit-view-of-phobos-eclip",
+    "organization": "NASA Photojournal",
+    "title": "Spirit View of Phobos Eclipse, Sol 675 (PIA03612)",
+    "url": "https://science.nasa.gov/photojournal/spirit-view-of-phobos-eclipse-sol-675/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-windy-summit-and-plains-in",
+    "organization": "NASA Photojournal",
+    "title": "Windy Summit and Plains in Gusev (PIA04194)",
+    "url": "https://science.nasa.gov/photojournal/windy-summit-and-plains-in-gusev/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-top-of-the-world",
+    "organization": "NASA Photojournal",
+    "title": "Top of the World (PIA04181)",
+    "url": "https://science.nasa.gov/photojournal/top-of-the-world/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-everest-panorama-20-20-visi",
+    "organization": "NASA Photojournal",
+    "title": "'Everest' Panorama; 20-20 Vision (PIA03095)",
+    "url": "https://science.nasa.gov/photojournal/everest-panorama-20-20-vision/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-looking-back-at-spirits-tra",
+    "organization": "NASA Photojournal",
+    "title": "Looking Back at Spirit's Trail to the Summit (Vertical) (PIA03059)",
+    "url": "https://science.nasa.gov/photojournal/looking-back-at-spirits-trail-to-the-summit-vertical/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-intricately-rippled-sand-de",
+    "organization": "NASA Photojournal",
+    "title": "Intricately Rippled Sand Deposits (PIA03274)",
+    "url": "https://science.nasa.gov/photojournal/intricately-rippled-sand-deposits/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-carbonate-containing-martia",
+    "organization": "NASA Photojournal",
+    "title": "Carbonate-Containing Martian Rocks, False Color (PIA13175)",
+    "url": "https://science.nasa.gov/photojournal/carbonate-containing-martian-rocks-false-color/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-spirit-says-goodbye-to-home",
+    "organization": "NASA Photojournal",
+    "title": "Spirit Says Goodbye to 'Home Plate' (PIA02055)",
+    "url": "https://science.nasa.gov/photojournal/spirit-says-goodbye-to-home-plate/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-after-a-spirit-drive-west-o",
+    "organization": "NASA Photojournal",
+    "title": "After a Spirit Drive West of 'Home Plate' (PIA11990)",
+    "url": "https://science.nasa.gov/photojournal/after-a-spirit-drive-west-of-home-plate/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-spirit-mars-rover-in-mcmurd",
+    "organization": "NASA Photojournal",
+    "title": "Spirit Mars Rover in 'McMurdo' Panorama (PIA16440)",
+    "url": "https://science.nasa.gov/photojournal/spirit-mars-rover-in-mcmurdo-panorama/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-spirits-tracks-around-home",
+    "organization": "NASA Photojournal",
+    "title": "Spirit's Tracks around 'Home Plate' (PIA09089)",
+    "url": "https://science.nasa.gov/photojournal/spirits-tracks-around-home-plate/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-rovers-wheel-churns-up-brig",
+    "organization": "NASA Photojournal",
+    "title": "Rover's Wheel Churns Up Bright Martian Soil (PIA11758)",
+    "url": "https://science.nasa.gov/photojournal/rovers-wheel-churns-up-bright-martian-soil/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-dusty-solar-panels-on-spiri",
+    "organization": "NASA Photojournal",
+    "title": "Dusty Solar Panels on Spirit (PIA10128)",
+    "url": "https://science.nasa.gov/photojournal/dusty-solar-panels-on-spirit/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-full-circle-bonestell-panor",
+    "organization": "NASA Photojournal",
+    "title": "Full-Circle 'Bonestell' Panorama from Spirit (PIA11746)",
+    "url": "https://science.nasa.gov/photojournal/full-circle-bonestell-panorama-from-spirit/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-spirit-solar-panel-on-sol-1",
+    "organization": "NASA Photojournal",
+    "title": "Spirit Solar Panel on Sol 1813, Still Very Dusty (PIA11799)",
+    "url": "https://science.nasa.gov/photojournal/spirit-solar-panel-on-sol-1813-still-very-dusty/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-spirits-wheels-digging-into",
+    "organization": "NASA Photojournal",
+    "title": "Spirit's Wheels Digging into Soft Ground, Sol 1899 (PIA12007)",
+    "url": "https://science.nasa.gov/photojournal/spirits-wheels-digging-into-soft-ground-sol-1899-2/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-orbital-view-of-spirit-at-t",
+    "organization": "NASA Photojournal",
+    "title": "Orbital View of Spirit at 'Troy' (PIA12205)",
+    "url": "https://science.nasa.gov/photojournal/orbital-view-of-spirit-at-troy/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-calypso-panorama-of-spirits",
+    "organization": "NASA Photojournal",
+    "title": "'Calypso' Panorama of Spirit's View from 'Troy' (False Color) (PIA12201)",
+    "url": "https://science.nasa.gov/photojournal/calypso-panorama-of-spirits-view-from-troy-false-color/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-tracks-in-path-out",
+    "organization": "NASA Photojournal",
+    "title": "Tracks in, Path out? (PIA12473)",
+    "url": "https://science.nasa.gov/photojournal/tracks-in-path-out/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-rotations-by-spirits-right",
+    "organization": "NASA Photojournal",
+    "title": "Rotations by Spirit's Right-Front Wheel, Sol 2117 (PIA12482)",
+    "url": "https://science.nasa.gov/photojournal/rotations-by-spirits-right-front-wheel-sol-2117/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-spirit-lander-and-bonnevill",
+    "organization": "NASA Photojournal",
+    "title": "Spirit Lander and Bonneville Crater in Color (PIA15038)",
+    "url": "https://science.nasa.gov/photojournal/spirit-lander-and-bonneville-crater-in-color/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-rover-2",
+    "organization": "NASA Photojournal",
+    "title": "Rover 2 (PIA04849)",
+    "url": "https://science.nasa.gov/photojournal/rover-2/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-birds-eye-view-of-egress",
+    "organization": "NASA Photojournal",
+    "title": "“Bird's Eye” View of Egress (PIA05044)",
+    "url": "https://science.nasa.gov/photojournal/birds-eye-view-of-egress/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-text-mer-pr-20040115-txt",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "Spirit Rolls All Six Wheels Onto Martian Soil (JPL release 2004-020, 15 January 2004, NSSDCA copy)",
+    "url": "https://nssdc.gsfc.nasa.gov/planetary/text/mer_pr_20040115.txt",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-empty-nest",
+    "organization": "NASA Photojournal",
+    "title": "Empty Nest (PIA05117)",
+    "url": "https://science.nasa.gov/photojournal/empty-nest/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-history-20-years-ago-first-image-of-eart",
+    "organization": "NASA",
+    "title": "20 Years Ago: First Image of Earth from Mars and Other Postcards of Home",
+    "url": "https://www.nasa.gov/history/20-years-ago-first-image-of-earth-from-mars-and-other-postcards-of-home/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-text-mer-pr-20050405-txt",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "Durable Mars Rovers Sent Into Third Overtime Period (NASA release 05-091, 5 April 2005, NSSDCA copy)",
+    "url": "https://nssdc.gsfc.nasa.gov/planetary/text/mer_pr_20050405.txt",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "jpl-news-nasas-spirit-rover-completes-missio",
+    "organization": "NASA Jet Propulsion Laboratory",
+    "title": "NASA's Spirit Rover Completes Mission on Mars (25 May 2011)",
+    "url": "https://www.jpl.nasa.gov/news/nasas-spirit-rover-completes-mission-on-mars/",
+    "type": "nasa-news",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "jpl-news-mars-rovers-going-the-extra-mile",
+    "organization": "NASA Jet Propulsion Laboratory",
+    "title": "Mars Rovers Going the Extra Mile (15 June 2004)",
+    "url": "https://www.jpl.nasa.gov/news/mars-rovers-going-the-extra-mile/",
+    "type": "nasa-news",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "jpl-news-nasa-rover-finds-clue-to-mars-past",
+    "organization": "NASA Jet Propulsion Laboratory",
+    "title": "NASA Rover Finds Clue to Mars' Past and Environment for Life (3 June 2010)",
+    "url": "https://www.jpl.nasa.gov/news/nasa-rover-finds-clue-to-mars-past-and-environment-for-life/",
+    "type": "nasa-news",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "jpl-news-nasa-to-begin-attempts-to-free-sand",
+    "organization": "NASA Jet Propulsion Laboratory",
+    "title": "NASA to Begin Attempts to Free Sand-Trapped Mars Rover (12 November 2009)",
+    "url": "https://www.jpl.nasa.gov/news/nasa-to-begin-attempts-to-free-sand-trapped-mars-rover/",
+    "type": "nasa-news",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "jpl-news-nasas-mars-rover-spirit-faces-circu",
+    "organization": "NASA Jet Propulsion Laboratory",
+    "title": "NASA's Mars Rover Spirit Faces Circuitous Route (5 March 2009)",
+    "url": "https://www.jpl.nasa.gov/news/nasas-mars-rover-spirit-faces-circuitous-route/",
+    "type": "nasa-news",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-text-mer-pr-20070720-txt",
+    "organization": "NASA Space Science Data Coordinated Archive (NSSDCA)",
+    "title": "NASA Mars Rovers Braving Severe Dust Storms (NASA release 07-162, 20 July 2007, NSSDCA copy)",
+    "url": "https://nssdc.gsfc.nasa.gov/planetary/text/mer_pr_20070720.txt",
+    "type": "nssdca",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "jpl-news-nasas-mars-rover-has-uncertain-futu",
+    "organization": "NASA Jet Propulsion Laboratory",
+    "title": "NASA's Mars Rover has Uncertain Future as Sixth Anniversary Nears (31 December 2009)",
+    "url": "https://www.jpl.nasa.gov/news/nasas-mars-rover-has-uncertain-future-as-sixth-anniversary-nears/",
+    "type": "nasa-news",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-spinoff2008-ch-2-html",
+    "organization": "NASA",
+    "title": "Mars Cameras Make Panoramic Photography a Snap (Spinoff 2008)",
+    "url": "https://spinoff.nasa.gov/Spinoff2008/ch_2.html",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-ksc-03pd2090",
+    "organization": "NASA Image and Video Library",
+    "title": "Delta II Heavy launch of \"Opportunity\" MER-B Rover (KSC-03pd2090)",
+    "url": "https://images.nasa.gov/details/KSC-03pd2090",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-a-hole-in-one",
+    "organization": "NASA Photojournal",
+    "title": "A Hole in One (PIA05152)",
+    "url": "https://science.nasa.gov/photojournal/a-hole-in-one/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-opportunity-rocks-2",
+    "organization": "NASA Photojournal",
+    "title": "Opportunity Rocks! (PIA05160)",
+    "url": "https://science.nasa.gov/photojournal/opportunity-rocks-2/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-opportunitys-heat-shield-in",
+    "organization": "NASA Photojournal",
+    "title": "Opportunity's Heat Shield in Color, Sol 325 (PIA07223)",
+    "url": "https://science.nasa.gov/photojournal/opportunitys-heat-shield-in-color-sol-325/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-iron-meteorite-on-mars",
+    "organization": "NASA Photojournal",
+    "title": "Iron Meteorite on Mars (PIA07269)",
+    "url": "https://science.nasa.gov/photojournal/iron-meteorite-on-mars/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-looking-back-at-purgatory-d",
+    "organization": "NASA Photojournal",
+    "title": "Looking Back at 'Purgatory Dune' (PIA07999)",
+    "url": "https://science.nasa.gov/photojournal/looking-back-at-purgatory-dune/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-on-the-rim-of-erebus",
+    "organization": "NASA Photojournal",
+    "title": "On the Rim of 'Erebus' (PIA03270)",
+    "url": "https://science.nasa.gov/photojournal/on-the-rim-of-erebus/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-opportunitys-first-glimpse",
+    "organization": "NASA Photojournal",
+    "title": "Opportunity's First Glimpse into 'Victoria Crater' (PIA08763)",
+    "url": "https://science.nasa.gov/photojournal/opportunitys-first-glimpse-into-victoria-crater/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-opportunity-rover-self-port",
+    "organization": "NASA Photojournal",
+    "title": "Opportunity Rover Self-Portrait From 2007 (PIA15114)",
+    "url": "https://science.nasa.gov/photojournal/opportunity-rover-self-portrait-from-2007/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-opportunitys-first-dip-into",
+    "organization": "NASA Photojournal",
+    "title": "Opportunity's First Dip into Victoria Crater (PIA09924)",
+    "url": "https://science.nasa.gov/photojournal/opportunitys-first-dip-into-victoria-crater/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-opportunity-at-work-inside",
+    "organization": "NASA Photojournal",
+    "title": "Opportunity at Work Inside Victoria Crater (PIA10077)",
+    "url": "https://science.nasa.gov/photojournal/opportunity-at-work-inside-victoria-crater/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-opportunitys-wheel-tracks-a",
+    "organization": "NASA Photojournal",
+    "title": "Opportunity's Wheel Tracks at Victoria Crater (PIA13088)",
+    "url": "https://science.nasa.gov/photojournal/opportunitys-wheel-tracks-at-victoria-crater/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-block-island-meteorite-on-m",
+    "organization": "NASA Photojournal",
+    "title": "'Block Island' Meteorite on Mars, Sol 1961 (False Color) (PIA12193)",
+    "url": "https://science.nasa.gov/photojournal/block-island-meteorite-on-mars-sol-1961-false-color/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-first-image-from-a-mars-rov",
+    "organization": "NASA Photojournal",
+    "title": "First Image from a Mars Rover Choosing a Target (PIA12975)",
+    "url": "https://science.nasa.gov/photojournal/first-image-from-a-mars-rover-choosing-a-target/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-first-dust-devil-seen-by-op",
+    "organization": "NASA Photojournal",
+    "title": "First Dust Devil Seen by Opportunity (PIA13305)",
+    "url": "https://science.nasa.gov/photojournal/first-dust-devil-seen-by-opportunity/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-color-panorama-of-santa-mar",
+    "organization": "NASA Photojournal",
+    "title": "Color Panorama of 'Santa Maria' Crater for Opportunity's Anniversary (PIA13794)",
+    "url": "https://science.nasa.gov/photojournal/color-panorama-of-santa-maria-crater-for-opportunitys-anniversary/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-opportunity-is-still-smilin",
+    "organization": "NASA Photojournal",
+    "title": "Opportunity is Still Smiling (PIA13803)",
+    "url": "https://science.nasa.gov/photojournal/opportunity-is-still-smiling/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-arrival-at-spirit-point-by",
+    "organization": "NASA Photojournal",
+    "title": "Arrival at 'Spirit Point' by Mars Rover Opportunity (PIA14509)",
+    "url": "https://science.nasa.gov/photojournal/arrival-at-spirit-point-by-mars-rover-opportunity/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-matijevic-hill-panorama-for",
+    "organization": "NASA Photojournal",
+    "title": "'Matijevic Hill' Panorama for Rover's Ninth Anniversary (PIA16703)",
+    "url": "https://science.nasa.gov/photojournal/matijevic-hill-panorama-for-rovers-ninth-anniversary/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-esperance-target-examined-b",
+    "organization": "NASA Photojournal",
+    "title": "'Esperance' Target Examined by Opportunity (PIA17074)",
+    "url": "https://science.nasa.gov/photojournal/esperance-target-examined-by-opportunity/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-self-portrait-by-freshly-cl",
+    "organization": "NASA Photojournal",
+    "title": "Self-Portrait by Freshly Cleaned Opportunity Mars Rover in March 2014 (PIA18079)",
+    "url": "https://science.nasa.gov/photojournal/self-portrait-by-freshly-cleaned-opportunity-mars-rover-in-march-2014/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-mars-marathon-valley-overlo",
+    "organization": "NASA Photojournal",
+    "title": "Mars 'Marathon Valley' Overlook (PIA19151)",
+    "url": "https://science.nasa.gov/photojournal/mars-marathon-valley-overlook/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-steep-knudsen-ridge-along-m",
+    "organization": "NASA Photojournal",
+    "title": "Steep 'Knudsen Ridge' Along 'Marathon Valley' on Mars (PIA20318)",
+    "url": "https://science.nasa.gov/photojournal/steep-knudsen-ridge-along-marathon-valley-on-mars/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-opportunitys-shadow-and-tra",
+    "organization": "NASA Photojournal",
+    "title": "Opportunity's Shadow and Tracks on Martian Slope (PIA20328)",
+    "url": "https://science.nasa.gov/photojournal/opportunitys-shadow-and-tracks-on-martian-slope/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-view-down-perseverance-vall",
+    "organization": "NASA Photojournal",
+    "title": "View Down 'Perseverance Valley' After Entry at Top (PIA21724)",
+    "url": "https://science.nasa.gov/photojournal/view-down-perseverance-valley-after-entry-at-top/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-view-from-within-perseveran",
+    "organization": "NASA Photojournal",
+    "title": "View From Within 'Perseverance Valley' on Mars (PIA22074)",
+    "url": "https://science.nasa.gov/photojournal/view-from-within-perseverance-valley-on-mars/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-new-day-for-longest-working",
+    "organization": "NASA Photojournal",
+    "title": "New Day for Longest-Working Mars Rover (PIA22221)",
+    "url": "https://science.nasa.gov/photojournal/new-day-for-longest-working-mars-rover/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-opportunitys-first-selfie",
+    "organization": "NASA Photojournal",
+    "title": "Opportunity's First Selfie (PIA22222)",
+    "url": "https://science.nasa.gov/photojournal/opportunitys-first-selfie/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-opportunity-after-the-dust",
+    "organization": "NASA Photojournal",
+    "title": "Opportunity After the Dust Storm (PIA22549)",
+    "url": "https://science.nasa.gov/photojournal/opportunity-after-the-dust-storm/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-opportunitys-final-traverse",
+    "organization": "NASA Photojournal",
+    "title": "Opportunity's Final Traverse Map (PIA23178)",
+    "url": "https://science.nasa.gov/photojournal/opportunitys-final-traverse-map/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-hole-lotta-grindin-going-on",
+    "organization": "NASA Photojournal",
+    "title": "“Hole” Lotta Grindin' Going On (PIA05513)",
+    "url": "https://science.nasa.gov/photojournal/hole-lotta-grindin-going-on/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-opportunity-captures-lion-k",
+    "organization": "NASA Photojournal",
+    "title": "Opportunity Captures “Lion King” Panorama (PIA05755)",
+    "url": "https://science.nasa.gov/photojournal/opportunity-captures-lion-king-panorama/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "jpl-news-nasa-mars-rover-finds-mineral-vein",
+    "organization": "NASA Jet Propulsion Laboratory",
+    "title": "NASA Mars Rover Finds Mineral Vein Deposited by Water",
+    "url": "https://www.jpl.nasa.gov/news/nasa-mars-rover-finds-mineral-vein-deposited-by-water/",
+    "type": "nasa-news",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-opportunitys-rub-al-khali-p",
+    "organization": "NASA Photojournal",
+    "title": "Opportunity's 'Rub al Khali' Panorama (PIA07216)",
+    "url": "https://science.nasa.gov/photojournal/opportunitys-rub-al-khali-panorama/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-opportunitys-first-goal-at",
+    "organization": "NASA Photojournal",
+    "title": "Opportunity's First Goal at Endeavour Crater: 'Spirit Point' (PIA14134)",
+    "url": "https://science.nasa.gov/photojournal/opportunitys-first-goal-at-endeavour-crater-spirit-point/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-approaching-marquette-islan",
+    "organization": "NASA Photojournal",
+    "title": "Approaching 'Marquette Island' (PIA12474)",
+    "url": "https://science.nasa.gov/photojournal/approaching-marquette-island/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-opportunitys-close-up-of-a",
+    "organization": "NASA Photojournal",
+    "title": "Opportunity's Close-up of a Meteorite: 'Oileán Ruaidh' (True Color) (PIA13419)",
+    "url": "https://science.nasa.gov/photojournal/opportunitys-close-up-of-a-meteorite-oilean-ruaidh-true-color/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "jpl-news-nasa-mars-rover-getting-smarter-as",
+    "organization": "NASA Jet Propulsion Laboratory",
+    "title": "NASA Mars Rover Getting Smarter as it Gets Older",
+    "url": "https://www.jpl.nasa.gov/news/nasa-mars-rover-getting-smarter-as-it-gets-older/",
+    "type": "nasa-news",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-west-rim-of-endeavour-crate",
+    "organization": "NASA Photojournal",
+    "title": "West Rim of Endeavour Crater on Mars (PIA14508)",
+    "url": "https://science.nasa.gov/photojournal/west-rim-of-endeavour-crater-on-mars/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-opportunity-rovers-full-mar",
+    "organization": "NASA Photojournal",
+    "title": "Opportunity Rover's Full Marathon-Length Traverse (PIA19154)",
+    "url": "https://science.nasa.gov/photojournal/opportunity-rovers-full-marathon-length-traverse/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-homestake-vein-in-color",
+    "organization": "NASA Photojournal",
+    "title": "'Homestake' Vein in Color (PIA15033)",
+    "url": "https://science.nasa.gov/photojournal/homestake-vein-in-color/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "jpl-news-mars-rover-opportunity-examines-cla",
+    "organization": "NASA Jet Propulsion Laboratory",
+    "title": "Mars Rover Opportunity Examines Clay Clues in Rock",
+    "url": "https://www.jpl.nasa.gov/news/mars-rover-opportunity-examines-clay-clues-in-rock/",
+    "type": "nasa-news",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-self-portrait-by-opportunit",
+    "organization": "NASA Photojournal",
+    "title": "Self-Portrait by Opportunity Mars Rover in January 2014 (PIA17759)",
+    "url": "https://science.nasa.gov/photojournal/self-portrait-by-opportunity-mars-rover-in-january-2014/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-opportunitys-journey-exceed",
+    "organization": "NASA Photojournal",
+    "title": "Opportunity's Journey Exceeds 25 Miles (PIA18404)",
+    "url": "https://science.nasa.gov/photojournal/opportunitys-journey-exceeds-25-miles/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-mars-rover-opportunitys-pan",
+    "organization": "NASA Photojournal",
+    "title": "Mars Rover Opportunity's Panorama of 'Marathon Valley' (PIA20749)",
+    "url": "https://science.nasa.gov/photojournal/mars-rover-opportunitys-panorama-of-marathon-valley/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "jpl-news-opportunity-hunkers-down-during-dus",
+    "organization": "NASA Jet Propulsion Laboratory",
+    "title": "Opportunity Hunkers Down During Dust Storm",
+    "url": "https://www.jpl.nasa.gov/news/opportunity-hunkers-down-during-dust-storm/",
+    "type": "nasa-news",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-last-images-opportunity-too",
+    "organization": "NASA Photojournal",
+    "title": "Last Images Opportunity Took (PIA22930)",
+    "url": "https://science.nasa.gov/photojournal/last-images-opportunity-took/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "jpl-news-nasa-mars-rover-can-choose-laser-ta",
+    "organization": "NASA Jet Propulsion Laboratory",
+    "title": "NASA Mars Rover Can Choose Laser Targets on Its Own",
+    "url": "https://www.jpl.nasa.gov/news/nasa-mars-rover-can-choose-laser-targets-on-its-own/",
+    "type": "nasa-news",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-pathfinder-landers-in-test",
+    "organization": "NASA Photojournal",
+    "title": "PIA01550 Pathfinder Landers - In Test and On Mars",
+    "url": "https://science.nasa.gov/photojournal/pathfinder-landers-in-test-and-on-mars/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-360-degree-bw-monster-pan",
+    "organization": "NASA Photojournal",
+    "title": "PIA00662 360-degree b/w “Monster Pan”",
+    "url": "https://science.nasa.gov/photojournal/360-degree-bw-monster-pan/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-panoramic-views-of-the-land",
+    "organization": "NASA Photojournal",
+    "title": "https://science.nasa.gov/photojournal/panoramic-views-of-the-landing-site-from-sagan-memorial-station/",
+    "url": "https://science.nasa.gov/photojournal/panoramic-views-of-the-landing-site-from-sagan-memorial-station/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-mpf-lander-measured-surface",
+    "organization": "NASA Photojournal",
+    "title": "PIA00976 MPF Lander Measured Surface Pressure",
+    "url": "https://science.nasa.gov/photojournal/mpf-lander-measured-surface-pressure/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-northeast-view-from-pathfin",
+    "organization": "NASA Photojournal",
+    "title": "PIA01000 Northeast View from Pathfinder Lander",
+    "url": "https://science.nasa.gov/photojournal/northeast-view-from-pathfinder-lander/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-node-10613",
+    "organization": "NASA",
+    "title": "Tough Textiles Protect Payloads and Public Safety Officers",
+    "url": "https://spinoff.nasa.gov/node/10613",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-images-details-ksc-96pc-1130",
+    "organization": "NASA Image and Video Library",
+    "title": "KSC-96PC-1130 (Mars Pathfinder petals closed around Sojourner)",
+    "url": "https://images.nasa.gov/details/KSC-96PC-1130",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-360-degree-panorama-in-3-d",
+    "organization": "NASA Photojournal",
+    "title": "PIA00782 360-degree Panorama in 3-D",
+    "url": "https://science.nasa.gov/photojournal/360-degree-panorama-in-3-d/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-radiation-calibration-targe",
+    "organization": "NASA Photojournal",
+    "title": "PIA00620 Radiation Calibration Targets",
+    "url": "https://science.nasa.gov/photojournal/radiation-calibration-targets/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-newly-deployed-sojourner-ro",
+    "organization": "NASA Photojournal",
+    "title": "PIA01551 Newly Deployed Sojourner Rover",
+    "url": "https://science.nasa.gov/photojournal/newly-deployed-sojourner-rover/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-specials-pathfinder20",
+    "organization": "NASA",
+    "title": "The Day the Internet Stood Still (2017)",
+    "url": "https://www.nasa.gov/specials/pathfinder20/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-mars-rotational-and-orbital",
+    "organization": "NASA Photojournal",
+    "title": "PIA00975 Mars Rotational and Orbital Dynamics",
+    "url": "https://science.nasa.gov/photojournal/mars-rotational-and-orbital-dynamics/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "jpl-missions-mars-pathfinder-sojourner-rover",
+    "organization": "NASA Jet Propulsion Laboratory",
+    "title": "Mars Pathfinder / Sojourner Rover (mission page)",
+    "url": "https://www.jpl.nasa.gov/missions/mars-pathfinder-sojourner-rover/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-pdf-mar-web-pdf",
+    "organization": "NASA",
+    "title": "Mars Spinoffs (NP-2009-10-624-HQ, PDF)",
+    "url": "https://spinoff.nasa.gov/pdf/Mar_web.pdf",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-sojourner-does-a-wheelie-on",
+    "organization": "NASA Photojournal",
+    "title": "https://science.nasa.gov/photojournal/sojourner-does-a-wheelie-on-yogi/",
+    "url": "https://science.nasa.gov/photojournal/sojourner-does-a-wheelie-on-yogi/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-sojourner-and-yogi",
+    "organization": "NASA Photojournal",
+    "title": "PIA00766 Sojourner & “Yogi”",
+    "url": "https://science.nasa.gov/photojournal/sojourner-and-yogi/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-sojourner-at-moe-color",
+    "organization": "NASA Photojournal",
+    "title": "PIA00967 Sojourner at “Moe” - Color",
+    "url": "https://science.nasa.gov/photojournal/sojourner-at-moe-color/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-sojourner-rover-view-of-wel",
+    "organization": "NASA Photojournal",
+    "title": "PIA01133 Sojourner Rover View of Well-Rounded Pebbles in “Cabbage Patch”",
+    "url": "https://science.nasa.gov/photojournal/sojourner-rover-view-of-well-rounded-pebbles-in-cabbage-patch/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-sojourner-rover-tracks-in-c",
+    "organization": "NASA Photojournal",
+    "title": "PIA01137 Sojourner Rover Tracks in Compressible Soil",
+    "url": "https://science.nasa.gov/photojournal/sojourner-rover-tracks-in-compressible-soil/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-rovers-and-sojourner",
+    "organization": "NASA Photojournal",
+    "title": "PIA04422 Rovers and Sojourner",
+    "url": "https://science.nasa.gov/photojournal/rovers-and-sojourner/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-flight-projects-pathfinder",
+    "organization": "NASA Jet Propulsion Laboratory",
+    "title": "Mars Pathfinder Rover: Sojourner (1996)",
+    "url": "https://robotics.jpl.nasa.gov/what-we-do/flight-projects/pathfinder/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-sojourner-and-terrain-2",
+    "organization": "NASA Photojournal",
+    "title": "PIA00632 Sojourner & Terrain",
+    "url": "https://science.nasa.gov/photojournal/sojourner-and-terrain-2/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-airbags-and-sojourner-rover",
+    "organization": "NASA Photojournal",
+    "title": "PIA00614 Airbags and Sojourner Rover",
+    "url": "https://science.nasa.gov/photojournal/airbags-and-sojourner-rover/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-pathfinder-ramp-deploy-imag",
+    "organization": "NASA Photojournal",
+    "title": "PIA00628 Pathfinder Ramp Deploy Image",
+    "url": "https://science.nasa.gov/photojournal/pathfinder-ramp-deploy-image/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-pathfinder-software-electronics",
+    "organization": "NASA Jet Propulsion Laboratory",
+    "title": "Mars Pathfinder Rover: Software & Electronics",
+    "url": "https://robotics.jpl.nasa.gov/what-we-do/flight-projects/pathfinder/software-electronics/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-sojourners-apxs-at-shark",
+    "organization": "NASA Photojournal",
+    "title": "PIA00921 Sojourner's APXS at “Shark”",
+    "url": "https://science.nasa.gov/photojournal/sojourners-apxs-at-shark/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-first-controlled-flight-of",
+    "organization": "NASA Photojournal",
+    "title": "First Controlled Flight of Mars Helicopter Prototype",
+    "url": "https://science.nasa.gov/photojournal/first-controlled-flight-of-mars-helicopter-prototype/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-perseverances-selfie-with-i",
+    "organization": "NASA Photojournal",
+    "title": "Perseverance's Selfie with Ingenuity",
+    "url": "https://science.nasa.gov/photojournal/perseverances-selfie-with-ingenuity/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-aerial-view-of-jezero-crate",
+    "organization": "NASA Photojournal",
+    "title": "Aerial View of Jezero Crater's Raised Ridges",
+    "url": "https://science.nasa.gov/photojournal/aerial-view-of-jezero-craters-raised-ridges/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-flight-12-view-of-south-sei",
+    "organization": "NASA Photojournal",
+    "title": "Flight 12 View of South Séítah",
+    "url": "https://science.nasa.gov/photojournal/flight-12-view-of-south-seitah/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-ingenuitys-upper-swashplate",
+    "organization": "NASA Photojournal",
+    "title": "Ingenuity's Upper Swashplate Assembly",
+    "url": "https://science.nasa.gov/photojournal/ingenuitys-upper-swashplate-assembly/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-ingenuity-at-airfield-d",
+    "organization": "NASA Photojournal",
+    "title": "Ingenuity at Airfield D",
+    "url": "https://science.nasa.gov/photojournal/ingenuity-at-airfield-d/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-ingenuity-at-two-years-on-m",
+    "organization": "NASA Photojournal",
+    "title": "Ingenuity at Two Years on Mars",
+    "url": "https://science.nasa.gov/photojournal/ingenuity-at-two-years-on-mars/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-ingenuity-before-flight-52s",
+    "organization": "NASA Photojournal",
+    "title": "Ingenuity Before Flight 52's Landing",
+    "url": "https://science.nasa.gov/photojournal/ingenuity-before-flight-52s-landing/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-perseverance-checks-out-ing",
+    "organization": "NASA Photojournal",
+    "title": "Perseverance Checks Out Ingenuity",
+    "url": "https://science.nasa.gov/photojournal/perseverance-checks-out-ingenuity/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-perseverance-seen-from-abov",
+    "organization": "NASA Photojournal",
+    "title": "Perseverance Seen From Above During Flight 54",
+    "url": "https://science.nasa.gov/photojournal/perseverance-seen-from-above-during-flight-54/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-testing-next-generation-mar",
+    "organization": "NASA Photojournal",
+    "title": "Testing Next-Generation Mars Helicopter Rotors",
+    "url": "https://science.nasa.gov/photojournal/testing-next-generation-mars-helicopter-rotors/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-ingenuity-views-its-footpri",
+    "organization": "NASA Photojournal",
+    "title": "Ingenuity Views Its Footprints on Flight 66",
+    "url": "https://science.nasa.gov/photojournal/ingenuity-views-its-footprints-on-flight-66/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-ingenuitys-view-of-sand-rip",
+    "organization": "NASA Photojournal",
+    "title": "Ingenuity's View of Sand Ripples During Flight 70",
+    "url": "https://science.nasa.gov/photojournal/ingenuitys-view-of-sand-ripples-during-flight-70/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-ingenuitys-navcam-reveals-a",
+    "organization": "NASA Photojournal",
+    "title": "Ingenuity's Navcam Reveals a Missing Rotor Blade",
+    "url": "https://science.nasa.gov/photojournal/ingenuitys-navcam-reveals-a-missing-rotor-blade/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-mars-helicopter-team-witnes",
+    "organization": "NASA Photojournal",
+    "title": "Mars Helicopter Team Witnesses Final Downlink",
+    "url": "https://science.nasa.gov/photojournal/mars-helicopter-team-witnesses-final-downlink/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-ingenuity-helicopter-nasas-mars-helicopt-2",
+    "organization": "NASA",
+    "title": "NASA's Mars Helicopter Completes Flight Tests",
+    "url": "https://www.nasa.gov/missions/mars-2020-perseverance/ingenuity-helicopter/nasas-mars-helicopter-completes-flight-tests/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-ingenuity-mars-helicopter-d",
+    "organization": "NASA Photojournal",
+    "title": "Ingenuity Mars Helicopter Deployment Test",
+    "url": "https://science.nasa.gov/photojournal/ingenuity-mars-helicopter-deployment-test/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-news-release-alabama-high-school-student",
+    "organization": "NASA",
+    "title": "Alabama High School Student Names NASA's Mars Helicopter",
+    "url": "https://www.nasa.gov/news-release/alabama-high-school-student-names-nasas-mars-helicopter/",
+    "type": "nasa-news",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-ingenuity-goes-vertical",
+    "organization": "NASA Photojournal",
+    "title": "Ingenuity Goes Vertical",
+    "url": "https://science.nasa.gov/photojournal/ingenuity-goes-vertical/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-ingenuitys-blades-are-relea",
+    "organization": "NASA Photojournal",
+    "title": "Ingenuity's Blades Are Released",
+    "url": "https://science.nasa.gov/photojournal/ingenuitys-blades-are-released/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-solar-system-nasas-ingenuity-mars-helico-2",
+    "organization": "NASA",
+    "title": "NASA’s Ingenuity Mars Helicopter Logs Second Successful Flight",
+    "url": "https://www.nasa.gov/solar-system/nasas-ingenuity-mars-helicopter-logs-second-successful-flight/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-news-release-with-goals-met-nasa-to-push",
+    "organization": "NASA",
+    "title": "With Goals Met, NASA to Push Envelope with Ingenuity Mars Helicopter",
+    "url": "https://www.nasa.gov/news-release/with-goals-met-nasa-to-push-envelope-with-ingenuity-mars-helicopter/",
+    "type": "nasa-news",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-ingenuitys-color-camera-spi",
+    "organization": "NASA Photojournal",
+    "title": "Ingenuity's Color Camera Spies Helicopter's New Airfield",
+    "url": "https://science.nasa.gov/photojournal/ingenuitys-color-camera-spies-helicopters-new-airfield/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-jpl-nasas-perseverance-captures-video-au",
+    "organization": "NASA",
+    "title": "NASA’s Perseverance Captures Video, Audio of Fourth Ingenuity Flight",
+    "url": "https://www.nasa.gov/centers-and-facilities/jpl/nasas-perseverance-captures-video-audio-of-fourth-ingenuity-flight/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-blog-surviving-an-in-flight-anomaly-what",
+    "organization": "NASA",
+    "title": "Surviving an In-Flight Anomaly: What Happened on Ingenuity’s Sixth Flight",
+    "url": "https://science.nasa.gov/blog/surviving-an-in-flight-anomaly-what-happened-on-ingenuitys-sixth-flight/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-blog-flight-9-was-a-nail-biter-but-ingen",
+    "organization": "NASA",
+    "title": "Flight 9 Was a Nail-Biter, but Ingenuity Came Through With Flying Colors",
+    "url": "https://science.nasa.gov/blog/flight-9-was-a-nail-biter-but-ingenuity-came-through-with-flying-colors/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-solar-system-nasas-mars-helicopter-revea",
+    "organization": "NASA",
+    "title": "NASA’s Mars Helicopter Reveals Intriguing Terrain for Rover Team",
+    "url": "https://www.nasa.gov/solar-system/nasas-mars-helicopter-reveals-intriguing-terrain-for-rover-team/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-blog-aerial-scouting-of-raised-ridges-fo",
+    "organization": "NASA",
+    "title": "Aerial Scouting of ‘Raised Ridges’ for Ingenuity’s Flight 10",
+    "url": "https://science.nasa.gov/blog/aerial-scouting-of-raised-ridges-for-ingenuitys-flight-10/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-blog-2800-rpm-spin-a-success-but-flight",
+    "organization": "NASA",
+    "title": "2,800 RPM Spin a Success, but Flight 14 Delayed to Post Conjunction",
+    "url": "https://science.nasa.gov/blog/2800-rpm-spin-a-success-but-flight-14-delayed-to-post-conjunction/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-blog-flight-14-successful",
+    "organization": "NASA",
+    "title": "Flight 14 Successful",
+    "url": "https://science.nasa.gov/blog/flight-14-successful/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-blog-dusty-flight-19-completed-and-looki",
+    "organization": "NASA",
+    "title": "Dusty Flight 19 Completed and Looking Ahead to Flight 20",
+    "url": "https://science.nasa.gov/blog/dusty-flight-19-completed-and-looking-ahead-to-flight-20/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-solar-system-nasa-extends-ingenuity-heli",
+    "organization": "NASA",
+    "title": "NASA Extends Ingenuity Helicopter Mission",
+    "url": "https://www.nasa.gov/solar-system/nasa-extends-ingenuity-helicopter-mission/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-blog-nasas-ingenuity-in-contact-with-per",
+    "organization": "NASA",
+    "title": "NASA’s Ingenuity in Contact With Perseverance Rover After Communications Dropout",
+    "url": "https://science.nasa.gov/blog/nasas-ingenuity-in-contact-with-perseverance-rover-after-communications-dropout/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-blog-ingenuity-adapts-for-mars-winter-op",
+    "organization": "NASA",
+    "title": "Ingenuity Adapts for Mars Winter Operations",
+    "url": "https://science.nasa.gov/blog/ingenuity-adapts-for-mars-winter-operations/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-blog-keeping-our-sense-of-direction-deal",
+    "organization": "NASA",
+    "title": "Keeping Our Sense of Direction: Dealing With a Dead Sensor",
+    "url": "https://science.nasa.gov/blog/keeping-our-sense-of-direction-dealing-with-a-dead-sensor/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-ingenuity-helicopter-nasas-ingenuity-mar-3",
+    "organization": "NASA",
+    "title": "NASA’s Ingenuity Mars Helicopter Phones Home",
+    "url": "https://www.nasa.gov/missions/mars-2020-perseverance/ingenuity-helicopter/nasas-ingenuity-mars-helicopter-phones-home/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-blog-the-long-wait",
+    "organization": "NASA",
+    "title": "The Long Wait",
+    "url": "https://science.nasa.gov/blog/the-long-wait/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-ingenuity-helicopter-nasas-ingenuity-mar-4",
+    "organization": "NASA",
+    "title": "NASA’s Ingenuity Mars Helicopter Flies Again After Unscheduled Landing",
+    "url": "https://www.nasa.gov/missions/mars-2020-perseverance/ingenuity-helicopter/nasas-ingenuity-mars-helicopter-flies-again-after-unscheduled-landing/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-ingenuity-helicopter-nasa-uses-two-world",
+    "organization": "NASA",
+    "title": "NASA Uses Two Worlds to Test Future Mars Helicopter Designs",
+    "url": "https://www.nasa.gov/missions/mars-2020-perseverance/ingenuity-helicopter/nasa-uses-two-worlds-to-test-future-mars-helicopter-designs/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-photojournal-ingenuitys-view-of-sand-goi",
+    "organization": "NASA Photojournal",
+    "title": "Ingenuity's View of Sand Going Into Conjunction",
+    "url": "https://science.nasa.gov/photojournal/ingenuitys-view-of-sand-going-into-conjunction/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-blog-farewell-to-our-flying-friend-and-c",
+    "organization": "NASA",
+    "title": "Farewell to Our Flying Friend and Closing in on the Crater Rim",
+    "url": "https://science.nasa.gov/blog/farewell-to-our-flying-friend-and-closing-in-on-the-crater-rim/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-ingenuity-helicopter-nasas-ingenuity-mar-5",
+    "organization": "NASA",
+    "title": "NASA’s Ingenuity Mars Helicopter Team Says Goodbye … for Now",
+    "url": "https://www.nasa.gov/missions/mars-2020-perseverance/ingenuity-helicopter/nasas-ingenuity-mars-helicopter-team-says-goodbye-for-now/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-mission-skyfall",
+    "organization": "NASA",
+    "title": "SkyFall",
+    "url": "https://science.nasa.gov/mission/skyfall/",
+    "type": "nasa-mission-page",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-ingenuity-helicopter-nasas-mars-helicopt-3",
+    "organization": "NASA",
+    "title": "NASA’s Mars Helicopter Scouts Ridgeline for Perseverance Science Team",
+    "url": "https://www.nasa.gov/missions/mars-2020-perseverance/ingenuity-helicopter/nasas-mars-helicopter-scouts-ridgeline-for-perseverance-science-team/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-science-mars-sample-return-sample-recovery-helic",
+    "organization": "NASA",
+    "title": "Sample Recovery Helicopters",
+    "url": "https://science.nasa.gov/mission/mars-sample-return/sample-recovery-helicopters/",
+    "type": "nasa-mission-page",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "nasa-solar-system-meet-the-open-source-softwa",
+    "organization": "NASA",
+    "title": "Meet the Open-Source Software Powering NASA’s Ingenuity Mars Helicopter",
+    "url": "https://www.nasa.gov/solar-system/meet-the-open-source-software-powering-nasas-ingenuity-mars-helicopter/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
   }
 ]

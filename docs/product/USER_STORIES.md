@@ -329,6 +329,16 @@ Personas : **Visiteur** (10-15 ans, principal), **Curieux** (adulte), **Équipe*
   4. Interface disponible en wolof (brouillon signalé) ; plus de carte des sites ni de sources dans le récit ; intro faite d'images NASA réelles.
 - **Modifie** : US-3.3/3.4 (carte retirée du parcours), US-5.9 (défilement des missions remplacé par les pages machine), SOURCE-002 (sources sur About uniquement), US-2.4 (nouvelle intro).
 
+### US-5.13 — Le récit complet de chaque machine
+- **Story** : En tant que visiteur, je souhaite lire et écouter l'histoire complète d'une machine, expliquée simplement mais sans raccourcis, et voir la page suivre la voix, afin de comprendre vraiment ce qu'elle a fait.
+- **Priorité** : P0 (décision de l'équipe du 2026-11-15) · **Exigences** : EQUIP-002, MEDIA-001, ABOUT-001, NFR-A11Y-006 · **Statut** : `review` (ADR-024 ; `docs/project/stories/US-5.13.md`)
+- **Critères** :
+  1. Pendant la narration, le texte lu (et le mot prononcé si le navigateur le permet) est surligné et la page défile avec la voix ; le visiteur peut reprendre la main et arrêter à tout moment.
+  2. Chacune des 11 machines a une présentation complète et ses propres chapitres datés, en phrases complètes, tirés des pages NASA / NSSDCA listées par l'équipe, avec leurs photos (`draft`).
+  3. Aucun chapitre ni aucune image d'une autre machine sur la page d'une machine (V17).
+  4. Aucune mention de source dans les textes : toutes les sources sont sur la page À propos.
+- **Hors périmètre (décision du 2026-11-15)** : nouvelles machines (rovers lunaires, Viking, Phoenix, InSight) et engins hors Lune/Mars (Dawn, NEAR, Pioneer, Kepler).
+
 ### US-5.5 — Mise en production et démo
 - **Priorité** : P0 · **Exigences** : DEPLOY-001, indicateurs PRD §11
 - **Critères** : URL publique vérifiée en navigation privée sur 1 ordinateur et 2 formats de téléphone ; parcours de démo chronométré < 3 min ; plan de secours (galerie seule) répété.

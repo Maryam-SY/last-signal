@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import { Box } from 'lucide-react'
-import type { Media } from '@/api/types'
+import type { MachinePart, Media } from '@/api/types'
 import { LoadState } from '@/components/common/LoadState'
 import { DepictionBadge } from '@/components/media/DepictionBadge'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { useTranslation } from '@/i18n'
+import { cn } from '@/lib/utils'
 
 type Status = 'loading' | 'ready' | 'error'
 
@@ -31,10 +32,20 @@ function configureModelViewer() {
  * this component mounts, i.e. after the visitor asked for the 3D view; the .glb file is read
  * from NASA servers (ADR-017). No auto-rotation under reduced motion.
  */
-export function ModelViewer3D({ model }: { model: Media }) {
+type ModelElement = HTMLElement & {
+  positionAndNormalFromPoint?: (x: number, y: number) => { position: { x: number; y: number; z: number } } | null
+}
+
+/** Parts of the machine that can be touched on the model (US-5.13): only those with a 3D position. */
+type PlacedPart = MachinePart & { modelPosition: { x: number; y: number; z: number } }
+
+export function ModelViewer3D({ model, parts = [] }: { model: Media; parts?: readonly MachinePart[] }) {
   const { t } = useTranslation()
   const reduced = useReducedMotion()
   const [status, setStatus] = useState<Status>('loading')
+  const [open, setOpen] = useState<string | null>(null)
+  const placed = parts.filter((part): part is PlacedPart => Boolean(part.modelPosition))
+  const active = placed.find((part) => part.id === open)
   const [attempt, setAttempt] = useState(0)
   const viewerRef = useRef<HTMLElement>(null)
 
@@ -59,6 +70,28 @@ export function ModelViewer3D({ model }: { model: Media }) {
     return () => viewer.removeEventListener('error', onError)
   }, [status])
 
+  // US-5.13: touching the model itself opens the nearest named part.
+  const placedRef = useRef(placed)
+  useEffect(() => {
+    placedRef.current = placed
+  })
+  useEffect(() => {
+    const viewer = viewerRef.current as ModelElement | null
+    if (!viewer || status !== 'ready') return
+    const onClick = (event: MouseEvent) => {
+      if ((event.target as HTMLElement).closest?.('[slot^="hotspot"]')) return
+      const hit = viewer.positionAndNormalFromPoint?.(event.clientX, event.clientY)
+      const list = placedRef.current
+      if (!hit || list.length === 0) return
+      const distance = (part: PlacedPart) =>
+        Math.hypot(part.modelPosition.x - hit.position.x, part.modelPosition.y - hit.position.y, part.modelPosition.z - hit.position.z)
+      const nearest = list.reduce((best, part) => (distance(part) < distance(best) ? part : best))
+      setOpen(nearest.id)
+    }
+    viewer.addEventListener('click', onClick)
+    return () => viewer.removeEventListener('click', onClick)
+  }, [status])
+
   const retry = () => {
     setStatus('loading')
     setAttempt((n) => n + 1)
@@ -75,14 +108,29 @@ export function ModelViewer3D({ model }: { model: Media }) {
             camera-controls
             // The wheel must keep scrolling the journey: zooming would capture it (preventDefault).
             disable-zoom
-            auto-rotate={!reduced || undefined}
+            auto-rotate={(!reduced && !open) || undefined}
             rotation-per-second="18deg"
             touch-action="pan-y"
             interaction-prompt="auto"
             shadow-intensity="1"
             loading="eager"
             style={{ width: '100%', height: '100%', minHeight: '18rem', background: 'transparent' }}
-          />
+          >
+            {placed.map((part) => (
+              <button
+                key={part.id}
+                type="button"
+                slot={`hotspot-${part.id}`}
+                data-position={`${part.modelPosition.x}m ${part.modelPosition.y}m ${part.modelPosition.z}m`}
+                data-visibility-attribute="visible"
+                aria-expanded={open === part.id}
+                onClick={() => setOpen((current) => (current === part.id ? null : part.id))}
+                className={cn('part-marker model-hotspot', open === part.id && 'is-open')}
+              >
+                <span className={cn('model-hotspot-label', open === part.id && 'is-open')}>{part.name}</span>
+              </button>
+            ))}
+          </model-viewer>
         ) : status === 'loading' ? (
           <div className="flex size-full min-h-72 items-center justify-center">
             <LoadState status="loading" onRetry={retry} />
@@ -99,7 +147,26 @@ export function ModelViewer3D({ model }: { model: Media }) {
         <div className="pointer-events-none absolute top-2 left-2">
           <DepictionBadge depiction={model.depiction} />
         </div>
+        {/* Large screens (US-5.13): the touched part's card opens on the model view. */}
+        {active && (
+          <div key={`on-model-${active.id}`} aria-hidden="true" className="part-card-on-photo reading-panel pointer-events-none absolute right-3 bottom-3 hidden w-72 rounded-2xl p-4 lg:block">
+            <p className="font-heading text-lg font-bold text-world">{active.name}</p>
+            <p className="mt-1 text-sm leading-relaxed">{active.description}</p>
+          </div>
+        )}
       </div>
+      {placed.length > 0 && (
+        <div aria-live="polite" className="mt-3 min-h-[5.5rem] lg:min-h-0">
+          {active ? (
+            <div key={active.id} className="part-card reading-panel rounded-2xl p-4 lg:sr-only">
+              <p className="font-heading text-lg font-bold text-world">{active.name}</p>
+              <p className="mt-1 leading-relaxed">{active.description}</p>
+            </div>
+          ) : (
+            <p className="text-legible text-sm text-starlight/85">{t('parts.hintModel')}</p>
+          )}
+        </div>
+      )}
       <figcaption className="mt-2 space-y-1 text-xs text-moon-dust">
         {model.description && <p className="text-sm text-starlight/90">{model.description}</p>}
         <p>{t('journey.modelHelp')}</p>

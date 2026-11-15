@@ -20,6 +20,8 @@ function pickVoice(lang: string): SpeechSynthesisVoice | undefined {
 export interface NarrationHandlers {
   /** Index of the paragraph being read (to show or scroll to it). */
   onParagraph?: (index: number) => void
+  /** A word starts being spoken: its position in the paragraph's text (where the voice says so). */
+  onWord?: (index: number, charIndex: number, charLength?: number) => void
   onEnd?: () => void
 }
 
@@ -29,7 +31,8 @@ export function narrate(paragraphs: readonly string[], lang: string, handlers: N
   const synth = window.speechSynthesis
   synth.cancel()
   let stopped = false
-  const texts = paragraphs.map((text) => text.trim()).filter(Boolean)
+  // Indices stay those of `paragraphs` (empty ones are skipped), so callers can map them back.
+  const texts = paragraphs
 
   const speak = (index: number) => {
     if (stopped) return
@@ -37,12 +40,20 @@ export function narrate(paragraphs: readonly string[], lang: string, handlers: N
       handlers.onEnd?.()
       return
     }
-    const utterance = new SpeechSynthesisUtterance(texts[index])
+    const text = texts[index] ?? ''
+    if (!text.trim()) {
+      speak(index + 1)
+      return
+    }
+    const utterance = new SpeechSynthesisUtterance(text)
     utterance.lang = lang
     const voice = pickVoice(lang)
     if (voice) utterance.voice = voice
     utterance.rate = 0.98
     utterance.onstart = () => handlers.onParagraph?.(index)
+    utterance.onboundary = (event) => {
+      if (event.name === 'word' || event.name === undefined) handlers.onWord?.(index, event.charIndex, event.charLength || undefined)
+    }
     utterance.onend = () => speak(index + 1)
     utterance.onerror = () => speak(index + 1)
     synth.speak(utterance)

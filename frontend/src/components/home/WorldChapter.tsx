@@ -1,9 +1,9 @@
-import { useRef, useState, type PointerEvent } from 'react'
-import { ArrowRight } from 'lucide-react'
+import { useRef, useState, type CSSProperties, type PointerEvent } from 'react'
 import { Link } from 'react-router'
 import { paths } from '@/app/paths'
 import { LivePlanet, type PointerState } from '@/components/celestial/LivePlanet'
 import { getBodyByDestination } from '@/content/celestialBodies'
+import { MousePointerClick } from 'lucide-react'
 import { useTranslation } from '@/i18n'
 import { cn } from '@/lib/utils'
 import type { DestinationId } from '@/types/content'
@@ -16,8 +16,9 @@ interface WorldChapterProps {
 }
 
 /**
- * One destination as a scene of the depth journey: a large living planet (it turns as you
- * scroll) next to its name, kind and short description. The planet grows faster than the
+ * One destination as a scene of the depth journey: a large living planet (turning at its real
+ * speed; clicking it opens the world — US-5.13: no separate button) next to its name, kind and
+ * short description. The planet grows faster than the
  * text when the camera passes (CSS `--pass`), which separates the two planes.
  */
 export function WorldChapter({ id, number, reversed = false }: WorldChapterProps) {
@@ -49,7 +50,8 @@ export function WorldChapter({ id, number, reversed = false }: WorldChapterProps
       className="mx-auto grid w-full max-w-6xl items-center gap-4 px-5 sm:gap-8 lg:grid-cols-2 lg:gap-16"
     >
       <div
-        className={cn('chapter-planet mx-auto w-[min(72vw,40vh,30rem)]', reversed && 'lg:order-2')}
+        className={cn('chapter-planet planet-glow mx-auto w-[min(84vw,54vh,40rem)]', reversed && 'lg:order-2')}
+        style={{ '--glow': id === 'moon' ? '#e2e8f0' : '#d97757' } as CSSProperties}
         onPointerEnter={() => setActive(true)}
         onPointerLeave={() => {
           setActive(false)
@@ -60,12 +62,13 @@ export function WorldChapter({ id, number, reversed = false }: WorldChapterProps
         <Link
           to={paths.destination(id)}
           viewTransition
-          tabIndex={-1}
-          aria-hidden="true"
+          aria-label={land}
           onClick={markTransition}
-          className="block cursor-pointer"
+          onFocus={() => setActive(true)}
+          onBlur={() => setActive(false)}
+          className="block cursor-pointer rounded-full outline-offset-8"
         >
-          <div ref={planetRef}>
+          <div ref={planetRef} className="group relative transition-[filter] duration-500 hover:brightness-125">
             <LivePlanet body={body} active={active} pointer={pointer} spinPerPixel={0.12} />
           </div>
         </Link>
@@ -73,25 +76,20 @@ export function WorldChapter({ id, number, reversed = false }: WorldChapterProps
 
       <div className={cn('text-center lg:text-left', reversed && 'lg:order-1')}>
         <p className="font-mono text-[0.65rem] tracking-[0.35em] text-stellar-cyan uppercase">
-          {t('explore.chapter', { number: String(number).padStart(2, '0') })} · {t(`bodies.${id}.kind`)}
+          {t('explore.chapter', { number: String(number).padStart(2, '0') })}
         </p>
         <h2 id={titleId} className="velocity-skew mt-3 font-heading text-5xl leading-none font-bold sm:text-7xl">
           {t(`destinations.${id}.name`)}
         </h2>
-        <p className="mx-auto mt-4 max-w-md text-sm text-moon-dust sm:text-lg lg:mx-0">
+        <p className="text-legible mx-auto mt-4 max-w-md text-sm text-starlight/90 sm:text-lg lg:mx-0">
           {t(`bodies.${id}.description`)}
         </p>
-        <Link
-          to={paths.destination(id)}
-          viewTransition
-          onClick={markTransition}
-          onFocus={() => setActive(true)}
-          onBlur={() => setActive(false)}
-          className="group mt-6 inline-flex min-h-11 items-center gap-2 rounded-full border border-moon-dust/40 px-5 text-sm font-medium transition-colors hover:border-stellar-cyan hover:bg-stellar-cyan hover:text-void focus-visible:border-stellar-cyan"
-        >
-          {land}
-          <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-        </Link>
+        {/* US-5.13: a small, quiet cue — the planet itself opens its story. */}
+        <p className="mt-5 inline-flex items-center gap-2 text-sm text-moon-dust">
+          <MousePointerClick aria-hidden="true" className="size-4 text-world" />
+          {t(`explore.enter.${id}`)}
+        </p>
+
       </div>
     </section>
   )

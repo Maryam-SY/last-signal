@@ -1,15 +1,18 @@
 import { useEffect, useRef, useState } from 'react'
-import { SkipForward } from 'lucide-react'
+import { SkipForward, Volume2 } from 'lucide-react'
 import { useTranslation, type MessageKey } from '@/i18n'
+import { createIntroScore, type IntroScore } from '@/lib/introSound'
 import { FADE_MS, markIntroSeen } from './introSession'
 
 /**
  * US-2.4 / US-5.12: the intro, full screen, when the visitor arrives on the site — real NASA
  * footage (public domain): a Saturn V lifting off, the restored Apollo 11 moonwalk, then the
  * ground of Mars rushing up under Perseverance, filmed by its own camera. Short sentences appear
- * over the pictures (written, so they work without sound and are translated). It then fades
- * into the home page. Muted (browsers only autoplay silent videos), skippable at any time
- * (button or Escape), skipped entirely if the browser refuses to play it.
+ * over the pictures (written, so they work without sound and are translated). US-5.13: it
+ * ends on the title "The Next Frontier" in close-up, then fades into the home page; a
+ * synthesised soundtrack follows the pictures (if the browser blocks sound, a button or any
+ * key / tap turns it on). The video itself is muted (browsers only autoplay silent videos);
+ * skippable at any time (button or Escape), skipped entirely if the browser refuses to play it.
  */
 interface IntroVideoProps {
   /** The fade-out starts: the home page can light up underneath (true cross-fade). */
@@ -26,17 +29,26 @@ const CUES: ReadonlyArray<{ from: number; to: number; key: MessageKey }> = [
   { from: 12.3, to: 99, key: 'intro.cue4' },
 ]
 
+/** How long the closing title stays in close-up before the site appears. */
+const FINALE_MS = 3400
+
 export function IntroVideo({ onReveal, onDone }: IntroVideoProps) {
   const { t } = useTranslation()
   const videoRef = useRef<HTMLVideoElement>(null)
   const skipRef = useRef<HTMLButtonElement>(null)
   const [leaving, setLeaving] = useState(false)
   const [cue, setCue] = useState(-1)
+  const [finale, setFinale] = useState(false)
   const doneRef = useRef(false)
+  const scoreRef = useRef<IntroScore | null>(null)
+  const [soundBlocked, setSoundBlocked] = useState(false)
+  const finaleTimer = useRef<number | undefined>(undefined)
 
   const finish = (fade: boolean) => {
     if (doneRef.current) return
     doneRef.current = true
+    window.clearTimeout(finaleTimer.current)
+    scoreRef.current?.stop(fade ? FADE_MS / 1000 + 0.4 : 0.2)
     markIntroSeen()
     onReveal()
     if (!fade) {
@@ -50,6 +62,48 @@ export function IntroVideo({ onReveal, onDone }: IntroVideoProps) {
   useEffect(() => {
     finishRef.current = finish
   })
+
+  /** The footage is over: the closing title in close-up, then the site. */
+  const startFinale = () => {
+    if (doneRef.current || finale) return
+    setFinale(true)
+    setCue(-1)
+    scoreRef.current?.finale()
+    finaleTimer.current = window.setTimeout(() => finishRef.current(true), FINALE_MS)
+  }
+
+  /** Turns the soundtrack on (from a click or key, when the browser asked for one). */
+  const enableSound = () => {
+    const score = scoreRef.current
+    if (!score || doneRef.current) return
+    void score.start(videoRef.current?.currentTime ?? 0).then((playing) => {
+      setSoundBlocked(!playing)
+      if (playing && finale) score.finale()
+    })
+  }
+  const enableSoundRef = useRef(enableSound)
+  useEffect(() => {
+    enableSoundRef.current = enableSound
+  })
+
+  useEffect(() => {
+    // The soundtrack: tried at once; browsers that need a gesture first get a button.
+    const score = createIntroScore()
+    scoreRef.current = score
+    if (score) void score.start(0).then((playing) => setSoundBlocked(!playing && !doneRef.current))
+    const onGesture = (event: Event) => {
+      if (event instanceof KeyboardEvent && event.key === 'Escape') return
+      if (scoreRef.current && !scoreRef.current.playing()) enableSoundRef.current()
+    }
+    window.addEventListener('pointerdown', onGesture)
+    window.addEventListener('keydown', onGesture)
+    return () => {
+      window.removeEventListener('pointerdown', onGesture)
+      window.removeEventListener('keydown', onGesture)
+      window.clearTimeout(finaleTimer.current)
+      scoreRef.current?.stop(0.3)
+    }
+  }, [])
 
   useEffect(() => {
     skipRef.current?.focus({ preventScroll: true })
@@ -88,10 +142,10 @@ export function IntroVideo({ onReveal, onDone }: IntroVideoProps) {
         playsInline
         preload="auto"
         onTimeUpdate={onTimeUpdate}
-        onEnded={() => finish(true)}
+        onEnded={startFinale}
         onError={() => finish(false)}
         aria-hidden="true"
-        className="size-full object-cover"
+        className={`size-full object-cover transition-opacity duration-700 ${finale ? 'opacity-0' : 'opacity-100'}`}
       />
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(0,0,0,0.65)_100%)]" />
       <p className="sr-only">{t('intro.description')}</p>
@@ -105,6 +159,23 @@ export function IntroVideo({ onReveal, onDone }: IntroVideoProps) {
           </p>
         ))}
       </div>
+      {finale && (
+        <div aria-hidden="true" className="intro-finale pointer-events-none absolute inset-0 flex items-center justify-center px-4 text-center">
+          <p className="intro-finale-title font-heading text-[clamp(2.4rem,10vw,9rem)] leading-[0.95] font-bold text-white uppercase">
+            {t('intro.finale')}
+          </p>
+        </div>
+      )}
+      {soundBlocked && (
+        <button
+          type="button"
+          onClick={enableSound}
+          className="glass-blur absolute bottom-[max(1.25rem,env(safe-area-inset-bottom))] left-4 inline-flex min-h-11 items-center gap-2 rounded-full px-5 text-sm font-medium text-starlight transition-colors hover:border-stellar-cyan hover:text-stellar-cyan sm:left-6"
+        >
+          <Volume2 aria-hidden="true" className="size-4" />
+          {t('intro.sound')}
+        </button>
+      )}
       <button
         ref={skipRef}
         type="button"

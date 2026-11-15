@@ -79,6 +79,8 @@ interface Sourced<T> {
 Un champ « fait » vaut soit `Sourced<T>`, soit `null`.
 
 > - **`Machine.lifespan`** (US-5.12, optionnel) : `{ status: draft|reviewed, planned: Sourced<{ amount, unit }> | null, lastContact: Sourced<date> | null, missionEnd: Sourced<date> | null, stillWorking: Sourced<boolean> | null, achievements: Sourced<LocalizedText>[] }`. Vie prévue et fin réelle d'une machine ; les durées affichées ne sont que des calculs sur ces valeurs. Règle **V16**.
+> - **`Machine.biography`** (US-5.13, optionnel) : `{ status: draft|reviewed, description: Sourced<LocalizedText>, chapters: { id, date: Sourced<date partielle> | null, title, text: LocalizedText, mediaIds, sourceIds }[] }`. Récit propre à la machine, en phrases complètes, distinct de la frise de sa mission (les jumeaux ne partagent plus d'étapes). Règle **V17**. `biography.forEarth` (optionnel) : `{ id, title, text, mediaIds, sourceIds }[]` — ce que la machine a apporté à la Terre ou au progrès humain, chaque élément sourcé.
+> - **`Machine.parts`** (US-5.13, optionnel) : `{ status, photoMediaId, modelMediaId, items: { id, name, description, sourceIds, photo: { x, y } (en %) | null, modelNode, modelPosition: { x, y, z } | null }[] }`. Pièces importantes, touchables sur la photo de la machine et sur son modèle 3D. Règle **V18**.
 
 ## 4. Fichiers et schémas
 
@@ -360,6 +362,8 @@ Le test `content-integrity.test.ts` lit **le contenu réel** et échoue si :
 | V13 | Étape de chronologie de mission non datée, non sourcée ou hors ordre | TIMELINE-001 |
 | V14 | Entrée de glossaire sans source, sans forme dans une langue, ou texte manquant | STORY-007 (US-5.7) |
 | V15 | Histoire d'image (`description`) sans `descriptionStatus`, ou l'inverse | MEDIA-001 (US-5.10) |
+| V18 | `Machine.parts` : `status` draft/reviewed (`draft` → avertissement) ; la photo existe et montre cette machine ; le modèle est un `3d-model` de cette machine ; ids kebab-case uniques ; nom et description traduits ; ≥ 1 source ; position photo en % (0–100) ; chaque pièce placée sur la photo ou sur le modèle | US-5.13 |
+| V17 | `Machine.biography` : `status` draft/reviewed (`draft` → avertissement) ; description sourcée et traduite ; ≥ 1 chapitre ; ids de chapitre kebab-case uniques ; dates partielles sourcées dans l'ordre chronologique ; chaque chapitre a ≥ 1 source ; ses images existent **et montrent cette machine** (`machineIds`) | US-5.13 |
 | V16 | `Machine.lifespan` : chaque valeur `Sourced` ; `planned.amount` > 0 et `unit` ∈ days, sols, flights, years ; `lastContact` / `missionEnd` en date complète, jamais avant l'arrivée ; pas de date de fin si `stillWorking` ; `status` `draft` → avertissement | US-5.12 |
 
 Avertissements (non bloquants, listés dans la sortie) : source jamais citée, mission sans équipement, équipement sans `scienceSummary`, récit en `draft`.

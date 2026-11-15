@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
-import { ArrowLeft, ArrowRight, BookOpenText, MapPin } from 'lucide-react'
+import { ArrowLeft, ArrowRight, MapPin } from 'lucide-react'
 import { Link, useParams } from 'react-router'
 import { api } from '@/api/client'
-import type { DestinationDetail, MachineDetail, Media, MissionDetail } from '@/api/types'
+import type { DestinationDetail, MachineDetail, MachinePart, Media, MissionDetail, StoryDetail } from '@/api/types'
 import { paths } from '@/app/paths'
 import { NarrationButton } from '@/components/audio/NarrationButton'
 import { SpaceBackdrop } from '@/components/celestial/SpaceBackdrop'
@@ -11,6 +11,7 @@ import { MACHINE_TRANSITION_NAME } from '@/components/hangar/MachinePortal'
 import { ModelViewer3D } from '@/components/journey/ModelViewer3D'
 import { PhotoFlight } from '@/components/journey/PhotoFlight'
 import { LifeLine } from '@/components/machine/LifeLine'
+import { MachinePortrait } from '@/components/machine/MachinePortrait'
 import { StatusBadge } from '@/components/machine/StatusBadge'
 import { DepictionBadge } from '@/components/media/DepictionBadge'
 import { VideoReel } from '@/components/media/VideoReel'
@@ -18,14 +19,15 @@ import { Reveal } from '@/components/motion/Reveal'
 import { ScrollProgress } from '@/components/motion/ScrollProgress'
 import { JourneyRail } from '@/components/navigation/JourneyRail'
 import { RelationEnds } from '@/components/relations/RelationEnds'
+import { StorySlides } from '@/components/story/StorySlides'
 import { useApi } from '@/hooks/useApi'
 import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 import { useTranslation } from '@/i18n'
 import { record } from '@/lib/explorerLog'
 import { formatPartialDate } from '@/lib/formatDate'
-import { bestStill, machineChapters, machineCover, modelOf } from '@/lib/journey'
-import { lastSignal } from '@/lib/lifespan'
-import { ctaPrimary, eyebrow } from '@/lib/styles'
+import { bestStill, biographyChapters, machineChapters, machineCover, modelOf, type LifeChapter } from '@/lib/journey'
+import { daysBetween, lastSignal } from '@/lib/lifespan'
+import { eyebrow } from '@/lib/styles'
 import { cn } from '@/lib/utils'
 import { isDestinationId, type DestinationId } from '@/types/content'
 import { NotFoundPage } from './NotFoundPage'
@@ -52,6 +54,9 @@ function MachineView({ destinationId, machineId }: { destinationId: DestinationI
     enabled: missionId !== null,
   })
   const destination = useApi(`destination:${destinationId}`, (lang, signal) => api.destination(destinationId, lang, signal))
+  // US-5.13: its story is told on this page (no separate "6 steps" page from here).
+  const storyId = machine.status === 'success' ? (machine.data.storyTarget?.id ?? null) : null
+  const story = useApi(`story:${storyId}`, (lang, signal) => api.story(storyId ?? '', lang, signal), { enabled: storyId !== null })
   useDocumentTitle(machine.status === 'success' ? machine.data.name : t('machine.title'))
   useEffect(() => record('machines', machineId), [machineId])
 
@@ -69,6 +74,7 @@ function MachineView({ destinationId, machineId }: { destinationId: DestinationI
       machine={machine.data}
       mission={mission.status === 'success' ? mission.data : null}
       destination={destination.status === 'success' ? destination.data : null}
+      story={story.status === 'success' ? story.data : null}
     />
   )
 }
@@ -77,13 +83,29 @@ interface MachineLifeProps {
   machine: MachineDetail
   mission: MissionDetail | null
   destination: DestinationDetail | null
+  story: StoryDetail | null
 }
 
-function MachineLife({ machine, mission, destination }: MachineLifeProps) {
+function MachineLife({ machine, mission, destination, story }: MachineLifeProps) {
   const { t, locale } = useTranslation()
   const destinationId = machine.destinationId as DestinationId
   const cover = (mission ? machineCover(mission, machine.id) : undefined) ?? bestStill(machine.media.filter((m) => m.depiction === 'photo')) ?? bestStill(machine.media)
-  const chapters = mission ? machineChapters(machine, mission, cover, 10) : []
+  // US-5.13: the machine's own chapters when the content tells them; otherwise the steps of its
+  // mission that show it.
+  const biography = machine.biography ?? null
+  // Its portrait next to its presentation: a photo of it alone, other than the opening one.
+  const ownPhotos = machine.media.filter((m) => m.type === 'image' && m.depiction === 'photo' && m.machineIds.length === 1)
+  // US-5.13: parts are shown only for machines that have a real 3D model (team decision: on a
+  // photo alone, parts cannot be told apart reliably). Their placed photo is then the portrait.
+  const parts = machine.parts?.modelMediaId ? machine.parts : null
+  const partsPhoto = parts?.photoMediaId ? machine.media.find((m) => m.id === parts.photoMediaId) : undefined
+  const portrait = partsPhoto ?? ownPhotos.find((m) => m.id !== cover?.id) ?? ownPhotos[0] ?? cover
+  const portraitParts = partsPhoto
+    ? (parts?.items ?? []).flatMap((part) => (part.photo ? [{ id: part.id, name: part.name, description: part.description, x: part.photo.x, y: part.photo.y }] : []))
+    : []
+  const forEarth = biography?.forEarth ?? []
+  const mediaById = new Map(machine.media.map((m) => [m.id, m]))
+  const chapters: LifeChapter[] = biography ? biographyChapters(machine) : mission ? machineChapters(machine, mission, cover, 10) : []
   const videos = machine.media.filter(isPlayableVideo)
   const model = mission ? modelOf(mission, machine.id) : undefined
   const signal = lastSignal(machine.lifespan)
@@ -99,8 +121,11 @@ function MachineLife({ machine, mission, destination }: MachineLifeProps) {
 
   const rail = [
     { id: 'arrival', label: t('machine.arrival') },
+    ...(biography ? [{ id: 'who', label: t('machine.whoEyebrow') }] : []),
     { id: 'life', label: t('machine.lifeEyebrow') },
     ...(chapters.length > 0 ? [{ id: 'did', label: t('machine.didEyebrow') }] : []),
+    ...(story ? [{ id: 'story', label: t('machine.storyEyebrow') }] : []),
+    ...(forEarth.length > 0 ? [{ id: 'earth', label: t('machine.earthEyebrow') }] : []),
     ...(videos.length > 0 ? [{ id: 'videos', label: t('machine.videosEyebrow') }] : []),
     ...(model ? [{ id: 'model', label: t('machine.modelEyebrow') }] : []),
     ...(machine.relations.length > 0 ? [{ id: 'legacy', label: t('machine.legacyEyebrow') }] : []),
@@ -108,20 +133,22 @@ function MachineLife({ machine, mission, destination }: MachineLifeProps) {
     ...(next ? [{ id: 'next', label: t('machine.next') }] : []),
   ]
 
-  const narration = [
-    `${machine.name}.`,
-    machine.scienceSummary?.value ?? '',
-    ...chapters.flatMap((chapter) => [chapter.title ?? '', chapter.text]),
-    signal ? `${t('machine.lastSignal')} : ${formatPartialDate(signal.value, locale)}.` : '',
-    epilogue ?? '',
-  ]
+  // US-5.13: "Day 1 234 of its mission" — plain arithmetic on two sourced full dates.
+  const missionClock = (date: string | undefined) => {
+    const born = machine.date?.value
+    if (!date || !born || date.length < 10 || born.length < 10) return undefined
+    const day = daysBetween(born, date)
+    if (day !== null) return t('machine.clockDay', { day: (day + 1).toLocaleString(locale === 'en' ? 'en-GB' : 'fr-FR') })
+    const before = daysBetween(date, born)
+    return before !== null ? t('machine.clockBefore', { days: before.toLocaleString(locale === 'en' ? 'en-GB' : 'fr-FR') }) : undefined
+  }
 
   const register = (id: string) => (element: HTMLElement | null) => {
     sectionRefs.current[id] = element
   }
 
   return (
-    <div data-world={destinationId} className="relative overflow-x-clip">
+    <div data-world={destinationId} data-narration-root className="relative overflow-x-clip">
       <SpaceBackdrop />
       <ScrollProgress />
       <JourneyRail items={rail} label={t('machine.journeyLabel', { name: machine.name })} />
@@ -155,10 +182,10 @@ function MachineLife({ machine, mission, destination }: MachineLifeProps) {
             <p className={cn(eyebrow, 'mt-4 text-world')}>
               {machine.mission?.name} · {t(`machineType.${machine.type}`)}
             </p>
-            <h1 id="machine-title" className="text-glow mt-2 font-heading text-[clamp(2.8rem,9vw,7rem)] leading-[0.92] font-bold tracking-tight">
+            <h1 id="machine-title" data-narrate className="text-glow mt-2 font-heading text-[clamp(2.8rem,9vw,7rem)] leading-[0.92] font-bold tracking-tight">
               {machine.name}
             </h1>
-            {machine.scienceSummary && <p className="mt-5 max-w-2xl text-lg text-starlight/90 sm:text-2xl">{machine.scienceSummary.value}</p>}
+            {machine.scienceSummary && <p data-narrate className="text-legible mt-5 max-w-2xl text-lg text-starlight sm:text-2xl">{machine.scienceSummary.value}</p>}
             <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-moon-dust">
               <StatusBadge status={machine.status.value} />
               {machine.locationName && (
@@ -169,18 +196,29 @@ function MachineLife({ machine, mission, destination }: MachineLifeProps) {
               )}
             </div>
             <div className="mt-8 flex flex-wrap gap-3">
-              <NarrationButton paragraphs={narration} />
-              {machine.storyTarget && (
-                <Link to={`${paths.story(machine.storyTarget.id)}?from=${encodeURIComponent(machine.id)}`} className={ctaPrimary}>
-                  <BookOpenText aria-hidden="true" className="size-4" />
-                  {t('machine.readStory')}
-                </Link>
-              )}
+              <NarrationButton />
             </div>
           </div>
         </section>
 
-        <Chapter id="life" register={register} eyebrowText={t('machine.lifeEyebrow')} title={t(machine.lifespan?.stillWorking?.value ? 'machine.lifeTitleAlive' : 'machine.lifeTitle', { name: machine.name })}>
+        {biography && (
+          <Chapter id="who" narrate register={register} eyebrowText={t('machine.whoEyebrow')} title={t('machine.whoTitle', { name: machine.name })}>
+            <div className="grid items-start gap-8 lg:grid-cols-[1.1fr_1fr] lg:gap-12">
+              <Reveal>
+                <p data-narrate className="reading-panel rounded-3xl p-6 text-lg leading-relaxed sm:p-8 sm:text-xl sm:leading-relaxed">
+                  {biography.description.value}
+                </p>
+              </Reveal>
+              {portrait && (
+                <Reveal delay={150} className="max-lg:order-first">
+                  <MachinePortrait media={portrait} parts={portraitParts} />
+                </Reveal>
+              )}
+            </div>
+          </Chapter>
+        )}
+
+        <Chapter id="life" narrate register={register} eyebrowText={t('machine.lifeEyebrow')} title={t(machine.lifespan?.stillWorking?.value ? 'machine.lifeTitleAlive' : 'machine.lifeTitle', { name: machine.name })}>
           <LifeLine born={machine.date} lifespan={machine.lifespan} />
         </Chapter>
 
@@ -197,7 +235,9 @@ function MachineLife({ machine, mission, destination }: MachineLifeProps) {
               items={chapters.map((chapter) => ({
                 id: chapter.id,
                 media: chapter.media,
-                withStory: chapter.text !== chapter.media.description,
+                withStory: chapter.text !== chapter.media?.description,
+                hud: missionClock(chapter.date?.value),
+                hideCaption: chapter.fromPicture,
                 content: (
                   <>
                     <p className="font-mono text-xs tracking-widest text-world uppercase">
@@ -207,13 +247,50 @@ function MachineLife({ machine, mission, destination }: MachineLifeProps) {
                         t('journey.anotherLook')
                       )}
                     </p>
-                    {chapter.title && <h3 className="mt-1 font-heading text-2xl leading-tight font-bold sm:text-4xl">{chapter.title}</h3>}
-                    <p className="mt-2 text-[0.95rem] leading-relaxed text-starlight/90 sm:text-lg">{chapter.text}</p>
+                    {chapter.title && <h3 data-narrate className="mt-1 font-heading text-2xl leading-tight font-bold sm:text-4xl">{chapter.title}</h3>}
+                    <p data-narrate className="mt-2 text-[0.95rem] leading-relaxed text-starlight sm:text-lg">{chapter.text}</p>
                   </>
                 ),
               }))}
             />
           </section>
+        )}
+
+        {story && (
+          <section id="story" ref={register('story')} aria-labelledby="story-title" className="mx-auto max-w-6xl scroll-mt-16 px-5 py-24">
+            <Reveal>
+              <p className={cn(eyebrow, 'text-world')}>{t('machine.storyEyebrow')}</p>
+              <h2 id="story-title" data-narrate className="mt-2 font-heading text-4xl font-bold sm:text-5xl">
+                {story.title}
+              </h2>
+            </Reveal>
+            <StorySlides story={story} className="mt-14" />
+          </section>
+        )}
+
+        {forEarth.length > 0 && (
+          <Chapter id="earth" narrate register={register} eyebrowText={t('machine.earthEyebrow')} title={t('machine.earthTitle', { name: machine.name })}>
+            <ul className="grid gap-5 md:grid-cols-2">
+              {forEarth.map((benefit, index) => {
+                const picture = bestStill(benefit.mediaIds.map((id) => mediaById.get(id)).filter((m): m is Media => m !== undefined))
+                return (
+                  <li key={benefit.id}>
+                    <Reveal delay={index * 90} className="reading-panel earth-card h-full overflow-hidden rounded-3xl">
+                      {picture && <img src={picture.thumbnailUrl ?? picture.url} alt={picture.alt} loading="lazy" className="aspect-[16/9] w-full object-cover" />}
+                      <div className="p-6">
+                        <h3 data-narrate className="font-heading text-xl font-bold text-world sm:text-2xl">
+                          {benefit.title}
+                        </h3>
+                        <p data-narrate className="mt-2 leading-relaxed sm:text-lg">
+                          {benefit.text}
+                        </p>
+                      </div>
+                    </Reveal>
+                  </li>
+                )
+              })}
+            </ul>
+          </Chapter>
         )}
 
         {videos.length > 0 && (
@@ -228,7 +305,7 @@ function MachineLife({ machine, mission, destination }: MachineLifeProps) {
 
         {model && (
           <Chapter id="model" register={register} eyebrowText={t('machine.modelEyebrow')} title={t('machine.modelTitle')}>
-            <LazyModel model={model} />
+            <LazyModel model={model} parts={parts?.items ?? []} />
           </Chapter>
         )}
 
@@ -239,11 +316,7 @@ function MachineLife({ machine, mission, destination }: MachineLifeProps) {
                 <li key={relation.id}>
                   <Reveal delay={index * 90} className="glass h-full rounded-3xl p-6">
                     <RelationEnds relation={relation} />
-                    <p className="mt-3 text-lg leading-relaxed text-starlight">{relation.transmitted}</p>
-                    <p className="mt-3 text-sm text-moon-dust">
-                      <span className="font-semibold text-world">{t('story.evidence')} </span>
-                      {relation.evidence}
-                    </p>
+                    <p data-narrate className="mt-3 text-lg leading-relaxed text-starlight">{relation.transmitted}</p>
                   </Reveal>
                 </li>
               ))}
@@ -259,20 +332,20 @@ function MachineLife({ machine, mission, destination }: MachineLifeProps) {
           className="mx-auto flex min-h-[80dvh] max-w-4xl scroll-mt-16 flex-col items-center justify-center px-5 py-24 text-center"
         >
           <p className={cn(eyebrow, 'text-world')}>{t('machine.endEyebrow')}</p>
-          <h2 id="end-title" className="mt-3 font-heading text-4xl font-bold sm:text-6xl">
+          <h2 id="end-title" data-narrate className="mt-3 font-heading text-4xl font-bold sm:text-6xl">
             {machine.lifespan?.stillWorking?.value ? t('machine.endAlive') : t('machine.endTitle')}
           </h2>
           <svg aria-hidden="true" viewBox="0 0 600 80" preserveAspectRatio="none" className={cn('flatline mt-8 h-20 w-full max-w-2xl', machine.lifespan?.stillWorking?.value && 'is-alive')}>
             <path d="M0 40 H150 L162 16 L174 64 L186 40 H260 L268 30 L276 50 L284 40 H600" pathLength={1} className="flatline-path" />
           </svg>
           {signal && !machine.lifespan?.stillWorking?.value && (
-            <p className="mt-6 font-mono text-2xl text-starlight sm:text-3xl">
+            <p data-narrate className="mt-6 font-mono text-2xl text-starlight sm:text-3xl">
               <time dateTime={signal.value}>{formatPartialDate(signal.value, locale)}</time>
             </p>
           )}
-          {epilogue && <p className="mt-6 max-w-2xl text-lg leading-relaxed text-starlight/90">{epilogue}</p>}
+          {epilogue && <p data-narrate className="text-legible mt-6 max-w-2xl text-lg leading-relaxed text-starlight">{epilogue}</p>}
           {machine.locationName && (
-            <p className="mt-6 inline-flex items-center gap-2 text-moon-dust">
+            <p data-narrate className="mt-6 inline-flex items-center gap-2 text-moon-dust">
               <MapPin aria-hidden="true" className="size-4" />
               {t('machine.restsAt', { place: machine.locationName.value })}
             </p>
@@ -324,17 +397,19 @@ interface ChapterProps {
   id: string
   eyebrowText: string
   title: string
+  /** Its title is read by the narration (US-5.12 read-along). */
+  narrate?: boolean
   register: (id: string) => (element: HTMLElement | null) => void
   children: ReactNode
 }
 
 /** One clearly separated part of the machine's life: eyebrow, title, content. */
-function Chapter({ id, eyebrowText, title, register, children }: ChapterProps) {
+function Chapter({ id, eyebrowText, title, narrate, register, children }: ChapterProps) {
   return (
-    <section id={id} ref={register(id)} aria-labelledby={`${id}-title`} className="mx-auto max-w-6xl scroll-mt-16 px-5 py-20">
+    <section id={id} ref={register(id)} aria-labelledby={`${id}-title`} className="scene-blend mx-auto max-w-6xl scroll-mt-16 px-5 py-20">
       <Reveal>
         <p className={cn(eyebrow, 'text-world')}>{eyebrowText}</p>
-        <h2 id={`${id}-title`} className="mt-2 font-heading text-4xl font-bold sm:text-5xl">
+        <h2 id={`${id}-title`} data-narrate={narrate || undefined} className="mt-2 font-heading text-4xl font-bold sm:text-5xl">
           {title}
         </h2>
       </Reveal>
@@ -344,7 +419,7 @@ function Chapter({ id, eyebrowText, title, register, children }: ChapterProps) {
 }
 
 /** The NASA 3D model, loaded only when its chapter comes near (the viewer weighs ~140 KB). */
-function LazyModel({ model }: { model: Media }) {
+function LazyModel({ model, parts }: { model: Media; parts: readonly MachinePart[] }) {
   const ref = useRef<HTMLDivElement>(null)
   const [near, setNear] = useState(typeof IntersectionObserver === 'undefined')
   useEffect(() => {
@@ -363,7 +438,7 @@ function LazyModel({ model }: { model: Media }) {
   }, [near])
   return (
     <div ref={ref} className="h-[28rem] lg:h-[36rem]">
-      {near && <ModelViewer3D model={model} />}
+      {near && <ModelViewer3D model={model} parts={parts} />}
     </div>
   )
 }

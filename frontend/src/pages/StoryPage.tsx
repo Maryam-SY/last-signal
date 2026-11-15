@@ -189,7 +189,7 @@ function StoryExperience({ story }: { story: StoryDetail }) {
   const ambient = { '--step-accent': STEP_ACCENT[step.key] } as CSSProperties
 
   return (
-    <article data-world={destinationId ?? undefined} style={ambient} className="relative">
+    <article data-world={destinationId ?? undefined} data-narration-root style={ambient} className="relative">
       <SpaceBackdrop />
       <ScrollProgress />
       <StepRail steps={story.steps} current={current} onSelect={goTo} />
@@ -197,7 +197,7 @@ function StoryExperience({ story }: { story: StoryDetail }) {
       <div className="relative z-10 mx-auto max-w-3xl px-5 pb-32">
         <header className="flex min-h-[calc(100dvh-4rem)] flex-col justify-center pt-20 pb-10 xl:pt-10">
           <p className={cn(eyebrow, 'text-world')}>{story.missions.map((m) => m.name).join(' · ')}</p>
-          <h1 className="text-glow mt-3 font-heading text-5xl leading-[0.95] font-bold sm:text-7xl">{story.title}</h1>
+          <h1 data-narrate className="text-glow mt-3 font-heading text-5xl leading-[0.95] font-bold sm:text-7xl">{story.title}</h1>
           {story.cover && (
             <CoverPhoto
               media={story.cover}
@@ -221,7 +221,7 @@ function StoryExperience({ story }: { story: StoryDetail }) {
               <ChevronsDown aria-hidden="true" className="size-4 transition-transform group-hover:translate-y-0.5" />
             </button>
             {/* US-5.12: the whole story read aloud by the browser's voice, step after step. */}
-            <NarrationButton paragraphs={[story.title, ...story.steps.flatMap((s) => [s.title, ...s.blocks.map((block) => block.text)])]} />
+            <NarrationButton />
             <p className="hidden text-sm text-moon-dust lg:block">{t('story.keyboardHint')}</p>
           </div>
           <p aria-hidden="true" className={cn(eyebrow, 'mt-16 flex items-center gap-2 text-moon-dust/80')}>

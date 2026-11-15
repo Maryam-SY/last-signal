@@ -63,7 +63,7 @@ function CreditGroups({ media }: { media: Media[] }) {
       <div className="mt-4 space-y-2">
         {sorted.map(([credit, items]) => (
           <details key={credit} className="group rounded-xl border border-white/8 bg-void/30 px-4">
-            <summary className="flex min-h-11 cursor-pointer list-none items-center gap-3 text-sm font-medium [&::-webkit-details-marker]:hidden">
+            <summary className="flex min-h-11 min-w-0 cursor-pointer list-none items-center gap-3 text-sm font-medium [&::-webkit-details-marker]:hidden">
               <span>{credit}</span>
               <span className="rounded-full bg-white/5 px-2 py-0.5 font-mono text-xs text-moon-dust">{items.length}</span>
               <span aria-hidden="true" className="ml-auto text-xs text-moon-dust transition-transform group-open:rotate-180">

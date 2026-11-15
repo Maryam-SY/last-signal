@@ -39,7 +39,7 @@ export function StepScene({ step, number, total, headingRef, mediaById, relation
       id={stepSectionId(number)}
       aria-labelledby={titleId}
       style={accent}
-      className="relative flex min-h-[calc(100dvh-4rem)] scroll-mt-32 flex-col justify-center py-20 xl:scroll-mt-20"
+      className="scene-blend relative flex min-h-[calc(100dvh-4rem)] scroll-mt-32 flex-col justify-center py-20 xl:scroll-mt-20"
     >
       <span
         aria-hidden="true"
@@ -52,7 +52,7 @@ export function StepScene({ step, number, total, headingRef, mediaById, relation
         <p className={eyebrow} style={{ color: 'var(--scene-accent)' }}>
           {t('story.stepOf', { current: number, total })}
         </p>
-        <h2 id={titleId} ref={headingRef} tabIndex={-1} className="mt-2 font-heading text-4xl font-bold outline-none sm:text-6xl">
+        <h2 id={titleId} ref={headingRef} tabIndex={-1} data-narrate className="mt-2 font-heading text-4xl font-bold outline-none sm:text-6xl">
           {step.title}
         </h2>
       </Reveal>
@@ -74,10 +74,10 @@ export function StepScene({ step, number, total, headingRef, mediaById, relation
 
 function VoiceBlock({ block, mediaById }: { block: StoryBlock; mediaById: Map<string, Media> }) {
   return (
-    <div className="glass relative space-y-4 overflow-hidden rounded-2xl p-5 pl-6 sm:p-7 sm:pl-8">
+    <div className="reading-panel relative space-y-4 overflow-hidden rounded-2xl p-5 pl-6 sm:p-7 sm:pl-8">
       <span aria-hidden="true" className={cn('absolute inset-y-5 left-0 w-1 rounded-r-full', VOICE_BAR[block.voice])} />
       <VoiceTag voice={block.voice} />
-      <p className={cn('text-lg leading-relaxed sm:text-xl', block.voice === 'imagination' && 'italic')}>{block.text}</p>
+      <p data-narrate className={cn('text-lg leading-relaxed sm:text-xl', block.voice === 'imagination' && 'italic')}>{block.text}</p>
       <BlockMedia ids={block.mediaIds ?? []} mediaById={mediaById} />
     </div>
   )
@@ -108,12 +108,6 @@ function Relations({ relations }: { relations: Relation[] }) {
             <li key={r.id}>
               <RelayChain relation={r} />
               <p className="mt-3 text-lg font-medium">{r.transmitted}</p>
-              <p className="mt-1 text-sm text-moon-dust">
-                <span className="font-semibold text-starlight">{t('story.evidence')} </span>
-                {r.evidence}
-              </p>
-              <div className="mt-3">
-              </div>
             </li>
           ))}
         </ul>

@@ -16,7 +16,7 @@ export function SourceList({ sources }: { sources: Source[] }) {
             href={source.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-start gap-1 font-medium text-cosmic-indigo hover:underline"
+            className="inline-flex max-w-full min-w-0 items-start gap-1 font-medium text-cosmic-indigo hover:underline"
           >
             {source.title}
             <ExternalLink aria-hidden="true" className="mt-1 size-3 shrink-0" />

@@ -3,7 +3,6 @@ import { Link } from 'react-router'
 import type { StoryDetail } from '@/api/types'
 import { paths } from '@/app/paths'
 import { Reveal } from '@/components/motion/Reveal'
-import { ExplorerLogCard } from '@/components/progress/ExplorerLogCard'
 import { useTranslation } from '@/i18n'
 import { ctaGhost, ctaPrimary, eyebrow } from '@/lib/styles'
 import { cn } from '@/lib/utils'
@@ -61,12 +60,12 @@ export function StoryEnd({ story, exitHref }: { story: StoryDetail; exitHref: st
         </h2>
         <div className="mt-10 flex flex-wrap justify-center gap-3">
           {destinationId && (
-            <Link to={exitHref} className={ctaPrimary}>
+            <Link to={exitHref} viewTransition className={ctaPrimary}>
               {t('story.backToDestination', { destination: t(`destinations.${destinationId}.name`) })}
             </Link>
           )}
           {other && (
-            <Link to={paths.destination(other)} className={cn(ctaGhost, 'group')}>
+            <Link to={paths.destination(other)} viewTransition className={cn(ctaGhost, 'group')}>
               {t('story.exploreOther', { destination: t(`destinations.${other}.name`) })}
               <ArrowRight aria-hidden="true" className="size-4 transition-transform group-hover:translate-x-1" />
             </Link>
@@ -79,7 +78,7 @@ export function StoryEnd({ story, exitHref }: { story: StoryDetail; exitHref: st
             <ul className="mt-3 flex flex-wrap justify-center gap-2">
               {story.missions.map((mission) => (
                 <li key={mission.id}>
-                  <Link to={`${paths.destination(mission.destinationId)}#hangar`} className={chip}>
+                  <Link to={`${paths.destination(mission.destinationId)}#hangar`} viewTransition className={chip}>
                     {mission.name}
                   </Link>
                 </li>
@@ -93,7 +92,7 @@ export function StoryEnd({ story, exitHref }: { story: StoryDetail; exitHref: st
             <ul className="mt-3 flex flex-wrap justify-center gap-2">
               {story.machines.map((machine) => (
                 <li key={machine.id}>
-                  <Link to={machine.destinationId ? paths.machine(machine.destinationId, machine.id) : paths.home()} className={chip}>
+                  <Link to={machine.destinationId ? paths.machine(machine.destinationId, machine.id) : paths.home()} viewTransition className={chip}>
                     {machine.name}
                   </Link>
                 </li>
@@ -102,7 +101,6 @@ export function StoryEnd({ story, exitHref }: { story: StoryDetail; exitHref: st
           </>
         )}
       </Reveal>
-      <ExplorerLogCard className="mt-16 w-full" />
     </section>
   )
 }

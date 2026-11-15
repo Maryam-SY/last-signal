@@ -66,10 +66,15 @@ describe('routes', () => {
   it('switches the interface language from the header', async () => {
     const user = userEvent.setup()
     renderRoute('/about')
-    const group = screen.getByRole('group', { name: 'Language' })
-    await user.click(within(group).getByRole('button', { name: 'fr' }))
+    // US-5.13: a drop-down — one button, then the list of languages written in their own language.
+    const toggle = screen.getByRole('button', { name: /Language : English/ })
+    await user.click(toggle)
+    const list = screen.getByRole('list', { name: 'Language' })
+    await user.click(within(list).getByRole('button', { name: /Français/ }))
     expect(screen.getByRole('heading', { level: 1, name: 'À propos et sources' })).toBeInTheDocument()
-    expect(within(group).getByRole('button', { name: 'fr' })).toHaveAttribute('aria-pressed', 'true')
+    expect(screen.queryByRole('list', { name: 'Langue' })).not.toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: /Langue : Français/ }))
+    expect(within(screen.getByRole('list', { name: 'Langue' })).getByRole('button', { name: /Français/ })).toHaveAttribute('aria-current', 'true')
     expect(document.documentElement.lang).toBe('fr')
   })
 

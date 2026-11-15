@@ -33,12 +33,12 @@ export function Layout() {
           <Link
             to={paths.home()}
             aria-label={t('nav.home')}
-            className="group inline-flex min-h-11 min-w-11 items-center gap-2 font-heading text-lg font-bold"
+            className="group inline-flex min-h-11 min-w-11 shrink-0 items-center gap-2 font-heading text-lg font-bold"
           >
             <LogoMark />
-            <span className="hidden min-[400px]:inline">{t('app.name')}</span>
+            <span className="hidden min-[560px]:inline">{t('app.name')}</span>
           </Link>
-          <div className="flex items-center gap-1 sm:gap-3">
+          <div className="flex min-w-0 items-center gap-1 sm:gap-3">
             <SiteNavigation />
             <SoundToggle />
             <LanguageSwitch />

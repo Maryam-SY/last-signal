@@ -28,6 +28,16 @@ export function LifeLine({ born, lifespan, epilogue, className }: LifeLineProps)
   const planned = lifespan?.planned?.value
   const alive = lifespan?.stillWorking?.value ?? false
   const span = lived !== null ? splitDuration(lived) : null
+  const plannedText = planned
+    ? t(planned.unit === 'years' && planned.amount === 1 ? 'machine.unit.year' : `machine.unit.${planned.unit}`, { amount: planned.amount })
+    : null
+  const realText = span
+    ? span.years > 0
+      ? t('machine.durationYears', { years: span.years, months: span.months })
+      : t('machine.durationDays', { days: lived ?? 0 })
+    : null
+  // What the narration says for each figure (US-5.12 read-along): label, then value.
+  const spoken = (label: string, value: string) => `${label} : ${value}.`
 
   return (
     <div className={cn('glass overflow-hidden rounded-3xl p-5 sm:p-8', className)}>
@@ -41,14 +51,19 @@ export function LifeLine({ born, lifespan, epilogue, className }: LifeLineProps)
 
       <dl className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {born && (
-          <div>
+          <div data-narrate data-narrate-text={spoken(t('machine.born'), formatPartialDate(born.value, locale))}>
             <dt className="font-mono text-[0.65rem] tracking-[0.25em] text-moon-dust uppercase">{t('machine.born')}</dt>
             <dd className="mt-1 font-heading text-xl font-bold">
               <time dateTime={born.value}>{formatPartialDate(born.value, locale)}</time>
             </dd>
           </div>
         )}
-        <div>
+        <div
+          data-narrate={alive || end ? true : undefined}
+          data-narrate-text={
+            alive || end ? spoken(t('machine.lastSignal'), alive ? t('machine.stillWorking') : formatPartialDate(end!.value, locale)) : undefined
+          }
+        >
           <dt className="font-mono text-[0.65rem] tracking-[0.25em] text-moon-dust uppercase">{t('machine.lastSignal')}</dt>
           <dd className="mt-1 font-heading text-xl font-bold">
             {alive ? (
@@ -60,26 +75,26 @@ export function LifeLine({ born, lifespan, epilogue, className }: LifeLineProps)
             )}
           </dd>
         </div>
-        {planned && (
-          <div>
+        {plannedText && (
+          <div data-narrate data-narrate-text={spoken(t('machine.planned'), plannedText)}>
             <dt className="font-mono text-[0.65rem] tracking-[0.25em] text-moon-dust uppercase">{t('machine.planned')}</dt>
-            <dd className="mt-1 font-heading text-xl font-bold">{t(planned.unit === 'years' && planned.amount === 1 ? 'machine.unit.year' : `machine.unit.${planned.unit}`, { amount: planned.amount })}</dd>
+            <dd className="mt-1 font-heading text-xl font-bold">{plannedText}</dd>
           </div>
         )}
-        {span && (
-          <div>
+        {realText && (
+          <div data-narrate data-narrate-text={spoken(t('machine.real'), realText)}>
             <dt className="font-mono text-[0.65rem] tracking-[0.25em] text-moon-dust uppercase">{t('machine.real')}</dt>
-            <dd className="mt-1 font-heading text-xl font-bold text-world">
-              {span.years > 0
-                ? t('machine.durationYears', { years: span.years, months: span.months })
-                : t('machine.durationDays', { days: lived ?? 0 })}
-            </dd>
+            <dd className="mt-1 font-heading text-xl font-bold text-world">{realText}</dd>
           </div>
         )}
       </dl>
 
       {ratio && (
-        <p className="mt-6 font-heading text-[clamp(1.6rem,4vw,2.8rem)] leading-tight font-bold">
+        <p
+          data-narrate
+          data-narrate-text={`${t('narration.ratio', { count: Math.round(ratio) })}.`}
+          className="mt-6 font-heading text-[clamp(1.6rem,4vw,2.8rem)] leading-tight font-bold"
+        >
           <span className="stat-number">
             ×<CountUp value={Math.round(ratio)} />
           </span>{' '}
@@ -90,7 +105,7 @@ export function LifeLine({ born, lifespan, epilogue, className }: LifeLineProps)
       {lifespan?.achievements && lifespan.achievements.length > 0 && (
         <ul className="mt-5 space-y-2">
           {lifespan.achievements.map((achievement) => (
-            <li key={achievement.value} className="flex gap-3 text-starlight/90 sm:text-lg">
+            <li key={achievement.value} data-narrate className="flex gap-3 text-starlight sm:text-lg">
               <span aria-hidden="true" className="mt-2.5 size-1.5 shrink-0 rounded-full bg-world" />
               {achievement.value}
             </li>
@@ -98,8 +113,7 @@ export function LifeLine({ born, lifespan, epilogue, className }: LifeLineProps)
         </ul>
       )}
 
-      {epilogue && <p className="mt-5 leading-relaxed text-moon-dust sm:text-lg">{epilogue}</p>}
-      {lifespan?.status === 'draft' && <p className="mt-5 text-xs text-moon-dust/80">{t('machine.lifeDraft')}</p>}
+      {epilogue && <p data-narrate className="mt-5 leading-relaxed text-starlight/90 sm:text-lg">{epilogue}</p>}
     </div>
   )
 }

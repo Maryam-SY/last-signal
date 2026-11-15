@@ -15,7 +15,7 @@ export function MachineHangar({ destination }: { destination: DestinationDetail 
   const machines = destination.missions.flatMap((mission) => mission.machines.map((machine) => ({ machine, mission })))
 
   return (
-    <section id="hangar" aria-labelledby="hangar-title" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-20">
+    <section id="hangar" aria-labelledby="hangar-title" className="scene-blend mx-auto max-w-6xl scroll-mt-20 px-5 py-20">
       <Reveal>
         <p className={cn(eyebrow, 'text-world')}>{t('hangar.eyebrow')}</p>
         <h2 id="hangar-title" tabIndex={-1} className="mt-2 font-heading text-4xl font-bold outline-none sm:text-6xl">

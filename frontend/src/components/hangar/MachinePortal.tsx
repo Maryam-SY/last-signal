@@ -102,10 +102,10 @@ export function MachinePortal({ machine, missionName, destinationId, index }: Ma
           <p className="mt-1 font-heading text-2xl leading-tight font-bold sm:text-[1.7rem]">{machine.name}</p>
           <p className="mt-1 text-xs text-moon-dust">{t(`machineType.${machine.type}`)}</p>
           {start && (
-            <p className="mt-3 font-mono text-sm text-starlight">
-              {start}
-              <span aria-hidden="true" className="machine-portal-beam mx-2 inline-block h-px w-8 align-middle bg-world" />
-              {end ?? '?'}
+            <p className="mt-3 flex items-center gap-2 font-mono text-sm text-starlight">
+              <span>{start}</span>
+              <span aria-hidden="true" className="machine-portal-beam h-px shrink-0 bg-world" />
+              <span>{end ?? '?'}</span>
             </p>
           )}
           <div className="mt-2 text-starlight/80">

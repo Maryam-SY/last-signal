@@ -20,8 +20,8 @@ interface JourneyRailProps {
 /**
  * The only navigation of an immersive page (US-5.6, US-5.9): on the right, one dot per
  * section (current one filled and enlarged — shape + colour) between "previous" and "next"
- * buttons; on phones, a floating pill at the bottom right with the same two buttons and
- * the current section's name. Dots are plain anchors, so they work without JavaScript.
+ * buttons; on phones, the same two buttons only, small and see-through at the top right
+ * (US-5.13). Dots are plain anchors, so they work without JavaScript.
  *
  * The current section's label stays visible only from 1680 px, the width from which a
  * 14rem label fits between the page content and the rail (pages reserve the rail's gutter
@@ -97,12 +97,11 @@ export function JourneyRail({ items, label, className }: JourneyRailProps) {
         {stepButton(next, 'next', 'glass')}
       </div>
 
-      {/* Phones: floating pill at the bottom right. */}
-      <div className="glass fixed right-3 bottom-[max(0.75rem,env(safe-area-inset-bottom))] z-30 flex items-center rounded-full p-1 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.8)] md:hidden">
+      {/* Phones (US-5.13): two small, see-through arrows at the top right, clear of the text
+          the visitor is reading at the bottom; fully visible when touched or focused. The
+          section name stays in the buttons' accessible names. */}
+      <div className="fixed top-20 right-1.5 z-30 flex flex-col items-center rounded-full bg-void/25 opacity-55 transition-opacity focus-within:opacity-100 hover:opacity-100 active:opacity-100 md:hidden">
         {stepButton(previous, 'previous')}
-        <span aria-hidden="true" className="max-w-[9.5rem] truncate px-1 font-mono text-[0.65rem] tracking-wider text-starlight uppercase">
-          {items[activeIndex]?.label}
-        </span>
         {stepButton(next, 'next')}
       </div>
     </nav>

@@ -15,7 +15,7 @@ interface LivePlanetProps {
   body: CelestialBody
   className?: string
   style?: CSSProperties
-  /** Hovered or focused: the world spins faster, leans toward the pointer and ripples. */
+  /** Hovered or focused: the world leans toward the pointer and ripples (and spins faster, unless it turns at its real speed). */
   active?: boolean
   pointer?: RefObject<PointerState>
   /** Extra surface rotation per pixel scrolled (scroll-scrubbed spin). */
@@ -63,9 +63,11 @@ export function LivePlanet({
   /** The photo planet leaves the DOM once the globe has faded in over it. */
   const [photoRetired, setPhotoRetired] = useState(false)
   const useGlobe = body.globe !== undefined && canUseWebGL()
+  // US-5.13: worlds with a known rotation turn at their real relative speed (1 s = 1 h), always.
+  const realSpin = body.rotationHours ? 360 / body.rotationHours : null
   const state = useRef({
     angle: body.id === 'mars' ? 210 : 0,
-    spin: IDLE_SPIN,
+    spin: realSpin ?? IDLE_SPIN,
     tiltX: 0,
     tiltY: 0,
     lift: 0,
@@ -158,8 +160,8 @@ export function LivePlanet({
     const isActive = activeRef.current
     const ease = (rate: number) => 1 - Math.pow(1 - rate, dt / 16.67)
 
-    s.spin += ((isActive ? ACTIVE_SPIN : IDLE_SPIN) - s.spin) * ease(0.05)
-    s.angle = (s.angle + (s.spin * dt) / 1000 + velocity * spinPerPixel) % 360
+    s.spin += ((realSpin ?? (isActive ? ACTIVE_SPIN : IDLE_SPIN)) - s.spin) * ease(0.05)
+    s.angle = (s.angle + (s.spin * dt) / 1000 + (realSpin ? 0 : velocity * spinPerPixel)) % 360
 
     const target = isActive && pointer?.current ? pointer.current : { x: 0, y: 0 }
     s.tiltX += (target.x - s.tiltX) * ease(0.1)

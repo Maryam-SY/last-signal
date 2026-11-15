@@ -93,6 +93,70 @@ export interface Lifespan {
   achievements: Sourced<LocalizedText>[]
 }
 
+/**
+ * One dated moment of a single machine's own life (US-5.13, rule V17): what it did, told in
+ * full plain sentences. Its pictures show this machine; its facts are sourced.
+ */
+export interface MachineChapter {
+  id: string
+  /** Full or partial date, sourced; null for a moment without a precise date. */
+  date: Sourced<string> | null
+  title: LocalizedText
+  text: LocalizedText
+  /** Pictures of this moment; each must be linked to this machine. */
+  mediaIds: string[]
+  sourceIds: string[]
+}
+
+/**
+ * The machine's own life story (US-5.13, rule V17): a complete presentation, then its chapters
+ * in order. Kept apart from its mission's timeline so twin machines never share chapters.
+ * `status` stays "draft" until a human has checked it.
+ */
+export interface Biography {
+  status: 'draft' | 'reviewed'
+  /** What the machine is, how it works and why it was sent, in a few full sentences. */
+  description: Sourced<LocalizedText>
+  chapters: MachineChapter[]
+  /** What it brought to people on Earth or to human progress (US-5.13), each sourced. */
+  forEarth?: EarthBenefit[]
+}
+
+/** One thing a machine brought back to Earth: a technology, a method, a discovery (US-5.13). */
+export interface EarthBenefit {
+  id: string
+  title: LocalizedText
+  text: LocalizedText
+  mediaIds: string[]
+  sourceIds: string[]
+}
+
+/**
+ * The machine's important parts, shown as touch points on one photo and, when it has one, on
+ * its 3D model (US-5.13, rule V18). `status` stays "draft" until a human has checked it.
+ */
+export interface MachineParts {
+  status: 'draft' | 'reviewed'
+  /** Photo the touch points are placed on (it must show this machine). */
+  photoMediaId: string | null
+  /** 3D model whose nodes are named, when there is one. */
+  modelMediaId: string | null
+  items: MachinePart[]
+}
+
+export interface MachinePart {
+  id: string
+  name: LocalizedText
+  description: LocalizedText
+  sourceIds: string[]
+  /** Centre of the part on the photo, in percent of its width and height. */
+  photo: { x: number; y: number } | null
+  /** Name of the node of the 3D model that is this part. */
+  modelNode: string | null
+  /** Centre of the part in the 3D model's own coordinates (metres), for its touch point. */
+  modelPosition?: { x: number; y: number; z: number } | null
+}
+
 export interface Machine {
   id: string
   name: string
@@ -107,6 +171,8 @@ export interface Machine {
   scienceSummary: Sourced<LocalizedText> | null
   storyIds: string[]
   lifespan?: Lifespan | null
+  biography?: Biography | null
+  parts?: MachineParts | null
 }
 
 export const RELATION_TYPES = ['method', 'technology', 'data', 'knowledge', 'inspiration'] as const

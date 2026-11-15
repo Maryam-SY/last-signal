@@ -18,13 +18,15 @@ export function SiteNavigation() {
     <nav aria-label={t('nav.label')}>
       <ul className="flex items-center sm:gap-1">
         <li>
-          <Link to={paths.home()} className={cn(linkClass)} aria-current={isExplore ? 'page' : undefined}>
+          <Link to={paths.home()} viewTransition className={cn(linkClass)} aria-current={isExplore ? 'page' : undefined}>
             {t('nav.explore')}
           </Link>
         </li>
         <li>
-          <Link to={paths.about()} className={cn(linkClass)} aria-current={isAbout ? 'page' : undefined}>
-            {t('nav.about')}
+          {/* Phones: a short label, so the header never overflows (US-5.13). */}
+          <Link to={paths.about()} viewTransition aria-label={t('nav.about')} className={cn(linkClass)} aria-current={isAbout ? 'page' : undefined}>
+            <span aria-hidden="true" className="sm:hidden">{t('nav.aboutShort')}</span>
+            <span aria-hidden="true" className="hidden sm:inline">{t('nav.about')}</span>
           </Link>
         </li>
       </ul>

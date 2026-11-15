@@ -184,6 +184,75 @@ export function validateContent(content: Content): ValidationReport {
       if (!Array.isArray(life.achievements)) err(lw, 'achievements must be a list (V16)')
       else life.achievements.forEach((a, i) => sourced(`${lw}.achievements[${i}]`, a, (t) => text(`${lw}.achievements[${i}]`, t)))
     }
+
+    // V17 — biography: sourced description and chapters, in order, pictures of this machine only.
+    const bio = m.biography
+    if (bio) {
+      const bw = `${w}.biography`
+      if (bio.status !== 'draft' && bio.status !== 'reviewed') err(bw, `invalid status "${String(bio.status)}" (V17)`)
+      if (bio.status === 'draft') warnings.push(`${bw}: draft — needs scientific review before publication (V17)`)
+      if (!bio.description) err(bw, 'missing description (V17)')
+      else sourced(`${bw}.description`, bio.description, (t) => text(`${bw}.description`, t))
+      if (!Array.isArray(bio.chapters) || bio.chapters.length === 0) err(bw, 'needs at least one chapter (V17)')
+      const chapterIds = new Set<string>()
+      let before = ''
+      for (const c of bio.chapters ?? []) {
+        const wc = `${bw}/${c.id}`
+        if (!KEBAB.test(c.id) || chapterIds.has(c.id)) err(wc, 'chapter id must be unique kebab-case (V17)')
+        chapterIds.add(c.id)
+        sourced(`${wc}.date`, c.date, (d) => {
+          if (!PARTIAL_DATE.test(d)) err(`${wc}.date`, `invalid date "${d}" (V17)`)
+          else if (d < before.slice(0, d.length)) err(`${wc}.date`, 'chapters must be in chronological order (V17)')
+          else before = d
+        })
+        text(`${wc}.title`, c.title)
+        text(`${wc}.text`, c.text)
+        sources(`${wc}.sourceIds`, c.sourceIds)
+        for (const id of c.mediaIds ?? []) {
+          const media = content.media.find((x) => x.id === id)
+          if (!media) err(wc, `unknown media "${id}" (V3)`)
+          else if (!media.machineIds.includes(m.id)) err(wc, `media "${id}" does not show this machine (V17)`)
+        }
+      }
+      for (const e of bio.forEarth ?? []) {
+        const we = `${bw}/forEarth/${e.id}`
+        if (!KEBAB.test(e.id) || chapterIds.has(e.id)) err(we, 'id must be unique kebab-case (V17)')
+        chapterIds.add(e.id)
+        text(`${we}.title`, e.title)
+        text(`${we}.text`, e.text)
+        sources(`${we}.sourceIds`, e.sourceIds)
+        for (const id of e.mediaIds ?? []) if (!mediaIds.has(id)) err(we, `unknown media "${id}" (V3)`)
+      }
+    }
+
+    // V18 — parts: sourced names placed on a photo of this machine or on its 3D model.
+    const parts = m.parts
+    if (parts) {
+      const pw = `${w}.parts`
+      if (parts.status !== 'draft' && parts.status !== 'reviewed') err(pw, `invalid status "${String(parts.status)}" (V18)`)
+      if (parts.status === 'draft') warnings.push(`${pw}: draft — needs scientific review before publication (V18)`)
+      const photo = parts.photoMediaId ? content.media.find((x) => x.id === parts.photoMediaId) : null
+      if (parts.photoMediaId && (!photo || !photo.machineIds.includes(m.id))) err(pw, `photo "${parts.photoMediaId}" must exist and show this machine (V18)`)
+      const model = parts.modelMediaId ? content.media.find((x) => x.id === parts.modelMediaId) : null
+      if (parts.modelMediaId && (!model || model.type !== '3d-model' || !model.machineIds.includes(m.id))) err(pw, `model "${parts.modelMediaId}" must be a 3D model of this machine (V18)`)
+      const partIds = new Set<string>()
+      for (const part of parts.items ?? []) {
+        const wp = `${pw}/${part.id}`
+        if (!KEBAB.test(part.id) || partIds.has(part.id)) err(wp, 'part id must be unique kebab-case (V18)')
+        partIds.add(part.id)
+        text(`${wp}.name`, part.name)
+        text(`${wp}.description`, part.description)
+        sources(`${wp}.sourceIds`, part.sourceIds)
+        if (part.photo) {
+          if (!photo) err(wp, 'placed on a photo, but the parts have no photo (V18)')
+          const inRange = (v: number) => typeof v === 'number' && v >= 0 && v <= 100
+          if (!inRange(part.photo.x) || !inRange(part.photo.y)) err(wp, 'photo position must be in percent, 0–100 (V18)')
+        }
+        if ((part.modelNode || part.modelPosition) && !model) err(wp, 'placed on a 3D model, but the parts have no model (V18)')
+        if (part.modelPosition && ![part.modelPosition.x, part.modelPosition.y, part.modelPosition.z].every((v) => Number.isFinite(v))) err(wp, 'modelPosition needs x, y, z numbers (V18)')
+        if (!part.photo && !part.modelPosition) err(wp, 'must be placed on the photo or on the 3D model (V18)')
+      }
+    }
   }
 
   // Relations

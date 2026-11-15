@@ -1,4 +1,4 @@
-import { screen, within } from '@testing-library/react'
+import { screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { __resetExplorerLogCache } from '@/lib/explorerLog'
@@ -34,15 +34,14 @@ describe('photos, statuses and timeline', () => {
     expect(screen.getByText('Switched off or no longer used, but still in place.')).toBeInTheDocument()
   })
 
-  it('puts both worlds on one timeline and spells out the gap between years (US-5.8)', async () => {
+  it('shows the timeline of this world only, and spells out the gap between years (US-5.13)', async () => {
     renderRoute('/explore/mars')
-    const timeline = await screen.findByRole('list', { name: 'Timeline of the machines on the Moon and Mars' })
+    const timeline = await screen.findByRole('list', { name: 'Timeline of Mars' })
     expect(within(timeline).getByText('35 years later')).toBeInTheDocument()
-    expect(within(timeline).getByRole('link', { name: /Test Lander/ })).toHaveAttribute(
-      'href',
-      '/explore/moon/machine-m',
-    )
-    expect(within(timeline).getByText('You are here', { exact: false })).toBeInTheDocument()
+    expect(within(timeline).getByRole('heading', { name: 'Arrival' })).toBeInTheDocument()
+    expect(within(timeline).getByText('The rover lands on Mars.')).toBeInTheDocument()
+    // Nothing from the other world.
+    expect(within(timeline).queryByText(/Test Lander|Moon/)).not.toBeInTheDocument()
   })
 })
 
@@ -79,17 +78,14 @@ describe('story pedagogy (US-5.7)', () => {
 })
 
 describe('explorer log (US-5.8)', () => {
-  it('records the world visited and the story finished, and awards badges', async () => {
+  it('records the world visited and the story finished, without showing an explorer box (US-5.13)', async () => {
     renderRoute('/explore/mars')
     await screen.findByRole('heading', { level: 2, name: 'Choose a machine' })
     expect(JSON.parse(window.localStorage.getItem('aeroreborn.explorer-log')!)).toMatchObject({ worlds: ['mars'] })
+    expect(screen.queryByRole('region', { name: 'Your explorer log' })).not.toBeInTheDocument()
 
     renderRoute('/stories/story-a?step=6')
-    const logs = await screen.findAllByRole('region', { name: 'Your explorer log' })
-    const log = logs[logs.length - 1]!
-    expect(await within(log).findByText('1 of 1')).toBeInTheDocument() // stories completed
-    const storyteller = within(log).getByText('Storyteller').closest('li')!
-    expect(storyteller).toHaveTextContent('earned')
-    expect(within(log).getByText('Two worlds').closest('li')).toHaveTextContent('not yet earned')
+    await waitFor(() => expect(JSON.parse(window.localStorage.getItem('aeroreborn.explorer-log')!)).toMatchObject({ stories: ['story-a'] }))
+    expect(screen.queryByRole('region', { name: 'Your explorer log' })).not.toBeInTheDocument()
   })
 })

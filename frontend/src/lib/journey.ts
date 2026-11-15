@@ -1,4 +1,4 @@
-import type { Machine, Media, MissionDetail, Sourced } from '@/api/types'
+import type { Machine, MachineDetail, Media, MissionDetail, Sourced } from '@/api/types'
 
 /**
  * Pure helpers of the scroll journey on a destination page (mission → machine → what it did).
@@ -12,6 +12,35 @@ export interface JourneyChapter {
   title: string | null
   text: string
   media: Media
+}
+
+/** A moment of one machine's life page: its picture is optional (US-5.13). */
+export interface LifeChapter {
+  id: string
+  date: Sourced<string> | null
+  title: string | null
+  text: string
+  media?: Media
+  /** The text is the picture's own caption (an extra picture of a chapter). */
+  fromPicture?: boolean
+}
+
+/**
+ * The machine's own chapters (US-5.13), each with the best picture of that moment among the
+ * pictures of this machine; every other picture of the chapter follows as a moment of its own,
+ * told by its caption, so the flight shows all of them. Empty when there is no biography yet.
+ */
+export function biographyChapters(machine: Pick<MachineDetail, 'media' | 'biography'>): LifeChapter[] {
+  const byId = new Map(machine.media.map((item) => [item.id, item]))
+  return (machine.biography?.chapters ?? []).flatMap((chapter) => {
+    const pictures = chapter.mediaIds.map((id) => byId.get(id)).filter((item): item is Media => item !== undefined && isStill(item))
+    const lead = bestStill(pictures)
+    const more = pictures.filter((item) => item !== lead)
+    return [
+      { id: chapter.id, date: chapter.date, title: chapter.title, text: chapter.text, media: lead },
+      ...more.map((item) => ({ id: `${chapter.id}--${item.id}`, date: chapter.date, title: null, text: item.description ?? item.alt, media: item, fromPicture: true })),
+    ]
+  })
 }
 
 const isStill = (media: Media) => media.type === 'image' || media.type === 'animation'

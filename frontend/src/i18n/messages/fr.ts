@@ -12,6 +12,7 @@ export const fr: Messages = {
     label: 'Principale',
     explore: 'Explorer',
     about: 'À propos et sources',
+    aboutShort: 'À propos',
     home: 'AeroReborn — accueil',
   },
   lang: {
@@ -33,14 +34,19 @@ export const fr: Messages = {
     cue2: 'Nous avons marché sur la Lune.',
     cue3: 'Nous nous sommes posés sur Mars.',
     cue4: 'Nos machines y sont encore.',
+    finale: 'The Next Frontier',
+    sound: 'Activer le son',
   },
   explore: {
     title: 'Choisis ta destination',
     intro:
       'Des atterrisseurs, des rovers et même un hélicoptère sont toujours là-haut, sur la Lune et sur Mars. Choisis un monde : découvre ce que chaque machine a fait, ce qu’elle est devenue — et ce qu’elle a transmis aux explorateurs suivants.',
     destinationsLabel: 'Destinations',
-    eyebrow: 'Un guide de terrain des machines que nous avons laissées',
-    scrollHint: 'Fais défiler — les mondes viennent à toi',
+    scrollHint: 'Faites défiler pour explorer',
+    enter: {
+      moon: 'Cliquez sur la Lune pour découvrir son histoire',
+      mars: 'Cliquez sur Mars pour découvrir son histoire',
+    },
     journeyLabel: 'Voyage',
     sceneDeparture: 'Départ',
     sceneMotto: 'Transmission',
@@ -320,6 +326,9 @@ export const fr: Messages = {
     notebookClear: 'Effacer',
   },
   timeline: {
+    worldTitle: '{destination}, date après date',
+    worldIntro: 'Toutes les étapes des missions vers {destination} : lancements, atterrissages, découvertes et derniers signaux, de la plus ancienne à la plus récente.',
+    worldLabel: 'Frise de {destination}',
     eyebrow: 'Frise du temps',
     title: 'La Lune et Mars, une seule histoire',
     intro: 'Toutes les machines d’AeroReborn, à la date où elles se sont posées ou ont été installées. Le temps descend : la Lune d’un côté, Mars de l’autre.',
@@ -369,9 +378,17 @@ export const fr: Messages = {
   sound: {
     label: 'Son de l’espace',
   },
+  parts: {
+    hintModel: 'Faites tourner la machine, puis touchez une de ses pièces pour découvrir son nom et son rôle.',
+    label: 'Les pièces de la machine',
+    hint: 'Touchez un point sur la photo pour découvrir une pièce de la machine.',
+  },
   narration: {
     listen: 'Écouter son histoire',
     stop: 'Arrêter la narration',
+    reading: 'Lecture en cours',
+    stopShort: 'Arrêter',
+    ratio: '{count} fois plus longtemps que prévu',
   },
   video: {
     label: 'Vidéos de {name}',
@@ -414,8 +431,9 @@ export const fr: Messages = {
     },
     lifeEyebrow: 'Sa vie',
     lifeTitle: 'Combien de temps {name} a vécu',
+    whoEyebrow: 'Qui est-il',
+    whoTitle: 'Faites connaissance avec {name}',
     lifeTitleAlive: '{name} : une vie qui continue',
-    lifeDraft: 'Ces dates et ces chiffres sont en cours de vérification par notre équipe, à partir de leurs sources.',
     didEyebrow: 'Ce qu’il a fait',
     didTitle: 'Sa mission, jour après jour',
     videosEyebrow: 'En mouvement',
@@ -429,7 +447,11 @@ export const fr: Messages = {
     endAlive: 'Il répond encore',
     restsAt: 'Il repose à : {place}',
     next: 'Machine suivante',
-    readStory: 'Lire son récit en 6 étapes',
+    earthEyebrow: 'Pour nous, sur Terre',
+    earthTitle: 'Ses apports pour nous, sur Terre',
+    clockDay: 'Jour {day} de sa mission',
+    clockBefore: '{days} jours avant l’arrivée',
+    storyEyebrow: 'Son histoire',
   },
   notFound: {
     title: 'Page introuvable',

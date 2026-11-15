@@ -33,7 +33,7 @@ export function AboutPage() {
         <div className="mt-14 space-y-6">
           {SECTIONS.map(({ id, titleKey, Icon }, index) => (
             <Reveal key={id} delay={index * 80}>
-              <section id={`about-${id}`} aria-labelledby={`about-${id}-title`} className="glass scroll-mt-24 rounded-2xl p-6 sm:p-8">
+              <section id={`about-${id}`} aria-labelledby={`about-${id}-title`} className="scene-blend reading-panel min-w-0 scroll-mt-24 rounded-2xl p-6 [overflow-wrap:anywhere] sm:p-8">
                 <h2 id={`about-${id}-title`} className="flex items-center gap-3 font-heading text-2xl font-bold">
                   <span aria-hidden="true" className="flex size-10 items-center justify-center rounded-full border border-stellar-cyan/40 text-stellar-cyan">
                     <Icon className="size-5" />

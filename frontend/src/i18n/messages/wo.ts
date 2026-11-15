@@ -88,6 +88,7 @@ export const wo: Messages = {
     label: 'Riiru asamaan',
   },
   narration: {
+    ...fr.narration,
     listen: 'Déglul taariixam',
     stop: 'Taxawal wax ji',
   },

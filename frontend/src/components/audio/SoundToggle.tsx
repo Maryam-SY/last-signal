@@ -66,7 +66,7 @@ export function SoundToggle({ className }: { className?: string }) {
       onClick={toggle}
       title={t('sound.label')}
       className={cn(
-        'relative inline-flex size-11 items-center justify-center rounded-full text-moon-dust transition-colors hover:text-starlight aria-pressed:text-stellar-cyan',
+        'relative inline-flex size-11 shrink-0 items-center justify-center rounded-full text-moon-dust transition-colors hover:text-starlight aria-pressed:text-stellar-cyan',
         className,
       )}
     >

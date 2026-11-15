@@ -14,6 +14,7 @@ export const en = {
     label: 'Main',
     explore: 'Explore',
     about: 'About & Sources',
+    aboutShort: 'About',
     home: 'AeroReborn — home',
   },
   lang: {
@@ -35,14 +36,19 @@ export const en = {
     cue2: 'We walked on the Moon.',
     cue3: 'We landed on Mars.',
     cue4: 'Our machines are still there.',
+    finale: 'The Next Frontier',
+    sound: 'Turn the sound on',
   },
   explore: {
     title: 'Choose your destination',
     intro:
       'Landers, rovers and even a helicopter are still out there, on the Moon and on Mars. Pick a world: discover what each machine did, what became of it — and what it passed on to the next explorers.',
     destinationsLabel: 'Destinations',
-    eyebrow: 'A field guide to the machines we left behind',
-    scrollHint: 'Scroll — the worlds come to you',
+    scrollHint: 'Scroll down to explore',
+    enter: {
+      moon: 'Click on the Moon to discover its story',
+      mars: 'Click on Mars to discover its story',
+    },
     journeyLabel: 'Journey',
     sceneDeparture: 'Departure',
     sceneMotto: 'Transmission',
@@ -322,6 +328,9 @@ export const en = {
     notebookClear: 'Erase',
   },
   timeline: {
+    worldTitle: '{destination}, date by date',
+    worldIntro: 'Every step of the missions to {destination}: launches, landings, discoveries and last signals, from the oldest to the latest.',
+    worldLabel: 'Timeline of {destination}',
     eyebrow: 'Timeline',
     title: 'The Moon and Mars, one story',
     intro: 'Every machine on AeroReborn, by the date it landed or was set up. Time flows downward: Moon on one side, Mars on the other.',
@@ -371,9 +380,17 @@ export const en = {
   sound: {
     label: 'Space sound',
   },
+  parts: {
+    hintModel: 'Turn the machine, then touch one of its parts to learn its name and what it does.',
+    label: 'Parts of the machine',
+    hint: 'Touch a dot on the photo to discover a part of the machine.',
+  },
   narration: {
     listen: 'Listen to its story',
     stop: 'Stop the narration',
+    reading: 'Reading aloud',
+    stopShort: 'Stop',
+    ratio: '{count} times longer than planned',
   },
   video: {
     label: 'Videos of {name}',
@@ -416,8 +433,9 @@ export const en = {
     },
     lifeEyebrow: 'Its life',
     lifeTitle: 'How long {name} lived',
+    whoEyebrow: 'Who it is',
+    whoTitle: 'Meet {name}',
     lifeTitleAlive: '{name}: a life that goes on',
-    lifeDraft: 'These dates and figures are being checked by our team against their sources.',
     didEyebrow: 'What it did',
     didTitle: 'Its mission, day after day',
     videosEyebrow: 'In motion',
@@ -431,7 +449,11 @@ export const en = {
     endAlive: 'It is still answering',
     restsAt: 'It rests at {place}',
     next: 'Next machine',
-    readStory: 'Read its story in 6 steps',
+    earthEyebrow: 'For us on Earth',
+    earthTitle: 'What it brought back to us on Earth',
+    clockDay: 'Day {day} of its mission',
+    clockBefore: '{days} days before arrival',
+    storyEyebrow: 'Its story',
   },
   notFound: {
     title: 'Page not found',

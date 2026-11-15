@@ -1,5 +1,4 @@
 import { useRef, useState, type PointerEvent } from 'react'
-import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router'
 import { paths } from '@/app/paths'
 import { LivePlanet, type PointerState } from '@/components/celestial/LivePlanet'
@@ -17,7 +16,9 @@ interface WorldPortalProps {
 }
 
 /**
- * A whole destination as one link (DEST-003): the living planet, its name and its action.
+ * A whole destination as one link (DEST-003): the living planet and its name — clicking the
+ * planet opens the world (US-5.13: no separate button; the opening scene only invites to
+ * scroll). It turns at its real relative speed.
  * Hover and keyboard focus trigger the same effects; nothing essential is hover-only.
  * Activating it morphs the planet into the destination page (View Transitions, when supported).
  */
@@ -60,7 +61,7 @@ export function WorldPortal({ id, label, className }: WorldPortalProps) {
         className,
       )}
     >
-      <div ref={planetRef} className="relative w-full max-w-[min(100%,28vh)]">
+      <div ref={planetRef} className="relative w-full max-w-[min(100%,40vh)] transition-[filter] duration-500 group-hover:brightness-125 group-focus-visible:brightness-125">
         {/* Orbit rings: decorative, they open up and spin while the world is active. */}
         <span
           aria-hidden="true"
@@ -72,15 +73,10 @@ export function WorldPortal({ id, label, className }: WorldPortalProps) {
         />
         <LivePlanet body={body} active={active} pointer={pointer} />
       </div>
+      <span className="mt-1 font-heading text-[clamp(1.8rem,min(6.5vw,7vh),3.6rem)] leading-tight font-bold transition-colors group-hover:text-stellar-cyan group-focus-visible:text-stellar-cyan">
+        {t(`destinations.${id}.name`)}
+      </span>
 
-      <span className="mt-3 font-mono text-[0.62rem] tracking-[0.3em] text-stellar-cyan uppercase sm:text-[0.68rem]">
-        {t(`bodies.${id}.kind`)}
-      </span>
-      <span className="mt-1 font-heading text-[clamp(1.6rem,min(6vw,6vh),3rem)] leading-tight font-bold">{t(`destinations.${id}.name`)}</span>
-      <span className="mt-3 inline-flex min-h-11 items-center gap-2 rounded-full border border-moon-dust/40 px-4 text-sm font-medium transition-colors group-hover:border-stellar-cyan group-hover:bg-stellar-cyan group-hover:text-void group-focus-visible:border-stellar-cyan group-focus-visible:bg-stellar-cyan group-focus-visible:text-void">
-        {label}
-        <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-      </span>
     </Link>
   )
 }

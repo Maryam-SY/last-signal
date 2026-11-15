@@ -104,6 +104,24 @@
     0 24px 60px -30px rgb(0 0 0 / 0.8);
 }
 
+/* US-5.13: panel for reading long texts over the sky or pictures — darker and more opaque
+   than `glass` (no blur, for the same performance reason), with bright text. */
+@utility reading-panel {
+  background-image: linear-gradient(160deg, rgb(15 22 36 / 0.94), rgb(6 10 20 / 0.92));
+  border: 1px solid rgb(148 163 184 / 0.18);
+  color: var(--cosmos-starlight);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.07),
+    0 30px 70px -30px rgb(0 0 0 / 0.9);
+}
+
+/* Text laid straight on the sky or a picture: a soft dark halo keeps every letter readable. */
+@utility text-legible {
+  text-shadow:
+    0 1px 2px rgb(2 6 16 / 0.9),
+    0 0 18px rgb(2 6 16 / 0.75);
+}
+
 /* Real frosted glass, only for small fixed bars (header, controls): cheap at that size. */
 @utility glass-blur {
   background-color: rgb(17 24 39 / 0.72);
@@ -304,10 +322,10 @@
 .planet-glow::before {
   content: '';
   position: absolute;
-  inset: -18%;
+  inset: -26%;
   border-radius: 9999px;
-  background: radial-gradient(circle, color-mix(in srgb, var(--glow, #f1f5f9) 34%, transparent) 0%, transparent 62%);
-  filter: blur(6px);
+  background: radial-gradient(circle, color-mix(in srgb, var(--glow, #f1f5f9) 52%, transparent) 0%, color-mix(in srgb, var(--glow, #f1f5f9) 14%, transparent) 42%, transparent 66%);
+  filter: blur(8px);
   pointer-events: none;
   z-index: -1;
 }
@@ -405,9 +423,26 @@ html.depth-mode::-webkit-scrollbar {
   animation-duration: 900ms;
   animation-timing-function: cubic-bezier(0.7, 0, 0.2, 1);
 }
-::view-transition-old(root),
+/* US-5.13: no hard cut between pages — the old page dissolves forward, the new one emerges. */
+::view-transition-old(root) {
+  animation: page-out 420ms cubic-bezier(0.4, 0, 1, 1) both;
+}
 ::view-transition-new(root) {
-  animation-duration: 450ms;
+  animation: page-in 640ms cubic-bezier(0, 0, 0.2, 1) both;
+}
+@keyframes page-out {
+  to {
+    opacity: 0;
+    transform: scale(1.04);
+    filter: blur(8px);
+  }
+}
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+    filter: blur(8px);
+  }
 }
 
 /* NFR-A11Y-006: no non-essential motion when the user asks for less */
@@ -666,15 +701,19 @@ html.depth-mode::-webkit-scrollbar {
 .photo-flight-item {
   opacity: 0;
   transform: translate3d(0, 14px, 0);
+  /* The leaving text goes first and fast, the next one comes after: they never overlap. */
   transition:
-    opacity 450ms ease,
-    transform 450ms ease;
+    opacity 180ms ease,
+    transform 180ms ease;
   pointer-events: none;
 }
 .photo-flight-item.is-active {
   opacity: 1;
   transform: none;
   pointer-events: auto;
+  transition:
+    opacity 420ms ease 200ms,
+    transform 420ms ease 200ms;
 }
 @media (min-width: 1024px) {
   .photo-flight-stage {
@@ -730,11 +769,13 @@ html.depth-mode::-webkit-scrollbar {
   opacity: 1;
 }
 .machine-portal-beam {
-  transform-origin: left;
-  transition: transform 500ms;
+  /* The line between the two years grows by taking room, never over the end year. */
+  width: 2rem;
+  transition: width 500ms;
 }
-.machine-portal:hover .machine-portal-beam {
-  transform: scaleX(1.6);
+.machine-portal:hover .machine-portal-beam,
+.machine-portal:focus-visible .machine-portal-beam {
+  width: 3.5rem;
 }
 /* Selected: the machine turns on itself before flying to its page. */
 .machine-portal.is-launching .machine-portal-body {
@@ -891,4 +932,343 @@ html.depth-mode::-webkit-scrollbar {
 .intro-cue.is-on {
   opacity: 1;
   transform: none;
+}
+
+/* Read-along (US-5.12): the text the voice is reading is lit, and the word being spoken. */
+[data-narrate] {
+  border-radius: 0.6rem;
+  transition:
+    background-color 450ms ease,
+    box-shadow 450ms ease;
+}
+[data-narrating] {
+  background-color: color-mix(in srgb, var(--world-accent) 14%, transparent);
+  box-shadow:
+    0 0 0 0.45rem color-mix(in srgb, var(--world-accent) 14%, transparent),
+    0 0 48px -8px color-mix(in srgb, var(--world-accent) 55%, transparent);
+}
+::highlight(narration-word) {
+  background-color: color-mix(in srgb, var(--world-accent) 60%, transparent);
+  color: #fff;
+}
+.narration-eq {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 14px;
+}
+.narration-eq span {
+  width: 3px;
+  height: 45%;
+  border-radius: 1px;
+  background: currentColor;
+  animation: narration-eq 0.8s ease-in-out infinite alternate;
+}
+.narration-eq span:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.narration-eq span:nth-child(3) {
+  animation-delay: -0.55s;
+}
+@keyframes narration-eq {
+  to {
+    height: 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-narrate] {
+    transition: none;
+  }
+  .narration-eq span {
+    animation: none;
+    height: 75%;
+  }
+}
+
+/* Intro finale (US-5.13): "The Next Frontier" in close-up, slowly coming toward the visitor. */
+.intro-finale {
+  background: radial-gradient(ellipse at center, rgba(56, 189, 248, 0.16) 0%, transparent 60%);
+}
+.intro-finale-title {
+  letter-spacing: 0.06em;
+  text-shadow:
+    0 0 24px rgba(125, 211, 252, 0.55),
+    0 0 80px rgba(56, 189, 248, 0.35);
+  animation: intro-finale 3.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes intro-finale {
+  from {
+    opacity: 0;
+    transform: scale(0.78);
+    letter-spacing: -0.02em;
+    filter: blur(10px);
+  }
+  35% {
+    opacity: 1;
+    filter: blur(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.12);
+    letter-spacing: 0.12em;
+  }
+}
+
+/* Machine portrait (US-5.13): a photo you can turn a little, with depth and a moving light. */
+.machine-portrait-stage {
+  perspective: 1100px;
+}
+.machine-portrait-frame {
+  transform: rotateX(var(--rx)) rotateY(var(--ry));
+  transform-style: preserve-3d;
+  transition: transform 450ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow:
+    0 40px 90px -35px var(--world-accent),
+    0 0 0 1px rgb(255 255 255 / 0.08);
+}
+.machine-portrait-back {
+  filter: blur(24px) saturate(1.3);
+  transform: scale(1.25) translateZ(-60px);
+  opacity: 0.55;
+}
+.machine-portrait-glare {
+  background: radial-gradient(circle at var(--gx, 30%) var(--gy, 20%), rgb(255 255 255 / 0.22), transparent 55%);
+  mix-blend-mode: soft-light;
+}
+.part-marker {
+  position: relative;
+  display: block;
+  width: 44px;
+  height: 44px;
+  margin: -22px 0 0 -22px;
+  border-radius: 9999px;
+  cursor: pointer;
+}
+.part-marker::before,
+.part-marker::after {
+  content: '';
+  position: absolute;
+  inset: 13px;
+  border-radius: 9999px;
+}
+.part-marker::before {
+  background: var(--world-accent);
+  border: 2px solid #fff;
+  box-shadow: 0 0 14px var(--world-accent);
+  transition: transform 250ms;
+}
+.part-marker::after {
+  border: 2px solid var(--world-accent);
+  opacity: 0;
+}
+.part-marker:hover::before,
+.part-marker:focus-visible::before,
+.part-marker.is-open::before {
+  transform: scale(1.35);
+}
+.part-card {
+  animation: part-card 380ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes part-card {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .part-marker::after {
+    animation: part-ping 2.2s ease-out infinite;
+    animation-delay: calc(var(--i, 0) * 0.3s);
+  }
+}
+@keyframes part-ping {
+  0% {
+    opacity: 0.8;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.2);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .machine-portrait-frame {
+    transform: none;
+  }
+  .part-card {
+    animation: none;
+  }
+}
+
+/* 3D model touch points (US-5.13): a dot, and the part's name sliding out beside it. */
+.model-hotspot {
+  --world-accent: var(--cosmos-stellar-cyan, #38bdf8);
+}
+.model-hotspot[data-visible='false'],
+.model-hotspot:not([data-visible]) {
+  opacity: 0.35;
+}
+.model-hotspot-label {
+  position: absolute;
+  left: 40px;
+  top: 50%;
+  white-space: nowrap;
+  padding: 0.25rem 0.6rem;
+  border-radius: 9999px;
+  background: rgb(6 10 20 / 0.88);
+  border: 1px solid rgb(148 163 184 / 0.3);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  opacity: 0;
+  transform: translate(-6px, -50%);
+  transition:
+    opacity 250ms,
+    transform 250ms;
+  pointer-events: none;
+}
+.model-hotspot:hover .model-hotspot-label,
+.model-hotspot:focus-visible .model-hotspot-label,
+.model-hotspot-label.is-open {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+
+/* Flight mission clock (US-5.13). */
+.flight-hud {
+  text-shadow: 0 0 12px var(--world-accent);
+}
+.flight-hud.is-tick {
+  animation: hud-tick 520ms ease-out;
+}
+@keyframes hud-tick {
+  from {
+    opacity: 0.2;
+    letter-spacing: 0.45em;
+  }
+}
+
+/* US-5.13: sections melt into each other while scrolling (CSS scroll-driven animations; the
+   page simply shows everything where the browser does not support them). Opacity and a small
+   rise only, so sticky children and reading are never disturbed. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .scene-blend {
+      animation: scene-blend linear both;
+      animation-timeline: view();
+      animation-range: entry 0% exit 100%;
+    }
+  }
+}
+@keyframes scene-blend {
+  0% {
+    opacity: 0;
+    transform: translateY(6vh);
+  }
+  18% {
+    opacity: 1;
+    transform: none;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.25;
+  }
+}
+/* The pinned photo flight fades in and out at its edges instead of starting with a cut. */
+.photo-flight-stage {
+  mask-image: linear-gradient(to bottom, transparent 0, black 9%, black 91%, transparent 100%);
+}
+
+/* US-5.13 — phones: the picture is the background of the text, under a mask that keeps the
+   text readable (dark at the bottom where the text sits, clear at the top). */
+.flight-backdrop-image {
+  opacity: 0;
+  transform: scale(1.06);
+  transition:
+    opacity 700ms ease,
+    transform 6s ease-out;
+}
+.flight-backdrop-image.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+.flight-backdrop::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgb(5 7 13 / 0.35) 0%, rgb(5 7 13 / 0) 18%, rgb(5 7 13 / 0.62) 42%, rgb(5 7 13 / 0.92) 62%, rgb(5 7 13 / 0.97) 100%);
+}
+.flight-panel {
+  color: var(--cosmos-starlight);
+  text-shadow: 0 1px 3px rgb(2 6 16 / 0.9);
+}
+@media (min-width: 1024px) {
+  .flight-panel {
+    background-image: linear-gradient(160deg, rgb(15 22 36 / 0.94), rgb(6 10 20 / 0.92));
+    border: 1px solid rgb(148 163 184 / 0.18);
+    box-shadow: 0 30px 70px -30px rgb(0 0 0 / 0.9);
+    text-shadow: none;
+  }
+}
+@media (max-width: 1023.98px) {
+  /* The 3D corridor stays for large screens; on phones the reading panel sits on the photo. */
+  .flight-panel {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+.slide-backdrop::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgb(5 7 13 / 0.15) 0%, rgb(5 7 13 / 0.25) 30%, rgb(5 7 13 / 0.86) 55%, rgb(5 7 13 / 0.96) 100%);
+}
+@media (max-width: 1023.98px) {
+  .slide-backdrop + .story-slide {
+    text-shadow: 0 1px 3px rgb(2 6 16 / 0.9);
+  }
+}
+
+/* US-5.13 — scroll length per flight moment; phones: shorter, and each moment snaps into place. */
+.photo-flight {
+  --flight-per: 0.9;
+}
+.flight-snap {
+  position: absolute;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+@media (max-width: 1023.98px) {
+  .photo-flight {
+    --flight-per: 0.55;
+  }
+  html:has(.photo-flight) {
+    scroll-snap-type: y proximity;
+  }
+  .flight-snap {
+    scroll-snap-align: start;
+  }
+}
+
+/* US-5.13: the reading panel is as tall as the text in front only (the other moments are laid
+   over it while they fade out), so a long moment never pushes the panel over the picture. */
+.photo-flight-item:not(.is-active) {
+  position: absolute;
+  inset: 0 0 auto 0;
+}
+.flight-panel :is(p, h3, li) {
+  overflow-wrap: anywhere;
+}
+.part-card-on-photo {
+  animation: part-card-pop 380ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes part-card-pop {
+  from {
+    opacity: 0;
+    scale: 0.92;
+  }
 }

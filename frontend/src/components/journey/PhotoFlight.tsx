@@ -5,6 +5,7 @@ import { MediaFigure } from '@/components/media/MediaFigure'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { useScrollFrame } from '@/hooks/useScrollFrame'
 import { useTranslation } from '@/i18n'
+import { setBringIntoView } from '@/lib/readAlong'
 import { cn } from '@/lib/utils'
 
 export interface FlightItem {
@@ -15,6 +16,10 @@ export interface FlightItem {
   media?: Media
   /** Repeat the picture's own story in its caption (off when `content` already tells it). */
   withStory?: boolean
+  /** Mission clock shown over the flight while this moment is in front (US-5.13). */
+  hud?: string
+  /** No caption under the text (the text already is the picture's caption). */
+  hideCaption?: boolean
 }
 
 interface PhotoFlightProps {
@@ -28,8 +33,10 @@ interface PhotoFlightProps {
 const GAP = 1700
 const FOCUS = 560
 const PERSPECTIVE = 1100
-/** Scroll (in viewport heights) spent on each moment. */
-const SCROLL_PER_ITEM = 0.9
+/**
+ * Scroll spent on each moment, in viewport heights: `--flight-per` in CSS (0.9 on large
+ * screens, shorter on phones, where each moment also snaps into place — US-5.13).
+ */
 
 const clamp = (value: number, min = 0, max = 1) => Math.min(max, Math.max(min, value))
 
@@ -71,7 +78,10 @@ function Flight({ label, items, className }: PhotoFlightProps) {
   const itemRefs = useRef<Array<HTMLLIElement | null>>([])
   const barRef = useRef<HTMLSpanElement>(null)
   const counterRef = useRef<HTMLSpanElement>(null)
+  const hudRef = useRef<HTMLParagraphElement>(null)
   const active = useRef(-1)
+  // Phones (US-5.13): the picture of the moment in front fills the screen behind its text.
+  const [shown, setShown] = useState(0)
   const [failed, setFailed] = useState<ReadonlySet<string>>(new Set())
   // Pictures are fetched only when the flight is about to be reached.
   const [near, setNear] = useState(() => typeof IntersectionObserver === 'undefined')
@@ -108,6 +118,23 @@ function Flight({ label, items, className }: PhotoFlightProps) {
     return () => window.removeEventListener('resize', place)
   }, [])
 
+  // Read-along (US-5.12): the narration reaches a moment → fly the camera to it.
+  useEffect(() => {
+    const section = sectionRef.current
+    if (!section) return
+    const unregister = itemRefs.current.map((item, index) =>
+      item
+        ? setBringIntoView(item, (behavior) => {
+            const rect = section.getBoundingClientRect()
+            const progress = clamp((index + 0.45) / (count - 0.1))
+            const top = window.scrollY + rect.top + progress * Math.max(1, rect.height - window.innerHeight)
+            window.scrollTo({ top, behavior })
+          })
+        : undefined,
+    )
+    return () => unregister.forEach((off) => off?.())
+  }, [count])
+
   useScrollFrame(({ viewportH }) => {
     const section = sectionRef.current
     const world = worldRef.current
@@ -134,8 +161,16 @@ function Flight({ label, items, className }: PhotoFlightProps) {
     const current = Math.round(clamp(camera, 0, count - 1))
     if (current !== active.current) {
       active.current = current
+      setShown(current)
       itemRefs.current.forEach((item, index) => item?.classList.toggle('is-active', index === current))
       if (counterRef.current) counterRef.current.textContent = pad(current + 1)
+      const hud = hudRef.current
+      if (hud) {
+        hud.textContent = items[current]?.hud ?? ''
+        hud.classList.remove('is-tick')
+        void hud.offsetWidth
+        hud.classList.add('is-tick')
+      }
     }
     if (barRef.current) barRef.current.style.transform = `scaleX(${progress.toFixed(3)})`
   })
@@ -144,11 +179,41 @@ function Flight({ label, items, className }: PhotoFlightProps) {
     <div
       ref={sectionRef}
       className={cn('photo-flight relative', className)}
-      style={{ height: `${(count * SCROLL_PER_ITEM + 1) * 100}vh` }}
+      style={{ '--count': count, height: 'calc((var(--count) * var(--flight-per) + 1) * 100vh)' } as CSSProperties}
     >
+      {/* Phones: one snap point per moment, where its picture is in front (one swipe = one moment). */}
+      {items.map((item, index) => (
+        <span
+          key={`snap-${item.id}`}
+          aria-hidden="true"
+          className="flight-snap"
+          style={{ top: `calc(var(--count) * var(--flight-per) * 100vh * ${((index + 0.45) / (count - 0.1)).toFixed(5)})` }}
+        />
+      ))}
       <div className="photo-flight-stage sticky top-0 h-dvh overflow-hidden" style={{ perspective: `${PERSPECTIVE}px` }}>
         {/* The corridor of pictures (decorative: the list below carries the same content). */}
-        <div ref={worldRef} aria-hidden="true" className="photo-flight-world absolute inset-0">
+        {/* Phones and tablets: the moment's picture is the background of its text, under a
+            dark mask; pictures next to the one in front are loaded ahead. */}
+        <div aria-hidden="true" className="flight-backdrop absolute inset-0 lg:hidden">
+          {items.map((item, index) =>
+            item.media && Math.abs(index - shown) <= 1 ? (
+              <img
+                key={item.id}
+                src={item.media.url}
+                alt=""
+                decoding="async"
+                className={cn('flight-backdrop-image absolute inset-0 size-full object-cover', index === shown && 'is-active')}
+              />
+            ) : null,
+          )}
+          {items[shown]?.media && (
+            <span className="absolute top-20 right-4">
+              <DepictionBadge depiction={items[shown]!.media!.depiction} />
+            </span>
+          )}
+        </div>
+
+        <div ref={worldRef} aria-hidden="true" className="photo-flight-world absolute inset-0 max-lg:hidden">
           {items.map((item, index) => {
             if (!item.media || failed.has(item.id)) return null
             const side = index % 2 === 0 ? -1 : 1
@@ -168,7 +233,9 @@ function Flight({ label, items, className }: PhotoFlightProps) {
               >
                 <FlightImage
                   url={item.media.url}
-                  near={near}
+                  // Long flights (40+ pictures): only the pictures around the one in front are
+                  // fetched; once drawn, a picture stays.
+                  near={near && index >= shown - 2 && index <= shown + 4}
                   onError={() => setFailed((previous) => new Set(previous).add(item.id))}
                 />
                 <span className="absolute top-3 left-3">
@@ -186,7 +253,13 @@ function Flight({ label, items, className }: PhotoFlightProps) {
         />
 
         <div className="absolute inset-x-0 bottom-0 px-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:px-10 sm:pb-10 lg:inset-y-0 lg:flex lg:items-center lg:pb-0 lg:pl-[max(2.5rem,calc((100vw-72rem)/2))]">
-          <div className="relative max-w-xl lg:max-w-md">
+          <div className="flight-panel relative max-w-xl rounded-3xl p-5 sm:p-6 lg:max-w-md">
+            {/* US-5.13: the mission clock, like a telemetry readout, at the head of the panel. */}
+            {items.some((item) => item.hud) && (
+              <p ref={hudRef} aria-hidden="true" className="flight-hud mb-2 font-mono text-xs tracking-[0.2em] text-world uppercase sm:text-sm">
+                {items[0]?.hud}
+              </p>
+            )}
             <p aria-hidden="true" className="flex items-baseline gap-2 font-mono text-xs tracking-[0.3em] text-world">
               <span ref={counterRef}>01</span>
               <span className="text-moon-dust">/ {pad(count)}</span>
@@ -204,13 +277,13 @@ function Flight({ label, items, className }: PhotoFlightProps) {
                   className={cn('photo-flight-item col-start-1 row-start-1', index === 0 && 'is-active')}
                 >
                   {item.content}
-                  {item.media && (
+                  {item.media && !item.hideCaption && (
                     <MediaFigure
                       media={item.media}
                       lead={t('media.whatYouSee')}
                       withStory={item.withStory ?? true}
                       captionOnly
-                      className="mt-3"
+                      className="mt-3 max-lg:hidden"
                     />
                   )}
                 </li>

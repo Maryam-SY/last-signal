@@ -19,14 +19,14 @@ export function Scene({ id, eyebrow, title, intro, className, children }: SceneP
     <section
       id={id}
       aria-labelledby={titleId}
-      className={cn('mx-auto flex min-h-[85dvh] max-w-6xl scroll-mt-20 flex-col justify-center px-5 py-20', className)}
+      className={cn('scene-blend mx-auto flex min-h-[85dvh] max-w-6xl scroll-mt-20 flex-col justify-center px-5 py-20', className)}
     >
       <Reveal>
         <p className={cn(eyebrowClass, 'text-world')}>{eyebrow}</p>
         <h2 id={titleId} tabIndex={-1} className="mt-2 font-heading text-4xl font-bold outline-none sm:text-5xl">
           {title}
         </h2>
-        {intro && <p className="mt-3 max-w-2xl text-moon-dust sm:text-lg">{intro}</p>}
+        {intro && <p className="text-legible mt-3 max-w-2xl text-starlight/85 sm:text-lg">{intro}</p>}
       </Reveal>
       <div className="mt-10">{children}</div>
     </section>
