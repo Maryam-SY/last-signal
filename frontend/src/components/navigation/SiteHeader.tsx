@@ -27,7 +27,7 @@ const linkClass =
   'relative inline-flex min-h-11 items-center rounded-full px-3 text-sm font-medium whitespace-nowrap text-moon-dust transition-colors hover:text-starlight aria-[current=page]:text-starlight after:absolute after:inset-x-3 after:bottom-1.5 after:h-0.5 after:origin-center after:scale-x-0 after:rounded-full after:bg-stellar-cyan after:transition-transform hover:after:scale-x-50 aria-[current=page]:after:scale-x-100'
 
 /**
- * The site header: the mark and name (home link), the two worlds and "About & Sources", then
+ * The site header: the mark and the name (home link), the two worlds and "About & Sources", then
  * sound and language. A thin signal line fills as the page is read. On reading pages it slides
  * away when scrolling down and comes back on the way up (never while it holds the focus).
  * Phones: a "Menu" button opens a full-screen panel with large links, sound and language.
@@ -75,12 +75,7 @@ export function SiteHeader({ home }: { home: boolean }) {
           className="group inline-flex min-h-11 shrink-0 items-center gap-2.5 rounded-full pr-2"
         >
           <LogoMark className="size-9" />
-          <span className="flex flex-col leading-none">
-            <span className="font-heading text-[1.05rem] font-bold tracking-tight text-starlight">{t('app.name')}</span>
-            <span className="mt-1 hidden font-mono text-[0.6rem] tracking-[0.3em] text-stellar-cyan uppercase min-[400px]:block">
-              {t('nav.brandLine')}
-            </span>
-          </span>
+          <span className="font-heading text-[1.05rem] font-bold tracking-tight text-starlight">{t('app.name')}</span>
         </Link>
 
         <nav aria-label={t('nav.label')} className="hidden md:block">
