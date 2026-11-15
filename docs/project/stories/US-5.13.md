@@ -108,3 +108,8 @@ Demande de l'équipe : pendant la narration, surligner le texte lu et faire déf
 | Backend `npm run check` | 59/59, `content:check` 0 erreur |
 | Navigateur | Ingenuity (PC) : fiche « Corps (fuselage) » sur la photo ; Spirit : aucun point ; Opportunity : 47 moments |
 | Non vérifié | aimant de défilement et rendu mobile en mouvement (panneau du navigateur masqué), modèle 3D |
+
+### Retours (fin de journée)
+
+- Téléphone : la pastille « section » du bas, qui couvrait le texte, devient deux petites flèches translucides en haut à droite.
+- Plus de répétition : quand la description d'une photo dit la même chose que « Ce que tu vois », une seule est affichée ; dans le vol de photos, pas de légende quand le texte du moment est déjà celle de la photo (`lib/sameText.ts`). Contrôle sur la page Opportunity : 137 paragraphes, 0 doublon.

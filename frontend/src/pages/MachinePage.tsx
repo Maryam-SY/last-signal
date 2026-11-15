@@ -28,6 +28,7 @@ import { formatPartialDate } from '@/lib/formatDate'
 import { bestStill, biographyChapters, machineChapters, machineCover, modelOf, type LifeChapter } from '@/lib/journey'
 import { daysBetween, lastSignal } from '@/lib/lifespan'
 import { eyebrow } from '@/lib/styles'
+import { sameText } from '@/lib/sameText'
 import { cn } from '@/lib/utils'
 import { isDestinationId, type DestinationId } from '@/types/content'
 import { NotFoundPage } from './NotFoundPage'
@@ -235,9 +236,10 @@ function MachineLife({ machine, mission, destination, story }: MachineLifeProps)
               items={chapters.map((chapter) => ({
                 id: chapter.id,
                 media: chapter.media,
-                withStory: chapter.text !== chapter.media?.description,
+                withStory: !sameText(chapter.text, chapter.media?.description),
                 hud: missionClock(chapter.date?.value),
-                hideCaption: chapter.fromPicture,
+                // The moment's text already is the picture's caption: no second copy under it.
+                hideCaption: chapter.fromPicture || sameText(chapter.text, chapter.media?.alt),
                 content: (
                   <>
                     <p className="font-mono text-xs tracking-widest text-world uppercase">

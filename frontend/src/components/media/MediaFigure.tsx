@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Box, FileText, ImageOff, PlayCircle } from 'lucide-react'
 import type { Media } from '@/api/types'
 import { useTranslation } from '@/i18n'
+import { sameText } from '@/lib/sameText'
 import { cn } from '@/lib/utils'
 import { DepictionBadge } from './DepictionBadge'
 
@@ -25,6 +26,10 @@ interface MediaFigureProps {
  * About page (US-5.11). Files are never copied: they are loaded from NASA servers (ADR-017).
  */
 export function MediaFigure({ media, className, lead, withStory = false, captionOnly = false }: MediaFigureProps) {
+  // Never the same text twice (US-5.13): when the picture's story already says what it shows,
+  // the "What you see:" line is left out.
+  const story = withStory ? media.description : undefined
+  const showWhat = !sameText(story, media.alt)
   if (captionOnly) {
     return (
       <figure className={className}>
@@ -33,11 +38,13 @@ export function MediaFigure({ media, className, lead, withStory = false, caption
         </div>
         <figcaption className="space-y-1.5 text-sm">
           <DepictionBadge depiction={media.depiction} />
-          {withStory && media.description && <p className="leading-relaxed text-starlight/90">{media.description}</p>}
-          <p className="text-xs text-moon-dust">
-            {lead && <span className="font-semibold text-world">{lead} </span>}
-            {media.alt}
-          </p>
+          {story && <p className="leading-relaxed text-starlight/90">{story}</p>}
+          {showWhat && (
+            <p className="text-xs text-moon-dust">
+              {lead && <span className="font-semibold text-world">{lead} </span>}
+              {media.alt}
+            </p>
+          )}
         </figcaption>
       </figure>
     )
@@ -52,11 +59,13 @@ export function MediaFigure({ media, className, lead, withStory = false, caption
         </div>
       </div>
       <figcaption className="space-y-1 p-3 text-sm">
-        {withStory && media.description && <p className="text-base leading-relaxed text-starlight">{media.description}</p>}
-        <p className={cn(withStory && media.description && 'text-xs text-moon-dust')}>
-          {lead && <span className="font-semibold text-world">{lead} </span>}
-          {media.alt}
-        </p>
+        {story && <p className="text-base leading-relaxed text-starlight">{story}</p>}
+        {showWhat && (
+          <p className={cn(story && 'text-xs text-moon-dust')}>
+            {lead && <span className="font-semibold text-world">{lead} </span>}
+            {media.alt}
+          </p>
+        )}
       </figcaption>
     </figure>
   )
