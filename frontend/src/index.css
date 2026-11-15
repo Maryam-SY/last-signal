@@ -1357,6 +1357,12 @@ html[data-flight-snap] .flight-snap-edge {
     animation: grain-breathe 1.6s steps(4) infinite;
   }
 }
+/* Phones: the small copy under a background photo is not blurred (a full-screen blur filter
+   costs a lot of memory on iPhone). */
+.flight-backdrop .flight-preview {
+  filter: none;
+  transform: none;
+}
 /* Phones: a still grain the size of the screen (no animated layer larger than the screen). */
 @media (pointer: coarse), (max-width: 1023.98px) {
   .cinema-grain {

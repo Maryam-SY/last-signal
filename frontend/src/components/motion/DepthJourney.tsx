@@ -1,6 +1,7 @@
-import { useEffect, useRef, type ReactNode } from 'react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { useMotionLoop } from '@/hooks/useMotionLoop'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
+import { liteGraphics } from '@/lib/device'
 import { cn } from '@/lib/utils'
 
 export interface DepthScene {
@@ -77,6 +78,7 @@ function FlatJourney({ scenes, layers }: Omit<DepthJourneyProps, 'navLabel'>) {
 }
 
 function SpatialJourney({ scenes, layers, navLabel }: DepthJourneyProps) {
+  const [lite] = useState(liteGraphics)
   const trackRef = useRef<HTMLDivElement>(null)
   const stageRef = useRef<HTMLDivElement>(null)
   const layerRefs = useRef<Array<HTMLDivElement | null>>([])
@@ -117,7 +119,9 @@ function SpatialJourney({ scenes, layers, navLabel }: DepthJourneyProps) {
       if (!element) return
       const distance = layer.scene + (layer.offset ?? 0) - camera
       const opacity = opacityAt(distance)
-      const z = clamp(-distance * SCENE_DEPTH, -SCENE_DEPTH * 3, PERSPECTIVE * 0.9)
+      // Phones: a scene passing the camera is magnified less (×2 instead of ×10 in width):
+      // iPhone keeps an image of every layer at its drawn size and closed the page.
+      const z = clamp(-distance * SCENE_DEPTH, -SCENE_DEPTH * 3, PERSPECTIVE * (lite ? 0.5 : 0.9))
 
       // No blur: filtering full-screen layers every frame is what made scrolling stutter.
       // Depth comes from z, opacity and the layers' own --pass/--approach transforms.
@@ -126,6 +130,8 @@ function SpatialJourney({ scenes, layers, navLabel }: DepthJourneyProps) {
       writtenRef.current[index] = key
 
       element.style.opacity = opacity.toFixed(2)
+      // A scene the camera cannot see is not drawn at all (no memory kept for it).
+      element.style.visibility = opacity < 0.02 ? 'hidden' : 'visible'
       // Scenes the camera cannot see take no focus (WCAG 2.4.7/2.4.11).
       element.toggleAttribute('inert', opacity < 0.05)
       element.style.transform = `translate3d(0, 0, ${z.toFixed(0)}px) rotateX(${(tilt * 0.12).toFixed(2)}deg)`

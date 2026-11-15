@@ -128,8 +128,9 @@ export function Planet({
     <div ref={wrapperRef} className={cn('relative aspect-square', className)} style={style}>
       <div
         aria-hidden="true"
-        className="absolute inset-[6%] rounded-full blur-3xl"
-        style={{ background: `radial-gradient(circle, ${palette.base}55, transparent 70%)` }}
+        // A wide gradient, no blur filter: blurred layers cost a lot of memory on iPhone.
+        className="absolute -inset-[14%] rounded-full"
+        style={{ background: `radial-gradient(circle, ${palette.base}48 28%, transparent 66%)` }}
       />
       <div className="planet-float relative h-full w-full">
         <svg
