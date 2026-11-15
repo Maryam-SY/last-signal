@@ -200,8 +200,8 @@
         {
           "voice": "data",
           "text": {
-            "en": "NASA says what was learned with these rovers is now carried aboard the Curiosity rover and the Mars 2020 mission.",
-            "fr": "Selon la NASA, ce qui a été appris avec ces rovers est aujourd’hui embarqué à bord du rover Curiosity et de la mission Mars 2020."
+            "en": "What was learned with these rovers is now carried aboard the Curiosity rover and the Mars 2020 mission.",
+            "fr": "Ce qui a été appris avec ces rovers est aujourd’hui embarqué à bord du rover Curiosity et de la mission Mars 2020."
           },
           "sourceIds": [
             "jpl-opportunity-end-2019"

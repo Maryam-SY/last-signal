@@ -284,6 +284,12 @@ export interface Media {
   descriptionStatus?: 'draft' | 'reviewed'
   /** Small preview image (NASA Image and Video Library items), when available. */
   thumbnailUrl?: string | null
+  /**
+   * A mid-size copy of the same picture (≤ ~1 900 px) that is known to exist, for pages that
+   * draw it in a column or full screen; the original stays `url`. Filled by a verified script
+   * (US-5.14): never guessed, since the library does not publish every size of every picture.
+   */
+  largeUrl?: string | null
   /** NASA Image and Video Library identifier, when the media comes from it. */
   nasaId?: string
   dateCreated?: string | null

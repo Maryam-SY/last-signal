@@ -18,6 +18,16 @@ export function LoadState({ status, onRetry, variant = 'text', className }: Load
     return (
       <output className={cn('block py-4', className)}>
         <span className="sr-only">{t('loading.message')}</span>
+        {/* US-5.14: the wait looks like a signal being acquired. */}
+        <span aria-hidden="true" className="mb-3 flex items-center gap-3 font-mono text-[0.68rem] tracking-[0.3em] text-world uppercase">
+          <span className="signal-acquire">
+            <i />
+            <i />
+            <i />
+            <i />
+          </span>
+          {t('loading.acquiring')}
+        </span>
         {variant === 'cards' ? (
           <span aria-hidden="true" className="grid gap-4 md:grid-cols-2">
             {[0, 1].map((i) => (

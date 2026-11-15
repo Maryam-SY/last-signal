@@ -90,9 +90,7 @@
           "en": "Controlled from Earth, its little scoop digs trenches and presses on the ground. Result: the soil is like wet sand, firm enough to hold a Lunar Module. Its camera sends back 6,326 pictures.",
           "fr": "Commandée depuis la Terre, sa petite pelle creuse des tranchées et appuie sur le sol. Résultat : le sol ressemble à du sable mouillé, assez ferme pour porter un module lunaire. Sa caméra renvoie 6 326 images."
         },
-        "mediaIds": [
-          "nasa-lib-as12-48-7133"
-        ]
+        "mediaIds": []
       },
       {
         "id": "last-contact",
@@ -347,8 +345,8 @@
           "fr": "Toujours en service après 35 ans"
         },
         "description": {
-          "en": "NASA reports that the mirror, which needs no power, is still working perfectly. Observatories in Texas and France keep aiming lasers at it.",
-          "fr": "La NASA indique que le miroir, qui n’a besoin d’aucune énergie, fonctionne toujours parfaitement. Des observatoires au Texas et en France continuent de le viser au laser."
+          "en": "The mirror, which needs no power, is still working perfectly. Observatories in Texas and France keep aiming lasers at it.",
+          "fr": "Le miroir, qui n’a besoin d’aucune énergie, fonctionne toujours parfaitement. Des observatoires au Texas et en France continuent de le viser au laser."
         },
         "mediaIds": [
           "llr-retroreflector-array"

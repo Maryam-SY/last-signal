@@ -19,7 +19,7 @@ describe('photos, statuses and timeline', () => {
 
   it('lists every picture credit once, on the About page (US-5.11, ABOUT-001)', async () => {
     renderRoute('/about')
-    const credits = screen.getByRole('region', { name: 'Credits' })
+    const credits = await screen.findByRole('region', { name: 'Credits' })
     // Grouped by credit holder: the fixtures have two NASA/JPL items and one without credit.
     expect(await within(credits).findByText('NASA/JPL')).toBeInTheDocument()
     expect(within(credits).getByText('Credit not shown on the source page')).toBeInTheDocument()

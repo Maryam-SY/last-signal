@@ -1,4 +1,5 @@
 import type { Lifespan, Sourced } from '@/api/types'
+import { HudCorners } from '@/components/common/HudCorners'
 import { CountUp } from '@/components/motion/CountUp'
 import { useTranslation } from '@/i18n'
 import { formatPartialDate } from '@/lib/formatDate'
@@ -40,7 +41,8 @@ export function LifeLine({ born, lifespan, epilogue, className }: LifeLineProps)
   const spoken = (label: string, value: string) => `${label} : ${value}.`
 
   return (
-    <div className={cn('glass overflow-hidden rounded-3xl p-5 sm:p-8', className)}>
+    <div className={cn('glass relative overflow-hidden rounded-3xl p-5 sm:p-8', className)}>
+      <HudCorners />
       <svg aria-hidden="true" viewBox="0 0 600 80" preserveAspectRatio="none" className={cn('heartbeat h-16 w-full sm:h-20', alive && 'is-alive')}>
         <path
           d="M0 40 H70 L82 18 L94 62 L106 40 H180 L192 14 L204 66 L216 40 H300 L312 22 L324 58 L336 40 H420 L428 34 L436 46 L444 40 H600"

@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { ArrowLeft, ChevronsDown } from 'lucide-react'
 import { Link, useParams } from 'react-router'
-import { api } from '@/api/client'
+import { ApiError, api } from '@/api/client'
 import { paths } from '@/app/paths'
 import { SpaceBackdrop } from '@/components/celestial/SpaceBackdrop'
 import { LoadState } from '@/components/common/LoadState'
@@ -18,6 +18,7 @@ import { useApi } from '@/hooks/useApi'
 import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { useTranslation } from '@/i18n'
+import { contentLang } from '@/i18n/translate'
 import { record } from '@/lib/explorerLog'
 import { ctaPrimary, eyebrow } from '@/lib/styles'
 import { cn } from '@/lib/utils'
@@ -38,7 +39,7 @@ export function DestinationPage() {
  * its whole life. The Moon + Mars timeline and the next world close the page.
  */
 function DestinationView({ destinationId }: { destinationId: DestinationId }) {
-  const { t } = useTranslation()
+  const { t, locale } = useTranslation()
   const reduced = useReducedMotion()
   const body = getBodyByDestination(destinationId)
   const name = t(`bodies.${destinationId}.name`)
@@ -54,8 +55,10 @@ function DestinationView({ destinationId }: { destinationId: DestinationId }) {
     ...(other ? [{ id: 'next-world', label: t('destination.nextWorld') }] : []),
   ]
 
+  if (destination.status === 'error' && destination.error instanceof ApiError && destination.error.status === 404) return <NotFoundPage />
+
   return (
-    <div data-world={destinationId} className="relative overflow-x-clip">
+    <div data-world={destinationId} lang={contentLang(locale)} className="relative overflow-x-clip">
       <SpaceBackdrop />
       <ScrollProgress />
       {body && !reduced && <PinnedDestinationPlanet key={destinationId} body={body} />}

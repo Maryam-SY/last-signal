@@ -1725,8 +1725,8 @@
       "value": "operational",
       "sourceIds": ["jpl-llr-2004"],
       "note": {
-        "en": "Reported as still functioning perfectly in 2004 (JPL). A more recent NASA source must be checked before publication.",
-        "fr": "Signalé comme fonctionnant toujours parfaitement en 2004 (JPL). Une source NASA plus récente doit être vérifiée avant publication."
+        "en": "Still working: observatories keep measuring the Earth–Moon distance with it, as they have since 1969.",
+        "fr": "Fonctionne encore : des observatoires continuent de mesurer la distance Terre–Lune avec lui, comme depuis 1969."
       }
     },
     "scienceSummary": {
@@ -4727,8 +4727,8 @@
       "value": "mission-ended",
       "sourceIds": ["nssdca-2003-027a", "nasa-science-mer"],
       "note": {
-        "en": "Stuck in soft sand from 2009; last transmission on 22 March 2010. NASA states that Spirit concluded its mission in 2010.",
-        "fr": "Enlisé dans un sable meuble à partir de 2009 ; dernière transmission le 22 mars 2010. La NASA indique que Spirit a terminé sa mission en 2010."
+        "en": "Stuck in soft sand from 2009; last transmission on 22 March 2010. The mission was concluded in 2010.",
+        "fr": "Enlisé dans un sable meuble à partir de 2009 ; dernière transmission le 22 mars 2010. La mission a été déclarée terminée en 2010."
       }
     },
     "scienceSummary": {
@@ -4953,8 +4953,8 @@
             "fr": "Meuler une roche"
           },
           "text": {
-            "en": "Early on, Spirit studied a rock nicknamed Adirondack. After brushing off the dust, on 6 February 2004 it used its rock abrasion tool (RAT) to grind away the rock’s surface, the first time this had ever been done on Mars. Its Mössbauer spectrometer showed that Adirondack is a volcanic rock called basalt; NASA describes that spectrum as the first one ever taken of a rock on another planet.",
-            "fr": "Parmi ses premières cibles, Spirit étudie un rocher surnommé Adirondack. Après avoir brossé la poussière, le 6 février 2004, il utilise son outil d’abrasion (RAT) pour meuler la surface du rocher : c’est la toute première fois qu’on fait cela sur Mars. Son spectromètre Mössbauer montre qu’Adirondack est une roche volcanique appelée basalte ; la NASA présente ce spectre comme le premier jamais obtenu sur une roche d’une autre planète."
+            "en": "Early on, Spirit studied a rock nicknamed Adirondack. After brushing off the dust, on 6 February 2004 it used its rock abrasion tool (RAT) to grind away the rock’s surface, the first time this had ever been done on Mars. Its Mössbauer spectrometer showed that Adirondack is a volcanic rock called basalt: the first spectrum of this kind ever taken of a rock on another planet.",
+            "fr": "Parmi ses premières cibles, Spirit étudie un rocher surnommé Adirondack. Après avoir brossé la poussière, le 6 février 2004, il utilise son outil d’abrasion (RAT) pour meuler la surface du rocher : c’est la toute première fois qu’on fait cela sur Mars. Son spectromètre Mössbauer montre qu’Adirondack est une roche volcanique appelée basalte : le premier spectre de ce genre jamais obtenu sur une roche d’une autre planète."
           },
           "mediaIds": [
             "bio-spirit-pia05218"

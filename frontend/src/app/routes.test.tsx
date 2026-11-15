@@ -19,30 +19,30 @@ describe('routes', () => {
     const { router } = renderRoute('/')
     await user.click(screen.getByRole('link', { name: 'Explore Mars' }))
     expect(router.state.location.pathname).toBe('/explore/mars')
-    expect(screen.getByRole('heading', { level: 1, name: 'Mars' })).toBeInTheDocument()
+    expect(await screen.findByRole('heading', { level: 1, name: 'Mars' })).toBeInTheDocument()
   })
 
-  it('renders the Moon destination page with a way back', () => {
+  it('renders the Moon destination page with a way back', async () => {
     renderRoute('/explore/moon')
-    expect(screen.getByRole('heading', { level: 1, name: 'Moon' })).toBeInTheDocument()
+    expect(await screen.findByRole('heading', { level: 1, name: 'Moon' })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: /Back to destinations/ })).toHaveAttribute('href', '/')
   })
 
-  it.each(['/explore/pluto', '/unknown/path'])('shows the not-found page for %s', (path) => {
+  it.each(['/explore/pluto', '/unknown/path'])('shows the not-found page for %s', async (path) => {
     renderRoute(path)
-    expect(screen.getByRole('heading', { level: 1, name: 'Page not found' })).toBeInTheDocument()
+    expect(await screen.findByRole('heading', { level: 1, name: 'Page not found' })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'Back to home' })).toHaveAttribute('href', '/')
   })
 
   it('renders the story route (unknown story → clear message)', async () => {
     renderRoute('/stories/apollo-12')
-    expect(screen.getByRole('heading', { level: 1, name: 'Story' })).toBeInTheDocument()
+    expect(await screen.findByRole('heading', { level: 1, name: 'Story' })).toBeInTheDocument()
     expect(await screen.findByText(/apollo-12/)).toBeInTheDocument()
   })
 
-  it('shows the non-affiliation statement on /about', () => {
+  it('shows the non-affiliation statement on /about', async () => {
     renderRoute('/about')
-    expect(screen.getByRole('heading', { level: 1, name: 'About & Sources' })).toBeInTheDocument()
+    expect(await screen.findByRole('heading', { level: 1, name: 'About & Sources' })).toBeInTheDocument()
     // Once in the page body, once in the footer.
     expect(
       screen.getAllByText('Independent project, not affiliated with or endorsed by NASA.'),
@@ -71,7 +71,7 @@ describe('routes', () => {
     await user.click(toggle)
     const list = screen.getByRole('list', { name: 'Language' })
     await user.click(within(list).getByRole('button', { name: /Français/ }))
-    expect(screen.getByRole('heading', { level: 1, name: 'À propos et sources' })).toBeInTheDocument()
+    expect(await screen.findByRole('heading', { level: 1, name: 'À propos et sources' })).toBeInTheDocument()
     expect(screen.queryByRole('list', { name: 'Langue' })).not.toBeInTheDocument()
     await user.click(screen.getByRole('button', { name: /Langue : Français/ }))
     expect(within(screen.getByRole('list', { name: 'Langue' })).getByRole('button', { name: /Français/ })).toHaveAttribute('aria-current', 'true')

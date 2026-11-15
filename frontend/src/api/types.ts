@@ -36,6 +36,10 @@ export interface Media {
   type: MediaType
   url: string
   thumbnailUrl?: string | null
+  /** Verified mid-size copy of the picture, when the library has one (US-5.14). */
+  largeUrl?: string | null
+  /** NASA Image and Video Library / Photojournal identifier, when the media comes from it. */
+  nasaId?: string
   pageUrl: string
   title: string | null
   caption: string | null

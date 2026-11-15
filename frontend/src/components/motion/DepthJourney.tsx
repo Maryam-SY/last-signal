@@ -126,6 +126,8 @@ function SpatialJourney({ scenes, layers, navLabel }: DepthJourneyProps) {
       writtenRef.current[index] = key
 
       element.style.opacity = opacity.toFixed(2)
+      // Scenes the camera cannot see take no focus (WCAG 2.4.7/2.4.11).
+      element.toggleAttribute('inert', opacity < 0.05)
       element.style.transform = `translate3d(0, 0, ${z.toFixed(0)}px) rotateX(${(tilt * 0.12).toFixed(2)}deg)`
       element.style.zIndex = String(Math.round(1000 - distance * 100))
       element.style.pointerEvents = opacity > 0.6 && distance > -0.15 ? 'auto' : 'none'

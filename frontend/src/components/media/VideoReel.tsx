@@ -95,7 +95,7 @@ export function VideoReel({ videos, label, onFinished, className }: VideoReelPro
         />
         {/* What the video shows, written on it (works without sound). */}
         <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-void via-void/70 to-transparent px-4 pt-16 pb-16 sm:px-8 sm:pb-20">
-          <p key={current.id} className="video-caption max-w-3xl text-sm leading-relaxed text-starlight sm:text-lg">
+          <p key={current.id} className="video-caption max-w-3xl text-sm leading-relaxed text-starlight max-sm:mb-14 sm:text-lg">
             {caption}
           </p>
         </div>

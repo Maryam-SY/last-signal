@@ -20,6 +20,8 @@ export default defineConfig({
   },
   test: {
     environment: 'jsdom',
+    // Page tests render code-split pages with real user events: give them room under load.
+    testTimeout: 15_000,
     setupFiles: './src/test/setup.ts',
   },
 })

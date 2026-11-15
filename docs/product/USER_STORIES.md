@@ -339,6 +339,15 @@ Personas : **Visiteur** (10-15 ans, principal), **Curieux** (adulte), **Équipe*
   4. Aucune mention de source dans les textes : toutes les sources sont sur la page À propos.
 - **Hors périmètre (décision du 2026-11-15)** : nouvelles machines (rovers lunaires, Viking, Phoenix, InSight) et engins hors Lune/Mars (Dawn, NEAR, Pioneer, Kepler).
 
+### US-5.14 — Chaque machine raconte sa vie à sa façon
+- **Story** : En tant que visiteur, je souhaite que l'histoire d'une machine prenne la forme de sa propre vie — ses actes, son dernier signal, ce qu'elle a laissé — et non un gabarit en six étapes identique pour toutes, afin de ressentir que chaque machine est unique.
+- **Priorité** : P0 (décision de l'équipe du 2026-11-15) · **Exigences** : EQUIP-002, STORY-007 (trois voix conservées pour « À ton tour »), MEDIA-001, NFR-A11Y-006 · **Statut** : `review` (ADR-025 ; `docs/project/stories/US-5.14.md`)
+- **Critères** :
+  1. La page d'une machine se structure en actes calculés depuis ses dates sourcées (départ, mission prévue, prolongations, silence, après ; « répond encore » pour une machine en service) ; chaque acte a sa carte-titre et le vol de ses chapitres ; aucune valeur inventée.
+  2. La page s'ouvre sur son dernier signal (ou « toujours en service »), puis son nom se décode ; sous `prefers-reduced-motion`, tout est affiché sans animation.
+  3. Direction artistique « Transmission » (grain, télémétrie avec voyant **et** texte, cadres HUD, séquence du dernier signal) ; aucune information par la couleur seule ; cibles ≥ 44 px inchangées.
+  4. Plus de récit en 6 étapes sur les pages machine ; routes et contenus conservés (décision de retrait à prendre par l'équipe : PRD §2, STORY-003/005, V6).
+
 ### US-5.5 — Mise en production et démo
 - **Priorité** : P0 · **Exigences** : DEPLOY-001, indicateurs PRD §11
 - **Critères** : URL publique vérifiée en navigation privée sur 1 ordinateur et 2 formats de téléphone ; parcours de démo chronométré < 3 min ; plan de secours (galerie seule) répété.

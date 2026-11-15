@@ -1,0 +1,78 @@
+# US-5.14 — Chaque machine raconte sa vie à sa façon (actes + direction artistique « Transmission »)
+
+- **Statut** : review
+- **Epic** : E5 — Transparence, qualité et publication
+- **Priorité** : P0 (décision de l'équipe du 2026-11-15)
+- **Exigences PRD** : EQUIP-002, STORY-007 (trois voix : « À ton tour » conservé), MEDIA-001, NFR-A11Y-006
+- **Décisions liées** : ADR-025 (nouvelle), ADR-023, ADR-024
+- **Branche** : `main` (poussée directement à la demande de l'équipe le 2026-11-15)
+
+## Demande de l'équipe (2026-11-15)
+
+« Pourquoi 6 étapes pour expliquer une machine ? Il ne faut pas se limiter à 6 étapes… Chaque machine a sa propre histoire, donc sa propre manière de la raconter. Choque-moi. » Et, plus tôt : « améliore l'immersivité… toute notre direction artistique ».
+
+## Ce qui change
+
+### Les actes (`frontend/src/lib/acts.ts`, `components/machine/ActCard.tsx`)
+
+La structure du récit d'une machine n'est plus un gabarit : elle est **calculée depuis ses dates sourcées** (arrivée, durée prévue, dernier signal, fin déclarée, « fonctionne encore »).
+
+| Acte | Quand | Chiffre mis en scène |
+|---|---|---|
+| Départ | chapitres avant l'arrivée | — |
+| Mission prévue | arrivée → arrivée + durée prévue | la durée annoncée (« 90 jours martiens prévus ») |
+| Prolongations | → dernier signal | le ratio (« ×57 »), « Jour 91 : fin prévue de la mission. Elle continue. » |
+| Silence | dernier signal → fin déclarée | les jours sans réponse (Opportunity : 248) |
+| Après | au-delà | — |
+| Répond encore | machine en service (LRRR) | depuis {année} |
+| Sa mission | sans durée prévue connue (Surveyor 3) | — |
+
+Les actes « plan », « prolongations » et « silence » existent même sans chapitre (carte-titre seule). Les chapitres sans date suivent le précédent. Exemples obtenus : Opportunity 5 actes (Départ, Mission prévue, Prolongations ×57, Silence 248 jours, Après) ; Ingenuity : plan en vols (pas de borne par date) → Départ, Sa mission, Silence, Après ; LRRR : Départ, Répond encore ; EASEP : Départ, Mission prévue, …
+
+### Ouverture à froid et télémétrie
+
+La page commence par la fin : « Dernier signal reçu le 10 juin 2018 » se décode (`DecodeText`), puis le nom. Ligne `TelemetryBar` : voyant d'état **+ libellé**, barres de signal, id NSSDCA, lieu, coordonnées sourcées (format « 1,95° S · 5,53° O »).
+
+### Direction artistique « Transmission »
+
+Grain + vignette (`CinemaLayer`), anneau de curseur (souris seulement), coins HUD, balayage de scan sur la photo d'arrivée, id NASA sur la photo au premier plan du vol, en-tête « dossier » des cartes du hangar, chargement « Acquisition du signal », séquence du dernier signal (trace → ligne plate → date tapée → épilogue ; crépitement radio si le son est activé). Détails et règles : DESIGN_SYSTEM §4, ADR-025.
+
+### Retiré des pages machine
+
+Le récit en 6 étapes (`StorySlides`). Routes `/stories/:id`, composants et contenus **conservés** (CLAUDE.md §6) ; décision de retrait à prendre par l'équipe (PRD §2, STORY-003/005, règle V6, `USER_FLOWS`).
+
+## Vérification
+
+| Contrôle | Résultat réel |
+|---|---|
+| `lib/acts.test.ts` | 5/5 |
+| Frontend `npm run check` | lint 0 erreur (avertissements préexistants), typecheck OK, 77/77, build OK |
+| Backend | inchangé (59/59) |
+| Navigateur (1440×900) | Opportunity : ouverture « Dernier signal reçu le 10 juin 2018 » puis nom décodé ; télémétrie (voyant + « Mission terminée », NSSDCA 2003-032A, Meridiani Planum, 1,95° S · 5,53° O) ; actes Départ (1 moment), Mission prévue (5), Prolongations ×57 (38), Silence 248 jours (3) ; grain et anneau de curseur présents ; hangar Lune : en-tête dossier « 01 / 06 · 1967-035A » + voyant + barres |
+| Navigateur (375×812) | Opportunity : aucune largeur > 375 px ; héros, carte « Prolongations » et ligne de vie lisibles |
+| Non vérifié | son (crépitement du dernier signal), curseur en mouvement, séquence du dernier signal en animation (panneau masqué pendant une partie des tests) |
+
+## À valider par un humain
+
+- Retirer ou garder les pages `/stories/:id` (et la règle V6) ; mettre à jour PRD §2 / STORY-003 / STORY-005 / USER_FLOWS.
+- La couleur verte `#4ade80` (voyant « fonctionne », acte « répond encore ») n'est pas dans la palette COSMOS (OPEN-01/13).
+- Les titres des actes et la phrase « Tout le reste est un cadeau » (ton éditorial).
+
+## Suite — audits et corrections (2026-11-15)
+
+Trois audits (performance/code, accessibilité/mobile/UX, contenu/i18n/docs) ont été menés sur le dépôt ; rapports de travail hors dépôt. Corrigé dans la foulée :
+
+- **Performance** : images NASA servies en variante `~large` / `~medium` au lieu des originaux (`lib/mediaSrc.ts`, jusqu'à 5 000 px avant) ; en-tête `Cache-Control` sur l'API (`public, max-age=300, stale-while-revalidate=86400`) ; pages chargées à la demande (`app/lazyPages.ts`, seule l'accueil dans le premier paquet) ; un seul fichier de ciel (le panorama sert aussi d'image CSS) ; textures 4k réservées à la planète de la page destination (`hd`) ; photos lointaines du vol démontées (mémoire) et écritures par image évitées quand rien ne change ; graphe audio suspendu quand le son est coupé ; minuteur de l'intro nettoyé.
+- **Accessibilité / mobile** : scènes invisibles de l'accueil `inert` ; plus de flèches flottantes sur téléphone ; badge MEDIA-001 lu dans le panneau du vol sur téléphone ; `/explore/:world/:inconnue` et `/explore/:inconnue` → page « introuvable » (plus « signal perdu ») ; attribut `lang` du contenu (interface wolof, récits en français) ; libellés des boutons désactivés du rail ; légende vidéo au-dessus des commandes sur petit écran ; indicateur « Acquisition du signal » sur le modèle 3D ; liens des sources et crédits à 44 px ; sommaire sur À propos ; étiquettes mono 11,5 px ; registre « tu » et formulations sans pronom (« Portrait », « Ce qui a été transmis », « Répond encore ») ; « Schéma / carte ».
+- **Contenu** (validation 0 erreur) : note interne retirée de l'épilogue du réflecteur laser ; attributions de source retirées de 5 textes affichés ; photo Apollo 12 retirée de l'étape 1967 de Surveyor 3 ; « pas une photo » dans l'alt de deux images de synthèse. Journal : `docs/content/CONTENT_REVIEW.md`.
+- **Docs** : CLAUDE.md (`backend/content/`, parcours), index des ADR (022–025), DATA_MODEL (V1–V18), commentaire de `validate.ts`.
+- **Non fait, à décider** (voir message de synthèse) : compression HTTP (dépendance ou hébergement, OPEN-05), suppression de ~1 570 lignes de code mort et de 55 clés i18n liées, 83 médias orphelins, forme allégée des réponses API, SpaceScene ralenti sur les pages de lecture, refonte des docs produit (USER_FLOWS, ARCHITECTURE, SCOPE, PRD §2 / STORY-003/005 / V6), OPEN-07 (compteurs affichés à l'accueil).
+
+## Suite 2 — retours du 2026-11-15 (soir)
+
+- **Photos disparues** : cause trouvée — les variantes `~large.jpg` devinées n'existent que pour 117 des 252 images de la bibliothèque NASA (403 sinon). Correctif : plus aucune URL devinée ; un champ `media.largeUrl` **vérifié** (HEAD 200, 48 images) est servi quand il existe, sinon l'original ; `<img>` retente l'original si une copie échoue. Contrôle navigateur : 0 image cassée sur la page Opportunity.
+- **Aucune image deux fois** : les photos déjà montrées (photo d'arrivée, portrait, chapitre précédent) sont retirées des chapitres suivants et des cartes « Pour nous, sur Terre » ; un moment garde son texte même sans photo. 38 chapitres se retrouvent sans photo propre → recherche NASA en cours pour les compléter.
+- **Vol de photos** : le panneau de texte change de côté avec la photo (mur gauche ↔ texte à droite) et s'incline vers elle (rotateY ±12°, translateZ), l'ombre suit ; rien sous `prefers-reduced-motion`.
+- **Fin de l'intro** : carte-titre « AeroReborn présente » / « The Next Frontier » lettre à lettre, ligne lumineuse ; durée 3,8 s.
+- **Compression HTTP** : middleware Brotli/gzip sur `/api` à partir de `node:zlib` (aucune dépendance), seuil 1 ko ; test API ajouté.
+- **Code mort supprimé** (35 fichiers, 2 dépendances `@base-ui/react` et `class-variance-authority`) : carte, galerie, scène mission, frise des deux mondes, journal d'explorateur affiché, bouton shadcn, `StorySlides`, planètes décoratives et leurs images, anciens médias d'intro/ciel ; liste dans ARCHITECTURE §18. Vérification : typecheck, lint, 78 tests, build.

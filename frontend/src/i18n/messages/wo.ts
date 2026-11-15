@@ -119,7 +119,6 @@ export const wo: Messages = {
     planned: 'Dund gi ñu ko waajal',
     real: 'Dund gu dëgg',
     lifeEyebrow: 'Dundam',
-    didEyebrow: 'Li mu def',
     videosEyebrow: 'Muy yëngu',
     modelEyebrow: 'Ci 3D',
     legacyEyebrow: 'Ndonoom',

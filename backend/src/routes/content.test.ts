@@ -14,6 +14,17 @@ describe('content API', () => {
     expect(res.body[1]).toMatchObject({ name: 'Mars', missionCount: 3, machineCount: 5 })
   })
 
+  it('compresses large JSON answers with Brotli or gzip when the client accepts it (US-5.14)', async () => {
+    const br = await request(app).get('/api/machines/opportunity?lang=fr').set('Accept-Encoding', 'br, gzip')
+    expect(br.status).toBe(200)
+    expect(br.headers['content-encoding']).toBe('br')
+    expect(br.headers['cache-control']).toContain('max-age=300')
+    expect(br.body.id).toBe('opportunity') // supertest inflates the body
+    const plain = await request(app).get('/api/machines/opportunity?lang=fr').set('Accept-Encoding', 'identity')
+    expect(plain.headers['content-encoding']).toBeUndefined()
+    expect(Number(br.headers['content-length'] ?? 0) || 0).toBeLessThan(plain.text.length / 3)
+  })
+
   it('localizes every text with ?lang=fr', async () => {
     const res = await request(app).get('/api/destinations/moon?lang=fr')
     expect(res.status).toBe(200)

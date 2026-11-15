@@ -37,6 +37,7 @@ export const en = {
     cue3: 'We landed on Mars.',
     cue4: 'Our machines are still there.',
     finale: 'The Next Frontier',
+    presents: 'AeroReborn presents',
     sound: 'Turn the sound on',
   },
   explore: {
@@ -71,24 +72,6 @@ export const en = {
     startCta: 'Start with the Moon',
   },
   bodies: {
-    mercury: {
-      name: 'Mercury',
-      kind: 'Terrestrial planet',
-      description:
-        'A scorched, cratered world with almost no atmosphere to soften the Sun. Nothing has landed softly here — only impact scars and silence.',
-    },
-    venus: {
-      name: 'Venus',
-      kind: 'Terrestrial planet',
-      description:
-        'Under a crushing carbon-dioxide sky, heat and pressure erase almost everything. Probes lasted minutes; their stories lasted decades.',
-    },
-    earth: {
-      name: 'Earth',
-      kind: 'Home world',
-      description:
-        'The only world we know that kept its makers. Everything the others lost is still here — for now.',
-    },
     moon: {
       name: 'Moon',
       kind: 'Natural satellite',
@@ -100,48 +83,6 @@ export const en = {
       kind: 'Terrestrial planet',
       description:
         'Rovers and landers outlived their missions. A few still answer; most sleep under the dust.',
-    },
-    asteroids: {
-      name: 'Asteroids',
-      kind: 'Small bodies',
-      description:
-        'A scattered archive of the Solar System’s building blocks — plus the spacecraft we sent to meet them.',
-    },
-    jupiter: {
-      name: 'Jupiter',
-      kind: 'Gas giant',
-      description:
-        'A giant with no ground to land on. Its storms outlast every machine we have ever sent.',
-    },
-    saturn: {
-      name: 'Saturn',
-      kind: 'Gas giant',
-      description:
-        'Rings of ice and rock, and a moon where a probe listened for life until its power ran out.',
-    },
-    uranus: {
-      name: 'Uranus',
-      kind: 'Ice giant',
-      description:
-        'A cold, tilted world visited once by Voyager 2, then left alone for decades.',
-    },
-    neptune: {
-      name: 'Neptune',
-      kind: 'Ice giant',
-      description:
-        'The farthest planet, measured in passing and remembered in a handful of frames.',
-    },
-    pluto: {
-      name: 'Pluto',
-      kind: 'Dwarf planet',
-      description:
-        'Demoted, then photographed up close. New Horizons left it behind in 2015 and kept flying.',
-    },
-    comets: {
-      name: 'Comets',
-      kind: 'Small bodies',
-      description:
-        'Ice and dust on long orbits. We have landed on one — and the harpoon stayed.',
     },
   },
   destinations: {
@@ -160,7 +101,6 @@ export const en = {
     backToDestinations: 'Back to destinations',
     missionsTitle: 'Missions and machines',
     missionsCount: '{missions} missions · {machines} machines',
-    jumpToMission: 'Jump to a mission',
     machinesTitle: 'Machines left by this mission',
     timelineTitle: 'Step by step',
     chronicleEyebrow: 'Mission log',
@@ -173,7 +113,6 @@ export const en = {
     discoverStory: 'Discover its story',
     location: 'Location',
     locationNotMapped: 'Location not mapped',
-    noMedia: 'No photo available for this machine yet.',
     period: '{start} – {end}',
     since: 'Since {start}',
     journeyLabel: 'Your descent',
@@ -184,6 +123,8 @@ export const en = {
     missionNumber: 'Mission {number} / {total}',
     nextWorld: 'Next world',
     nextWorldTitle: 'The journey continues',
+    firstSection: 'First section',
+    lastSection: 'Last section',
     previousSection: 'Previous: {name}',
     nextSection: 'Next: {name}',
   },
@@ -241,18 +182,67 @@ export const en = {
     whatYouSee: 'What you see:',
     unavailable: 'This image cannot be shown right now.',
   },
+  map: {
+    eyebrow: 'Site map',
+    title: 'Where did they land?',
+    intro: 'Each marker shows where a machine landed or was set up (rovers then drove on from there). Select one to see what it is.',
+    label: 'Map of the machines on {destination}',
+    markerOne: '{name}, {mission}',
+    markerMany: '{place}: {count} machines',
+    siteTitle: 'At this site',
+    readout: 'Latitude {lat} · Longitude {lon}',
+    north: 'N',
+    south: 'S',
+    east: 'E',
+    west: 'W',
+    legendTitle: 'How to read this map',
+    legendSite: 'Ring: a site with one machine, or several close together (the number says how many).',
+    legendSelected: 'Filled and larger: the site you selected.',
+    legendLatLon: 'Latitude says how far north or south of the equator a place is; longitude, how far east or west.',
+    disclaimer: 'Simplified map — positions are approximate.',
+    credit: 'Background: AeroReborn schematic grid, not a satellite image. Positions: coordinates given by each machine’s sources.',
+    notMapped: 'Not on the map (no precise location in our sources): {names}',
+    error: 'The map could not be displayed. All the machines are still listed below.',
+    rail: 'Map',
+  },
   sources: {
-    title: 'Sources',
     count: 'Sources ({count})',
     accessedOn: 'Consulted on {date}',
     publishedOn: 'Published on {date}',
   },
   loading: {
+    acquiring: 'Acquiring signal…',
     message: 'Loading…',
     errorTitle: 'This content could not be loaded.',
     errorHint: 'The AeroReborn server did not answer. Make sure it is running, then try again.',
     retry: 'Try again',
     signalLost: 'Signal lost',
+  },
+  acts: {
+    label: 'The acts of its life',
+    act: 'Act {numeral}',
+    departure: { title: 'The departure', sub: 'From Earth to {world}' },
+    planned: { title: 'The planned mission', sub: '{duration} planned. Everything after that is a gift.' },
+    life: { title: 'Its mission', sub: 'What it was sent to do' },
+    beyond: { title: 'Overtime', sub: 'Day {day}: planned end of the mission. It carries on.' },
+    silence: { title: 'The silence', sub: '{duration} without an answer', days: 'days without an answer' },
+    after: { title: 'What remains', sub: 'Still there, seen from orbit and visited since' },
+    alive: { title: '{name} still answers', sub: 'Every clear night, since {year}' },
+  },
+  cold: {
+    last: 'Last signal received on {date}',
+    alive: 'Still in service — since {year}',
+  },
+  telemetry: {
+    catalog: 'NSSDCA',
+    position: 'Position',
+    coordinates: 'Coordinates',
+  },
+  coords: {
+    n: 'N',
+    s: 'S',
+    e: 'E',
+    w: 'W',
   },
   story: {
     title: 'Story',
@@ -281,29 +271,6 @@ export const en = {
     from: 'From',
     to: 'to',
   },
-  map: {
-    eyebrow: 'Site map',
-    title: 'Where did they land?',
-    intro: 'Each marker shows where a machine landed or was set up (rovers then drove on from there). Select one to see what it is.',
-    label: 'Map of the machines on {destination}',
-    markerOne: '{name}, {mission}',
-    markerMany: '{place}: {count} machines',
-    siteTitle: 'At this site',
-    readout: 'Latitude {lat} · Longitude {lon}',
-    north: 'N',
-    south: 'S',
-    east: 'E',
-    west: 'W',
-    legendTitle: 'How to read this map',
-    legendSite: 'Ring: a site with one machine, or several close together (the number says how many).',
-    legendSelected: 'Filled and larger: the site you selected.',
-    legendLatLon: 'Latitude says how far north or south of the equator a place is; longitude, how far east or west.',
-    disclaimer: 'Simplified map — positions are approximate.',
-    credit: 'Background: AeroReborn schematic grid, not a satellite image. Positions: coordinates given by each machine’s sources.',
-    notMapped: 'Not on the map (no precise location in our sources): {names}',
-    error: 'The map could not be displayed. All the machines are still listed below.',
-    rail: 'Map',
-  },
   statusHelp: {
     title: 'What do the statuses mean?',
     operational: 'It still works today.',
@@ -329,15 +296,12 @@ export const en = {
   },
   timeline: {
     worldTitle: '{destination}, date by date',
-    worldIntro: 'Every step of the missions to {destination}: launches, landings, discoveries and last signals, from the oldest to the latest.',
+    worldIntro: 'Every step of the missions sent there: launches, landings, discoveries and last signals, from the oldest to the latest.',
     worldLabel: 'Timeline of {destination}',
     eyebrow: 'Timeline',
-    title: 'The Moon and Mars, one story',
-    intro: 'Every machine on AeroReborn, by the date it landed or was set up. Time flows downward: Moon on one side, Mars on the other.',
     label: 'Timeline of the machines on the Moon and Mars',
     gap: '{years} years later',
     gapOne: '1 year later',
-    sameYear: 'Same year',
     here: 'You are here',
     rail: 'Timeline',
   },
@@ -362,6 +326,7 @@ export const en = {
     reset: 'Start over',
   },
   about: {
+    toc: 'Contents',
     title: 'About & Sources',
     eyebrow: 'Mission dossier',
     creditsTitle: 'Credits',
@@ -436,8 +401,6 @@ export const en = {
     whoEyebrow: 'Who it is',
     whoTitle: 'Meet {name}',
     lifeTitleAlive: '{name}: a life that goes on',
-    didEyebrow: 'What it did',
-    didTitle: 'Its mission, day after day',
     videosEyebrow: 'In motion',
     videosTitle: 'See it at work',
     modelEyebrow: 'In 3D',
@@ -453,7 +416,6 @@ export const en = {
     earthTitle: 'What it brought back to us on Earth',
     clockDay: 'Day {day} of its mission',
     clockBefore: '{days} days before arrival',
-    storyEyebrow: 'Its story',
   },
   notFound: {
     title: 'Page not found',

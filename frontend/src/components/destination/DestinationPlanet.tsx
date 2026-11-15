@@ -30,7 +30,7 @@ export function PinnedDestinationPlanet({ body }: { body: CelestialBody }) {
       className="dest-planet"
       style={{ viewTransitionName: WORLD_TRANSITION_NAME }}
     >
-      <LivePlanet body={body} arrivalRipple spinPerPixel={0.06} />
+      <LivePlanet body={body} arrivalRipple spinPerPixel={0.06} hd />
     </div>
   )
 }

@@ -7,7 +7,7 @@ Guide opérationnel permanent pour Claude Code et tout agent de développement. 
 - **Nom** : AeroReborn (le CDC s'intitule historiquement « Last Signal » ; « COSMOS » est le nom de la palette graphique — aucun des deux n'est le nom du produit).
 - **Description** : expérience web éducative et publique (frontend React + API Express), qui raconte les équipements laissés sur la **Lune** et sur **Mars**, leur mission, leurs découvertes et ce qu'ils ont transmis. Public principal : 10-15 ans.
 - **Devise** : « Chaque machine a laissé plus qu'une trace : elle a transmis quelque chose. »
-- **Parcours** : Choose your destination → Explore (carte 2D + galerie par mission) → Discover the story (6 étapes : Signal, Why, How, Discovery, Relay, Your turn).
+- **Parcours** : Choose your destination → Hangar (une carte par machine) → la page de la machine : sa vie en **actes calculés depuis ses dates** (Départ, Mission prévue, Prolongations, Silence, Après ; ADR-025). Le récit en 6 étapes (Signal, Why, How, Discovery, Relay, Your turn) n'est plus le parcours principal ; ses routes et contenus sont conservés en attente de décision.
 - **Objectifs** : compréhensible sans prérequis · rigueur scientifique sourcée · accessible et mobile-first · livrable pendant le hackathon.
 
 ## 2. Stack validée
@@ -65,7 +65,7 @@ Une tâche de développement = **une story `ready`** de `USER_STORIES.md`. Pas d
 - **Aucune nouvelle dépendance** sans justification (besoin, alternatives, poids, licence) et accord humain ; la consigner dans une ADR si structurante.
 - Composants réutilisables, un par fichier, typés ; pas de duplication (ex. une seule fonction `cn`).
 - Aucun texte d'interface en dur : ajouter la clé dans `src/i18n/messages/en.ts` **et** `fr.ts`, puis `t('cle')` via `useTranslation()` (ADR-015).
-- Aucune donnée scientifique dans le code : uniquement dans `frontend/content/`.
+- Aucune donnée scientifique dans le code : uniquement dans `backend/content/` (servi par l'API).
 - **Nature des médias (obligatoire)** : chaque média de l'API a un champ `depiction`. Pour toute valeur autre que `photo` et `document`, l'interface affiche un **badge visible** à côté du média, jamais seulement en infobulle : `artwork` → « Vue d'artiste — pas une photo », `simulation` → « Image de synthèse — pas une photo », `diagram` → « Schéma / carte », `mixed` → « Contient des animations ». Une vue d'artiste ne doit jamais être présentée comme une preuve (PRD MEDIA-001).
 - Accessibilité par défaut : éléments natifs (`button`, `a`), focus visible, pas d'info par la couleur seule ni au survol seul, cibles ≥ 44 px, `prefers-reduced-motion` respecté.
 - Mobile-first : vérifier à 360 px avant 1440 px.
@@ -98,7 +98,7 @@ S'arrêter, expliquer le changement proposé (problème, options, recommandation
 - le **périmètre fonctionnel** (SCOPE, PRD) ;
 - l'**architecture** (structure, routage, état, dépendances, hébergement) ;
 - le **modèle de données** (DATA_MODEL, types, statuts) ;
-- l'**expérience utilisateur** validée (parcours, 6 étapes, hybride carte + galerie) ;
+- l'**expérience utilisateur** validée (parcours, actes de la vie d'une machine, hangar) ;
 - les **sources scientifiques** ou tout fait publié ;
 - ou si une décision `OPEN-xx` est nécessaire.
 

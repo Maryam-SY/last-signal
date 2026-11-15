@@ -44,6 +44,7 @@ export function ModelViewer3D({ model, parts = [] }: { model: Media; parts?: rea
   const reduced = useReducedMotion()
   const [status, setStatus] = useState<Status>('loading')
   const [open, setOpen] = useState<string | null>(null)
+  const [loaded, setLoaded] = useState(false)
   const placed = parts.filter((part): part is PlacedPart => Boolean(part.modelPosition))
   const active = placed.find((part) => part.id === open)
   const [attempt, setAttempt] = useState(0)
@@ -66,8 +67,13 @@ export function ModelViewer3D({ model, parts = [] }: { model: Media; parts?: rea
     const viewer = viewerRef.current
     if (!viewer) return
     const onError = () => setStatus('error')
+    const onLoad = () => setLoaded(true)
     viewer.addEventListener('error', onError)
-    return () => viewer.removeEventListener('error', onError)
+    viewer.addEventListener('load', onLoad)
+    return () => {
+      viewer.removeEventListener('error', onError)
+      viewer.removeEventListener('load', onLoad)
+    }
   }, [status])
 
   // US-5.13: touching the model itself opens the nearest named part.
@@ -142,6 +148,19 @@ export function ModelViewer3D({ model, parts = [] }: { model: Media; parts?: rea
             <button type="button" onClick={retry} className="min-h-11 rounded-md border border-moon-dust/50 px-4 font-medium hover:bg-nebula-surface">
               {t('loading.retry')}
             </button>
+          </div>
+        )}
+        {status === 'ready' && !loaded && (
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 flex items-center justify-center">
+            <span className="flex items-center gap-3 font-mono text-[0.68rem] tracking-[0.3em] text-world uppercase">
+              <span className="signal-acquire">
+                <i />
+                <i />
+                <i />
+                <i />
+              </span>
+              {t('loading.acquiring')}
+            </span>
           </div>
         )}
         <div className="pointer-events-none absolute top-2 left-2">

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import type { Machine, Media, MissionDetail } from '@/api/types'
-import { bestStill, machineChapters, machineCover, missionCover, modelOf, sceneMotion } from './journey'
+import { bestStill, machineChapters, machineCover, missionCover, modelOf } from './journey'
 
 const media = (id: string, extra: Partial<Media> = {}): Media => ({
   id,
@@ -94,16 +94,5 @@ describe('journey helpers', () => {
     const embed = media('embed', { type: '3d-model', url: 'https://example.org/gltf_embed/25043' })
     expect(modelOf(mission([], [media('p'), embed, glb]), 'rover')?.id).toBe('glb')
     expect(modelOf(mission([], [embed]), 'rover')).toBeUndefined()
-  })
-
-  it('maps the scroll position to enter, progress and exit', () => {
-    const before = sceneMotion({ top: 1000, bottom: 3000, height: 2000 }, 800)
-    expect(before.enter).toBe(0)
-    const inside = sceneMotion({ top: -600, bottom: 1400, height: 2000 }, 800)
-    expect(inside.enter).toBe(1)
-    expect(inside.progress).toBeCloseTo(0.5)
-    expect(inside.exit).toBe(0)
-    const leaving = sceneMotion({ top: -2000, bottom: 0, height: 2000 }, 800)
-    expect(leaving.exit).toBe(1)
   })
 })

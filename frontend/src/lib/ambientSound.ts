@@ -104,6 +104,11 @@ export async function setSound(on: boolean): Promise<void> {
     fadeTo(MAX_VOLUME, 2.5)
   } else {
     fadeTo(0, 0.8)
+    // Once silent, suspend the whole graph: no oscillator keeps running for nothing.
+    const current = engine
+    window.setTimeout(() => {
+      if (!enabled && current && current.context.state === 'running') void current.context.suspend().catch(() => undefined)
+    }, 900)
   }
 }
 
@@ -133,3 +138,26 @@ export function whoosh(): void {
   source.start(now)
   source.stop(now + 1.4)
 }
+
+/** A short burst of radio static, e.g. when a machine's last signal flattens (US-5.14). */
+export function crackle(): void {
+  if (!enabled || !engine) return
+  const { context, master } = engine
+  const source = context.createBufferSource()
+  source.buffer = noiseBuffer(context, 0.9)
+  const band = context.createBiquadFilter()
+  band.type = 'bandpass'
+  band.Q.value = 0.8
+  const gain = context.createGain()
+  const now = context.currentTime
+  band.frequency.setValueAtTime(1800, now)
+  band.frequency.exponentialRampToValueAtTime(400, now + 0.8)
+  gain.gain.setValueAtTime(0, now)
+  gain.gain.linearRampToValueAtTime(0.4, now + 0.05)
+  gain.gain.setValueAtTime(0.4, now + 0.3)
+  gain.gain.exponentialRampToValueAtTime(0.001, now + 0.85)
+  source.connect(band).connect(gain).connect(master)
+  source.start(now)
+  source.stop(now + 0.9)
+}
+

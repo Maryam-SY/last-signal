@@ -8,7 +8,6 @@ import type {
   MissionDetail,
   Source,
   StoryDetail,
-  TimelineEntry,
 } from '@/api/types'
 
 /** Small, hand-written fixtures shaped like the real API responses (not real content). */
@@ -241,37 +240,13 @@ const glossary: GlossaryEntry[] = [
   },
 ]
 
-const timeline: TimelineEntry[] = [
-  {
-    machineId: 'machine-m',
-    name: 'Test Lander',
-    missionId: 'mission-a',
-    missionName: 'Test Mission',
-    destinationId: 'moon',
-    date: { value: '1969-07-20', sourceIds: ['src-1'] },
-    dateLabel: 'landing',
-    status: { value: 'inactive', sourceIds: ['src-1'] },
-  },
-  {
-    machineId: 'machine-a',
-    name: 'Test Rover',
-    missionId: 'mission-a',
-    missionName: 'Test Mission',
-    destinationId: 'mars',
-    date: { value: '2004-01-04', sourceIds: ['src-1'] },
-    dateLabel: 'landing',
-    status: { value: 'mission-ended', sourceIds: ['src-1'] },
-  },
-]
 
 const ROUTES: Record<string, unknown> = {
   '/api/destinations': [
     { ...destination('moon', 'Moon'), missions: undefined },
     { ...destination('mars', 'Mars'), missions: undefined },
   ],
-  '/api/stories': [{ id: 'story-a', title: 'The test story', status: 'draft', missionIds: ['mission-a'] }],
   '/api/glossary': glossary,
-  '/api/timeline': timeline,
   '/api/destinations/moon': destination('moon', 'Moon'),
   '/api/destinations/mars': destination('mars', 'Mars'),
   '/api/missions/mission-a': mission,

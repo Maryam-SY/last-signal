@@ -4,6 +4,7 @@ import { loadContent } from './content/load.js'
 import { ContentRepository } from './content/repository.js'
 import type { Content } from './content/types.js'
 import { validateContent } from './content/validate.js'
+import { compressJson } from './compress.js'
 import { contentRouter } from './routes/content.js'
 
 export interface AppOptions {
@@ -35,6 +36,7 @@ export function createApp(options: AppOptions = {}): Express {
     res.json({ status: 'ok', message: 'AeroReborn API running' })
   })
 
+  app.use('/api', compressJson)
   app.use('/api', contentRouter(new ContentRepository(content)))
 
   app.use('/api', (_req, res) => {

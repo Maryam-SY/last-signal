@@ -20,6 +20,7 @@ import { useApi } from '@/hooks/useApi'
 import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { useTranslation } from '@/i18n'
+import { contentLang } from '@/i18n/translate'
 import { record } from '@/lib/explorerLog'
 import { wordsIn } from '@/lib/glossary'
 import { ctaGhost, ctaPrimary, eyebrow } from '@/lib/styles'
@@ -189,7 +190,7 @@ function StoryExperience({ story }: { story: StoryDetail }) {
   const ambient = { '--step-accent': STEP_ACCENT[step.key] } as CSSProperties
 
   return (
-    <article data-world={destinationId ?? undefined} data-narration-root style={ambient} className="relative">
+    <article data-world={destinationId ?? undefined} data-narration-root lang={contentLang(locale)} style={ambient} className="relative">
       <SpaceBackdrop />
       <ScrollProgress />
       <StepRail steps={story.steps} current={current} onSelect={goTo} />

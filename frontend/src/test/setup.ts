@@ -1,6 +1,16 @@
 import '@testing-library/jest-dom/vitest'
-import { afterEach, beforeEach, vi } from 'vitest'
-import { cleanup } from '@testing-library/react'
+import { afterEach, beforeAll, beforeEach, vi } from 'vitest'
+import { cleanup, configure } from '@testing-library/react'
+
+// Pages are code-split (lazy imports): give `findBy…` time to fetch and render them when the
+// whole suite runs in parallel.
+configure({ asyncUtilTimeout: 5000 })
+
+// Warm the code-split pages once per worker, so the first test that navigates to one does not
+// pay their transform time inside its own wait.
+beforeAll(async () => {
+  await Promise.all([import('@/pages/DestinationPage'), import('@/pages/MachinePage'), import('@/pages/StoryPage'), import('@/pages/AboutPage'), import('@/pages/NotFoundPage')])
+})
 import { installMockApi } from './mockApi'
 
 // Every test talks to a fake API built from fixtures; tests can override it with vi.stubGlobal.

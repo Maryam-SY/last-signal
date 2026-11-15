@@ -232,7 +232,7 @@
   background-image:
     radial-gradient(ellipse at 50% 45%, transparent 35%, rgb(8 11 18 / 0.75) 100%),
     linear-gradient(rgb(8 11 18 / var(--sky-veil, 0.5)), rgb(8 11 18 / var(--sky-veil, 0.5))),
-    url('/media/sky-milkyway-1280.webp');
+    url('/media/sky-milkyway-pano.webp');
   background-size: cover;
   background-position: center;
   will-change: transform;
@@ -242,7 +242,7 @@
     background-image:
       radial-gradient(ellipse at 50% 45%, transparent 35%, rgb(8 11 18 / 0.75) 100%),
       linear-gradient(rgb(8 11 18 / var(--sky-veil, 0.5)), rgb(8 11 18 / var(--sky-veil, 0.5))),
-      url('/media/sky-milkyway-1920.webp');
+      url('/media/sky-milkyway-pano.webp');
   }
 }
 @media (prefers-reduced-motion: no-preference) {
@@ -985,10 +985,6 @@ html.depth-mode::-webkit-scrollbar {
   }
 }
 
-/* Intro finale (US-5.13): "The Next Frontier" in close-up, slowly coming toward the visitor. */
-.intro-finale {
-  background: radial-gradient(ellipse at center, rgba(56, 189, 248, 0.16) 0%, transparent 60%);
-}
 .intro-finale-title {
   letter-spacing: 0.06em;
   text-shadow:
@@ -1270,5 +1266,527 @@ html.depth-mode::-webkit-scrollbar {
   from {
     opacity: 0;
     scale: 0.92;
+  }
+}
+
+/* =========================================================================================
+   US-5.14 — Art direction "Transmission": every page is footage received from far away.
+   ========================================================================================= */
+
+/* Film grain + vignette over the whole site (no blend mode: cheap over the moving sky). */
+.cinema-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 2450;
+  pointer-events: none;
+}
+.cinema-grain {
+  position: absolute;
+  inset: -20%;
+  opacity: 0.055;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 220px 220px;
+}
+.cinema-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 52%, rgb(5 7 13 / 0.42) 100%);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .cinema-grain {
+    animation: grain-breathe 1.6s steps(4) infinite;
+  }
+}
+@keyframes grain-breathe {
+  0% {
+    opacity: 0.045;
+    transform: translate(0, 0);
+  }
+  25% {
+    opacity: 0.06;
+    transform: translate(-1%, 1%);
+  }
+  50% {
+    opacity: 0.05;
+    transform: translate(1%, -1%);
+  }
+  75% {
+    opacity: 0.065;
+    transform: translate(-1%, -1%);
+  }
+  100% {
+    opacity: 0.045;
+    transform: translate(0, 0);
+  }
+}
+
+/* Cursor ring (mouse screens only): opens over anything clickable. */
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2470;
+  width: 34px;
+  height: 34px;
+  border: 1.5px solid color-mix(in srgb, var(--world-accent) 85%, white);
+  border-radius: 9999px;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 300ms,
+    border-color 300ms,
+    background-color 300ms;
+  will-change: transform;
+}
+.cursor-ring.is-active {
+  border-color: var(--world-accent);
+  background: color-mix(in srgb, var(--world-accent) 12%, transparent);
+}
+
+/* Decoding title: unresolved glyphs flicker in mono. */
+.decode-live {
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+  color: color-mix(in srgb, var(--world-accent) 70%, white);
+}
+
+/* Telemetry: status light. */
+.led {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 9999px;
+  background: var(--cosmos-moon-dust);
+  box-shadow: 0 0 0 2px rgb(255 255 255 / 0.08);
+}
+.led[data-status='operational'] {
+  background: #4ade80;
+  box-shadow:
+    0 0 0 2px rgb(74 222 128 / 0.2),
+    0 0 12px #4ade80;
+}
+.led[data-status='contact-lost'] {
+  background: var(--cosmos-stellar-gold);
+  box-shadow: 0 0 10px var(--cosmos-stellar-gold);
+}
+.led[data-status='mission-ended'],
+.led[data-status='inactive'] {
+  background: #7f1d1d;
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.15);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .led[data-status='operational'] {
+    animation: led-blink 1.8s ease-in-out infinite;
+  }
+  .led[data-status='contact-lost'] {
+    animation: led-flicker 3s steps(2) infinite;
+  }
+}
+@keyframes led-blink {
+  50% {
+    opacity: 0.45;
+  }
+}
+@keyframes led-flicker {
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* Signal bars. */
+.signal-bars {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 12px;
+}
+.signal-bars i {
+  display: block;
+  width: 3px;
+  height: calc(30% + var(--i) * 17%);
+  border-radius: 1px;
+  background: rgb(148 163 184 / 0.25);
+}
+.signal-bars i.is-on {
+  background: var(--world-accent);
+  box-shadow: 0 0 6px var(--world-accent);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .signal-bars.is-live i.is-on {
+    animation: bar-live 1.4s ease-in-out infinite;
+    animation-delay: calc(var(--i) * 0.12s);
+  }
+}
+@keyframes bar-live {
+  50% {
+    opacity: 0.45;
+  }
+}
+
+/* HUD corner brackets. */
+.hud-corners {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.hud-corners i {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid color-mix(in srgb, var(--world-accent) 75%, transparent);
+}
+.hud-corners i:nth-child(1) {
+  top: 10px;
+  left: 10px;
+  border-right: 0;
+  border-bottom: 0;
+}
+.hud-corners i:nth-child(2) {
+  top: 10px;
+  right: 10px;
+  border-left: 0;
+  border-bottom: 0;
+}
+.hud-corners i:nth-child(3) {
+  bottom: 10px;
+  left: 10px;
+  border-right: 0;
+  border-top: 0;
+}
+.hud-corners i:nth-child(4) {
+  bottom: 10px;
+  right: 10px;
+  border-left: 0;
+  border-top: 0;
+}
+
+/* Hero: one scan line sweeps down the cover when the page opens. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-scan {
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: 22%;
+    background: linear-gradient(to bottom, transparent, color-mix(in srgb, var(--world-accent) 22%, transparent) 70%, color-mix(in srgb, var(--world-accent) 70%, white) 100%);
+    opacity: 0;
+    animation: hero-scan 2.2s cubic-bezier(0.3, 0, 0.2, 1) 300ms both;
+    pointer-events: none;
+  }
+}
+@keyframes hero-scan {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.9;
+  }
+  85% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(520%);
+    opacity: 0;
+  }
+}
+
+/* Acts of a life: each act tints the page around it. */
+.act-card[data-tone='departure'] {
+  --world-accent: var(--cosmos-cosmic-indigo);
+}
+.act-card[data-tone='beyond'] {
+  --world-accent: var(--cosmos-stellar-gold);
+}
+.act-card[data-tone='silence'] {
+  --world-accent: var(--cosmos-moon-dust);
+}
+.act-card[data-tone='alive'] {
+  --world-accent: #4ade80;
+}
+.act-numeral {
+  -webkit-text-stroke: 1px color-mix(in srgb, var(--world-accent) 30%, transparent);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1.15);
+  transition:
+    opacity 1.2s ease,
+    transform 1.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.act-card.is-live .act-numeral {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+.act-body {
+  background: radial-gradient(ellipse at center, rgb(5 7 13 / 0.78), rgb(5 7 13 / 0.35) 60%, transparent 100%);
+}
+.act-eyebrow,
+.act-title,
+.act-figure,
+.act-sub {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 900ms ease,
+    transform 900ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.act-card.is-live .act-eyebrow {
+  opacity: 1;
+  transform: none;
+}
+.act-card.is-live .act-title {
+  opacity: 1;
+  transform: none;
+  transition-delay: 200ms;
+}
+.act-card.is-live .act-figure {
+  opacity: 1;
+  transform: none;
+  transition-delay: 500ms;
+}
+.act-card.is-live .act-sub {
+  opacity: 1;
+  transform: none;
+  transition-delay: 800ms;
+}
+.act-card[data-tone='silence'] .act-title {
+  letter-spacing: 0.08em;
+}
+.act-card[data-tone='silence'] .act-figure .stat-number {
+  color: var(--cosmos-starlight);
+}
+.act-card[data-tone='beyond'] .act-figure .stat-number {
+  color: var(--cosmos-stellar-gold);
+  text-shadow: 0 0 40px color-mix(in srgb, var(--cosmos-stellar-gold) 55%, transparent);
+}
+@media (prefers-reduced-motion: reduce) {
+  .act-numeral,
+  .act-eyebrow,
+  .act-title,
+  .act-figure,
+  .act-sub {
+    opacity: 1;
+    transform: none;
+  }
+  .act-numeral {
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Last signal: the sequence plays when the scene is reached. */
+.end-sequence .flatline-path {
+  animation: none;
+  stroke-dashoffset: 1;
+}
+.end-sequence .end-after {
+  opacity: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .end-sequence.is-live .flatline-path {
+    animation: trace-line 3.2s ease-out both;
+  }
+  .end-sequence.is-live.is-alive-end .flatline-path {
+    stroke-dasharray: 0.35 0.65;
+    animation: pulse-line 2.4s linear infinite;
+  }
+  .end-sequence.is-live .typewriter {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid var(--world-accent);
+    width: 0;
+    animation:
+      typing 1.4s steps(var(--n, 12)) 2.4s both,
+      caret 0.8s step-end infinite;
+  }
+  .end-sequence.is-live .end-after {
+    animation: fade-up 1.2s ease 3.6s both;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .end-sequence .flatline-path {
+    stroke-dashoffset: 0;
+  }
+  .end-sequence .end-after {
+    opacity: 1;
+  }
+}
+@keyframes typing {
+  to {
+    width: calc(var(--n, 12) * 1ch);
+  }
+}
+@keyframes caret {
+  50% {
+    border-color: transparent;
+  }
+}
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Photo flight: the picture in front gets its frame and catalogue id (large screens). */
+.photo-flight-plane .hud-corners,
+.photo-flight-plane .hud-id {
+  opacity: 0;
+  transition: opacity 500ms;
+}
+.photo-flight-plane.is-front .hud-corners,
+.photo-flight-plane.is-front .hud-id {
+  opacity: 1;
+}
+.hud-id {
+  position: absolute;
+  right: 12px;
+  bottom: 10px;
+  padding: 0.15rem 0.5rem;
+  border-radius: 0.35rem;
+  background: rgb(5 7 13 / 0.6);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--world-accent) 80%, white);
+}
+
+/* Loading: "acquiring signal" bars. */
+.signal-acquire {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 14px;
+}
+.signal-acquire i {
+  display: block;
+  width: 4px;
+  height: 40%;
+  border-radius: 1px;
+  background: var(--world-accent);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .signal-acquire i {
+    animation: acquire 1s ease-in-out infinite;
+  }
+  .signal-acquire i:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+  .signal-acquire i:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+  .signal-acquire i:nth-child(4) {
+    animation-delay: 0.45s;
+  }
+}
+@keyframes acquire {
+  50% {
+    height: 100%;
+  }
+}
+
+/* Hangar card: dossier header. */
+.dossier-line {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgb(241 245 249 / 0.75);
+}
+
+/* US-5.14 — the flight's reading panel faces the picture: left wall ↔ text on the right, tilted
+   toward it; right wall ↔ text on the left. Phones keep the panel at the bottom. */
+.flight-shade {
+  background: linear-gradient(to top, var(--cosmos-void-black), rgb(8 11 18 / 0.75), transparent);
+}
+@media (min-width: 1024px) {
+  .flight-shade[data-side='left'] {
+    left: 0;
+    right: auto;
+    background: linear-gradient(to right, var(--cosmos-void-black), rgb(8 11 18 / 0.75), transparent);
+  }
+  .flight-shade[data-side='right'] {
+    right: 0;
+    left: auto;
+    background: linear-gradient(to left, var(--cosmos-void-black), rgb(8 11 18 / 0.75), transparent);
+  }
+  .flight-reading {
+    transform-style: preserve-3d;
+  }
+  .flight-reading[data-side='left'] {
+    justify-content: flex-start;
+    padding-left: max(2.5rem, calc((100vw - 72rem) / 2));
+  }
+  .flight-reading[data-side='right'] {
+    justify-content: flex-end;
+    padding-right: max(2.5rem, calc((100vw - 72rem) / 2 + 4rem));
+  }
+  .flight-reading .flight-panel {
+    transition: transform 900ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .flight-reading[data-side='left'] .flight-panel {
+    transform: rotateY(12deg) translateZ(40px);
+  }
+  .flight-reading[data-side='right'] .flight-panel {
+    transform: rotateY(-12deg) translateZ(40px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .flight-reading .flight-panel {
+    transform: none !important;
+    transition: none;
+  }
+}
+
+/* Intro finale (US-5.14): a title card, letter by letter, under a thin rising line. */
+.intro-finale {
+  background: radial-gradient(ellipse at center, rgb(97 214 232 / 0.14) 0%, rgb(5 7 13 / 0.6) 55%, rgb(5 7 13 / 0.92) 100%);
+}
+.intro-finale-eyebrow {
+  opacity: 0;
+  animation: fade-up 900ms ease 200ms both;
+}
+.intro-finale-letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.35em) rotateX(60deg);
+  animation: letter-rise 900ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: calc(500ms + var(--i) * 45ms);
+}
+.intro-finale-letter.is-space {
+  width: 0.35em;
+}
+.intro-finale-line {
+  display: block;
+  height: 1px;
+  width: 0;
+  margin: 1.4rem auto 0;
+  background: linear-gradient(to right, transparent, var(--cosmos-stellar-cyan), transparent);
+  animation: line-grow 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 1.5s both;
+}
+@keyframes letter-rise {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes line-grow {
+  to {
+    width: min(22rem, 60vw);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .intro-finale-eyebrow,
+  .intro-finale-letter {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+  .intro-finale-line {
+    width: min(22rem, 60vw);
+    animation: none;
   }
 }

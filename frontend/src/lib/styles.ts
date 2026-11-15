@@ -9,4 +9,4 @@ export const ctaGhost =
   'inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-moon-dust/40 px-5 text-sm font-medium transition-[border-color,color,background-color,transform] hover:border-world hover:text-world active:scale-[0.98] disabled:pointer-events-none disabled:opacity-40'
 
 /** Small uppercase monospace label above titles. */
-export const eyebrow = 'font-mono text-[0.68rem] tracking-[0.3em] uppercase'
+export const eyebrow = 'font-mono text-[0.72rem] tracking-[0.3em] uppercase'

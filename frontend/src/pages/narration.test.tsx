@@ -77,9 +77,12 @@ describe('narration follows the reading (US-5.12)', () => {
     renderRoute('/explore/mars/machine-a')
     await screen.findByRole('heading', { level: 1, name: 'Test Rover' })
     await user.click(screen.getByRole('button', { name: 'Listen to its story' }))
+    // The decoded title speaks its own text (not in place); the summary paragraph is in place.
     startLast()
-    spoken[0]!.onboundary!({ name: 'word', charIndex: 5, charLength: 5 })
-    expect(highlights.get('narration-word')!.ranges[0]!.toString()).toBe('Rover')
+    endLast()
+    startLast()
+    spoken[1]!.onboundary!({ name: 'word', charIndex: 3, charLength: 5 })
+    expect(highlights.get('narration-word')!.ranges[0]!.toString()).toBe('found')
   })
 
   it('lets the visitor scroll by hand, and can be stopped from the bar that stays on screen', async () => {
@@ -106,8 +109,7 @@ describe('narration follows the reading (US-5.12)', () => {
   it('reads a 6-step story from its title through its steps', async () => {
     const user = userEvent.setup()
     renderRoute('/stories/story-a')
-    await screen.findByRole('heading', { level: 1 })
-    await user.click(screen.getByRole('button', { name: 'Listen to its story' }))
+    await user.click(await screen.findByRole('button', { name: 'Listen to its story' }))
     const first = spoken[0]!.text
     expect(first).toBe(screen.getByRole('heading', { level: 1 }).textContent)
     endLast()

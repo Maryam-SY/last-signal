@@ -16,7 +16,7 @@
 > - **Nouvelle entité `GlossaryEntry`** (`glossary.json`, US-5.7) : `{ id, status: draft|reviewed, terms: { en: string[], fr: string[] }, label {en,fr}, definition {en,fr}, sourceIds[] }`. Les définitions reprennent la formulation des récits et citent les mêmes sources. Règle **V14** : identifiant kebab-case unique, libellé et définition bilingues, au moins une forme par langue, au moins une source ; `draft` = avertissement.
 > - **`Media.descriptionStatus`** (US-5.10) : `draft` | `reviewed`, obligatoire dès qu'une `description` (histoire de l'image) existe. Règle **V15** : `description` sans statut, ou statut sans `description` = erreur ; histoires en `draft` = un avertissement groupé.
 > - **Champs calculés par l'API** (aucune donnée nouvelle) : `cover` sur chaque équipement des listes et sur chaque récit = premier média `type: image` et `depiction: photo` qui lui est rattaché, sinon `null` ; `GET /api/timeline` = équipements ayant une `date` sourcée, triés par date.
-> - Validation : règles V1–V12 implémentées dans `backend/src/content/validate.ts`, sans dépendance (zod non ajouté, OPEN-17 toujours ouverte).
+> - Validation : règles V1–V18 implémentées dans `backend/src/content/validate.ts`, sans dépendance (zod non ajouté, OPEN-17 toujours ouverte).
 >
 > ⚠️ **Tous les exemples JSON ci-dessous illustrent la structure.** Les valeurs entre chevrons (`<…>`) et `null` sont des emplacements à remplir **à partir de sources vérifiées**. Aucun exemple ne doit être copié tel quel dans `content/`.
 

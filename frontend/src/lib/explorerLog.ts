@@ -1,4 +1,3 @@
-import { useSyncExternalStore } from 'react'
 
 /**
  * Explorer log (US-5.8): which worlds, stories and machines this visitor has explored.
@@ -46,19 +45,6 @@ export function record(kind: keyof ExplorerLog, id: string) {
   const log = read()
   if (log[kind].includes(id)) return
   write({ ...log, [kind]: [...log[kind], id] })
-}
-
-export function resetExplorerLog() {
-  write(EMPTY)
-}
-
-function subscribe(listener: () => void) {
-  listeners.add(listener)
-  return () => listeners.delete(listener)
-}
-
-export function useExplorerLog(): ExplorerLog {
-  return useSyncExternalStore(subscribe, read, () => EMPTY)
 }
 
 /** Test helper: forget the in-memory copy so the next read comes from storage again. */

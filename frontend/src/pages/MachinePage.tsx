@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react'
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 import { ArrowLeft, ArrowRight, MapPin } from 'lucide-react'
+import { VoiceTag } from '@/components/sources/VoiceTag'
 import { Link, useParams } from 'react-router'
-import { api } from '@/api/client'
+import { ApiError, api } from '@/api/client'
 import type { DestinationDetail, MachineDetail, MachinePart, Media, MissionDetail, StoryDetail } from '@/api/types'
 import { paths } from '@/app/paths'
 import { NarrationButton } from '@/components/audio/NarrationButton'
@@ -10,24 +11,30 @@ import { LoadState } from '@/components/common/LoadState'
 import { MACHINE_TRANSITION_NAME } from '@/components/hangar/MachinePortal'
 import { ModelViewer3D } from '@/components/journey/ModelViewer3D'
 import { PhotoFlight } from '@/components/journey/PhotoFlight'
+import { ActCard } from '@/components/machine/ActCard'
 import { LifeLine } from '@/components/machine/LifeLine'
 import { MachinePortrait } from '@/components/machine/MachinePortrait'
-import { StatusBadge } from '@/components/machine/StatusBadge'
+import { TelemetryBar } from '@/components/machine/TelemetryBar'
 import { DepictionBadge } from '@/components/media/DepictionBadge'
 import { VideoReel } from '@/components/media/VideoReel'
+import { DecodeText } from '@/components/motion/DecodeText'
 import { Reveal } from '@/components/motion/Reveal'
 import { ScrollProgress } from '@/components/motion/ScrollProgress'
 import { JourneyRail } from '@/components/navigation/JourneyRail'
 import { RelationEnds } from '@/components/relations/RelationEnds'
-import { StorySlides } from '@/components/story/StorySlides'
 import { useApi } from '@/hooks/useApi'
+import { useInView } from '@/hooks/useInView'
 import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 import { useTranslation } from '@/i18n'
+import { contentLang } from '@/i18n/translate'
+import { buildActs, type Act } from '@/lib/acts'
+import { crackle } from '@/lib/ambientSound'
 import { record } from '@/lib/explorerLog'
 import { formatPartialDate } from '@/lib/formatDate'
 import { bestStill, biographyChapters, machineChapters, machineCover, modelOf, type LifeChapter } from '@/lib/journey'
 import { daysBetween, lastSignal } from '@/lib/lifespan'
 import { eyebrow } from '@/lib/styles'
+import { cardSrc, sceneSrc } from '@/lib/mediaSrc'
 import { sameText } from '@/lib/sameText'
 import { cn } from '@/lib/utils'
 import { isDestinationId, type DestinationId } from '@/types/content'
@@ -61,6 +68,7 @@ function MachineView({ destinationId, machineId }: { destinationId: DestinationI
   useDocumentTitle(machine.status === 'success' ? machine.data.name : t('machine.title'))
   useEffect(() => record('machines', machineId), [machineId])
 
+  if (machine.status === 'error' && machine.error instanceof ApiError && machine.error.status === 404) return <NotFoundPage />
   if (machine.status !== 'success') {
     return (
       <div className="relative mx-auto flex min-h-[70dvh] max-w-3xl flex-col justify-center px-5 py-16">
@@ -104,13 +112,25 @@ function MachineLife({ machine, mission, destination, story }: MachineLifeProps)
   const portraitParts = partsPhoto
     ? (parts?.items ?? []).flatMap((part) => (part.photo ? [{ id: part.id, name: part.name, description: part.description, x: part.photo.x, y: part.photo.y }] : []))
     : []
+  // Pictures already on the page (opening photo, portrait) are not flown past again.
+  const shownPictures = new Set<string>([cover?.id, portrait?.id].filter((id): id is string => Boolean(id)))
+  const chapters: LifeChapter[] = biography ? biographyChapters(machine, shownPictures) : mission ? machineChapters(machine, mission, cover, 10) : []
   const forEarth = biography?.forEarth ?? []
   const mediaById = new Map(machine.media.map((m) => [m.id, m]))
-  const chapters: LifeChapter[] = biography ? biographyChapters(machine) : mission ? machineChapters(machine, mission, cover, 10) : []
   const videos = machine.media.filter(isPlayableVideo)
   const model = mission ? modelOf(mission, machine.id) : undefined
   const signal = lastSignal(machine.lifespan)
   const epilogue = machine.status.note ?? null
+  // US-5.14: the story's structure comes out of the machine's own dates — its acts.
+  const acts = buildActs(machine, chapters)
+  const actTitle = (act: Act) => (act.key === 'alive' ? t('acts.alive.title', { name: machine.name }) : t(`acts.${act.key}.title`))
+  const alive = machine.lifespan?.stillWorking?.value ?? false
+  const coldOpen = alive && machine.date ? t('cold.alive', { year: machine.date.value.slice(0, 4) }) : signal ? t('cold.last', { date: formatPartialDate(signal.value, locale) }) : null
+  // The closing "your turn" invitation of the story, kept only when the story is this machine's own.
+  const yourTurn =
+    story && (story.kind === 'machine' || (mission?.machines.length ?? 0) <= 1)
+      ? (story.steps.find((step) => step.key === 'your-turn')?.blocks ?? []).filter((block) => block.voice === 'imagination')
+      : []
 
   // Next machine of the same world, so the visitor goes on from one life to the next.
   const all = destination ? destination.missions.flatMap((m) => m.machines.map((x) => ({ machine: x, mission: m }))) : []
@@ -124,8 +144,7 @@ function MachineLife({ machine, mission, destination, story }: MachineLifeProps)
     { id: 'arrival', label: t('machine.arrival') },
     ...(biography ? [{ id: 'who', label: t('machine.whoEyebrow') }] : []),
     { id: 'life', label: t('machine.lifeEyebrow') },
-    ...(chapters.length > 0 ? [{ id: 'did', label: t('machine.didEyebrow') }] : []),
-    ...(story ? [{ id: 'story', label: t('machine.storyEyebrow') }] : []),
+    ...acts.map((act) => ({ id: `act-${act.key}`, label: actTitle(act) })),
     ...(forEarth.length > 0 ? [{ id: 'earth', label: t('machine.earthEyebrow') }] : []),
     ...(videos.length > 0 ? [{ id: 'videos', label: t('machine.videosEyebrow') }] : []),
     ...(model ? [{ id: 'model', label: t('machine.modelEyebrow') }] : []),
@@ -148,8 +167,34 @@ function MachineLife({ machine, mission, destination, story }: MachineLifeProps)
     sectionRefs.current[id] = element
   }
 
+  // Last signal: its sequence (trace, flatline, the date typing itself) plays when reached.
+  const endRef = useRef<HTMLElement | null>(null)
+  const endLive = useInView(endRef, '0px 0px -35% 0px')
+  useEffect(() => {
+    if (endLive && !alive) crackle()
+  }, [endLive, alive])
+
+  const flightItems = (list: LifeChapter[]) =>
+    list.map((chapter) => ({
+      id: chapter.id,
+      media: chapter.media,
+      withStory: !sameText(chapter.text, chapter.media?.description),
+      hud: missionClock(chapter.date?.value),
+      // The moment's text already is the picture's caption: no second copy under it.
+      hideCaption: chapter.fromPicture || sameText(chapter.text, chapter.media?.alt),
+      content: (
+        <>
+          <p className="font-mono text-xs tracking-widest text-world uppercase">
+            {chapter.date ? <time dateTime={chapter.date.value}>{formatPartialDate(chapter.date.value, locale)}</time> : t('journey.anotherLook')}
+          </p>
+          {chapter.title && <h3 data-narrate className="mt-1 font-heading text-2xl leading-tight font-bold sm:text-4xl">{chapter.title}</h3>}
+          <p data-narrate className="mt-2 text-[0.95rem] leading-relaxed text-starlight sm:text-lg">{chapter.text}</p>
+        </>
+      ),
+    }))
+
   return (
-    <div data-world={destinationId} data-narration-root className="relative overflow-x-clip">
+    <div data-world={destinationId} data-narration-root lang={contentLang(locale)} className="relative overflow-x-clip">
       <SpaceBackdrop />
       <ScrollProgress />
       <JourneyRail items={rail} label={t('machine.journeyLabel', { name: machine.name })} />
@@ -164,7 +209,8 @@ function MachineLife({ machine, mission, destination, story }: MachineLifeProps)
         >
           {cover && (
             <div className="absolute inset-0 -z-10" style={{ viewTransitionName: MACHINE_TRANSITION_NAME }}>
-              <img src={cover.url} alt={cover.alt} decoding="async" className="machine-hero-photo size-full object-cover" />
+              <img src={sceneSrc(cover)} alt={cover.alt} decoding="async" className="machine-hero-photo size-full object-cover" />
+              <span aria-hidden="true" className="hero-scan" />
               <span className="absolute top-20 left-5 sm:left-8">
                 <DepictionBadge depiction={cover.depiction} />
               </span>
@@ -175,27 +221,30 @@ function MachineLife({ machine, mission, destination, story }: MachineLifeProps)
             <Link
               to={paths.destination(destinationId)}
               viewTransition
-              className="inline-flex min-h-11 items-center gap-2 text-sm font-medium text-moon-dust transition-colors hover:text-world"
+              className="text-legible inline-flex min-h-11 items-center gap-2 text-sm font-medium text-starlight/85 transition-colors hover:text-world"
             >
               <ArrowLeft aria-hidden="true" className="size-4" />
               {t('machine.back', { destination: t(`destinations.${destinationId}.name`) })}
             </Link>
-            <p className={cn(eyebrow, 'mt-4 text-world')}>
+            {/* US-5.14 cold open: the page starts from the end — the last signal — then the name decodes. */}
+            {coldOpen && (
+              <p className={cn(eyebrow, 'mt-6 text-world')}>
+                <DecodeText text={coldOpen} delay={100} duration={900} />
+              </p>
+            )}
+            <p className={cn(eyebrow, 'mt-3 text-moon-dust')}>
               {machine.mission?.name} · {t(`machineType.${machine.type}`)}
             </p>
-            <h1 id="machine-title" data-narrate className="text-glow mt-2 font-heading text-[clamp(2.8rem,9vw,7rem)] leading-[0.92] font-bold tracking-tight">
-              {machine.name}
+            <h1
+              id="machine-title"
+              data-narrate
+              data-narrate-text={machine.name}
+              className="text-glow mt-2 font-heading text-[clamp(2.8rem,9vw,7rem)] leading-[0.92] font-bold tracking-tight"
+            >
+              <DecodeText text={machine.name} delay={coldOpen ? 900 : 200} duration={1200} />
             </h1>
             {machine.scienceSummary && <p data-narrate className="text-legible mt-5 max-w-2xl text-lg text-starlight sm:text-2xl">{machine.scienceSummary.value}</p>}
-            <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-moon-dust">
-              <StatusBadge status={machine.status.value} />
-              {machine.locationName && (
-                <span className="inline-flex items-center gap-1.5">
-                  <MapPin aria-hidden="true" className="size-4" />
-                  {machine.locationName.value}
-                </span>
-              )}
-            </div>
+            <TelemetryBar machine={machine} className="mt-6" />
             <div className="mt-8 flex flex-wrap gap-3">
               <NarrationButton />
             </div>
@@ -223,62 +272,24 @@ function MachineLife({ machine, mission, destination, story }: MachineLifeProps)
           <LifeLine born={machine.date} lifespan={machine.lifespan} />
         </Chapter>
 
-        {chapters.length > 0 && (
-          <section id="did" ref={register('did')} aria-labelledby="did-title" className="scroll-mt-16">
-            <div className="mx-auto max-w-6xl px-5 pt-20">
-              <p className={cn(eyebrow, 'text-world')}>{t('machine.didEyebrow')}</p>
-              <h2 id="did-title" className="mt-2 font-heading text-4xl font-bold sm:text-5xl">
-                {t('machine.didTitle')}
-              </h2>
-            </div>
-            <PhotoFlight
-              label={t('journey.flightLabel', { name: machine.name })}
-              items={chapters.map((chapter) => ({
-                id: chapter.id,
-                media: chapter.media,
-                withStory: !sameText(chapter.text, chapter.media?.description),
-                hud: missionClock(chapter.date?.value),
-                // The moment's text already is the picture's caption: no second copy under it.
-                hideCaption: chapter.fromPicture || sameText(chapter.text, chapter.media?.alt),
-                content: (
-                  <>
-                    <p className="font-mono text-xs tracking-widest text-world uppercase">
-                      {chapter.date ? (
-                        <time dateTime={chapter.date.value}>{formatPartialDate(chapter.date.value, locale)}</time>
-                      ) : (
-                        t('journey.anotherLook')
-                      )}
-                    </p>
-                    {chapter.title && <h3 data-narrate className="mt-1 font-heading text-2xl leading-tight font-bold sm:text-4xl">{chapter.title}</h3>}
-                    <p data-narrate className="mt-2 text-[0.95rem] leading-relaxed text-starlight sm:text-lg">{chapter.text}</p>
-                  </>
-                ),
-              }))}
-            />
+        {/* US-5.14: the acts of its life — a title card, then the flight of that act's moments. */}
+        {acts.map((act, index) => (
+          <section key={act.key} id={`act-${act.key}`} ref={register(`act-${act.key}`)} aria-labelledby={`act-${act.key}-title`} className="scroll-mt-16" data-tone={act.key}>
+            <ActCard act={act} number={index + 1} titleId={`act-${act.key}-title`} destinationId={destinationId} machineName={machine.name} />
+            {act.chapters.length > 0 && <PhotoFlight label={`${t('journey.flightLabel', { name: machine.name })} · ${actTitle(act)}`} items={flightItems(act.chapters)} />}
           </section>
-        )}
-
-        {story && (
-          <section id="story" ref={register('story')} aria-labelledby="story-title" className="mx-auto max-w-6xl scroll-mt-16 px-5 py-24">
-            <Reveal>
-              <p className={cn(eyebrow, 'text-world')}>{t('machine.storyEyebrow')}</p>
-              <h2 id="story-title" data-narrate className="mt-2 font-heading text-4xl font-bold sm:text-5xl">
-                {story.title}
-              </h2>
-            </Reveal>
-            <StorySlides story={story} className="mt-14" />
-          </section>
-        )}
+        ))}
 
         {forEarth.length > 0 && (
           <Chapter id="earth" narrate register={register} eyebrowText={t('machine.earthEyebrow')} title={t('machine.earthTitle', { name: machine.name })}>
             <ul className="grid gap-5 md:grid-cols-2">
               {forEarth.map((benefit, index) => {
-                const picture = bestStill(benefit.mediaIds.map((id) => mediaById.get(id)).filter((m): m is Media => m !== undefined))
+                const picture = bestStill(benefit.mediaIds.map((id) => mediaById.get(id)).filter((m): m is Media => m !== undefined && !shownPictures.has(m.id)))
+                if (picture) shownPictures.add(picture.id)
                 return (
                   <li key={benefit.id}>
                     <Reveal delay={index * 90} className="reading-panel earth-card h-full overflow-hidden rounded-3xl">
-                      {picture && <img src={picture.thumbnailUrl ?? picture.url} alt={picture.alt} loading="lazy" className="aspect-[16/9] w-full object-cover" />}
+                      {picture && <img src={cardSrc(picture)} alt={picture.alt} loading="lazy" className="aspect-[16/9] w-full object-cover" />}
                       <div className="p-6">
                         <h3 data-narrate className="font-heading text-xl font-bold text-world sm:text-2xl">
                           {benefit.title}
@@ -329,9 +340,12 @@ function MachineLife({ machine, mission, destination, story }: MachineLifeProps)
         {/* Its last signal: the heartbeat goes flat. */}
         <section
           id="end"
-          ref={register('end')}
+          ref={(element) => {
+            endRef.current = element
+            sectionRefs.current.end = element
+          }}
           aria-labelledby="end-title"
-          className="mx-auto flex min-h-[80dvh] max-w-4xl scroll-mt-16 flex-col items-center justify-center px-5 py-24 text-center"
+          className={cn('end-sequence mx-auto flex min-h-[80dvh] max-w-4xl scroll-mt-16 flex-col items-center justify-center px-5 py-24 text-center', endLive && 'is-live', alive && 'is-alive-end')}
         >
           <p className={cn(eyebrow, 'text-world')}>{t('machine.endEyebrow')}</p>
           <h2 id="end-title" data-narrate className="mt-3 font-heading text-4xl font-bold sm:text-6xl">
@@ -341,13 +355,25 @@ function MachineLife({ machine, mission, destination, story }: MachineLifeProps)
             <path d="M0 40 H150 L162 16 L174 64 L186 40 H260 L268 30 L276 50 L284 40 H600" pathLength={1} className="flatline-path" />
           </svg>
           {signal && !machine.lifespan?.stillWorking?.value && (
-            <p data-narrate className="mt-6 font-mono text-2xl text-starlight sm:text-3xl">
-              <time dateTime={signal.value}>{formatPartialDate(signal.value, locale)}</time>
+            <p data-narrate data-narrate-text={formatPartialDate(signal.value, locale)} className="mt-6 font-mono text-2xl text-starlight sm:text-3xl">
+              <time dateTime={signal.value} className="typewriter" style={{ '--n': formatPartialDate(signal.value, locale).length } as CSSProperties}>
+                {formatPartialDate(signal.value, locale)}
+              </time>
             </p>
           )}
-          {epilogue && <p data-narrate className="text-legible mt-6 max-w-2xl text-lg leading-relaxed text-starlight">{epilogue}</p>}
+          {epilogue && <p data-narrate className="end-after text-legible mt-6 max-w-2xl text-lg leading-relaxed text-starlight">{epilogue}</p>}
+          {yourTurn.length > 0 && (
+            <div className="end-after reading-panel mt-10 max-w-2xl rounded-3xl p-6 text-left sm:p-8">
+              <VoiceTag voice="imagination" />
+              {yourTurn.map((block, index) => (
+                <p key={index} data-narrate className="mt-3 text-lg leading-relaxed italic">
+                  {block.text}
+                </p>
+              ))}
+            </div>
+          )}
           {machine.locationName && (
-            <p data-narrate className="mt-6 inline-flex items-center gap-2 text-moon-dust">
+            <p data-narrate className="end-after mt-6 inline-flex items-center gap-2 text-moon-dust">
               <MapPin aria-hidden="true" className="size-4" />
               {t('machine.restsAt', { place: machine.locationName.value })}
             </p>
@@ -364,7 +390,7 @@ function MachineLife({ machine, mission, destination, story }: MachineLifeProps)
             >
               {next.machine.cover && (
                 <img
-                  src={next.machine.cover.thumbnailUrl ?? next.machine.cover.url}
+                  src={cardSrc(next.machine.cover)}
                   alt=""
                   loading="lazy"
                   className="aspect-[21/9] w-full object-cover opacity-70 transition-[transform,opacity] duration-700 group-hover:scale-105 group-hover:opacity-90"

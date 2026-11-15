@@ -30,7 +30,7 @@ export function MediaCredits() {
         {SITE_VISUALS.map(({ key, url }) => (
           <li key={key}>
             {t(key)}{' '}
-            <a href={url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-medium text-cosmic-indigo hover:underline">
+            <a href={url} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-1 font-medium text-cosmic-indigo hover:underline">
               {t('about.visualLink')}
               <ExternalLink aria-hidden="true" className="size-3" />
               <span className="sr-only">{t('media.newTab')}</span>
@@ -73,7 +73,7 @@ function CreditGroups({ media }: { media: Media[] }) {
             <ul className="space-y-2 pb-4 text-sm">
               {items.map((item) => (
                 <li key={item.id} className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                  <a href={item.pageUrl} target="_blank" rel="noopener noreferrer" className="text-cosmic-indigo hover:underline">
+                  <a href={item.pageUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center text-cosmic-indigo hover:underline">
                     {item.title ?? item.alt}
                     <span className="sr-only"> {t('media.newTab')}</span>
                   </a>

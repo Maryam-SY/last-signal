@@ -26,7 +26,7 @@ const PARTIAL_DATE = /^\d{4}(?:-(0[1-9]|1[0-2])(?:-(0[1-9]|[12]\d|3[01]))?)?$/
 const FULL_DATE = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/
 
 /**
- * Integrity rules V1–V12 from docs/architecture/DATA_MODEL.md §5.
+ * Integrity rules V1–V18 from docs/architecture/DATA_MODEL.md §5.
  * Errors block startup and CI; warnings are reported but tolerated.
  */
 export function validateContent(content: Content): ValidationReport {
@@ -319,6 +319,7 @@ export function validateContent(content: Content): ValidationReport {
     const w = `media/${m.id}`
     if (!(MEDIA_TYPES as readonly string[]).includes(m.type)) err(w, `unknown type "${m.type}"`)
     if (!/^https?:\/\//.test(m.url) || !/^https?:\/\//.test(m.pageUrl)) err(w, 'url and pageUrl must be http(s)')
+    if (m.largeUrl && !/^https:\/\//.test(m.largeUrl)) err(w, 'largeUrl must be https')
     text(`${w}.alt`, m.alt)
     if (!m.license?.trim()) err(w, 'license is required (V12)')
     if (!m.credit) warnings.push(`${w}: no credit shown on the source page`)

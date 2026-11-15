@@ -178,8 +178,8 @@
         {
           "voice": "data",
           "text": {
-            "en": "The prism panel kept going: in 2004, 35 years later, NASA said it was still working perfectly.",
-            "fr": "Le panneau de prismes, lui, continue : en 2004, 35 ans plus tard, la NASA le décrivait comme fonctionnant toujours parfaitement."
+            "en": "The prism panel kept going: in 2004, 35 years later, it was still working perfectly.",
+            "fr": "Le panneau de prismes, lui, continue : en 2004, 35 ans plus tard, il fonctionnait toujours parfaitement."
           },
           "sourceIds": [
             "jpl-llr-2004"

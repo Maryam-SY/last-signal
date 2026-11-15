@@ -22,6 +22,8 @@ interface LivePlanetProps {
   spinPerPixel?: number
   /** Plays a warp ripple when mounted (used when arriving on a destination). */
   arrivalRipple?: boolean
+  /** May load the 4k map when drawn large (the destination page's own planet only). */
+  hd?: boolean
 }
 
 const IDLE_SPIN = 4 // degrees per second
@@ -48,6 +50,7 @@ export function LivePlanet({
   pointer,
   spinPerPixel = 0,
   arrivalRipple = false,
+  hd = false,
 }: LivePlanetProps) {
   const handleRef = useRef<PlanetHandle>(null)
   const tiltRef = useRef<HTMLDivElement>(null)
@@ -106,7 +109,7 @@ export function LivePlanet({
       .then(async ({ createGlobe, globeMapUrl, globePixelRatio }) => {
         // Layout width (transforms ignored), in device pixels.
         const size = canvas.clientWidth * globePixelRatio()
-        const created = await createGlobe(canvas, config, globeMapUrl(config, size))
+        const created = await createGlobe(canvas, config, globeMapUrl(config, hd ? size : 0))
         if (cancelled) {
           created.dispose()
           return
@@ -137,7 +140,7 @@ export function LivePlanet({
       instance?.dispose()
       globeRef.current = null
     }
-  }, [useGlobe, seen, body.globe])
+  }, [useGlobe, seen, body.globe, hd])
 
   useEffect(() => {
     if (!globeReady) return

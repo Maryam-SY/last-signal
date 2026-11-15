@@ -30,10 +30,15 @@ export interface LifeChapter {
  * pictures of this machine; every other picture of the chapter follows as a moment of its own,
  * told by its caption, so the flight shows all of them. Empty when there is no biography yet.
  */
-export function biographyChapters(machine: Pick<MachineDetail, 'media' | 'biography'>): LifeChapter[] {
+export function biographyChapters(machine: Pick<MachineDetail, 'media' | 'biography'>, shown: Set<string> = new Set()): LifeChapter[] {
   const byId = new Map(machine.media.map((item) => [item.id, item]))
   return (machine.biography?.chapters ?? []).flatMap((chapter) => {
-    const pictures = chapter.mediaIds.map((id) => byId.get(id)).filter((item): item is Media => item !== undefined && isStill(item))
+    // A picture appears once on the page (US-5.14): skip those already shown (hero, portrait,
+    // an earlier chapter); a moment keeps its text even when no picture is left for it.
+    const pictures = chapter.mediaIds
+      .map((id) => byId.get(id))
+      .filter((item): item is Media => item !== undefined && isStill(item) && !shown.has(item.id))
+    pictures.forEach((item) => shown.add(item.id))
     const lead = bestStill(pictures)
     const more = pictures.filter((item) => item !== lead)
     return [
@@ -147,17 +152,3 @@ export function machineChapters(
     .map((item) => ({ id: item.id, date: null, title: item.title, text: item.alt, media: item }))
 }
 
-const clamp = (value: number) => Math.min(1, Math.max(0, value))
-const easeOut = (value: number) => 1 - (1 - value) ** 3
-
-/**
- * Scroll state of a scene from its bounding box: `enter` 0→1 while it comes in, `progress` 0→1
- * while it is crossed, `exit` 0→1 while it leaves. `spin` (degrees) makes the machine turn.
- */
-export function sceneMotion(rect: { top: number; bottom: number; height: number }, viewportH: number) {
-  const enter = easeOut(clamp((viewportH - rect.top) / (viewportH * 0.75)))
-  const progress = clamp(-rect.top / Math.max(1, rect.height - viewportH))
-  const exit = clamp((viewportH * 0.55 - rect.bottom) / (viewportH * 0.55))
-  const spin = Math.sin(progress * Math.PI * 2) * 16
-  return { enter, progress, exit, spin }
-}

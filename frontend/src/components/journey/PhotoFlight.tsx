@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 import type { Media } from '@/api/types'
+import { HudCorners } from '@/components/common/HudCorners'
 import { DepictionBadge } from '@/components/media/DepictionBadge'
 import { MediaFigure } from '@/components/media/MediaFigure'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { useScrollFrame } from '@/hooks/useScrollFrame'
 import { useTranslation } from '@/i18n'
+import { sceneSrc } from '@/lib/mediaSrc'
 import { setBringIntoView } from '@/lib/readAlong'
 import { cn } from '@/lib/utils'
 
@@ -79,7 +81,10 @@ function Flight({ label, items, className }: PhotoFlightProps) {
   const barRef = useRef<HTMLSpanElement>(null)
   const counterRef = useRef<HTMLSpanElement>(null)
   const hudRef = useRef<HTMLParagraphElement>(null)
+  const readingRef = useRef<HTMLDivElement>(null)
+  const shadeRef = useRef<HTMLDivElement>(null)
   const active = useRef(-1)
+  const planeOpacity = useRef<number[]>([])
   // Phones (US-5.13): the picture of the moment in front fills the screen behind its text.
   const [shown, setShown] = useState(0)
   const [failed, setFailed] = useState<ReadonlySet<string>>(new Set())
@@ -154,8 +159,11 @@ function Flight({ label, items, className }: PhotoFlightProps) {
       const z = -FOCUS - index * GAP + camera * GAP
       const appear = clamp((z + FOCUS + GAP * 2.6) / (GAP * 1.4))
       const leave = 1 - clamp((z + 150) / 450)
-      plane.style.opacity = (appear * leave).toFixed(3)
-      plane.style.visibility = appear * leave < 0.01 ? 'hidden' : 'visible'
+      const opacity = Math.round(appear * leave * 500) / 500
+      if (planeOpacity.current[index] === opacity) return
+      planeOpacity.current[index] = opacity
+      plane.style.opacity = opacity.toFixed(3)
+      plane.style.visibility = opacity < 0.01 ? 'hidden' : 'visible'
     })
 
     const current = Math.round(clamp(camera, 0, count - 1))
@@ -163,6 +171,12 @@ function Flight({ label, items, className }: PhotoFlightProps) {
       active.current = current
       setShown(current)
       itemRefs.current.forEach((item, index) => item?.classList.toggle('is-active', index === current))
+      // US-5.14: pictures hang on the left wall for even moments, so the text sits on the right
+      // then, tilted toward the picture — and the other way round for odd moments.
+      const side = current % 2 === 0 ? 'right' : 'left'
+      readingRef.current?.setAttribute('data-side', side)
+      shadeRef.current?.setAttribute('data-side', side)
+      planeRefs.current.forEach((plane, index) => plane?.classList.toggle('is-front', index === current))
       if (counterRef.current) counterRef.current.textContent = pad(current + 1)
       const hud = hudRef.current
       if (hud) {
@@ -199,7 +213,7 @@ function Flight({ label, items, className }: PhotoFlightProps) {
             item.media && Math.abs(index - shown) <= 1 ? (
               <img
                 key={item.id}
-                src={item.media.url}
+                src={sceneSrc(item.media)}
                 alt=""
                 decoding="async"
                 className={cn('flight-backdrop-image absolute inset-0 size-full object-cover', index === shown && 'is-active')}
@@ -207,7 +221,7 @@ function Flight({ label, items, className }: PhotoFlightProps) {
             ) : null,
           )}
           {items[shown]?.media && (
-            <span className="absolute top-20 right-4">
+            <span className="absolute top-20 left-4">
               <DepictionBadge depiction={items[shown]!.media!.depiction} />
             </span>
           )}
@@ -231,28 +245,26 @@ function Flight({ label, items, className }: PhotoFlightProps) {
                 className="photo-flight-plane"
                 style={style}
               >
-                <FlightImage
-                  url={item.media.url}
-                  // Long flights (40+ pictures): only the pictures around the one in front are
-                  // fetched; once drawn, a picture stays.
-                  near={near && index >= shown - 2 && index <= shown + 4}
-                  onError={() => setFailed((previous) => new Set(previous).add(item.id))}
-                />
+                {/* Long flights (40+ pictures): only the pictures around the one in front are
+                    mounted; a far picture frees its canvas and is drawn again when it comes near. */}
+                {near && index >= shown - 2 && index <= shown + 4 && (
+                  <FlightImage url={sceneSrc(item.media)} near onError={() => setFailed((previous) => new Set(previous).add(item.id))} />
+                )}
                 <span className="absolute top-3 left-3">
                   <DepictionBadge depiction={item.media.depiction} />
                 </span>
+                {/* US-5.14: the picture in front is framed like a telemetry feed, with its catalogue id. */}
+                <HudCorners />
+                {item.media.nasaId && <span className="hud-id">{item.media.nasaId}</span>}
               </figure>
             )
           })}
         </div>
 
         {/* Shade under the reading panel, so the text always reads over the pictures. */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-[55%] bg-gradient-to-t from-void via-void/75 to-transparent lg:inset-y-0 lg:right-auto lg:h-auto lg:w-[46%] lg:bg-gradient-to-r"
-        />
+        <div ref={shadeRef} aria-hidden="true" data-side="right" className="flight-shade pointer-events-none absolute inset-x-0 bottom-0 h-[55%] lg:inset-y-0 lg:h-auto lg:w-[46%]" />
 
-        <div className="absolute inset-x-0 bottom-0 px-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:px-10 sm:pb-10 lg:inset-y-0 lg:flex lg:items-center lg:pb-0 lg:pl-[max(2.5rem,calc((100vw-72rem)/2))]">
+        <div ref={readingRef} data-side="right" className="flight-reading absolute inset-x-0 bottom-0 px-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:px-10 sm:pb-10 lg:inset-y-0 lg:flex lg:items-center lg:pb-0">
           <div className="flight-panel relative max-w-xl rounded-3xl p-5 sm:p-6 lg:max-w-md">
             {/* US-5.13: the mission clock, like a telemetry readout, at the head of the panel. */}
             {items.some((item) => item.hud) && (
@@ -276,6 +288,11 @@ function Flight({ label, items, className }: PhotoFlightProps) {
                   }}
                   className={cn('photo-flight-item col-start-1 row-start-1', index === 0 && 'is-active')}
                 >
+                  {item.media && item.media.depiction !== 'photo' && item.media.depiction !== 'document' && (
+                    <span className="mb-2 inline-block lg:hidden">
+                      <DepictionBadge depiction={item.media.depiction} />
+                    </span>
+                  )}
                   {item.content}
                   {item.media && !item.hideCaption && (
                     <MediaFigure

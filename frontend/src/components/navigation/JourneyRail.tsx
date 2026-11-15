@@ -20,8 +20,8 @@ interface JourneyRailProps {
 /**
  * The only navigation of an immersive page (US-5.6, US-5.9): on the right, one dot per
  * section (current one filled and enlarged — shape + colour) between "previous" and "next"
- * buttons; on phones, the same two buttons only, small and see-through at the top right
- * (US-5.13). Dots are plain anchors, so they work without JavaScript.
+ * buttons. On phones there is no rail (US-5.14 audit: it covered the text; scrolling is the
+ * way). Dots are plain anchors, so they work without JavaScript.
  *
  * The current section's label stays visible only from 1680 px, the width from which a
  * 14rem label fits between the page content and the rail (pages reserve the rail's gutter
@@ -49,7 +49,11 @@ export function JourneyRail({ items, label, className }: JourneyRailProps) {
         type="button"
         disabled={!target}
         onClick={() => target && go(target.id)}
-        aria-label={target ? t(direction === 'previous' ? 'destination.previousSection' : 'destination.nextSection', { name: target.label }) : undefined}
+        aria-label={
+          target
+            ? t(direction === 'previous' ? 'destination.previousSection' : 'destination.nextSection', { name: target.label })
+            : t(direction === 'previous' ? 'destination.firstSection' : 'destination.lastSection')
+        }
         className={cn(
           'flex size-11 shrink-0 items-center justify-center rounded-full text-starlight transition-colors hover:bg-world hover:text-void disabled:pointer-events-none disabled:opacity-30',
           extra,
@@ -97,13 +101,6 @@ export function JourneyRail({ items, label, className }: JourneyRailProps) {
         {stepButton(next, 'next', 'glass')}
       </div>
 
-      {/* Phones (US-5.13): two small, see-through arrows at the top right, clear of the text
-          the visitor is reading at the bottom; fully visible when touched or focused. The
-          section name stays in the buttons' accessible names. */}
-      <div className="fixed top-20 right-1.5 z-30 flex flex-col items-center rounded-full bg-void/25 opacity-55 transition-opacity focus-within:opacity-100 hover:opacity-100 active:opacity-100 md:hidden">
-        {stepButton(previous, 'previous')}
-        {stepButton(next, 'next')}
-      </div>
     </nav>
   )
 }

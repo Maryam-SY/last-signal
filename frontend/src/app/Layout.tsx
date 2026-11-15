@@ -1,6 +1,9 @@
+import { Suspense } from 'react'
 import { Link, Outlet, ScrollRestoration, useMatch } from 'react-router'
 import { SoundToggle } from '@/components/audio/SoundToggle'
 import { SpaceScene } from '@/components/celestial/SpaceScene'
+import { CinemaLayer } from '@/components/motion/CinemaLayer'
+import { CursorRing } from '@/components/motion/CursorRing'
 import { LanguageSwitch } from '@/components/navigation/LanguageSwitch'
 import { SiteNavigation } from '@/components/navigation/SiteNavigation'
 import { useTranslation } from '@/i18n'
@@ -16,6 +19,9 @@ export function Layout() {
     <div className="flex min-h-dvh flex-col">
       {/* One living sky for the whole site: it keeps flying from page to page (US-5.11). */}
       <SpaceScene bright={isHome} />
+      {/* US-5.14 art direction: film grain and vignette over every page, and the cursor ring. */}
+      <CinemaLayer />
+      <CursorRing />
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[3000] focus:rounded-md focus:bg-primary focus:px-4 focus:py-3 focus:text-primary-foreground"
@@ -47,7 +53,9 @@ export function Layout() {
       </header>
 
       <main id="main-content" tabIndex={-1} className={cn('flex-1 outline-none', !isHome && 'pt-16')}>
-        <Outlet />
+        <Suspense fallback={<div aria-hidden="true" className="min-h-[70dvh]" />}>
+          <Outlet />
+        </Suspense>
       </main>
 
       <SiteFooter />

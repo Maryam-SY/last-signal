@@ -27,7 +27,7 @@ export function MachineHangar({ destination }: { destination: DestinationDetail 
       <ul className="machine-hangar mt-10 grid gap-5 [perspective:1400px] sm:grid-cols-2 lg:grid-cols-3">
         {machines.map(({ machine, mission }, index) => (
           <li key={machine.id}>
-            <MachinePortal machine={machine} missionName={mission.name} destinationId={destination.id} index={index} />
+            <MachinePortal machine={machine} missionName={mission.name} destinationId={destination.id} index={index} count={machines.length} />
           </li>
         ))}
       </ul>

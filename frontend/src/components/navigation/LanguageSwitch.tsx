@@ -69,7 +69,6 @@ export function LanguageSwitch({ className }: { className?: string }) {
         <ul
           id={listId}
           aria-label={t('lang.label')}
-          onKeyDown={onListKey}
           className="lang-menu glass-blur absolute right-0 z-[2600] mt-2 min-w-44 overflow-hidden rounded-2xl p-1.5 shadow-2xl"
         >
           {LOCALES.map((code, index) => (
@@ -82,6 +81,7 @@ export function LanguageSwitch({ className }: { className?: string }) {
                 lang={code}
                 aria-current={locale === code ? 'true' : undefined}
                 onClick={() => choose(code)}
+                onKeyDown={onListKey}
                 className="flex min-h-11 w-full items-center gap-3 rounded-xl px-3 text-left text-sm text-starlight transition-colors hover:bg-white/10 focus-visible:bg-white/10 aria-[current=true]:text-stellar-cyan"
               >
                 <span className="w-6 font-mono text-xs uppercase text-moon-dust">{code}</span>

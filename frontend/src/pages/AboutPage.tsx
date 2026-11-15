@@ -31,6 +31,18 @@ export function AboutPage() {
         <p className="mt-6 max-w-2xl text-lg font-medium">{t('app.disclaimer')}</p>
 
         <div className="mt-14 space-y-6">
+          <nav aria-label={t('about.toc')} className="reading-panel rounded-2xl p-4 sm:p-5">
+            <p className="font-mono text-[0.72rem] tracking-[0.3em] text-world uppercase">{t('about.toc')}</p>
+            <ul className="mt-2 flex flex-wrap gap-x-5 gap-y-1">
+              {SECTIONS.map(({ id, titleKey }) => (
+                <li key={id}>
+                  <a href={`#about-${id}`} className="inline-flex min-h-11 items-center text-sm font-medium text-starlight hover:text-world">
+                    {t(titleKey)}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
           {SECTIONS.map(({ id, titleKey, Icon }, index) => (
             <Reveal key={id} delay={index * 80}>
               <section id={`about-${id}`} aria-labelledby={`about-${id}-title`} className="scene-blend reading-panel min-w-0 scroll-mt-24 rounded-2xl p-6 [overflow-wrap:anywhere] sm:p-8">

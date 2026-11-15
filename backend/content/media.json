@@ -2774,8 +2774,8 @@
     "title": "Virtual Rover Takes its First Turn",
     "caption": "This image shows a screenshot from the software used by engineers to drive the Mars Exploration Rover Spirit. The software simulates the rover's movements across the martian terrain, helping to plot a safe course for the rover. The virtual 3-D world around the rover is built from images taken by Spirit's stereo navigation cameras. Regions for which the rover has not yet acquired 3-D data are represented in beige. This image depicts the state of the rover before it backed up and turned 45 degrees on Sol 11 (01-13-04). http://photojournal.jpl.nasa.gov/catalog/PIA05063",
     "alt": {
-      "en": "Screen of the software engineers used to plan Spirit’s first turn.",
-      "fr": "L’écran du logiciel utilisé par les ingénieurs pour préparer le premier virage de Spirit."
+      "en": "Screen of the software engineers used to plan Spirit’s first turn (computer image, not a photo).",
+      "fr": "L’écran du logiciel utilisé par les ingénieurs pour préparer le premier virage de Spirit (image de synthèse, pas une photo)."
     },
     "credit": "NASA/JPL",
     "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
@@ -3259,8 +3259,8 @@
     "title": "Opportunity First Goal at Endeavour Crater: Spirit Point",
     "caption": "This image shows the portion of the rim of Endeavour crater given the informal name Spirit Point. This is the location where the team operating NASA Mars Exploration Rover Opportunity plans to drive the rover to its arrival at the Endeavour rim.",
     "alt": {
-      "en": "“Spirit Point”, Opportunity’s first goal on the rim of Endeavour Crater.",
-      "fr": "« Spirit Point », premier objectif d’Opportunity au bord du cratère Endeavour."
+      "en": "“Spirit Point”, Opportunity’s first goal on the rim of Endeavour Crater (computer image, not a photo).",
+      "fr": "« Spirit Point », premier objectif d’Opportunity au bord du cratère Endeavour (image de synthèse, pas une photo)."
     },
     "credit": "NASA/JPL-Caltech/Univ. of Arizona",
     "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
@@ -4830,7 +4830,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/KSC-03pd1897/KSC-03pd1897~thumb.jpg",
-    "nasaId": "KSC-03pd1897"
+    "nasaId": "KSC-03pd1897",
+    "largeUrl": "https://images-assets.nasa.gov/image/KSC-03pd1897/KSC-03pd1897~large.jpg"
   },
   {
     "id": "bio-spirit-pia05218",
@@ -4860,7 +4861,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA05218/PIA05218~thumb.jpg",
-    "nasaId": "PIA05218"
+    "nasaId": "PIA05218",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA05218/PIA05218~medium.jpg"
   },
   {
     "id": "bio-spirit-pia07457",
@@ -4920,7 +4922,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA17760/PIA17760~thumb.jpg",
-    "nasaId": "PIA17760"
+    "nasaId": "PIA17760",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA17760/PIA17760~medium.jpg"
   },
   {
     "id": "bio-spirit-pia08063",
@@ -5130,7 +5133,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA09104/PIA09104~thumb.jpg",
-    "nasaId": "PIA09104"
+    "nasaId": "PIA09104",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA09104/PIA09104~large.jpg"
   },
   {
     "id": "bio-opportunity-pia22929",
@@ -5220,7 +5224,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA21494/PIA21494~thumb.jpg",
-    "nasaId": "PIA21494"
+    "nasaId": "PIA21494",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA21494/PIA21494~large.jpg"
   },
   {
     "id": "bio-mars-pathfinder-lander-pia00673",
@@ -5370,7 +5375,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA09105/PIA09105~thumb.jpg",
-    "nasaId": "PIA09105"
+    "nasaId": "PIA09105",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA09105/PIA09105~large.jpg"
   },
   {
     "id": "bio-sojourner-pia00633",
@@ -5700,7 +5706,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA24593/PIA24593~thumb.jpg",
-    "nasaId": "PIA24593"
+    "nasaId": "PIA24593",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA24593/PIA24593~large.jpg"
   },
   {
     "id": "bio-ingenuity-pia24291",
@@ -5730,7 +5737,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA24291/PIA24291~thumb.jpg",
-    "nasaId": "PIA24291"
+    "nasaId": "PIA24291",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA24291/PIA24291~large.jpg"
   },
   {
     "id": "bio-ingenuity-pia26243",
@@ -5760,7 +5768,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA26243/PIA26243~thumb.jpg",
-    "nasaId": "PIA26243"
+    "nasaId": "PIA26243",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA26243/PIA26243~large.jpg"
   },
   {
     "id": "bio-ingenuity-pia26238",
@@ -5790,7 +5799,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA26238/PIA26238~thumb.jpg",
-    "nasaId": "PIA26238"
+    "nasaId": "PIA26238",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA26238/PIA26238~large.jpg"
   },
   {
     "id": "bio-ingenuity-pia26237",
@@ -5820,7 +5830,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA26237/PIA26237~thumb.jpg",
-    "nasaId": "PIA26237"
+    "nasaId": "PIA26237",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA26237/PIA26237~large.jpg"
   },
   {
     "id": "bio-ingenuity-pia26482",
@@ -5850,7 +5861,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA26482/PIA26482~thumb.jpg",
-    "nasaId": "PIA26482"
+    "nasaId": "PIA26482",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA26482/PIA26482~large.jpg"
   },
   {
     "id": "bio-surveyor-3-lander-as12-48-7121",
@@ -6153,7 +6165,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/as11-40-5868/as11-40-5868~thumb.jpg",
-    "nasaId": "as11-40-5868"
+    "nasaId": "as11-40-5868",
+    "largeUrl": "https://images-assets.nasa.gov/image/as11-40-5868/as11-40-5868~medium.jpg"
   },
   {
     "id": "bio-apollo-11-lm-eagle-desce-labeled-version",
@@ -7373,7 +7386,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/KSC-03pd1569/KSC-03pd1569~thumb.jpg",
-    "nasaId": "KSC-03pd1569"
+    "nasaId": "KSC-03pd1569",
+    "largeUrl": "https://images-assets.nasa.gov/image/KSC-03pd1569/KSC-03pd1569~large.jpg"
   },
   {
     "id": "bio-spirit-pia04995",
@@ -7403,7 +7417,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA04995/PIA04995~thumb.jpg",
-    "nasaId": "PIA04995"
+    "nasaId": "PIA04995",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA04995/PIA04995~large.jpg"
   },
   {
     "id": "bio-spirit-pia05220",
@@ -7523,7 +7538,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA05570/PIA05570~thumb.jpg",
-    "nasaId": "PIA05570"
+    "nasaId": "PIA05570",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA05570/PIA05570~large.jpg"
   },
   {
     "id": "bio-spirit-pia06279",
@@ -7643,7 +7659,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA07997/PIA07997~thumb.jpg",
-    "nasaId": "PIA07997"
+    "nasaId": "PIA07997",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA07997/PIA07997~medium.jpg"
   },
   {
     "id": "bio-spirit-pia06335",
@@ -7823,7 +7840,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA03059/PIA03059~thumb.jpg",
-    "nasaId": "PIA03059"
+    "nasaId": "PIA03059",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA03059/PIA03059~large.jpg"
   },
   {
     "id": "bio-spirit-pia03274",
@@ -7853,7 +7871,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA03274/PIA03274~thumb.jpg",
-    "nasaId": "PIA03274"
+    "nasaId": "PIA03274",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA03274/PIA03274~large.jpg"
   },
   {
     "id": "bio-spirit-pia13175",
@@ -7973,7 +7992,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA16440/PIA16440~thumb.jpg",
-    "nasaId": "PIA16440"
+    "nasaId": "PIA16440",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA16440/PIA16440~large.jpg"
   },
   {
     "id": "bio-spirit-pia09089",
@@ -8033,7 +8053,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA11758/PIA11758~thumb.jpg",
-    "nasaId": "PIA11758"
+    "nasaId": "PIA11758",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA11758/PIA11758~large.jpg"
   },
   {
     "id": "bio-spirit-pia10128",
@@ -8063,7 +8084,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA10128/PIA10128~thumb.jpg",
-    "nasaId": "PIA10128"
+    "nasaId": "PIA10128",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA10128/PIA10128~large.jpg"
   },
   {
     "id": "bio-spirit-pia11746",
@@ -8333,7 +8355,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA15038/PIA15038~thumb.jpg",
-    "nasaId": "PIA15038"
+    "nasaId": "PIA15038",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA15038/PIA15038~medium.jpg"
   },
   {
     "id": "bio-opportunity-ksc-03pd2090",
@@ -8363,7 +8386,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/KSC-03pd2090/KSC-03pd2090~thumb.jpg",
-    "nasaId": "KSC-03pd2090"
+    "nasaId": "KSC-03pd2090",
+    "largeUrl": "https://images-assets.nasa.gov/image/KSC-03pd2090/KSC-03pd2090~large.jpg"
   },
   {
     "id": "bio-opportunity-pia05152",
@@ -8393,7 +8417,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA05152/PIA05152~thumb.jpg",
-    "nasaId": "PIA05152"
+    "nasaId": "PIA05152",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA05152/PIA05152~large.jpg"
   },
   {
     "id": "bio-opportunity-pia05160",
@@ -8603,7 +8628,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA15114/PIA15114~thumb.jpg",
-    "nasaId": "PIA15114"
+    "nasaId": "PIA15114",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA15114/PIA15114~medium.jpg"
   },
   {
     "id": "bio-opportunity-pia09924",
@@ -8723,7 +8749,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA12193/PIA12193~thumb.jpg",
-    "nasaId": "PIA12193"
+    "nasaId": "PIA12193",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA12193/PIA12193~medium.jpg"
   },
   {
     "id": "bio-opportunity-pia12975",
@@ -8813,7 +8840,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA13794/PIA13794~thumb.jpg",
-    "nasaId": "PIA13794"
+    "nasaId": "PIA13794",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA13794/PIA13794~large.jpg"
   },
   {
     "id": "bio-opportunity-pia13803",
@@ -8843,7 +8871,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA13803/PIA13803~thumb.jpg",
-    "nasaId": "PIA13803"
+    "nasaId": "PIA13803",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA13803/PIA13803~medium.jpg"
   },
   {
     "id": "bio-opportunity-pia14509",
@@ -8963,7 +8992,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA18079/PIA18079~thumb.jpg",
-    "nasaId": "PIA18079"
+    "nasaId": "PIA18079",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA18079/PIA18079~large.jpg"
   },
   {
     "id": "bio-opportunity-pia19151",
@@ -9023,7 +9053,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA20318/PIA20318~thumb.jpg",
-    "nasaId": "PIA20318"
+    "nasaId": "PIA20318",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA20318/PIA20318~large.jpg"
   },
   {
     "id": "bio-opportunity-pia20328",
@@ -9053,7 +9084,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA20328/PIA20328~thumb.jpg",
-    "nasaId": "PIA20328"
+    "nasaId": "PIA20328",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA20328/PIA20328~medium.jpg"
   },
   {
     "id": "bio-opportunity-pia21724",
@@ -9083,7 +9115,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA21724/PIA21724~thumb.jpg",
-    "nasaId": "PIA21724"
+    "nasaId": "PIA21724",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA21724/PIA21724~medium.jpg"
   },
   {
     "id": "bio-opportunity-pia22074",
@@ -9113,7 +9146,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA22074/PIA22074~thumb.jpg",
-    "nasaId": "PIA22074"
+    "nasaId": "PIA22074",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA22074/PIA22074~large.jpg"
   },
   {
     "id": "bio-opportunity-pia22221",
@@ -9233,7 +9267,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA22549/PIA22549~thumb.jpg",
-    "nasaId": "PIA22549"
+    "nasaId": "PIA22549",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA22549/PIA22549~medium.jpg"
   },
   {
     "id": "bio-opportunity-pia23178",
@@ -9263,7 +9298,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA23178/PIA23178~thumb.jpg",
-    "nasaId": "PIA23178"
+    "nasaId": "PIA23178",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA23178/PIA23178~large.jpg"
   },
   {
     "id": "bio-mars-pathfinder-lander-pia01550",
@@ -9353,7 +9389,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA01149/PIA01149~thumb.jpg",
-    "nasaId": "PIA01149"
+    "nasaId": "PIA01149",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA01149/PIA01149~large.jpg"
   },
   {
     "id": "bio-mars-pathfinder-lander-pia00976",
@@ -9413,7 +9450,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA01000/PIA01000~thumb.jpg",
-    "nasaId": "PIA01000"
+    "nasaId": "PIA01000",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA01000/PIA01000~medium.jpg"
   },
   {
     "id": "bio-sojourner-pia00670",
@@ -9593,7 +9631,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA04422/PIA04422~thumb.jpg",
-    "nasaId": "PIA04422"
+    "nasaId": "PIA04422",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA04422/PIA04422~large.jpg"
   },
   {
     "id": "bio-ingenuity-pia26233",
@@ -9623,7 +9662,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA26233/PIA26233~thumb.jpg",
-    "nasaId": "PIA26233"
+    "nasaId": "PIA26233",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA26233/PIA26233~large.jpg"
   },
   {
     "id": "bio-ingenuity-pia24542",
@@ -9683,7 +9723,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA24689/PIA24689~thumb.jpg",
-    "nasaId": "PIA24689"
+    "nasaId": "PIA24689",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA24689/PIA24689~large.jpg"
   },
   {
     "id": "bio-ingenuity-pia24801",
@@ -9713,7 +9754,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA24801/PIA24801~thumb.jpg",
-    "nasaId": "PIA24801"
+    "nasaId": "PIA24801",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA24801/PIA24801~large.jpg"
   },
   {
     "id": "bio-ingenuity-pia24812",
@@ -9773,7 +9815,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA25213/PIA25213~thumb.jpg",
-    "nasaId": "PIA25213"
+    "nasaId": "PIA25213",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA25213/PIA25213~medium.jpg"
   },
   {
     "id": "bio-ingenuity-pia25881",
@@ -9803,7 +9846,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA25881/PIA25881~thumb.jpg",
-    "nasaId": "PIA25881"
+    "nasaId": "PIA25881",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA25881/PIA25881~large.jpg"
   },
   {
     "id": "bio-ingenuity-pia25918",
@@ -9863,7 +9907,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA25968/PIA25968~thumb.jpg",
-    "nasaId": "PIA25968"
+    "nasaId": "PIA25968",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA25968/PIA25968~large.jpg"
   },
   {
     "id": "bio-ingenuity-pia25969",
@@ -9893,7 +9938,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA25969/PIA25969~thumb.jpg",
-    "nasaId": "PIA25969"
+    "nasaId": "PIA25969",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA25969/PIA25969~large.jpg"
   },
   {
     "id": "bio-ingenuity-pia26079",
@@ -9953,7 +9999,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA26049/PIA26049~thumb.jpg",
-    "nasaId": "PIA26049"
+    "nasaId": "PIA26049",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA26049/PIA26049~large.jpg"
   },
   {
     "id": "bio-ingenuity-pia26242",
@@ -9983,7 +10030,8 @@
     },
     "descriptionStatus": "draft",
     "thumbnailUrl": "https://images-assets.nasa.gov/image/PIA26242/PIA26242~thumb.jpg",
-    "nasaId": "PIA26242"
+    "nasaId": "PIA26242",
+    "largeUrl": "https://images-assets.nasa.gov/image/PIA26242/PIA26242~large.jpg"
   },
   {
     "id": "bio-ingenuity-pia26244",

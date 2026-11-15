@@ -324,3 +324,9 @@ Toute autre route `/api/*` renvoie `404 { error: "Not found" }`. Le statut `draf
 - Nouvelle destination : ajout d'une entrée `destinations.json` + fond de carte ; aucune modification de composant.
 - Traduction FR : remplacer `i18n/en.ts` par un dictionnaire par langue ; les textes de contenu porteront un suffixe de langue (décision P2).
 - Mise en page narrative scroll/parallax : nouveau layout consommant `StoryStepView`.
+
+## 18. Composants et fichiers retirés le 2026-11-15 (US-5.14, décision de l'équipe)
+
+Le parcours est désormais : accueil → hangar (`components/hangar/`) → page machine en actes (`pages/MachinePage.tsx`, `lib/acts.ts`, `components/machine/`). Les éléments suivants, décrits plus haut dans ce document, ont été **supprimés** du dépôt car plus montés nulle part : carte des sites (`components/map/SiteMap.tsx`, `geo.ts`, ADR-007), galerie et défilement des missions (`components/gallery/MissionGallery.tsx`, `MissionTimeline.tsx`, `MachineCard.tsx`, `components/journey/MissionScene.tsx`, `MachineStage.tsx`, `useSceneMotion.ts`), frise des deux mondes (`components/timeline/WorldsTimeline.tsx`), journal d'explorateur affiché (`components/progress/ExplorerLogCard.tsx` ; l'enregistrement `lib/explorerLog.ts` reste), `DestinationLink`, `useMediaQuery`, `ErrorBoundary`, `components/ui/button.tsx` (et les dépendances `@base-ui/react`, `class-variance-authority`), `components/story/StorySlides.tsx`, `App.css`, `src/assets/*`, les planètes décoratives (`content/celestialBodies.ts` ne garde que Lune et Mars, `public/planets/*.webp` correspondants) et les médias `public/media/intro.mp4`, `intro-poster.jpg`, `space-bg.jpg`, `sky-milkyway-1280/1920.webp` (le panorama sert partout). Côté API, `GET /api/timeline` et `GET /api/stories` restent servis mais ne sont plus appelés par le site.
+
+Les sections 1–3, 5–10 et 14–15 décrivant la carte, la galerie et la fiche détaillée sont à réécrire par l'Architecte (hors périmètre de cette story).

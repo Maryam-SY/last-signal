@@ -28,7 +28,7 @@ export function WorldTimeline({ destination }: { destination: DestinationDetail 
         return (
           <li key={group.year} className="relative">
             {gap !== null && gap > 0 && (
-              <p className="mb-3 pl-8 font-mono text-[0.68rem] tracking-widest text-moon-dust uppercase">
+              <p className="text-legible mb-3 pl-8 font-mono text-[0.72rem] tracking-widest text-starlight/80 uppercase">
                 {gap === 1 ? t('timeline.gapOne') : t('timeline.gap', { years: gap })}
               </p>
             )}

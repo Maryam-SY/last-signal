@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { SkipForward, Volume2 } from 'lucide-react'
 import { useTranslation, type MessageKey } from '@/i18n'
 import { createIntroScore, type IntroScore } from '@/lib/introSound'
@@ -30,7 +30,7 @@ const CUES: ReadonlyArray<{ from: number; to: number; key: MessageKey }> = [
 ]
 
 /** How long the closing title stays in close-up before the site appears. */
-const FINALE_MS = 3400
+const FINALE_MS = 3800
 
 export function IntroVideo({ onReveal, onDone }: IntroVideoProps) {
   const { t } = useTranslation()
@@ -43,6 +43,7 @@ export function IntroVideo({ onReveal, onDone }: IntroVideoProps) {
   const scoreRef = useRef<IntroScore | null>(null)
   const [soundBlocked, setSoundBlocked] = useState(false)
   const finaleTimer = useRef<number | undefined>(undefined)
+  const doneTimer = useRef<number | undefined>(undefined)
 
   const finish = (fade: boolean) => {
     if (doneRef.current) return
@@ -56,7 +57,7 @@ export function IntroVideo({ onReveal, onDone }: IntroVideoProps) {
       return
     }
     setLeaving(true)
-    window.setTimeout(onDone, FADE_MS)
+    doneTimer.current = window.setTimeout(onDone, FADE_MS)
   }
   const finishRef = useRef(finish)
   useEffect(() => {
@@ -101,6 +102,7 @@ export function IntroVideo({ onReveal, onDone }: IntroVideoProps) {
       window.removeEventListener('pointerdown', onGesture)
       window.removeEventListener('keydown', onGesture)
       window.clearTimeout(finaleTimer.current)
+      window.clearTimeout(doneTimer.current)
       scoreRef.current?.stop(0.3)
     }
   }, [])
@@ -161,9 +163,17 @@ export function IntroVideo({ onReveal, onDone }: IntroVideoProps) {
       </div>
       {finale && (
         <div aria-hidden="true" className="intro-finale pointer-events-none absolute inset-0 flex items-center justify-center px-4 text-center">
-          <p className="intro-finale-title font-heading text-[clamp(2.4rem,10vw,9rem)] leading-[0.95] font-bold text-white uppercase">
-            {t('intro.finale')}
-          </p>
+          <div className="intro-finale-card" style={{ perspective: '800px' }}>
+            <p className="intro-finale-eyebrow font-mono text-[0.72rem] tracking-[0.45em] text-stellar-cyan uppercase sm:text-sm">{t('intro.presents')}</p>
+            <p className="mt-4 font-heading text-[clamp(2rem,7vw,6rem)] leading-none font-medium tracking-[0.12em] text-white">
+              {Array.from(t('intro.finale')).map((letter, index) => (
+                <span key={index} className={`intro-finale-letter${letter === ' ' ? ' is-space' : ''}`} style={{ '--i': index } as CSSProperties}>
+                  {letter === ' ' ? '\u00a0' : letter}
+                </span>
+              ))}
+            </p>
+            <span className="intro-finale-line" />
+          </div>
         </div>
       )}
       {soundBlocked && (

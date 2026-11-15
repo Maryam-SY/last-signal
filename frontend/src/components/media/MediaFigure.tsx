@@ -3,6 +3,7 @@ import { Box, FileText, ImageOff, PlayCircle } from 'lucide-react'
 import type { Media } from '@/api/types'
 import { useTranslation } from '@/i18n'
 import { sameText } from '@/lib/sameText'
+import { sceneSrc } from '@/lib/mediaSrc'
 import { cn } from '@/lib/utils'
 import { DepictionBadge } from './DepictionBadge'
 
@@ -33,9 +34,9 @@ export function MediaFigure({ media, className, lead, withStory = false, caption
   if (captionOnly) {
     return (
       <figure className={className}>
-        <div className="sr-only">
-          <MediaBody media={media} />
-        </div>
+        {/* The picture itself is drawn elsewhere (flight, backdrop); screen readers get its
+            description here without a second download of the file (US-5.14 audit). */}
+        <span className="sr-only">{media.alt}</span>
         <figcaption className="space-y-1.5 text-sm">
           <DepictionBadge depiction={media.depiction} />
           {story && <p className="leading-relaxed text-starlight/90">{story}</p>}
@@ -122,11 +123,15 @@ function RemoteImage({ media }: { media: Media }) {
   }
   return (
     <img
-      src={media.url}
+      src={sceneSrc(media)}
       alt={media.alt}
       loading="lazy"
       decoding="async"
-      onError={() => setFailed(true)}
+      onError={(event) => {
+        // The mid-size copy failed: try the original once before giving up.
+        if (event.currentTarget.src !== media.url) event.currentTarget.src = media.url
+        else setFailed(true)
+      }}
       className="aspect-video w-full object-cover"
     />
   )

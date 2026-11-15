@@ -60,16 +60,22 @@ describe('machine page (US-5.12)', () => {
     expect(within(end).getByText('22 March 2010')).toBeInTheDocument()
     // Sources are listed on the About page only (team decision), never inside the story.
     expect(screen.queryByRole('link', { name: /Test source page/ })).not.toBeInTheDocument()
-    // US-5.13: its story is told on the page itself, as slides — no "6 steps" button.
+    // US-5.14: no fixed 6-step story — the acts of its own life, from its sourced dates:
+    // the planned mission (90 sols), then overtime (×25), each with its own title card.
     expect(screen.queryByRole('link', { name: /6 steps/ })).not.toBeInTheDocument()
-    const story = await screen.findByRole('region', { name: 'The test story' })
-    expect(within(story).getByText('Text of step signal.')).toBeInTheDocument()
-    expect(within(story).getByText('Text of step your-turn.')).toBeInTheDocument()
+    expect(screen.queryByText('The test story')).not.toBeInTheDocument()
+    const planned = screen.getByRole('region', { name: 'The planned mission' })
+    expect(within(planned).getByText('90 Martian days planned. Everything after that is a gift.')).toBeInTheDocument()
+    const beyond = screen.getByRole('region', { name: 'Overtime' })
+    expect(within(beyond).getByText('Day 93: planned end of the mission. It carries on.')).toBeInTheDocument()
+    expect(within(beyond).getByText('longer than planned')).toBeInTheDocument()
+    // Cold open: the page starts from its last signal.
+    expect(screen.getByText('Last signal received on 22 March 2010')).toBeInTheDocument()
   })
 
   it('flies through the pictures of what it did, keeping them readable (US-5.11)', async () => {
     renderRoute('/explore/mars/machine-a')
-    const list = await screen.findByRole('list', { name: 'In pictures: Test Rover' })
+    const list = await screen.findByRole('list', { name: /In pictures: Test Rover/ })
     expect(within(list).getAllByRole('listitem')).toHaveLength(2)
     expect(within(list).getAllByText('What you see:')).toHaveLength(2)
     const corridor = list.closest('.photo-flight')!.querySelector('.photo-flight-world')!
@@ -128,7 +134,7 @@ describe('machine page (US-5.12)', () => {
     renderRoute('/explore/mars/machine-a')
     const who = await screen.findByRole('region', { name: 'Meet Test Rover' })
     expect(within(who).getByText('Test Rover is a six-wheeled robot geologist powered by the Sun.')).toHaveAttribute('data-narrate')
-    const list = screen.getByRole('list', { name: 'In pictures: Test Rover' })
+    const list = screen.getByRole('list', { name: /In pictures: Test Rover/ })
     expect(within(list).getAllByRole('listitem')).toHaveLength(1)
     expect(within(list).getByRole('heading', { name: 'It rolls off' })).toBeInTheDocument()
     // What it brought to Earth, and its parts to touch on its portrait.

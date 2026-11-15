@@ -4,10 +4,12 @@ import { Link, useNavigate } from 'react-router'
 import type { Machine } from '@/api/types'
 import { paths } from '@/app/paths'
 import { DepictionBadge } from '@/components/media/DepictionBadge'
+import { SignalBars } from '@/components/machine/SignalBars'
 import { StatusBadge } from '@/components/machine/StatusBadge'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { useTranslation } from '@/i18n'
 import { lastSignal } from '@/lib/lifespan'
+import { sceneSrc } from '@/lib/mediaSrc'
 import type { DestinationId } from '@/types/content'
 
 /** Shared with the machine page's hero picture, so the browser morphs one into the other. */
@@ -20,6 +22,8 @@ interface MachinePortalProps {
   missionName: string
   destinationId: DestinationId
   index: number
+  /** How many machines the hangar holds (dossier number "03 / 11"). */
+  count: number
 }
 
 /**
@@ -28,7 +32,7 @@ interface MachinePortalProps {
  * itself, then its picture flies into the machine's own page (View Transitions). The whole
  * card is one link; nothing depends on hover alone.
  */
-export function MachinePortal({ machine, missionName, destinationId, index }: MachinePortalProps) {
+export function MachinePortal({ machine, missionName, destinationId, index, count }: MachinePortalProps) {
   const { t } = useTranslation()
   const reduced = useReducedMotion()
   const navigate = useNavigate()
@@ -80,7 +84,7 @@ export function MachinePortal({ machine, missionName, destinationId, index }: Ma
         <div ref={pictureRef} className="absolute inset-0">
           {machine.cover ? (
             <img
-              src={machine.cover.thumbnailUrl ?? machine.cover.url}
+              src={sceneSrc(machine.cover)}
               alt=""
               loading="lazy"
               decoding="async"
@@ -97,6 +101,17 @@ export function MachinePortal({ machine, missionName, destinationId, index }: Ma
             <DepictionBadge depiction={machine.cover.depiction} />
           </span>
         )}
+        {/* US-5.14: dossier header — number in the hangar, catalogue id, signal strength. */}
+        <div aria-hidden="true" className="dossier-line absolute inset-x-0 top-0 flex items-center justify-between gap-3 p-4 sm:p-5">
+          <span>
+            {String(index + 1).padStart(2, '0')} / {String(count).padStart(2, '0')}
+            {machine.nssdcaId && <span className="text-moon-dust"> · {machine.nssdcaId}</span>}
+          </span>
+          <span className="flex items-center gap-2">
+            <span className="led" data-status={machine.status.value} />
+            <SignalBars status={machine.status.value} />
+          </span>
+        </div>
         <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
           <p className="font-mono text-[0.6rem] tracking-[0.25em] text-world uppercase">{missionName}</p>
           <p className="mt-1 font-heading text-2xl leading-tight font-bold sm:text-[1.7rem]">{machine.name}</p>

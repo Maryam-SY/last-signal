@@ -108,3 +108,10 @@ Par mission (un média peut concerner plusieurs missions) : Apollo 11 : 16 · Ap
 | moon-surveyor-apollo12 | | | | |
 | mars-spirit-opportunity | | | | |
 | mars-ingenuity | | | | |
+
+## Ajout du 2026-11-15 (audit contenu)
+
+- **Réflecteur laser d'Apollo 11 (`apollo-11-lrrr.status.note`)** : la note publiée disait « Signalé comme fonctionnant toujours parfaitement en 2004 (JPL). Une source NASA plus récente doit être vérifiée avant publication. » — la consigne interne s'affichait aux visiteurs. Remplacée par une phrase factuelle (« Fonctionne encore : des observatoires continuent de mesurer la distance Terre–Lune avec lui, comme depuis 1969 »), appuyée par les sources déjà citées sur `status` (JPL 2004) et par les pages NASA 2019 / ILRS ajoutées avec la biographie (US-5.13). **À confirmer par la relecture scientifique.**
+- Attributions de source retirées des textes affichés (décision de l'équipe US-5.13) : `missions.json` apollo-11 `still-working`, `machines.json` spirit `status.note` et chapitre « meuler une roche », `stories` mars-spirit-opportunity relay[3] et moon-apollo11-retroreflectors relay[1]. Les faits sont inchangés ; les sources restent dans `sourceIds`.
+- Surveyor 3, étape `digging` (avril 1967) : la photo Apollo 12 `nasa-lib-as12-48-7133` (1969) n'illustre plus cette étape (§5.10).
+- `nasa-lib-pia14134` et `nasa-lib-pia05063` (images de synthèse) : « pas une photo » ajouté dans leur texte alternatif (MEDIA-001).
