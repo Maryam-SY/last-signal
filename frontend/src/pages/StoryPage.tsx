@@ -8,7 +8,6 @@ import { NarrationButton } from '@/components/audio/NarrationButton'
 import { SpaceBackdrop } from '@/components/celestial/SpaceBackdrop'
 import { LoadState } from '@/components/common/LoadState'
 import { CoverPhoto } from '@/components/media/CoverPhoto'
-import { ScrollProgress } from '@/components/motion/ScrollProgress'
 import { StepRail } from '@/components/story/StepRail'
 import { StepScene } from '@/components/story/StepScene'
 import { STEP_ACCENT, stepSectionId } from '@/components/story/storySteps'
@@ -192,7 +191,6 @@ function StoryExperience({ story }: { story: StoryDetail }) {
   return (
     <article data-world={destinationId ?? undefined} data-narration-root lang={contentLang(locale)} style={ambient} className="relative">
       <SpaceBackdrop />
-      <ScrollProgress />
       <StepRail steps={story.steps} current={current} onSelect={goTo} />
 
       <div className="relative z-10 mx-auto max-w-3xl px-5 pb-32">

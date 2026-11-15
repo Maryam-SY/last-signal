@@ -54,7 +54,7 @@ export function LifeLine({ born, lifespan, epilogue, className }: LifeLineProps)
       <dl className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {born && (
           <div data-narrate data-narrate-text={spoken(t('machine.born'), formatPartialDate(born.value, locale))}>
-            <dt className="font-mono text-[0.65rem] tracking-[0.25em] text-moon-dust uppercase">{t('machine.born')}</dt>
+            <dt className="font-mono text-[0.72rem] tracking-[0.25em] text-moon-dust uppercase">{t('machine.born')}</dt>
             <dd className="mt-1 font-heading text-xl font-bold">
               <time dateTime={born.value}>{formatPartialDate(born.value, locale)}</time>
             </dd>
@@ -66,7 +66,7 @@ export function LifeLine({ born, lifespan, epilogue, className }: LifeLineProps)
             alive || end ? spoken(t('machine.lastSignal'), alive ? t('machine.stillWorking') : formatPartialDate(end!.value, locale)) : undefined
           }
         >
-          <dt className="font-mono text-[0.65rem] tracking-[0.25em] text-moon-dust uppercase">{t('machine.lastSignal')}</dt>
+          <dt className="font-mono text-[0.72rem] tracking-[0.25em] text-moon-dust uppercase">{t('machine.lastSignal')}</dt>
           <dd className="mt-1 font-heading text-xl font-bold">
             {alive ? (
               <span className="text-stellar-cyan">{t('machine.stillWorking')}</span>
@@ -79,13 +79,13 @@ export function LifeLine({ born, lifespan, epilogue, className }: LifeLineProps)
         </div>
         {plannedText && (
           <div data-narrate data-narrate-text={spoken(t('machine.planned'), plannedText)}>
-            <dt className="font-mono text-[0.65rem] tracking-[0.25em] text-moon-dust uppercase">{t('machine.planned')}</dt>
+            <dt className="font-mono text-[0.72rem] tracking-[0.25em] text-moon-dust uppercase">{t('machine.planned')}</dt>
             <dd className="mt-1 font-heading text-xl font-bold">{plannedText}</dd>
           </div>
         )}
         {realText && (
           <div data-narrate data-narrate-text={spoken(t('machine.real'), realText)}>
-            <dt className="font-mono text-[0.65rem] tracking-[0.25em] text-moon-dust uppercase">{t('machine.real')}</dt>
+            <dt className="font-mono text-[0.72rem] tracking-[0.25em] text-moon-dust uppercase">{t('machine.real')}</dt>
             <dd className="mt-1 font-heading text-xl font-bold text-world">{realText}</dd>
           </div>
         )}

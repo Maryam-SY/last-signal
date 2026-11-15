@@ -179,7 +179,7 @@ function PhoneMenu({ open, onClose, pathname }: { open: boolean; onClose: () => 
                 >
                   <span>
                     <span className="block font-heading text-3xl font-bold">{t(item.labelKey)}</span>
-                    <span className="mt-1 block font-mono text-[0.68rem] tracking-[0.25em] text-moon-dust uppercase">{t(item.hintKey)}</span>
+                    <span className="mt-1 block font-mono text-[0.72rem] tracking-[0.25em] text-moon-dust uppercase">{t(item.hintKey)}</span>
                   </span>
                   <ArrowUpRight aria-hidden="true" className="size-6 text-moon-dust transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </Link>
@@ -193,7 +193,7 @@ function PhoneMenu({ open, onClose, pathname }: { open: boolean; onClose: () => 
             <SoundToggle />
             <LanguageSwitch />
           </div>
-          <p className="max-w-[12rem] text-right text-[0.7rem] leading-snug text-moon-dust">{t('app.disclaimer')}</p>
+          <p className="max-w-[12rem] text-right text-[0.72rem] leading-snug text-moon-dust">{t('app.disclaimer')}</p>
         </div>
       </div>
       )}

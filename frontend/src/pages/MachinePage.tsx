@@ -20,7 +20,6 @@ import { DepictionBadge } from '@/components/media/DepictionBadge'
 import { VideoReel } from '@/components/media/VideoReel'
 import { DecodeText } from '@/components/motion/DecodeText'
 import { Reveal } from '@/components/motion/Reveal'
-import { ScrollProgress } from '@/components/motion/ScrollProgress'
 import { JourneyRail } from '@/components/navigation/JourneyRail'
 import { RelationEnds } from '@/components/relations/RelationEnds'
 import { WordsToKnow } from '@/components/story/StoryPedagogy'
@@ -32,6 +31,7 @@ import { contentLang } from '@/i18n/translate'
 import { buildActs, type Act } from '@/lib/acts'
 import { wordsIn } from '@/lib/glossary'
 import { signalFade } from '@/lib/ambientSound'
+import { keepHyphens } from '@/lib/keepHyphens'
 import { record } from '@/lib/explorerLog'
 import { formatPartialDate } from '@/lib/formatDate'
 import { bestStill, biographyChapters, machineChapters, machineCover, modelOf, type LifeChapter } from '@/lib/journey'
@@ -86,7 +86,7 @@ function MachineView({ destinationId, machineId }: { destinationId: DestinationI
 
   return (
     <MachineLife
-      machine={machine.data}
+      machine={{ ...machine.data, name: keepHyphens(machine.data.name) }}
       mission={mission.status === 'success' ? mission.data : null}
       destination={destination.status === 'success' ? destination.data : null}
       story={story.status === 'success' ? story.data : null}
@@ -206,7 +206,6 @@ function MachineLife({ machine, mission, destination, story }: MachineLifeProps)
   return (
     <div data-world={destinationId} data-narration-root lang={contentLang(locale)} className="relative overflow-x-clip">
       <SpaceBackdrop />
-      <ScrollProgress />
       <JourneyRail items={rail} label={t('machine.journeyLabel', { name: machine.name })} />
 
       <div className="relative z-10 md:pr-16 lg:pr-20">

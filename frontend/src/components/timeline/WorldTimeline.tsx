@@ -45,7 +45,7 @@ export function WorldTimeline({ destination }: { destination: DestinationDetail 
                       <time dateTime={event.date.value} className="font-mono text-xs text-world">
                         {formatPartialDate(event.date.value, locale)}
                       </time>
-                      <span className="rounded-full border border-world/40 px-2 py-0.5 font-mono text-[0.6rem] tracking-widest text-world uppercase">
+                      <span className="rounded-full border border-world/40 px-2 py-0.5 font-mono text-[0.72rem] tracking-widest text-world uppercase">
                         {event.missionName}
                       </span>
                     </p>

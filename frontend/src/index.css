@@ -1681,7 +1681,7 @@ html[data-flight-snap] .flight-snap-edge {
   border-radius: 0.35rem;
   background: rgb(5 7 13 / 0.6);
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.72rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: color-mix(in srgb, var(--world-accent) 80%, white);
@@ -1724,7 +1724,7 @@ html[data-flight-snap] .flight-snap-edge {
 /* Hangar card: dossier header. */
 .dossier-line {
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: 0.72rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: rgb(241 245 249 / 0.75);

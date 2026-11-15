@@ -88,7 +88,7 @@ export function JourneyRail({ items, label, className }: JourneyRailProps) {
                   <span className="block size-2.5 rounded-full border border-moon-dust/70 bg-void transition-all group-hover:border-world group-aria-[current=location]:size-4 group-aria-[current=location]:border-world group-aria-[current=location]:bg-world group-aria-[current=location]:shadow-[0_0_14px_var(--world-accent)]" />
                   <span
                     aria-hidden="true"
-                    className="glass pointer-events-none absolute right-full mr-2 hidden max-w-56 truncate rounded-full px-3 py-1 font-mono text-[0.62rem] tracking-widest whitespace-nowrap text-starlight uppercase group-hover:block group-hover:max-w-none group-focus-visible:block group-focus-visible:max-w-none min-[1680px]:group-aria-[current=location]:block"
+                    className="glass pointer-events-none absolute right-full mr-2 hidden max-w-56 truncate rounded-full px-3 py-1 font-mono text-[0.72rem] tracking-widest whitespace-nowrap text-starlight uppercase group-hover:block group-hover:max-w-none group-focus-visible:block group-focus-visible:max-w-none min-[1680px]:group-aria-[current=location]:block"
                   >
                     {item.label}
                   </span>

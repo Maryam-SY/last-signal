@@ -19,7 +19,7 @@ export function LoadState({ status, onRetry, variant = 'text', className }: Load
       <output className={cn('block py-4', className)}>
         <span className="sr-only">{t('loading.message')}</span>
         {/* US-5.14: the wait looks like a signal being acquired. */}
-        <span aria-hidden="true" className="mb-3 flex items-center gap-3 font-mono text-[0.68rem] tracking-[0.3em] text-world uppercase">
+        <span aria-hidden="true" className="mb-3 flex items-center gap-3 font-mono text-[0.72rem] tracking-[0.3em] text-world uppercase">
           <span className="signal-acquire">
             <i />
             <i />
@@ -53,7 +53,7 @@ export function LoadState({ status, onRetry, variant = 'text', className }: Load
 
   return (
     <div role="alert" className={cn('glass rounded-2xl border-destructive/50 p-5', className)}>
-      <p className="flex items-center gap-2 font-mono text-[0.68rem] tracking-[0.3em] text-destructive uppercase">
+      <p className="flex items-center gap-2 font-mono text-[0.72rem] tracking-[0.3em] text-destructive uppercase">
         <RadioTower aria-hidden="true" className="size-4" />
         {t('loading.signalLost')}
       </p>

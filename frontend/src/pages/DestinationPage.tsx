@@ -10,7 +10,6 @@ import { NextWorld } from '@/components/destination/NextWorld'
 import { MachineHangar } from '@/components/hangar/MachineHangar'
 import { Scene } from '@/components/destination/Scene'
 import { CountUp } from '@/components/motion/CountUp'
-import { ScrollProgress } from '@/components/motion/ScrollProgress'
 import { JourneyRail } from '@/components/navigation/JourneyRail'
 import { WorldTimeline } from '@/components/timeline/WorldTimeline'
 import { getBodyByDestination } from '@/content/celestialBodies'
@@ -60,7 +59,6 @@ function DestinationView({ destinationId }: { destinationId: DestinationId }) {
   return (
     <div data-world={destinationId} lang={contentLang(locale)} className="relative overflow-x-clip">
       <SpaceBackdrop />
-      <ScrollProgress />
       {body && !reduced && <PinnedDestinationPlanet key={destinationId} body={body} />}
       <JourneyRail items={railItems} label={t('destination.journeyLabel')} />
 

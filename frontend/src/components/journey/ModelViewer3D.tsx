@@ -152,7 +152,7 @@ export function ModelViewer3D({ model, parts = [] }: { model: Media; parts?: rea
         )}
         {status === 'ready' && !loaded && (
           <div aria-hidden="true" className="pointer-events-none absolute inset-0 flex items-center justify-center">
-            <span className="flex items-center gap-3 font-mono text-[0.68rem] tracking-[0.3em] text-world uppercase">
+            <span className="flex items-center gap-3 font-mono text-[0.72rem] tracking-[0.3em] text-world uppercase">
               <span className="signal-acquire">
                 <i />
                 <i />

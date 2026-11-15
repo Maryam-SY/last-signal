@@ -20,7 +20,7 @@ export function TelemetryBar({ machine, className }: { machine: MachineDetail; c
   const { t } = useTranslation()
   const status = machine.status.value
   return (
-    <dl className={cn('telemetry flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-[0.7rem] tracking-[0.18em] text-moon-dust uppercase', className)}>
+    <dl className={cn('telemetry flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-[0.72rem] tracking-[0.18em] text-moon-dust uppercase', className)}>
       <div className="flex items-center gap-2">
         <dt className="sr-only">{t('status.label')}</dt>
         <dd className="flex items-center gap-2 text-starlight">

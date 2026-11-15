@@ -195,7 +195,7 @@ function SpatialJourney({ scenes, layers, navLabel }: DepthJourneyProps) {
                   className="group relative flex size-11 items-center justify-center rounded-full"
                 >
                   <span className="block size-2.5 rounded-full border border-moon-dust/70 bg-void transition-all group-hover:border-stellar-cyan group-aria-[current=step]:size-3.5 group-aria-[current=step]:border-stellar-cyan group-aria-[current=step]:bg-stellar-cyan" />
-                  <span aria-hidden="true" className="pointer-events-none absolute right-full mr-1 hidden rounded bg-void/80 px-2 py-0.5 font-mono text-[0.6rem] tracking-widest whitespace-nowrap text-moon-dust uppercase group-hover:block group-focus-visible:block sm:mr-2 lg:group-aria-[current=step]:block">
+                  <span aria-hidden="true" className="pointer-events-none absolute right-full mr-1 hidden rounded bg-void/80 px-2 py-0.5 font-mono text-[0.72rem] tracking-widest whitespace-nowrap text-moon-dust uppercase group-hover:block group-focus-visible:block sm:mr-2 lg:group-aria-[current=step]:block">
                     {scene.label}
                   </span>
                   <span className="sr-only">{scene.label}</span>

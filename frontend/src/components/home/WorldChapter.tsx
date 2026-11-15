@@ -75,7 +75,7 @@ export function WorldChapter({ id, number, reversed = false }: WorldChapterProps
       </div>
 
       <div className={cn('text-center lg:text-left', reversed && 'lg:order-1')}>
-        <p className="font-mono text-[0.65rem] tracking-[0.35em] text-stellar-cyan uppercase">
+        <p className="font-mono text-[0.72rem] tracking-[0.35em] text-stellar-cyan uppercase">
           {t('explore.chapter', { number: String(number).padStart(2, '0') })}
         </p>
         <h2 id={titleId} className="velocity-skew mt-3 font-heading text-5xl leading-none font-bold sm:text-7xl">

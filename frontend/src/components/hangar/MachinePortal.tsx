@@ -7,6 +7,7 @@ import { DepictionBadge } from '@/components/media/DepictionBadge'
 import { SignalBars } from '@/components/machine/SignalBars'
 import { StatusBadge } from '@/components/machine/StatusBadge'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
+import { keepHyphens } from '@/lib/keepHyphens'
 import { useTranslation } from '@/i18n'
 import { machineHook } from '@/lib/hook'
 import { lastSignal } from '@/lib/lifespan'
@@ -115,8 +116,8 @@ export function MachinePortal({ machine, missionName, destinationId, index, coun
           </span>
         </div>
         <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
-          <p className="font-mono text-[0.6rem] tracking-[0.25em] text-world uppercase">{missionName}</p>
-          <p className="mt-1 font-heading text-2xl leading-tight font-bold sm:text-[1.7rem]">{machine.name}</p>
+          <p className="font-mono text-[0.72rem] tracking-[0.25em] text-world uppercase">{missionName}</p>
+          <p className="mt-1 font-heading text-2xl leading-tight font-bold sm:text-[1.7rem]">{keepHyphens(machine.name)}</p>
           <p className="mt-1 text-xs text-moon-dust">{t(`machineType.${machine.type}`)}</p>
           {start && (
             <p className="mt-3 flex items-center gap-2 font-mono text-sm text-starlight">

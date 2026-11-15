@@ -167,7 +167,7 @@ function HomeStats({ revealed, className, style }: { revealed: boolean; classNam
     >
       {stats.map((stat) => (
         <div key={stat.label} className="flex flex-col-reverse items-center">
-          <dt className="mt-1 font-mono text-[0.6rem] tracking-[0.25em] text-moon-dust uppercase">{stat.label}</dt>
+          <dt className="mt-1 font-mono text-[0.72rem] tracking-[0.25em] text-moon-dust uppercase">{stat.label}</dt>
           <dd className="stat-number font-heading text-3xl leading-none font-bold sm:text-4xl">
             <CountUp value={stat.value} run={revealed} />
           </dd>
@@ -229,7 +229,7 @@ function Motto() {
 
   return (
     <div className="mx-auto max-w-4xl px-12 text-center sm:px-16">
-      <p className="font-mono text-[0.65rem] tracking-[0.35em] text-stellar-cyan uppercase">
+      <p className="font-mono text-[0.72rem] tracking-[0.35em] text-stellar-cyan uppercase">
         {t('explore.mottoEyebrow')}
       </p>
       <p className="velocity-skew mt-6 font-heading text-[clamp(1.9rem,5.5vw,4.5rem)] leading-tight font-bold">

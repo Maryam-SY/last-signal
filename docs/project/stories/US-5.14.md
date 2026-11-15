@@ -145,3 +145,9 @@ Trois audits (performance/code, accessibilité/mobile/UX, contenu/i18n/docs) ont
 - **Pied de page** (`components/navigation/SiteFooter.tsx`) : logo, devise du site et note sur les sources ; colonnes **Explorer** (le voyage, Lune, Mars) et **Le projet** (à propos, sources, crédits des images, IA) ; mention d'indépendance et **Haut de page** ; grand « AeroReborn » pâle en fond (décoratif). Placé au-dessus du rail de progression.
 - `LogoMark` déplacé dans `components/brand/LogoMark.tsx` (partagé). Tests `routes.test.tsx` adaptés à la nouvelle navigation (Lune et Mars non courantes sur /about).
 - Vérifié à 360, 375 et 1100 px : pas de débordement horizontal, menu ouvert/fermé (lien, bouton, Échap).
+
+## Suite 11 — responsive mobile (2026-11-15)
+
+- Audit automatique à 360 px (accueil, Lune, Opportunity, Eagle, À propos) : débordement horizontal, cibles tactiles < 44 px, textes < 11,5 px, puis passe visuelle section par section.
+- Corrigé : petites étiquettes en capitales (0,6 à 0,7 rem, soit 9,6 à 11,2 px) relevées à 0,72 rem partout (télémétrie, faits « Arrivé / Dernier signal », eyebrows, cartes, identifiant des photos) ; liens du pied de page ≥ 44 px de large ; noms à trait d'union (« MER-A ») qui ne se coupent plus en fin de ligne (`lib/keepHyphens.ts`, trait d'union insécable, affichage seulement) ; ancienne barre de progression `ScrollProgress` supprimée (doublon de la ligne de signal de l'en-tête, elle restait flottante quand l'en-tête se masquait).
+- Ré-audit : aucun débordement, aucune cible ni texte trop petit sur ces pages (seuls deux boutons de l'accueil paraissent petits tant que leur scène est au loin, effet de profondeur).

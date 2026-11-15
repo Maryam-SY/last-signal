@@ -4,7 +4,7 @@ import { paths } from '@/app/paths'
 import { LogoMark } from '@/components/brand/LogoMark'
 import { useTranslation, type MessageKey } from '@/i18n'
 
-const footerLink = 'inline-flex min-h-11 items-center text-sm text-moon-dust transition-colors hover:text-starlight'
+const footerLink = 'inline-flex min-h-11 min-w-11 items-center text-sm text-moon-dust transition-colors hover:text-starlight'
 
 /**
  * The site footer: the mark and the site's motto, two short columns of links (the worlds, the
@@ -48,7 +48,7 @@ export function SiteFooter() {
           </div>
           {columns.map((column) => (
             <nav key={column.titleKey} aria-label={t(column.titleKey)}>
-              <p className="font-mono text-[0.68rem] tracking-[0.3em] text-stellar-gold uppercase">{t(column.titleKey)}</p>
+              <p className="font-mono text-[0.72rem] tracking-[0.3em] text-stellar-gold uppercase">{t(column.titleKey)}</p>
               <ul className="mt-3">
                 {column.links.map((link) => (
                   <li key={link.to}>

@@ -130,7 +130,7 @@ export function VideoReel({ videos, label, onFinished, className }: VideoReelPro
                 type="button"
                 aria-current={position === index ? 'true' : undefined}
                 onClick={() => setIndex(position)}
-                className="block min-h-11 w-28 shrink-0 overflow-hidden rounded-lg border border-white/10 text-left text-[0.65rem] leading-tight text-moon-dust transition-colors hover:border-world aria-[current=true]:border-world aria-[current=true]:text-starlight"
+                className="block min-h-11 w-28 shrink-0 overflow-hidden rounded-lg border border-white/10 text-left text-[0.72rem] leading-tight text-moon-dust transition-colors hover:border-world aria-[current=true]:border-world aria-[current=true]:text-starlight"
               >
                 {video.thumbnailUrl && <img src={video.thumbnailUrl} alt="" loading="lazy" className="aspect-video w-full object-cover" />}
                 <span className="line-clamp-2 block p-1.5">{video.title ?? video.alt}</span>
