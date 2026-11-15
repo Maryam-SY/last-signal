@@ -849,10 +849,26 @@ html.depth-mode::-webkit-scrollbar {
   }
 }
 
-/* Machine page hero: the photo slowly comes closer (transform only). */
+/* Machine page hero: the dimmed copy slowly comes closer; the photo itself stays whole
+   (object-fit: contain), a little above the middle so the title below never covers it. */
+.machine-hero-ambient {
+  opacity: 0.35;
+}
+.machine-hero-photo {
+  object-position: center 30%;
+}
 @media (prefers-reduced-motion: no-preference) {
-  .machine-hero-photo {
+  .machine-hero-ambient {
     animation: hero-drift 24s ease-out both;
+  }
+  .machine-hero-photo {
+    animation: hero-arrive 1.4s ease-out both;
+  }
+}
+@keyframes hero-arrive {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
   }
 }
 @keyframes hero-drift {
@@ -1212,8 +1228,12 @@ html.depth-mode::-webkit-scrollbar {
 
 /* Phones: the swipe feed — each moment's picture behind its text, under a mask that keeps
    the text readable (dark at the bottom where the text sits, clear at the top). */
+.feed-ambient {
+  opacity: 0.32;
+  transform: scale(1.08);
+}
 .feed-shade {
-  background: linear-gradient(to bottom, rgb(5 7 13 / 0.35) 0%, rgb(5 7 13 / 0) 18%, rgb(5 7 13 / 0.55) 42%, rgb(5 7 13 / 0.9) 62%, rgb(5 7 13 / 0.97) 100%);
+  background: linear-gradient(to bottom, rgb(5 7 13 / 0.55) 0%, rgb(5 7 13 / 0.25) 30%, rgb(5 7 13 / 0.6) 60%, rgb(5 7 13 / 0.94) 82%, rgb(5 7 13 / 0.98) 100%);
 }
 .flight-panel {
   color: var(--cosmos-starlight);

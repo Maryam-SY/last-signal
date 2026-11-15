@@ -77,6 +77,19 @@ export function cardSrc(media: Pick<Media, 'url' | 'thumbnailUrl' | 'largeUrl'>,
   return media.thumbnailUrl ?? media.largeUrl ?? media.url
 }
 
+/**
+ * Source for the dimmed copy that fills the frame around a whole picture (seen at about a
+ * third of its brightness, often blurred): 256 px is plenty.
+ */
+export function ambientSrc(media: Pick<Media, 'url' | 'thumbnailUrl' | 'largeUrl'>, enabled = optimizerEnabled()): string {
+  if (enabled) {
+    const source = media.largeUrl ?? media.url
+    const ambient = optimized(source, 256, true)
+    if (ambient !== source) return ambient
+  }
+  return media.thumbnailUrl ?? media.largeUrl ?? media.url
+}
+
 /** Source for a picture that fills a column or the screen (large box). */
 export function sceneSrc(media: Pick<Media, 'url' | 'largeUrl'>, enabled = optimizerEnabled()): string {
   return optimized(media.largeUrl ?? media.url, screenWidth(), enabled)

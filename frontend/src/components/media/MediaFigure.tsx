@@ -132,7 +132,7 @@ function RemoteImage({ media }: { media: Media }) {
         if (event.currentTarget.src !== media.url) event.currentTarget.src = media.url
         else setFailed(true)
       }}
-      className="aspect-video w-full object-cover"
+      className="block h-auto max-h-[80vh] w-full bg-void object-contain"
     />
   )
 }

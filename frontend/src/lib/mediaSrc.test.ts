@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { cardSrc, optimized, originalOf, sceneSrc, zoomSrc } from './mediaSrc'
+import { ambientSrc, cardSrc, optimized, originalOf, sceneSrc, zoomSrc } from './mediaSrc'
 
 describe('picture sizes (US-5.14)', () => {
   const orig = 'https://images-assets.nasa.gov/image/PIA05755/PIA05755~orig.jpg'
@@ -39,6 +39,8 @@ describe('Vercel image optimisation (ADR-027)', () => {
     expect(cardSrc({ url: orig, thumbnailUrl: 'https://images-assets.nasa.gov/image/x/x~thumb.jpg', largeUrl: large }, true)).toContain(`url=${encodeURIComponent(large)}&w=640`)
     expect(zoomSrc({ url: orig, largeUrl: large }, true)).toContain(`url=${encodeURIComponent(orig)}&w=2048`)
     expect(sceneSrc({ url: orig, largeUrl: large }, true)).toMatch(/&w=(1080|1600)&q=70$/)
+    // The dimmed copy around a whole picture only needs 256 px.
+    expect(ambientSrc({ url: orig, largeUrl: large }, true)).toContain(`url=${encodeURIComponent(large)}&w=256`)
   })
 })
 

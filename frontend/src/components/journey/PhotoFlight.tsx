@@ -8,7 +8,7 @@ import { MediaFigure } from '@/components/media/MediaFigure'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { useScrollFrame } from '@/hooks/useScrollFrame'
 import { useTranslation } from '@/i18n'
-import { cardSrc, sceneSrc } from '@/lib/mediaSrc'
+import { ambientSrc, sceneSrc } from '@/lib/mediaSrc'
 import { setBringIntoView } from '@/lib/readAlong'
 import { cn } from '@/lib/utils'
 
@@ -154,15 +154,19 @@ function PhoneFeed({ label, items, className }: PhotoFlightProps) {
               ref={(element) => {
                 slideRefs.current[index] = element
               }}
-              className={cn('feed-slide relative flex min-h-dvh flex-col justify-end overflow-hidden', index === current && 'is-current')}
+              className={cn('feed-slide relative flex min-h-dvh flex-col overflow-hidden', index === current && 'is-current')}
             >
-              {media && loaded && (
-                <div aria-hidden="true" className="absolute inset-0">
-                  <img src={cardSrc(media)} alt="" decoding="async" className="absolute inset-0 size-full object-cover" />
-                  <FlightImage url={sceneSrc(media)} near onError={() => setFailed((previous) => new Set(previous).add(item.id))} />
-                </div>
-              )}
+              {/* A dimmed copy fills the screen; the picture itself is shown whole, never cropped,
+                  in the space above its text (team request: pictures fit their frame). */}
+              {media && loaded && <img src={ambientSrc(media)} alt="" aria-hidden="true" decoding="async" className="feed-ambient absolute inset-0 size-full object-cover" />}
               <div aria-hidden="true" className="feed-shade absolute inset-0" />
+              <div aria-hidden="true" className="relative min-h-[34dvh] flex-1">
+                {media && loaded && (
+                  <div className="absolute inset-x-3 top-16 bottom-1">
+                    <FlightImage url={sceneSrc(media)} near fit="contain" onError={() => setFailed((previous) => new Set(previous).add(item.id))} />
+                  </div>
+                )}
+              </div>
               {media && (
                 <span className="absolute top-20 left-4">
                   <DepictionBadge depiction={media.depiction} />
@@ -178,7 +182,7 @@ function PhoneFeed({ label, items, className }: PhotoFlightProps) {
                   <ZoomIn aria-hidden="true" className="size-5" />
                 </button>
               )}
-              <div className="flight-panel feed-text relative px-5 pt-32 pb-[max(1.75rem,env(safe-area-inset-bottom))] sm:px-10">
+              <div className="flight-panel feed-text relative px-5 pt-3 pb-[max(1.75rem,env(safe-area-inset-bottom))] sm:px-10">
                 {item.hud && <p className="flight-hud mb-2 font-mono text-xs tracking-[0.2em] text-world uppercase">{item.hud}</p>}
                 <p aria-hidden="true" className="mb-3 flex items-baseline gap-2 font-mono text-xs tracking-[0.3em] text-world">
                   <span>{pad(index + 1)}</span>
@@ -360,10 +364,10 @@ function Flight({ label, items, className }: PhotoFlightProps) {
                     the pictures around the one in front are downloaded: a page of 48 pictures no
                     longer asks for all of them at once on arrival (slow connections lagged). */}
                 {near && index >= shown - 2 && index <= shown + LOOK_AHEAD + 3 && (
-                  <img src={cardSrc(item.media)} alt="" aria-hidden="true" decoding="async" className="flight-preview absolute inset-0 size-full object-cover" />
+                  <img src={ambientSrc(item.media)} alt="" aria-hidden="true" decoding="async" className="flight-preview absolute inset-0 size-full object-cover" />
                 )}
                 {near && index >= shown - 1 && index <= shown + LOOK_AHEAD && (
-                  <FlightImage url={sceneSrc(item.media)} near onError={() => setFailed((previous) => new Set(previous).add(item.id))} />
+                  <FlightImage url={sceneSrc(item.media)} near fit="contain" onError={() => setFailed((previous) => new Set(previous).add(item.id))} />
                 )}
                 <span className="absolute top-3 left-3">
                   <DepictionBadge depiction={item.media.depiction} />
@@ -484,7 +488,8 @@ function inTurn<T>(task: () => Promise<T>): Promise<T> {
  * plain <img> in a moving 3D layer they were re-rasterised at every scale change, freezing
  * the page for up to 2 s. Falls back to a plain <img> where canvas or decode() is missing.
  */
-function FlightImage({ url, near, onError }: { url: string; near: boolean; onError: () => void }) {
+function FlightImage({ url, near, onError, fit = 'cover' }: { url: string; near: boolean; onError: () => void; fit?: 'cover' | 'contain' }) {
+  const fitClass = fit === 'contain' ? 'object-contain' : 'object-cover'
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [mode, setMode] = useState<'pending' | 'canvas' | 'img'>('pending')
   const onErrorRef = useRef(onError)
@@ -546,12 +551,12 @@ function FlightImage({ url, near, onError }: { url: string; near: boolean; onErr
   }, [near, url])
 
   if (mode === 'img') {
-    return <img src={url} alt="" decoding="async" onError={() => onErrorRef.current()} className="relative size-full object-cover" />
+    return <img src={url} alt="" decoding="async" onError={() => onErrorRef.current()} className={cn('relative size-full', fitClass)} />
   }
   return (
     <canvas
       ref={canvasRef}
-      className={cn('relative size-full object-cover transition-opacity duration-500', mode === 'canvas' ? 'opacity-100' : 'opacity-0')}
+      className={cn('relative size-full transition-opacity duration-500', fitClass, mode === 'canvas' ? 'opacity-100' : 'opacity-0')}
     />
   )
 }

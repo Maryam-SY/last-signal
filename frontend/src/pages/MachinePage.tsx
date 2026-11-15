@@ -218,7 +218,9 @@ function MachineLife({ machine, mission, destination, story }: MachineLifeProps)
         >
           {cover && (
             <div className="absolute inset-0 -z-10" style={{ viewTransitionName: MACHINE_TRANSITION_NAME }}>
-              <img src={sceneSrc(cover)} alt={cover.alt} decoding="async" fetchPriority="high" className="machine-hero-photo size-full object-cover" />
+              {/* The photo whole (never cropped), over a dimmed copy that fills the screen. */}
+              <img src={sceneSrc(cover)} alt="" aria-hidden="true" decoding="async" className="machine-hero-ambient absolute inset-0 size-full object-cover" />
+              <img src={sceneSrc(cover)} alt={cover.alt} decoding="async" fetchPriority="high" className="machine-hero-photo relative size-full object-contain max-lg:hidden" />
               <span aria-hidden="true" className="hero-scan" />
               <span className="absolute top-20 left-5 sm:left-8">
                 <DepictionBadge depiction={cover.depiction} />
@@ -226,7 +228,13 @@ function MachineLife({ machine, mission, destination, story }: MachineLifeProps)
             </div>
           )}
           <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-t from-void via-void/70 to-void/10" />
-          <div className="hero-rise mx-auto w-full max-w-6xl px-5 pt-32 pb-16 sm:pb-20">
+          {/* Phones and tablets: the photo whole in the space above the text, never under it. */}
+          {cover && (
+            <div className="relative min-h-[30dvh] flex-1 px-3 pt-20 lg:hidden">
+              <img src={sceneSrc(cover)} alt={cover.alt} decoding="async" fetchPriority="high" className="machine-hero-photo size-full object-contain" />
+            </div>
+          )}
+          <div className="hero-rise mx-auto w-full max-w-6xl px-5 pt-4 pb-16 sm:pb-20 lg:pt-32">
             <Link
               to={paths.destination(destinationId)}
               viewTransition
@@ -303,7 +311,7 @@ function MachineLife({ machine, mission, destination, story }: MachineLifeProps)
                 return (
                   <li key={benefit.id}>
                     <Reveal delay={index * 90} className="reading-panel earth-card h-full overflow-hidden rounded-3xl">
-                      {picture && <img src={cardSrc(picture)} alt={picture.alt} loading="lazy" className="aspect-[16/9] w-full object-cover" />}
+                      {picture && <img src={cardSrc(picture)} alt={picture.alt} loading="lazy" className="block h-auto max-h-[60vh] w-full bg-void object-contain" />}
                       <div className="p-6">
                         <h3 data-narrate className="font-heading text-xl font-bold text-world sm:text-2xl">
                           {benefit.title}

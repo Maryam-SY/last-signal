@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type CSSProperties, type RefObject } from 
 import type { CelestialBody } from '@/content/celestialBodies'
 import { useMotionLoop } from '@/hooks/useMotionLoop'
 import { canUseWebGL, liteGraphics } from '@/lib/device'
+import { introPlaying, onIntroEnd } from '@/components/home/introSession'
 import { cn } from '@/lib/utils'
 import type { GlobeInstance } from './globe/createGlobe'
 import { Planet, type PlanetHandle } from './Planet'
@@ -65,6 +66,9 @@ export function LivePlanet({
   // Phones: a globe exists only while it is actually seen, and is released (its WebGL context
   // and textures freed) a moment after it leaves the screen; the photo planet stands in.
   const [lite] = useState(liteGraphics)
+  // The 3D globe (three.js and its maps) waits for the intro to end: the video comes first.
+  const [introOver, setIntroOver] = useState(() => !introPlaying())
+  useEffect(() => (introOver ? undefined : onIntroEnd(() => setIntroOver(true))), [introOver])
   const [live, setLive] = useState(false)
   // A released WebGL context stays lost on its canvas: each new globe gets a fresh <canvas>.
   const [generation, setGeneration] = useState(0)
@@ -105,7 +109,7 @@ export function LivePlanet({
   useEffect(() => {
     const config = body.globe
     const canvas = canvasRef.current
-    if (!useGlobe || !seen || !config || !canvas || (lite && !live)) return
+    if (!useGlobe || !seen || !introOver || !config || !canvas || (lite && !live)) return
     let cancelled = false
     let instance: GlobeInstance | null = null
 
@@ -144,7 +148,7 @@ export function LivePlanet({
       instance?.dispose()
       globeRef.current = null
     }
-  }, [useGlobe, seen, body.globe, hd, lite, live, generation])
+  }, [useGlobe, seen, introOver, body.globe, hd, lite, live, generation])
 
   useEffect(() => {
     if (!globeReady) return

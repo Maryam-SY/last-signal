@@ -4,7 +4,7 @@ import { Link } from 'react-router'
 import { api } from '@/api/client'
 import { paths } from '@/app/paths'
 import { IntroVideo } from '@/components/home/IntroVideo'
-import { shouldPlayIntro } from '@/components/home/introSession'
+import { setIntroPlaying, shouldPlayIntro } from '@/components/home/introSession'
 import { WorldChapter, WorldEcho } from '@/components/home/WorldChapter'
 import { WorldPortal } from '@/components/home/WorldPortal'
 import { DepthJourney, type DepthLayer, type DepthScene } from '@/components/motion/DepthJourney'
@@ -27,7 +27,13 @@ export function ExplorePage() {
   useDocumentTitle(t('explore.title'))
   const reduced = useReducedMotion()
   // US-2.4: the intro video plays first (once per visit); the home lights up as it fades out.
-  const [intro, setIntro] = useState<'playing' | 'fading' | 'done'>(() => (shouldPlayIntro(reduced) ? 'playing' : 'done'))
+  const [intro, setIntro] = useState<'playing' | 'fading' | 'done'>(() => {
+    const play = shouldPlayIntro(reduced)
+    setIntroPlaying(play)
+    return play ? 'playing' : 'done'
+  })
+  // Leaving the home page during the intro must not keep the globes of other pages waiting.
+  useEffect(() => () => setIntroPlaying(false), [])
   const revealed = intro !== 'playing'
 
   const scenes: DepthScene[] = [
@@ -53,7 +59,15 @@ export function ExplorePage() {
       <div className="relative z-10">
         <DepthJourney scenes={scenes} layers={layers} navLabel={t('explore.journeyLabel')} />
       </div>
-      {intro !== 'done' && <IntroVideo onReveal={() => setIntro('fading')} onDone={() => setIntro('done')} />}
+      {intro !== 'done' && (
+        <IntroVideo
+          onReveal={() => {
+            setIntroPlaying(false)
+            setIntro('fading')
+          }}
+          onDone={() => setIntro('done')}
+        />
+      )}
     </div>
   )
 }
