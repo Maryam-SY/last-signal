@@ -135,13 +135,16 @@ svg.ln{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;strok
 
 /* ---------- Why AeroReborn ---------- */
 .cmp{position:relative}
-.cmp-head,.cr{display:grid;grid-template-columns:15% 33% 1fr;gap:1.6cqw;align-items:center}
+.cmp-head,.cr{display:grid;grid-template-columns:13% 29% 1fr 11.5%;gap:1.4cqw;align-items:center}
+.iw{justify-self:end;font:700 max(11px,1.05cqw)/1 var(--f-display);letter-spacing:.02em;color:var(--gold);border:1px solid var(--gold);border-radius:99px;padding:.45cqw 1cqw;white-space:nowrap;background:rgba(229,197,141,.08)}
+.iw::first-letter{font-size:1.25em;color:var(--text)}
+.isum{font:600 max(12px,1.2cqw)/1.3 var(--f-display);color:var(--gold);margin:0}
 .cmp-head{padding-bottom:.6cqw}
-.cr{position:relative;padding:.8cqw 0;border-top:1px solid var(--line)}
+.cr{position:relative;padding:.5cqw 0;border-top:1px solid var(--line)}
 .ck{font:500 max(10px,.78cqw) var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.old{position:relative;justify-self:start;font-size:max(12px,1.12cqw);color:var(--muted)}
+.old{position:relative;justify-self:start;font-size:max(11px,1.02cqw);color:var(--muted);white-space:nowrap}
 .strike{position:absolute;left:-2%;right:-2%;top:55%;height:1.5px;background:var(--rocky);transform-origin:left}
-.new{display:flex;align-items:center;gap:.8cqw;font:600 max(13px,1.35cqw)/1.25 var(--f-display);color:var(--text)}
+.new{display:flex;align-items:center;gap:.8cqw;font:600 max(12px,1.22cqw)/1.2 var(--f-display);color:var(--text)}
 .chk{flex:none;width:1.6cqw;height:1.6cqw;color:var(--void);background:var(--cyan);border-radius:50%;padding:.25cqw;stroke-width:3}
 .scan{position:absolute;top:0;bottom:0;left:48%;width:52%;background:linear-gradient(90deg,transparent,rgba(97,214,232,.10),transparent);pointer-events:none;opacity:0}
 
@@ -508,17 +511,18 @@ svg.ln{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;strok
           <p class="lbl cy">Pourquoi AeroReborn&nbsp;?</p>
           <h2 class="k-l h" style="margin-top:1cqw;font-size:2.9cqw">Des sites sur ces machines, il en existe. Voici ce qui change.</h2>
         </div>
-        <div class="a cmp" style="left:7%;top:27%;width:86%">
-          <div class="cmp-head"><span></span><span class="lbl">Ailleurs</span><span class="lbl cy">Sur AeroReborn</span></div>
-          <div class="cr"><span class="ck">Pour qui</span><span class="old">Les spécialistes<i class="strike"></i></span><span class="new"><svg class="ln chk" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Les 10-15 ans, et tout le monde</span></div>
-<div class="cr"><span class="ck">On cherche</span><span class="old">Mission par mission, page par page<i class="strike"></i></span><span class="new"><svg class="ln chk" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Une machine, toute sa vie, au même endroit</span></div>
-<div class="cr"><span class="ck">On lit</span><span class="old">Des fiches techniques en anglais<i class="strike"></i></span><span class="new"><svg class="ln chk" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Sa vie en actes, racontée et lue à voix haute, en 3 langues</span></div>
-<div class="cr"><span class="ck">On explore</span><span class="old">Des listes et des tableaux<i class="strike"></i></span><span class="new"><svg class="ln chk" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Des globes, un hangar, un vol de photos, des pièces à toucher</span></div>
-<div class="cr"><span class="ck">On fait confiance</span><span class="old">Faits et légendes parfois mélangés<i class="strike"></i></span><span class="new"><svg class="ln chk" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Chaque fait sourcé, chaque vue d'artiste signalée</span></div>
-<div class="cr"><span class="ck">On participe</span><span class="old">On lit, puis on referme<i class="strike"></i></span><span class="new"><svg class="ln chk" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Une page qui suit la voix, une question « À toi »</span></div>
+        <div class="a cmp" style="left:7%;top:23.5%;width:86%">
+          <div class="cmp-head"><span></span><span class="lbl">Ailleurs</span><span class="lbl cy">Sur AeroReborn</span><span></span></div>
+          <div class="cr"><span class="ck">Pour qui</span><span class="old">Les spécialistes<i class="strike"></i></span><span class="new"><svg class="ln chk" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Les 10-15 ans, et tout le monde</span><span class="iw">Inclusif</span></div>
+<div class="cr"><span class="ck">On cherche</span><span class="old">Mission par mission, page par page<i class="strike"></i></span><span class="new"><svg class="ln chk" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Une machine, toute sa vie, au même endroit</span><span class="iw">Intuitif</span></div>
+<div class="cr"><span class="ck">On lit</span><span class="old">Des fiches techniques en anglais<i class="strike"></i></span><span class="new"><svg class="ln chk" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Sa vie en actes, racontée et lue à voix haute, en 3 langues</span><span class="iw">Immersif</span></div>
+<div class="cr"><span class="ck">On explore</span><span class="old">Des listes et des tableaux<i class="strike"></i></span><span class="new"><svg class="ln chk" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Des globes, un hangar, un vol de photos, des pièces à toucher</span><span class="iw">Interactif</span></div>
+<div class="cr"><span class="ck">On fait confiance</span><span class="old">Faits et légendes parfois mélangés<i class="strike"></i></span><span class="new"><svg class="ln chk" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Chaque fait sourcé, chaque vue d'artiste signalée</span><span class="iw">Intègre</span></div>
+<div class="cr"><span class="ck">On participe</span><span class="old">On lit, puis on referme<i class="strike"></i></span><span class="new"><svg class="ln chk" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Une page qui suit la voix, une question « À toi »</span><span class="iw">Inspirant</span></div>
           <span class="scan"></span>
         </div>
-        <p class="a k-s c ans" style="left:8%;width:84%;bottom:5%">Les mêmes données de la NASA, <b style="color:var(--text)">vues sous un autre angle</b>&nbsp;: celui de quelqu'un qui veut comprendre.</p>
+        <p class="a isum c" style="left:8%;width:84%;bottom:10%">Inclusif · Intuitif · Immersif · Interactif · Intègre · Inspirant</p>
+        <p class="a k-s c ans" style="left:8%;width:84%;bottom:4%">Les mêmes données de la NASA, <b style="color:var(--text)">vues sous un autre angle</b>&nbsp;: celui de quelqu'un qui veut comprendre.</p>
       </div>
     </section>
 
@@ -945,7 +949,7 @@ svg.ln{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;strok
     { id: 's7', act: 2, title: 'AeroReborn', time: '1:30 → 1:40', warp: 1,
       say: "« Notre réponse : AeroReborn. On fait revivre ces machines pour apprendre l'espace grâce à leur mémoire. »" },
     { id: 'sw', act: 2, title: 'Pourquoi AeroReborn ?', time: '1:40 → 2:05', warp: .4,
-      say: "« Des sites sur ces machines, il en existe : ceux de la NASA, les encyclopédies… Mais ils sont faits pour les spécialistes. AeroReborn reprend les mêmes données et les montre autrement : pour les jeunes, une machine à la fois, toute sa vie au même endroit, racontée et lue à voix haute, chaque fait sourcé, et une question pour réfléchir. »" },
+      say: "« Des sites sur ces machines, il en existe : ceux de la NASA, les encyclopédies… Mais ils sont faits pour les spécialistes. AeroReborn reprend les mêmes données et les montre autrement : pour les jeunes, une machine à la fois, toute sa vie au même endroit, racontée et lue à voix haute, chaque fait sourcé, et une question pour réfléchir. Inclusif, intuitif, immersif, interactif, intègre, inspirant : six I, pour une seule idée, faire revivre ces machines. »" },
     { id: 'sy', act: 2, title: 'Notre apport', time: '2:05 → 2:35', warp: .5,
       say: "« Voilà ce qu'on apporte : un regard. On n'a pas changé les données, on a changé la façon de les raconter. La machine est le héros. On commence par la fin : son dernier signal s'affiche, son nom se décode, et on remonte sa vie. Ses dates écrivent le scénario : chaque acte est calculé depuis ses vraies dates. Un chiffre par acte : Opportunity, prévue pour 90 jours martiens, a tenu 57 fois plus longtemps, puis 248 jours de silence. Et une voix qui lit, pendant que la page suit. »" },
     { id: 's8', act: 2, title: 'Sa vie en actes', time: '2:35 → 2:55', warp: .4,
@@ -1094,12 +1098,15 @@ svg.ln{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;strok
         tl.fromTo(r.querySelector('.strike'), { scaleX: 0 }, { scaleX: 1, duration: .35, ease: 'power2.out' }, t + .35);
         tl.from(r.querySelector('.new'), { opacity: 0, x: 40, filter: 'blur(8px)', duration: .6, ease: 'power3.out' }, t + .45);
         tl.from(r.querySelector('.chk'), { scale: 0, rotation: -90, duration: .45, ease: 'back.out(2.4)' }, t + .55);
+        tl.from(r.querySelector('.iw'), { opacity: 0, scale: .4, x: 20, duration: .5, ease: 'back.out(2.2)' }, t + .7);
         call(tl, () => sfx.blips(1, 1250 + i * 90, 0), t + .5);
       });
       tl.fromTo(q('.scan'), { opacity: 0, yPercent: -100 }, { opacity: 1, yPercent: 0, duration: .01 }, 4.6);
       tl.fromTo(q('.scan'), { scaleY: .1, transformOrigin: 'top' }, { scaleY: 1, duration: 1.2, ease: 'power2.inOut' }, 4.6);
       tl.to(q('.scan'), { opacity: 0, duration: .8 }, 5.8);
-      words(tl, q('.ans .wi'), 5, .04);
+      tl.from(q('.isum'), { opacity: 0, y: 12, letterSpacing: '.3em', duration: .9, ease: 'power3.out' }, 4.9);
+      call(tl, () => sfx.blips(6, 1300, .07), 4.9);
+      words(tl, q('.ans .wi'), 5.6, .04);
     },
     sy(tl, q) {
       tl.from(q('.lbl.cy'), { opacity: 0, duration: .6 }, .1);
