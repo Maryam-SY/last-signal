@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 import type { Media } from '@/api/types'
+import { ZoomIn } from 'lucide-react'
 import { HudCorners } from '@/components/common/HudCorners'
+import { Lightbox } from '@/components/media/Lightbox'
 import { DepictionBadge } from '@/components/media/DepictionBadge'
 import { MediaFigure } from '@/components/media/MediaFigure'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
@@ -31,9 +33,7 @@ interface PhotoFlightProps {
   className?: string
 }
 
-/** Distance (px) between two pictures along the corridor, and where a picture is "in focus". */
-const GAP = 1700
-const FOCUS = 560
+/** Depth of the stage (px): pictures and text are tilted toward each other in it. */
 const PERSPECTIVE = 1100
 /**
  * Scroll spent on each moment, in viewport heights: `--flight-per` in CSS (0.9 on large
@@ -84,9 +84,9 @@ function Flight({ label, items, className }: PhotoFlightProps) {
   const readingRef = useRef<HTMLDivElement>(null)
   const shadeRef = useRef<HTMLDivElement>(null)
   const active = useRef(-1)
-  const planeOpacity = useRef<number[]>([])
   // Phones (US-5.13): the picture of the moment in front fills the screen behind its text.
   const [shown, setShown] = useState(0)
+  const [zoom, setZoom] = useState<Media | null>(null)
   const [failed, setFailed] = useState<ReadonlySet<string>>(new Set())
   // Pictures are fetched only when the flight is about to be reached.
   const [near, setNear] = useState(() => typeof IntersectionObserver === 'undefined')
@@ -131,7 +131,7 @@ function Flight({ label, items, className }: PhotoFlightProps) {
       item
         ? setBringIntoView(item, (behavior) => {
             const rect = section.getBoundingClientRect()
-            const progress = clamp((index + 0.45) / (count - 0.1))
+            const progress = clamp((index + 0.02) / count)
             const top = window.scrollY + rect.top + progress * Math.max(1, rect.height - window.innerHeight)
             window.scrollTo({ top, behavior })
           })
@@ -147,27 +147,13 @@ function Flight({ label, items, className }: PhotoFlightProps) {
     const rect = section.getBoundingClientRect()
     if (rect.bottom < -viewportH || rect.top > viewportH * 1.5) return
 
-    // 0 → 1 while the pinned stage is crossed; the camera flies from before the first picture
-    // to just past the last one.
+    // 0 → 1 while the pinned stage is crossed. US-5.15: no continuous zoom any more — the
+    // scroll only decides WHICH moment is in front; the change itself is a clean transition
+    // (CSS), the pictures keep their size.
     const progress = clamp(-rect.top / Math.max(1, rect.height - viewportH))
-    const camera = -0.45 + progress * (count - 1 + 0.9)
-    world.style.transform = `translate3d(0, 0, ${(camera * GAP).toFixed(1)}px)`
-
-    planeRefs.current.forEach((plane, index) => {
-      if (!plane) return
-      // Depth of the picture relative to the viewer (negative = still ahead).
-      const z = -FOCUS - index * GAP + camera * GAP
-      const appear = clamp((z + FOCUS + GAP * 2.6) / (GAP * 1.4))
-      const leave = 1 - clamp((z + 150) / 450)
-      const opacity = Math.round(appear * leave * 500) / 500
-      if (planeOpacity.current[index] === opacity) return
-      planeOpacity.current[index] = opacity
-      plane.style.opacity = opacity.toFixed(3)
-      plane.style.visibility = opacity < 0.01 ? 'hidden' : 'visible'
-    })
-
-    const current = Math.round(clamp(camera, 0, count - 1))
+    const current = Math.min(count - 1, Math.floor(progress * count + 0.0001))
     if (current !== active.current) {
+      const previous = active.current
       active.current = current
       setShown(current)
       itemRefs.current.forEach((item, index) => item?.classList.toggle('is-active', index === current))
@@ -176,7 +162,16 @@ function Flight({ label, items, className }: PhotoFlightProps) {
       const side = current % 2 === 0 ? 'right' : 'left'
       readingRef.current?.setAttribute('data-side', side)
       shadeRef.current?.setAttribute('data-side', side)
-      planeRefs.current.forEach((plane, index) => plane?.classList.toggle('is-front', index === current))
+      planeRefs.current.forEach((plane, index) => {
+        if (!plane) return
+        plane.classList.toggle('is-front', index === current)
+        plane.classList.toggle('is-past', index < current)
+        plane.classList.toggle('is-next', index > current)
+        // Only the neighbours are drawn: the rest costs nothing while hidden.
+        plane.style.visibility = Math.abs(index - current) <= 1 ? 'visible' : 'hidden'
+      })
+      // Direction of the cut (down or up the story), for the transitions.
+      world.dataset.direction = previous >= 0 && current < previous ? 'back' : 'forward'
       if (counterRef.current) counterRef.current.textContent = pad(current + 1)
       const hud = hudRef.current
       if (hud) {
@@ -201,7 +196,7 @@ function Flight({ label, items, className }: PhotoFlightProps) {
           key={`snap-${item.id}`}
           aria-hidden="true"
           className="flight-snap"
-          style={{ top: `calc(var(--count) * var(--flight-per) * 100vh * ${((index + 0.45) / (count - 0.1)).toFixed(5)})` }}
+          style={{ top: `calc(var(--count) * var(--flight-per) * 100vh * ${((index + 0.02) / count).toFixed(5)})` }}
         />
       ))}
       <div className="photo-flight-stage sticky top-0 h-dvh overflow-hidden" style={{ perspective: `${PERSPECTIVE}px` }}>
@@ -231,11 +226,7 @@ function Flight({ label, items, className }: PhotoFlightProps) {
           {items.map((item, index) => {
             if (!item.media || failed.has(item.id)) return null
             const side = index % 2 === 0 ? -1 : 1
-            const style = {
-              '--side': side,
-              '--z': `${-FOCUS - index * GAP}px`,
-              '--lift': `${((index % 3) - 1) * 5}vh`,
-            } as CSSProperties
+            const style = { '--side': side } as CSSProperties
             return (
               <figure
                 key={item.id}
@@ -265,7 +256,15 @@ function Flight({ label, items, className }: PhotoFlightProps) {
         <div ref={shadeRef} aria-hidden="true" data-side="right" className="flight-shade pointer-events-none absolute inset-x-0 bottom-0 h-[55%] lg:inset-y-0 lg:h-auto lg:w-[46%]" />
 
         <div ref={readingRef} data-side="right" className="flight-reading absolute inset-x-0 bottom-0 px-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:px-10 sm:pb-10 lg:inset-y-0 lg:flex lg:items-center lg:pb-0">
-          <div className="flight-panel relative max-w-xl rounded-3xl p-5 sm:p-6 lg:max-w-md">
+          {/* oxlint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/click-events-have-key-events -- the zoom button below is the keyboard way; the whole text is a tap target for convenience (US-5.15) */}
+          <div
+            className={cn('flight-panel relative max-w-xl rounded-3xl p-5 sm:p-6 lg:max-w-md', items[shown]?.media && 'cursor-zoom-in')}
+            onClick={(event) => {
+              if ((event.target as HTMLElement).closest('a, button, details, summary')) return
+              const media = items[shown]?.media
+              if (media) setZoom(media)
+            }}
+          >
             {/* US-5.13: the mission clock, like a telemetry readout, at the head of the panel. */}
             {items.some((item) => item.hud) && (
               <p ref={hudRef} aria-hidden="true" className="flight-hud mb-2 font-mono text-xs tracking-[0.2em] text-world uppercase sm:text-sm">
@@ -276,6 +275,16 @@ function Flight({ label, items, className }: PhotoFlightProps) {
               <span ref={counterRef}>01</span>
               <span className="text-moon-dust">/ {pad(count)}</span>
             </p>
+            {items[shown]?.media && (
+              <button
+                type="button"
+                onClick={() => setZoom(items[shown]?.media ?? null)}
+                aria-label={t('lightbox.open')}
+                className="glass-blur absolute top-0 right-0 inline-flex size-11 items-center justify-center rounded-full text-starlight transition-colors hover:border-world hover:text-world"
+              >
+                <ZoomIn aria-hidden="true" className="size-5" />
+              </button>
+            )}
             <span aria-hidden="true" className="mt-2 block h-px w-40 bg-white/10">
               <span ref={barRef} className="block h-full origin-left bg-world" style={{ transform: 'scaleX(0)' }} />
             </span>
@@ -308,6 +317,7 @@ function Flight({ label, items, className }: PhotoFlightProps) {
             </ol>
           </div>
         </div>
+        <Lightbox media={zoom} onClose={() => setZoom(null)} />
       </div>
     </div>
   )

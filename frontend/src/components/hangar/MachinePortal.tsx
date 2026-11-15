@@ -8,6 +8,7 @@ import { SignalBars } from '@/components/machine/SignalBars'
 import { StatusBadge } from '@/components/machine/StatusBadge'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { useTranslation } from '@/i18n'
+import { machineHook } from '@/lib/hook'
 import { lastSignal } from '@/lib/lifespan'
 import { sceneSrc } from '@/lib/mediaSrc'
 import type { DestinationId } from '@/types/content'
@@ -41,6 +42,7 @@ export function MachinePortal({ machine, missionName, destinationId, index, coun
   const to = paths.machine(destinationId, machine.id)
   const start = machine.date?.value.slice(0, 4)
   const end = machine.lifespan?.stillWorking?.value ? t('hangar.today') : lastSignal(machine.lifespan)?.value.slice(0, 4)
+  const hook = machineHook(machine)
 
   const onPointerMove = (event: PointerEvent<HTMLAnchorElement>) => {
     const card = cardRef.current
@@ -123,6 +125,7 @@ export function MachinePortal({ machine, missionName, destinationId, index, coun
               <span>{end ?? '?'}</span>
             </p>
           )}
+          {hook && <p className="mt-2 text-sm font-medium text-starlight">{t(hook.key, hook.vars)}</p>}
           <div className="mt-2 text-starlight/80">
             <StatusBadge status={machine.status.value} />
           </div>

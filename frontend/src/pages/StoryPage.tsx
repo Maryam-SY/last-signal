@@ -1,5 +1,5 @@
 import { useEffect, useRef, type CSSProperties, type ReactNode } from 'react'
-import { AlertTriangle, ChevronsDown } from 'lucide-react'
+import { ChevronsDown } from 'lucide-react'
 import { Link, useParams, useSearchParams } from 'react-router'
 import { ApiError, api } from '@/api/client'
 import type { StoryDetail } from '@/api/types'
@@ -206,12 +206,6 @@ function StoryExperience({ story }: { story: StoryDetail }) {
             />
           )}
 
-          {story.status === 'draft' && (
-            <p className="glass mt-8 flex items-start gap-3 rounded-2xl border-stellar-gold/40 p-4 text-sm">
-              <AlertTriangle aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-stellar-gold" />
-              {t('story.draftNotice')}
-            </p>
-          )}
           <div className="mt-6">
             <VoicesLegend />
           </div>

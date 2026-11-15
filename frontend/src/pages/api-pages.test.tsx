@@ -14,6 +14,8 @@ describe('destination hangar (US-5.12)', () => {
     expect(card).toHaveAttribute('href', '/explore/mars/machine-a')
     expect(within(card).getByText('Test Mission')).toBeInTheDocument()
     expect(within(card).getByText('Mission ended')).toBeInTheDocument()
+    // US-5.15: one sourced hook per card (90 sols planned, 6 years lived → ×25).
+    expect(within(card).getByText('Lived 25 times longer than planned')).toBeInTheDocument()
     // US-5.12 (team decision): the landing-site map and the long mission scroll are gone.
     expect(screen.queryByRole('heading', { name: 'Where did they land?' })).not.toBeInTheDocument()
     expect(screen.queryByRole('list', { name: 'Step by step' })).not.toBeInTheDocument()
@@ -146,6 +148,34 @@ describe('machine page (US-5.12)', () => {
     expect(within(who).getAllByText('Holds its two eyes, high above the ground.').length).toBeGreaterThan(0)
   })
 
+  it('lets the visitor test what they remember, with the fact behind every answer (US-5.15)', async () => {
+    const user = userEvent.setup()
+    renderRoute('/explore/mars/machine-a')
+    const quiz = await screen.findByRole('region', { name: 'What did you remember?' })
+    expect(within(quiz).getByText('In which year did Test Rover arrive on Mars?')).toBeInTheDocument()
+    await user.click(within(quiz).getByRole('button', { name: '2004' }))
+    expect(within(quiz).getByRole('status')).toHaveTextContent('Exactly. Test Rover arrived in 2004.')
+    // Wrong answers teach too.
+    await user.click(within(quiz).getByRole('button', { name: /900 Martian days/ }))
+    expect(within(quiz).getAllByRole('status')[1]).toHaveTextContent('Not quite.')
+    await user.click(within(quiz).getByRole('button', { name: 'Rover' }))
+    expect(within(quiz).getByText('2 / 3 — you know Test Rover.')).toBeInTheDocument()
+  })
+
+  it('opens any picture up close and links the machines of a relation (US-5.15)', async () => {
+    const user = userEvent.setup()
+    renderRoute('/explore/mars/machine-a')
+    await screen.findByRole('heading', { level: 1, name: 'Test Rover' })
+    // The flight (and its zoom button) appears once the mission has loaded too.
+    await user.click((await screen.findAllByRole('button', { name: 'See the picture up close' }))[0]!)
+    const dialog = await screen.findByRole('dialog')
+    expect(within(dialog).getByRole('img')).toBeInTheDocument()
+    await user.click(within(dialog).getByRole('button', { name: 'Close' }))
+    // The relation's other end is a link to its world's hangar.
+    const legacy = screen.getByRole('region', { name: 'What it passed on' })
+    expect(within(legacy).getByRole('link', { name: /Earlier Mission/ })).toHaveAttribute('href', '/explore/mars#hangar')
+  })
+
   it('says when the machine is not on that world', async () => {
     renderRoute('/explore/moon/machine-a')
     expect(await screen.findByRole('heading', { level: 1, name: 'Page not found' })).toBeInTheDocument()
@@ -153,10 +183,10 @@ describe('machine page (US-5.12)', () => {
 })
 
 describe('story page (connected to the API)', () => {
-  it('shows the first step with its voice, image and draft notice', async () => {
+  it('shows the first step with its voice and image, without any draft notice', async () => {
     renderRoute('/stories/story-a')
     expect(await screen.findByRole('heading', { level: 1, name: 'The test story' })).toBeInTheDocument()
-    expect(screen.getByText(/still being checked/)).toBeInTheDocument()
+    expect(screen.queryByText(/still being checked/)).not.toBeInTheDocument()
     // All six steps are scenes of one scroll (US-5.6): check the first one's content.
     const signal = screen.getByRole('region', { name: 'Signal' })
     expect(within(signal).getByRole('heading', { level: 2, name: 'Signal' })).toBeInTheDocument()

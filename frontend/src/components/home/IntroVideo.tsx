@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
-import { SkipForward, Volume2 } from 'lucide-react'
+import { SkipForward } from 'lucide-react'
 import { useTranslation, type MessageKey } from '@/i18n'
 import { createIntroScore, type IntroScore } from '@/lib/introSound'
+import { canNarrate, narrate } from '@/lib/narration'
 import { FADE_MS, markIntroSeen } from './introSession'
 
 /**
@@ -33,7 +34,7 @@ const CUES: ReadonlyArray<{ from: number; to: number; key: MessageKey }> = [
 const FINALE_MS = 3800
 
 export function IntroVideo({ onReveal, onDone }: IntroVideoProps) {
-  const { t } = useTranslation()
+  const { t, locale } = useTranslation()
   const videoRef = useRef<HTMLVideoElement>(null)
   const skipRef = useRef<HTMLButtonElement>(null)
   const [leaving, setLeaving] = useState(false)
@@ -41,13 +42,16 @@ export function IntroVideo({ onReveal, onDone }: IntroVideoProps) {
   const [finale, setFinale] = useState(false)
   const doneRef = useRef(false)
   const scoreRef = useRef<IntroScore | null>(null)
-  const [soundBlocked, setSoundBlocked] = useState(false)
+  const [soundOn, setSoundOn] = useState(false)
+  const stopVoice = useRef<() => void>(() => {})
+  const spokenCue = useRef(-1)
   const finaleTimer = useRef<number | undefined>(undefined)
   const doneTimer = useRef<number | undefined>(undefined)
 
   const finish = (fade: boolean) => {
     if (doneRef.current) return
     doneRef.current = true
+    stopVoice.current()
     window.clearTimeout(finaleTimer.current)
     scoreRef.current?.stop(fade ? FADE_MS / 1000 + 0.4 : 0.2)
     markIntroSeen()
@@ -73,12 +77,15 @@ export function IntroVideo({ onReveal, onDone }: IntroVideoProps) {
     finaleTimer.current = window.setTimeout(() => finishRef.current(true), FINALE_MS)
   }
 
-  /** Turns the soundtrack on (from a click or key, when the browser asked for one). */
+  /**
+   * Turns the soundtrack on. Tried at once; browsers that insist on a gesture first get it
+   * at the visitor's first touch, click or key (no button to press: the intro keeps its flow).
+   */
   const enableSound = () => {
     const score = scoreRef.current
     if (!score || doneRef.current) return
     void score.start(videoRef.current?.currentTime ?? 0).then((playing) => {
-      setSoundBlocked(!playing)
+      setSoundOn(playing)
       if (playing && finale) score.finale()
     })
   }
@@ -91,16 +98,15 @@ export function IntroVideo({ onReveal, onDone }: IntroVideoProps) {
     // The soundtrack: tried at once; browsers that need a gesture first get a button.
     const score = createIntroScore()
     scoreRef.current = score
-    if (score) void score.start(0).then((playing) => setSoundBlocked(!playing && !doneRef.current))
+    if (score) void score.start(0).then((playing) => setSoundOn(playing && !doneRef.current))
     const onGesture = (event: Event) => {
       if (event instanceof KeyboardEvent && event.key === 'Escape') return
       if (scoreRef.current && !scoreRef.current.playing()) enableSoundRef.current()
     }
-    window.addEventListener('pointerdown', onGesture)
-    window.addEventListener('keydown', onGesture)
+    for (const type of ['pointerdown', 'keydown', 'touchstart'] as const) window.addEventListener(type, onGesture, { passive: true })
     return () => {
-      window.removeEventListener('pointerdown', onGesture)
-      window.removeEventListener('keydown', onGesture)
+      for (const type of ['pointerdown', 'keydown', 'touchstart'] as const) window.removeEventListener(type, onGesture)
+      stopVoice.current()
       window.clearTimeout(finaleTimer.current)
       window.clearTimeout(doneTimer.current)
       scoreRef.current?.stop(0.3)
@@ -128,6 +134,12 @@ export function IntroVideo({ onReveal, onDone }: IntroVideoProps) {
     const time = videoRef.current?.currentTime ?? 0
     const index = CUES.findIndex((entry) => time >= entry.from && time < entry.to)
     if (index !== cue) setCue(index)
+    // The voice says the sentence on screen (synthesised: no recording of anyone's voice).
+    if (soundOn && index >= 0 && index !== spokenCue.current && canNarrate()) {
+      spokenCue.current = index
+      stopVoice.current()
+      stopVoice.current = narrate([t(CUES[index]!.key)], locale === 'en' ? 'en' : 'fr')
+    }
   }
 
   return (
@@ -175,16 +187,6 @@ export function IntroVideo({ onReveal, onDone }: IntroVideoProps) {
             <span className="intro-finale-line" />
           </div>
         </div>
-      )}
-      {soundBlocked && (
-        <button
-          type="button"
-          onClick={enableSound}
-          className="glass-blur absolute bottom-[max(1.25rem,env(safe-area-inset-bottom))] left-4 inline-flex min-h-11 items-center gap-2 rounded-full px-5 text-sm font-medium text-starlight transition-colors hover:border-stellar-cyan hover:text-stellar-cyan sm:left-6"
-        >
-          <Volume2 aria-hidden="true" className="size-4" />
-          {t('intro.sound')}
-        </button>
       )}
       <button
         ref={skipRef}

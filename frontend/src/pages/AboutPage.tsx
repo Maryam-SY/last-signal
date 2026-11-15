@@ -52,7 +52,7 @@ export function AboutPage() {
                   </span>
                   {t(titleKey)}
                 </h2>
-                {id === 'sources' ? <AllSources /> : id === 'credits' ? <MediaCredits /> : <p className="mt-3 text-moon-dust">{t('about.comingSoon')}</p>}
+                {id === 'sources' ? <AllSources /> : id === 'credits' ? <MediaCredits /> : <p className="mt-3 leading-relaxed text-starlight/90">{t('about.aiText')}</p>}
               </section>
             </Reveal>
           ))}

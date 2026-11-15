@@ -1,7 +1,9 @@
 import { useRef, useState, type CSSProperties, type PointerEvent } from 'react'
 import type { Media } from '@/api/types'
 import { HudCorners } from '@/components/common/HudCorners'
+import { ZoomIn } from 'lucide-react'
 import { DepictionBadge } from '@/components/media/DepictionBadge'
+import { Lightbox } from '@/components/media/Lightbox'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { useTranslation } from '@/i18n'
 import { sceneSrc } from '@/lib/mediaSrc'
@@ -33,6 +35,7 @@ export function MachinePortrait({ media, parts = [], className }: MachinePortrai
   const reduced = useReducedMotion()
   const frameRef = useRef<HTMLDivElement>(null)
   const [open, setOpen] = useState<string | null>(null)
+  const [zoom, setZoom] = useState(false)
 
   const onPointerMove = (event: PointerEvent<HTMLDivElement>) => {
     const frame = frameRef.current
@@ -66,6 +69,14 @@ export function MachinePortrait({ media, parts = [], className }: MachinePortrai
           <span className="absolute top-3 left-3">
             <DepictionBadge depiction={media.depiction} />
           </span>
+          <button
+            type="button"
+            onClick={() => setZoom(true)}
+            aria-label={t('lightbox.open')}
+            className="glass-blur absolute top-3 right-3 z-10 inline-flex size-11 items-center justify-center rounded-full text-starlight transition-colors hover:border-world hover:text-world"
+          >
+            <ZoomIn aria-hidden="true" className="size-5" />
+          </button>
 
           {parts.length > 0 && (
             <ul aria-label={t('parts.label')} className="absolute inset-0">
@@ -117,6 +128,7 @@ export function MachinePortrait({ media, parts = [], className }: MachinePortrai
           )}
         </div>
       )}
+      <Lightbox media={zoom ? media : null} onClose={() => setZoom(false)} />
     </figure>
   )
 }

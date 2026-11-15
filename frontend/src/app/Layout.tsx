@@ -92,7 +92,7 @@ function LogoMark() {
 }
 
 function SiteFooter() {
-  const { t, locale } = useTranslation()
+  const { t } = useTranslation()
   return (
     <footer className="relative z-20 border-t border-white/5 bg-void/80">
       <div aria-hidden="true" className="h-px bg-gradient-to-r from-transparent via-stellar-cyan/50 to-transparent" />
@@ -101,7 +101,6 @@ function SiteFooter() {
           <p className="font-heading text-lg font-bold">{t('app.name')}</p>
           <p className="mt-1 font-mono text-[0.68rem] tracking-[0.25em] text-stellar-cyan uppercase">{t('footer.tagline')}</p>
           <p className="mt-3 max-w-md text-sm text-muted-foreground">{t('app.disclaimer')}</p>
-          {locale === 'wo' && <p className="mt-2 max-w-md text-xs text-stellar-gold">{t('lang.woDraft')}</p>}
         </div>
         <Link
           to={`${paths.about()}#about-sources`}

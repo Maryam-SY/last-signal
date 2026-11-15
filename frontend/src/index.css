@@ -661,7 +661,8 @@ html.depth-mode::-webkit-scrollbar {
   will-change: transform;
 }
 .photo-flight-plane {
-  --w: min(50vw, 640px);
+  --w: min(52vw, 680px);
+  --dx: 0px;
   position: absolute;
   left: 50%;
   top: 44%;
@@ -669,42 +670,68 @@ html.depth-mode::-webkit-scrollbar {
   aspect-ratio: 4 / 3;
   margin: 0;
   overflow: hidden;
-  border-radius: 1rem;
+  border-radius: 1.25rem;
   border: 1px solid rgb(148 163 184 / 0.18);
   background: var(--cosmos-deep-space);
   box-shadow: 0 40px 90px -30px rgb(0 0 0 / 0.9);
   opacity: 0;
-  /* Rasterised once, then only moved by the GPU (no re-raster while it grows). */
+  visibility: hidden;
   will-change: transform, opacity;
-  transform: translate(-50%, -50%) translate3d(calc(var(--side) * 27vw), var(--lift), var(--z))
-    rotateY(calc(var(--side) * -22deg));
+  /* US-5.15: a picture keeps its size; it comes in from its wall, tilted toward the text, and
+     leaves the same way — one clean cut per moment, never a zoom tied to the scroll. */
+  transform: translate(-50%, -50%) translate3d(calc(var(--side) * 27vw + var(--dx)), 6vh, -120px) rotateY(calc(var(--side) * -34deg));
+  transition:
+    transform 780ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 520ms ease;
   backface-visibility: hidden;
 }
+.photo-flight-plane.is-front {
+  opacity: 1;
+  transform: translate(-50%, -50%) translate3d(calc(var(--side) * 27vw), 0, 0) rotateY(calc(var(--side) * -16deg));
+}
+.photo-flight-plane.is-past {
+  --dx: calc(var(--side) * 14vw);
+  transform: translate(-50%, -50%) translate3d(calc(var(--side) * 27vw + var(--dx)), -10vh, 140px) rotateY(calc(var(--side) * -40deg));
+}
 @media (min-width: 1024px) {
-  /* The reading column is on the left: the corridor opens on the right. */
   .photo-flight-plane {
-    --w: min(42vw, 720px);
-    left: 64%;
+    --w: min(46vw, 820px);
+    left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%) translate3d(calc(var(--side) * 17vw), var(--lift), var(--z))
-      rotateY(calc(var(--side) * -24deg));
+    transform: translate(-50%, -50%) translate3d(calc(var(--side) * 24vw + var(--dx)), 4vh, -160px) rotateY(calc(var(--side) * -36deg));
+  }
+  .photo-flight-plane.is-front {
+    transform: translate(-50%, -50%) translate3d(calc(var(--side) * 24vw), 0, 0) rotateY(calc(var(--side) * -14deg));
+  }
+  .photo-flight-plane.is-past {
+    transform: translate(-50%, -50%) translate3d(calc(var(--side) * 24vw + var(--dx)), -8vh, 160px) rotateY(calc(var(--side) * -42deg));
   }
 }
 @media (max-width: 767px) {
   .photo-flight-plane {
     --w: 94vw;
     top: 23%;
-    transform: translate(-50%, -50%) translate3d(calc(var(--side) * 9vw), calc(var(--lift) * 0.4), var(--z))
-      rotateY(calc(var(--side) * -16deg));
+    transform: translate(-50%, -50%) translate3d(calc(var(--side) * 9vw), 3vh, -80px) rotateY(calc(var(--side) * -18deg));
+  }
+  .photo-flight-plane.is-front {
+    transform: translate(-50%, -50%) translate3d(0, 0, 0) rotateY(0deg);
+  }
+  .photo-flight-plane.is-past {
+    transform: translate(-50%, -50%) translate3d(calc(var(--side) * 9vw), -6vh, 80px) rotateY(calc(var(--side) * -22deg));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .photo-flight-plane {
+    transition: opacity 200ms ease;
   }
 }
 .photo-flight-item {
   opacity: 0;
-  transform: translate3d(0, 14px, 0);
+  transform: translate3d(0, 18px, 0);
   /* The leaving text goes first and fast, the next one comes after: they never overlap. */
   transition:
-    opacity 180ms ease,
-    transform 180ms ease;
+    opacity 160ms ease,
+    transform 160ms ease;
   pointer-events: none;
 }
 .photo-flight-item.is-active {
@@ -712,12 +739,23 @@ html.depth-mode::-webkit-scrollbar {
   transform: none;
   pointer-events: auto;
   transition:
-    opacity 420ms ease 200ms,
-    transform 420ms ease 200ms;
+    opacity 480ms cubic-bezier(0.2, 0.8, 0.2, 1) 220ms,
+    transform 560ms cubic-bezier(0.2, 0.8, 0.2, 1) 220ms;
+}
+@media (min-width: 1024px) {
+  .flight-reading[data-side='left'] .photo-flight-item {
+    transform: translate3d(-28px, 0, 0);
+  }
+  .flight-reading[data-side='right'] .photo-flight-item {
+    transform: translate3d(28px, 0, 0);
+  }
+  .flight-reading .photo-flight-item.is-active {
+    transform: none;
+  }
 }
 @media (min-width: 1024px) {
   .photo-flight-stage {
-    perspective-origin: 64% 50%;
+    perspective-origin: 50% 50%;
   }
 }
 
@@ -1229,7 +1267,14 @@ html.depth-mode::-webkit-scrollbar {
 
 /* US-5.13 — scroll length per flight moment; phones: shorter, and each moment snaps into place. */
 .photo-flight {
-  --flight-per: 0.9;
+  --flight-per: 0.7;
+}
+/* One wheel notch or swipe = one moment: the page settles on each snap point. */
+html:has(.photo-flight) {
+  scroll-snap-type: y proximity;
+}
+.flight-snap {
+  scroll-snap-align: start;
 }
 .flight-snap {
   position: absolute;
@@ -1241,12 +1286,6 @@ html.depth-mode::-webkit-scrollbar {
 @media (max-width: 1023.98px) {
   .photo-flight {
     --flight-per: 0.55;
-  }
-  html:has(.photo-flight) {
-    scroll-snap-type: y proximity;
-  }
-  .flight-snap {
-    scroll-snap-align: start;
   }
 }
 

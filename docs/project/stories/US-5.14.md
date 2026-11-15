@@ -76,3 +76,17 @@ Trois audits (performance/code, accessibilité/mobile/UX, contenu/i18n/docs) ont
 - **Fin de l'intro** : carte-titre « AeroReborn présente » / « The Next Frontier » lettre à lettre, ligne lumineuse ; durée 3,8 s.
 - **Compression HTTP** : middleware Brotli/gzip sur `/api` à partir de `node:zlib` (aucune dépendance), seuil 1 ko ; test API ajouté.
 - **Code mort supprimé** (35 fichiers, 2 dépendances `@base-ui/react` et `class-variance-authority`) : carte, galerie, scène mission, frise des deux mondes, journal d'explorateur affiché, bouton shadcn, `StorySlides`, planètes décoratives et leurs images, anciens médias d'intro/ciel ; liste dans ARCHITECTURE §18. Vérification : typecheck, lint, 78 tests, build.
+
+## Suite 3 — « l'envie de rester pour apprendre » (2026-11-15)
+
+- **Accroche par machine** dans le hangar (`lib/hook.ts`) : « Répond encore, depuis 1969 », « A vécu 57 fois plus longtemps que prévu », « A travaillé 85 jours, puis s'est tu » — calculé depuis la durée de vie sourcée.
+- **Mots à connaître** sous chaque acte (glossaire US-5.7 réutilisé, `wordsIn` sur les textes des chapitres).
+- **Quiz « Qu'as-tu retenu ? »** (`lib/quiz.ts`, `MachineQuiz`) : jusqu'à 3 questions construites uniquement depuis les faits sourcés (année d'arrivée, durée prévue, type, statut) ; les mauvaises réponses sont des années/quantités/types volontairement faux ; chaque réponse donne le fait ; rien n'est stocké ni envoyé. Tests : `lib/pedagogy.test.ts`, `api-pages.test.tsx`.
+- **Relations cliquables** : chaque bout d'une relation mène à la page de la machine ou au hangar de son monde.
+- **Visionneuse** (`Lightbox`, `<dialog>` natif) : clic sur le texte d'un moment ou sur la loupe → la photo en grand avec sa description et son badge ; clic à côté, bouton ou Échap pour fermer.
+- **Vol de photos sans zoom continu** (demande de l'équipe) : le défilement choisit seulement quel moment est devant ; la photo arrive à taille fixe depuis son côté, inclinée vers le texte, et repart de même (transition 780 ms) ; texte qui glisse depuis le côté opposé ; un cran de molette ou un geste = un moment (`scroll-snap` partout) ; photos plus grandes (jusqu'à 46 vw / 820 px).
+- **Intro** : plus de bouton « Activer le son » — la bande-son démarre si le navigateur l'autorise, sinon au premier geste (clic, touche, toucher) ; une voix de synthèse lit chaque phrase à l'écran (aucune voix de personne réelle : la demande d'imiter une célébrité est refusée). Son d'ambiance activé par défaut (désactivable, choix mémorisé).
+- Contrôles : frontend 83/83, lint 0 erreur, build OK ; navigateur : pas d'étape vide, photo devant à ~700 px, visionneuse ouverte par clic sur le texte et fermée par le fond.
+- En cours : photos NASA pour 38 chapitres ; explications simples entre parenthèses des mots techniques (relecture en cours).
+
+- **Plus aucune mention « en cours de vérification » sur le site** (décision de l'équipe) : retirés — l'encart des récits en brouillon, la ligne sous les mots à connaître, la note wolof du pied de page, le texte « sera complétée avant la mise en ligne » de la section IA d'À propos (remplacé par une description factuelle de l'usage de l'IA). Les statuts `draft` restent dans le contenu et les avertissements de `content:check` pour la relecture interne.

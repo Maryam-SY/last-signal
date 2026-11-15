@@ -41,7 +41,6 @@ export function VoicesLegend() {
 export function WordsToKnow({ words }: { words: GlossaryEntry[] }) {
   const { t } = useTranslation()
   if (words.length === 0) return null
-  const draft = words.some((w) => w.status === 'draft')
 
   return (
     <aside aria-label={t('pedagogy.wordsTitle')} className="mt-6">
@@ -61,7 +60,6 @@ export function WordsToKnow({ words }: { words: GlossaryEntry[] }) {
           </li>
         ))}
       </ul>
-      {draft && <p className="mt-2 text-xs text-moon-dust/80">{t('pedagogy.draftDefinitions')}</p>}
     </aside>
   )
 }

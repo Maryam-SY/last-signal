@@ -22,7 +22,6 @@ export const wo: Messages = {
   lang: {
     ...fr.lang,
     label: 'Làkk',
-    woDraft: 'Wolof : firi bu ñu ngi koy saytu. Léeb yi ci farañse lañu nekk léegi.',
   },
   intro: {
     ...fr.intro,

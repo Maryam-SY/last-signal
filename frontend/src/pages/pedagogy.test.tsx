@@ -53,13 +53,13 @@ describe('story pedagogy (US-5.7)', () => {
     expect(within(legend).getByText('An invitation to imagine — never a fact.')).toBeInTheDocument()
   })
 
-  it('offers the words used in a step, with their definition and draft notice', async () => {
+  it('offers the words used in a step, with their definition and no draft notice', async () => {
     renderRoute('/stories/story-a')
     const signal = await screen.findByRole('region', { name: 'Signal' })
     const words = await within(signal).findByRole('complementary', { name: 'Words to know' })
     expect(within(words).getByText('Signal')).toBeInTheDocument()
     expect(within(words).getByText('A test definition of a signal.')).toBeInTheDocument()
-    expect(within(words).getByText(/still being checked/)).toBeInTheDocument()
+    expect(within(words).queryByText(/still being checked/)).not.toBeInTheDocument()
     // Only where the word is used.
     expect(within(screen.getByRole('region', { name: 'Why' })).queryByRole('complementary')).not.toBeInTheDocument()
   })

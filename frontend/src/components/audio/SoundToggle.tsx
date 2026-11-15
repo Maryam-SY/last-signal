@@ -9,7 +9,8 @@ const STORAGE_KEY = 'aeroreborn.sound'
 
 function storedChoice(): boolean {
   try {
-    return window.localStorage.getItem(STORAGE_KEY) === 'on'
+    // US-5.15: on by default; only an explicit choice turns it off.
+    return window.localStorage.getItem(STORAGE_KEY) !== 'off'
   } catch {
     return false
   }

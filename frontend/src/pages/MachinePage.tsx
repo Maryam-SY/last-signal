@@ -13,6 +13,7 @@ import { ModelViewer3D } from '@/components/journey/ModelViewer3D'
 import { PhotoFlight } from '@/components/journey/PhotoFlight'
 import { ActCard } from '@/components/machine/ActCard'
 import { LifeLine } from '@/components/machine/LifeLine'
+import { MachineQuiz } from '@/components/machine/MachineQuiz'
 import { MachinePortrait } from '@/components/machine/MachinePortrait'
 import { TelemetryBar } from '@/components/machine/TelemetryBar'
 import { DepictionBadge } from '@/components/media/DepictionBadge'
@@ -22,12 +23,14 @@ import { Reveal } from '@/components/motion/Reveal'
 import { ScrollProgress } from '@/components/motion/ScrollProgress'
 import { JourneyRail } from '@/components/navigation/JourneyRail'
 import { RelationEnds } from '@/components/relations/RelationEnds'
+import { WordsToKnow } from '@/components/story/StoryPedagogy'
 import { useApi } from '@/hooks/useApi'
 import { useInView } from '@/hooks/useInView'
 import { useDocumentTitle } from '@/hooks/useDocumentTitle'
 import { useTranslation } from '@/i18n'
 import { contentLang } from '@/i18n/translate'
 import { buildActs, type Act } from '@/lib/acts'
+import { wordsIn } from '@/lib/glossary'
 import { crackle } from '@/lib/ambientSound'
 import { record } from '@/lib/explorerLog'
 import { formatPartialDate } from '@/lib/formatDate'
@@ -97,6 +100,9 @@ interface MachineLifeProps {
 
 function MachineLife({ machine, mission, destination, story }: MachineLifeProps) {
   const { t, locale } = useTranslation()
+  // Words to know (US-5.15, reuses the glossary of US-5.7): optional, the page stays complete without it.
+  const glossary = useApi('glossary', (lang, signal) => api.glossary(lang, signal))
+  const glossaryEntries = glossary.status === 'success' ? glossary.data : []
   const destinationId = machine.destinationId as DestinationId
   const cover = (mission ? machineCover(mission, machine.id) : undefined) ?? bestStill(machine.media.filter((m) => m.depiction === 'photo')) ?? bestStill(machine.media)
   // US-5.13: the machine's own chapters when the content tells them; otherwise the steps of its
@@ -150,6 +156,7 @@ function MachineLife({ machine, mission, destination, story }: MachineLifeProps)
     ...(model ? [{ id: 'model', label: t('machine.modelEyebrow') }] : []),
     ...(machine.relations.length > 0 ? [{ id: 'legacy', label: t('machine.legacyEyebrow') }] : []),
     { id: 'end', label: t('machine.endEyebrow') },
+    { id: 'quiz', label: t('quiz.eyebrow') },
     ...(next ? [{ id: 'next', label: t('machine.next') }] : []),
   ]
 
@@ -277,6 +284,11 @@ function MachineLife({ machine, mission, destination, story }: MachineLifeProps)
           <section key={act.key} id={`act-${act.key}`} ref={register(`act-${act.key}`)} aria-labelledby={`act-${act.key}-title`} className="scroll-mt-16" data-tone={act.key}>
             <ActCard act={act} number={index + 1} titleId={`act-${act.key}-title`} destinationId={destinationId} machineName={machine.name} />
             {act.chapters.length > 0 && <PhotoFlight label={`${t('journey.flightLabel', { name: machine.name })} · ${actTitle(act)}`} items={flightItems(act.chapters)} />}
+            {act.chapters.length > 0 && (
+              <div className="mx-auto max-w-6xl px-5 pb-6">
+                <WordsToKnow words={wordsIn(act.chapters.map((chapter) => chapter.text), glossaryEntries, locale)} />
+              </div>
+            )}
           </section>
         ))}
 
@@ -378,6 +390,13 @@ function MachineLife({ machine, mission, destination, story }: MachineLifeProps)
               {t('machine.restsAt', { place: machine.locationName.value })}
             </p>
           )}
+        </section>
+
+        <section id="quiz" ref={register('quiz')} aria-labelledby="quiz-title" className="scene-blend mx-auto max-w-4xl scroll-mt-16 px-5 pb-16">
+          <h2 id="quiz-title" className="sr-only">
+            {t('quiz.title')}
+          </h2>
+          <MachineQuiz machine={machine} world={t(`destinations.${destinationId}.name`)} />
         </section>
 
         {next && (
