@@ -12,6 +12,8 @@ export function wordsIn(texts: readonly string[], glossary: readonly GlossaryEnt
   const haystack = texts.join('\n')
   return glossary.filter((entry) =>
     // Wolof shows the French story text, so its French word forms are the ones to find.
-    entry.terms[contentLang(locale)].some((term) => new RegExp(`(?<![\\p{L}\\p{N}])${escape(term)}(?![\\p{L}\\p{N}])`, 'iu').test(haystack)),
+    // "Start of text or a non-letter" rather than a lookbehind `(?<!…)`, which Safari only
+    // understands since iOS 16.4: on older iPhones it crashed every machine page.
+    entry.terms[contentLang(locale)].some((term) => new RegExp(`(?:^|[^\\p{L}\\p{N}])${escape(term)}(?![\\p{L}\\p{N}])`, 'iu').test(haystack)),
   )
 }
