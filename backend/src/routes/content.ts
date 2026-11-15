@@ -18,8 +18,9 @@ function send<T>(req: Request, res: Response, data: T | null, what: string) {
     return
   }
   // Content changes only with a deployment: browsers and proxies may keep it a few minutes and
-  // reuse a stale copy while revalidating (performance audit, ADR-016).
-  res.set('Cache-Control', 'public, max-age=300, stale-while-revalidate=86400')
+  // reuse a stale copy while revalidating; the Vercel CDN keeps it an hour and is emptied on
+  // every deployment (performance audit, ADR-016, ADR-026).
+  res.set('Cache-Control', 'public, max-age=300, s-maxage=3600, stale-while-revalidate=86400')
   res.json(localize(data, langOf(req)))
 }
 

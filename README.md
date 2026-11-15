@@ -18,6 +18,7 @@ AeroReborn is an educational, interactive web experience about the machines huma
 aeroreborn/
 ├── frontend/   React 19 + Vite + TypeScript + Tailwind v4 (UI, routing, i18n)
 ├── backend/    Node + Express 5 + TypeScript (API)
+├── api/        Vercel Function entry: serves the compiled backend under /api
 ├── docs/       Product, architecture, design, quality and project documentation
 ├── .github/    CI workflow (lint, typecheck, test, build for both packages)
 └── CLAUDE.md   Working rules for AI coding agents
@@ -67,6 +68,16 @@ Available in both `frontend/` and `backend/`:
 | `npm run check` | lint + typecheck + test + build — run before opening a PR |
 
 Frontend only: `npm run preview` serves the production build. Backend only: `npm start` runs the compiled server.
+
+## Deployment (Vercel)
+
+The whole site — static frontend and API — is one Vercel project ([ADR-026](docs/architecture/TECHNICAL_DECISIONS.md)). Everything is configured in `vercel.json`; no environment variable is needed.
+
+1. Sign in on [vercel.com](https://vercel.com) with GitHub and choose **Add New → Project**.
+2. Import this repository. Keep the **root directory** as the repository root and the framework preset as **Other** (the build, install and output settings come from `vercel.json`).
+3. Deploy. Every push to `main` then deploys to production; every pull request gets a preview URL.
+
+Check after a deploy: `https://<your-project>.vercel.app/api/health` answers `{"status":"ok"}`, and reloading `/explore/moon` shows the page.
 
 ## Internationalisation
 

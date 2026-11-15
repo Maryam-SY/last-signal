@@ -1,0 +1,9 @@
+{
+  "name": "aeroreborn",
+  "private": true,
+  "description": "Deployment root (Vercel): frontend/ is the static site, api/index.mjs serves backend/ as a function.",
+  "type": "module",
+  "engines": {
+    "node": "24.x"
+  }
+}

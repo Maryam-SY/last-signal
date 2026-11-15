@@ -174,7 +174,7 @@ Chaque décision a une **recommandation** ; tant qu'elle n'est pas validée, les
 | OPEN-02 | ✅ **Tranchée** (§7.1) — Migration TypeScript | Fait (frontend + backend). | E1 |
 | OPEN-03 | ✅ **Tranchée** (§7.1) — Backend Express | Actif, en TypeScript ; rôle → OPEN-18. | ADR-016 |
 | OPEN-04 | ✅ **Tranchée** (§7.1) — Routeur | react-router, `createBrowserRouter`. | US-1.3 |
-| OPEN-05 | Hébergement | **À réexaminer avec OPEN-18** : un backend doit être hébergé en plus du frontend. Options : (a) Vercel pour le front + Render/Railway/Fly.io pour l'API ; (b) un seul service Node qui sert l'API **et** le build du front. | US-1.7 |
+| OPEN-05 | Hébergement | **Décidée le 2026-11-15** (ADR-026) : tout sur Vercel — le build du front en fichiers statiques, l'API Express en Vercel Function (`api/index.mjs`), une seule URL. | US-1.7 |
 | OPEN-06 | 🟡 **Partiellement tranchée** (§7.1) — Langue | i18n en place (`en`, `fr`). Restent à décider : langue par défaut affichée et présence d'un sélecteur de langue (le français complet du contenu scientifique reste P2 dans le CDC). | E2–E4 |
 | OPEN-07 | 🟡 **Partiellement tranchée** — catalogue initial : 6 missions et 11 équipements liés aux 4 histoires (`backend/content/`) ; reste à compléter et à valider le total. Liste exacte des équipements Lune/Mars et total affiché ; inclusion ou non des missions non-NASA (le CDC parle d'« équipements humains », sans restreindre à la NASA) | Fixée par la piste contenu (US-1.8) puis validée par l'équipe ; aucun total affiché avant. | DEST-002, E3 |
 | OPEN-08 | ✅ **Tranchée** (§7.1) — Missions disposant d'un récit complet dans le MVP | **Apollo 12** (avec Surveyor 3) et **Mars Exploration Rover** (Spirit/Opportunity, relais Sojourner), conformément au CDC. | E4 |

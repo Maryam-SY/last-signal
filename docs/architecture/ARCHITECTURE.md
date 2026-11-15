@@ -287,10 +287,10 @@ Pas d'E2E navigateur (Playwright) dans le MVP (ADR-012) ; à reconsidérer en P1
 
 ## 15. Déploiement et CI
 
-*(proposé — OPEN-05, ADR-013)*
+*(décidé — ADR-013, ADR-026)*
 
 - **CI** `.github/workflows/ci.yml` : déclenchée sur PR et push `main` ; `working-directory: frontend` ; Node 24 ; `npm ci` → `npm run lint` → `npm run typecheck` → `npm test` → `npm run build`.
-- **Hébergement** : Vercel (projet lié au repo GitHub, racine `frontend`, build `npm run build`, sortie `dist`), réécriture SPA `/(.*) → /index.html` dans `frontend/vercel.json`. Déploiements de prévisualisation par PR.
+- **Hébergement** : un seul projet Vercel lié au dépôt GitHub, **racine du dépôt** (`vercel.json`) : build de `backend/` puis de `frontend/`, sortie `frontend/dist` ; l'API est la fonction `api/index.mjs` (Express compilé, contenu `backend/content/**` embarqué) ; réécritures `/api/(.*) → /api` et SPA `/((?!api/).*) → /index.html`. Déploiement de production sur push `main`, prévisualisation par PR.
 - **Pas de variables d'environnement secrètes** : le site n'en a pas besoin.
 - Déploiement du squelette **dès la phase 1** (US-1.7).
 

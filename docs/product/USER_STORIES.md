@@ -73,7 +73,7 @@ Personas : **Visiteur** (10-15 ans, principal), **Curieux** (adulte), **Équipe*
 
 ### US-1.7 — Déploiement du squelette
 - **Story** : En tant qu'équipe, je souhaite une URL publique dès la phase 1 afin de découvrir les problèmes d'hébergement tôt.
-- **Priorité** : P0 · **Exigences** : DEPLOY-001, NAV-004 · **Statut** : `blocked` (OPEN-05, OPEN-18 : il faut maintenant héberger aussi l'API)
+- **Priorité** : P0 · **Exigences** : DEPLOY-001, NAV-004 · **Statut** : `in-progress` (OPEN-05 décidée, ADR-026 : configuration Vercel écrite et testée localement ; reste la liaison du dépôt à Vercel, action humaine)
 - **Critères** :
   1. Étant donné un push sur `main`, alors le site est déployé automatiquement.
   2. Quand on recharge `/explore/moon` sur l'URL publique en navigation privée, alors la page s'affiche (fallback SPA).

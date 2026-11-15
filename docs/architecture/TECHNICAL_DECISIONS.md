@@ -33,6 +33,7 @@
 | ADR-023 | Une page par machine, hangar, son, narration, wolof et intro NASA | Acceptée (2026-11-14) | — |
 | ADR-024 | Biographie propre à chaque machine et lecture suivie | Acceptée (2026-11-15) | — |
 | ADR-025 | Les actes d'une vie remplacent le récit en six étapes ; direction artistique « Transmission » | Acceptée (2026-11-15) | PRD §2, STORY-003/005, V6 à revoir |
+| ADR-026 | Hébergement : front et API dans un seul projet Vercel | Acceptée (décision de l'équipe, 2026-11-15) | Clôt OPEN-05 |
 
 ---
 
@@ -172,7 +173,7 @@
 
 ## ADR-013 — Déploiement Vercel + CI GitHub Actions
 
-- **Statut** : **CI acceptée** (`.github/workflows/ci.yml`, matrice frontend/backend) ; **hébergement à réexaminer** depuis ADR-016 (OPEN-05, OPEN-18)
+- **Statut** : **CI acceptée** (`.github/workflows/ci.yml`, matrice frontend/backend) ; hébergement **décidé par ADR-026** (front + API sur Vercel)
 - **Problème** : publier un site statique public avec contrôles automatisés.
 - **Options** : (a) Vercel ; (b) Netlify ; (c) Cloudflare Pages ; (d) GitHub Pages.
 - **Analyse** :
@@ -362,4 +363,19 @@
   - **Pages `/stories/:id`** : plus liées depuis les pages machine (le bloc « À ton tour », voix *Imagine*, est repris en fin de page quand le récit est celui de la machine seule). Les routes, composants (`StorySlides`, `StepScene`…) et contenus (règle V6) sont **conservés** en attendant la décision de l'équipe de les retirer ou non (CLAUDE.md §6 : aucune suppression sans validation). Le PRD (§2 parcours, STORY-003/005) et `USER_FLOWS` sont à mettre à jour par le PM.
   - **Direction artistique « Transmission »** : grain de film et vignette fixes sur tout le site (`CinemaLayer`, sans mode de fusion : peu coûteux sur le ciel animé), anneau de curseur sur écrans à souris (`CursorRing`), ligne de télémétrie (`TelemetryBar` : voyant d'état **toujours accompagné du texte**, barres de signal, id NSSDCA, lieu, coordonnées sourcées), coins de cadre HUD (`HudCorners`), balayage de scan sur la photo d'arrivée, identifiant NASA sur la photo au premier plan du vol, en-tête « dossier » des cartes du hangar (n° / total, id, voyant, barres), chargement « Acquisition du signal », séquence du dernier signal (trace, ligne plate, date qui se tape, crépitement radio si le son est activé). Tout est `opacity`/`transform`, coupé sous `prefers-reduced-motion` ; aucune information n'est portée par la couleur seule.
 - **Conséquences** : DESIGN_SYSTEM §4 complété (couche Transmission). Tests : `lib/acts.test.ts` (5) ; tests de la page machine réécrits sur les actes. Aucune dépendance ajoutée.
+
+## ADR-026 — Hébergement : front et API dans un seul projet Vercel
+
+- **Statut** : Acceptée le 2026-11-15 (décision de l'équipe : « Mettons tout sur Vercel ») ; clôt OPEN-05.
+- **Problème** : depuis ADR-016, le site a deux parties : le build statique Vite (`frontend/dist`) et l'API Express qui sert le contenu validé (`backend/`). ADR-013 ne couvrait que le statique.
+- **Options** : (a) Vercel pour le front + Render/Railway/Fly.io pour l'API ; (b) un seul service Node qui sert l'API et le build du front ; (c) tout sur Vercel : le front en fichiers statiques, l'API en **Vercel Function**.
+- **Décision** : (c).
+  - `vercel.json` à la racine : installation des deux paquets (`npm ci --prefix frontend && npm ci --prefix backend`), build de l'API (`tsc` → `backend/dist`) puis du front, sortie `frontend/dist`.
+  - `api/index.mjs` exporte `createApp()` (compilé depuis `backend/src/app.ts`) : **une seule fonction** pour tout `/api/*` (réécriture `/api/(.*)` → `/api`, l'URL d'origine est conservée, donc les routes Express ne changent pas). `includeFiles: backend/content/**` embarque le contenu, lu et **validé à chaque démarrage à froid** : un contenu invalide fait échouer la fonction au lieu de servir un fait non sourcé.
+  - Réécriture SPA `/((?!api/).*)` → `/index.html` (les fichiers statiques passent avant les réécritures) ; `/assets/*` (noms hachés par Vite) mis en cache un an.
+  - Même origine pour le front et l'API : `VITE_API_BASE_URL` reste vide, pas de CORS à régler, **aucune variable d'environnement**.
+  - `Cache-Control` de l'API : `s-maxage=3600` ajouté ; le CDN Vercel garde les réponses une heure et est **vidé à chaque déploiement** (le contenu ne change qu'avec un déploiement).
+  - `package.json` racine minimal (`private`, `type: module`, `engines.node: 24.x`) : fixe la version de Node du projet Vercel, sans dépendance.
+- **Analyse** : (a) deux hébergeurs, deux comptes, une URL d'API à configurer et du CORS ; les offres gratuites Render/Railway s'endorment (premier chargement lent). (b) un seul serveur à maintenir, mais pas de CDN ni de prévisualisation par PR sans travail en plus. (c) une seule URL, prévisualisation par PR, CDN, offre gratuite suffisante ; contrepartie : démarrage à froid de la fonction (lecture des JSON, ~1 s au pire), absorbé par le cache CDN.
+- **Conséquences** : aucune dépendance ajoutée (pas de `@vercel/node`). Le serveur `npm start` (`backend/src/server.ts`) reste l'entrée locale. Vérifié localement (build des deux paquets, fonction servie par un serveur Node imitant les réécritures : `/api/health` 200, `/api/machines/opportunity` 200 en Brotli, lien profond `/explore/mars/opportunity` affiché avec ses photos) ; **non vérifié sur Vercel même** tant que le projet n'est pas lié (action humaine : compte Vercel, import du dépôt).
 

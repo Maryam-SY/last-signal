@@ -145,7 +145,7 @@ Ne **jamais** réduire : sources, séparation des voix, accessibilité clavier, 
 | P1-04 | ✅ review | Thème COSMOS + polices |
 | P1-05 | ⛔ bloquée | OPEN-17, OPEN-18 |
 | P1-06 | ✅ review | CI matrice frontend/backend (à confirmer au premier push) |
-| P1-07 | ⛔ bloquée | OPEN-05, OPEN-18 |
+| P1-07 | 🟡 config prête (ADR-026), liaison Vercel à faire | — |
 | ajout | ✅ review | Internationalisation (ADR-015) ; backend TypeScript testé (ADR-016) |
 
 Détail et sorties de vérification : [stories/PHASE1-BATCH-1.md](stories/PHASE1-BATCH-1.md).
