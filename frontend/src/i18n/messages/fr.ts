@@ -16,7 +16,6 @@ export const fr: Messages = {
     about: 'À propos et sources',
     aboutShort: 'À propos',
     home: 'AeroReborn — accueil',
-    brandLine: 'Lune · Mars',
     aboutHint: 'Sources, crédits, le projet',
     menu: 'Menu',
     menuTitle: 'Menu du site',

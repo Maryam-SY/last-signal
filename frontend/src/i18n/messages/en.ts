@@ -18,7 +18,6 @@ export const en = {
     about: 'About & Sources',
     aboutShort: 'About',
     home: 'AeroReborn — home',
-    brandLine: 'Moon · Mars',
     aboutHint: 'Sources, credits, the project',
     menu: 'Menu',
     menuTitle: 'Site menu',

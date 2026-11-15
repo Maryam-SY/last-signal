@@ -41,10 +41,7 @@ export function SiteFooter() {
           <div className="col-span-2 lg:col-span-1">
             <Link to={paths.home()} aria-label={t('nav.home')} className="group inline-flex min-h-11 items-center gap-3">
               <LogoMark className="size-11" />
-              <span className="flex flex-col leading-none">
-                <span className="font-heading text-xl font-bold text-starlight">{t('app.name')}</span>
-                <span className="mt-1.5 font-mono text-[0.62rem] tracking-[0.3em] text-stellar-cyan uppercase">{t('nav.brandLine')}</span>
-              </span>
+              <span className="font-heading text-xl font-bold text-starlight">{t('app.name')}</span>
             </Link>
             <p className="mt-5 max-w-sm font-heading text-lg leading-snug text-starlight/90">{t('explore.motto')}</p>
             <p className="mt-3 max-w-sm text-sm leading-relaxed text-moon-dust">{t('footer.sourcesNote')}</p>
