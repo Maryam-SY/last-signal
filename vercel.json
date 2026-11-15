@@ -8,18 +8,88 @@
       "includeFiles": "backend/content/**"
     }
   },
+  "images": {
+    "sizes": [
+      256,
+      640,
+      1080,
+      1600,
+      2048
+    ],
+    "qualities": [
+      70
+    ],
+    "formats": [
+      "image/webp"
+    ],
+    "minimumCacheTTL": 2678400,
+    "remotePatterns": [
+      {
+        "protocol": "https",
+        "hostname": "images-assets.nasa.gov"
+      },
+      {
+        "protocol": "https",
+        "hostname": "assets.science.nasa.gov"
+      },
+      {
+        "protocol": "https",
+        "hostname": "nssdc.gsfc.nasa.gov"
+      },
+      {
+        "protocol": "https",
+        "hostname": "science.nasa.gov"
+      },
+      {
+        "protocol": "https",
+        "hostname": "www.nasa.gov"
+      },
+      {
+        "protocol": "https",
+        "hostname": "apollojournals.org"
+      },
+      {
+        "protocol": "https",
+        "hostname": "www.apollojournals.org"
+      },
+      {
+        "protocol": "https",
+        "hostname": "d2pn8kiwq2w21t.cloudfront.net"
+      },
+      {
+        "protocol": "https",
+        "hostname": "ilrs.gsfc.nasa.gov"
+      }
+    ]
+  },
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api" },
-    { "source": "/((?!api/).*)", "destination": "/index.html" }
+    {
+      "source": "/api/(.*)",
+      "destination": "/api"
+    },
+    {
+      "source": "/((?!api/).*)",
+      "destination": "/index.html"
+    }
   ],
   "headers": [
     {
       "source": "/assets/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     },
     {
       "source": "/media/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
+      ]
     }
   ]
 }

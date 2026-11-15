@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { Media } from '@/api/types'
+import { cardSrc } from '@/lib/mediaSrc'
 import { cn } from '@/lib/utils'
 import { DepictionBadge } from './DepictionBadge'
 
@@ -21,7 +22,7 @@ export function CoverPhoto({ media, className, imageClassName }: CoverPhotoProps
   return (
     <figure className={cn('relative overflow-hidden', className)}>
       <img
-        src={media.thumbnailUrl ?? media.url}
+        src={cardSrc(media)}
         alt={media.alt}
         loading="lazy"
         decoding="async"

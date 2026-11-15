@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import { X } from 'lucide-react'
 import type { Media } from '@/api/types'
 import { useTranslation } from '@/i18n'
+import { zoomSrc } from '@/lib/mediaSrc'
 import { cn } from '@/lib/utils'
 import { DepictionBadge } from './DepictionBadge'
 
@@ -43,7 +44,7 @@ export function Lightbox({ media, onClose }: LightboxProps) {
         {/* The whole backdrop closes the picture; the visible button does the same for the keyboard. */}
         <button type="button" tabIndex={-1} aria-hidden="true" onClick={onClose} className="absolute inset-0 cursor-zoom-out bg-transparent" />
         <div className="relative flex max-h-full w-[min(100vw,96rem)] flex-col">
-          <img src={media.url} alt={media.alt} decoding="async" className="mx-auto max-h-[78dvh] w-auto max-w-full object-contain" />
+          <img src={zoomSrc(media)} alt={media.alt} decoding="async" className="mx-auto max-h-[78dvh] w-auto max-w-full object-contain" />
           <div className="mx-auto flex w-full max-w-4xl flex-wrap items-start gap-3 px-5 py-4">
             <DepictionBadge depiction={media.depiction} />
             <p className={cn('min-w-0 flex-1 text-sm leading-relaxed sm:text-base')}>{media.description ?? media.alt}</p>

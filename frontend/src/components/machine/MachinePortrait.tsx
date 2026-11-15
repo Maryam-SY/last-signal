@@ -6,7 +6,7 @@ import { DepictionBadge } from '@/components/media/DepictionBadge'
 import { Lightbox } from '@/components/media/Lightbox'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { useTranslation } from '@/i18n'
-import { sceneSrc } from '@/lib/mediaSrc'
+import { cardSrc, sceneSrc } from '@/lib/mediaSrc'
 import { cn } from '@/lib/utils'
 
 /** A named part of the machine, placed on the photo (percent of its width / height). */
@@ -62,7 +62,7 @@ export function MachinePortrait({ media, parts = [], className }: MachinePortrai
       <div className="machine-portrait-stage relative" onPointerMove={onPointerMove} onPointerLeave={onPointerLeave}>
         <div ref={frameRef} className="machine-portrait-frame relative overflow-hidden rounded-3xl" style={{ '--rx': '0deg', '--ry': '0deg' } as CSSProperties}>
           {/* Depth: a blurred, larger copy behind the photo. */}
-          <img src={media.thumbnailUrl ?? media.url} alt="" aria-hidden="true" className="machine-portrait-back absolute inset-0 size-full object-cover" />
+          <img src={cardSrc(media)} alt="" aria-hidden="true" className="machine-portrait-back absolute inset-0 size-full object-cover" />
           <img src={sceneSrc(media)} alt={media.alt} decoding="async" className="relative block w-full object-cover" />
           <span aria-hidden="true" className="machine-portrait-glare pointer-events-none absolute inset-0" />
           <HudCorners />

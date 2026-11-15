@@ -34,6 +34,7 @@
 | ADR-024 | Biographie propre à chaque machine et lecture suivie | Acceptée (2026-11-15) | — |
 | ADR-025 | Les actes d'une vie remplacent le récit en six étapes ; direction artistique « Transmission » | Acceptée (2026-11-15) | PRD §2, STORY-003/005, V6 à revoir |
 | ADR-026 | Hébergement : front et API dans un seul projet Vercel | Acceptée (décision de l'équipe, 2026-11-15) | Clôt OPEN-05 |
+| ADR-027 | Photos compressées par l'optimisation d'images de Vercel (liens NASA conservés) | Acceptée (décision de l'équipe, 2026-11-15) | Complète ADR-017 |
 
 ---
 
@@ -378,4 +379,13 @@
   - `package.json` racine minimal (`private`, `type: module`, `engines.node: 24.x`) : fixe la version de Node du projet Vercel, sans dépendance.
 - **Analyse** : (a) deux hébergeurs, deux comptes, une URL d'API à configurer et du CORS ; les offres gratuites Render/Railway s'endorment (premier chargement lent). (b) un seul serveur à maintenir, mais pas de CDN ni de prévisualisation par PR sans travail en plus. (c) une seule URL, prévisualisation par PR, CDN, offre gratuite suffisante ; contrepartie : démarrage à froid de la fonction (lecture des JSON, ~1 s au pire), absorbé par le cache CDN.
 - **Conséquences** : aucune dépendance ajoutée (pas de `@vercel/node`). Le serveur `npm start` (`backend/src/server.ts`) reste l'entrée locale. Vérifié localement (build des deux paquets, fonction servie par un serveur Node imitant les réécritures : `/api/health` 200, `/api/machines/opportunity` 200 en Brotli, lien profond `/explore/mars/opportunity` affiché avec ses photos) ; **non vérifié sur Vercel même** tant que le projet n'est pas lié (action humaine : compte Vercel, import du dépôt).
+
+## ADR-027 — Photos compressées par l'optimisation d'images de Vercel
+
+- **Statut** : Acceptée le 2026-11-15 (décision de l'équipe : « compression Vercel », plutôt qu'héberger des copies).
+- **Problème** : les photos sont des liens vers la NASA (ADR-017) ; certaines pèsent 2 à 10 Mo, lentes et lourdes sur téléphone.
+- **Options** : (a) optimisation d'images de Vercel, à la volée ; (b) télécharger, compresser et héberger les photos dans le dépôt (40 à 60 Mo, à refaire pour chaque nouvelle photo, contraire à ADR-017).
+- **Décision** : (a). `vercel.json` → `images` : largeurs 256 / 640 / 1080 / 1600 / 2048, qualité 70, format WebP, cache 31 jours, 9 hôtes NASA autorisés (`remotePatterns`). `lib/mediaSrc.ts` construit `/_vercel/image?url=…&w=…&q=70` : cartes 640 px (depuis la grande photo), photos plein écran 1080 px sur téléphone et 1600 px au-delà, zoom 2048 px depuis l'original. GIF et SVG non transformés (Vercel les sert tels quels). En local (pas d'optimiseur), les fichiers NASA sont utilisés directement.
+- **Filet de sécurité** : `installImageFallback()` (écoute globale des erreurs d'image) remplace une copie optimisée qui échoue par l'original NASA — quota mensuel dépassé (offre Hobby : 5 000 transformations / mois ; au-delà, les nouvelles images renvoient 402, celles déjà en cache continuent), ou NASA indisponible.
+- **Conséquences** : le contenu ne change pas (toujours des URL NASA, crédits et pages sources affichés). Estimation : ~290 photos × 2 à 3 largeurs, une fois par mois grâce au cache de 31 jours, sous le quota. Tests : `lib/mediaSrc.test.ts`.
 
