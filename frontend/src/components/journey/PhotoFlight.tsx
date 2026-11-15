@@ -143,26 +143,50 @@ function Flight({ label, items, className }: PhotoFlightProps) {
         ? setBringIntoView(item, (behavior) => {
             const rect = section.getBoundingClientRect()
             const progress = clamp((index + 0.02) / count)
-            const top = window.scrollY + rect.top + progress * Math.max(1, rect.height - window.innerHeight)
+            const top = wide
+              ? window.scrollY + rect.top + progress * Math.max(1, rect.height - window.innerHeight)
+              : window.scrollY + rect.top + (index * rect.height) / count
             window.scrollTo({ top, behavior })
           })
         : undefined,
     )
     return () => unregister.forEach((off) => off?.())
-  }, [count])
+  }, [count, wide])
+
+  // Phones, like a feed of short videos: while the stage is pinned, the page must stop on
+  // every moment (one swipe = one moment), and only there — elsewhere it scrolls freely.
+  const feed = useRef(false)
+  const setFeed = (on: boolean) => {
+    if (feed.current === on) return
+    feed.current = on
+    if (on) document.documentElement.dataset.flightSnap = ''
+    else delete document.documentElement.dataset.flightSnap
+  }
+  const setFeedRef = useRef(setFeed)
+  useEffect(() => {
+    setFeedRef.current = setFeed
+  })
+  useEffect(() => () => setFeedRef.current(false), [])
 
   useScrollFrame(({ viewportH }) => {
     const section = sectionRef.current
     const world = worldRef.current
     if (!section || !world) return
     const rect = section.getBoundingClientRect()
+    // On as soon as the flight fills most of the screen (from above or from below), so the
+    // first swipe into it lands on its first or last moment instead of skipping it.
+    setFeed(!wide && rect.top < viewportH * 0.6 && rect.bottom > viewportH * 0.4)
     if (rect.bottom < -viewportH || rect.top > viewportH * 1.5) return
 
     // 0 → 1 while the pinned stage is crossed. US-5.15: no continuous zoom any more — the
     // scroll only decides WHICH moment is in front; the change itself is a clean transition
     // (CSS), the pictures keep their size.
     const progress = clamp(-rect.top / Math.max(1, rect.height - viewportH))
-    const current = Math.min(count - 1, Math.floor(progress * count + 0.0001))
+    // Phones: one screen per moment (the section is `count` screens tall), measured on the
+    // section itself so iOS's moving toolbar (100vh ≠ innerHeight) cannot shift the count.
+    const current = wide
+      ? Math.min(count - 1, Math.floor(progress * count + 0.0001))
+      : Math.min(count - 1, Math.max(0, Math.floor((-rect.top + 2) / (rect.height / count))))
     if (current !== active.current) {
       const previous = active.current
       active.current = current
@@ -199,15 +223,20 @@ function Flight({ label, items, className }: PhotoFlightProps) {
     <div
       ref={sectionRef}
       className={cn('photo-flight relative', className)}
-      style={{ '--count': count, height: 'calc((var(--count) * var(--flight-per) + 1) * 100vh)' } as CSSProperties}
+      style={{ '--count': count, height: 'calc((var(--count) * var(--flight-per) + var(--flight-tail)) * 100vh)' } as CSSProperties}
     >
-      {/* Phones: one snap point per moment, where its picture is in front (one swipe = one moment). */}
+      {/* Phones: one screen and one stop per moment (one swipe = one moment), plus a stop just
+          before and just after the flight so a swipe can leave it in both directions. */}
+      {!wide && <span aria-hidden="true" className="flight-snap-edge" style={{ top: '-100vh' }} />}
+      {!wide && <span aria-hidden="true" className="flight-snap-edge" style={{ top: '100%' }} />}
       {items.map((item, index) => (
         <span
           key={`snap-${item.id}`}
           aria-hidden="true"
           className="flight-snap"
-          style={{ top: `calc(var(--count) * var(--flight-per) * 100vh * ${((index + 0.02) / count).toFixed(5)})` }}
+          style={{
+            top: wide ? `calc(var(--count) * var(--flight-per) * 100vh * ${((index + 0.02) / count).toFixed(5)})` : `${((index / count) * 100).toFixed(4)}%`,
+          }}
         />
       ))}
       <div className="photo-flight-stage sticky top-0 h-dvh overflow-hidden" style={{ perspective: `${PERSPECTIVE}px` }}>

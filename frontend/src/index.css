@@ -1268,6 +1268,8 @@ html.depth-mode::-webkit-scrollbar {
 /* US-5.13 — scroll length per flight moment; phones: shorter, and each moment snaps into place. */
 .photo-flight {
   --flight-per: 0.7;
+  /* One more screen while the pinned stage scrolls away (wide screens). */
+  --flight-tail: 1;
 }
 /* One wheel notch or swipe = one moment: the page settles on each snap point. */
 html:has(.photo-flight) {
@@ -1283,9 +1285,28 @@ html:has(.photo-flight) {
   height: 1px;
   pointer-events: none;
 }
+/* Phones (team request: "like TikTok"): one screen per moment, and while the flight is pinned
+   (data-flight-snap, set by PhotoFlight) the page must stop on every moment. */
+.flight-snap-edge {
+  position: absolute;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+html[data-flight-snap] {
+  scroll-snap-type: y mandatory;
+}
+html[data-flight-snap] .flight-snap,
+html[data-flight-snap] .flight-snap-edge {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
 @media (max-width: 1023.98px) {
   .photo-flight {
-    --flight-per: 0.55;
+    /* Moment i is exactly i screens down; the rest of the page one screen after the last. */
+    --flight-per: 1;
+    --flight-tail: 0;
   }
 }
 
