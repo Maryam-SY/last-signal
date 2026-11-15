@@ -698,8 +698,10 @@
         "sols"
       ],
       "fr": [
-        "sol",
-        "sols"
+        "sol martien",
+        "sols martiens",
+        "jour martien",
+        "jours martiens"
       ]
     },
     "label": {
@@ -1009,6 +1011,112 @@
     },
     "sourceIds": [
       "nasa-moon-composition"
+    ]
+  },
+  {
+    "id": "universal-time",
+    "status": "draft",
+    "terms": {
+      "en": [
+        "UT",
+        "UTC",
+        "Universal Time"
+      ],
+      "fr": [
+        "UT",
+        "UTC",
+        "temps universel"
+      ]
+    },
+    "label": {
+      "en": "UT (Universal Time)",
+      "fr": "UT (temps universel)"
+    },
+    "definition": {
+      "en": "The world's reference time, the time at Greenwich in England. A date in UT can be one day off from the date in America or Asia.",
+      "fr": "L’heure de référence mondiale, celle de Greenwich, en Angleterre. Une date en UT peut différer d’un jour de la date en Amérique ou en Asie."
+    },
+    "sourceIds": [
+      "src-eclipse-gsfc-nasa-gov-sehelp-timezone-html"
+    ]
+  },
+  {
+    "id": "newton",
+    "status": "draft",
+    "terms": {
+      "en": [
+        "newton",
+        "newtons"
+      ],
+      "fr": [
+        "newton",
+        "newtons"
+      ]
+    },
+    "label": {
+      "en": "Newton",
+      "fr": "Newton"
+    },
+    "definition": {
+      "en": "The unit used to measure a force, like the push of an engine. On Earth, a 1 kg object weighs about 9.8 newtons.",
+      "fr": "L’unité qui mesure une force, comme la poussée d’un moteur. Sur Terre, un objet de 1 kg pèse environ 9,8 newtons."
+    },
+    "sourceIds": [
+      "src-grc-nasa-gov-beginners-guide-to-aeronautics-weig",
+      "src-science-nasa-gov-learn-basics-of-space-flight-un"
+    ]
+  },
+  {
+    "id": "nanometre",
+    "status": "draft",
+    "terms": {
+      "en": [
+        "nanometre",
+        "nanometres",
+        "nanometer",
+        "nanometers"
+      ],
+      "fr": [
+        "nanomètre",
+        "nanomètres"
+      ]
+    },
+    "label": {
+      "en": "Nanometre",
+      "fr": "Nanomètre"
+    },
+    "definition": {
+      "en": "One billionth of a metre.",
+      "fr": "Un milliardième de mètre."
+    },
+    "sourceIds": [
+      "src-astrobiology-nasa-gov-news-how-small-can-life-be"
+    ]
+  },
+  {
+    "id": "gamma",
+    "status": "draft",
+    "terms": {
+      "en": [
+        "gamma",
+        "gammas"
+      ],
+      "fr": [
+        "gamma",
+        "gammas"
+      ]
+    },
+    "label": {
+      "en": "Gamma (magnetism)",
+      "fr": "Gamma (magnétisme)"
+    },
+    "definition": {
+      "en": "A unit of magnetic field, the same as a nanotesla. At the Earth's surface, the field is about 25,000 to 65,000 gammas.",
+      "fr": "Une unité de champ magnétique, la même qu’un nanotesla. À la surface de la Terre, le champ mesure environ 25 000 à 65 000 gammas."
+    },
+    "sourceIds": [
+      "src-mgs-mager-gsfc-nasa-gov-instrument-html",
+      "src-ncei-noaa-gov-products-geomagnetism-frequently-a"
     ]
   }
 ]

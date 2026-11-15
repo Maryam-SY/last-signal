@@ -3582,5 +3582,59 @@
     "type": "other",
     "publishedOn": null,
     "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "src-eclipse-gsfc-nasa-gov-sehelp-timezone-html",
+    "organization": "NASA Goddard Space Flight Center",
+    "title": "NASA - Time Zones and Universal Time",
+    "url": "https://eclipse.gsfc.nasa.gov/SEhelp/TimeZone.html",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "src-science-nasa-gov-learn-basics-of-space-flight-un",
+    "organization": "NASA Science",
+    "title": "Basics of Spaceflight: Units of Measure",
+    "url": "https://science.nasa.gov/learn/basics-of-space-flight/units/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "src-grc-nasa-gov-beginners-guide-to-aeronautics-weig",
+    "organization": "NASA Glenn Research Center",
+    "title": "Weight Equation",
+    "url": "https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/weight-equation/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "src-astrobiology-nasa-gov-news-how-small-can-life-be",
+    "organization": "NASA Astrobiology Program",
+    "title": "How Small Can Life Be?",
+    "url": "https://astrobiology.nasa.gov/news/how-small-can-life-be/",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "src-mgs-mager-gsfc-nasa-gov-instrument-html",
+    "organization": "NASA Goddard Space Flight Center",
+    "title": "MGS MAG/ER Instrument",
+    "url": "https://mgs-mager.gsfc.nasa.gov/instrument.html",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
+  },
+  {
+    "id": "src-ncei-noaa-gov-products-geomagnetism-frequently-a",
+    "organization": "NOAA National Centers for Environmental Information",
+    "title": "Geomagnetism Frequently Asked Questions",
+    "url": "https://www.ncei.noaa.gov/products/geomagnetism-frequently-asked-questions",
+    "type": "other",
+    "publishedOn": null,
+    "accessedOn": "2026-11-15"
   }
 ]
