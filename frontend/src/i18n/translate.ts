@@ -33,8 +33,28 @@ export function interpolate(template: string, vars?: TranslateVars): string {
   )
 }
 
+/**
+ * Singular or plural: `{days:day|days}` picks "day" or "days" for the number in `days`, by the
+ * language's own rules (English: 1 is singular; French: 0 and 1 are). Numbers may arrive
+ * already formatted ("1,234"); unknown or non-numeric values take the plural.
+ */
+export function pluralize(locale: Locale, template: string, vars?: TranslateVars): string {
+  if (!vars) return template
+  let rules: Intl.PluralRules
+  try {
+    rules = new Intl.PluralRules(locale === 'wo' ? 'fr' : locale)
+  } catch {
+    rules = new Intl.PluralRules('en')
+  }
+  return template.replace(/\{(\w+):([^|{}]*)\|([^{}]*)\}/g, (match, name: string, one: string, other: string) => {
+    if (!Object.hasOwn(vars, name)) return match
+    const value = Number(String(vars[name]).replace(/[^\d.-]/g, ''))
+    return Number.isFinite(value) && rules.select(value) === 'one' ? one : other
+  })
+}
+
 /** Falls back to English, then to the key itself, so a missing string is visible but never crashes. */
 export function translate(locale: Locale, key: MessageKey, vars?: TranslateVars): string {
   const template = lookup(LOCALES[locale], key) ?? lookup(LOCALES[DEFAULT_LOCALE], key) ?? key
-  return interpolate(template, vars)
+  return interpolate(pluralize(locale, template, vars), vars)
 }

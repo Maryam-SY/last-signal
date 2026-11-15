@@ -532,11 +532,16 @@ function FlightImage({ url, near, onError }: { url: string; near: boolean; onErr
         }
         if (source instanceof ImageBitmap) source.close()
       })
+      // Safari's decode() sometimes refuses a picture it can show (large JPEGs): fall back to a
+      // plain <img>, whose own onError reports a picture that really is missing.
       .catch(() => {
-        if (!cancelled) onErrorRef.current()
+        if (!cancelled) setMode('img')
       })
     return () => {
       cancelled = true
+      // iPhone frees a canvas' memory late: empty it as soon as the picture leaves.
+      canvas.width = 0
+      canvas.height = 0
     }
   }, [near, url])
 

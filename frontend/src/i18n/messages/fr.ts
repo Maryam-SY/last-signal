@@ -110,7 +110,7 @@ export const fr: Messages = {
   destination: {
     backToDestinations: 'Retour aux destinations',
     missionsTitle: 'Missions et machines',
-    missionsCount: '{missions} missions · {machines} machines',
+    missionsCount: '{missions} {missions:mission|missions} · {machines} {machines:machine|machines}',
     machinesTitle: 'Les machines laissées par cette mission',
     chronicleEyebrow: 'Journal de mission',
     machinesLeft: 'Ce qui est resté sur place',
@@ -245,7 +245,7 @@ export const fr: Messages = {
   hook: {
     alive: 'Répond encore, depuis {year}',
     beyond: 'A vécu {times} fois plus longtemps que prévu',
-    days: 'A travaillé {days} jours, puis s’est tu',
+    days: 'A travaillé {days} {days:jour|jours}, puis s’est tu',
   },
   quiz: {
     eyebrow: 'À toi',
@@ -423,14 +423,14 @@ export const fr: Messages = {
     planned: 'Vie prévue',
     real: 'Vie réelle',
     beyond: 'plus longtemps que prévu',
-    durationYears: '{years} ans et {months} mois',
-    durationDays: '{days} jours',
+    durationYears: '{years} {years:an|ans} et {months} mois',
+    durationDays: '{days} {days:jour|jours}',
     unit: {
-      days: '{amount} jours',
-      sols: '{amount} jours martiens',
-      flights: '{amount} vols',
+      days: '{amount} {amount:jour|jours}',
+      sols: '{amount} {amount:jour martien|jours martiens}',
+      flights: '{amount} {amount:vol|vols}',
       year: '{amount} an',
-      years: '{amount} ans',
+      years: '{amount} {amount:an|ans}',
     },
     lifeEyebrow: 'Sa vie',
     lifeTitle: 'Combien de temps {name} a vécu',
@@ -451,7 +451,7 @@ export const fr: Messages = {
     earthEyebrow: 'Pour nous, sur Terre',
     earthTitle: 'Ses apports pour nous, sur Terre',
     clockDay: 'Jour {day} de sa mission',
-    clockBefore: '{days} jours avant l’arrivée',
+    clockBefore: '{days} {days:jour|jours} avant l’arrivée',
   },
   notFound: {
     title: 'Page introuvable',

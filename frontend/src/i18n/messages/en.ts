@@ -112,7 +112,7 @@ export const en = {
   destination: {
     backToDestinations: 'Back to destinations',
     missionsTitle: 'Missions and machines',
-    missionsCount: '{missions} missions · {machines} machines',
+    missionsCount: '{missions} {missions:mission|missions} · {machines} {machines:machine|machines}',
     machinesTitle: 'Machines left by this mission',
     timelineTitle: 'Step by step',
     chronicleEyebrow: 'Mission log',
@@ -247,7 +247,7 @@ export const en = {
   hook: {
     alive: 'Still answering, since {year}',
     beyond: 'Lived {times} times longer than planned',
-    days: 'Worked {days} days, then fell silent',
+    days: 'Worked {days} {days:day|days}, then fell silent',
   },
   quiz: {
     eyebrow: 'Your turn',
@@ -425,14 +425,14 @@ export const en = {
     planned: 'Planned life',
     real: 'Real life',
     beyond: 'longer than planned',
-    durationYears: '{years} years, {months} months',
-    durationDays: '{days} days',
+    durationYears: '{years} {years:year|years}, {months} {months:month|months}',
+    durationDays: '{days} {days:day|days}',
     unit: {
-      days: '{amount} days',
-      sols: '{amount} Martian days',
-      flights: '{amount} flights',
+      days: '{amount} {amount:day|days}',
+      sols: '{amount} Martian {amount:day|days}',
+      flights: '{amount} {amount:flight|flights}',
       year: '{amount} year',
-      years: '{amount} years',
+      years: '{amount} {amount:year|years}',
     },
     lifeEyebrow: 'Its life',
     lifeTitle: 'How long {name} lived',
@@ -453,7 +453,7 @@ export const en = {
     earthEyebrow: 'For us on Earth',
     earthTitle: 'What it brought back to us on Earth',
     clockDay: 'Day {day} of its mission',
-    clockBefore: '{days} days before arrival',
+    clockBefore: '{days} {days:day|days} before arrival',
   },
   notFound: {
     title: 'Page not found',

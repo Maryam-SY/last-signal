@@ -44,3 +44,20 @@ describe('i18n', () => {
     expect(isLocale('toString')).toBe(false)
   })
 })
+
+describe('singular and plural', () => {
+  it('says "1 day" and "2 days" in English (team report: "Worked 1 days")', () => {
+    expect(translate('en', 'hook.days', { days: 1 })).toBe('Worked 1 day, then fell silent')
+    expect(translate('en', 'hook.days', { days: 37 })).toBe('Worked 37 days, then fell silent')
+    expect(translate('en', 'machine.durationYears', { years: 1, months: 1 })).toBe('1 year, 1 month')
+    expect(translate('en', 'machine.clockBefore', { days: '1,204' })).toBe('1,204 days before arrival')
+  })
+
+  it('follows the French rule: 0 and 1 are singular', () => {
+    expect(translate('fr', 'machine.durationDays', { days: 0 })).toBe('0 jour')
+    expect(translate('fr', 'machine.durationDays', { days: 1 })).toBe('1 jour')
+    expect(translate('fr', 'machine.durationDays', { days: 2 })).toBe('2 jours')
+    expect(translate('fr', 'machine.unit.sols', { amount: 90 })).toBe('90 jours martiens')
+  })
+})
+
