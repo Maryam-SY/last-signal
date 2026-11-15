@@ -355,7 +355,8 @@ svg.ln{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;strok
   padding:calc(20px + env(safe-area-inset-top, 0px)) max(20px, env(safe-area-inset-right, 0px)) 20px 22px;overflow-y:auto;box-shadow:-20px 0 60px rgba(0,0,0,.5)}
 #notes h2{font:600 1.2rem var(--f-display);margin:0 0 .3rem}
 #notes .tt{font:500 .78rem var(--f-mono);color:var(--gold);margin:0 0 1rem}
-#notes .say{font-size:1.05rem;line-height:1.6;margin:0}
+#notes .say{font-size:1.05rem;line-height:1.6;margin:0;white-space:pre-line}
+#notes .say em{font-style:italic;color:var(--muted)}
 #notes hr{border:0;border-top:1px solid var(--line);margin:1.4rem 0}
 #notes label{display:block;font:500 .75rem var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}
 #notes input{width:100%;min-height:44px;padding:0 .8rem;border-radius:8px;border:1px solid var(--muted);background:var(--void);color:var(--text);font:400 .95rem var(--f-mono)}
@@ -935,41 +936,41 @@ svg.ln{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;strok
   const ACTS = ['Contexte', 'Problématique', 'Solution', 'Démo', 'Utilité', 'Conclusion'];
   const SC = [
     { id: 's1', act: 0, title: 'Le proverbe', time: '0:00 → 0:15', warp: .2,
-      say: "Laisser l'animation se poser. « Ici, on dit que les vieux ne sont pas morts : leur histoire continue de nous apprendre quelque chose. »" },
+      say: "[Laisser le baobab se dessiner, parler après 3 secondes.]\nChez nous, on dit que les vieux ne sont pas morts.\nTant que leur histoire se raconte, ils continuent de nous apprendre quelque chose." },
     { id: 's2', act: 0, title: 'Les anciens de l\'espace', time: '0:15 → 0:35', warp: .8,
-      say: "« Là-haut aussi, nous avons des anciens. Depuis 1959, nous envoyons des machines explorer l'espace : la Lune, Vénus, Mars, Titan, une comète, et même au-delà du système solaire. »" },
+      say: "Là-haut aussi, nous avons des anciens.\nDepuis 1959, nous envoyons des machines explorer pour nous : la Lune, Vénus, Mars, Titan, une comète… et même au-delà du système solaire.\nElles sont parties, elles ont travaillé, et la plupart se sont tues." },
     { id: 's3', act: 0, title: 'Ce qu\'ils ont rapporté', time: '0:35 → 0:50', warp: .5,
-      say: "« Beaucoup se sont tus. Mais ce qu'ils ont rapporté nous apprend encore : des images, des échantillons, des mesures, des idées reprises par les missions suivantes. Une immense mémoire de l'exploration, écrite par des machines. »" },
+      say: "Mais ce qu'elles ont rapporté nous apprend encore aujourd'hui.\nDes images de paysages qu'aucun humain n'avait vus.\nDes échantillons de roches et de sol.\nDes mesures du climat, de l'atmosphère, des distances.\nEt des idées, reprises et améliorées par chaque mission suivante.\nUne immense mémoire de l'exploration, écrite par des machines." },
     { id: 's4', act: 1, title: 'La bibliothèque', time: '0:50 → 1:05', warp: .3,
-      say: "« Amadou Hampâté Bâ disait : en Afrique, quand un vieillard meurt, c'est une bibliothèque qui brûle. Les bibliothèques de ces machines, elles, existent. Mais elles sont fermées à double tour. »" },
+      say: "Amadou Hampâté Bâ disait : « En Afrique, quand un vieillard meurt, c'est une bibliothèque qui brûle. »\nLes bibliothèques de ces machines, elles, existent. Tout est là.\nMais elles sont fermées à double tour." },
     { id: 's5', act: 1, title: 'Le catalogue', time: '1:05 → 1:20', warp: .3,
-      say: "« Voilà à quoi ressemble leur mémoire aujourd'hui : des catalogues exacts, mais illisibles pour un jeune, éparpillés sur des dizaines de pages, et sans aucun récit. »" },
+      say: "[Montrer le tableau qui défile.]\nVoilà à quoi ressemble leur mémoire aujourd'hui : des catalogues.\nExacts, mais illisibles pour un jeune de douze ans.\nÉparpillés sur des dizaines de pages, mission par mission.\nEt sans aucun récit : des identifiants, des coordonnées, des statuts. Jamais une histoire." },
     { id: 's6', act: 1, title: 'La question', time: '1:20 → 1:30', warp: .2,
-      say: "« D'où notre question : comment permettre aux jeunes d'apprendre l'espace grâce à ce que ces machines nous ont transmis, sans rien inventer ? »" },
+      say: "D'où notre question :\ncomment permettre aux jeunes d'apprendre l'espace grâce à ce que ces machines nous ont transmis…\nsans rien inventer ?" },
     { id: 's7', act: 2, title: 'AeroReborn', time: '1:30 → 1:40', warp: 1,
-      say: "« Notre réponse : AeroReborn. On fait revivre ces machines pour apprendre l'espace grâce à leur mémoire. »" },
+      say: "[Laisser le battement apparaître.]\nNotre réponse, c'est AeroReborn.\nOn fait revivre ces machines, pour apprendre l'espace grâce à leur mémoire." },
     { id: 'sw', act: 2, title: 'Pourquoi AeroReborn ?', time: '1:40 → 2:05', warp: .4,
-      say: "« Des sites sur ces machines, il en existe : ceux de la NASA, les encyclopédies… Mais ils sont faits pour les spécialistes. AeroReborn reprend les mêmes données et les montre autrement : pour les jeunes, une machine à la fois, toute sa vie au même endroit, racontée et lue à voix haute, chaque fait sourcé, et une question pour réfléchir. Inclusif, intuitif, immersif, interactif, intègre, inspirant : six I, pour une seule idée, faire revivre ces machines. »" },
+      say: "Des sites sur ces machines, il en existe : ceux de la NASA, les encyclopédies.\nMais ils sont faits pour les spécialistes.\nAeroReborn reprend les mêmes données et les montre autrement.\nPour les dix-quinze ans, et pour tout le monde.\nUne machine à la fois, toute sa vie au même endroit.\nRacontée, et lue à voix haute, en trois langues.\nChaque fait sourcé, chaque vue d'artiste signalée.\nEt une question, à la fin, pour réfléchir.\nLes mêmes données, vues sous un autre angle : celui de quelqu'un qui veut comprendre.\nInclusif, intuitif, immersif, interactif, intègre, inspirant : six I, pour une seule idée, faire revivre ces machines." },
     { id: 'sy', act: 2, title: 'Notre apport', time: '2:05 → 2:35', warp: .5,
-      say: "« Voilà ce qu'on apporte : un regard. On n'a pas changé les données, on a changé la façon de les raconter. La machine est le héros. On commence par la fin : son dernier signal s'affiche, son nom se décode, et on remonte sa vie. Ses dates écrivent le scénario : chaque acte est calculé depuis ses vraies dates. Un chiffre par acte : Opportunity, prévue pour 90 jours martiens, a tenu 57 fois plus longtemps, puis 248 jours de silence. Et une voix qui lit, pendant que la page suit. »" },
+      say: "Ce qu'on apporte, c'est ce regard.\nOn n'a pas changé les données. On a changé la façon de les raconter.\n\nLa machine est le héros : une page, c'est une vie, pas une fiche.\nOn commence par la fin : « Dernier signal reçu le 10 juin 2018. » Puis le nom se décode. Et on remonte.\nSes dates écrivent le scénario : chaque acte de sa vie est calculé depuis ses vraies dates, pas depuis un gabarit.\nUn chiffre par acte : Opportunity était prévue pour quatre-vingt-dix jours martiens. Elle a tenu cinquante-sept fois plus longtemps. Puis deux cent quarante-huit jours de silence.\nEt une voix qui lit, pendant que la page suit." },
     { id: 's8', act: 2, title: 'Sa vie en actes', time: '2:35 → 2:55', warp: .4,
-      say: "« Donc pas de gabarit. Opportunity a cinq actes : le départ, la mission prévue, les prolongations, le silence, ce qui reste. Le réflecteur laser d'Apollo 11, lui, n'en a que deux : le départ… et « répond encore », parce que des observatoires l'utilisent toujours, depuis 1969. Chaque machine, son histoire. »" },
+      say: "Donc pas de gabarit.\nOpportunity a cinq actes : le départ, la mission prévue, les prolongations, le silence, et ce qui reste.\nLe réflecteur laser d'Apollo 11, lui, n'en a que deux : le départ… et « répond encore ».\nParce que des observatoires l'utilisent toujours, chaque nuit claire, depuis 1969.\nChaque machine a son histoire. Le site la raconte comme elle est.\n[En retard ? Couper cette scène.]" },
     { id: 'sx', act: 2, title: "L'expérience", time: '2:55 → 3:20', warp: .4,
-      say: "« Et ça donne envie. Trois gestes : on choisit un monde, on réveille une machine dans le hangar, on suit sa vie. C'est ludique : des globes, des pièces à toucher sur la photo et sur le modèle 3D. C'est beau : grain de film, télémétrie, un nom qui se décode. Et c'est pour tous : téléphone, clavier, lecteur d'écran, trois langues. »" },
+      say: "[Laisser l'écran animé tourner.]\nEt ça donne envie.\nTrois gestes suffisent : on choisit un monde, on réveille une machine dans le hangar, on suit sa vie.\nC'est ludique : des globes qui tournent, des pièces à toucher sur la photo et en 3D, un chiffre qui s'anime à chaque acte.\nC'est beau : du grain de film, une ligne de télémétrie, un nom qui se décode.\nEt c'est pour tous : téléphone ou ordinateur, clavier, lecteur d'écran, en anglais, en français et en wolof." },
     { id: 's9', act: 2, title: 'La pédagogie', time: '3:20 → 3:35', warp: .4,
-      say: "« On apprend aussi à vérifier : le fait, toujours sourcé ; ce qu'il veut dire ; et l'imagination, qui fait réfléchir sans se faire passer pour un fait. 348 sources, toutes sur la page À propos. Une vue d'artiste est toujours signalée. »" },
+      say: "On apprend aussi à vérifier.\nLe fait, toujours sourcé.\nCe qu'il veut dire : une explication, pas un fait nouveau.\nEt l'imagination, qui fait réfléchir sans jamais se faire passer pour un fait.\nTrois cent quarante-huit sources, toutes sur la page À propos. Une vue d'artiste est toujours signalée comme telle." },
     { id: 's10', act: 2, title: 'Le cadre du défi', time: '3:35 → 3:45', warp: .8,
-      say: "« Le défi nous a donné deux terrains : la Lune et Mars. On y a appliqué la méthode : 11 machines, 187 chapitres, 348 sources, trois langues. Mais la méthode, elle, marche pour n'importe quelle machine de l'exploration. »" },
+      say: "Le défi nous a donné deux terrains : la Lune et Mars.\nOn y a appliqué la méthode : onze machines, cent quatre-vingt-sept chapitres, trois cent quarante-huit sources, trois langues.\nMais la méthode, elle, marche pour n'importe quelle machine de l'exploration." },
     { id: 's11', act: 3, title: 'Démo', time: '3:45 → 5:15', warp: 1,
-      say: "Ouvrir l'app (bouton ou touche D). Parcours : Mars → le hangar → réveiller Opportunity → ouverture « Dernier signal reçu le 10 juin 2018 » et télémétrie → acte III « Les prolongations ×57 » → « Écouter son histoire » : la page suit la voix → toucher une pièce sur la photo → À propos : les sources. Revenir ici (Alt+Tab) et avancer. Vidéo de secours prête." },
+      say: "[Bouton « Ouvrir AeroReborn » ou touche D, puis parler en naviguant.]\nVoyons à quoi ça ressemble.\n[Accueil] On choisit sa destination : Mars.\n[Hangar] Voici le hangar : une carte par machine, avec son dossier et son voyant. On réveille Opportunity.\n[Ouverture] La page s'ouvre sur son dernier signal : le 10 juin 2018. Son nom se décode. Sa télémétrie : mission terminée, Meridiani Planum.\n[Défiler jusqu'à l'acte III] Acte trois : les prolongations. Jour quatre-vingt-onze, fin prévue de la mission… elle continue. Cinquante-sept fois plus longtemps.\n[Lancer « Écouter son histoire »] On écoute : la voix lit, le texte se surligne, la page suit toute seule. [Arrêter après deux phrases]\n[Toucher une pièce sur la photo] On touche une pièce de la machine pour découvrir son rôle.\n[À propos, rapidement] Et chaque fait renvoie ici : les sources, toutes ensemble.\n[Alt+Tab, revenir ici et avancer. Vidéo de secours prête.]" },
     { id: 's12', act: 4, title: 'L\'utilité', time: '5:15 → 5:40', warp: .5,
-      say: "« À quoi ça sert ? À comprendre l'espace sans prérequis, à apprendre à vérifier une information, et à transmettre la mémoire de ces machines : comment on se pose sur un autre monde, pourquoi on envoie des robots, ce que nous apprennent les roches. Pour les élèves, les enseignants et les curieux, sur téléphone, au clavier, à l'écoute, et en wolof. »" },
+      say: "À quoi ça sert ?\nÀ comprendre l'espace sans prérequis : des textes courts, chaque mot technique expliqué.\nÀ apprendre à vérifier une information : le fait n'est jamais mélangé à l'imagination.\nEt à transmettre la mémoire de ces machines : comment on se pose sur un autre monde, pourquoi on envoie des robots, ce que nous apprennent les roches.\nPour les élèves, les enseignants, les curieux. Sur téléphone, au clavier, à l'écoute. Et en wolof." },
     { id: 'sz', act: 4, title: 'Perspectives', time: '5:40 → 6:10', warp: .5,
-      say: "« Et ensuite ? D'abord des voix plus vraies : aujourd'hui c'est la voix du navigateur, demain des voix enregistrées, et une lecture en wolof. Une accessibilité renforcée : description audio des images, sous-titres, lecture facile. Une version hors ligne pour les classes sans réseau. Des quiz et des scénarios « deviens l'ingénieur ». Un espace pour les enseignants. Et d'autres mondes, avec nos données ouvertes à d'autres projets. Toujours la même règle : rien d'inventé. »" },
+      say: "Et ensuite ?\nD'abord des voix plus vraies : aujourd'hui c'est la voix du navigateur ; demain, des voix enregistrées, plus naturelles, et une lecture en wolof.\nUne accessibilité renforcée : description audio des images, sous-titres des vidéos, lecture facile.\nUne version hors ligne, pour les classes où le réseau manque.\nDes quiz et des scénarios « Deviens l'ingénieur » : et toi, comment aurais-tu traversé la tempête de poussière ?\nUn espace pour les enseignants : une fiche par machine, des parcours de classe.\nEt d'autres mondes, avec nos données ouvertes à d'autres projets.\nToujours avec la même règle : rien d'inventé, chaque fait sourcé." },
     { id: 's13', act: 5, title: 'Au-delà du défi', time: '6:10 → 6:30', warp: .8,
-      say: "« La Lune et Mars ne sont que nos deux exemples. La même méthode vaut pour toutes les machines de l'exploration : Venera sur Vénus, Voyager, Huygens sur Titan, Philae sur sa comète… avec la même rigueur. »" },
+      say: "La Lune et Mars ne sont que nos deux exemples.\nLa même méthode vaut pour toutes les machines de l'exploration : Venera sur Vénus, Voyager, Huygens sur Titan, Philae sur sa comète…\nAvec la même rigueur." },
     { id: 's14', act: 5, title: 'Fin', time: '6:30 → 7:00', warp: .3,
-      say: "Ralentir. « Ici, on dit que les vieux ne sont pas morts. Les machines non plus. AeroReborn. Merci. »" },
+      say: "[Ralentir, laisser le logo arriver.]\nChez nous, on dit que les vieux ne sont pas morts.\nLes machines non plus.\nLeur histoire continue de nous apprendre l'espace.\n\nAeroReborn. Merci." },
   ];
   SC.forEach((s) => { s.el = $('#' + s.id); });
 
@@ -1472,7 +1473,13 @@ svg.ln{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;strok
     const s = SC[cur], n = SC[cur + 1];
     $('#n-title').textContent = (cur + 1) + '. ' + s.title + ' · ' + ACTS[s.act];
     $('#n-time').textContent = 'Viser : ' + s.time;
-    $('#n-say').textContent = s.say;
+    const say = $('#n-say');
+    say.textContent = '';
+    s.say.split(/(\[[^\]]*\])/).forEach((part) => {
+      if (!part) return;
+      if (/^\[.*\]$/.test(part)) { const e = document.createElement('em'); e.textContent = part; say.appendChild(e); }
+      else say.appendChild(document.createTextNode(part));
+    });
     $('#n-next').textContent = n ? 'Ensuite : ' + n.title : 'Dernière scène.';
   }
   let t0 = 0;
@@ -1588,5 +1595,6 @@ svg.ln{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;strok
   requestAnimationFrame(frame);
 })();
 </script>
+
 
 </html>
