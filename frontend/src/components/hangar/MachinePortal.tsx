@@ -11,7 +11,7 @@ import { keepHyphens } from '@/lib/keepHyphens'
 import { useTranslation } from '@/i18n'
 import { machineHook } from '@/lib/hook'
 import { lastSignal } from '@/lib/lifespan'
-import { sceneSrc } from '@/lib/mediaSrc'
+import { ambientSrc, cardSrc } from '@/lib/mediaSrc'
 import type { DestinationId } from '@/types/content'
 
 /** Shared with the machine page's hero picture, so the browser morphs one into the other. */
@@ -80,25 +80,22 @@ export function MachinePortal({ machine, missionName, destinationId, index, coun
       onPointerMove={onPointerMove}
       onPointerLeave={onPointerLeave}
       aria-label={start ? t('hangar.openYears', { name: machine.name, start, end: end ?? '?' }) : t('hangar.open', { name: machine.name })}
-      className="machine-portal group relative block rounded-3xl outline-offset-4"
+      className="machine-portal group relative block h-full rounded-3xl outline-offset-4"
       style={{ '--i': index } as CSSProperties}
     >
-      <div className="machine-portal-body relative aspect-[3/4] overflow-hidden rounded-3xl border border-white/10 bg-deep-space">
-        <div ref={pictureRef} className="absolute inset-0">
-          {machine.cover ? (
-            <img
-              src={sceneSrc(machine.cover)}
-              alt=""
-              loading="lazy"
-              decoding="async"
-              className="machine-portal-photo size-full object-cover"
-            />
-          ) : (
-            <div className="size-full bg-gradient-to-br from-nebula-surface to-void" />
+      <div className="machine-portal-body relative flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-deep-space">
+        {/* The photo whole (never cropped) above the text, over a dimmed copy that fills the card. */}
+        {machine.cover ? (
+          <img src={ambientSrc(machine.cover)} alt="" aria-hidden="true" loading="lazy" decoding="async" className="machine-portal-ambient absolute inset-0 size-full object-cover" />
+        ) : (
+          <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-br from-nebula-surface to-void" />
+        )}
+        <div ref={pictureRef} className="relative aspect-[4/3] w-full shrink-0 px-3 pt-12 pb-1 sm:px-4">
+          {machine.cover && (
+            <img src={cardSrc(machine.cover)} alt="" loading="lazy" decoding="async" className="machine-portal-photo size-full object-contain" />
           )}
         </div>
         <span aria-hidden="true" className="machine-portal-glare pointer-events-none absolute inset-0" />
-        <span aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-t from-void via-void/40 to-transparent" />
         {machine.cover && (
           <span className="absolute top-3 left-3">
             <DepictionBadge depiction={machine.cover.depiction} />
@@ -115,7 +112,7 @@ export function MachinePortal({ machine, missionName, destinationId, index, coun
             <SignalBars status={machine.status.value} />
           </span>
         </div>
-        <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
+        <div className="relative flex-1 bg-gradient-to-t from-void via-void/90 to-void/0 p-4 pt-5 sm:p-5">
           <p className="font-mono text-[0.72rem] tracking-[0.25em] text-world uppercase">{missionName}</p>
           <p className="mt-1 font-heading text-2xl leading-tight font-bold sm:text-[1.7rem]">{keepHyphens(machine.name)}</p>
           <p className="mt-1 text-xs text-moon-dust">{t(`machineType.${machine.type}`)}</p>
