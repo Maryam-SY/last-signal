@@ -66,6 +66,7 @@ Available in both `frontend/` and `backend/`:
 | `npm test` | Vitest |
 | `npm run build` | Production build (`dist/`) |
 | `npm run check` | lint + typecheck + test + build — run before opening a PR |
+| `npm run sitemap` | Frontend only: rebuilds `public/sitemap.xml` from `backend/content` (also run before every build) |
 
 Frontend only: `npm run preview` serves the production build. Backend only: `npm start` runs the compiled server.
 
