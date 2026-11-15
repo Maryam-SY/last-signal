@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type CSSProperties, type RefObject } from 'react'
 import type { CelestialBody } from '@/content/celestialBodies'
 import { useMotionLoop } from '@/hooks/useMotionLoop'
-import { liteGraphics } from '@/lib/device'
+import { canUseWebGL, liteGraphics } from '@/lib/device'
 import { cn } from '@/lib/utils'
 import type { GlobeInstance } from './globe/createGlobe'
 import { Planet, type PlanetHandle } from './Planet'
@@ -30,11 +30,6 @@ interface LivePlanetProps {
 const IDLE_SPIN = 4 // degrees per second
 const ACTIVE_SPIN = 42
 const MAX_TILT = 13 // degrees
-
-/** WebGL can be used (false in tests and very old browsers: the photo planet stays). */
-function canUseWebGL(): boolean {
-  return typeof window !== 'undefined' && typeof window.WebGLRenderingContext !== 'undefined'
-}
 
 /**
  * A world that lives: idle spin, hover acceleration, pointer tilt and a ripple on hover or

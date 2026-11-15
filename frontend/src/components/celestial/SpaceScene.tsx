@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useMotionLoop } from '@/hooks/useMotionLoop'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
+import { canUseWebGL } from '@/lib/device'
 import { cn } from '@/lib/utils'
 import type { SpaceScene as SpaceSceneInstance } from './space/createSpaceScene'
 import { Starfield } from './Starfield'
@@ -11,10 +12,6 @@ const SKY_MAP = '/media/sky-milkyway-pano.webp'
 /** Cruising speed through the star field (units per second), and the boost per px of scroll. */
 const CRUISE = 14
 const SCROLL_BOOST = 1.6
-
-function canUseWebGL(): boolean {
-  return typeof window !== 'undefined' && typeof window.WebGLRenderingContext !== 'undefined'
-}
 
 interface SpaceSceneProps {
   /** The home shows the sky brighter; reading pages dim it behind the text. */

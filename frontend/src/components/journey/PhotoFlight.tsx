@@ -246,13 +246,12 @@ function Flight({ label, items, className }: PhotoFlightProps) {
         <div aria-hidden="true" className="flight-backdrop absolute inset-0 lg:hidden">
           {items.map((item, index) =>
             item.media && !wide && Math.abs(index - shown) <= 1 ? (
-              <img
-                key={item.id}
-                src={sceneSrc(item.media)}
-                alt=""
-                decoding="async"
-                className={cn('flight-backdrop-image absolute inset-0 size-full object-cover', index === shown && 'is-active')}
-              />
+              // Shrunk to MAX_SIDE before display, like the corridor: some NASA originals are
+              // 5000 px wide (~70 MB once decoded), three at once closed Safari on iPhone.
+              <div key={item.id} className={cn('flight-backdrop-image absolute inset-0', index === shown && 'is-active')}>
+                <img src={cardSrc(item.media)} alt="" aria-hidden="true" decoding="async" className="flight-preview absolute inset-0 size-full object-cover" />
+                <FlightImage url={sceneSrc(item.media)} near onError={() => setFailed((previous) => new Set(previous).add(item.id))} />
+              </div>
             ) : null,
           )}
           {items[shown]?.media && (
