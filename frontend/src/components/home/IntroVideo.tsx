@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { SkipForward } from 'lucide-react'
 import { useTranslation, type MessageKey } from '@/i18n'
 import { createIntroScore, type IntroScore } from '@/lib/introSound'
+import { playIntroLine, type IntroLine } from '@/lib/introVoice'
 import { canNarrate, narrate } from '@/lib/narration'
 import { FADE_MS, markIntroSeen } from './introSession'
 
@@ -12,7 +13,9 @@ import { FADE_MS, markIntroSeen } from './introSession'
  * over the pictures (written, so they work without sound and are translated). US-5.13: it
  * ends on the title "The Next Frontier" in close-up, then fades into the home page; a
  * synthesised soundtrack follows the pictures (if the browser blocks sound, a button or any
- * key / tap turns it on). The video itself is muted (browsers only autoplay silent videos);
+ * key / tap turns it on). A recorded voice says each sentence and the closing title
+ * (lib/introVoice); without a recording, the browser's synthetic voice says the sentences,
+ * as low and slow as it can (a deep narrator's tone). The video itself is muted (browsers only autoplay silent videos);
  * skippable at any time (button or Escape), skipped entirely if the browser refuses to play it.
  */
 interface IntroVideoProps {
@@ -74,6 +77,8 @@ export function IntroVideo({ onReveal, onDone }: IntroVideoProps) {
     setFinale(true)
     setCue(-1)
     scoreRef.current?.finale()
+    // The closing title is only ever said by the recorded voice (no synthetic fallback).
+    if (soundOn) speak('finale')
     finaleTimer.current = window.setTimeout(() => finishRef.current(true), FINALE_MS)
   }
 
@@ -130,15 +135,28 @@ export function IntroVideo({ onReveal, onDone }: IntroVideoProps) {
     return () => window.removeEventListener('keydown', onKey)
   }, [])
 
+  /** Says a line: the recorded clip, or the synthetic voice when there is none. */
+  const speak = (line: IntroLine) => {
+    stopVoice.current()
+    let stopSynthetic = () => {}
+    const stopRecorded = playIntroLine(locale, line, () => {
+      if (line === 'finale' || doneRef.current || !canNarrate()) return
+      stopSynthetic = narrate([t(CUES[line - 1]!.key)], locale === 'en' ? 'en' : 'fr', {}, { deep: true })
+    })
+    stopVoice.current = () => {
+      stopRecorded()
+      stopSynthetic()
+    }
+  }
+
   const onTimeUpdate = () => {
     const time = videoRef.current?.currentTime ?? 0
     const index = CUES.findIndex((entry) => time >= entry.from && time < entry.to)
     if (index !== cue) setCue(index)
-    // The voice says the sentence on screen (synthesised: no recording of anyone's voice).
-    if (soundOn && index >= 0 && index !== spokenCue.current && canNarrate()) {
+    // The voice says the sentence on screen.
+    if (soundOn && index >= 0 && index !== spokenCue.current) {
       spokenCue.current = index
-      stopVoice.current()
-      stopVoice.current = narrate([t(CUES[index]!.key)], locale === 'en' ? 'en' : 'fr')
+      speak((index + 1) as IntroLine)
     }
   }
 
