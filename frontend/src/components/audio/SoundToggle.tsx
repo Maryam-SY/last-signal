@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Volume2, VolumeX } from 'lucide-react'
 import { useLocation } from 'react-router'
 import { useTranslation } from '@/i18n'
-import { isSoundAvailable, setSound, whoosh } from '@/lib/ambientSound'
+import { glide, isSoundAvailable, setSound } from '@/lib/ambientSound'
 import { cn } from '@/lib/utils'
 
 const STORAGE_KEY = 'aeroreborn.sound'
@@ -19,7 +19,7 @@ function storedChoice(): boolean {
 /**
  * Header switch for the space sound (US-5.12). Off by default; the visitor's choice is
  * remembered. A remembered "on" waits for the first click or key press (browsers block sound
- * before that), then fades in. A soft whoosh plays when the visitor flies to another page.
+ * before that), then fades in. A soft rising glide plays when the visitor flies to another page.
  */
 export function SoundToggle({ className }: { className?: string }) {
   const { t } = useTranslation()
@@ -43,7 +43,7 @@ export function SoundToggle({ className }: { className?: string }) {
   }, [available])
 
   useEffect(() => {
-    whoosh()
+    glide()
   }, [pathname])
 
   if (!available) return null

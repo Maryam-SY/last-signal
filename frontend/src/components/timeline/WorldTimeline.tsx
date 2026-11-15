@@ -4,7 +4,7 @@ import { useTranslation } from '@/i18n'
 import { formatPartialDate } from '@/lib/formatDate'
 import { groupByYear } from './groupByYear'
 
-type WorldEvent = TimelineEvent & { missionName: string }
+type WorldEvent = TimelineEvent & { missionId: string; missionName: string }
 
 /**
  * US-5.13: the timeline of one world only — every dated step of its missions (launches,
@@ -14,7 +14,7 @@ type WorldEvent = TimelineEvent & { missionName: string }
 export function WorldTimeline({ destination }: { destination: DestinationDetail }) {
   const { t, locale } = useTranslation()
   const events: WorldEvent[] = destination.missions
-    .flatMap((mission) => mission.timeline.map((event) => ({ ...event, missionName: mission.name })))
+    .flatMap((mission) => mission.timeline.map((event) => ({ ...event, missionId: mission.id, missionName: mission.name })))
     .sort((a, b) => a.date.value.localeCompare(b.date.value))
   if (events.length === 0) return null
   const groups = groupByYear(events)
@@ -38,7 +38,8 @@ export function WorldTimeline({ destination }: { destination: DestinationDetail 
             </p>
             <ul className="mt-4 space-y-3 pl-8">
               {group.entries.map((event) => (
-                <li key={event.id}>
+                // Event ids repeat across missions (Spirit and Opportunity both have a 2003 launch).
+                <li key={`${event.missionId}-${event.id}`}>
                   <Reveal className="reading-panel rounded-2xl p-4 sm:p-5">
                     <p className="flex flex-wrap items-center gap-x-2 gap-y-1">
                       <time dateTime={event.date.value} className="font-mono text-xs text-world">

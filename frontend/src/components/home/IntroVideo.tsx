@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
-import { SkipForward } from 'lucide-react'
+import { SkipForward, Volume2 } from 'lucide-react'
 import { useTranslation, type MessageKey } from '@/i18n'
 import { createIntroScore, type IntroScore } from '@/lib/introSound'
-import { playIntroLine, type IntroLine } from '@/lib/introVoice'
-import { canNarrate, narrate } from '@/lib/narration'
+import { audioContextClass } from '@/lib/spaceAudio'
 import { FADE_MS, markIntroSeen } from './introSession'
 
 /**
@@ -12,10 +11,10 @@ import { FADE_MS, markIntroSeen } from './introSession'
  * ground of Mars rushing up under Perseverance, filmed by its own camera. Short sentences appear
  * over the pictures (written, so they work without sound and are translated). US-5.13: it
  * ends on the title "The Next Frontier" in close-up, then fades into the home page; a
- * synthesised soundtrack follows the pictures (if the browser blocks sound, a button or any
- * key / tap turns it on). A recorded voice says each sentence and the closing title
- * (lib/introVoice); without a recording, the browser's synthetic voice says the sentences,
- * as low and slow as it can (a deep narrator's tone). The video itself is muted (browsers only autoplay silent videos);
+ * synthesised space soundtrack follows the pictures, without any voice (team decision
+ * 2026-11-15). Browsers refuse sound until the visitor clicks, taps or presses a key: a "turn
+ * sound on" button is then shown, and any click, tap or key also turns it on. The video
+ * itself is muted (browsers only autoplay silent videos);
  * skippable at any time (button or Escape), skipped entirely if the browser refuses to play it.
  */
 interface IntroVideoProps {
@@ -37,7 +36,7 @@ const CUES: ReadonlyArray<{ from: number; to: number; key: MessageKey }> = [
 const FINALE_MS = 3800
 
 export function IntroVideo({ onReveal, onDone }: IntroVideoProps) {
-  const { t, locale } = useTranslation()
+  const { t } = useTranslation()
   const videoRef = useRef<HTMLVideoElement>(null)
   const skipRef = useRef<HTMLButtonElement>(null)
   const [leaving, setLeaving] = useState(false)
@@ -46,15 +45,14 @@ export function IntroVideo({ onReveal, onDone }: IntroVideoProps) {
   const doneRef = useRef(false)
   const scoreRef = useRef<IntroScore | null>(null)
   const [soundOn, setSoundOn] = useState(false)
-  const stopVoice = useRef<() => void>(() => {})
-  const spokenCue = useRef(-1)
+  // The browser can make sound at all (Web Audio): the "turn sound on" button is offered.
+  const [hasScore] = useState(() => audioContextClass() !== undefined)
   const finaleTimer = useRef<number | undefined>(undefined)
   const doneTimer = useRef<number | undefined>(undefined)
 
   const finish = (fade: boolean) => {
     if (doneRef.current) return
     doneRef.current = true
-    stopVoice.current()
     window.clearTimeout(finaleTimer.current)
     scoreRef.current?.stop(fade ? FADE_MS / 1000 + 0.4 : 0.2)
     markIntroSeen()
@@ -77,14 +75,12 @@ export function IntroVideo({ onReveal, onDone }: IntroVideoProps) {
     setFinale(true)
     setCue(-1)
     scoreRef.current?.finale()
-    // The closing title is only ever said by the recorded voice (no synthetic fallback).
-    if (soundOn) speak('finale')
     finaleTimer.current = window.setTimeout(() => finishRef.current(true), FINALE_MS)
   }
 
   /**
    * Turns the soundtrack on. Tried at once; browsers that insist on a gesture first get it
-   * at the visitor's first touch, click or key (no button to press: the intro keeps its flow).
+   * at the visitor's first click, tap or key, or from the "turn sound on" button.
    */
   const enableSound = () => {
     const score = scoreRef.current
@@ -108,10 +104,12 @@ export function IntroVideo({ onReveal, onDone }: IntroVideoProps) {
       if (event instanceof KeyboardEvent && event.key === 'Escape') return
       if (scoreRef.current && !scoreRef.current.playing()) enableSoundRef.current()
     }
-    for (const type of ['pointerdown', 'keydown', 'touchstart'] as const) window.addEventListener(type, onGesture, { passive: true })
+    // Only these events count as a gesture that unlocks sound (a touch counts when it ends,
+    // not when it starts: touchstart and a finger's pointerdown are refused by browsers).
+    const gestures = ['pointerdown', 'pointerup', 'touchend', 'click', 'keydown'] as const
+    for (const type of gestures) window.addEventListener(type, onGesture, { passive: true })
     return () => {
-      for (const type of ['pointerdown', 'keydown', 'touchstart'] as const) window.removeEventListener(type, onGesture)
-      stopVoice.current()
+      for (const type of gestures) window.removeEventListener(type, onGesture)
       window.clearTimeout(finaleTimer.current)
       window.clearTimeout(doneTimer.current)
       scoreRef.current?.stop(0.3)
@@ -135,29 +133,10 @@ export function IntroVideo({ onReveal, onDone }: IntroVideoProps) {
     return () => window.removeEventListener('keydown', onKey)
   }, [])
 
-  /** Says a line: the recorded clip, or the synthetic voice when there is none. */
-  const speak = (line: IntroLine) => {
-    stopVoice.current()
-    let stopSynthetic = () => {}
-    const stopRecorded = playIntroLine(locale, line, () => {
-      if (line === 'finale' || doneRef.current || !canNarrate()) return
-      stopSynthetic = narrate([t(CUES[line - 1]!.key)], locale === 'en' ? 'en' : 'fr', {}, { deep: true })
-    })
-    stopVoice.current = () => {
-      stopRecorded()
-      stopSynthetic()
-    }
-  }
-
   const onTimeUpdate = () => {
     const time = videoRef.current?.currentTime ?? 0
     const index = CUES.findIndex((entry) => time >= entry.from && time < entry.to)
     if (index !== cue) setCue(index)
-    // The voice says the sentence on screen.
-    if (soundOn && index >= 0 && index !== spokenCue.current) {
-      spokenCue.current = index
-      speak((index + 1) as IntroLine)
-    }
   }
 
   return (
@@ -205,6 +184,16 @@ export function IntroVideo({ onReveal, onDone }: IntroVideoProps) {
             <span className="intro-finale-line" />
           </div>
         </div>
+      )}
+      {hasScore && !soundOn && !leaving && (
+        <button
+          type="button"
+          onClick={enableSound}
+          className="glass-blur absolute bottom-[max(1.25rem,env(safe-area-inset-bottom))] left-4 inline-flex min-h-11 items-center gap-2 rounded-full px-5 text-sm font-medium text-starlight transition-colors hover:border-stellar-cyan hover:text-stellar-cyan sm:left-6"
+        >
+          <Volume2 aria-hidden="true" className="size-4" />
+          {t('intro.soundOn')}
+        </button>
       )}
       <button
         ref={skipRef}

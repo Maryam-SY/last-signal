@@ -30,6 +30,7 @@ export const en = {
   intro: {
     label: 'Introduction',
     description: 'Intro made of real NASA footage: a Saturn V rocket lifting off, the Apollo 11 moonwalk, then the ground of Mars coming closer as the Perseverance rover lands, filmed by its own camera.',
+    soundOn: 'Turn sound on',
     skip: 'Skip intro',
     cue1: 'One day, we left.',
     cue2: 'We walked on the Moon.',

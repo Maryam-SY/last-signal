@@ -31,7 +31,7 @@ import { useTranslation } from '@/i18n'
 import { contentLang } from '@/i18n/translate'
 import { buildActs, type Act } from '@/lib/acts'
 import { wordsIn } from '@/lib/glossary'
-import { crackle } from '@/lib/ambientSound'
+import { signalFade } from '@/lib/ambientSound'
 import { record } from '@/lib/explorerLog'
 import { formatPartialDate } from '@/lib/formatDate'
 import { bestStill, biographyChapters, machineChapters, machineCover, modelOf, type LifeChapter } from '@/lib/journey'
@@ -178,7 +178,7 @@ function MachineLife({ machine, mission, destination, story }: MachineLifeProps)
   const endRef = useRef<HTMLElement | null>(null)
   const endLive = useInView(endRef, '0px 0px -35% 0px')
   useEffect(() => {
-    if (endLive && !alive) crackle()
+    if (endLive && !alive) signalFade()
   }, [endLive, alive])
 
   const flightItems = (list: LifeChapter[]) =>

@@ -91,6 +91,17 @@ function Flight({ label, items, className }: PhotoFlightProps) {
   // Pictures are fetched only when the flight is about to be reached.
   const [near, setNear] = useState(() => typeof IntersectionObserver === 'undefined')
   const count = items.length
+  // Wide screens show the corridor of pictures, phones and tablets the picture as background:
+  // a hidden layout must not download its pictures (CSS hiding does not stop the download).
+  const [wide, setWide] = useState(() => typeof window === 'undefined' || !window.matchMedia || window.matchMedia(WIDE).matches)
+
+  useEffect(() => {
+    if (!window.matchMedia) return
+    const query = window.matchMedia(WIDE)
+    const update = () => setWide(query.matches)
+    query.addEventListener('change', update)
+    return () => query.removeEventListener('change', update)
+  }, [])
 
   useEffect(() => {
     const section = sectionRef.current
@@ -205,7 +216,7 @@ function Flight({ label, items, className }: PhotoFlightProps) {
             dark mask; pictures next to the one in front are loaded ahead. */}
         <div aria-hidden="true" className="flight-backdrop absolute inset-0 lg:hidden">
           {items.map((item, index) =>
-            item.media && Math.abs(index - shown) <= 1 ? (
+            item.media && !wide && Math.abs(index - shown) <= 1 ? (
               <img
                 key={item.id}
                 src={sceneSrc(item.media)}
@@ -238,9 +249,13 @@ function Flight({ label, items, className }: PhotoFlightProps) {
               >
                 {/* Long flights (40+ pictures): only the pictures around the one in front are
                     mounted; a far picture frees its canvas and is drawn again when it comes near. */}
-                {/* A small copy of the picture shows at once; the large one fades in over it. */}
-                <img src={cardSrc(item.media)} alt="" aria-hidden="true" decoding="async" className="flight-preview absolute inset-0 size-full object-cover" />
-                {near && index >= shown - 1 && index <= shown + 6 && (
+                {/* A small copy of the picture shows at once; the large one fades in over it. Only
+                    the pictures around the one in front are downloaded: a page of 48 pictures no
+                    longer asks for all of them at once on arrival (slow connections lagged). */}
+                {near && wide && index >= shown - 2 && index <= shown + LOOK_AHEAD + 3 && (
+                  <img src={cardSrc(item.media)} alt="" aria-hidden="true" decoding="async" className="flight-preview absolute inset-0 size-full object-cover" />
+                )}
+                {near && wide && index >= shown - 1 && index <= shown + LOOK_AHEAD && (
                   <FlightImage url={sceneSrc(item.media)} near onError={() => setFailed((previous) => new Set(previous).add(item.id))} />
                 )}
                 <span className="absolute top-3 left-3">
@@ -327,6 +342,19 @@ function Flight({ label, items, className }: PhotoFlightProps) {
 
 /** Longest side (px) a flying picture is drawn at: plenty for a 720 px card on a 2× screen. */
 const MAX_SIDE = 1200
+
+/** Same breakpoint as the `lg:` classes that switch between the two layouts. */
+const WIDE = '(min-width: 1024px)'
+
+/**
+ * How many large pictures ahead of the one in front are prepared: four, or two when the
+ * browser says the connection is slow or the visitor asked to save data.
+ */
+const LOOK_AHEAD = (() => {
+  if (typeof navigator === 'undefined') return 4
+  const connection = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }).connection
+  return connection?.saveData || /(^|-)(2g|3g)$/.test(connection?.effectiveType ?? '') ? 2 : 4
+})()
 
 /**
  * Pictures are prepared at most three at a time (not one after the other, which left the

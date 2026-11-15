@@ -28,6 +28,7 @@ export const fr: Messages = {
   intro: {
     label: 'Introduction',
     description: 'Introduction faite de vraies images de la NASA : une fusée Saturn V qui décolle, la marche sur la Lune d’Apollo 11, puis le sol de Mars qui se rapproche pendant l’atterrissage du rover Perseverance, filmé par sa propre caméra.',
+    soundOn: 'Activer le son',
     skip: 'Passer l’intro',
     cue1: 'Un jour, nous sommes partis.',
     cue2: 'Nous avons marché sur la Lune.',

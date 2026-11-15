@@ -1,34 +1,19 @@
 /**
  * The intro's soundtrack (US-5.13), synthesised live with the Web Audio API — no audio file,
- * nothing to license. It follows the edited NASA footage: the rumble of the Saturn V lift-off,
- * a quiet airy chord on the Moon, the rush of the descent to Mars, then a wide swell under the
- * closing title. Browsers often refuse sound before a click: `start()` then reports it, and the
- * intro offers a button (or any key / tap) to turn it on, picking the score up where the video is.
+ * nothing to license, and no noise: only deep tones and faint shimmers in a long echo, the
+ * sound of space (lib/spaceAudio, team decision 2026-11-15). It follows the edited NASA
+ * footage: a deep swell for the lift-off, an open, airy chord on the Moon, a slow descending
+ * glide down to Mars, a patient low drone, then a wide bloom under the closing title. Browsers
+ * only play sound after a click, a tap or a key: `start()` reports when it is refused, and the
+ * intro then offers a button (any click, tap or key also works), picking the score up where
+ * the video is.
  */
-
-type AudioContextClass = typeof AudioContext
-
-function audioContextClass(): AudioContextClass | undefined {
-  if (typeof window === 'undefined') return undefined
-  return window.AudioContext ?? (window as unknown as { webkitAudioContext?: AudioContextClass }).webkitAudioContext
-}
-
-function noiseBuffer(context: AudioContext, seconds: number): AudioBuffer {
-  const buffer = context.createBuffer(1, Math.round(context.sampleRate * seconds), context.sampleRate)
-  const data = buffer.getChannelData(0)
-  // Brown-ish noise: deeper than white noise, closer to a rocket's roar.
-  let last = 0
-  for (let i = 0; i < data.length; i += 1) {
-    last = (last + 0.04 * (Math.random() * 2 - 1)) / 1.04
-    data[i] = last * 3.2
-  }
-  return buffer
-}
+import { audioContextClass, createSpaceEcho, spaceTone } from './spaceAudio'
 
 export interface IntroScore {
   /** Tries to play from this second of the video. Resolves false if the browser blocks sound. */
   start: (videoSeconds: number) => Promise<boolean>
-  /** The closing title: a wide swell. */
+  /** The closing title: a wide bloom. */
   finale: () => void
   /** Fades everything out and releases the audio device. */
   stop: (fadeSeconds?: number) => void
@@ -46,6 +31,7 @@ export function createIntroScore(): IntroScore | null {
   if (!Context) return null
   let context: AudioContext | null = null
   let master: GainNode | null = null
+  let echo: AudioNode | null = null
   let started = false
   const sources: AudioScheduledSourceNode[] = []
 
@@ -55,49 +41,28 @@ export function createIntroScore(): IntroScore | null {
       master = context.createGain()
       master.gain.value = 0.9
       master.connect(context.destination)
+      echo = createSpaceEcho(context, master, 6, 0.75)
     }
-    return { context, master: master! }
+    return { context, master: master!, echo: echo! }
   }
 
-  /** A voice that fades in at `from`, holds, and fades out at `to` (seconds from now). */
-  const envelope = (from: number, to: number, level: number, attack = 0.8, release = 1.2) => {
-    const { context: ctx, master: out } = ensure()
-    const gain = ctx.createGain()
-    const t0 = ctx.currentTime + Math.max(0, from)
-    const t1 = ctx.currentTime + Math.max(from + attack, to)
-    gain.gain.setValueAtTime(0, t0)
-    gain.gain.linearRampToValueAtTime(level, t0 + attack)
-    gain.gain.setValueAtTime(level, Math.max(t0 + attack, t1 - release))
-    gain.gain.linearRampToValueAtTime(0, t1)
-    gain.connect(out)
-    return { gain, t0, t1 }
-  }
-
-  const tone = (frequency: number, type: OscillatorType, from: number, to: number, level: number, attack?: number, release?: number) => {
-    const { context: ctx } = ensure()
-    const { gain, t0, t1 } = envelope(from, to, level, attack, release)
-    const oscillator = ctx.createOscillator()
-    oscillator.type = type
-    oscillator.frequency.value = frequency
-    oscillator.connect(gain)
-    oscillator.start(t0)
-    oscillator.stop(t1 + 0.05)
-    sources.push(oscillator)
-    return oscillator
-  }
-
-  const noise = (from: number, to: number, level: number, filter: (f: BiquadFilterNode, t0: number, t1: number) => void, attack?: number, release?: number) => {
-    const { context: ctx } = ensure()
-    const { gain, t0, t1 } = envelope(from, to, level, attack, release)
-    const source = ctx.createBufferSource()
-    source.buffer = noiseBuffer(ctx, 4)
-    source.loop = true
-    const band = ctx.createBiquadFilter()
-    filter(band, t0, t1)
-    source.connect(band).connect(gain)
-    source.start(t0)
-    source.stop(t1 + 0.05)
-    sources.push(source)
+  /** A tone `from`…`to` seconds from now (optionally gliding to another pitch). */
+  const tone = (frequency: number, from: number, to: number, level: number, options: { attack?: number; release?: number; glideTo?: number; type?: OscillatorType; echo?: number } = {}) => {
+    const { context: ctx, master: dry, echo: wet } = ensure()
+    const now = ctx.currentTime
+    sources.push(
+      spaceTone(ctx, { dry, echo: wet }, {
+        frequency,
+        to: options.glideTo,
+        type: options.type,
+        start: now + Math.max(0, from),
+        end: now + Math.max(from + (options.attack ?? 1) + 0.1, to),
+        level,
+        attack: options.attack,
+        release: options.release,
+        echo: options.echo,
+      }),
+    )
   }
 
   /** Schedules the parts of the score still ahead of `at` (seconds of video). */
@@ -105,33 +70,26 @@ export function createIntroScore(): IntroScore | null {
     const ahead = (range: readonly [number, number]) => range[1] > at
     const rel = (seconds: number) => seconds - at
     if (ahead(LAUNCH)) {
-      // Lift-off: a deep roar that swells, with a sub-bass rumble under it.
-      noise(rel(LAUNCH[0]), rel(LAUNCH[1]), 0.55, (f, t0, t1) => {
-        f.type = 'lowpass'
-        f.frequency.setValueAtTime(140, t0)
-        f.frequency.linearRampToValueAtTime(620, t0 + (t1 - t0) * 0.6)
-        f.frequency.linearRampToValueAtTime(260, t1)
-      }, 1.6, 1.4)
-      tone(38, 'sine', rel(LAUNCH[0]), rel(LAUNCH[1]), 0.35, 1.4, 1.4)
+      // Lift-off: a deep swell rising from below, with a slow fifth above it.
+      tone(36.7, rel(LAUNCH[0]), rel(LAUNCH[1]), 0.4, { attack: 2.2, release: 1.6, glideTo: 55, echo: 0.3 })
+      tone(55, rel(LAUNCH[0] + 0.6), rel(LAUNCH[1]), 0.16, { attack: 2, release: 1.6, glideTo: 82.4, type: 'triangle', echo: 0.5 })
+      tone(110, rel(LAUNCH[0] + 1.8), rel(LAUNCH[1]), 0.05, { attack: 2, release: 1.4, echo: 0.8 })
     }
     if (ahead(MOON)) {
-      // The Moon: silence of space, a high, airy open chord.
-      for (const [f, l] of [[220, 0.07], [329.6, 0.05], [440, 0.04], [659.3, 0.02]] as const) tone(f, 'sine', rel(MOON[0]), rel(MOON[1]), l, 1.6, 1.6)
+      // The Moon: an open, airy chord and faint shimmers, far away in the echo.
+      for (const [f, l] of [[220, 0.07], [329.6, 0.055], [440, 0.04], [659.3, 0.025]] as const) tone(f, rel(MOON[0]), rel(MOON[1]), l, { attack: 1.8, release: 1.8, echo: 0.75 })
+      for (const [f, l, d] of [[1318.5, 0.018, 0.6], [1760, 0.014, 1.6], [2637, 0.009, 2.6]] as const) tone(f, rel(MOON[0] + d), rel(MOON[1]), l, { attack: 1.4, release: 1.6, echo: 0.95 })
     }
     if (ahead(MARS)) {
-      // Mars: the rush of the descent, air sweeping down as the ground comes closer.
-      noise(rel(MARS[0]), rel(MARS[1]), 0.28, (f, t0, t1) => {
-        f.type = 'bandpass'
-        f.Q.value = 0.9
-        f.frequency.setValueAtTime(2600, t0)
-        f.frequency.exponentialRampToValueAtTime(320, t1)
-      }, 0.9, 1)
-      for (const [f, l] of [[146.8, 0.06], [220, 0.05], [293.7, 0.035]] as const) tone(f, 'triangle', rel(MARS[0]), rel(MARS[1]), l, 1.4, 1.4)
+      // Mars: the descent, a slow chord gliding down as the ground comes closer.
+      for (const [f, l] of [[293.7, 0.06], [440, 0.045], [587.3, 0.03]] as const) tone(f, rel(MARS[0]), rel(MARS[1]), l, { attack: 1.2, release: 1.4, glideTo: f * 0.75, type: 'triangle', echo: 0.7 })
+      tone(73.4, rel(MARS[0]), rel(MARS[1]), 0.12, { attack: 1.4, release: 1.4, echo: 0.4 })
     }
     if (ahead(STILL_THERE)) {
       // "Our machines are still there": a low, patient drone.
-      tone(55, 'sine', rel(STILL_THERE[0]), rel(STILL_THERE[1]), 0.18, 1.8, 2)
-      tone(82.4, 'triangle', rel(STILL_THERE[0]), rel(STILL_THERE[1]), 0.06, 1.8, 2)
+      tone(55, rel(STILL_THERE[0]), rel(STILL_THERE[1]), 0.18, { attack: 1.8, release: 2, echo: 0.5 })
+      tone(82.4, rel(STILL_THERE[0]), rel(STILL_THERE[1]), 0.06, { attack: 1.8, release: 2, type: 'triangle', echo: 0.6 })
+      tone(880, rel(STILL_THERE[0] + 1), rel(STILL_THERE[1]), 0.012, { attack: 1.6, release: 1.8, echo: 0.95 })
     }
   }
 
@@ -139,7 +97,8 @@ export function createIntroScore(): IntroScore | null {
     async start(videoSeconds) {
       const { context: ctx } = ensure()
       try {
-        if (ctx.state === 'suspended') await Promise.race([ctx.resume(), new Promise((resolve) => setTimeout(resolve, 300))])
+        // resume() is called at once (inside the click or key handler, as browsers require).
+        if (ctx.state === 'suspended') await Promise.race([ctx.resume(), new Promise((resolve) => setTimeout(resolve, 1200))])
       } catch {
         return false
       }
@@ -152,10 +111,10 @@ export function createIntroScore(): IntroScore | null {
     },
     finale() {
       if (!started || !context) return
-      // The closing title: a soft boom, then a wide chord that blooms and a high shimmer.
-      tone(46, 'sine', 0, 2.6, 0.45, 0.04, 2.4)
-      for (const [f, l] of [[110, 0.1], [164.8, 0.08], [220, 0.08], [277.2, 0.05], [329.6, 0.05], [440, 0.035]] as const) tone(f, 'sine', 0.1, 4.2, l, 1.4, 1.8)
-      for (const [f, l] of [[880, 0.018], [1318.5, 0.012]] as const) tone(f, 'sine', 0.8, 4.2, l, 1.6, 1.6)
+      // The closing title: a deep bloom, a wide chord opening, and high shimmers in the echo.
+      tone(41.2, 0, 3.6, 0.42, { attack: 0.05, release: 3.2, glideTo: 36.7, echo: 0.5 })
+      for (const [f, l] of [[110, 0.09], [164.8, 0.07], [220, 0.07], [277.2, 0.045], [329.6, 0.045], [440, 0.03]] as const) tone(f, 0.1, 4.2, l, { attack: 1.4, release: 1.8, echo: 0.7 })
+      for (const [f, l] of [[880, 0.016], [1318.5, 0.011], [1760, 0.008]] as const) tone(f, 0.8, 4.2, l, { attack: 1.6, release: 1.6, echo: 0.95 })
     },
     stop(fadeSeconds = 0.9) {
       const ctx = context
@@ -176,6 +135,7 @@ export function createIntroScore(): IntroScore | null {
       }, fadeSeconds * 1000 + 100)
       context = null
       master = null
+      echo = null
     },
     playing: () => started && context?.state === 'running',
   }
