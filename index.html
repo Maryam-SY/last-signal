@@ -1,0 +1,1585 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex"><style>img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Pitch AeroReborn</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+<style>
+/* Layout: a motion piece. Each scene is a 16:9 artboard (sized in cqw, like a video frame) living in a
+   3D space; scenes fly through depth when the presenter advances, and animate on their own in between.
+   Single dark look on purpose (space + African dusk for the proverb). */
+:root{
+  --void:#080B12; --deep:#111827; --surface:#1C2638; --line:#334155;
+  --text:#F1F5F9; --soft:#CBD5E1; --muted:#94A3B8;
+  --indigo:#8B9DFF; --cyan:#61D6E8; --purple:#B58AFF; --gold:#E5C58D; --rocky:#D97757; --dusk:#F2A65A;
+  --glass:rgba(17,24,39,.78);
+  --f-display:"Space Grotesk","Segoe UI",system-ui,sans-serif;
+  --f-body:"Inter","Segoe UI",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  color-scheme:dark;
+}
+html,body{height:100%}
+body{margin:0;background:var(--void);color:var(--text);font:400 16px/1.5 var(--f-body);overflow:hidden;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+:focus-visible{outline:2px solid var(--indigo);outline-offset:2px}
+svg.ln{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;overflow:visible}
+
+/* ---------- Space ---------- */
+#stage{position:fixed;inset:0;overflow:hidden;background:radial-gradient(ellipse at 50% 120%,var(--deep) 0%,var(--void) 62%);user-select:none;cursor:default}
+#sky{position:absolute;inset:-8%;background:url(img/sky-milkyway-1920.webp) center/cover no-repeat;opacity:.28}
+#stars{position:absolute;inset:0;width:100%;height:100%;display:block}
+#world{position:absolute;inset:0;perspective:1400px}
+.scene{position:absolute;inset:0;display:grid;place-items:center;visibility:hidden;transform-style:preserve-3d;
+  padding-left:max(0px, env(safe-area-inset-left, 0px));padding-right:max(0px, env(safe-area-inset-right, 0px))}
+.scene.active{visibility:visible}
+.board{position:relative;width:min(100vw,177.78vh);aspect-ratio:16/9;container-type:inline-size;transform-style:preserve-3d}
+.a{position:absolute}
+.c{text-align:center}
+
+/* Type, sized like a video frame */
+.k-xl{font:600 5.4cqw/1 var(--f-display);letter-spacing:-.03em;margin:0}
+.k-l{font:600 3.3cqw/1.1 var(--f-display);letter-spacing:-.025em;margin:0;text-wrap:balance}
+.k-m{font:600 2.1cqw/1.2 var(--f-display);letter-spacing:-.015em;margin:0}
+.k-s{font-size:max(13px,1.3cqw);line-height:1.5;color:var(--soft);margin:0}
+.k-xs{font-size:max(11px,.95cqw);line-height:1.45;color:var(--soft);margin:0}
+.lbl{font:500 max(10px,.78cqw)/1.3 var(--f-mono);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:0}
+.src{font:400 max(10px,.72cqw)/1.4 var(--f-mono);color:var(--muted);margin:0}
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1em;margin-bottom:-.1em}
+.wi{display:inline-block;will-change:transform}
+.cy{color:var(--cyan)} .go{color:var(--gold)} .ro{color:var(--rocky)} .du{color:var(--dusk)}
+
+/* ---------- Chapter tag + HUD ---------- */
+#chapter{position:absolute;top:calc(22px + env(safe-area-inset-top, 0px));left:max(24px, env(safe-area-inset-left, 0px));display:flex;align-items:center;gap:12px;font:500 12px var(--f-mono);letter-spacing:.22em;text-transform:uppercase;color:var(--soft);z-index:6;pointer-events:none}
+#chapter .n{color:var(--cyan)}
+#chapter .bar{width:36px;height:1px;background:var(--cyan);transform-origin:left}
+#brand{position:absolute;right:max(24px, env(safe-area-inset-right, 0px));top:calc(22px + env(safe-area-inset-top, 0px));font:500 12px var(--f-mono);letter-spacing:.3em;text-transform:uppercase;color:var(--soft);z-index:6;pointer-events:none}
+#brand span{color:var(--cyan)}
+#progress{position:absolute;left:0;bottom:0;height:2px;width:100%;background:rgba(51,65,85,.4);z-index:6}
+#progress i{display:block;height:100%;width:0;background:var(--cyan);opacity:.8;transition:width .9s cubic-bezier(.7,0,.2,1)}
+#hud{position:absolute;right:max(16px, env(safe-area-inset-right, 0px));bottom:calc(14px + env(safe-area-inset-bottom, 0px));display:flex;align-items:center;gap:4px;z-index:7;opacity:0;transition:opacity .5s ease;font:500 12px var(--f-mono);color:var(--muted);background:rgba(8,11,18,.7);border:1px solid var(--line);border-radius:12px;padding:2px 2px 2px 12px}
+#hud.show,#hud:focus-within{opacity:1}
+#timer{font-variant-numeric:tabular-nums;margin-right:6px}
+#timer.warn{color:var(--gold)} #timer.over{color:var(--rocky)}
+.ib{display:grid;place-items:center;width:44px;height:44px;border-radius:10px;border:0;background:transparent;color:var(--soft);cursor:pointer}
+.ib:hover{background:var(--surface);color:var(--text)}
+.ib svg{width:20px;height:20px}
+.ib[aria-pressed="false"] .on-i,.ib[aria-pressed="true"] .off-i{display:none}
+
+/* ---------- S1 · Proverb ---------- */
+.dusk{position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 28% 100%,rgba(242,166,90,.42),rgba(181,138,255,.12) 45%,transparent 72%)}
+.baobab{color:var(--dusk)}
+.fire{position:absolute;width:.35cqw;height:.35cqw;border-radius:50%;background:var(--dusk);box-shadow:0 0 .8cqw var(--dusk);opacity:.8;animation:rise 7s linear infinite}
+@keyframes rise{0%{transform:translateY(0);opacity:0}15%{opacity:.9}100%{transform:translateY(-26cqw);opacity:0}}
+
+/* ---------- S2 · Timeline of elders ---------- */
+.tline{position:absolute;left:5%;right:5%;top:51%;height:1px;background:linear-gradient(90deg,transparent,var(--muted) 6%,var(--muted) 94%,transparent);transform-origin:left}
+.it{position:absolute;top:22%;width:12%;margin-left:-6%;display:flex;flex-direction:column;align-items:center;text-align:center}
+.it .ico{width:5.2cqw;height:5.2cqw;color:var(--text)}
+.it .disc{width:3.4cqw;height:3.4cqw;border-radius:50%;background:var(--deep) center/cover no-repeat;margin:1cqw 0 0;border:1px solid var(--line)}
+.it .node{width:.9cqw;height:.9cqw;border-radius:50%;background:var(--void);border:2px solid var(--cyan);margin-top:1.1cqw}
+.it b{font:600 1.7cqw var(--f-display);color:var(--gold);margin-top:1.3cqw}
+.it .wd{margin-top:.2cqw}
+.it .nm{font-weight:600;font-size:max(12px,1.1cqw);margin-top:.4cqw}
+.it .ds{margin-top:.4cqw;font-size:max(10.5px,.86cqw);line-height:1.35;color:var(--soft)}
+.disc.voy{background:radial-gradient(circle,var(--text) 0 .18cqw,rgba(241,245,249,.25) .3cqw,transparent .7cqw),var(--deep)}
+.disc.comet{background:radial-gradient(circle at 64% 42%,var(--text) 0 .25cqw,transparent .38cqw),linear-gradient(215deg,transparent 46%,rgba(97,214,232,.55) 50%,transparent 64%),var(--deep)}
+
+/* ---------- S3 · What they sent back ---------- */
+.earth{border-radius:50%;background:url(img/earth.webp) center/cover;box-shadow:0 0 6cqw rgba(97,214,232,.28)}
+.dcard{background:var(--glass);border:1px solid var(--line);border-radius:.8cqw;padding:1.3cqw 1.5cqw;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.dcard .dic{width:2.6cqw;height:2.6cqw;color:var(--cyan);display:block;margin-bottom:.8cqw}
+.dcard .dt{display:block;font:600 1.7cqw/1.1 var(--f-display);color:var(--gold)}
+.dcard .num{font:600 3cqw/1 var(--f-display);color:var(--gold);font-variant-numeric:tabular-nums;white-space:nowrap}
+.dcard .num small{font-size:.5em;color:var(--soft);font-weight:500;margin-left:.3em}
+.dcard .k-xs{margin-top:.5cqw}
+.dcard .src{margin-top:.6cqw}
+.flows{position:absolute;inset:0;width:100%;height:100%}
+.fpath{fill:none;stroke:var(--cyan);stroke-width:1.4;opacity:.55}
+.fdot{fill:var(--cyan);opacity:0;filter:drop-shadow(0 0 4px var(--cyan))}
+
+/* ---------- S4 · Library ---------- */
+.book{color:var(--dusk)}
+.ember{position:absolute;width:.3cqw;height:.3cqw;border-radius:50%;background:var(--dusk);box-shadow:0 0 .7cqw var(--rocky);animation:rise 5s linear infinite}
+.lock{color:var(--rocky)}
+
+/* ---------- S5 · The catalogue wall ---------- */
+.wallwrap{perspective:1100px}
+.wall{position:absolute;inset:0;transform:rotateY(22deg) rotateX(8deg);transform-origin:left center;border:1px solid var(--line);border-radius:.8cqw;background:var(--glass);overflow:hidden;
+  -webkit-mask-image:linear-gradient(transparent,#000 14%,#000 86%,transparent);mask-image:linear-gradient(transparent,#000 14%,#000 86%,transparent)}
+.scroll{animation:scrollup 22s linear infinite}
+@keyframes scrollup{to{transform:translateY(-50%)}}
+.cat{width:100%;border-collapse:collapse;font:400 max(10px,.82cqw)/1.35 var(--f-mono);color:var(--soft);white-space:nowrap}
+.cat td{padding:.45cqw 1cqw;border-bottom:1px solid rgba(51,65,85,.55)}
+.cat td:nth-child(2){color:var(--text)}
+.stamp{position:absolute;font:700 2.6cqw/1 var(--f-display);letter-spacing:.04em;color:var(--rocky);border:.25cqw solid var(--rocky);border-radius:.5cqw;padding:.3cqw .9cqw;background:rgba(8,11,18,.55);white-space:nowrap}
+.pain{display:grid;grid-template-columns:auto 1fr;gap:.2cqw 1cqw;padding:1cqw 0;border-top:1px solid var(--line)}
+.pain .n{font:600 max(11px,.8cqw) var(--f-mono);color:var(--rocky);padding-top:.3cqw}
+.pain b{font:600 1.5cqw var(--f-display)}
+.pain .k-xs{grid-column:2}
+
+/* ---------- S6 · Question ---------- */
+.hl{position:relative;color:var(--cyan)}
+.ul{position:absolute;left:0;right:0;bottom:-.05em;height:.08em;background:var(--cyan);border-radius:1em;transform-origin:left}
+.pulse{position:absolute;left:50%;top:50%;width:60cqw;height:60cqw;margin:-30cqw 0 0 -30cqw;border-radius:50%;background:radial-gradient(circle,rgba(97,214,232,.12),transparent 60%);animation:breathe 5s ease-in-out infinite}
+@keyframes breathe{50%{transform:scale(1.15);opacity:.6}}
+
+/* ---------- S7 · Logo ---------- */
+.orb{position:absolute;left:50%;top:44%;width:4cqw;height:4cqw;margin:-2cqw 0 0 -2cqw;color:var(--text)}
+.ring{position:absolute;left:50%;top:44%;width:8cqw;height:8cqw;margin:-4cqw 0 0 -4cqw;border-radius:50%;border:2px solid var(--cyan);opacity:0}
+.logo{position:relative;display:inline-block;font:700 8.4cqw/1 var(--f-display);letter-spacing:-.04em;overflow:hidden;padding:0 .1em .08em}
+.logo .ch{display:inline-block}
+.logo .re{color:var(--cyan)}
+.sweep{position:absolute;inset:0;background:linear-gradient(100deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);mix-blend-mode:overlay;pointer-events:none}
+#beat{position:absolute;left:25%;width:50%;top:63%;height:7cqw}
+
+
+/* ---------- Why AeroReborn ---------- */
+.cmp{position:relative}
+.cmp-head,.cr{display:grid;grid-template-columns:15% 33% 1fr;gap:1.6cqw;align-items:center}
+.cmp-head{padding-bottom:.6cqw}
+.cr{position:relative;padding:.8cqw 0;border-top:1px solid var(--line)}
+.ck{font:500 max(10px,.78cqw) var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.old{position:relative;justify-self:start;font-size:max(12px,1.12cqw);color:var(--muted)}
+.strike{position:absolute;left:-2%;right:-2%;top:55%;height:1.5px;background:var(--rocky);transform-origin:left}
+.new{display:flex;align-items:center;gap:.8cqw;font:600 max(13px,1.35cqw)/1.25 var(--f-display);color:var(--text)}
+.chk{flex:none;width:1.6cqw;height:1.6cqw;color:var(--void);background:var(--cyan);border-radius:50%;padding:.25cqw;stroke-width:3}
+.scan{position:absolute;top:0;bottom:0;left:48%;width:52%;background:linear-gradient(90deg,transparent,rgba(97,214,232,.10),transparent);pointer-events:none;opacity:0}
+
+/* ---------- Experience: animated interface preview ---------- */
+.feats{display:grid;gap:.8cqw;margin-top:1.6cqw}
+.ft{display:grid;grid-template-columns:2.6cqw 1fr;gap:1cqw;align-items:start;opacity:.42;transition:opacity .5s ease}
+.ft.on{opacity:1}
+.ft svg{width:2.4cqw;height:2.4cqw;color:var(--cyan)}
+.ft b{display:block;font:600 1.35cqw var(--f-display);margin-bottom:.1cqw}
+.ft .k-xs{font-size:max(10px,.86cqw);line-height:1.4}
+.devwrap{perspective:1600px}
+.device{position:relative;aspect-ratio:16/10;font-size:1cqw;border-radius:1.2cqw;background:#05070c;border:.35cqw solid #22304a;overflow:hidden;
+  transform:rotateY(-14deg) rotateX(5deg);box-shadow:-2cqw 3cqw 6cqw rgba(0,0,0,.6),0 0 4cqw rgba(97,214,232,.12)}
+.scr{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,#141d30,#080b12 65%);opacity:0;color:var(--text)}
+.scr .nav{position:absolute;left:0;right:0;top:0;height:7%;display:flex;align-items:center;justify-content:space-between;padding:0 3%;font-size:.85em;color:var(--soft);border-bottom:1px solid rgba(51,65,85,.6)}
+.scr .lg{font-family:var(--f-display);font-weight:600;color:var(--text)}
+.scr .lg::first-letter{color:var(--cyan)}
+.sA{background:url(img/sky-milkyway-1920.webp) center/cover}
+.sA::before{content:"";position:absolute;inset:0;background:rgba(8,11,18,.45)}
+.sA .t1{position:absolute;left:0;right:0;top:14%;text-align:center;font:600 2.6em var(--f-display);margin:0}
+.sA .pl{position:absolute;top:34%;width:28%;aspect-ratio:1;border-radius:50%;background-size:cover;box-shadow:0 0 3em rgba(255,255,255,.08)}
+.sA .pm{box-shadow:0 0 3em rgba(217,119,87,.35)}
+.sA .pn{position:absolute;top:84%;width:28%;text-align:center;font:600 1.7em var(--f-display)}
+.sB .ey,.sD .ey{position:absolute;left:5%;top:11%;margin:0;font:500 .8em var(--f-mono);letter-spacing:.2em;text-transform:uppercase;color:var(--rocky)}
+.sB .t2{position:absolute;left:5%;top:16%;margin:0;font:600 1.9em var(--f-display)}
+.sB .map{position:absolute;left:5%;top:30%;width:56%;height:60%;border-radius:.8em;background:url(img/mars-2k.webp) 35% center/220% auto;filter:saturate(1.1);box-shadow:inset 0 0 3em rgba(0,0,0,.7)}
+.sB .map i{position:absolute;width:1.2em;height:1.2em;margin:-.6em;border-radius:50%;border:2px solid var(--text);background:rgba(97,214,232,.4);animation:pulse2 2s ease-out infinite}
+@keyframes pulse2{0%{box-shadow:0 0 0 0 rgba(97,214,232,.6)}100%{box-shadow:0 0 0 1.4em transparent}}
+.sB .gal{position:absolute;left:64%;top:30%;width:31%;display:grid;gap:.8em}
+.gc{display:flex;align-items:center;gap:.8em;padding:.8em;border-radius:.7em;background:#1c2638;border:1px solid #334155;font-size:1em}
+.gc b{display:block;font:600 1.15em var(--f-display)} .gc small{color:var(--muted)}
+.gc.hot{border-color:var(--cyan);box-shadow:0 0 0 1px var(--cyan)}
+.gd{flex:none;width:2.6em;height:2.6em;border-radius:50%;background:url(img/mars.webp) center/cover}
+.gd.big{width:4.4em;height:4.4em}
+.sB .hg{position:absolute;left:5%;right:5%;top:30%;display:grid;grid-template-columns:repeat(3,1fr);gap:1em}
+.hc{position:relative;display:flex;flex-direction:column;align-items:center;gap:.35em;padding:2.4em .8em 1em;border-radius:.8em;background:#1c2638;border:1px solid #334155;text-align:center}
+.hc .dh{position:absolute;left:.7em;right:.7em;top:.6em;display:flex;justify-content:space-between;align-items:center;font:500 .62em var(--f-mono);letter-spacing:.12em;color:var(--muted)}
+.hc .led{width:.6em;height:.6em;border-radius:50%;background:var(--rocky);box-shadow:0 0 .5em var(--rocky)}
+.hc .gd{width:4em;height:4em}
+.hc b{font:600 1.1em var(--f-display)} .hc small{color:var(--muted)}
+.hc em{font-style:normal;font-size:.8em;padding:.3em .9em;border-radius:99em;background:var(--indigo);color:var(--void);font-weight:600;margin-top:.3em}
+.hc.hot{border-color:var(--cyan);box-shadow:0 0 0 1px var(--cyan),0 0 2em rgba(97,214,232,.25);transform:translateY(-.4em)}
+.sC .cdec{position:absolute;left:5%;top:12%;margin:0;font:500 .78em var(--f-mono);letter-spacing:.18em;text-transform:uppercase;color:var(--gold);min-height:1.3em;white-space:nowrap}
+.sC .cnm{position:absolute;left:5%;top:19%;margin:0;font:700 2.8em/1 var(--f-display);letter-spacing:-.03em;min-height:1em}
+.sC .ctele{position:absolute;left:5%;top:37%;margin:0;display:flex;gap:1.4em;font:500 .68em var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.sC .ctele .led{display:inline-block;width:.7em;height:.7em;border-radius:50%;background:var(--rocky);box-shadow:0 0 .5em var(--rocky);margin-right:.5em;vertical-align:middle}
+.sC .lifel{top:58%} .sC .bigstat{top:70%} .sC .bigstat b{font-size:2.2em}
+.sD .act{position:absolute;left:5%;right:5%;top:11%;display:flex;align-items:center;gap:1em;padding:.7em 1em;border-radius:.8em;border:1px solid rgba(217,119,87,.5);background:rgba(217,119,87,.08)}
+.sD .act .rn{font:700 2.6em/1 var(--f-display);color:transparent;-webkit-text-stroke:1px var(--rocky)}
+.sD .act .ey{position:static;color:var(--rocky)} .sD .act b{display:block;font:600 1.3em var(--f-display)} .sD .act small{display:block;color:var(--soft);font-size:.8em}
+.sD .act .plan{margin-left:auto;text-align:right;font:600 1.6em/1 var(--f-display);color:var(--rocky)} .sD .act .plan small{font-size:.45em;color:var(--soft)}
+.sD .day{position:absolute;left:5%;top:37%;margin:0;font:500 .7em var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--cyan)}
+.sD .rd{position:absolute;left:5%;width:56%;top:44%;margin:0;font:600 1.3em/1.4 var(--f-display);color:var(--muted)}
+.sD .rd span{transition:color .2s,background .2s;border-radius:.2em;padding:0 .08em}
+.sD .rd span.rdn{color:var(--text)} .sD .rd span.now{background:rgba(97,214,232,.35);color:var(--text)}
+.sD .pho{position:absolute;right:5%;top:44%;width:30%;aspect-ratio:4/3;border-radius:.7em;background:radial-gradient(ellipse at 50% 70%,#1c2638,#0b0f18);border:1px solid #334155;overflow:hidden;display:grid;place-items:center}
+.sD .pho svg{width:70%;height:70%;color:var(--soft)}
+.sD .pho i{position:absolute;width:1.3em;height:1.3em;margin:-.65em;border-radius:50%;border:2px solid var(--text);background:rgba(97,214,232,.35);animation:pulse2 2s ease-out infinite}
+.sD .pho span{position:absolute;left:0;right:0;bottom:0;padding:.35em;font-size:.62em;text-align:center;background:rgba(8,11,18,.75);color:var(--soft)}
+.sD .rbar{position:absolute;left:5%;right:5%;bottom:5%;display:flex;align-items:center;gap:.8em;padding:.55em 1em;border-radius:99em;background:#1c2638;border:1px solid #334155;font-size:.85em;color:var(--soft)}
+.sD .rbar .pdot{width:.7em;height:.7em;border-radius:50%;background:var(--cyan);box-shadow:0 0 .6em var(--cyan);animation:breathe 1.2s ease-in-out infinite}
+.sD .rbar .stop{margin-left:auto;padding:.25em 1em;border-radius:99em;border:1px solid var(--muted)}
+.sC .mh{position:absolute;left:5%;top:13%;display:flex;align-items:center;gap:1em}
+.sC .mh small{display:block;font:500 .8em var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--rocky)}
+.sC .mh b{font:600 2.6em var(--f-display)}
+.lifel{position:absolute;left:8%;right:8%;top:47%;height:2px;background:#334155}
+.lfill{position:absolute;left:0;top:0;bottom:0;width:100%;background:linear-gradient(90deg,var(--gold),var(--rocky) 70%,var(--cyan));transform-origin:left}
+.ln5{position:absolute;top:-.55em;transform:translateX(-50%);text-align:center;font-size:.8em;color:var(--soft);white-space:nowrap}
+.ln5 i{display:block;width:1.1em;height:1.1em;margin:0 auto .5em;border-radius:50%;background:#080b12;border:2px solid var(--gold)}
+.ln5:last-child i{border-color:var(--cyan);background:var(--cyan)}
+.bigstat{position:absolute;left:8%;top:63%;display:grid;gap:.2em}
+.bigstat span{color:var(--soft);font-size:1.05em} .bigstat s{color:var(--muted)}
+.bigstat b{font:600 2.8em var(--f-display);color:var(--gold)}
+.cta{position:absolute;right:6%;bottom:9%;padding:.7em 1.4em;border-radius:99em;background:var(--indigo);color:var(--void);font-weight:600;font-size:1.05em}
+.sD .rail{position:absolute;right:4%;top:16%;display:grid;gap:.75em;text-align:right}
+.sD .rail span{font-size:.85em;color:var(--muted);padding-right:2em;position:relative}
+.sD .rail span::after{content:"";position:absolute;right:0;top:50%;width:1.1em;height:1.1em;margin-top:-.55em;border-radius:50%;border:2px solid #334155}
+.sD .rail span.on{color:var(--text)} .sD .rail span.on::after{border-color:var(--cyan);background:var(--cyan)}
+.sD .body{position:absolute;left:5%;top:11%;width:66%}
+.sD .ey{position:static;color:var(--cyan)}
+.fact{display:inline-block;margin-top:1.2em;font:600 .75em var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);border-radius:99em;padding:.25em .8em}
+.sD .tx{margin:.7em 0 0;font:600 1.55em/1.3 var(--f-display)}
+.srcc{display:inline-block;margin-top:.7em;font:400 .75em var(--f-mono);color:var(--muted)}
+.you{margin-top:1.4em;padding:1em 1.2em;border-radius:.8em;border:1px solid var(--purple);background:rgba(181,138,255,.08);display:grid;gap:.35em}
+.you b{font:600 .8em var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--purple)}
+.you span{font-style:italic;color:var(--soft)}
+.you em{font-style:normal;font-size:.8em;color:var(--muted);border-top:1px dashed #334155;padding-top:.5em}
+.sD .bar{position:absolute;left:5%;right:5%;bottom:5%;display:flex;justify-content:space-between;align-items:center;font-size:.9em;color:var(--soft)}
+.sD .nx{padding:.5em 1.2em;border-radius:99em;background:var(--indigo);color:var(--void);font-weight:600}
+.tap{position:absolute;left:0;top:0;width:3.2em;height:3.2em;margin:-1.6em 0 0 -1.6em;border-radius:50%;background:rgba(241,245,249,.35);border:2px solid rgba(241,245,249,.85);box-shadow:0 0 1.4em rgba(97,214,232,.5);opacity:0;pointer-events:none;z-index:3}
+
+/* ---------- Our contribution: the storytelling ---------- */
+.pr{display:grid;gap:1cqw;margin-top:1.5cqw}
+.pi{display:grid;grid-template-columns:2.2cqw 1fr;gap:.9cqw;align-items:start}
+.pi .n{font:600 max(10px,.8cqw) var(--f-mono);color:var(--cyan);padding-top:.35cqw}
+.pi b{display:block;font:600 1.35cqw/1.15 var(--f-display)}
+.pi .k-xs{margin-top:.2cqw}
+.cold{position:relative;background:var(--glass);border:1px solid var(--line);border-radius:1cqw;padding:1.6cqw 1.8cqw;overflow:hidden;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.cold .hud-c{position:absolute;width:1.2cqw;height:1.2cqw;border:1px solid var(--cyan);opacity:.7}
+.cold .dec{font:500 max(11px,.95cqw) var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--gold);min-height:1.4em;white-space:nowrap;margin:0}
+.cold .nm{font:700 4.2cqw/1 var(--f-display);letter-spacing:-.03em;margin:.6cqw 0 0;min-height:1em}
+.tele{display:flex;flex-wrap:wrap;align-items:center;gap:.5cqw 1.4cqw;margin:1.1cqw 0 0;font:500 max(10px,.78cqw) var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.tele .led{width:.7cqw;height:.7cqw;border-radius:50%;background:var(--rocky);box-shadow:0 0 .6cqw var(--rocky);display:inline-block;margin-right:.5cqw;vertical-align:middle}
+.tele .sig{display:inline-flex;gap:.15cqw;align-items:flex-end;height:.9cqw;margin-left:.5cqw;vertical-align:middle}
+.tele .sig i{display:block;width:.25cqw;background:var(--muted);height:30%} .tele .sig i:nth-child(2){height:55%} .tele .sig i:nth-child(3){height:80%;opacity:.35} .tele .sig i:nth-child(4){height:100%;opacity:.35}
+.tele .v{color:var(--text)}
+.strip{display:grid;grid-template-columns:repeat(5,1fr);gap:.7cqw;margin-top:1.4cqw}
+.fr{position:relative;aspect-ratio:3/4;border-radius:.7cqw;border:1px solid var(--line);background:var(--glass);padding:.9cqw;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+.fr::before{content:attr(data-r);position:absolute;left:50%;top:36%;transform:translate(-50%,-50%);font:700 6.5cqw/1 var(--f-display);color:transparent;-webkit-text-stroke:1px var(--tone);opacity:.55}
+.fr b{font:600 1.05cqw/1.15 var(--f-display);color:var(--text)}
+.fr small{display:block;font:500 max(9.5px,.7cqw) var(--f-mono);color:var(--tone);margin-top:.3cqw;letter-spacing:.06em}
+.fr .fig{font:600 1.9cqw/1 var(--f-display);color:var(--tone);margin-bottom:.35cqw}
+.t-ind{--tone:var(--indigo)} .t-wor{--tone:var(--rocky)} .t-gold{--tone:var(--gold)} .t-dust{--tone:var(--muted)} .t-cy{--tone:var(--cyan)}
+
+/* ---------- Perspectives ---------- */
+.hzline{height:1px;background:linear-gradient(90deg,transparent,var(--gold) 10%,var(--gold) 90%,transparent);transform-origin:left}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3cqw 1.6cqw}
+.pc{position:relative;background:var(--glass);border:1px solid var(--line);border-radius:.9cqw;padding:1.3cqw 1.5cqw 1.2cqw;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.pc .hz{position:absolute;right:1.1cqw;top:1.1cqw;font:600 max(9.5px,.7cqw) var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);border-radius:99px;padding:.2cqw .7cqw}
+.pc svg{width:2.4cqw;height:2.4cqw;color:var(--gold);display:block;margin-bottom:.6cqw}
+.pc b{display:block;font:600 1.4cqw/1.15 var(--f-display)}
+.pc .k-xs{margin-top:.4cqw}
+
+/* ---------- S8 · How it works ---------- */
+#s8 .lp{width:20%;margin-left:-10%}
+#s8 .lp b{font-size:1.15cqw}
+#s8 .lp .k-xs{display:block;font-size:max(10px,.78cqw);line-height:1.3;padding:0 .3cqw}
+.lifebar i.alive{background:linear-gradient(90deg,var(--indigo),#4ade80)}
+.lp.gr .dot{border-color:#4ade80;background:#4ade80;box-shadow:0 0 1.2cqw #4ade80}
+.mhead .chip{margin-left:auto}
+.mcard{background:var(--glass);border:1px solid var(--line);border-radius:1cqw;padding:1.8cqw;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transform-style:preserve-3d}
+.mhead{display:flex;align-items:center;gap:1.2cqw}
+.mhead .disc{width:4.2cqw;height:4.2cqw;border-radius:50%;background:url(img/mars.webp) center/cover}
+.tabs{position:relative;display:flex;gap:.4cqw;margin-top:1.6cqw;border-bottom:1px solid var(--line)}
+.tabs span{flex:1;text-align:center;font:500 max(11px,.9cqw) var(--f-body);color:var(--soft);padding:.7cqw 0}
+.tabhl{position:absolute;left:0;bottom:-1px;width:33.33%;height:2px;background:var(--cyan)}
+.life{position:relative;margin-top:2.6cqw;height:9cqw}
+.lifebar{position:absolute;left:3%;right:3%;top:1.1cqw;height:2px;background:var(--line)}
+.lifebar i{display:block;height:100%;background:linear-gradient(90deg,var(--rocky),var(--gold) 70%,var(--cyan));transform-origin:left}
+.lp{position:absolute;top:0;width:32%;margin-left:-16%;text-align:center}
+.lp .dot{display:block;width:1.2cqw;height:1.2cqw;margin:.5cqw auto 0;border-radius:50%;background:var(--void);border:2px solid var(--gold)}
+.lp.now .dot{border-color:var(--cyan);background:var(--cyan);box-shadow:0 0 1.2cqw var(--cyan)}
+.lp b{display:block;font:600 1.3cqw var(--f-display);margin-top:.8cqw}
+.lp .k-xs{font-size:max(10.5px,.85cqw)}
+.chips{display:flex;flex-wrap:wrap;gap:.5cqw;margin-top:1.4cqw}
+.chip{font:500 max(10px,.75cqw) var(--f-mono);letter-spacing:.06em;color:var(--soft);border:1px solid var(--muted);border-radius:99px;padding:.25cqw .8cqw}
+.steps{position:relative;margin-top:1.8cqw;display:grid;gap:.9cqw}
+.stline{position:absolute;left:1.7cqw;top:1.6cqw;bottom:1.6cqw;width:1px;background:var(--line);transform-origin:top}
+.st{position:relative;display:grid;grid-template-columns:3.4cqw 1fr;gap:1.1cqw;align-items:center}
+.st .ic{width:3.4cqw;height:3.4cqw;border-radius:50%;display:grid;place-items:center;background:var(--deep);border:1px solid var(--line);color:var(--cyan)}
+.st .ic svg{width:1.8cqw;height:1.8cqw}
+.st b{font:600 1.35cqw var(--f-display)}
+.st .k-xs{display:block}
+
+/* ---------- S9 · Three voices ---------- */
+.vc{background:var(--glass);border:1px solid var(--line);border-radius:1cqw;padding:1.8cqw;display:flex;flex-direction:column;gap:1cqw;transform-style:preserve-3d;backface-visibility:hidden}
+.vtag{align-self:flex-start;display:inline-flex;align-items:center;gap:.5cqw;font:600 max(10px,.8cqw) var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--vc);border:1px solid var(--vc);border-radius:99px;padding:.35cqw .9cqw}
+.vc p{font-size:max(13px,1.25cqw);line-height:1.5;color:var(--soft);margin:0}
+.v-f{--vc:var(--gold)} .v-i{--vc:var(--indigo)} .v-m{--vc:var(--purple)}
+.v-m p{font-style:italic}
+.badge{display:inline-flex;align-items:center;gap:.5cqw;font:600 max(11px,.9cqw) var(--f-body);padding:.5cqw 1cqw;border-radius:.5cqw;background:var(--surface);border:1px solid var(--muted)}
+.badge.art::before{content:"◆";color:var(--purple)}
+
+/* ---------- S10 / S11 · Globes ---------- */
+.globe{border-radius:50%;background-repeat:repeat-x;background-size:auto 100%;overflow:hidden}
+.globe::after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle closest-side at 40% 38%,rgba(255,255,255,.10) 0%,transparent 46%,rgba(0,0,0,.32) 78%,rgba(0,0,0,.9) 100%)}
+.g-moon{background-image:url(img/moon-2k.webp);box-shadow:0 0 4cqw rgba(241,245,249,.12)}
+.g-mars{background-image:url(img/mars-2k.webp);box-shadow:0 0 5cqw rgba(217,119,87,.4)}
+.stat{text-align:center;padding:.8cqw 0;border-top:1px solid var(--line)}
+.stat strong{display:block;font:600 3cqw/1 var(--f-display);font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;gap:.8cqw;min-height:48px;padding:1cqw 2.2cqw;border-radius:99px;background:var(--indigo);color:var(--void);font:600 max(14px,1.3cqw) var(--f-body);text-decoration:none}
+.btn:hover{filter:brightness(1.08)}
+.path{display:flex;justify-content:center;flex-wrap:wrap;gap:.7cqw;list-style:none;margin:0;padding:0}
+.path li{display:flex;align-items:center;gap:.6cqw;background:var(--glass);border:1px solid var(--line);border-radius:99px;padding:.6cqw 1.2cqw;font-weight:500;font-size:max(12px,1cqw)}
+.path li b{display:grid;place-items:center;width:1.7cqw;height:1.7cqw;border-radius:50%;background:var(--surface);font:600 max(10px,.8cqw) var(--f-mono);color:var(--cyan)}
+
+/* ---------- S12 · Usefulness ---------- */
+.uc{text-align:center}
+.uc .ico{width:5cqw;height:5cqw;color:var(--cyan);margin:0 auto 1cqw;display:block}
+.uc .k-l{font-size:3cqw}
+.uc .k-xs{margin-top:.8cqw}
+.who{display:flex;justify-content:center;gap:.8cqw;flex-wrap:wrap}
+.who span{font:500 max(11px,.9cqw) var(--f-mono);letter-spacing:.06em;padding:.45cqw 1.1cqw;border-radius:99px;border:1px solid var(--muted)}
+.acc{display:flex;justify-content:center;gap:2.6cqw;flex-wrap:wrap}
+.acc span{display:flex;align-items:center;gap:.6cqw;font-size:max(12px,1cqw);color:var(--soft)}
+.acc svg{width:1.8cqw;height:1.8cqw;color:var(--cyan)}
+.ticker{position:absolute;left:0;right:0;bottom:4%;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(8,11,18,.5);padding:.9cqw 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.ticker .tk{display:flex;width:max-content;gap:3cqw;white-space:nowrap;animation:tick 34s linear infinite;font:500 max(12px,1.05cqw) var(--f-display)}
+.ticker .tk span::before{content:"✦";color:var(--gold);margin-right:1.2cqw}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* ---------- S13 · Vision ---------- */
+.vd{display:flex;flex-direction:column;align-items:center;gap:.6cqw;text-align:center;width:10%}
+.vd .disc{width:5cqw;height:5cqw;border-radius:50%;background:var(--deep) center/cover no-repeat;border:1px solid var(--line);transition:box-shadow .6s ease}
+.vd.lit .disc{box-shadow:0 0 0 .25cqw var(--cyan),0 0 2cqw rgba(97,214,232,.5)}
+.vd.next.lit .disc{box-shadow:0 0 0 .25cqw var(--gold),0 0 2cqw rgba(229,197,141,.45)}
+.vd .nm{font-weight:600;font-size:max(12px,1cqw)}
+.vd .tag{font:600 max(9.5px,.7cqw) var(--f-mono);letter-spacing:.12em;text-transform:uppercase;padding:.2cqw .6cqw;border-radius:99px;border:1px solid currentColor}
+.vd.proto .tag{color:var(--cyan)} .vd.next .tag{color:var(--gold)}
+
+/* ---------- S14 · End ---------- */
+#qr{background:var(--text);padding:6px;border-radius:6px;line-height:0}
+#qr:empty{display:none}
+#qr img,#qr canvas{display:block;width:7cqw;height:7cqw;min-width:84px;min-height:84px}
+
+/* ---------- Presenter notes ---------- */
+#notes{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);z-index:20;background:var(--deep);border-left:1px solid var(--line);
+  padding:calc(20px + env(safe-area-inset-top, 0px)) max(20px, env(safe-area-inset-right, 0px)) 20px 22px;overflow-y:auto;box-shadow:-20px 0 60px rgba(0,0,0,.5)}
+#notes h2{font:600 1.2rem var(--f-display);margin:0 0 .3rem}
+#notes .tt{font:500 .78rem var(--f-mono);color:var(--gold);margin:0 0 1rem}
+#notes .say{font-size:1.05rem;line-height:1.6;margin:0}
+#notes hr{border:0;border-top:1px solid var(--line);margin:1.4rem 0}
+#notes label{display:block;font:500 .75rem var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}
+#notes input{width:100%;min-height:44px;padding:0 .8rem;border-radius:8px;border:1px solid var(--muted);background:var(--void);color:var(--text);font:400 .95rem var(--f-mono)}
+#notes .keys{display:grid;grid-template-columns:auto 1fr;gap:.35rem .9rem;font-size:.9rem;color:var(--soft);margin:0}
+#notes dd{margin:0}
+#notes kbd{font:500 .78rem var(--f-mono);background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:.1rem .45rem;color:var(--text)}
+#notes .next{color:var(--muted);font-size:.92rem}
+
+@media (max-width:640px){ #chapter .t{display:none} }
+.rm .fire,.rm .ember,.rm .scroll,.rm .pulse,.rm .ticker .tk{animation:none}
+</style>
+
+<div id="stage">
+  <div id="sky" aria-hidden="true"></div>
+  <canvas id="stars" aria-hidden="true"></canvas>
+
+  <div id="world">
+
+    <!-- ============ 01 · CONTEXTE ============ -->
+    <section class="scene" id="s1" aria-label="Proverbe">
+      <div class="dusk"></div>
+      <div class="board">
+        <svg class="a ln baobab" style="left:5%;top:24%;width:34%;height:72%" viewBox="0 0 400 420" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+          <path d="M20 410H380"/>
+          <path d="M150 410C160 360 165 300 160 240C158 215 150 200 140 190"/><path d="M250 410C240 360 236 300 242 240C245 215 255 200 265 190"/>
+          <path d="M150 410C140 400 125 398 110 404"/><path d="M250 410C262 400 276 398 292 404"/>
+          <path d="M160 240C150 190 120 170 90 150"/><path d="M140 190C120 160 110 130 115 100"/><path d="M175 230C175 190 180 150 175 110"/>
+          <path d="M225 230C228 180 235 140 250 105"/><path d="M242 240C260 200 290 175 320 160"/><path d="M265 190C290 170 300 140 295 110"/>
+          <path d="M90 150C80 140 70 140 60 145"/><path d="M90 150C85 135 85 120 92 110"/><path d="M115 100C105 90 100 80 102 70"/><path d="M115 100C125 90 130 80 128 70"/>
+          <path d="M175 110C168 100 165 90 168 78"/><path d="M175 110C183 100 188 92 186 80"/><path d="M250 105C245 95 245 85 250 75"/><path d="M250 105C262 98 270 92 272 82"/>
+          <path d="M320 160C330 150 340 148 352 150"/><path d="M320 160C328 145 330 132 326 122"/><path d="M295 110C300 100 308 95 318 94"/><path d="M295 110C290 98 288 88 292 78"/>
+          <path d="M190 330C196 320 204 320 210 330"/>
+        </svg>
+        <div class="fires"></div>
+        <div class="a" style="left:46%;top:27%;width:48%">
+          <p class="lbl du l0">Un proverbe de chez nous</p>
+          <h1 class="k-xl l1" style="margin-top:1.6cqw">Ici, on dit que les vieux ne sont pas morts.</h1>
+          <p class="k-m l2" style="margin-top:2.4cqw;color:var(--soft);font-weight:500">Leur histoire continue de nous apprendre quelque chose.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" id="s2" aria-label="Les anciens de l'espace">
+      <div class="board">
+        <div class="a c" style="left:10%;top:10%;width:80%">
+          <h2 class="k-l h">Là-haut aussi, nous avons des anciens.</h2>
+          <p class="k-s sub" style="margin-top:.8cqw">Depuis 1959, nous envoyons des machines explorer l'espace.</p>
+        </div>
+        <div class="a row" style="inset:0">
+          <div class="tline"></div>
+          <div class="it" style="top:26%;left:6.25%"><svg class="ln ico" data-icon="luna" viewBox="0 0 64 64"></svg><span class="disc" style="background-image:url(img/moon.webp)"></span><span class="node"></span><b>1959</b><span class="lbl wd">Lune</span><span class="nm">Luna 2</span><span class="ds">Premier objet humain à atteindre la Lune</span></div>
+          <div class="it" style="top:26%;left:18.75%"><svg class="ln ico" data-icon="lander" viewBox="0 0 64 64"></svg><span class="disc" style="background-image:url(img/moon.webp)"></span><span class="node"></span><b>1969</b><span class="lbl wd">Lune</span><span class="nm">Apollo 11</span><span class="ds">Premier atterrissage habité</span></div>
+          <div class="it" style="top:26%;left:31.25%"><svg class="ln ico" data-icon="venera" viewBox="0 0 64 64"></svg><span class="disc" style="background-image:url(img/venus.webp)"></span><span class="node"></span><b>1970</b><span class="lbl wd">Vénus</span><span class="nm">Venera 7</span><span class="ds">Premières données venues du sol d'une autre planète</span></div>
+          <div class="it" style="top:26%;left:43.75%"><svg class="ln ico" data-icon="voyager" viewBox="0 0 64 64"></svg><span class="disc voy"></span><span class="node"></span><b>1977</b><span class="lbl wd">Au-delà</span><span class="nm">Voyager 1</span><span class="ds">Dans l'espace interstellaire depuis 2012</span></div>
+          <div class="it" style="top:26%;left:56.25%"><svg class="ln ico" data-icon="rover" viewBox="0 0 64 64"></svg><span class="disc" style="background-image:url(img/mars.webp)"></span><span class="node"></span><b>1997</b><span class="lbl wd">Mars</span><span class="nm">Pathfinder</span><span class="ds">Avec Sojourner, le premier rover martien</span></div>
+          <div class="it" style="top:26%;left:68.75%"><svg class="ln ico" data-icon="huygens" viewBox="0 0 64 64"></svg><span class="disc" style="background-image:url(img/saturn.webp)"></span><span class="node"></span><b>2005</b><span class="lbl wd">Titan</span><span class="nm">Huygens</span><span class="ds">Première sonde posée dans le système solaire externe</span></div>
+          <div class="it" style="top:26%;left:81.25%"><svg class="ln ico" data-icon="philae" viewBox="0 0 64 64"></svg><span class="disc comet"></span><span class="node"></span><b>2014</b><span class="lbl wd">Comète 67P</span><span class="nm">Philae</span><span class="ds">Premier atterrissage sur une comète</span></div>
+          <div class="it" style="top:26%;left:93.75%"><svg class="ln ico" data-icon="heli" viewBox="0 0 64 64"></svg><span class="disc" style="background-image:url(img/mars.webp)"></span><span class="node"></span><b>2021</b><span class="lbl wd">Mars</span><span class="nm">Ingenuity</span><span class="ds">72 vols au lieu des 5 prévus</span></div>
+        </div>
+        <p class="a src c" style="left:0;right:0;bottom:5%">Sources : NASA NSSDCA, NASA Science, ESA</p>
+      </div>
+    </section>
+
+    <section class="scene" id="s3" aria-label="Ce qu'ils ont rapporté">
+      <div class="board">
+        <svg class="flows" viewBox="0 0 1600 900" preserveAspectRatio="none" aria-hidden="true">
+          <path class="fpath" id="f1" d="M448 330C560 330 590 470 650 520"/>
+          <path class="fpath" id="f2" d="M448 640C540 640 570 640 640 640"/>
+          <path class="fpath" id="f3" d="M1152 330C1040 330 1010 470 950 520"/>
+          <path class="fpath" id="f4" d="M1152 640C1060 640 1030 640 960 640"/>
+          <circle class="fdot" r="4"><animateMotion dur="2.2s" repeatCount="indefinite"><mpath href="#f1"/></animateMotion></circle>
+          <circle class="fdot" r="4"><animateMotion dur="2.6s" repeatCount="indefinite"><mpath href="#f2"/></animateMotion></circle>
+          <circle class="fdot" r="4"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#f3"/></animateMotion></circle>
+          <circle class="fdot" r="4"><animateMotion dur="2.8s" repeatCount="indefinite"><mpath href="#f4"/></animateMotion></circle>
+        </svg>
+        <div class="a earth" style="left:39%;top:42%;width:22%;aspect-ratio:1"></div>
+        <div class="a c" style="left:10%;top:9.5%;width:80%">
+          <h2 class="k-l h">Beaucoup se sont tus. Mais ce qu'ils ont rapporté nous apprend encore.</h2>
+        </div>
+        <div class="a dcard" style="left:8%;top:27%;width:20%"><svg class="ln dic" data-icon="d-img" viewBox="0 0 24 24"></svg><b class="dt">Des images</b><p class="k-xs">Des paysages qu'aucun humain n'avait encore vus.</p></div>
+        <div class="a dcard" style="left:8%;top:58%;width:20%"><svg class="ln dic" data-icon="d-rock" viewBox="0 0 24 24"></svg><b class="dt">Des échantillons</b><p class="k-xs">Des roches et du sol, rapportés ou analysés sur place.</p></div>
+        <div class="a dcard" style="left:72%;top:27%;width:20%"><svg class="ln dic" data-icon="d-measure" viewBox="0 0 24 24"></svg><b class="dt">Des mesures</b><p class="k-xs">Le sol, l'atmosphère, le climat, les distances.</p></div>
+        <div class="a dcard" style="left:72%;top:58%;width:20%"><svg class="ln dic" data-icon="d-tech" viewBox="0 0 24 24"></svg><b class="dt">Des idées</b><p class="k-xs">Des techniques reprises et améliorées par les missions suivantes.</p></div>
+        <p class="a k-s c foot" style="left:15%;width:70%;bottom:5%">Une immense mémoire de l'exploration, <b style="color:var(--text)">écrite par des machines</b>.</p>
+      </div>
+    </section>
+
+    <!-- ============ 02 · PROBLÉMATIQUE ============ -->
+    <section class="scene" id="s4" aria-label="La bibliothèque">
+      <div class="board">
+        <svg class="a ln book" data-icon="book" style="left:44%;top:9%;width:12%;height:14%" viewBox="0 0 64 64" aria-hidden="true"></svg>
+        <div class="embers"></div>
+        <div class="a c" style="left:9%;top:29%;width:82%">
+          <h2 class="k-l q" style="font-size:3.6cqw">« En Afrique, quand un vieillard meurt, c'est une bibliothèque qui brûle. »</h2>
+          <p class="lbl at" style="margin-top:1.4cqw">Amadou Hampâté Bâ</p>
+        </div>
+        <div class="a c" style="left:12%;top:64%;width:76%;display:flex;align-items:center;justify-content:center;gap:2cqw">
+          <svg class="ln lock" data-icon="lock" viewBox="0 0 64 64" style="width:5cqw;height:5cqw;flex:none" aria-hidden="true"></svg>
+          <p class="k-m l2" style="text-align:left">Les bibliothèques de ces machines existent. <span class="ro">Mais elles sont fermées à double tour.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" id="s5" aria-label="Le catalogue">
+      <div class="board">
+        <div class="a wallwrap" style="left:4%;top:12%;width:56%;height:78%">
+          <div class="wall"><div class="scroll"><table class="cat"><tbody class="rows"></tbody></table></div></div>
+          <span class="stamp" style="left:8%;top:18%;rotate:-9deg">ILLISIBLE</span>
+          <span class="stamp" style="left:40%;top:44%;rotate:6deg">ÉPARPILLÉ</span>
+          <span class="stamp" style="left:14%;top:70%;rotate:-4deg">SANS RÉCIT</span>
+        </div>
+        <div class="a" style="left:64%;top:14%;width:32%">
+          <p class="lbl ro">La problématique</p>
+          <h2 class="k-l h" style="margin-top:1cqw;font-size:2.8cqw">Aujourd'hui, leur mémoire ressemble à ça.</h2>
+          <div style="margin-top:2cqw">
+            <div class="pain"><span class="n">01</span><b>Illisible</b><span class="k-xs">De l'anglais technique, des codes, des catalogues faits pour les spécialistes.</span></div>
+            <div class="pain"><span class="n">02</span><b>Éparpillée</b><span class="k-xs">Une mission par page, une source par site&nbsp;: impossible de suivre une machine.</span></div>
+            <div class="pain"><span class="n">03</span><b>Sans récit</b><span class="k-xs">On raconte les lancements, rarement ce que ces machines nous ont appris.</span></div>
+          </div>
+          <p class="src" style="margin-top:1.2cqw">Données : catalogues NASA / NSSDCA</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" id="s6" aria-label="La question">
+      <div class="pulse"></div>
+      <div class="board">
+        <div class="a c" style="left:9%;top:22%;width:82%">
+          <p class="lbl lab">Notre question</p>
+          <h2 class="k-l qq" style="margin-top:2.2cqw;font-size:3.8cqw;line-height:1.15">Comment permettre aux jeunes <span class="hl">d'apprendre l'espace<i class="ul"></i></span> grâce à ce que ces machines nous ont <span class="hl">transmis<i class="ul"></i></span>, <span class="hl">sans rien inventer<i class="ul"></i></span>&nbsp;?</h2>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 03 · SOLUTION ============ -->
+    <section class="scene" id="s7" aria-label="AeroReborn">
+      <div class="board">
+        <div class="orbs"></div>
+        <span class="ring"></span>
+        <div class="a c" style="left:0;right:0;top:30%">
+          <p class="lbl lab">Notre solution</p>
+          <div class="logo" style="margin-top:1cqw"><span class="txt"></span><span class="sweep"></span></div>
+          <p class="k-m tag" style="margin-top:1.4cqw;color:var(--soft);font-weight:500">Apprendre l'espace grâce à la mémoire des machines.</p>
+        </div>
+        <canvas id="beat"></canvas>
+      </div>
+    </section>
+
+
+    <section class="scene" id="sw" aria-label="Pourquoi AeroReborn">
+      <div class="board">
+        <div class="a c" style="left:8%;top:9.5%;width:84%">
+          <p class="lbl cy">Pourquoi AeroReborn&nbsp;?</p>
+          <h2 class="k-l h" style="margin-top:1cqw;font-size:2.9cqw">Des sites sur ces machines, il en existe. Voici ce qui change.</h2>
+        </div>
+        <div class="a cmp" style="left:7%;top:27%;width:86%">
+          <div class="cmp-head"><span></span><span class="lbl">Ailleurs</span><span class="lbl cy">Sur AeroReborn</span></div>
+          <div class="cr"><span class="ck">Pour qui</span><span class="old">Les spécialistes<i class="strike"></i></span><span class="new"><svg class="ln chk" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Les 10-15 ans, et tout le monde</span></div>
+<div class="cr"><span class="ck">On cherche</span><span class="old">Mission par mission, page par page<i class="strike"></i></span><span class="new"><svg class="ln chk" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Une machine, toute sa vie, au même endroit</span></div>
+<div class="cr"><span class="ck">On lit</span><span class="old">Des fiches techniques en anglais<i class="strike"></i></span><span class="new"><svg class="ln chk" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Sa vie en actes, racontée et lue à voix haute, en 3 langues</span></div>
+<div class="cr"><span class="ck">On explore</span><span class="old">Des listes et des tableaux<i class="strike"></i></span><span class="new"><svg class="ln chk" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Des globes, un hangar, un vol de photos, des pièces à toucher</span></div>
+<div class="cr"><span class="ck">On fait confiance</span><span class="old">Faits et légendes parfois mélangés<i class="strike"></i></span><span class="new"><svg class="ln chk" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Chaque fait sourcé, chaque vue d'artiste signalée</span></div>
+<div class="cr"><span class="ck">On participe</span><span class="old">On lit, puis on referme<i class="strike"></i></span><span class="new"><svg class="ln chk" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Une page qui suit la voix, une question « À toi »</span></div>
+          <span class="scan"></span>
+        </div>
+        <p class="a k-s c ans" style="left:8%;width:84%;bottom:5%">Les mêmes données de la NASA, <b style="color:var(--text)">vues sous un autre angle</b>&nbsp;: celui de quelqu'un qui veut comprendre.</p>
+      </div>
+    </section>
+
+    <section class="scene" id="sy" aria-label="Notre apport">
+      <div class="board">
+        <div class="a" style="left:5%;top:10%;width:40%">
+          <p class="lbl cy">Notre apport</p>
+          <h2 class="k-l h" style="margin-top:1cqw;font-size:2.7cqw">On n'a pas changé les données. On a changé la façon de les raconter.</h2>
+          <div class="pr">
+            <div class="pi"><span class="n">01</span><div><b>La machine est le héros</b><p class="k-xs">Une page, une vie. Pas une fiche&nbsp;: un personnage.</p></div></div>
+            <div class="pi"><span class="n">02</span><div><b>On commence par la fin</b><p class="k-xs">Son dernier signal s'affiche, son nom se décode. Puis on remonte.</p></div></div>
+            <div class="pi"><span class="n">03</span><div><b>Ses dates écrivent le scénario</b><p class="k-xs">Les actes de sa vie sont calculés depuis ses vraies dates. Pas un gabarit.</p></div></div>
+            <div class="pi"><span class="n">04</span><div><b>Un chiffre par acte</b><p class="k-xs">×57, 248 jours de silence&nbsp;: le chiffre qui dit tout, mis en scène.</p></div></div>
+            <div class="pi"><span class="n">05</span><div><b>Une voix qui lit, une page qui suit</b><p class="k-xs">La narration surligne le texte et fait défiler la page avec la voix.</p></div></div>
+          </div>
+        </div>
+        <div class="a" style="left:49%;top:12%;width:46%">
+          <div class="cold">
+            <span class="hud-c" style="left:.6cqw;top:.6cqw;border-right:0;border-bottom:0"></span><span class="hud-c" style="right:.6cqw;top:.6cqw;border-left:0;border-bottom:0"></span><span class="hud-c" style="left:.6cqw;bottom:.6cqw;border-right:0;border-top:0"></span><span class="hud-c" style="right:.6cqw;bottom:.6cqw;border-left:0;border-top:0"></span>
+            <p class="dec" data-text="Dernier signal reçu le 10 juin 2018"></p>
+            <p class="nm" data-text="Opportunity"></p>
+            <p class="tele"><span><i class="led"></i><span class="v">Mission terminée</span><span class="sig"><i></i><i></i><i></i><i></i></span></span><span>NSSDCA <span class="v">2003-032A</span></span><span class="v" style="text-transform:none;letter-spacing:0">Meridiani Planum</span><span class="v">1,95° S · 5,53° O</span></p>
+          </div>
+          <div class="strip">
+            <div class="fr t-ind" data-r="I"><b>Le départ</b><small>2003</small></div>
+            <div class="fr t-wor" data-r="II"><span class="fig">90</span><b>La mission prévue</b><small>jours martiens</small></div>
+            <div class="fr t-gold" data-r="III"><span class="fig">×57</span><b>Les prolongations</b><small>2004 → 2018</small></div>
+            <div class="fr t-dust" data-r="IV"><span class="fig">248</span><b>Le silence</b><small>jours sans réponse</small></div>
+            <div class="fr t-cy" data-r="V"><b>Ce qui reste</b><small>vu depuis l'orbite</small></div>
+          </div>
+          <p class="lbl c scap" style="margin-top:1cqw">Les actes d'Opportunity · de l'arithmétique sur des dates sourcées, rien d'autre</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" id="sx" aria-label="L'expérience">
+      <div class="board">
+        <div class="a" style="left:5%;top:12%;width:35%">
+          <p class="lbl cy">L'expérience</p>
+          <h2 class="k-l h" style="margin-top:1cqw;font-size:2.8cqw">Une interface qui donne envie d'apprendre.</h2>
+          <div class="feats">
+            <div class="ft"><svg class="ln" viewBox="0 0 24 24"><path d="M9 11V5a1.5 1.5 0 013 0v5"/><path d="M12 10V8.5a1.5 1.5 0 013 0V11"/><path d="M15 10.5a1.5 1.5 0 013 0V15a6 6 0 01-6 6h-1a6 6 0 01-5-2.7L4 15.5a1.5 1.5 0 012.4-1.8L9 16"/></svg><div><b>Intuitive</b><span class="k-xs">Trois gestes&nbsp;: choisir un monde, réveiller une machine dans le hangar, suivre sa vie.</span></div></div>
+            <div class="ft"><svg class="ln" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.6 2.6 14.4 0 17"/></svg><div><b>Ludique</b><span class="k-xs">Des globes qui tournent, des pièces à toucher sur la photo et en 3D, un chiffre qui s'anime à chaque acte.</span></div></div>
+            <div class="ft"><svg class="ln" viewBox="0 0 24 24"><path d="M12 3l2.4 5.6 6 .6-4.5 4 1.3 5.9L12 16l-5.2 3.1 1.3-5.9-4.5-4 6-.6z"/></svg><div><b>Agréable</b><span class="k-xs">Grain de film, télémétrie, un nom qui se décode, un son d'ambiance&nbsp;: la direction artistique «&nbsp;Transmission&nbsp;».</span></div></div>
+            <div class="ft"><svg class="ln" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.5h2"/></svg><div><b>Pour tous</b><span class="k-xs">Téléphone ou ordinateur, clavier, lecteur d'écran, en anglais, français et wolof.</span></div></div>
+          </div>
+        </div>
+        <div class="a devwrap" style="left:43%;top:15%;width:52%">
+          <div class="device">
+            <div class="scr sA">
+              <div class="nav"><span class="lg">● AeroReborn</span><span>Explorer · À propos</span></div>
+              <p class="t1">Choisis ta destination</p>
+              <span class="pl" style="left:16%;background-image:url(img/moon.webp)"></span>
+              <span class="pl pm" style="left:56%;background-image:url(img/mars.webp)"></span>
+              <span class="pn" style="left:16%">Lune</span><span class="pn" style="left:56%">Mars</span>
+            </div>
+            <div class="scr sB">
+              <div class="nav"><span class="lg">● AeroReborn</span><span>Mars › Le hangar</span></div>
+              <p class="ey">Le hangar · Mars</p><p class="t2">Choisis une machine</p>
+              <div class="hg">
+                <div class="hc"><span class="dh">01 / 05 · 1996-068A <i class="led"></i></span><span class="gd"></span><b>Pathfinder</b><small>1997</small></div>
+                <div class="hc hot"><span class="dh">04 / 05 · 2003-032A <i class="led"></i></span><span class="gd"></span><b>Opportunity</b><small>2004 → 2018</small><em>Réveiller</em></div>
+                <div class="hc"><span class="dh">05 / 05 <i class="led"></i></span><span class="gd"></span><b>Ingenuity</b><small>2021 → 2024</small></div>
+              </div>
+            </div>
+            <div class="scr sC">
+              <div class="nav"><span class="lg">● AeroReborn</span><span>Mars › Opportunity</span></div>
+              <p class="cdec" data-text="Dernier signal reçu le 10 juin 2018"></p>
+              <p class="cnm" data-text="Opportunity"></p>
+              <p class="ctele"><span><i class="led"></i>Mission terminée</span><span>NSSDCA 2003-032A</span><span>Meridiani Planum</span></p>
+              <div class="lifel"><span class="lfill"></span>
+                <span class="ln5" style="left:0%"><i></i>Le départ</span><span class="ln5" style="left:25%"><i></i>La mission prévue</span><span class="ln5" style="left:50%"><i></i>Les prolongations</span><span class="ln5" style="left:75%"><i></i>Le silence</span><span class="ln5" style="left:100%"><i></i>Ce qui reste</span>
+              </div>
+              <div class="bigstat"><span>Prévu&nbsp;: <s>90 jours martiens</s></span><b>plus de 14 ans</b></div>
+              <span class="cta">▶ Écouter son histoire</span>
+            </div>
+            <div class="scr sD">
+              <div class="nav"><span class="lg">● AeroReborn</span><span>Opportunity · Acte II</span></div>
+              <div class="act"><span class="rn">II</span><div><p class="ey">Acte II · 2004</p><b>La mission prévue</b><small>90 jours martiens prévus. Tout le reste est un cadeau.</small></div><span class="plan">90<br><small>jours martiens</small></span></div>
+              <p class="day">Jour 38 de sa mission</p>
+              <p class="rd"><span>Opportunity</span> <span>découvre</span> <span>de</span> <span>petites</span> <span>billes</span> <span>grises</span> <span>d'hématite,</span> <span>surnommées</span> <span>«&nbsp;myrtilles&nbsp;».</span> <span>L'hématite</span> <span>se</span> <span>forme</span> <span>généralement</span> <span>dans</span> <span>l'eau.</span></p>
+              <div class="pho"><svg class="ln" data-icon="rover" viewBox="0 0 64 64"></svg><i style="left:62%;top:28%"></i><i style="left:36%;top:68%"></i><span>Touche une pièce pour découvrir son rôle</span></div>
+              <div class="rbar"><span class="pdot"></span><span>Lecture en cours</span><span class="stop">Arrêter</span></div>
+            </div>
+            <span class="tap"></span>
+          </div>
+          <p class="lbl c" style="margin-top:1.2cqw">Aperçu de l'interface · la démo suit</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" id="s8" aria-label="Sa vie en actes">
+      <div class="board">
+        <div class="a c" style="left:10%;top:9%;width:80%">
+          <p class="lbl cy">Comment ça marche</p>
+          <h2 class="k-l h" style="margin-top:1cqw">Chaque machine raconte sa vie à sa façon.</h2>
+        </div>
+        <div class="a mcard" style="left:5%;top:29%;width:56%">
+          <div class="mhead"><span class="disc"></span><div><p class="lbl">Rover · Mars · 5 actes</p><p class="k-m" style="font-size:2.1cqw">Opportunity</p></div><span class="chip">2003 → 2019</span></div>
+          <div class="life" style="height:10.5cqw">
+            <div class="lifebar"><i></i></div>
+            <div class="lp" style="left:7%"><span class="dot"></span><b>I · Le départ</b><span class="k-xs">De la Terre à Mars</span></div>
+            <div class="lp" style="left:28%"><span class="dot"></span><b>II · Mission prévue</b><span class="k-xs">90 jours martiens</span></div>
+            <div class="lp" style="left:50%"><span class="dot"></span><b>III · Prolongations</b><span class="k-xs">Jour 91&nbsp;: elle continue. ×57</span></div>
+            <div class="lp" style="left:72%"><span class="dot"></span><b>IV · Le silence</b><span class="k-xs">248 jours sans réponse</span></div>
+            <div class="lp now" style="left:93%"><span class="dot"></span><b>V · Ce qui reste</b><span class="k-xs">Vu depuis l'orbite</span></div>
+          </div>
+        </div>
+        <div class="a mcard" style="left:64%;top:29%;width:31%">
+          <div class="mhead"><span class="disc" style="background-image:url(img/moon.webp)"></span><div><p class="lbl">Réflecteur · Lune · 2 actes</p><p class="k-m" style="font-size:1.6cqw">Réflecteur laser d'Apollo 11</p></div></div>
+          <div class="life" style="height:10.5cqw">
+            <div class="lifebar"><i class="alive"></i></div>
+            <div class="lp" style="left:16%;width:36%;margin-left:-18%"><span class="dot"></span><b>I · Le départ</b><span class="k-xs">De la Terre à la Lune</span></div>
+            <div class="lp now gr" style="left:74%;width:48%;margin-left:-24%"><span class="dot"></span><b>II · Répond encore</b><span class="k-xs">Chaque nuit claire, depuis 1969</span></div>
+          </div>
+        </div>
+        <p class="a k-s c gen2" style="left:10%;width:80%;top:76%">Pas de gabarit&nbsp;: les actes sont <b style="color:var(--text)">calculés depuis les dates sourcées</b> de chaque machine. L'une répond encore, l'autre a connu un long silence. Chacune, son histoire.</p>
+        <div class="a c" style="left:0;right:0;top:88%;display:flex;justify-content:center;gap:.8cqw;flex-wrap:wrap"><span class="chip">Le départ</span><span class="chip">La mission prévue</span><span class="chip">Les prolongations</span><span class="chip">Le silence</span><span class="chip">Ce qui reste</span><span class="chip">Répond encore</span><span class="chip">Sa mission</span></div>
+      </div>
+    </section>
+
+    <section class="scene" id="s9" aria-label="Pédagogie">
+      <div class="board">
+        <div class="a c" style="left:10%;top:10%;width:80%">
+          <p class="lbl cy">La pédagogie</p>
+          <h2 class="k-l h" style="margin-top:1cqw">On apprend à séparer le fait, l'explication et l'imagination.</h2>
+          <p class="lbl ex" style="margin-top:1cqw">Exemple : Opportunity, sur Mars</p>
+        </div>
+        <div class="a vc v-f" style="left:6%;top:33%;width:27%"><span class="vtag">Fait</span><p>Opportunity découvre de petites billes grises d'hématite, surnommées « myrtilles ». L'hématite se forme généralement dans l'eau.</p><span class="src">Source : NASA Science</span></div>
+        <div class="a vc v-i" style="left:36.5%;top:33%;width:27%"><span class="vtag">Ce que ça veut dire</span><p>Ensemble, ces indices montrent que Mars a été bien plus humide qu'aujourd'hui.</p><span class="src">Source : NASA Science</span></div>
+        <div class="a vc v-m" style="left:67%;top:33%;width:27%"><span class="vtag">Imagine</span><p>Si tu concevais le prochain rover, que changerais-tu pour l'aider à traverser une tempête de poussière&nbsp;?</p><span class="src">Une question, jamais présentée comme un fait</span></div>
+        <div class="a c bad" style="left:0;right:0;top:80%;display:flex;justify-content:center;gap:1.4cqw;flex-wrap:wrap">
+          <span class="badge">348 sources, toutes sur la page À propos</span>
+          <span class="badge art">Vue d'artiste — pas une photo</span>
+          <span class="badge">18 règles vérifiées à chaque démarrage</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" id="s10" aria-label="Le prototype">
+      <div class="board">
+        <div class="a c" style="left:10%;top:9%;width:80%">
+          <p class="lbl cy">Le cadre du défi</p>
+          <h2 class="k-l h" style="margin-top:1cqw">Deux premiers exemples&nbsp;: la Lune et Mars.</h2>
+        </div>
+        <div class="a globe g-moon gm" data-lon="0" style="left:9%;top:27%;width:27%;aspect-ratio:1"></div>
+        <div class="a globe g-mars gr" data-lon="-20" style="left:64%;top:27%;width:27%;aspect-ratio:1"></div>
+        <p class="a lbl c gl1" style="left:9%;width:27%;top:79%">Lune · 6 machines</p>
+        <p class="a lbl c gl2" style="left:64%;width:27%;top:79%">Mars · 5 machines</p>
+        <p class="a k-s c gen" style="left:10%;width:80%;top:87%">La méthode, elle, s'applique à <b style="color:var(--text)">n'importe quelle machine de l'exploration</b>.</p>
+        <div class="a stats" style="left:41%;top:27%;width:18%">
+          <div class="stat"><strong data-to="11">0</strong><span class="lbl">machines</span></div>
+          <div class="stat"><strong data-to="187">0</strong><span class="lbl">chapitres</span></div>
+          <div class="stat"><strong data-to="348">0</strong><span class="lbl">sources</span></div>
+          <div class="stat"><strong data-to="3">0</strong><span class="lbl">langues · EN FR WO</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 04 · DÉMO ============ -->
+    <section class="scene" id="s11" aria-label="Démo">
+      <div class="board">
+        <div class="a globe g-mars horizon" data-lon="-5.5" style="left:-10%;top:58%;width:120%;aspect-ratio:1"></div>
+        <div class="a c" style="left:10%;top:10%;width:80%">
+          <p class="lbl ro">Démo</p>
+          <h2 class="k-xl h" style="margin-top:1cqw">Voyons à quoi ça ressemble.</h2>
+          <ol class="path" style="margin-top:2.4cqw">
+            <li><b>1</b>Choisir sa destination</li>
+            <li><b>2</b>Le hangar&nbsp;: réveiller une machine</li>
+            <li><b>3</b>Son dernier signal, puis sa vie en actes</li>
+            <li><b>4</b>Écouter&nbsp;: la page suit la voix</li>
+          </ol>
+          <div class="go-btn" style="margin-top:2.4cqw"><a class="btn" id="demo-link" href="http://localhost:5173/" target="_blank" rel="noopener">Ouvrir AeroReborn <span aria-hidden="true">↗</span></a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 05 · UTILITÉ ============ -->
+    <section class="scene" id="s12" aria-label="L'utilité">
+      <div class="board">
+        <div class="a c" style="left:10%;top:9%;width:80%">
+          <p class="lbl cy">L'utilité</p>
+          <h2 class="k-l h" style="margin-top:1cqw">Apprendre l'espace grâce aux machines qui y sont allées.</h2>
+        </div>
+        <div class="a uc" style="left:6%;top:27%;width:27%"><svg class="ln ico" data-icon="u-learn" viewBox="0 0 24 24"></svg><p class="k-l">Comprendre</p><p class="k-xs">L'espace sans prérequis&nbsp;: des textes courts, chaque mot technique expliqué.</p></div>
+        <div class="a uc" style="left:36.5%;top:27%;width:27%"><svg class="ln ico" data-icon="u-check" viewBox="0 0 24 24"></svg><p class="k-l">Vérifier</p><p class="k-xs">Chaque fait a sa source. Le fait n'est jamais mélangé à l'imagination.</p></div>
+        <div class="a uc" style="left:67%;top:27%;width:27%"><svg class="ln ico" data-icon="u-mem" viewBox="0 0 24 24"></svg><p class="k-l">Transmettre</p><p class="k-xs">La mémoire des machines&nbsp;: leurs missions, leurs découvertes, ce qu'elles ont transmis.</p></div>
+        <div class="a who" style="left:0;right:0;top:62%"><span>Élèves de 10 à 15 ans</span><span>Enseignants</span><span>Curieux et passionnés</span></div>
+        <div class="a acc" style="left:0;right:0;top:71%">
+          <span><svg class="ln" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.5h2"/></svg>Sur téléphone</span>
+          <span><svg class="ln" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="2"/><path d="M6 10h1M9 10h1M12 10h1M15 10h1M7 14h10"/></svg>Au clavier</span>
+          <span><svg class="ln" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 010 7"/></svg>Narration qui suit la voix</span>
+          <span><svg class="ln" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></svg>Anglais · français · wolof</span>
+        </div>
+        <div class="ticker"><div class="tk"></div></div>
+      </div>
+    </section>
+
+    <!-- ============ 06 · CONCLUSION ============ -->
+    <section class="scene" id="sz" aria-label="Perspectives">
+      <div class="board">
+        <div class="a c" style="left:10%;top:9%;width:80%">
+          <p class="lbl go">Perspectives</p>
+          <h2 class="k-l h" style="margin-top:1cqw">Ce que le projet permet, ensuite.</h2>
+        </div>
+        <div class="a hzline" style="left:5%;right:5%;top:26%"></div>
+        <div class="a pgrid" style="left:5%;right:5%;top:29.5%">
+          <div class="pc"><span class="hz">Bientôt</span><svg class="ln" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 010 7M19 6a9 9 0 010 12"/></svg><b>Des voix plus vraies</b><p class="k-xs">Aujourd'hui, la voix du navigateur. Demain, des voix enregistrées, plus naturelles, et une lecture en wolof.</p></div>
+          <div class="pc"><span class="hz">Bientôt</span><svg class="ln" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><path d="M4 9h16M12 9v5M12 14l-4 6M12 14l4 6"/></svg><b>Accessibilité renforcée</b><p class="k-xs">Description audio des images, sous-titres des vidéos, mode de lecture facile, clavier et lecteur d'écran affinés.</p></div>
+          <div class="pc"><span class="hz">Ensuite</span><svg class="ln" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0118 0M6 12a6 6 0 0112 0M9 12a3 3 0 016 0"/><path d="M12 12v9"/></svg><b>Hors ligne, en classe</b><p class="k-xs">Une version installable qui fonctionne sans connexion, pour les écoles où le réseau manque.</p></div>
+          <div class="pc"><span class="hz">Ensuite</span><svg class="ln" viewBox="0 0 24 24"><path d="M12 3l1.8 4 4.2.5-3 3 .8 4.2L12 12.8 8.2 14.7l.8-4.2-3-3 4.2-.5z"/><path d="M12 15v6M9 21h6"/></svg><b>Deviens l'ingénieur</b><p class="k-xs">Des mini-quiz et des scénarios&nbsp;: «&nbsp;Et toi, comment aurais-tu traversé la tempête de poussière&nbsp;?&nbsp;»</p></div>
+          <div class="pc"><span class="hz">Ensuite</span><svg class="ln" viewBox="0 0 24 24"><path d="M3 6c3-1.5 6-1.5 9 1v12c-3-2.5-6-2.5-9-1z"/><path d="M21 6c-3-1.5-6-1.5-9 1v12c3-2.5 6-2.5 9-1z"/></svg><b>Un espace enseignants</b><p class="k-xs">Une fiche par machine, des parcours de classe, un carnet de bord à partager avec les élèves.</p></div>
+          <div class="pc"><span class="hz">Plus loin</span><svg class="ln" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><ellipse cx="12" cy="12" rx="10" ry="4"/><path d="M4 20l16-16"/></svg><b>D'autres mondes, des données ouvertes</b><p class="k-xs">Vénus, Titan, les comètes… et notre API ouverte, pour que d'autres projets racontent à leur tour.</p></div>
+        </div>
+        <p class="a k-s c pfoot" style="left:10%;width:80%;top:87%">Toujours la même règle&nbsp;: <b style="color:var(--text)">rien d'inventé, chaque fait sourcé</b>.</p>
+      </div>
+    </section>
+
+    <section class="scene" id="s13" aria-label="Demain">
+      <div class="board">
+        <div class="a c" style="left:10%;top:9%;width:80%">
+          <p class="lbl go">Au-delà du défi</p>
+          <h2 class="k-l h" style="margin-top:1cqw">Toutes les machines de l'exploration.</h2>
+          <p class="k-s sub" style="margin-top:1cqw">La Lune et Mars sont nos deux exemples. La même méthode vaut pour Vénus, Titan, les comètes et au-delà&nbsp;: sources officielles, vérifiées fait par fait.</p>
+        </div>
+        <div class="a" style="left:5%;right:5%;top:50%;display:flex;justify-content:space-between">
+          <div class="vd proto"><span class="disc" style="background-image:url(img/moon.webp)"></span><span class="nm">Luna 2</span><span class="tag">Exemple du défi</span></div>
+          <div class="vd proto"><span class="disc" style="background-image:url(img/moon.webp)"></span><span class="nm">Apollo 11</span><span class="tag">Exemple du défi</span></div>
+          <div class="vd next"><span class="disc" style="background-image:url(img/venus.webp)"></span><span class="nm">Venera 7</span><span class="tag">Même méthode</span></div>
+          <div class="vd next"><span class="disc voy"></span><span class="nm">Voyager 1</span><span class="tag">Même méthode</span></div>
+          <div class="vd proto"><span class="disc" style="background-image:url(img/mars.webp)"></span><span class="nm">Pathfinder</span><span class="tag">Exemple du défi</span></div>
+          <div class="vd next"><span class="disc" style="background-image:url(img/saturn.webp)"></span><span class="nm">Huygens</span><span class="tag">Même méthode</span></div>
+          <div class="vd next"><span class="disc comet"></span><span class="nm">Philae</span><span class="tag">Même méthode</span></div>
+          <div class="vd proto"><span class="disc" style="background-image:url(img/mars.webp)"></span><span class="nm">Ingenuity</span><span class="tag">Exemple du défi</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="scene" id="s14" aria-label="Fin">
+      <div class="dusk"></div>
+      <div class="board">
+        <svg class="a ln baobab" style="left:3%;top:40%;width:22%;height:56%;opacity:.55" viewBox="0 0 400 420" preserveAspectRatio="xMidYMax meet" aria-hidden="true"></svg>
+        <div class="a c endA" style="left:10%;top:28%;width:80%">
+          <p class="k-m e1" style="color:var(--soft);font-weight:500">Ici, on dit que les vieux ne sont pas morts.</p>
+          <h2 class="k-xl e2" style="margin-top:2cqw">Les machines non plus.</h2>
+        </div>
+        <div class="a c endB" style="left:10%;top:22%;width:80%">
+          <div class="logo"><span class="txt"></span><span class="sweep"></span></div>
+          <p class="k-m" style="margin-top:1.2cqw;color:var(--soft);font-weight:500">Leur histoire continue de nous apprendre l'espace.</p>
+          <div style="display:flex;justify-content:center;align-items:center;gap:2cqw;margin-top:2.6cqw">
+            <div id="qr" aria-hidden="true"></div>
+            <div style="text-align:left"><p class="k-l" style="font-size:3cqw">Merci.</p><p class="lbl cy" id="end-url" style="margin-top:.6cqw;text-transform:none;letter-spacing:.04em"></p></div>
+          </div>
+        </div>
+        <p class="a src c legal" style="left:0;right:0;bottom:4%">Projet indépendant, non affilié à la NASA ni approuvé par elle · Images : NASA, NASA SVS, NSSDCA, USGS (domaine public)</p>
+      </div>
+    </section>
+  </div>
+
+  <div id="chapter" aria-live="polite"><span class="n">01</span><span class="bar"></span><span class="t">Contexte</span></div>
+  <div id="brand">Aero<span>Reborn</span></div>
+  <div id="progress"><i></i></div>
+  <div id="hud">
+    <span id="timer">00:00</span>
+    <button class="ib" id="b-prev" aria-label="Scène précédente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button class="ib" id="b-next" aria-label="Scène suivante"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7"/></svg></button>
+    <button class="ib" id="b-sound" aria-label="Son" aria-pressed="true"><svg class="on-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 010 7"/></svg><svg class="off-i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M17 9l5 6M22 9l-5 6"/></svg></button>
+    <button class="ib" id="b-notes" aria-label="Notes de l'orateur"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h14v16H5zM9 9h6M9 13h6M9 17h3"/></svg></button>
+    <button class="ib" id="b-full" aria-label="Plein écran"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></svg></button>
+  </div>
+</div>
+
+<aside id="notes" hidden aria-label="Notes de l'orateur">
+  <h2 id="n-title"></h2>
+  <p class="tt" id="n-time"></p>
+  <p class="say" id="n-say"></p>
+  <p class="next" id="n-next"></p>
+  <hr>
+  <label for="demo-url">Adresse de la démo</label>
+  <input id="demo-url" type="url" spellcheck="false" placeholder="https://…">
+  <p class="next">Utilisée par le bouton de la démo, la touche D et le QR code de fin (pas de QR pour une adresse locale).</p>
+  <hr>
+  <dl class="keys">
+    <dt><kbd>→</kbd> <kbd>Espace</kbd></dt><dd>Scène suivante (télécommande compatible)</dd>
+    <dt><kbd>←</kbd></dt><dd>Scène précédente</dd>
+    <dt><kbd>N</kbd></dt><dd>Notes</dd>
+    <dt><kbd>F</kbd></dt><dd>Plein écran</dd>
+    <dt><kbd>S</kbd></dt><dd>Son</dd>
+    <dt><kbd>D</kbd></dt><dd>Ouvrir la démo</dd>
+    <dt><kbd>R</kbd></dt><dd>Rejouer l'animation de la scène</dd>
+    <dt><kbd>Début</kbd></dt><dd>Recommencer</dd>
+  </dl>
+</aside>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+(() => {
+  'use strict';
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (RM) document.documentElement.classList.add('rm');
+  const hasGsap = !!window.gsap;
+  if (hasGsap) gsap.ticker.lagSmoothing(0);
+
+  // ---------- Line-art icons ----------
+  const ICONS = {
+    luna: '<circle cx="32" cy="34" r="12"/><path d="M32 22V10M24 25l-8-9M40 25l8-9M22 41l-9 6M42 41l9 6"/>',
+    lander: '<path d="M20 26h24l4 10H16z"/><path d="M24 26l4-8h8l4 8"/><path d="M18 36l-8 14M46 36l8 14M26 36l-3 14M38 36l3 14"/><path d="M6 50h8M50 50h8M20 50h6M38 50h6"/>',
+    venera: '<circle cx="32" cy="29" r="11"/><ellipse cx="32" cy="41" rx="18" ry="4"/><path d="M32 18v-7M29 11h6M24 44l-4 8M40 44l4 8"/>',
+    voyager: '<ellipse cx="28" cy="22" rx="16" ry="6"/><path d="M28 28v8"/><rect x="23" y="36" width="10" height="7" rx="1"/><path d="M33 39h20M23 41L9 50M28 43v11"/><circle cx="54" cy="39" r="2"/>',
+    rover: '<rect x="16" y="28" width="30" height="9" rx="2"/><path d="M12 26h38"/><path d="M40 28V14M36 14h9v5h-9z"/><circle cx="20" cy="44" r="4"/><circle cx="31" cy="44" r="4"/><circle cx="42" cy="44" r="4"/><path d="M20 40l5-3h12l5 3"/>',
+    huygens: '<path d="M18 22c0-9 28-9 28 0"/><path d="M18 22l14 13 14-13"/><ellipse cx="32" cy="42" rx="12" ry="4"/><path d="M20 42c2 7 22 7 24 0"/>',
+    philae: '<rect x="20" y="20" width="24" height="16" rx="2"/><path d="M20 26h24M26 20v16M38 20v16"/><path d="M24 36l-8 14M40 36l8 14M32 36v14"/><path d="M12 50h8M44 50h8M29 50h6"/>',
+    heli: '<path d="M12 16h40M14 23h36"/><path d="M32 14v18"/><rect x="25" y="32" width="14" height="10" rx="2"/><path d="M27 42l-7 10M37 42l7 10"/>',
+    book: '<path d="M8 16c8-4 16-4 24 2v32c-8-6-16-6-24-2z"/><path d="M56 16c-8-4-16-4-24 2v32c8-6 16-6 24-2z"/><path d="M14 24c4-1 8-1 12 1M14 31c4-1 8-1 12 1M38 25c4-2 8-2 12-1M38 32c4-2 8-2 12-1"/>',
+    lock: '<rect x="16" y="30" width="32" height="24" rx="3"/><path class="shackle" d="M23 30v-8a9 9 0 0118 0v8"/><circle cx="32" cy="40" r="2.6"/><path d="M32 43v5"/>',
+    's-signal': '<path d="M12 12h.01"/><path d="M8.5 8.5a5 5 0 000 7M15.5 8.5a5 5 0 010 7M5.6 5.6a9 9 0 000 12.8M18.4 5.6a9 9 0 010 12.8"/>',
+    's-why': '<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 114 2c-1 .7-1.5 1.2-1.5 2.5M12 17h.01"/>',
+    's-how': '<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/>',
+    's-disc': '<path d="M12 3l2.4 5.6 6 .6-4.5 4 1.3 5.9L12 16l-5.2 3.1 1.3-5.9-4.5-4 6-.6z"/>',
+    's-relay': '<path d="M4 8h12l-3-3M20 16H8l3 3"/>',
+    's-you': '<path d="M4 20l4-1 11-11-3-3L5 16z"/><path d="M14 6l3 3"/>',
+    'u-learn': '<path d="M3 6c3-1.5 6-1.5 9 1v12c-3-2.5-6-2.5-9-1z"/><path d="M21 6c-3-1.5-6-1.5-9 1v12c3-2.5 6-2.5 9-1z"/>',
+    'u-check': '<circle cx="10.5" cy="10.5" r="6.5"/><path d="M20 20l-4.8-4.8M7.8 10.6l1.9 1.9 3.4-3.4"/>',
+    'u-mem': '<path d="M2 12h4l2-5 4 10 2-5h8"/>',
+    'd-img': '<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M3 17l5-5 4 4 3-3 6 6"/>',
+    'd-rock': '<path d="M4 16l3-7 5-2 6 3 2 6-4 3H8z"/><path d="M9 11l2 3M14 10l1 4"/>',
+    'd-measure': '<path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/>',
+    'd-tech': '<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 00-4 10.5c.8.8 1 1.5 1 2.5h6c0-1 .2-1.7 1-2.5A6 6 0 0012 3z"/>',
+  };
+  $$('svg[data-icon]').forEach((s) => { s.innerHTML = ICONS[s.dataset.icon] || ''; });
+  // second baobab (end scene) reuses the first drawing
+  const bb = $$('svg.baobab');
+  if (bb[1]) bb[1].innerHTML = bb[0].innerHTML;
+
+  // ---------- Generated content ----------
+  const fires = $('#s1 .fires');
+  for (let i = 0; i < 16; i++) {
+    const f = document.createElement('span');
+    f.className = 'fire';
+    f.style.left = (8 + Math.random() * 30) + '%';
+    f.style.top = (70 + Math.random() * 26) + '%';
+    f.style.animationDelay = (-Math.random() * 7) + 's';
+    f.style.animationDuration = (5 + Math.random() * 5) + 's';
+    fires.appendChild(f);
+  }
+  const embers = $('#s4 .embers');
+  for (let i = 0; i < 12; i++) {
+    const f = document.createElement('span');
+    f.className = 'ember';
+    f.style.left = (44 + Math.random() * 12) + '%';
+    f.style.top = (20 + Math.random() * 6) + '%';
+    f.style.animationDelay = (-Math.random() * 5) + 's';
+    embers.appendChild(f);
+  }
+  const ROWS = [
+    ['1967-035A', 'Surveyor 3', 'lander', '1967-04-20', '3.016 S 23.418 W', 'inactive'],
+    ['1969-059C', 'Apollo 11 Lunar Module "Eagle"', 'descent-stage', '1969-07-20', '0.674 N 23.473 E', 'inactive'],
+    ['—', 'Early Apollo Scientific Experiments Package', 'experiment', '1969-07-21', '0.673 N 23.473 E', 'mission-ended'],
+    ['—', 'Apollo 11 Laser Ranging Retroreflector', 'experiment', '1969-07-21', '—', 'operational'],
+    ['1969-099C', 'Apollo 12 Lunar Module "Intrepid"', 'descent-stage', '1969-11-19', '3.013 S 23.422 W', 'inactive'],
+    ['—', 'Apollo 12 Lunar Surface Experiments Package', 'experiment', '1969-11-19', '3.009 S 23.425 W', 'mission-ended'],
+    ['1996-068A', 'Mars Pathfinder lander', 'lander', '1997-07-04', '19.330 N 33.550 W', 'mission-ended'],
+    ['—', 'Sojourner rover', 'rover', '1997-07-05', '—', 'mission-ended'],
+    ['2003-027A', 'Spirit (MER-A)', 'rover', '2004-01-04', '14.572 S 175.478 E', 'mission-ended'],
+    ['2003-032A', 'Opportunity (MER-B)', 'rover', '2004-01-25', '1.946 S 5.527 W', 'mission-ended'],
+    ['—', 'Ingenuity Mars Helicopter', 'helicopter', '2021-02-18', '—', 'mission-ended'],
+  ];
+  const rowHtml = ROWS.map((r) => '<tr>' + r.map((c) => '<td>' + c.replace(/"/g, '&quot;') + '</td>').join('') + '</tr>').join('');
+  $('#s5 .rows').innerHTML = rowHtml + rowHtml + rowHtml + rowHtml;
+  const TICK = ['Comment se pose-t-on sur un autre monde ?', 'Pourquoi envoie-t-on des robots plutôt que des humains ?', 'Que nous apprennent les roches ?', 'Comment une mission prépare la suivante ?', 'Comment vérifier une information ?', 'Qu\'est-ce qu\'une vue d\'artiste ?'];
+  const tk = $('#s12 .tk');
+  tk.innerHTML = [...TICK, ...TICK].map((t) => '<span>' + t + '</span>').join('');
+  // orbiting icons for the logo reveal
+  const orbs = $('#s7 .orbs');
+  ['luna', 'lander', 'venera', 'voyager', 'rover', 'huygens', 'philae', 'heli'].forEach((k) => {
+    orbs.insertAdjacentHTML('beforeend', '<svg class="ln orb" viewBox="0 0 64 64">' + ICONS[k] + '</svg>');
+  });
+  $$('.logo .txt').forEach((t) => {
+    t.innerHTML = 'Aero'.split('').map((c) => '<span class="ch">' + c + '</span>').join('') +
+      'Reborn'.split('').map((c) => '<span class="ch re">' + c + '</span>').join('');
+  });
+
+  // Kinetic type: wrap words (keeps inline elements such as highlights as one unit).
+  function split(el) {
+    const out = [];
+    [...el.childNodes].forEach((n) => {
+      if (n.nodeType === 3) {
+        n.textContent.split(/(\s+)/).forEach((part) => {
+          if (!part) return;
+          if (/^\s+$/.test(part)) { out.push(document.createTextNode(' ')); return; }
+          const w = document.createElement('span'); w.className = 'w';
+          const wi = document.createElement('span'); wi.className = 'wi'; wi.textContent = part;
+          w.appendChild(wi); out.push(w);
+        });
+      } else {
+        const w = document.createElement('span'); w.className = 'w';
+        const wi = document.createElement('span'); wi.className = 'wi';
+        wi.appendChild(n.cloneNode(true)); w.appendChild(wi); out.push(w);
+      }
+    });
+    el.textContent = '';
+    out.forEach((n) => el.appendChild(n));
+  }
+  $$('.l1, .h, .q, .qq, .l2, .e1, .e2, .tag, .gen, .gen2, .ans, .pfoot').forEach(split);
+
+  // ---------- Scenes & script ----------
+  const ACTS = ['Contexte', 'Problématique', 'Solution', 'Démo', 'Utilité', 'Conclusion'];
+  const SC = [
+    { id: 's1', act: 0, title: 'Le proverbe', time: '0:00 → 0:15', warp: .2,
+      say: "Laisser l'animation se poser. « Ici, on dit que les vieux ne sont pas morts : leur histoire continue de nous apprendre quelque chose. »" },
+    { id: 's2', act: 0, title: 'Les anciens de l\'espace', time: '0:15 → 0:35', warp: .8,
+      say: "« Là-haut aussi, nous avons des anciens. Depuis 1959, nous envoyons des machines explorer l'espace : la Lune, Vénus, Mars, Titan, une comète, et même au-delà du système solaire. »" },
+    { id: 's3', act: 0, title: 'Ce qu\'ils ont rapporté', time: '0:35 → 0:50', warp: .5,
+      say: "« Beaucoup se sont tus. Mais ce qu'ils ont rapporté nous apprend encore : des images, des échantillons, des mesures, des idées reprises par les missions suivantes. Une immense mémoire de l'exploration, écrite par des machines. »" },
+    { id: 's4', act: 1, title: 'La bibliothèque', time: '0:50 → 1:05', warp: .3,
+      say: "« Amadou Hampâté Bâ disait : en Afrique, quand un vieillard meurt, c'est une bibliothèque qui brûle. Les bibliothèques de ces machines, elles, existent. Mais elles sont fermées à double tour. »" },
+    { id: 's5', act: 1, title: 'Le catalogue', time: '1:05 → 1:20', warp: .3,
+      say: "« Voilà à quoi ressemble leur mémoire aujourd'hui : des catalogues exacts, mais illisibles pour un jeune, éparpillés sur des dizaines de pages, et sans aucun récit. »" },
+    { id: 's6', act: 1, title: 'La question', time: '1:20 → 1:30', warp: .2,
+      say: "« D'où notre question : comment permettre aux jeunes d'apprendre l'espace grâce à ce que ces machines nous ont transmis, sans rien inventer ? »" },
+    { id: 's7', act: 2, title: 'AeroReborn', time: '1:30 → 1:40', warp: 1,
+      say: "« Notre réponse : AeroReborn. On fait revivre ces machines pour apprendre l'espace grâce à leur mémoire. »" },
+    { id: 'sw', act: 2, title: 'Pourquoi AeroReborn ?', time: '1:40 → 2:05', warp: .4,
+      say: "« Des sites sur ces machines, il en existe : ceux de la NASA, les encyclopédies… Mais ils sont faits pour les spécialistes. AeroReborn reprend les mêmes données et les montre autrement : pour les jeunes, une machine à la fois, toute sa vie au même endroit, racontée et lue à voix haute, chaque fait sourcé, et une question pour réfléchir. »" },
+    { id: 'sy', act: 2, title: 'Notre apport', time: '2:05 → 2:35', warp: .5,
+      say: "« Voilà ce qu'on apporte : un regard. On n'a pas changé les données, on a changé la façon de les raconter. La machine est le héros. On commence par la fin : son dernier signal s'affiche, son nom se décode, et on remonte sa vie. Ses dates écrivent le scénario : chaque acte est calculé depuis ses vraies dates. Un chiffre par acte : Opportunity, prévue pour 90 jours martiens, a tenu 57 fois plus longtemps, puis 248 jours de silence. Et une voix qui lit, pendant que la page suit. »" },
+    { id: 's8', act: 2, title: 'Sa vie en actes', time: '2:35 → 2:55', warp: .4,
+      say: "« Donc pas de gabarit. Opportunity a cinq actes : le départ, la mission prévue, les prolongations, le silence, ce qui reste. Le réflecteur laser d'Apollo 11, lui, n'en a que deux : le départ… et « répond encore », parce que des observatoires l'utilisent toujours, depuis 1969. Chaque machine, son histoire. »" },
+    { id: 'sx', act: 2, title: "L'expérience", time: '2:55 → 3:20', warp: .4,
+      say: "« Et ça donne envie. Trois gestes : on choisit un monde, on réveille une machine dans le hangar, on suit sa vie. C'est ludique : des globes, des pièces à toucher sur la photo et sur le modèle 3D. C'est beau : grain de film, télémétrie, un nom qui se décode. Et c'est pour tous : téléphone, clavier, lecteur d'écran, trois langues. »" },
+    { id: 's9', act: 2, title: 'La pédagogie', time: '3:20 → 3:35', warp: .4,
+      say: "« On apprend aussi à vérifier : le fait, toujours sourcé ; ce qu'il veut dire ; et l'imagination, qui fait réfléchir sans se faire passer pour un fait. 348 sources, toutes sur la page À propos. Une vue d'artiste est toujours signalée. »" },
+    { id: 's10', act: 2, title: 'Le cadre du défi', time: '3:35 → 3:45', warp: .8,
+      say: "« Le défi nous a donné deux terrains : la Lune et Mars. On y a appliqué la méthode : 11 machines, 187 chapitres, 348 sources, trois langues. Mais la méthode, elle, marche pour n'importe quelle machine de l'exploration. »" },
+    { id: 's11', act: 3, title: 'Démo', time: '3:45 → 5:15', warp: 1,
+      say: "Ouvrir l'app (bouton ou touche D). Parcours : Mars → le hangar → réveiller Opportunity → ouverture « Dernier signal reçu le 10 juin 2018 » et télémétrie → acte III « Les prolongations ×57 » → « Écouter son histoire » : la page suit la voix → toucher une pièce sur la photo → À propos : les sources. Revenir ici (Alt+Tab) et avancer. Vidéo de secours prête." },
+    { id: 's12', act: 4, title: 'L\'utilité', time: '5:15 → 5:40', warp: .5,
+      say: "« À quoi ça sert ? À comprendre l'espace sans prérequis, à apprendre à vérifier une information, et à transmettre la mémoire de ces machines : comment on se pose sur un autre monde, pourquoi on envoie des robots, ce que nous apprennent les roches. Pour les élèves, les enseignants et les curieux, sur téléphone, au clavier, à l'écoute, et en wolof. »" },
+    { id: 'sz', act: 4, title: 'Perspectives', time: '5:40 → 6:10', warp: .5,
+      say: "« Et ensuite ? D'abord des voix plus vraies : aujourd'hui c'est la voix du navigateur, demain des voix enregistrées, et une lecture en wolof. Une accessibilité renforcée : description audio des images, sous-titres, lecture facile. Une version hors ligne pour les classes sans réseau. Des quiz et des scénarios « deviens l'ingénieur ». Un espace pour les enseignants. Et d'autres mondes, avec nos données ouvertes à d'autres projets. Toujours la même règle : rien d'inventé. »" },
+    { id: 's13', act: 5, title: 'Au-delà du défi', time: '6:10 → 6:30', warp: .8,
+      say: "« La Lune et Mars ne sont que nos deux exemples. La même méthode vaut pour toutes les machines de l'exploration : Venera sur Vénus, Voyager, Huygens sur Titan, Philae sur sa comète… avec la même rigueur. »" },
+    { id: 's14', act: 5, title: 'Fin', time: '6:30 → 7:00', warp: .3,
+      say: "Ralentir. « Ici, on dit que les vieux ne sont pas morts. Les machines non plus. AeroReborn. Merci. »" },
+  ];
+  SC.forEach((s) => { s.el = $('#' + s.id); });
+
+  // ---------- Helpers ----------
+  const fmt = (v, dec) => v.toLocaleString('fr-FR', { minimumFractionDigits: dec, maximumFractionDigits: dec });
+  function words(tl, els, at, stagger = .06) {
+    if (!els.length) return;
+    tl.from(els, { yPercent: 115, rotateX: -70, opacity: 0, duration: .9, ease: 'power3.out', stagger }, at);
+  }
+  function drawIn(tl, svg, at, dur) {
+    if (!svg) return;
+    const parts = svg.querySelectorAll('path,circle,ellipse,rect,line,polyline');
+    parts.forEach((p) => { let L = 300; try { L = p.getTotalLength() || 300; } catch (e) {} gsap.set(p, { strokeDasharray: L, strokeDashoffset: L }); });
+    tl.to(parts, { strokeDashoffset: 0, duration: dur, ease: 'power1.inOut', stagger: Math.min(.12, dur * .05) }, at);
+  }
+  // Text that resolves out of random glyphs, like the site's decoded titles.
+  const GLYPHS = 'ABCDEFGHKMNPRSTUVXYZ0123456789#%&<>/';
+  function decode(tl, el, at, dur) {
+    if (!el) return;
+    const text = el.dataset.text || el.textContent;
+    const chars = [...text];
+    const o = { p: 0 };
+    el.textContent = '';
+    tl.call(() => { el.textContent = ''; }, null, Math.max(0, at - .02));
+    tl.to(o, { p: 1, duration: dur, ease: 'none',
+      onUpdate: () => {
+        const res = Math.floor(o.p * chars.length), t = Math.floor(Date.now() / 45);
+        el.textContent = chars.map((c, i) => (i < res || /\s/.test(c)) ? c : GLYPHS[(i * 7 + t) % GLYPHS.length]).join('');
+      },
+      onComplete: () => { el.textContent = text; } }, at);
+  }
+  function count(tl, el, at, dur = 1.6) {
+    const to = parseFloat(el.dataset.to), dec = +(el.dataset.dec || 0), suf = el.dataset.suffix || '';
+    const small = el.querySelector('small');
+    const tail = small ? small.outerHTML : '';
+    const o = { v: 0 };
+    const paint = () => { el.innerHTML = fmt(o.v, dec) + suf + tail; };
+    paint();
+    tl.to(o, { v: to, duration: dur, ease: 'power2.out', onUpdate: paint }, at);
+  }
+  const call = (tl, fn, at) => tl.call(fn, null, at);
+
+  // ---------- Scene choreography ----------
+  const BUILD = {
+    s1(tl, q) {
+      tl.from(q('.dusk'), { opacity: 0, duration: 2.4, ease: 'power1.out' }, 0);
+      drawIn(tl, q('.baobab')[0], .2, 3);
+      tl.from(q('.fires'), { opacity: 0, duration: 2 }, 1);
+      tl.from(q('.l0'), { opacity: 0, x: -20, duration: .8 }, .6);
+      words(tl, q('.l1 .wi'), .9, .08);
+      words(tl, q('.l2 .wi'), 2.6, .04);
+      tl.to(q('.board'), { scale: 1.04, duration: 14, ease: 'none' }, 0);
+    },
+    s2(tl, q) {
+      words(tl, q('.h .wi'), .1, .05);
+      tl.from(q('.sub'), { opacity: 0, y: 16, duration: .8 }, .9);
+      tl.fromTo(q('.tline'), { scaleX: 0 }, { scaleX: 1, duration: 2.6, ease: 'power2.inOut' }, .8);
+      tl.from(q('.it'), { opacity: 0, scale: .4, y: 50, duration: .9, ease: 'back.out(1.5)', stagger: .26 }, 1);
+      q('.it .ico').forEach((s, i) => drawIn(tl, s, 1.15 + i * .26, 1));
+      tl.from(q('.it .node'), { scale: 0, duration: .4, stagger: .26, ease: 'back.out(3)' }, 1.1);
+      tl.fromTo(q('.row'), { x: '1.2%' }, { x: '-1.2%', duration: 16, ease: 'none' }, 0);
+      call(tl, () => sfx.blips(8, 1100, .26), 1);
+    },
+    s3(tl, q) {
+      tl.from(q('.earth'), { scale: .4, opacity: 0, duration: 1.6, ease: 'power3.out' }, 0);
+      tl.to(q('.earth'), { scale: 1.04, duration: 5, yoyo: true, repeat: -1, ease: 'sine.inOut' }, 1.6);
+      words(tl, q('.h .wi'), .3, .045);
+      q('.dcard').forEach((c, i) => {
+        tl.from(c, { opacity: 0, x: i < 2 ? -70 : 70, filter: 'blur(8px)', duration: .9, ease: 'power3.out' }, 1.3 + i * .4);
+        drawIn(tl, c.querySelector('.dic'), 1.4 + i * .4, .9);
+      });
+      q('.fpath').forEach((p, i) => drawIn(tl, { querySelectorAll: () => [p] }, 1.8 + i * .4, .9));
+      tl.to(q('.fdot'), { opacity: 1, duration: .5, stagger: .3 }, 2.8);
+      tl.from(q('.foot'), { opacity: 0, y: 20, duration: .8 }, 3.4);
+    },
+    s4(tl, q) {
+      drawIn(tl, q('.book')[0], .1, 1.6);
+      tl.from(q('.embers'), { opacity: 0, duration: 1.5 }, .6);
+      words(tl, q('.q .wi'), .5, .06);
+      tl.from(q('.at'), { opacity: 0, y: 10, duration: .7 }, 1.8);
+      words(tl, q('.l2 .wi'), 3.2, .05);
+      drawIn(tl, q('.lock')[0], 3.1, 1);
+      tl.fromTo(q('.shackle'), { y: -7 }, { y: 0, duration: .22, ease: 'power4.in' }, 4.6);
+      call(tl, () => sfx.thump(), 4.8);
+    },
+    s5(tl, q) {
+      tl.from(q('.wall'), { rotateY: 70, opacity: 0, x: -120, duration: 1.4, ease: 'power3.out' }, 0);
+      tl.from(q('.lbl'), { opacity: 0, duration: .6 }, .3);
+      words(tl, q('.h .wi'), .4, .05);
+      q('.stamp').forEach((s, i) => {
+        tl.fromTo(s, { scale: 2.8, opacity: 0 }, { scale: 1, opacity: 1, duration: .3, ease: 'power4.in' }, 1.8 + i * 1.1);
+        call(tl, () => sfx.thump(), 2.1 + i * 1.1);
+        tl.from(q('.pain')[i], { opacity: 0, x: 40, duration: .6, ease: 'power3.out' }, 1.9 + i * 1.1);
+      });
+      tl.from(q('.src'), { opacity: 0, duration: .6 }, 5);
+    },
+    s6(tl, q) {
+      tl.from(q('.lab'), { opacity: 0, y: 10, duration: .6 }, .1);
+      words(tl, q('.qq .wi'), .3, .055);
+      tl.from(q('.ul'), { scaleX: 0, duration: .6, stagger: .35, ease: 'power2.out' }, 2.6);
+    },
+    s7(tl, q, el) {
+      const bw = q('.board')[0].clientWidth;
+      const o = q('.orb');
+      o.forEach((s, i) => { const a = i / o.length * Math.PI * 2; gsap.set(s, { x: Math.cos(a) * bw * .34, y: Math.sin(a) * bw * .17 }); });
+      tl.from(o, { opacity: 0, scale: 0, duration: .6, stagger: .07, ease: 'back.out(2)' }, 0);
+      o.forEach((s, i) => drawIn(tl, s, .1 + i * .07, .8));
+      tl.to(o, { x: 0, y: 0, scale: .2, opacity: 0, duration: .9, ease: 'power3.in', stagger: .04 }, 1.5);
+      tl.fromTo(q('.ring'), { scale: 0, opacity: 1 }, { scale: 9, opacity: 0, duration: 1.2, ease: 'power2.out' }, 2.45);
+      call(tl, () => { sfx.reborn(); flash(); }, 2.4);
+      tl.from(q('.lab'), { opacity: 0, duration: .6 }, 2.5);
+      tl.from(q('.logo .ch'), { opacity: 0, yPercent: 60, filter: 'blur(12px)', duration: .8, stagger: .05, ease: 'power3.out' }, 2.55);
+      tl.fromTo(q('.sweep'), { xPercent: -120 }, { xPercent: 120, duration: 1.3, ease: 'power2.inOut' }, 3.3);
+      words(tl, q('.tag .wi'), 3.4, .05);
+      tl.fromTo('#beat', { opacity: 0 }, { opacity: 1, duration: 1 }, 3.6);
+      call(tl, () => { aliveT = 0; }, 3.6);
+    },
+    sw(tl, q) {
+      tl.from(q('.lbl.cy'), { opacity: 0, duration: .6 }, .1);
+      words(tl, q('.h .wi'), .2, .045);
+      tl.from(q('.cmp-head'), { opacity: 0, y: 10, duration: .5 }, 1);
+      q('.cr').forEach((r, i) => {
+        const t = 1.3 + i * .55;
+        tl.from(r.querySelector('.ck'), { opacity: 0, duration: .4 }, t);
+        tl.from(r.querySelector('.old'), { opacity: 0, x: -20, duration: .45 }, t);
+        tl.fromTo(r.querySelector('.strike'), { scaleX: 0 }, { scaleX: 1, duration: .35, ease: 'power2.out' }, t + .35);
+        tl.from(r.querySelector('.new'), { opacity: 0, x: 40, filter: 'blur(8px)', duration: .6, ease: 'power3.out' }, t + .45);
+        tl.from(r.querySelector('.chk'), { scale: 0, rotation: -90, duration: .45, ease: 'back.out(2.4)' }, t + .55);
+        call(tl, () => sfx.blips(1, 1250 + i * 90, 0), t + .5);
+      });
+      tl.fromTo(q('.scan'), { opacity: 0, yPercent: -100 }, { opacity: 1, yPercent: 0, duration: .01 }, 4.6);
+      tl.fromTo(q('.scan'), { scaleY: .1, transformOrigin: 'top' }, { scaleY: 1, duration: 1.2, ease: 'power2.inOut' }, 4.6);
+      tl.to(q('.scan'), { opacity: 0, duration: .8 }, 5.8);
+      words(tl, q('.ans .wi'), 5, .04);
+    },
+    sy(tl, q) {
+      tl.from(q('.lbl.cy'), { opacity: 0, duration: .6 }, .1);
+      words(tl, q('.h .wi'), .2, .04);
+      tl.from(q('.cold'), { opacity: 0, y: 30, duration: .8, ease: 'power3.out' }, .6);
+      tl.from(q('.hud-c'), { scale: 0, duration: .4, stagger: .05 }, .9);
+      decode(tl, q('.dec')[0], 1.1, 1.3);
+      decode(tl, q('.nm')[0], 2.3, .9);
+      call(tl, () => sfx.blips(3, 1400, .08), 1.1);
+      call(tl, () => sfx.blips(2, 900, .1), 2.3);
+      tl.from(q('.tele > span'), { opacity: 0, x: -10, duration: .4, stagger: .12 }, 3.1);
+      q('.pi').forEach((p, i) => tl.from(p, { opacity: 0, x: -30, duration: .6, ease: 'power3.out' }, 1.2 + i * .55));
+      tl.from(q('.fr'), { opacity: 0, y: 40, rotateX: -30, duration: .7, stagger: .18, ease: 'power3.out' }, 3.5);
+      q('.fr').forEach((f, i) => call(tl, () => sfx.blips(1, 1100 + i * 120, 0), 3.6 + i * .18));
+      tl.from(q('.scap'), { opacity: 0, duration: .6 }, 4.6);
+    },
+    sx(tl, q) {
+      tl.from(q('.lbl.cy'), { opacity: 0, duration: .6 }, .1);
+      words(tl, q('.h .wi'), .2, .05);
+      tl.from(q('.ft'), { opacity: 0, x: -30, duration: .6, stagger: .15 }, .9);
+      tl.from(q('.device'), { rotateY: -55, x: 140, opacity: 0, duration: 1.4, ease: 'power3.out' }, .3);
+      const scr = (n) => q('.s' + n)[0];
+      const ft = q('.ft');
+      const tap = q('.tap')[0];
+      const dev = q('.device')[0];
+      const at = (fx, fy) => ({ left: (fx * 100) + '%', top: (fy * 100) + '%' });
+      const focus = (i) => () => ft.forEach((f, k) => f.classList.toggle('on', k === i));
+      const press = (lp, t) => {
+        lp.set(tap, at(...t.from), t.at - .9);
+        lp.to(tap, { opacity: 1, duration: .3 }, t.at - .9);
+        lp.to(tap, { ...at(...t.to), duration: .7, ease: 'power2.inOut' }, t.at - .7);
+        lp.to(tap, { scale: .7, duration: .12, yoyo: true, repeat: 1 }, t.at);
+        lp.call(() => sfx.blips(1, 1700, 0), null, t.at);
+        lp.to(tap, { opacity: 0, duration: .3 }, t.at + .3);
+      };
+      const lp = gsap.timeline({ repeat: -1, repeatDelay: .3 });
+      // A · choose a world
+      lp.set([scr('A'), scr('B'), scr('C'), scr('D')], { opacity: 0, scale: 1 }, 0);
+      lp.call(focus(0), null, 0);
+      lp.fromTo(scr('A'), { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: .6 }, 0);
+      lp.from(scr('A').querySelectorAll('.pl'), { scale: .6, opacity: 0, duration: .8, stagger: .15, ease: 'back.out(1.6)' }, .2);
+      lp.to(scr('A').querySelector('.pm'), { rotation: 20, duration: 2.4, ease: 'none' }, .4);
+      press(lp, { from: [.5, .95], to: [.7, .52], at: 2.2 });
+      lp.to(scr('A'), { opacity: 0, scale: 1.6, transformOrigin: '70% 52%', duration: .6, ease: 'power2.in' }, 2.35);
+      // B · the hangar
+      lp.call(focus(1), null, 2.6);
+      lp.fromTo(scr('B'), { opacity: 0, scale: .9 }, { opacity: 1, scale: 1, duration: .6, ease: 'power2.out' }, 2.6);
+      lp.from(scr('B').querySelectorAll('.hc'), { y: 30, opacity: 0, rotateX: 20, duration: .5, stagger: .15 }, 3);
+      lp.from(scr('B').querySelectorAll('.hc .gd'), { rotation: -120, duration: 1.4, ease: 'power2.out', stagger: .15 }, 3);
+      press(lp, { from: [.6, .92], to: [.5, .63], at: 4.9 });
+      lp.to(scr('B'), { opacity: 0, scale: 1.3, transformOrigin: '50% 55%', duration: .5, ease: 'power2.in' }, 5.05);
+      // C · a machine's page opens on its last signal
+      lp.call(focus(2), null, 5.3);
+      lp.fromTo(scr('C'), { opacity: 0 }, { opacity: 1, duration: .4 }, 5.3);
+      decode(lp, scr('C').querySelector('.cdec'), 5.5, .9);
+      decode(lp, scr('C').querySelector('.cnm'), 6.3, .6);
+      lp.from(scr('C').querySelectorAll('.ctele span'), { opacity: 0, x: -8, duration: .3, stagger: .1 }, 6.9);
+      lp.fromTo(scr('C').querySelector('.lfill'), { scaleX: 0 }, { scaleX: 1, duration: 1.4, ease: 'power1.inOut' }, 7.1);
+      lp.from(scr('C').querySelectorAll('.ln5'), { opacity: 0, y: 8, duration: .3, stagger: .25 }, 7.1);
+      lp.from(scr('C').querySelector('.bigstat'), { opacity: 0, y: 12, duration: .5 }, 8.1);
+      lp.from(scr('C').querySelector('.cta'), { opacity: 0, scale: .8, duration: .4, ease: 'back.out(2)' }, 8.4);
+      press(lp, { from: [.5, .6], to: [.82, .9], at: 9.2 });
+      lp.to(scr('C'), { opacity: 0, x: '-8%', duration: .5 }, 9.35);
+      // D · the page follows the voice
+      lp.call(focus(3), null, 9.6);
+      lp.fromTo(scr('D'), { opacity: 0, x: '8%' }, { opacity: 1, x: '0%', duration: .5 }, 9.6);
+      lp.from(scr('D').querySelector('.act'), { opacity: 0, y: -10, duration: .5 }, 9.8);
+      lp.from(scr('D').querySelectorAll('.day, .rd, .pho, .rbar'), { opacity: 0, y: 12, duration: .5, stagger: .12 }, 10.1);
+      const ws = scr('D').querySelectorAll('.rd span');
+      ws.forEach((w, j) => lp.call(() => ws.forEach((x, k) => { x.classList.toggle('rdn', k <= j); x.classList.toggle('now', k === j); }), null, 10.7 + j * .22));
+      lp.call(() => ws.forEach((x) => x.classList.remove('now')), null, 10.7 + ws.length * .22);
+      lp.from(scr('D').querySelectorAll('.pho i'), { scale: 0, duration: .4, stagger: .2, ease: 'back.out(3)' }, 12.6);
+      lp.to(scr('D'), { opacity: 0, duration: .5 }, 14.6);
+      tl.add(lp, 1.4);
+      tl.to(dev, { rotateY: -8, duration: 10, ease: 'sine.inOut', yoyo: true, repeat: -1 }, 1.7);
+    },
+    s8(tl, q) {
+      tl.from(q('.lbl.cy'), { opacity: 0, duration: .6 }, .1);
+      words(tl, q('.h .wi'), .2, .05);
+      tl.from(q('.mcard'), { y: 60, opacity: 0, rotateX: 20, duration: 1, stagger: .25, ease: 'power3.out' }, .8);
+      tl.fromTo(q('.lifebar i'), { scaleX: 0 }, { scaleX: 1, duration: 2.4, ease: 'power2.inOut', stagger: .25 }, 1.4);
+      q('.mcard').forEach((c, k) => {
+        const pts = c.querySelectorAll('.lp');
+        pts.forEach((p, i) => {
+          const at = 1.5 + k * .25 + i * (2.2 / Math.max(1, pts.length - 1));
+          tl.from(p, { opacity: 0, y: 14, duration: .5 }, at);
+          call(tl, () => sfx.blips(1, 1200 + i * 110, 0), at);
+        });
+      });
+      words(tl, q('.gen2 .wi'), 4, .03);
+      tl.from(q('.chip'), { opacity: 0, scale: .6, duration: .4, stagger: .07 }, 4.4);
+    },
+    s9(tl, q) {
+      tl.from(q('.lbl.cy'), { opacity: 0, duration: .6 }, .1);
+      words(tl, q('.h .wi'), .2, .045);
+      tl.from(q('.ex'), { opacity: 0, duration: .6 }, 1);
+      q('.vc').forEach((c, i) => {
+        tl.from(c, { rotateY: -110, x: (1 - i) * 120, opacity: 0, duration: 1.1, ease: 'power3.out' }, 1.2 + i * .45);
+        call(tl, () => sfx.blips(1, 1500 + i * 200, 0), 1.3 + i * .45);
+      });
+      tl.from(q('.badge'), { opacity: 0, y: 20, duration: .6, stagger: .2 }, 2.9);
+    },
+    s10(tl, q) {
+      tl.from(q('.gm'), { x: -260, scale: .3, opacity: 0, duration: 1.5, ease: 'power3.out' }, 0);
+      tl.from(q('.gr'), { x: 260, scale: .3, opacity: 0, duration: 1.5, ease: 'power3.out' }, .15);
+      tl.from(q('.lbl.cy'), { opacity: 0, duration: .6 }, .3);
+      words(tl, q('.h .wi'), .4, .05);
+      tl.from(q('.stat'), { opacity: 0, y: 24, duration: .6, stagger: .2 }, 1.2);
+      q('.stat strong').forEach((s, i) => count(tl, s, 1.3 + i * .2, 1.2));
+      tl.from(q('.gl1, .gl2'), { opacity: 0, duration: .6 }, 1.6);
+      words(tl, q('.gen .wi'), 2.4, .04);
+    },
+    s11(tl, q) {
+      tl.from(q('.horizon'), { yPercent: 35, scale: .5, duration: 1.8, ease: 'power3.out' }, 0);
+      tl.from(q('.lbl'), { opacity: 0, duration: .6 }, .4);
+      words(tl, q('.h .wi'), .5, .06);
+      tl.from(q('.path li'), { opacity: 0, y: 20, scale: .9, duration: .5, stagger: .18 }, 1.4);
+      tl.from(q('.go-btn'), { opacity: 0, scale: .8, duration: .6, ease: 'back.out(2)' }, 2.2);
+    },
+    s12(tl, q) {
+      tl.from(q('.lbl.cy'), { opacity: 0, duration: .6 }, .1);
+      words(tl, q('.h .wi'), .2, .045);
+      tl.from(q('.uc'), { opacity: 0, y: 50, duration: .8, stagger: .3, ease: 'power3.out' }, 1);
+      q('.uc .ico').forEach((s, i) => drawIn(tl, s, 1.1 + i * .3, .9));
+      tl.from(q('.who span'), { opacity: 0, scale: .7, duration: .45, stagger: .12, ease: 'back.out(2)' }, 2.3);
+      tl.from(q('.acc span'), { opacity: 0, y: 14, duration: .5, stagger: .12 }, 2.8);
+      tl.from(q('.ticker'), { opacity: 0, duration: .8 }, 3.3);
+    },
+    sz(tl, q) {
+      tl.from(q('.lbl.go'), { opacity: 0, duration: .6 }, .1);
+      words(tl, q('.h .wi'), .2, .06);
+      tl.fromTo(q('.hzline'), { scaleX: 0 }, { scaleX: 1, duration: 1.2, ease: 'power2.inOut' }, .8);
+      q('.pc').forEach((c, i) => {
+        tl.from(c, { opacity: 0, y: 50, rotateX: -25, duration: .8, ease: 'power3.out' }, 1.2 + i * .28);
+        drawIn(tl, c.querySelector('svg'), 1.4 + i * .28, .8);
+        tl.from(c.querySelector('.hz'), { opacity: 0, scale: .6, duration: .4, ease: 'back.out(2)' }, 1.7 + i * .28);
+        call(tl, () => sfx.blips(1, 1000 + i * 120, 0), 1.3 + i * .28);
+      });
+      words(tl, q('.pfoot .wi'), 3.4, .04);
+    },
+    s13(tl, q) {
+      tl.from(q('.lbl.go'), { opacity: 0, duration: .6 }, .1);
+      words(tl, q('.h .wi'), .2, .06);
+      tl.from(q('.sub'), { opacity: 0, y: 14, duration: .8 }, 1);
+      tl.from(q('.vd'), { opacity: 0, scale: .3, y: 40, duration: .7, stagger: .1, ease: 'back.out(1.6)' }, 1.3);
+      tl.from(q('.vd .tag'), { opacity: 0, duration: .01 }, 0);
+      call(tl, () => q('.vd.proto').forEach((d) => d.classList.add('lit')), 2.4);
+      tl.fromTo(q('.vd.proto .tag'), { opacity: 0 }, { opacity: 1, duration: .5, stagger: .1 }, 2.4);
+      q('.vd.next').forEach((d, i) => {
+        call(tl, () => { d.classList.add('lit'); sfx.blips(1, 1300 + i * 150, 0); }, 3.2 + i * .45);
+        tl.fromTo(d.querySelector('.tag'), { opacity: 0 }, { opacity: 1, duration: .4 }, 3.2 + i * .45);
+      });
+    },
+    s14(tl, q) {
+      tl.from(q('.dusk'), { opacity: 0, duration: 2 }, 0);
+      drawIn(tl, q('.baobab')[0], .1, 2.4);
+      words(tl, q('.e1 .wi'), .5, .06);
+      tl.from(q('.e2 .wi'), { scale: 1.8, opacity: 0, filter: 'blur(14px)', duration: .9, stagger: .1, ease: 'power3.out' }, 2.2);
+      call(tl, () => sfx.thump(), 2.4);
+      tl.to(q('.endA'), { opacity: 0, y: -40, filter: 'blur(10px)', duration: .9, ease: 'power2.in' }, 5.2);
+      tl.fromTo(q('.endB'), { opacity: 0 }, { opacity: 1, duration: .01 }, 5.9);
+      tl.from(q('.endB .ch'), { opacity: 0, yPercent: 60, filter: 'blur(12px)', duration: .8, stagger: .05, ease: 'power3.out' }, 5.9);
+      tl.fromTo(q('.endB .sweep'), { xPercent: -120 }, { xPercent: 120, duration: 1.3, ease: 'power2.inOut' }, 6.6);
+      tl.from(q('.endB .k-m, .endB > div:last-child'), { opacity: 0, y: 20, duration: .8, stagger: .3 }, 6.6);
+      tl.from(q('.legal'), { opacity: 0, duration: .8 }, 7.2);
+    },
+  };
+  // initial hidden state for the end logo block (shown by the timeline)
+  gsap && gsap.set('#s14 .endB', { opacity: 0 });
+
+  // ---------- Starfield ----------
+  const cv = $('#stars'), cx = cv.getContext('2d');
+  let W = 0, H = 0, DPR = 1;
+  const stars = [];
+  for (let i = 0; i < 600; i++) stars.push({ x: Math.random() * 2 - 1, y: Math.random() * 2 - 1, z: Math.random() * .95 + .05 });
+  let warp = 0, warpTarget = 0, warpTimer = 0;
+  function pulseWarp(v) {
+    if (RM) return;
+    warpTarget = v; clearTimeout(warpTimer);
+    warpTimer = setTimeout(() => (warpTarget = 0), 700 + v * 700);
+  }
+  let mx = 0, my = 0, pmx = 0, pmy = 0;
+  function drawStars(dt) {
+    warp += (warpTarget - warp) * Math.min(1, dt * 2.4);
+    pmx += (mx - pmx) * Math.min(1, dt * 2); pmy += (my - pmy) * Math.min(1, dt * 2);
+    const v = .016 + warp * 1.3;
+    cx.clearRect(0, 0, W, H);
+    const fx = Math.max(W, H) * .55, ox = W / 2 - pmx * 30, oy = H / 2 - pmy * 20;
+    for (const s of stars) {
+      const z0 = s.z;
+      s.z -= v * dt;
+      if (s.z <= .04) { s.x = Math.random() * 2 - 1; s.y = Math.random() * 2 - 1; s.z = 1; continue; }
+      const px = ox + (s.x * fx) / s.z, py = oy + (s.y * fx) / s.z;
+      if (px < -40 || px > W + 40 || py < -40 || py > H + 40) { s.z = 1; s.x = Math.random() * 2 - 1; s.y = Math.random() * 2 - 1; continue; }
+      const a = Math.min(1, (1 - s.z) * 1.15), r = (1 - s.z) * 1.5 + .25;
+      if (warp > .08) {
+        const tz = Math.min(1, z0 + v * .06 * (1 + warp * 3));
+        cx.strokeStyle = 'rgba(214,232,255,' + (a * .85).toFixed(3) + ')';
+        cx.lineWidth = r;
+        cx.beginPath(); cx.moveTo(ox + (s.x * fx) / tz, oy + (s.y * fx) / tz); cx.lineTo(px, py); cx.stroke();
+      } else {
+        cx.fillStyle = 'rgba(232,240,255,' + a.toFixed(3) + ')';
+        cx.beginPath(); cx.arc(px, py, r, 0, 6.283); cx.fill();
+      }
+    }
+  }
+  // white flash on the logo reveal
+  const flashEl = document.createElement('div');
+  flashEl.style.cssText = 'position:absolute;inset:0;background:radial-gradient(circle at 50% 44%,rgba(97,214,232,.55),transparent 60%);opacity:0;pointer-events:none;z-index:4';
+  $('#stage').appendChild(flashEl);
+  function flash() { if (hasGsap && !RM) gsap.fromTo(flashEl, { opacity: 1 }, { opacity: 0, duration: 1.4, ease: 'power2.out' }); }
+
+  // ---------- Heartbeat line (logo scene) ----------
+  const bc = $('#beat'), bx = bc.getContext('2d');
+  let aliveT = 0;
+  function beat(p) {
+    if (p < .1) return Math.sin(p / .1 * Math.PI) * .12;
+    if (p < .16) return -((p - .1) / .06) * .25;
+    if (p < .22) return -.25 + ((p - .16) / .06) * 1.25;
+    if (p < .28) return 1 - ((p - .22) / .06) * 1.35;
+    if (p < .32) return -.35 + ((p - .28) / .04) * .35;
+    if (p > .45 && p < .62) return Math.sin((p - .45) / .17 * Math.PI) * .2;
+    return 0;
+  }
+  function drawBeat(dt) {
+    aliveT += dt;
+    const w = bc.clientWidth, h = bc.clientHeight;
+    if (bc.width !== Math.round(w * DPR)) { bc.width = Math.round(w * DPR); bc.height = Math.round(h * DPR); }
+    bx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    bx.clearRect(0, 0, w, h);
+    bx.strokeStyle = 'rgba(97,214,232,.95)'; bx.lineWidth = 1.8; bx.shadowColor = '#61D6E8'; bx.shadowBlur = 10;
+    bx.beginPath();
+    const grow = Math.min(1, aliveT / 4);
+    for (let x = 0; x <= w; x += 2) {
+      const k = x / w, env = Math.sin(k * Math.PI);
+      const ph = k * 2.2 - aliveT * .9;
+      const hb = beat(((ph % 1) + 1) % 1) * .85;
+      const sig = (Math.sin(k * 42 - aliveT * 8) * .45 + Math.sin(k * 97 + aliveT * 5) * .25) * .5;
+      const n = (hb * (1 - grow * .6) + sig * grow) * env;
+      const y = h / 2 - n * h * .45;
+      if (x) bx.lineTo(x, y); else bx.moveTo(x, y);
+    }
+    bx.stroke();
+  }
+
+  // ---------- Globes ----------
+  function renderGlobes(dt, el) {
+    el.querySelectorAll('.globe').forEach((g) => {
+      const lon = (parseFloat(g.dataset.l || g.dataset.lon) + dt * 2.2);
+      g.dataset.l = lon;
+      const d = g.clientHeight || 1, T = 2 * d;
+      g.style.backgroundPosition = (d / 2 - (((lon % 360) + 540) % 360) / 360 * T).toFixed(1) + 'px 0';
+    });
+  }
+
+  // ---------- Sound ----------
+  let actx = null, soundOn = true, pad = null;
+  function audio() {
+    if (!soundOn) return null;
+    try {
+      if (!actx) actx = new (window.AudioContext || window.webkitAudioContext)();
+      if (actx.state === 'suspended') actx.resume();
+    } catch (e) { return null; }
+    return actx;
+  }
+  function tone(freq, dur, vol, delay = 0, type = 'sine') {
+    const a = audio(); if (!a) return;
+    const o = a.createOscillator(), g = a.createGain(), t = a.currentTime + delay;
+    o.type = type; o.frequency.setValueAtTime(freq, t);
+    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol, t + .01); g.gain.exponentialRampToValueAtTime(.0001, t + dur);
+    o.connect(g).connect(a.destination); o.start(t); o.stop(t + dur + .05);
+  }
+  function noise(dur, vol, f0, f1) {
+    const a = audio(); if (!a) return;
+    const len = Math.floor(a.sampleRate * dur), buf = a.createBuffer(1, len, a.sampleRate), d = buf.getChannelData(0);
+    for (let i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
+    const src = a.createBufferSource(); src.buffer = buf;
+    const f = a.createBiquadFilter(); f.type = 'lowpass'; f.Q.value = .7;
+    const t = a.currentTime;
+    f.frequency.setValueAtTime(f0, t); f.frequency.exponentialRampToValueAtTime(f1, t + dur);
+    const g = a.createGain(); g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol, t + .1); g.gain.exponentialRampToValueAtTime(.0001, t + dur);
+    src.connect(f).connect(g).connect(a.destination); src.start(t); src.stop(t + dur);
+  }
+  function startPad() {
+    const a = audio(); if (!a || pad) return;
+    const g = a.createGain(); g.gain.value = 0; g.connect(a.destination);
+    const f = a.createBiquadFilter(); f.type = 'lowpass'; f.frequency.value = 420; f.connect(g);
+    const oscs = [55, 82.4, 110.2, 164.8].map((fr, i) => { const o = a.createOscillator(); o.type = i % 2 ? 'triangle' : 'sine'; o.frequency.value = fr; o.detune.value = (i - 1.5) * 6; o.connect(f); o.start(); return o; });
+    const lfo = a.createOscillator(), lg = a.createGain(); lfo.frequency.value = .07; lg.gain.value = 180; lfo.connect(lg).connect(f.frequency); lfo.start();
+    g.gain.linearRampToValueAtTime(.035, a.currentTime + 4);
+    pad = { g, oscs, lfo };
+  }
+  function stopPad() {
+    if (!pad || !actx) return;
+    const t = actx.currentTime; pad.g.gain.cancelScheduledValues(t); pad.g.gain.setTargetAtTime(0, t, .3);
+    const p = pad; setTimeout(() => { try { p.oscs.forEach((o) => o.stop()); p.lfo.stop(); } catch (e) {} }, 1500);
+    pad = null;
+  }
+  const sfx = {
+    whoosh: (v) => noise(1.6 + v, .12 + v * .12, 160, 1400),
+    blips: (n, base, gap) => { for (let i = 0; i < n; i++) tone(base + (i % 3) * 160, .06, .04, i * gap); },
+    thump: () => { tone(68, .45, .45); noise(.3, .18, 900, 200); },
+    reborn: () => { [0, .55].forEach((d) => { tone(62, .25, .5, d); tone(58, .3, .35, .2 + d); }); tone(660, 1.3, .07, .4); tone(990, 1.5, .05, .6); },
+  };
+
+  // ---------- Navigation ----------
+  const states = {};
+  let cur = -1;
+  const chapter = $('#chapter');
+  function setChapter(act, animate) {
+    const n = chapter.querySelector('.n'), t = chapter.querySelector('.t'), bar = chapter.querySelector('.bar');
+    const apply = () => { n.textContent = String(act + 1).padStart(2, '0'); t.textContent = ACTS[act]; };
+    if (!animate || !hasGsap || RM) { apply(); return; }
+    gsap.timeline()
+      .to([n, t], { opacity: 0, y: -8, duration: .25 })
+      .call(apply)
+      .fromTo(bar, { scaleX: 0 }, { scaleX: 1, duration: .6, ease: 'power2.out' })
+      .fromTo([n, t], { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: .4, stagger: .08 }, '<.1');
+  }
+  function buildScene(s, delay) {
+    const st = states[s.id] || (states[s.id] = {});
+    if (st.out) { st.out.kill(); st.out = null; }
+    if (st.ctx) st.ctx.revert();
+    s.el.classList.add('active');
+    st.ctx = gsap.context(() => {
+      const tl = gsap.timeline({ delay });
+      BUILD[s.id](tl, gsap.utils.selector(s.el), s.el);
+      if (RM) tl.progress(1);
+      st.tl = tl;
+    }, s.el);
+  }
+  function go(i, dir) {
+    i = Math.max(0, Math.min(SC.length - 1, i));
+    if (i === cur) return;
+    const prevS = SC[cur], s = SC[i];
+    const prevAct = prevS ? prevS.act : -1;
+    cur = i;
+    if (!hasGsap) { SC.forEach((x) => x.el.classList.toggle('active', x === s)); after(); return; }
+    const first = !prevS;
+    buildScene(s, first ? .2 : .55);
+    gsap.fromTo(s.el, { opacity: 0, scale: dir >= 0 ? .78 : 1.28, filter: 'blur(14px)' },
+      { opacity: 1, scale: 1, filter: 'blur(0px)', duration: RM ? 0 : 1.15, delay: first ? 0 : .3, ease: 'power3.out', clearProps: 'filter' });
+    if (prevS) {
+      const pst = states[prevS.id];
+      pst.out = gsap.to(prevS.el, { opacity: 0, scale: dir >= 0 ? 1.35 : .75, filter: 'blur(14px)', duration: RM ? 0 : .85, ease: 'power2.in',
+        onComplete: () => { prevS.el.classList.remove('active'); if (pst.ctx) pst.ctx.revert(); pst.ctx = null; pst.out = null; gsap.set(prevS.el, { clearProps: 'all' }); } });
+      pulseWarp(s.warp || .4);
+      sfx.whoosh(s.warp || .4);
+    }
+    if (s.act !== prevAct) setChapter(s.act, !first);
+    after();
+    function after() {
+      $('#progress i').style.width = ((i + 1) / SC.length * 100) + '%';
+      renderNotes();
+      try { history.replaceState(null, '', '#scene-' + (i + 1)); } catch (e) {}
+    }
+  }
+  function replay() { const s = SC[cur]; if (s && hasGsap) buildScene(s, 0); }
+
+  // ---------- Notes, timer, HUD ----------
+  const notes = $('#notes');
+  function renderNotes() {
+    const s = SC[cur], n = SC[cur + 1];
+    $('#n-title').textContent = (cur + 1) + '. ' + s.title + ' · ' + ACTS[s.act];
+    $('#n-time').textContent = 'Viser : ' + s.time;
+    $('#n-say').textContent = s.say;
+    $('#n-next').textContent = n ? 'Ensuite : ' + n.title : 'Dernière scène.';
+  }
+  let t0 = 0;
+  const timer = $('#timer');
+  setInterval(() => {
+    if (!t0) return;
+    const s = Math.floor((Date.now() - t0) / 1000);
+    timer.textContent = String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0');
+    timer.classList.toggle('warn', s >= 390 && s < 420);
+    timer.classList.toggle('over', s >= 420);
+  }, 250);
+  const hud = $('#hud');
+  let hudT = 0;
+  function pokeHud() { hud.classList.add('show'); clearTimeout(hudT); hudT = setTimeout(() => { if (notes.hidden) hud.classList.remove('show'); }, 2600); }
+
+  // ---------- Demo URL / QR ----------
+  const DEFAULT_URL = 'http://localhost:5173/';
+  let demoUrl = DEFAULT_URL;
+  try { demoUrl = localStorage.getItem('aeroreborn-pitch-url') || DEFAULT_URL; } catch (e) {}
+  const urlIn = $('#demo-url');
+  const isLocal = (u) => /^(https?:\/\/)?(localhost|127\.|\[::1\]|0\.0\.0\.0)/i.test(u);
+  function setUrl(u) {
+    demoUrl = (u || '').trim() || DEFAULT_URL;
+    $('#demo-link').href = demoUrl;
+    urlIn.value = demoUrl;
+    $('#end-url').textContent = isLocal(demoUrl) ? '' : demoUrl.replace(/^https?:\/\//, '').replace(/\/$/, '');
+    const q = $('#qr'); q.innerHTML = '';
+    if (!isLocal(demoUrl) && window.QRCode) {
+      try { new QRCode(q, { text: demoUrl, width: 240, height: 240, colorDark: '#080B12', colorLight: '#F1F5F9', correctLevel: QRCode.CorrectLevel.M }); } catch (e) { q.innerHTML = ''; }
+    }
+  }
+  urlIn.addEventListener('change', () => { setUrl(urlIn.value); try { localStorage.setItem('aeroreborn-pitch-url', demoUrl); } catch (e) {} });
+  setUrl(demoUrl);
+
+  // ---------- Input ----------
+  let wake = null;
+  function firstGesture() {
+    audio(); startPad();
+    if (!wake && navigator.wakeLock) navigator.wakeLock.request('screen').then((w) => (wake = w)).catch(() => {});
+  }
+  function next() { if (!t0) t0 = Date.now(); if (cur < SC.length - 1) go(cur + 1, 1); }
+  function prev() { if (cur > 0) go(cur - 1, -1); }
+  function toggleFull() { try { if (document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen().catch(() => {}); } catch (e) {} }
+  const toggleNotes = () => { notes.hidden = !notes.hidden; pokeHud(); };
+  const sbtn = $('#b-sound');
+  const toggleSound = () => { soundOn = !soundOn; sbtn.setAttribute('aria-pressed', String(soundOn)); if (soundOn) startPad(); else stopPad(); };
+
+  addEventListener('keydown', (e) => {
+    if (e.target.closest && e.target.closest('input')) { if (e.key === 'Escape') e.target.blur(); return; }
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    firstGesture();
+    const k = e.key;
+    if (k === 'ArrowRight' || k === ' ' || k === 'PageDown' || k === 'Enter' || k === 'ArrowDown') {
+      if (k === 'Enter' && e.target.closest && e.target.closest('a,button')) return;
+      e.preventDefault(); next();
+    } else if (k === 'ArrowLeft' || k === 'PageUp' || k === 'Backspace' || k === 'ArrowUp') { e.preventDefault(); prev(); }
+    else if (k === 'Home') { t0 = 0; timer.textContent = '00:00'; go(0, -1); }
+    else if (k === 'End') go(SC.length - 1, 1);
+    else if (k === 'n' || k === 'N') toggleNotes();
+    else if (k === 'f' || k === 'F') toggleFull();
+    else if (k === 's' || k === 'S') toggleSound();
+    else if (k === 'd' || k === 'D') $('#demo-link').click();
+    else if (k === 'r' || k === 'R') replay();
+    else if (k === 'Escape' && !notes.hidden) toggleNotes();
+  });
+  const stage = $('#stage');
+  stage.addEventListener('click', (e) => {
+    firstGesture();
+    if (e.target.closest('a,button,input,label,#hud')) return;
+    if (e.clientX < W * .28) prev(); else next();
+  });
+  stage.addEventListener('mousemove', (e) => { mx = e.clientX / W * 2 - 1; my = e.clientY / H * 2 - 1; pokeHud(); });
+  let tx0 = null;
+  stage.addEventListener('touchstart', (e) => { tx0 = e.touches[0].clientX; }, { passive: true });
+  stage.addEventListener('touchend', (e) => {
+    if (tx0 === null) return;
+    const dx = e.changedTouches[0].clientX - tx0; tx0 = null;
+    if (Math.abs(dx) > 50) { if (dx < 0) next(); else prev(); }
+  }, { passive: true });
+  $('#b-next').addEventListener('click', (e) => { e.stopPropagation(); firstGesture(); next(); });
+  $('#b-prev').addEventListener('click', (e) => { e.stopPropagation(); prev(); });
+  $('#b-sound').addEventListener('click', (e) => { e.stopPropagation(); toggleSound(); });
+  $('#b-notes').addEventListener('click', (e) => { e.stopPropagation(); toggleNotes(); });
+  $('#b-full').addEventListener('click', (e) => { e.stopPropagation(); toggleFull(); });
+
+  function resize() {
+    DPR = Math.min(2, devicePixelRatio || 1);
+    W = innerWidth; H = innerHeight;
+    cv.width = W * DPR; cv.height = H * DPR;
+    cx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  }
+  addEventListener('resize', resize);
+
+  // ---------- Main loop: stars, parallax depth, live canvases ----------
+  let last = performance.now();
+  function frame(now) {
+    const dt = Math.min(.05, (now - last) / 1000); last = now;
+    drawStars(dt);
+    const s = SC[cur];
+    if (s) {
+      const b = s.el.querySelector('.board');
+      if (b && !RM) b.style.translate = (-pmx * 14).toFixed(1) + 'px ' + (-pmy * 9).toFixed(1) + 'px';
+      if (s.id === 's7') drawBeat(dt);
+      if (s.id === 's10' || s.id === 's11') renderGlobes(dt, s.el);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  // ---------- Boot ----------
+  resize();
+  const m = /^#scene-(\d+)$/.exec(location.hash);
+  go(m ? Math.max(0, Math.min(SC.length - 1, +m[1] - 1)) : 0, 1);
+  requestAnimationFrame(frame);
+})();
+</script>
+
+</html>
