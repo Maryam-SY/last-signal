@@ -105,7 +105,7 @@ export function ModelViewer3D({ model, parts = [] }: { model: Media; parts?: rea
 
   return (
     <figure className="flex size-full flex-col">
-      <div className="relative min-h-72 flex-1 overflow-hidden rounded-2xl border border-stellar-border/70 bg-[radial-gradient(circle_at_50%_40%,rgba(97,214,232,0.12),transparent_65%)]">
+      <div className="relative min-h-72 flex-1 overflow-hidden rounded-2xl border border-stellar-border/70 bg-[radial-gradient(circle_at_50%_40%,rgba(54,214,231,0.12),transparent_65%)]">
         {status === 'ready' ? (
           <model-viewer
             ref={viewerRef}

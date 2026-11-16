@@ -144,7 +144,7 @@
 
 ## ADR-010 — Tailwind v4 + tokens COSMOS, primitives shadcn/base-ui conservées
 
-- **Statut** : Acceptée le 2026-11-14 (OPEN-13) — tokens dans `src/styles/tokens.css`, `<html class="dark">`, paquet `cn` retiré au profit de `@/lib/utils`
+- **Statut** : Acceptée le 2026-11-14 (OPEN-13), **amendée le 2026-11-16** : les tokens COSMOS sont remplacés par la palette ORBEMORIA « Cosmic Knowledge » (variables `--orbemoria-*`, DESIGN_SYSTEM v2.0) ; même mécanisme — tokens dans `src/styles/tokens.css`, `<html class="dark">`, paquet `cn` retiré au profit de `@/lib/utils`
 - **Problème** : le thème actuel (shadcn neutre, Geist) ne correspond pas à l'identité COSMOS.
 - **Options** : (a) remplacer les variables du thème shadcn par les tokens COSMOS et charger les 3 polices via `@fontsource` ; (b) retirer shadcn et tout écrire en CSS ; (c) garder le thème neutre.
 - **Analyse** :

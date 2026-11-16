@@ -63,7 +63,7 @@ export function LoadState({ status, onRetry, variant = 'text', className }: Load
         <button
           type="button"
           onClick={onRetry}
-          className="mt-4 inline-flex min-h-11 items-center rounded-full border border-moon-dust/50 px-5 text-sm font-medium transition-colors hover:border-stellar-cyan hover:text-stellar-cyan"
+          className="mt-4 inline-flex min-h-11 items-center rounded-full border border-moon-dust/50 px-5 text-sm font-medium transition-colors hover:border-cosmic-cyan hover:text-cosmic-cyan"
         >
           {t('loading.retry')}
         </button>

@@ -155,7 +155,7 @@ function Departure({ revealed }: { revealed: boolean }) {
         style={appear(1800).style}
       >
         <span className="font-heading text-base font-semibold tracking-wide text-starlight sm:text-lg">{t('explore.scrollHint')}</span>
-        <ChevronsDown aria-hidden="true" className="size-6 text-stellar-cyan motion-safe:animate-bounce" />
+        <ChevronsDown aria-hidden="true" className="size-6 text-cosmic-cyan motion-safe:animate-bounce" />
       </p>
     </div>
   )
@@ -202,7 +202,7 @@ function Expedition() {
   const { t } = useTranslation()
   return (
     <section aria-labelledby="expedition-title" className="mx-auto w-full max-w-5xl pr-12 pl-4 sm:px-16">
-      <p className={cn(eyebrow, 'text-center text-stellar-cyan')}>{t('explore.stepsEyebrow')}</p>
+      <p className={cn(eyebrow, 'text-center text-cosmic-cyan')}>{t('explore.stepsEyebrow')}</p>
       <h2 id="expedition-title" className="title-sheen mt-2 text-center font-heading text-[clamp(1.35rem,4.2vw,3.2rem)] leading-tight font-bold">
         {t('explore.stepsTitle')}
       </h2>
@@ -216,7 +216,7 @@ function Expedition() {
             <span aria-hidden="true" className="text-outline absolute -top-3 right-2 hidden font-heading text-8xl font-bold md:block">
               {n}
             </span>
-            <span aria-hidden="true" className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-stellar-cyan/10 text-stellar-cyan ring-1 ring-stellar-cyan/30 md:size-12">
+            <span aria-hidden="true" className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-cosmic-cyan/10 text-cosmic-cyan ring-1 ring-cosmic-cyan/30 md:size-12">
               <Icon className="size-5 md:size-6" />
             </span>
             <div>
@@ -243,7 +243,7 @@ function Motto() {
 
   return (
     <div className="mx-auto max-w-4xl px-12 text-center sm:px-16">
-      <p className="font-mono text-[0.72rem] tracking-[0.35em] text-stellar-cyan uppercase">
+      <p className="font-mono text-[0.72rem] tracking-[0.35em] text-cosmic-cyan uppercase">
         {t('explore.mottoEyebrow')}
       </p>
       <p className="velocity-skew mt-6 font-heading text-[clamp(1.9rem,5.5vw,4.5rem)] leading-tight font-bold">
@@ -262,7 +262,7 @@ function Motto() {
       <button
         type="button"
         onClick={() => window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' })}
-        className="mt-10 inline-flex min-h-11 items-center rounded-full border border-moon-dust/40 px-5 text-sm font-medium transition-colors hover:border-stellar-cyan hover:text-stellar-cyan"
+        className="mt-10 inline-flex min-h-11 items-center rounded-full border border-moon-dust/40 px-5 text-sm font-medium transition-colors hover:border-cosmic-cyan hover:text-cosmic-cyan"
       >
         {t('explore.backToStart')}
       </button>

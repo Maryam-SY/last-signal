@@ -4,7 +4,7 @@ Guide opérationnel permanent pour Claude Code et tout agent de développement. 
 
 ## 1. Identité du projet
 
-- **Nom** : OrbeMoria (anciennement « AeroReborn », renommé le 2026-11-16 ; le CDC s'intitule historiquement « Last Signal » ; « COSMOS » est le nom de la palette graphique — aucun de ces noms n'est le nom du produit).
+- **Nom** : OrbeMoria (anciennement « AeroReborn », renommé le 2026-11-16 ; le CDC s'intitule historiquement « Last Signal » ; « Cosmic Knowledge » est le nom de la palette graphique, qui remplace « COSMOS » depuis le 2026-11-16 — aucun de ces noms n'est le nom du produit).
 - **Description** : expérience web éducative et publique (frontend React + API Express), qui raconte les équipements laissés sur la **Lune** et sur **Mars**, leur mission, leurs découvertes et ce qu'ils ont transmis. Public principal : 10-15 ans.
 - **Devise** : « Chaque machine a laissé plus qu'une trace : elle a transmis quelque chose. »
 - **Parcours** : Choose your destination → Hangar (une carte par machine) → la page de la machine : sa vie en **actes calculés depuis ses dates** (Départ, Mission prévue, Prolongations, Silence, Après ; ADR-025). Le récit en 6 étapes (Signal, Why, How, Discovery, Relay, Your turn) n'est plus le parcours principal ; ses routes et contenus sont conservés en attente de décision.
@@ -17,7 +17,7 @@ Guide opérationnel permanent pour Claude Code et tout agent de développement. 
 | App | Vite + React 19, racine `frontend/` | ADR-001 |
 | Langage | TypeScript strict, frontend **et** backend | ADR-002 |
 | Routage | react-router (`src/app/routes.tsx`, URLs via `src/app/paths.ts`), état dans l'URL | ADR-006 |
-| Style | Tailwind v4 + tokens COSMOS, primitives shadcn/base-ui | ADR-010 |
+| Style | Tailwind v4 + tokens ORBEMORIA « Cosmic Knowledge » (`--orbemoria-*`), primitives shadcn/base-ui | ADR-010 |
 | Carte | SVG maison + marqueurs `<button>`, pas de lib cartographique | ADR-007 |
 | Données | JSON versionné dans `backend/content/`, validé au démarrage, servi par l'API `/api/*` (`?lang=en` ou `fr`) ; pas de base de données ; médias par référence | ADR-003, ADR-016, ADR-017 |
 | i18n | Dictionnaires typés `src/i18n/messages/{en,fr}.ts`, `useTranslation()` | ADR-015 |

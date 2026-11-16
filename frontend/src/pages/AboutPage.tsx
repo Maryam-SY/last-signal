@@ -26,7 +26,7 @@ export function AboutPage() {
     <div className="relative">
       <SpaceBackdrop />
       <div className="relative z-10 mx-auto max-w-4xl px-5 pt-16 pb-24 sm:pt-24">
-        <p className={cn(eyebrow, 'text-stellar-cyan')}>{t('about.eyebrow')}</p>
+        <p className={cn(eyebrow, 'text-cosmic-cyan')}>{t('about.eyebrow')}</p>
         <h1 className="text-glow mt-3 font-heading text-5xl font-bold sm:text-7xl">{t('about.title')}</h1>
         <p className="mt-6 max-w-2xl text-lg font-medium">{t('app.disclaimer')}</p>
 
@@ -47,7 +47,7 @@ export function AboutPage() {
             <Reveal key={id} delay={index * 80}>
               <section id={`about-${id}`} aria-labelledby={`about-${id}-title`} className="scene-blend reading-panel min-w-0 scroll-mt-24 rounded-2xl p-6 [overflow-wrap:anywhere] sm:p-8">
                 <h2 id={`about-${id}-title`} className="flex items-center gap-3 font-heading text-2xl font-bold">
-                  <span aria-hidden="true" className="flex size-10 items-center justify-center rounded-full border border-stellar-cyan/40 text-stellar-cyan">
+                  <span aria-hidden="true" className="flex size-10 items-center justify-center rounded-full border border-cosmic-cyan/40 text-cosmic-cyan">
                     <Icon className="size-5" />
                   </span>
                   {t(titleKey)}

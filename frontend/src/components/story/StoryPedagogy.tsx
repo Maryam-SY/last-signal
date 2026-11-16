@@ -106,7 +106,7 @@ export function Logbook({ storyId }: { storyId: string }) {
   return (
     <section aria-labelledby={`${fieldId}-title`} className="glass mt-8 rounded-2xl p-5 sm:p-7">
       <h3 id={`${fieldId}-title`} className="flex items-center gap-2 font-heading text-xl font-bold">
-        <NotebookPen aria-hidden="true" className="size-5 text-nebula-purple" />
+        <NotebookPen aria-hidden="true" className="size-5 text-archive-lavender" />
         {t('pedagogy.notebookTitle')}
       </h3>
       <p id={`${fieldId}-hint`} className="mt-1 text-sm text-moon-dust">
@@ -122,7 +122,7 @@ export function Logbook({ storyId }: { storyId: string }) {
         onChange={(event) => setNote(event.target.value)}
         rows={4}
         maxLength={2000}
-        className="mt-4 w-full resize-y rounded-xl border border-moon-dust/40 bg-void/60 p-4 text-base leading-relaxed placeholder:text-moon-dust/60 focus:border-nebula-purple"
+        className="mt-4 w-full resize-y rounded-xl border border-moon-dust/40 bg-void/60 p-4 text-base leading-relaxed placeholder:text-moon-dust/60 focus:border-archive-lavender"
         placeholder={t('pedagogy.notebookLabel')}
       />
       <div className="mt-3 flex flex-wrap items-center gap-2">
@@ -130,7 +130,7 @@ export function Logbook({ storyId }: { storyId: string }) {
           type="button"
           onClick={copy}
           disabled={!note}
-          className="inline-flex min-h-11 items-center gap-2 rounded-full border border-moon-dust/40 px-4 text-sm font-medium transition-colors hover:border-nebula-purple disabled:opacity-40"
+          className="inline-flex min-h-11 items-center gap-2 rounded-full border border-moon-dust/40 px-4 text-sm font-medium transition-colors hover:border-archive-lavender disabled:opacity-40"
         >
           {copied ? <Check aria-hidden="true" className="size-4" /> : <Copy aria-hidden="true" className="size-4" />}
           {copied ? t('pedagogy.notebookCopied') : t('pedagogy.notebookCopy')}

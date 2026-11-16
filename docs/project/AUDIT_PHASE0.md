@@ -166,6 +166,7 @@ Chaque décision a une **recommandation** ; tant qu'elle n'est pas validée, les
 | 2026-11-14 | OPEN-18 | **Le backend sert le contenu** : JSON versionnés dans `backend/content/`, lus au démarrage, validés (le serveur refuse de démarrer en cas d'erreur), exposés en lecture seule par `/api/*` avec `?lang=en` ou `?lang=fr`. Pas de base de données. | ADR-016, ARCHITECTURE §16 |
 | 2026-11-14 | — | Médias stockés **par référence** (URL + crédit + page source), pas de fichiers dans le dépôt (proposé). | ADR-017 |
 | 2026-11-16 | OPEN-01 | **Renommage : AeroReborn devient OrbeMoria** (titre, README, interface, noms des paquets, clés de stockage local). Les entrées ci-dessus gardent l'ancien nom (historique). Reste à décider : le logo en forme de « A », l'image de partage `og-image.jpg` et le domaine de déploiement. | Commit de renommage |
+| 2026-11-16 | OPEN-13 | **Palette ORBEMORIA « Cosmic Knowledge »** (Midnight Universe, Deep Space, Cosmic Cyan, Ice Cyan, Pale Gold, Archive Lavender) remplace COSMOS pour le site, le logo et les icônes. Logo complet v2 à harmoniser. | DESIGN_SYSTEM v2.0, ADR-010 |
 
 ### 7.2 Liste des décisions
 

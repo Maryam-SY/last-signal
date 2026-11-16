@@ -176,7 +176,7 @@ export function IntroVideo({ onReveal, onDone }: IntroVideoProps) {
       {finale && (
         <div aria-hidden="true" className="intro-finale pointer-events-none absolute inset-0 flex items-center justify-center px-4 text-center">
           <div className="intro-finale-card" style={{ perspective: '800px' }}>
-            <p className="intro-finale-eyebrow font-mono text-[0.72rem] tracking-[0.45em] text-stellar-cyan uppercase sm:text-sm">{t('intro.presents')}</p>
+            <p className="intro-finale-eyebrow font-mono text-[0.72rem] tracking-[0.45em] text-cosmic-cyan uppercase sm:text-sm">{t('intro.presents')}</p>
             <p className="mt-4 font-heading text-[clamp(2rem,7vw,6rem)] leading-none font-medium tracking-[0.12em] text-white">
               {Array.from(t('intro.finale')).map((letter, index) => (
                 <span key={index} className={`intro-finale-letter${letter === ' ' ? ' is-space' : ''}`} style={{ '--i': index } as CSSProperties}>
@@ -192,7 +192,7 @@ export function IntroVideo({ onReveal, onDone }: IntroVideoProps) {
         <button
           type="button"
           onClick={enableSound}
-          className="glass-blur absolute bottom-[max(1.25rem,env(safe-area-inset-bottom))] left-4 inline-flex min-h-11 items-center gap-2 rounded-full px-5 text-sm font-medium text-starlight transition-colors hover:border-stellar-cyan hover:text-stellar-cyan sm:left-6"
+          className="glass-blur absolute bottom-[max(1.25rem,env(safe-area-inset-bottom))] left-4 inline-flex min-h-11 items-center gap-2 rounded-full px-5 text-sm font-medium text-starlight transition-colors hover:border-cosmic-cyan hover:text-cosmic-cyan sm:left-6"
         >
           <Volume2 aria-hidden="true" className="size-4" />
           {t('intro.soundOn')}
@@ -202,7 +202,7 @@ export function IntroVideo({ onReveal, onDone }: IntroVideoProps) {
         ref={skipRef}
         type="button"
         onClick={() => finish(true)}
-        className="glass-blur absolute right-4 bottom-[max(1.25rem,env(safe-area-inset-bottom))] inline-flex min-h-11 items-center gap-2 rounded-full px-5 text-sm font-medium text-starlight transition-colors hover:border-stellar-cyan hover:text-stellar-cyan sm:right-6"
+        className="glass-blur absolute right-4 bottom-[max(1.25rem,env(safe-area-inset-bottom))] inline-flex min-h-11 items-center gap-2 rounded-full px-5 text-sm font-medium text-starlight transition-colors hover:border-cosmic-cyan hover:text-cosmic-cyan sm:right-6"
       >
         {t('intro.skip')}
         <SkipForward aria-hidden="true" className="size-4" />

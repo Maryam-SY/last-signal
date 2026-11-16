@@ -1,60 +1,77 @@
-# Design system — OrbeMoria (palette « COSMOS »)
+# Design system — OrbeMoria (palette « Cosmic Knowledge »)
 
-> Rôle BMAD : UX Designer · Version 1.0 (Phase 0) · Statut : **en attente de validation** (OPEN-01, OPEN-13)
-> Source : `identite_visuelle_cosmos_couleurs_typographies.pdf` (« COSMOS · Explore Beyond »). « COSMOS » est le nom de la palette, **pas** le nom du produit (OPEN-01).
-> Implémentation : `frontend/src/styles/tokens.css` (US-1.4), ADR-010.
+> Rôle BMAD : UX Designer · Version 2.0 (2026-11-16) · Palette **ORBEMORIA « Cosmic Knowledge »**, décidée par l'équipe : elle remplace la palette COSMOS (v1.0, 2026-11-14, source `identite_visuelle_cosmos_couleurs_typographies.pdf`).
+> Principe : une seule identité pour le site, le logo, les icônes et les futures applications. Bleu nuit et cyan dominants, or pâle en accent précieux, lavande secondaire réservée à la mémoire et aux archives.
+> Implémentation : `frontend/src/styles/tokens.css` (variables `--orbemoria-*`, utilitaires Tailwind ci-dessous), ADR-010.
 
 ## 1. Couleurs
 
 ### 1.1 Structure (fonds)
 
-| Token | Nom | Hex | Usage |
-|---|---|---|---|
-| `--color-bg` | Void Black | `#080B12` | Fond principal |
-| `--color-bg-elevated` | Deep Space | `#111827` | Sections, navigation, en-tête |
-| `--color-surface` | Nebula Surface | `#1C2638` | Cartes, panneaux, fiches |
-| `--color-border-subtle` | Stellar Border | `#334155` | Séparateurs **décoratifs uniquement** |
+| Variable | Utilitaire | Nom | Hex | Usage |
+|---|---|---|---|---|
+| `--orbemoria-midnight` | `void` | Midnight Universe | `#071426` | Fond principal : profondeur, bleu nuit sans être noir |
+| `--orbemoria-deep-space` | `deep-space` | Deep Space | `#0B1F35` | Navigation, cartes, menus, panneaux, sections |
+| `--orbemoria-surface` | `nebula-surface` | Surface (dérivée) | `#102A44` | Surface surélevée sur Deep Space |
+| `--orbemoria-border` | `stellar-border` | Bordure (dérivée) | `#1F4A5E` | Cyan très atténué : séparateurs **décoratifs uniquement** |
 
-### 1.2 Identité (accents — avec parcimonie)
+### 1.2 Identité
 
-| Token | Nom | Hex | Usage proposé |
-|---|---|---|---|
-| `--color-accent` | Cosmic Indigo | `#8B9DFF` | Actions principales, liens, **anneau de focus** |
-| `--color-accent-2` | Stellar Cyan | `#61D6E8` | Sélection (marqueur, carte sélectionnée), progression |
-| `--color-accent-3` | Nebula Purple | `#B58AFF` | Voix « Imagine » |
-| `--color-highlight` | Stellar Gold | `#E5C58D` | Découvertes (étape Discovery), voix « Fact » |
+| Variable | Utilitaire | Nom | Hex | Usage |
+|---|---|---|---|---|
+| `--orbemoria-cosmic-cyan` | `cosmic-cyan` | Cosmic Cyan | `#36D6E7` | Couleur d'interaction : boutons principaux, liens, éléments actifs, **anneau de focus**, sélection |
+| `--orbemoria-ice-cyan` | `ice-cyan` | Ice Cyan | `#A8F0F2` | Effets lumineux, illustrations, éléments de soutien |
+| `--orbemoria-pale-gold` | `pale-gold` | Pale Gold | `#E8D6A5` | Identité du logo, détails précieux, badges, éléments éducatifs, boutons secondaires (transparent + bordure or) |
+| `--orbemoria-archive-lavender` | `archive-lavender` | Archive Lavender | `#9B8CE8` | Accent secondaire : archives, mémoire, histoire, découverte. Avec parcimonie |
 
 ### 1.3 Contenu (texte)
 
-| Token | Nom | Hex | Usage |
-|---|---|---|---|
-| `--color-text` | Starlight | `#F1F5F9` | Texte principal |
-| `--color-text-muted` | Moon Dust | `#94A3B8` | Texte secondaire, légendes, crédits |
+| Variable | Utilitaire | Nom | Hex | Usage |
+|---|---|---|---|---|
+| `--orbemoria-starlight` | `starlight` | Blanc cassé | `#F1F5F9` | Titres et texte principal |
+| `--orbemoria-moon-dust` | `moon-dust` | Moon Dust | `#A3B8CC` | Texte secondaire, légendes, crédits |
 
 ### 1.4 Repères d'objets célestes
 
-Le guide fournit des couleurs par **famille d'objets** (étoiles, planètes rocheuses `#D97757`, nébuleuses…). OrbeMoria n'affiche que deux destinations : seule **Planètes rocheuses `#D97757`** est pertinente (accent de la carte Mars). Aucune teinte dédiée n'existe pour un satellite naturel : la Lune utilise `--color-text-muted`/`--color-text` (à valider). Ces couleurs sont des repères d'interface, **jamais** une représentation des couleurs réelles.
+Seule **Planètes rocheuses `#D97757`** est utilisée (accent de Mars). Ces couleurs sont des repères d'interface, **jamais** une représentation des couleurs réelles. Les couleurs réelles des astres (textures, `content/celestialBodies.ts`) ne font pas partie de la palette.
 
-**Accent de monde (US-5.6)** : `--world-accent` (utilitaire Tailwind `world`) vaut Stellar Cyan sur la Lune et Rocky `#D97757` sur Mars (`[data-world]`). Couleur d'ambiance par étape de récit : Signal/Relay = Cyan, Why = Indigo, How/Your turn = Purple, Discovery = Gold (`components/story/storySteps.ts`).
+**Accent de monde (US-5.6)** : `--world-accent` (utilitaire `world`) vaut Cosmic Cyan sur la Lune et Rocky `#D97757` sur Mars (`[data-world]`). Couleur d'ambiance par étape de récit : Signal/Relay = Cosmic Cyan, Why = Ice Cyan, How/Your turn = Archive Lavender, Discovery = Pale Gold (`components/story/storySteps.ts`).
 
-## 2. Contrastes vérifiés (WCAG 2.2, calculés le 2026-11-14)
+### 1.5 Répartition
 
-| Premier plan | sur Void `#080B12` | sur Deep Space `#111827` | sur Surface `#1C2638` | Verdict |
+| Élément | Couleur |
+|---|---|
+| Fond général | Midnight Universe |
+| Navigation, cartes | Deep Space |
+| Titres | Blanc cassé |
+| Boutons principaux | Cosmic Cyan, texte Midnight |
+| Boutons secondaires | Transparent + Pale Gold |
+| Liens actifs | Cosmic Cyan |
+| Archives, mémoire | Archive Lavender |
+| Bordures | Cyan très atténué (décoratif) |
+| Logo | Blanc + Cyan + Pale Gold |
+
+Correspondance avec COSMOS (v1.0) : Void Black → Midnight Universe, Nebula Surface → Surface, Stellar Border → Bordure, Cosmic Indigo **et** Stellar Cyan → Cosmic Cyan, Nebula Purple → Archive Lavender, Stellar Gold → Pale Gold.
+
+## 2. Contrastes vérifiés (WCAG 2.2, calculés le 2026-11-16)
+
+| Premier plan | sur Midnight `#071426` | sur Deep Space `#0B1F35` | sur Surface `#102A44` | Verdict |
 |---|---|---|---|---|
-| Starlight `#F1F5F9` | 17,97 | 16,19 | 13,85 | ✅ tout usage |
-| Moon Dust `#94A3B8` | 7,68 | 6,92 | 5,92 | ✅ texte courant |
-| Cosmic Indigo `#8B9DFF` | 7,84 | 7,07 | 6,04 | ✅ texte et focus |
-| Stellar Cyan `#61D6E8` | 11,52 | 10,38 | 8,88 | ✅ |
-| Nebula Purple `#B58AFF` | 7,54 | 6,80 | 5,81 | ✅ |
-| Stellar Gold `#E5C58D` | 11,91 | 10,73 | 9,18 | ✅ |
-| Rocheuses `#D97757` | 6,30 | 5,68 | 4,86 | ✅ texte courant (limite sur Surface) |
-| **Stellar Border `#334155`** | **1,90** | **1,71** | **1,47** | ❌ < 3:1 → **décoratif uniquement** |
-| Void sur bouton Indigo | 7,84 | — | — | ✅ texte de bouton plein |
+| Blanc cassé `#F1F5F9` | 16,86 | 15,19 | 13,34 | ✅ tout usage |
+| Moon Dust `#A3B8CC` | 9,05 | 8,15 | 7,16 | ✅ texte courant |
+| Cosmic Cyan `#36D6E7` | 10,49 | 9,46 | 8,30 | ✅ texte et focus |
+| Ice Cyan `#A8F0F2` | 14,43 | 13,01 | 11,42 | ✅ |
+| Pale Gold `#E8D6A5` | 12,83 | 11,57 | 10,16 | ✅ |
+| Archive Lavender `#9B8CE8` | 6,43 | 5,79 | 5,09 | ✅ texte courant |
+| Rocheuses `#D97757` | 5,92 | 5,33 | 4,68 | ✅ texte courant (limite sur Surface) |
+| **Bordure `#1F4A5E`** | **1,93** | **1,74** | **1,53** | ❌ < 3:1 → **décoratif uniquement** |
+| Midnight sur bouton Cosmic Cyan | 10,49 | — | — | ✅ texte de bouton plein |
 
 **Conséquences** :
-- Les composants interactifs (cartes cliquables, champs, marqueurs) ne sont **pas** délimités par la seule bordure `#334155` : utiliser une différence de surface + un indicateur conforme (bordure ≥ 3:1 comme Moon Dust, ou icône/texte).
-- Focus : anneau 2 px `--color-accent` + décalage 2 px (≥ 3:1 sur tous les fonds).
-- Sélection : `--color-accent-2` **et** changement de forme/contour/épaisseur (NFR-A11Y-004).
+- Les composants interactifs (cartes cliquables, champs, marqueurs) ne sont **pas** délimités par la seule bordure `#1F4A5E` : différence de surface + un indicateur conforme (bordure ≥ 3:1 comme Moon Dust ou Pale Gold, ou icône/texte).
+- Focus : anneau 2 px Cosmic Cyan + décalage 2 px (≥ 8:1 sur tous les fonds).
+- Sélection : Cosmic Cyan **et** changement de forme/contour/épaisseur (NFR-A11Y-004).
+- Ne jamais utiliser un surface `#12304D` ou plus clair sous un texte Rocheuses : il tombe sous 4,5:1.
 
 ## 3. Typographie
 
@@ -91,8 +108,8 @@ Le guide fournit des couleurs par **famille d'objets** (étoiles, planètes roch
 
 ## 6. Logo (2026-11-16, remplace le « A » du 2026-11-15)
 
-- **Logo de référence** : `docs/design/brand/orbemoria-logo.webp` (1536 × 1024), fourni par l'équipe : un petit rover à antenne parabolique sur une lune qui sort d'un livre ouvert, une orbite, le mot-symbole « ORBEMORIA », la phrase « Every object has a story. » et « Explore · Discover · Learn ». Illustration de marque, pas une image de mission : elle n'apparaît pas comme média dans l'interface. Pas de logo ni d'élément graphique de la NASA.
-- **Marque réduite** (en-tête, pied de page, icônes) : le « O » du logo, un anneau blanc (`#f8f5f2`) traversé par une orbite dorée (`#f5b860`, qui passe derrière puis devant l'anneau), une étoile au centre (`#fff4dc`, halo doré). Le logo complet est illisible en dessous d'environ 200 px de large ; la marque réduite reste reconnaissable à 16 px (vérifié sur fond sombre et clair).
-- **Couleurs** : l'or `#f5b860` et les violets du logo complet ne font pas partie des tokens COSMOS (`stellar-gold` vaut `#e5c58d`). Ils restent réservés au logo tant que l'équipe n'a pas décidé d'aligner la palette.
-- **Fichiers** (`frontend/public/`) : `favicon.svg` (tuile arrondie, source des icônes), `favicon.ico` (16, 32, 48), `apple-touch-icon.png` (180, plein cadre), `icon-192.png`, `icon-512.png` (tuile arrondie, coins transparents), `icon-maskable-512.png` (dessin réduit à 80 % dans la zone sûre), `og-image.jpg` (1200 × 630 : le logo complet et la mention « Independent project · not affiliated with NASA »). Dans l'interface : `LogoMark` (`components/brand/LogoMark.tsx`), version sans tuile ; l'étoile scintille (coupé sous `prefers-reduced-motion`).
+- **Logo de référence (v2, 2026-11-16)** : `docs/design/brand/orbemoria-logo.webp` (1774 × 887), fourni par l'équipe et harmonisé avec la palette « Cosmic Knowledge » : une lune bleu glacé qui sort d'un livre ouvert cyan et or, une orbite or et cyan, le mot-symbole ORBEMORIA en blanc, « Every object has a story. » en cyan, « Explore · Discover · Learn ». La v1 (violet, or saturé) est gardée pour l'historique : `orbemoria-logo-v1.webp`. Illustration de marque, pas une image de mission : elle n'apparaît pas comme média dans l'interface. Pas de logo ni d'élément graphique de la NASA.
+- **Marque réduite** (en-tête, pied de page, icônes) : le « O » du logo, un anneau blanc cassé (`#F1F5F9`) traversé par une orbite Pale Gold (`#E8D6A5`, qui passe derrière puis devant l'anneau), une étoile au centre (`#FFF6E0`, halo doré, comme le « O » du logo v2), sur une tuile Midnight → `#0B2A4A` pour les icônes. Le logo complet est illisible en dessous d'environ 200 px de large ; la marque réduite reste reconnaissable à 16 px (vérifié sur fond sombre et clair).
+- **Couleurs** : logo v2, marque réduite et icônes suivent la palette « Cosmic Knowledge » (blanc + cyan + or pâle). `og-image.jpg` est générée depuis le logo v2.
+- **Fichiers** (`frontend/public/`) : `favicon.svg` (tuile arrondie, source des icônes), `favicon.ico` (16, 32, 48), `apple-touch-icon.png` (180, plein cadre), `icon-192.png`, `icon-512.png` (tuile arrondie, coins transparents), `icon-maskable-512.png` (dessin réduit à 80 % dans la zone sûre), `og-image.jpg` (1200 × 630 : le logo v2 complet et la mention « Independent project · not affiliated with NASA »). Dans l'interface : `LogoMark` (`components/brand/LogoMark.tsx`), version sans tuile ; l'étoile scintille (coupé sous `prefers-reduced-motion`).
 

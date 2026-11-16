@@ -35,7 +35,7 @@ export function RelationEnds({ relation }: { relation: Relation }) {
   const { t } = useTranslation()
   if (!relation.fromEntity || !relation.toEntity) return null
   return (
-    <p className="flex flex-wrap items-center gap-x-2 font-heading text-base font-semibold text-stellar-cyan">
+    <p className="flex flex-wrap items-center gap-x-2 font-heading text-base font-semibold text-cosmic-cyan">
       <End entity={relation.fromEntity} lead={t('relations.from')} />
       <ArrowRight aria-hidden="true" className="size-4" />
       <End entity={relation.toEntity} lead={t('relations.to')} />

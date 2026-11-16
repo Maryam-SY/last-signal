@@ -6,7 +6,7 @@
 @import "@fontsource/ibm-plex-mono/400.css";
 @import "./styles/tokens.css";
 
-/* OrbeMoria ships a single dark theme (COSMOS palette). <html> carries class="dark"
+/* OrbeMoria ships a single dark theme (ORBEMORIA « Cosmic Knowledge » palette). <html> carries class="dark"
    so shadcn/base-ui "dark:" variants apply. */
 @custom-variant dark (&:is(.dark *));
 
@@ -15,22 +15,22 @@
     --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
     --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 
-    /* COSMOS named colors, usable as Tailwind utilities (bg-void, text-stellar-cyan…) */
-    --color-void: var(--cosmos-void-black);
-    --color-deep-space: var(--cosmos-deep-space);
-    --color-nebula-surface: var(--cosmos-nebula-surface);
-    --color-stellar-border: var(--cosmos-stellar-border);
-    --color-cosmic-indigo: var(--cosmos-cosmic-indigo);
-    --color-stellar-cyan: var(--cosmos-stellar-cyan);
-    --color-nebula-purple: var(--cosmos-nebula-purple);
-    --color-stellar-gold: var(--cosmos-stellar-gold);
-    --color-starlight: var(--cosmos-starlight);
-    --color-moon-dust: var(--cosmos-moon-dust);
-    --color-rocky: var(--cosmos-rocky-planet);
-    /* Accent of the world being visited (Moon = Stellar Cyan, Mars = Rocky), see [data-world]. */
+    /* ORBEMORIA named colors, usable as Tailwind utilities (bg-void, text-cosmic-cyan…) */
+    --color-void: var(--orbemoria-midnight);
+    --color-deep-space: var(--orbemoria-deep-space);
+    --color-nebula-surface: var(--orbemoria-surface);
+    --color-stellar-border: var(--orbemoria-border);
+    --color-cosmic-cyan: var(--orbemoria-cosmic-cyan);
+    --color-ice-cyan: var(--orbemoria-ice-cyan);
+    --color-pale-gold: var(--orbemoria-pale-gold);
+    --color-archive-lavender: var(--orbemoria-archive-lavender);
+    --color-starlight: var(--orbemoria-starlight);
+    --color-moon-dust: var(--orbemoria-moon-dust);
+    --color-rocky: var(--orbemoria-rocky-planet);
+    /* Accent of the world being visited (Moon = Cosmic Cyan, Mars = Rocky), see [data-world]. */
     --color-world: var(--world-accent);
 
-    /* shadcn semantic tokens, mapped onto COSMOS in styles/tokens.css */
+    /* shadcn semantic tokens, mapped onto the ORBEMORIA palette in styles/tokens.css */
     --color-ring: var(--ring);
     --color-input: var(--input);
     --color-border: var(--border);
@@ -73,7 +73,7 @@
   h1, h2, h3 {
     @apply font-heading;
   }
-  /* Visible focus everywhere (NFR-A11Y-002): 2px Cosmic Indigo, >= 3:1 on every COSMOS background */
+  /* Visible focus everywhere (NFR-A11Y-002): 2px Cosmic Cyan, >= 7:1 on every ORBEMORIA background */
   :focus-visible {
     outline: 2px solid var(--ring);
     outline-offset: 2px;
@@ -85,20 +85,20 @@
    --------------------------------------------------------------------------------------- */
 
 /* One accent per world: interface cue only, never the world's real colour (DESIGN_SYSTEM §1.4).
-   Both pass 4.5:1 on every COSMOS background (Rocky: 4.86:1 on Surface). */
+   Both pass 4.5:1 on every ORBEMORIA background (Rocky: 4.68:1 on Surface). */
 :root {
-  --world-accent: var(--cosmos-stellar-cyan);
+  --world-accent: var(--orbemoria-cosmic-cyan);
 }
 [data-world='mars'] {
-  --world-accent: var(--cosmos-rocky-planet);
+  --world-accent: var(--orbemoria-rocky-planet);
 }
 
 /* Panel over the sky. No backdrop blur (US-5.11): with a moving sky, every blurred panel on
    screen had to be re-blurred at every frame — the main cause of scroll lag. A deep tinted
    gradient and a lit top edge give the same "glass" depth for free. */
 @utility glass {
-  background-image: linear-gradient(160deg, rgb(28 38 56 / 0.86), rgb(11 16 27 / 0.82));
-  border: 1px solid rgb(148 163 184 / 0.14);
+  background-image: linear-gradient(160deg, rgb(16 42 68 / 0.86), rgb(7 20 38 / 0.82));
+  border: 1px solid rgb(163 184 204 / 0.14);
   box-shadow:
     inset 0 1px 0 rgb(255 255 255 / 0.06),
     0 24px 60px -30px rgb(0 0 0 / 0.8);
@@ -107,9 +107,9 @@
 /* US-5.13: panel for reading long texts over the sky or pictures — darker and more opaque
    than `glass` (no blur, for the same performance reason), with bright text. */
 @utility reading-panel {
-  background-image: linear-gradient(160deg, rgb(15 22 36 / 0.94), rgb(6 10 20 / 0.92));
-  border: 1px solid rgb(148 163 184 / 0.18);
-  color: var(--cosmos-starlight);
+  background-image: linear-gradient(160deg, rgb(11 31 53 / 0.94), rgb(5 16 32 / 0.92));
+  border: 1px solid rgb(163 184 204 / 0.18);
+  color: var(--orbemoria-starlight);
   box-shadow:
     inset 0 1px 0 rgb(255 255 255 / 0.07),
     0 30px 70px -30px rgb(0 0 0 / 0.9);
@@ -118,16 +118,16 @@
 /* Text laid straight on the sky or a picture: a soft dark halo keeps every letter readable. */
 @utility text-legible {
   text-shadow:
-    0 1px 2px rgb(2 6 16 / 0.9),
-    0 0 18px rgb(2 6 16 / 0.75);
+    0 1px 2px rgb(2 8 20 / 0.9),
+    0 0 18px rgb(2 8 20 / 0.75);
 }
 
 /* Real frosted glass, only for small fixed bars (header, controls): cheap at that size. */
 @utility glass-blur {
-  background-color: rgb(17 24 39 / 0.72);
-  border: 1px solid rgb(148 163 184 / 0.16);
+  background-color: rgb(11 31 53 / 0.72);
+  border: 1px solid rgb(163 184 204 / 0.16);
   @supports (backdrop-filter: blur(1px)) {
-    background-color: rgb(17 24 39 / 0.55);
+    background-color: rgb(11 31 53 / 0.55);
     backdrop-filter: blur(14px) saturate(140%);
   }
 }
@@ -141,7 +141,7 @@
 /* Huge outlined numbers/words behind a scene: decoration only. */
 @utility text-outline {
   color: transparent;
-  -webkit-text-stroke: 1px rgb(148 163 184 / 0.18);
+  -webkit-text-stroke: 1px rgb(163 184 204 / 0.18);
 }
 
 /* Loading skeleton sweep. */
@@ -154,7 +154,7 @@
   }
 }
 .skeleton {
-  background: linear-gradient(90deg, rgb(28 38 56 / 0.9) 25%, rgb(51 65 85 / 0.9) 50%, rgb(28 38 56 / 0.9) 75%);
+  background: linear-gradient(90deg, rgb(16 42 68 / 0.9) 25%, rgb(31 74 94 / 0.9) 50%, rgb(16 42 68 / 0.9) 75%);
   background-size: 200% 100%;
 }
 @media (prefers-reduced-motion: no-preference) {
@@ -207,11 +207,11 @@
 @property --step-accent {
   syntax: '<color>';
   inherits: true;
-  initial-value: #8b9dff;
+  initial-value: #36d6e7;
 }
 .story-ambient {
   background:
-    radial-gradient(60rem 40rem at 85% 15%, color-mix(in srgb, var(--step-accent, #8b9dff) 16%, transparent), transparent 70%),
+    radial-gradient(60rem 40rem at 85% 15%, color-mix(in srgb, var(--step-accent, #36d6e7) 16%, transparent), transparent 70%),
     radial-gradient(50rem 36rem at 10% 90%, color-mix(in srgb, var(--world-accent) 10%, transparent), transparent 70%);
   transition: --step-accent 700ms ease;
 }
@@ -222,7 +222,7 @@
    very slowly (a GPU-only transform, never a repaint); the veil keeps text contrast.
    --------------------------------------------------------------------------------------- */
 .space-sky {
-  background-color: var(--cosmos-void-black);
+  background-color: var(--orbemoria-midnight);
   overflow: hidden;
 }
 .space-sky::before {
@@ -230,8 +230,8 @@
   position: absolute;
   inset: -6%;
   background-image:
-    radial-gradient(ellipse at 50% 45%, transparent 35%, rgb(8 11 18 / 0.75) 100%),
-    linear-gradient(rgb(8 11 18 / var(--sky-veil, 0.5)), rgb(8 11 18 / var(--sky-veil, 0.5))),
+    radial-gradient(ellipse at 50% 45%, transparent 35%, rgb(7 20 38 / 0.75) 100%),
+    linear-gradient(rgb(7 20 38 / var(--sky-veil, 0.5)), rgb(7 20 38 / var(--sky-veil, 0.5))),
     url('/media/sky-milkyway-pano-1k.webp');
   background-size: cover;
   background-position: center;
@@ -241,8 +241,8 @@
 @media (min-width: 1024px) {
   .space-sky::before {
     background-image:
-      radial-gradient(ellipse at 50% 45%, transparent 35%, rgb(8 11 18 / 0.75) 100%),
-      linear-gradient(rgb(8 11 18 / var(--sky-veil, 0.5)), rgb(8 11 18 / var(--sky-veil, 0.5))),
+      radial-gradient(ellipse at 50% 45%, transparent 35%, rgb(7 20 38 / 0.75) 100%),
+      linear-gradient(rgb(7 20 38 / var(--sky-veil, 0.5)), rgb(7 20 38 / var(--sky-veil, 0.5))),
       url('/media/sky-milkyway-pano.webp');
   }
 }
@@ -286,8 +286,8 @@
   top: 0.08em;
   bottom: 0.08em;
   width: 0.06em;
-  background: var(--cosmos-stellar-cyan);
-  box-shadow: 0 0 12px var(--cosmos-stellar-cyan);
+  background: var(--orbemoria-cosmic-cyan);
+  box-shadow: 0 0 12px var(--orbemoria-cosmic-cyan);
 }
 @media (prefers-reduced-motion: no-preference) {
   .typing-caret::after {
@@ -410,7 +410,7 @@ html.depth-mode::-webkit-scrollbar {
 }
 
 .world-echo {
-  -webkit-text-stroke: 1px rgb(148 163 184 / 0.22);
+  -webkit-text-stroke: 1px rgb(163 184 204 / 0.22);
   transform: translate3d(calc((var(--approach, 0) - 0.5) * 30vw), 0, 0);
 }
 
@@ -529,11 +529,11 @@ html.depth-mode::-webkit-scrollbar {
 .title-sheen {
   background-image: linear-gradient(
     100deg,
-    var(--cosmos-starlight) 0%,
-    var(--cosmos-starlight) 40%,
-    var(--cosmos-stellar-cyan) 50%,
-    var(--cosmos-starlight) 60%,
-    var(--cosmos-starlight) 100%
+    var(--orbemoria-starlight) 0%,
+    var(--orbemoria-starlight) 40%,
+    var(--orbemoria-cosmic-cyan) 50%,
+    var(--orbemoria-starlight) 60%,
+    var(--orbemoria-starlight) 100%
   );
   background-size: 250% 100%;
   background-position: 100% 0;
@@ -559,7 +559,7 @@ html.depth-mode::-webkit-scrollbar {
 
 /* Big numbers lit from above, like an instrument readout. */
 .stat-number {
-  background-image: linear-gradient(180deg, #ffffff 10%, var(--cosmos-stellar-cyan) 120%);
+  background-image: linear-gradient(180deg, #ffffff 10%, var(--orbemoria-cosmic-cyan) 120%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -573,7 +573,7 @@ html.depth-mode::-webkit-scrollbar {
   transition: border-color 300ms;
 }
 .expedition-card:hover {
-  border-color: color-mix(in srgb, var(--cosmos-stellar-cyan) 45%, transparent);
+  border-color: color-mix(in srgb, var(--orbemoria-cosmic-cyan) 45%, transparent);
 }
 
 /* The main call to action breathes, to say "start here". */
@@ -586,7 +586,7 @@ html.depth-mode::-webkit-scrollbar {
     position: absolute;
     inset: -4px;
     border-radius: 9999px;
-    border: 1px solid var(--cosmos-stellar-cyan);
+    border: 1px solid var(--orbemoria-cosmic-cyan);
     opacity: 0;
     animation: cta-pulse 2.8s ease-out infinite;
     pointer-events: none;
@@ -672,8 +672,8 @@ html.depth-mode::-webkit-scrollbar {
   margin: 0;
   overflow: hidden;
   border-radius: 1.25rem;
-  border: 1px solid rgb(148 163 184 / 0.18);
-  background: var(--cosmos-deep-space);
+  border: 1px solid rgb(163 184 204 / 0.18);
+  background: var(--orbemoria-deep-space);
   box-shadow: 0 40px 90px -30px rgb(0 0 0 / 0.9);
   opacity: 0;
   visibility: hidden;
@@ -934,8 +934,8 @@ html.depth-mode::-webkit-scrollbar {
   justify-content: center;
   border-radius: 9999px;
   border: 1px solid rgb(255 255 255 / 0.25);
-  background: rgb(8 11 18 / 0.6);
-  color: var(--cosmos-starlight);
+  background: rgb(7 20 38 / 0.6);
+  color: var(--orbemoria-starlight);
   transition: border-color 200ms, color 200ms;
 }
 .video-control:hover,
@@ -1157,7 +1157,7 @@ html.depth-mode::-webkit-scrollbar {
 
 /* 3D model touch points (US-5.13): a dot, and the part's name sliding out beside it. */
 .model-hotspot {
-  --world-accent: var(--cosmos-stellar-cyan, #38bdf8);
+  --world-accent: var(--orbemoria-cosmic-cyan, #38bdf8);
 }
 .model-hotspot[data-visible='false'],
 .model-hotspot:not([data-visible]) {
@@ -1170,8 +1170,8 @@ html.depth-mode::-webkit-scrollbar {
   white-space: nowrap;
   padding: 0.25rem 0.6rem;
   border-radius: 9999px;
-  background: rgb(6 10 20 / 0.88);
-  border: 1px solid rgb(148 163 184 / 0.3);
+  background: rgb(5 16 32 / 0.88);
+  border: 1px solid rgb(163 184 204 / 0.3);
   color: #fff;
   font-size: 0.75rem;
   font-weight: 600;
@@ -1237,16 +1237,16 @@ html.depth-mode::-webkit-scrollbar {
   transform: scale(1.08);
 }
 .feed-shade {
-  background: linear-gradient(to bottom, rgb(5 7 13 / 0.55) 0%, rgb(5 7 13 / 0.25) 30%, rgb(5 7 13 / 0.6) 60%, rgb(5 7 13 / 0.94) 82%, rgb(5 7 13 / 0.98) 100%);
+  background: linear-gradient(to bottom, rgb(4 12 26 / 0.55) 0%, rgb(4 12 26 / 0.25) 30%, rgb(4 12 26 / 0.6) 60%, rgb(4 12 26 / 0.94) 82%, rgb(4 12 26 / 0.98) 100%);
 }
 .flight-panel {
-  color: var(--cosmos-starlight);
-  text-shadow: 0 1px 3px rgb(2 6 16 / 0.9);
+  color: var(--orbemoria-starlight);
+  text-shadow: 0 1px 3px rgb(2 8 20 / 0.9);
 }
 @media (min-width: 1024px) {
   .flight-panel {
-    background-image: linear-gradient(160deg, rgb(15 22 36 / 0.94), rgb(6 10 20 / 0.92));
-    border: 1px solid rgb(148 163 184 / 0.18);
+    background-image: linear-gradient(160deg, rgb(11 31 53 / 0.94), rgb(5 16 32 / 0.92));
+    border: 1px solid rgb(163 184 204 / 0.18);
     box-shadow: 0 30px 70px -30px rgb(0 0 0 / 0.9);
     text-shadow: none;
   }
@@ -1255,11 +1255,11 @@ html.depth-mode::-webkit-scrollbar {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgb(5 7 13 / 0.15) 0%, rgb(5 7 13 / 0.25) 30%, rgb(5 7 13 / 0.86) 55%, rgb(5 7 13 / 0.96) 100%);
+  background: linear-gradient(to bottom, rgb(4 12 26 / 0.15) 0%, rgb(4 12 26 / 0.25) 30%, rgb(4 12 26 / 0.86) 55%, rgb(4 12 26 / 0.96) 100%);
 }
 @media (max-width: 1023.98px) {
   .slide-backdrop + .story-slide {
-    text-shadow: 0 1px 3px rgb(2 6 16 / 0.9);
+    text-shadow: 0 1px 3px rgb(2 8 20 / 0.9);
   }
 }
 
@@ -1341,7 +1341,7 @@ html[data-flight-snap] .flight-snap-edge {
 .cinema-vignette {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center, transparent 52%, rgb(5 7 13 / 0.42) 100%);
+  background: radial-gradient(ellipse at center, transparent 52%, rgb(4 12 26 / 0.42) 100%);
 }
 @media (prefers-reduced-motion: no-preference) {
   .cinema-grain {
@@ -1414,7 +1414,7 @@ html[data-flight-snap] .flight-snap-edge {
   width: 9px;
   height: 9px;
   border-radius: 9999px;
-  background: var(--cosmos-moon-dust);
+  background: var(--orbemoria-moon-dust);
   box-shadow: 0 0 0 2px rgb(255 255 255 / 0.08);
 }
 .led[data-status='operational'] {
@@ -1424,8 +1424,8 @@ html[data-flight-snap] .flight-snap-edge {
     0 0 12px #4ade80;
 }
 .led[data-status='contact-lost'] {
-  background: var(--cosmos-stellar-gold);
-  box-shadow: 0 0 10px var(--cosmos-stellar-gold);
+  background: var(--orbemoria-pale-gold);
+  box-shadow: 0 0 10px var(--orbemoria-pale-gold);
 }
 .led[data-status='mission-ended'],
 .led[data-status='inactive'] {
@@ -1463,7 +1463,7 @@ html[data-flight-snap] .flight-snap-edge {
   width: 3px;
   height: calc(30% + var(--i) * 17%);
   border-radius: 1px;
-  background: rgb(148 163 184 / 0.25);
+  background: rgb(163 184 204 / 0.25);
 }
 .signal-bars i.is-on {
   background: var(--world-accent);
@@ -1550,13 +1550,13 @@ html[data-flight-snap] .flight-snap-edge {
 
 /* Acts of a life: each act tints the page around it. */
 .act-card[data-tone='departure'] {
-  --world-accent: var(--cosmos-cosmic-indigo);
+  --world-accent: var(--orbemoria-cosmic-cyan);
 }
 .act-card[data-tone='beyond'] {
-  --world-accent: var(--cosmos-stellar-gold);
+  --world-accent: var(--orbemoria-pale-gold);
 }
 .act-card[data-tone='silence'] {
-  --world-accent: var(--cosmos-moon-dust);
+  --world-accent: var(--orbemoria-moon-dust);
 }
 .act-card[data-tone='alive'] {
   --world-accent: #4ade80;
@@ -1574,7 +1574,7 @@ html[data-flight-snap] .flight-snap-edge {
   transform: translate(-50%, -50%) scale(1);
 }
 .act-body {
-  background: radial-gradient(ellipse at center, rgb(5 7 13 / 0.78), rgb(5 7 13 / 0.35) 60%, transparent 100%);
+  background: radial-gradient(ellipse at center, rgb(4 12 26 / 0.78), rgb(4 12 26 / 0.35) 60%, transparent 100%);
 }
 .act-eyebrow,
 .act-title,
@@ -1609,11 +1609,11 @@ html[data-flight-snap] .flight-snap-edge {
   letter-spacing: 0.08em;
 }
 .act-card[data-tone='silence'] .act-figure .stat-number {
-  color: var(--cosmos-starlight);
+  color: var(--orbemoria-starlight);
 }
 .act-card[data-tone='beyond'] .act-figure .stat-number {
-  color: var(--cosmos-stellar-gold);
-  text-shadow: 0 0 40px color-mix(in srgb, var(--cosmos-stellar-gold) 55%, transparent);
+  color: var(--orbemoria-pale-gold);
+  text-shadow: 0 0 40px color-mix(in srgb, var(--orbemoria-pale-gold) 55%, transparent);
 }
 @media (prefers-reduced-motion: reduce) {
   .act-numeral,
@@ -1704,7 +1704,7 @@ html[data-flight-snap] .flight-snap-edge {
   bottom: 10px;
   padding: 0.15rem 0.5rem;
   border-radius: 0.35rem;
-  background: rgb(5 7 13 / 0.6);
+  background: rgb(4 12 26 / 0.6);
   font-family: var(--font-mono);
   font-size: 0.72rem;
   letter-spacing: 0.18em;
@@ -1758,18 +1758,18 @@ html[data-flight-snap] .flight-snap-edge {
 /* US-5.14 — the flight's reading panel faces the picture: left wall ↔ text on the right, tilted
    toward it; right wall ↔ text on the left. Phones keep the panel at the bottom. */
 .flight-shade {
-  background: linear-gradient(to top, var(--cosmos-void-black), rgb(8 11 18 / 0.75), transparent);
+  background: linear-gradient(to top, var(--orbemoria-midnight), rgb(7 20 38 / 0.75), transparent);
 }
 @media (min-width: 1024px) {
   .flight-shade[data-side='left'] {
     left: 0;
     right: auto;
-    background: linear-gradient(to right, var(--cosmos-void-black), rgb(8 11 18 / 0.75), transparent);
+    background: linear-gradient(to right, var(--orbemoria-midnight), rgb(7 20 38 / 0.75), transparent);
   }
   .flight-shade[data-side='right'] {
     right: 0;
     left: auto;
-    background: linear-gradient(to left, var(--cosmos-void-black), rgb(8 11 18 / 0.75), transparent);
+    background: linear-gradient(to left, var(--orbemoria-midnight), rgb(7 20 38 / 0.75), transparent);
   }
   .flight-reading {
     transform-style: preserve-3d;
@@ -1801,7 +1801,7 @@ html[data-flight-snap] .flight-snap-edge {
 
 /* Intro finale (US-5.14): a title card, letter by letter, under a thin rising line. */
 .intro-finale {
-  background: radial-gradient(ellipse at center, rgb(97 214 232 / 0.14) 0%, rgb(5 7 13 / 0.6) 55%, rgb(5 7 13 / 0.92) 100%);
+  background: radial-gradient(ellipse at center, rgb(54 214 231 / 0.14) 0%, rgb(4 12 26 / 0.6) 55%, rgb(4 12 26 / 0.92) 100%);
 }
 .intro-finale-eyebrow {
   opacity: 0;
@@ -1822,7 +1822,7 @@ html[data-flight-snap] .flight-snap-edge {
   height: 1px;
   width: 0;
   margin: 1.4rem auto 0;
-  background: linear-gradient(to right, transparent, var(--cosmos-stellar-cyan), transparent);
+  background: linear-gradient(to right, transparent, var(--orbemoria-cosmic-cyan), transparent);
   animation: line-grow 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 1.5s both;
 }
 @keyframes letter-rise {
@@ -1883,7 +1883,7 @@ html[data-flight-snap] .flight-snap-edge {
 
 /* Header (2026-11-15): a frosted bar once the page has scrolled, with a hairline underneath. */
 .site-header-glass {
-  background: rgb(8 11 18 / 0.72);
+  background: rgb(7 20 38 / 0.72);
   backdrop-filter: blur(14px) saturate(1.2);
   -webkit-backdrop-filter: blur(14px) saturate(1.2);
   box-shadow: 0 1px 0 rgb(255 255 255 / 0.06);
@@ -1899,7 +1899,7 @@ html.menu-open {
 }
 .phone-menu {
   background-image:
-    radial-gradient(ellipse at 80% 0%, rgb(97 214 232 / 0.12), transparent 55%),
+    radial-gradient(ellipse at 80% 0%, rgb(54 214 231 / 0.12), transparent 55%),
     radial-gradient(ellipse at 10% 100%, rgb(229 197 141 / 0.1), transparent 50%);
 }
 @media (prefers-reduced-motion: no-preference) {

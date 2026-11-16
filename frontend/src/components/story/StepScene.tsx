@@ -23,9 +23,9 @@ interface StepSceneProps {
 
 /** Accent bar of each narrative voice (STORY-007; the VoiceTag text stays the real label). */
 const VOICE_BAR: Record<Voice, string> = {
-  data: 'bg-stellar-gold',
-  interpretation: 'bg-cosmic-indigo',
-  imagination: 'bg-nebula-purple',
+  data: 'bg-pale-gold',
+  interpretation: 'bg-cosmic-cyan',
+  imagination: 'bg-archive-lavender',
 }
 
 /** One step of a story as a full-screen scene of the scroll (US-5.6). */
