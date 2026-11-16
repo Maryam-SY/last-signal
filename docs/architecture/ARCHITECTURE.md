@@ -1,4 +1,4 @@
-# Architecture — AeroReborn
+# Architecture — OrbeMoria
 
 > Rôle BMAD : Architect · Version 1.0 (Phase 0) · Statut : **en attente de validation**
 > Décisions détaillées : [TECHNICAL_DECISIONS.md](TECHNICAL_DECISIONS.md) (ADR-xxx). Modèle de données : [DATA_MODEL.md](DATA_MODEL.md).
@@ -59,7 +59,7 @@ flowchart TB
 On **conserve `frontend/` et `backend/`** (pas de réorganisation du dépôt). L'emplacement final de `content/` dépend d'OPEN-18.
 
 ```
-aeroreborn/
+orbemoria/
 ├── CLAUDE.md                     Guide opérationnel des agents
 ├── README.md
 ├── .nvmrc                        Node 24

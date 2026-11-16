@@ -1,8 +1,8 @@
-# AeroReborn
+# OrbeMoria
 
 > *Every machine left more than a trace: it passed something on.*
 
-AeroReborn is an educational, interactive web experience about the machines humanity left on the **Moon** and on **Mars**: why they were sent, how they worked, what they helped us learn, and what they passed on to the missions that followed. It is designed first for curious 10–15 year-olds, mobile-first, and every scientific fact shown is linked to a source.
+OrbeMoria is an educational, interactive web experience about the machines humanity left on the **Moon** and on **Mars**: why they were sent, how they worked, what they helped us learn, and what they passed on to the missions that followed. It is designed first for curious 10–15 year-olds, mobile-first, and every scientific fact shown is linked to a source.
 
 **Independent project, not affiliated with or endorsed by NASA.**
 
@@ -15,7 +15,7 @@ AeroReborn is an educational, interactive web experience about the machines huma
 ## Repository layout
 
 ```
-aeroreborn/
+orbemoria/
 ├── frontend/   React 19 + Vite + TypeScript + Tailwind v4 (UI, routing, i18n)
 ├── backend/    Node + Express 5 + TypeScript (API)
 ├── api/        Vercel Function entry: serves the compiled backend under /api

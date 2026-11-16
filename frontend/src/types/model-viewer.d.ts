@@ -1,6 +1,6 @@
 /**
  * JSX typing of the <model-viewer> custom element (@google/model-viewer, ADR-020).
- * Only the attributes AeroReborn uses are listed.
+ * Only the attributes OrbeMoria uses are listed.
  */
 import type { DetailedHTMLProps, HTMLAttributes } from 'react'
 

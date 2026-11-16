@@ -1,4 +1,4 @@
-# Audit Phase 0 — AeroReborn
+# Audit Phase 0 — OrbeMoria (anciennement AeroReborn)
 
 > Date : 2026-11-14 · Auteur : agent Claude Code (rôles BMAD : Analyst + Architect) · Statut : **en attente de validation**
 >
@@ -165,12 +165,13 @@ Chaque décision a une **recommandation** ; tant qu'elle n'est pas validée, les
 | 2026-11-14 | OPEN-16 | Une mission par entrée NSSDCA, sauf **Spirit et Opportunity regroupés** en « Mars Exploration Rovers » (histoire commune) ; un récit peut appartenir à **plusieurs missions** (`missionIds`). | DATA_MODEL |
 | 2026-11-14 | OPEN-18 | **Le backend sert le contenu** : JSON versionnés dans `backend/content/`, lus au démarrage, validés (le serveur refuse de démarrer en cas d'erreur), exposés en lecture seule par `/api/*` avec `?lang=en` ou `?lang=fr`. Pas de base de données. | ADR-016, ARCHITECTURE §16 |
 | 2026-11-14 | — | Médias stockés **par référence** (URL + crédit + page source), pas de fichiers dans le dépôt (proposé). | ADR-017 |
+| 2026-11-16 | OPEN-01 | **Renommage : AeroReborn devient OrbeMoria** (titre, README, interface, noms des paquets, clés de stockage local). Les entrées ci-dessus gardent l'ancien nom (historique). Reste à décider : le logo en forme de « A », l'image de partage `og-image.jpg` et le domaine de déploiement. | Commit de renommage |
 
 ### 7.2 Liste des décisions
 
 | ID | Sujet | Recommandation | Bloque |
 |---|---|---|---|
-| OPEN-01 | ✅ **Tranchée** (§7.1) — Nom et identité | AeroReborn. Reste à faire : copier les PDF dans `docs/reference/`. | US-1.1 |
+| OPEN-01 | ✅ **Tranchée** (§7.1) — Nom et identité | OrbeMoria (anciennement AeroReborn, renommé le 2026-11-16). Reste à faire : copier les PDF dans `docs/reference/`. | US-1.1 |
 | OPEN-02 | ✅ **Tranchée** (§7.1) — Migration TypeScript | Fait (frontend + backend). | E1 |
 | OPEN-03 | ✅ **Tranchée** (§7.1) — Backend Express | Actif, en TypeScript ; rôle → OPEN-18. | ADR-016 |
 | OPEN-04 | ✅ **Tranchée** (§7.1) — Routeur | react-router, `createBrowserRouter`. | US-1.3 |

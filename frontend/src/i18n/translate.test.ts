@@ -30,7 +30,7 @@ describe('i18n', () => {
   })
 
   it('interpolates placeholders and keeps unknown ones visible', () => {
-    expect(translate('en', 'app.documentTitle', { page: 'Mars' })).toBe('Mars · AeroReborn')
+    expect(translate('en', 'app.documentTitle', { page: 'Mars' })).toBe('Mars · OrbeMoria')
     expect(interpolate('Hello {name} {missing}', { name: 'Ada' })).toBe('Hello Ada {missing}')
   })
 

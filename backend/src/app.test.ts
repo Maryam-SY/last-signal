@@ -8,7 +8,7 @@ describe('API', () => {
   it('GET /api/health reports the service as up', async () => {
     const response = await request(app).get('/api/health')
     expect(response.status).toBe(200)
-    expect(response.body).toEqual({ status: 'ok', message: 'AeroReborn API running' })
+    expect(response.body).toEqual({ status: 'ok', message: 'OrbeMoria API running' })
   })
 
   it('returns a JSON 404 for unknown API routes', async () => {

@@ -1,5 +1,5 @@
 /** Intro video session state (US-2.4): played once per browser session. */
-const SEEN_KEY = 'aeroreborn.intro-seen'
+const SEEN_KEY = 'orbemoria.intro-seen'
 /** Cross-fade from the video's last shot (Moon + Mars) to the live home page. */
 export const FADE_MS = 900
 

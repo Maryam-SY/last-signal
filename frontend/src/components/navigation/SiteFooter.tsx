@@ -9,7 +9,7 @@ const footerLink = 'inline-flex min-h-11 min-w-11 items-center text-sm text-moon
 /**
  * The site footer: the mark and the site's motto, two short columns of links (the worlds, the
  * project), a way back to the top, then the independence notice — over a large, faint
- * "AeroReborn" (decorative).
+ * "OrbeMoria" (decorative).
  */
 export function SiteFooter() {
   const { t } = useTranslation()

@@ -8,7 +8,7 @@ interface I18nProviderProps {
   initialLocale?: Locale
 }
 
-const STORAGE_KEY = 'aeroreborn.locale'
+const STORAGE_KEY = 'orbemoria.locale'
 
 /** The visitor's last choice (EN/FR switch), if the browser lets us read it. */
 function storedLocale(): Locale | null {

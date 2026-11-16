@@ -69,11 +69,11 @@ describe('story pedagogy (US-5.7)', () => {
     renderRoute('/stories/story-a?step=6')
     const field = await screen.findByRole('textbox', { name: 'Your answer' })
     await user.type(field, 'A mirror')
-    expect(window.localStorage.getItem('aeroreborn.notebook.story-a')).toBe('A mirror')
+    expect(window.localStorage.getItem('orbemoria.notebook.story-a')).toBe('A mirror')
     expect(screen.getByText('Saved on this device.')).toBeInTheDocument()
     await user.click(screen.getByRole('button', { name: 'Erase' }))
     expect(field).toHaveValue('')
-    expect(window.localStorage.getItem('aeroreborn.notebook.story-a')).toBeNull()
+    expect(window.localStorage.getItem('orbemoria.notebook.story-a')).toBeNull()
   })
 })
 
@@ -81,11 +81,11 @@ describe('explorer log (US-5.8)', () => {
   it('records the world visited and the story finished, without showing an explorer box (US-5.13)', async () => {
     renderRoute('/explore/mars')
     await screen.findByRole('heading', { level: 2, name: 'Choose a machine' })
-    expect(JSON.parse(window.localStorage.getItem('aeroreborn.explorer-log')!)).toMatchObject({ worlds: ['mars'] })
+    expect(JSON.parse(window.localStorage.getItem('orbemoria.explorer-log')!)).toMatchObject({ worlds: ['mars'] })
     expect(screen.queryByRole('region', { name: 'Your explorer log' })).not.toBeInTheDocument()
 
     renderRoute('/stories/story-a?step=6')
-    await waitFor(() => expect(JSON.parse(window.localStorage.getItem('aeroreborn.explorer-log')!)).toMatchObject({ stories: ['story-a'] }))
+    await waitFor(() => expect(JSON.parse(window.localStorage.getItem('orbemoria.explorer-log')!)).toMatchObject({ stories: ['story-a'] }))
     expect(screen.queryByRole('region', { name: 'Your explorer log' })).not.toBeInTheDocument()
   })
 })

@@ -1,5 +1,5 @@
 /**
- * Response shapes of the AeroReborn API (backend/src/routes/content.ts), already localized:
+ * Response shapes of the OrbeMoria API (backend/src/routes/content.ts), already localized:
  * every bilingual text arrives as a plain string for the requested language.
  * Contract: docs/architecture/ARCHITECTURE.md §16.
  */

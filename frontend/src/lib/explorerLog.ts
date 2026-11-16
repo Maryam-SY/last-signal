@@ -10,7 +10,7 @@ export interface ExplorerLog {
   machines: string[]
 }
 
-const KEY = 'aeroreborn.explorer-log'
+const KEY = 'orbemoria.explorer-log'
 const EMPTY: ExplorerLog = { worlds: [], stories: [], machines: [] }
 const listeners = new Set<() => void>()
 let cache: ExplorerLog | null = null

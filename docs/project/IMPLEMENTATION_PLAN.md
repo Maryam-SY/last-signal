@@ -1,4 +1,4 @@
-# Plan d'implémentation — AeroReborn
+# Plan d'implémentation — OrbeMoria
 
 > Rôles BMAD : Scrum Master + Architect · Version 1.0 (Phase 0) · Statut : **en attente de validation**
 > Stories : [USER_STORIES.md](../product/USER_STORIES.md) · Gates : [QUALITY_GATES.md](../quality/QUALITY_GATES.md) · Décisions : [AUDIT_PHASE0.md §7](AUDIT_PHASE0.md#7-décisions-ouvertes-à-valider-par-léquipe)
@@ -139,7 +139,7 @@ Ne **jamais** réduire : sources, séparation des voix, accessibilité clavier, 
 
 | # | Statut | Détail |
 |---|---|---|
-| P1-01 | 🟡 | Nom AeroReborn, README racine faits ; PDF de référence pas encore copiés |
+| P1-01 | 🟡 | Nom OrbeMoria, README racine faits ; PDF de référence pas encore copiés |
 | P1-02 | ✅ review | TypeScript strict front **et** back, `typecheck`/`check`, `.nvmrc`, `cn()` unique, oxlint `typescript` + `jsx-a11y` |
 | P1-03 | ✅ review | react-router, Layout (skip link, nav, footer), pages squelettes, 404, page d'erreur |
 | P1-04 | ✅ review | Thème COSMOS + polices |

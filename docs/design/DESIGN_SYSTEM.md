@@ -1,4 +1,4 @@
-# Design system — AeroReborn (palette « COSMOS »)
+# Design system — OrbeMoria (palette « COSMOS »)
 
 > Rôle BMAD : UX Designer · Version 1.0 (Phase 0) · Statut : **en attente de validation** (OPEN-01, OPEN-13)
 > Source : `identite_visuelle_cosmos_couleurs_typographies.pdf` (« COSMOS · Explore Beyond »). « COSMOS » est le nom de la palette, **pas** le nom du produit (OPEN-01).
@@ -33,7 +33,7 @@
 
 ### 1.4 Repères d'objets célestes
 
-Le guide fournit des couleurs par **famille d'objets** (étoiles, planètes rocheuses `#D97757`, nébuleuses…). AeroReborn n'affiche que deux destinations : seule **Planètes rocheuses `#D97757`** est pertinente (accent de la carte Mars). Aucune teinte dédiée n'existe pour un satellite naturel : la Lune utilise `--color-text-muted`/`--color-text` (à valider). Ces couleurs sont des repères d'interface, **jamais** une représentation des couleurs réelles.
+Le guide fournit des couleurs par **famille d'objets** (étoiles, planètes rocheuses `#D97757`, nébuleuses…). OrbeMoria n'affiche que deux destinations : seule **Planètes rocheuses `#D97757`** est pertinente (accent de la carte Mars). Aucune teinte dédiée n'existe pour un satellite naturel : la Lune utilise `--color-text-muted`/`--color-text` (à valider). Ces couleurs sont des repères d'interface, **jamais** une représentation des couleurs réelles.
 
 **Accent de monde (US-5.6)** : `--world-accent` (utilitaire Tailwind `world`) vaut Stellar Cyan sur la Lune et Rocky `#D97757` sur Mars (`[data-world]`). Couleur d'ambiance par étape de récit : Signal/Relay = Cyan, Why = Indigo, How/Your turn = Purple, Discovery = Gold (`components/story/storySteps.ts`).
 

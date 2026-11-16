@@ -1,4 +1,4 @@
-# Périmètre — AeroReborn
+# Périmètre — OrbeMoria
 
 > Rôle BMAD : Product Manager · Version 1.0 (Phase 0) · Statut : **en attente de validation**
 > Source : CDC §6 « Périmètre fonctionnel et priorités » et §11 « Décisions actées ».

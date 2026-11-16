@@ -6,7 +6,7 @@
 @import "@fontsource/ibm-plex-mono/400.css";
 @import "./styles/tokens.css";
 
-/* AeroReborn ships a single dark theme (COSMOS palette). <html> carries class="dark"
+/* OrbeMoria ships a single dark theme (COSMOS palette). <html> carries class="dark"
    so shadcn/base-ui "dark:" variants apply. */
 @custom-variant dark (&:is(.dark *));
 
@@ -1855,7 +1855,7 @@ html[data-flight-snap] .flight-snap-edge {
   filter: blur(6px) saturate(1.1);
 }
 
-/* The AeroReborn mark: its two signal arcs light up in turn, faster when the logo is hovered. */
+/* The OrbeMoria mark: its two signal arcs light up in turn, faster when the logo is hovered. */
 .logo-wave-far {
   opacity: 0.55;
 }

@@ -1,7 +1,7 @@
 {
-  "name": "aeroreborn-backend",
+  "name": "orbemoria-backend",
   "version": "1.0.0",
-  "description": "AeroReborn API (Express + TypeScript)",
+  "description": "OrbeMoria API (Express + TypeScript)",
   "main": "dist/server.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",

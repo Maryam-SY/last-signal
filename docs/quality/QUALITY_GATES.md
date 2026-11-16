@@ -1,4 +1,4 @@
-# Quality Gates — AeroReborn
+# Quality Gates — OrbeMoria
 
 > Rôle BMAD : QA / Test Architect · Version 1.0 (Phase 0) · Statut : **en attente de validation**
 > Les commandes s'exécutent dans `frontend/` **et** dans `backend/` (mêmes noms de scripts). Légende : ✅ **existe aujourd'hui** dans `package.json` · 🛠 **à créer** (story indiquée) — tant qu'il n'existe pas, le gate correspondant est déclaré « non exécutable » et **ne peut pas être annoncé comme réussi**.

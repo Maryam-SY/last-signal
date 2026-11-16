@@ -20,7 +20,7 @@ function setMeta(selector: string, attribute: 'name' | 'property', key: string, 
 }
 
 /**
- * Sets "<page> · AeroReborn" as the document title (announced by screen readers on navigation)
+ * Sets "<page> · OrbeMoria" as the document title (announced by screen readers on navigation)
  * and the page's description for search engines, which run the site's JavaScript (link
  * previews in messaging apps only read index.html). Without a description of its own, a page
  * gets the site's.

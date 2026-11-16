@@ -17,7 +17,7 @@ export const wo: Messages = {
     label: 'Njëkk',
     explore: 'Wër',
     about: 'Ñun ak cosaan yi',
-    home: 'AeroReborn — kër gi',
+    home: 'OrbeMoria — kër gi',
   },
   lang: {
     ...fr.lang,

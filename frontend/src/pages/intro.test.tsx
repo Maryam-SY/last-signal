@@ -32,12 +32,12 @@ describe('intro video (US-2.4)', () => {
     window.HTMLMediaElement.prototype.play = playing
     const first = renderRoute('/')
     fireEvent.ended(screen.getByRole('region', { name: 'Introduction' }).querySelector('video')!)
-    // US-5.14: the title card — "AeroReborn presents", then the title letter by letter.
+    // US-5.14: the title card — "OrbeMoria presents", then the title letter by letter.
     const intro = screen.getByRole('region', { name: 'Introduction' })
-    expect(within(intro).getByText('AeroReborn presents')).toBeInTheDocument()
+    expect(within(intro).getByText('OrbeMoria presents')).toBeInTheDocument()
     expect(intro.querySelectorAll('.intro-finale-letter')).toHaveLength('The Next Frontier'.length)
     await waitFor(() => expect(screen.queryByRole('region', { name: 'Introduction' })).not.toBeInTheDocument(), { timeout: 6000 })
-    expect(window.sessionStorage.getItem('aeroreborn.intro-seen')).toBe('1')
+    expect(window.sessionStorage.getItem('orbemoria.intro-seen')).toBe('1')
     first.unmount()
 
     renderRoute('/')

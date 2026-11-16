@@ -1,4 +1,4 @@
-# Décisions techniques (ADR) — AeroReborn
+# Décisions techniques (ADR) — OrbeMoria
 
 > Rôle BMAD : Architect · Version 1.0 (Phase 0)
 > Statuts : **Acceptée** (imposée par le CDC ou l'existant, ou validée par l'équipe) · **Proposée** (en attente de validation, liée à un `OPEN-xx`) · **Remplacée par ADR-xxx**.

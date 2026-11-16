@@ -1,4 +1,4 @@
-# Modèle de données — AeroReborn
+# Modèle de données — OrbeMoria
 
 > Rôle BMAD : Architect · Version 1.0 (Phase 0) · Statut : **en attente de validation**
 > Exigences : DATA-001 → 006, SOURCE-001 → 005, MAP-003, STORY-001/002/007.

@@ -1,4 +1,4 @@
-# User Stories — AeroReborn
+# User Stories — OrbeMoria
 
 > Rôles BMAD : Product Owner / Scrum Master · Version 1.0 (Phase 0) · Statut : **en attente de validation**
 > Chaque story trace ses exigences ([PRD.md](PRD.md)) et suit le cycle de vie ci-dessous. Quand une story passe en développement, un fichier `docs/project/stories/US-x.y.md` est créé depuis [le modèle](../project/stories/_TEMPLATE.md).
@@ -26,7 +26,7 @@ Personas : **Visiteur** (10-15 ans, principal), **Curieux** (adulte), **Équipe*
 - **Story** : En tant qu'équipe, je souhaite un nom de produit unique et des documents de référence versionnés afin que personne (humain ou agent) ne travaille sur une version obsolète.
 - **Priorité** : P0 · **Exigences** : ABOUT-002 · **Statut** : `in-progress` (OPEN-01 tranchée ; reste le critère 3 : PDF dans `docs/reference/`)
 - **Critères** :
-  1. Étant donné le dépôt, quand on ouvre `frontend/index.html`, alors `<title>` vaut « AeroReborn ».
+  1. Étant donné le dépôt, quand on ouvre `frontend/index.html`, alors `<title>` vaut « OrbeMoria ».
   2. Étant donné la racine, alors un `README.md` décrit le projet, les commandes et renvoie vers `docs/`.
   3. Étant donné `docs/reference/`, alors les deux PDF de référence y sont présents.
 

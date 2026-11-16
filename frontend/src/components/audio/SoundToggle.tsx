@@ -5,7 +5,7 @@ import { useTranslation } from '@/i18n'
 import { glide, isSoundAvailable, setSound } from '@/lib/ambientSound'
 import { cn } from '@/lib/utils'
 
-const STORAGE_KEY = 'aeroreborn.sound'
+const STORAGE_KEY = 'orbemoria.sound'
 
 function storedChoice(): boolean {
   try {

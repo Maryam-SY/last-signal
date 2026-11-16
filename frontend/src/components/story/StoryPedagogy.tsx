@@ -64,7 +64,7 @@ export function WordsToKnow({ words }: { words: GlossaryEntry[] }) {
   )
 }
 
-const notebookKey = (storyId: string) => `aeroreborn.notebook.${storyId}`
+const notebookKey = (storyId: string) => `orbemoria.notebook.${storyId}`
 
 function readNote(storyId: string): string {
   try {

@@ -1,4 +1,4 @@
-# PRD — AeroReborn
+# PRD — OrbeMoria
 
 > Rôle BMAD : Product Manager · Version 1.0 (Phase 0) · Statut : **en attente de validation**
 > Source de vérité amont : `Last_Signal_Cahier_des_charges_v3_UX.pdf` (v3.0, 14/11/2026), cité « CDC §n ».
@@ -8,7 +8,7 @@
 
 ## 1. Présentation
 
-**AeroReborn** est une expérience web éducative et interactive qui fait découvrir les équipements humains restés sur la **Lune** et sur **Mars**, la mission qui les y a conduits, ce qu'ils ont permis d'apprendre et ce qu'ils ont transmis aux missions et connaissances suivantes.
+**OrbeMoria** est une expérience web éducative et interactive qui fait découvrir les équipements humains restés sur la **Lune** et sur **Mars**, la mission qui les y a conduits, ce qu'ils ont permis d'apprendre et ce qu'ils ont transmis aux missions et connaissances suivantes.
 
 > « Chaque machine a laissé plus qu'une trace : elle a transmis quelque chose. »
 

@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils'
 
 /**
- * The AeroReborn mark (DESIGN_SYSTEM §6): a lander shaped like the letter A, standing on a
+ * The OrbeMoria mark (DESIGN_SYSTEM §6): a lander shaped like the letter A, standing on a
  * world's horizon and still sending its signal — every machine passed something on.
  * Decorative (the link around it carries the name); the signal arcs light up in turn, unless
  * motion is reduced.

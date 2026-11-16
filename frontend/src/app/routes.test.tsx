@@ -11,7 +11,7 @@ describe('routes', () => {
     expect(moonLinks.length).toBeGreaterThan(0)
     for (const link of moonLinks) expect(link).toHaveAttribute('href', '/explore/moon')
     expect(screen.getByRole('link', { name: 'Explore Mars' })).toHaveAttribute('href', '/explore/mars')
-    expect(document.title).toBe('Choose your destination · AeroReborn')
+    expect(document.title).toBe('Choose your destination · OrbeMoria')
   })
 
   it('navigates to a destination when its card is activated', async () => {

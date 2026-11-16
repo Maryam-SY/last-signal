@@ -1,4 +1,4 @@
-# User Flows — AeroReborn
+# User Flows — OrbeMoria
 
 > Rôle BMAD : UX Designer · Version 1.0 (Phase 0) · Statut : **en attente de validation**
 > Références : CDC §2–§5, [PRD.md](PRD.md). Les routes citées sont définies dans NAV-004 et [ARCHITECTURE.md §4](../architecture/ARCHITECTURE.md#4-routage-et-état-dans-lurl).

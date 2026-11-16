@@ -1,5 +1,5 @@
 {
-  "name": "aeroreborn",
+  "name": "orbemoria",
   "private": true,
   "description": "Deployment root (Vercel): frontend/ is the static site, api/index.mjs serves backend/ as a function.",
   "type": "module",

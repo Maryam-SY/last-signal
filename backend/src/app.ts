@@ -33,7 +33,7 @@ export function createApp(options: AppOptions = {}): Express {
   app.use(express.json())
 
   app.get('/api/health', (_req, res) => {
-    res.json({ status: 'ok', message: 'AeroReborn API running' })
+    res.json({ status: 'ok', message: 'OrbeMoria API running' })
   })
 
   app.use('/api', compressJson)

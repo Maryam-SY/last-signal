@@ -1,10 +1,10 @@
-# CLAUDE.md — AeroReborn
+# CLAUDE.md — OrbeMoria
 
 Guide opérationnel permanent pour Claude Code et tout agent de développement. **À lire en entier avant toute tâche.**
 
 ## 1. Identité du projet
 
-- **Nom** : AeroReborn (le CDC s'intitule historiquement « Last Signal » ; « COSMOS » est le nom de la palette graphique — aucun des deux n'est le nom du produit).
+- **Nom** : OrbeMoria (anciennement « AeroReborn », renommé le 2026-11-16 ; le CDC s'intitule historiquement « Last Signal » ; « COSMOS » est le nom de la palette graphique — aucun de ces noms n'est le nom du produit).
 - **Description** : expérience web éducative et publique (frontend React + API Express), qui raconte les équipements laissés sur la **Lune** et sur **Mars**, leur mission, leurs découvertes et ce qu'ils ont transmis. Public principal : 10-15 ans.
 - **Devise** : « Chaque machine a laissé plus qu'une trace : elle a transmis quelque chose. »
 - **Parcours** : Choose your destination → Hangar (une carte par machine) → la page de la machine : sa vie en **actes calculés depuis ses dates** (Départ, Mission prévue, Prolongations, Silence, Après ; ADR-025). Le récit en 6 étapes (Signal, Why, How, Discovery, Relay, Your turn) n'est plus le parcours principal ; ses routes et contenus sont conservés en attente de décision.
