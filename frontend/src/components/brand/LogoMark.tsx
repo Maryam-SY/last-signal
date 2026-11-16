@@ -1,25 +1,39 @@
+import { useId } from 'react'
 import { cn } from '@/lib/utils'
 
+const ORBIT_TILT = 'rotate(-24 32 32)'
+/** The orbit, split in two: the far half passes behind the ring, the near half in front of it. */
+const ORBIT_FAR = 'M3 32 A29 8.5 0 0 1 61 32'
+const ORBIT_NEAR = 'M61 32 A29 8.5 0 0 1 3 32'
+
 /**
- * The OrbeMoria mark (DESIGN_SYSTEM §6): a lander shaped like the letter A, standing on a
- * world's horizon and still sending its signal — every machine passed something on.
- * Decorative (the link around it carries the name); the signal arcs light up in turn, unless
- * motion is reduced.
+ * The OrbeMoria mark (DESIGN_SYSTEM §6), taken from the "O" of the logo: a ring crossed by a
+ * golden orbit, with a star at its heart — the memory each machine left behind.
+ * Decorative (the link around it carries the name); the star twinkles, unless motion is reduced.
  */
 export function LogoMark({ className }: { className?: string }) {
+  const id = useId()
+  const cut = `${id}-cut`
+  const glow = `${id}-glow`
   return (
     <svg aria-hidden="true" viewBox="0 0 64 64" className={cn('logo-mark shrink-0', className)}>
-      <path d="M6 56 Q32 44 58 56" fill="none" stroke="#e5c58d" strokeWidth="2.4" strokeLinecap="round" opacity="0.85" />
-      <g fill="none" stroke="#f1f5f9" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M19 47 L30 20 L41 47" strokeWidth="4.8" />
-        <path d="M23.4 37 H36.6" strokeWidth="4" />
-        <path d="M15.5 47.5 H22.5 M37.5 47.5 H44.5" strokeWidth="3" />
+      <defs>
+        <radialGradient id={glow}>
+          <stop offset="0" stopColor="#f5b860" stopOpacity="0.55" />
+          <stop offset="1" stopColor="#f5b860" stopOpacity="0" />
+        </radialGradient>
+        <mask id={cut}>
+          <rect width="64" height="64" fill="#fff" />
+          <path transform={ORBIT_TILT} d={ORBIT_NEAR} fill="none" stroke="#000" strokeWidth="7" />
+        </mask>
+      </defs>
+      <path transform={ORBIT_TILT} d={ORBIT_FAR} fill="none" stroke="#f5b860" strokeWidth="3.2" strokeLinecap="round" />
+      <circle cx="32" cy="32" r="16" fill="none" stroke="#f8f5f2" strokeWidth="5.6" mask={`url(#${cut})`} />
+      <path transform={ORBIT_TILT} d={ORBIT_NEAR} fill="none" stroke="#f5b860" strokeWidth="3.2" strokeLinecap="round" />
+      <g className="logo-star">
+        <circle cx="32" cy="32" r="7.5" fill={`url(#${glow})`} />
+        <path d="M32 25 Q32.9 31.1 39 32 Q32.9 32.9 32 39 Q31.1 32.9 25 32 Q31.1 31.1 32 25Z" fill="#fff4dc" />
       </g>
-      <g fill="none" stroke="#61d6e8" strokeLinecap="round" strokeWidth="3.4">
-        <path className="logo-wave" d="M36 13.6 A9 9 0 0 1 40.2 22.5" />
-        <path className="logo-wave logo-wave-far" d="M40.5 7.8 A16 16 0 0 1 47.6 23.5" />
-      </g>
-      <circle cx="30" cy="20" r="3.8" fill="#61d6e8" />
     </svg>
   )
 }
