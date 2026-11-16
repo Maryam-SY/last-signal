@@ -1,0 +1,13 @@
+# Before every commit (human or agent): secrets in the staged content, then lint and types of the
+# part that changed. Never bypass it with --no-verify: fix the problem instead (SECURITY.md).
+pre-commit:
+  parallel: true
+  jobs:
+    - name: secrets
+      run: node scripts/scan-secrets.mts --staged
+    - name: frontend lint + typecheck
+      glob: "frontend/**/*.{ts,tsx,js,mjs,css,json,html}"
+      run: npm --prefix frontend run -s lint && npm --prefix frontend run -s typecheck
+    - name: backend lint + typecheck
+      glob: "backend/**/*.{ts,json}"
+      run: npm --prefix backend run -s lint && npm --prefix backend run -s typecheck

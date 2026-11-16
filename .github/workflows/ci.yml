@@ -25,6 +25,8 @@ jobs:
         working-directory: ${{ matrix.package }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - uses: actions/setup-node@v4
         with:
@@ -46,3 +48,31 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Dependency audit (high and critical)
+        run: npm audit --audit-level high
+
+  secrets:
+    name: secrets — scan + gitleaks (whole history)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+
+      - name: Secret scanner tests
+        run: npm run test:scripts
+
+      - name: Secret scan (working tree)
+        run: npm run secrets
+
+      - name: gitleaks (whole history)
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

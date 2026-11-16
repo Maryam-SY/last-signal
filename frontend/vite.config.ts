@@ -2,6 +2,7 @@ import path from 'node:path'
 import { defineConfig } from 'vitest/config'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
+import { SECURITY_HEADERS } from './src/security/headers'
 
 const API_TARGET = process.env.VITE_API_PROXY_TARGET ?? 'http://localhost:3000'
 
@@ -14,6 +15,13 @@ export default defineConfig({
   },
   server: {
     // In dev, /api/* is forwarded to the Express backend (backend/).
+    proxy: {
+      '/api': API_TARGET,
+    },
+  },
+  // `npm run preview` serves the production headers (CSP included), as vercel.json does.
+  preview: {
+    headers: SECURITY_HEADERS,
     proxy: {
       '/api': API_TARGET,
     },

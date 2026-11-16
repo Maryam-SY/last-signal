@@ -1,0 +1,24 @@
+version: 2
+updates:
+  # npm: only security updates open a pull request (version updates are off: limit 0).
+  # Security updates need "Dependabot security updates" on in the repository settings.
+  - package-ecosystem: npm
+    directory: /frontend
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 0
+  - package-ecosystem: npm
+    directory: /backend
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 0
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 0
+  # GitHub Actions used by the CI: weekly version updates.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly

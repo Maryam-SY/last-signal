@@ -1,4 +1,5 @@
 import type { Media } from '@/api/types'
+import { NASA_IMAGE_HOSTS } from '@/security/headers'
 
 /**
  * Picks the right copy of a picture for where it is shown (US-5.14, performance audit): NASA
@@ -20,18 +21,8 @@ export type ImageWidth = (typeof IMAGE_WIDTHS)[number]
 const QUALITY = 70
 const OPTIMIZER = '/_vercel/image?'
 
-/** NASA hosts allowed in vercel.json (`images.remotePatterns`). */
-const OPTIMIZED_HOSTS = new Set([
-  'images-assets.nasa.gov',
-  'assets.science.nasa.gov',
-  'nssdc.gsfc.nasa.gov',
-  'science.nasa.gov',
-  'www.nasa.gov',
-  'apollojournals.org',
-  'www.apollojournals.org',
-  'd2pn8kiwq2w21t.cloudfront.net',
-  'ilrs.gsfc.nasa.gov',
-])
+/** NASA hosts allowed in vercel.json (`images.remotePatterns`) and in the CSP (`img-src`). */
+const OPTIMIZED_HOSTS = new Set<string>(NASA_IMAGE_HOSTS)
 
 /** The optimiser exists only on the deployed site (not in `vite dev` or `vite preview` on this machine). */
 export function optimizerEnabled(): boolean {
