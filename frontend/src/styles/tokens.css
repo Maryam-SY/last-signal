@@ -1,47 +1,48 @@
 /*
- * COSMOS design tokens — source: docs/design/DESIGN_SYSTEM.md
- * Contrast ratios are documented there. Stellar Border (#334155) is < 3:1 on every
- * background: use it for decorative separators only, never as the sole boundary
- * of an interactive element.
+ * ORBEMORIA — « Cosmic Knowledge » design tokens — source: docs/design/DESIGN_SYSTEM.md
+ * (replaces the COSMOS palette, 2026-11-16). One palette for the site, the logo and the icons.
+ * Contrast ratios are documented there. The border (#1F4A5E, faint cyan) is < 3:1 on every
+ * background: use it for decorative separators only, never as the sole boundary of an
+ * interactive element.
  */
 :root {
   /* Structure */
-  --cosmos-void-black: #080b12;
-  --cosmos-deep-space: #111827;
-  --cosmos-nebula-surface: #1c2638;
-  --cosmos-stellar-border: #334155;
+  --orbemoria-midnight: #071426; /* Midnight Universe: main background */
+  --orbemoria-deep-space: #0b1f35; /* Deep Space: navigation, cards, menus, panels */
+  --orbemoria-surface: #102a44; /* derived: raised surface on Deep Space */
+  --orbemoria-border: #1f4a5e; /* derived: faint cyan, decorative borders */
 
-  /* Identity accents (use sparingly) */
-  --cosmos-cosmic-indigo: #8b9dff;
-  --cosmos-stellar-cyan: #61d6e8;
-  --cosmos-nebula-purple: #b58aff;
-  --cosmos-stellar-gold: #e5c58d;
+  /* Identity */
+  --orbemoria-cosmic-cyan: #36d6e7; /* Cosmic Cyan: interaction (buttons, links, active, focus) */
+  --orbemoria-ice-cyan: #a8f0f2; /* Ice Cyan: glows, illustrations, support */
+  --orbemoria-pale-gold: #e8d6a5; /* Pale Gold: logo, precious details, badges, education */
+  --orbemoria-archive-lavender: #9b8ce8; /* Archive Lavender: archives, memory, history (sparingly) */
 
   /* Content */
-  --cosmos-starlight: #f1f5f9;
-  --cosmos-moon-dust: #94a3b8;
+  --orbemoria-starlight: #f1f5f9; /* off-white: titles and text */
+  --orbemoria-moon-dust: #a3b8cc; /* secondary text */
 
   /* Celestial cue (interface only, not real colors) */
-  --cosmos-rocky-planet: #d97757;
+  --orbemoria-rocky-planet: #d97757;
 
   /* shadcn semantic mapping */
-  --background: var(--cosmos-void-black);
-  --foreground: var(--cosmos-starlight);
-  --card: var(--cosmos-nebula-surface);
-  --card-foreground: var(--cosmos-starlight);
-  --popover: var(--cosmos-deep-space);
-  --popover-foreground: var(--cosmos-starlight);
-  --primary: var(--cosmos-cosmic-indigo);
-  --primary-foreground: var(--cosmos-void-black);
-  --secondary: var(--cosmos-deep-space);
-  --secondary-foreground: var(--cosmos-starlight);
-  --muted: var(--cosmos-deep-space);
-  --muted-foreground: var(--cosmos-moon-dust);
-  --accent: var(--cosmos-nebula-surface);
-  --accent-foreground: var(--cosmos-starlight);
+  --background: var(--orbemoria-midnight);
+  --foreground: var(--orbemoria-starlight);
+  --card: var(--orbemoria-deep-space);
+  --card-foreground: var(--orbemoria-starlight);
+  --popover: var(--orbemoria-deep-space);
+  --popover-foreground: var(--orbemoria-starlight);
+  --primary: var(--orbemoria-cosmic-cyan);
+  --primary-foreground: var(--orbemoria-midnight);
+  --secondary: var(--orbemoria-deep-space);
+  --secondary-foreground: var(--orbemoria-starlight);
+  --muted: var(--orbemoria-deep-space);
+  --muted-foreground: var(--orbemoria-moon-dust);
+  --accent: var(--orbemoria-surface);
+  --accent-foreground: var(--orbemoria-starlight);
   --destructive: oklch(0.704 0.191 22.216);
-  --border: var(--cosmos-stellar-border);
-  --input: var(--cosmos-stellar-border);
-  --ring: var(--cosmos-cosmic-indigo);
+  --border: var(--orbemoria-border);
+  --input: var(--orbemoria-border);
+  --ring: var(--orbemoria-cosmic-cyan);
   --radius: 0.625rem;
 }

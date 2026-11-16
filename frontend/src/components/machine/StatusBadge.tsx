@@ -16,7 +16,7 @@ export function StatusBadge({ status }: { status: MachineStatus }) {
   const Icon = ICONS[status]
   return (
     <span className="inline-flex items-center gap-1.5 text-sm">
-      <Icon aria-hidden="true" className="size-4 text-stellar-cyan" />
+      <Icon aria-hidden="true" className="size-4 text-cosmic-cyan" />
       {t(`status.${status}`)}
     </span>
   )

@@ -24,7 +24,7 @@ const NAV: readonly NavItem[] = [
 ]
 
 const linkClass =
-  'relative inline-flex min-h-11 items-center rounded-full px-3 text-sm font-medium whitespace-nowrap text-moon-dust transition-colors hover:text-starlight aria-[current=page]:text-starlight after:absolute after:inset-x-3 after:bottom-1.5 after:h-0.5 after:origin-center after:scale-x-0 after:rounded-full after:bg-stellar-cyan after:transition-transform hover:after:scale-x-50 aria-[current=page]:after:scale-x-100'
+  'relative inline-flex min-h-11 items-center rounded-full px-3 text-sm font-medium whitespace-nowrap text-moon-dust transition-colors hover:text-starlight aria-[current=page]:text-starlight after:absolute after:inset-x-3 after:bottom-1.5 after:h-0.5 after:origin-center after:scale-x-0 after:rounded-full after:bg-cosmic-cyan after:transition-transform hover:after:scale-x-50 aria-[current=page]:after:scale-x-100'
 
 /**
  * The site header: the mark and the name (home link), the two worlds and "About & Sources", then
@@ -100,7 +100,7 @@ export function SiteHeader({ home }: { home: boolean }) {
             onClick={() => setMenuOpen(true)}
             aria-haspopup="dialog"
             aria-expanded={menuOpen}
-            className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/15 bg-void/50 px-4 text-sm font-medium text-starlight transition-colors hover:border-stellar-cyan md:hidden"
+            className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/15 bg-void/50 px-4 text-sm font-medium text-starlight transition-colors hover:border-cosmic-cyan md:hidden"
           >
             <Menu aria-hidden="true" className="size-4" />
             {t('nav.menu')}
@@ -109,7 +109,7 @@ export function SiteHeader({ home }: { home: boolean }) {
       </div>
       {!home && (
         <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-px bg-white/5">
-          <span ref={progressRef} className="block h-full origin-left bg-gradient-to-r from-stellar-cyan via-stellar-cyan to-stellar-gold" style={{ transform: 'scaleX(0)' }} />
+          <span ref={progressRef} className="block h-full origin-left bg-gradient-to-r from-cosmic-cyan via-cosmic-cyan to-pale-gold" style={{ transform: 'scaleX(0)' }} />
         </span>
       )}
       <PhoneMenu open={menuOpen} onClose={() => setMenuOpen(false)} pathname={pathname} />
@@ -162,7 +162,7 @@ function PhoneMenu({ open, onClose, pathname }: { open: boolean; onClose: () => 
             type="button"
             onClick={onClose}
             aria-label={t('nav.close')}
-            className="inline-flex size-11 items-center justify-center rounded-full border border-white/15 transition-colors hover:border-stellar-cyan"
+            className="inline-flex size-11 items-center justify-center rounded-full border border-white/15 transition-colors hover:border-cosmic-cyan"
           >
             <X aria-hidden="true" className="size-5" />
           </button>
@@ -175,7 +175,7 @@ function PhoneMenu({ open, onClose, pathname }: { open: boolean; onClose: () => 
                 <Link
                   to={item.to}
                   aria-current={item.active(pathname) ? 'page' : undefined}
-                  className="group flex min-h-16 items-center justify-between gap-4 border-b border-white/10 py-3 aria-[current=page]:text-stellar-cyan"
+                  className="group flex min-h-16 items-center justify-between gap-4 border-b border-white/10 py-3 aria-[current=page]:text-cosmic-cyan"
                 >
                   <span>
                     <span className="block font-heading text-3xl font-bold">{t(item.labelKey)}</span>

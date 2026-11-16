@@ -65,7 +65,7 @@ export function WorldPortal({ id, label, className }: WorldPortalProps) {
         {/* Orbit rings: decorative, they open up and spin while the world is active. */}
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-[-6%] rounded-full border border-dashed border-stellar-cyan/0 transition-[border-color,transform] duration-700 group-hover:scale-105 group-hover:border-stellar-cyan/50 group-focus-visible:scale-105 group-focus-visible:border-stellar-cyan/50 motion-safe:animate-[spin_24s_linear_infinite]"
+          className="pointer-events-none absolute inset-[-6%] rounded-full border border-dashed border-cosmic-cyan/0 transition-[border-color,transform] duration-700 group-hover:scale-105 group-hover:border-cosmic-cyan/50 group-focus-visible:scale-105 group-focus-visible:border-cosmic-cyan/50 motion-safe:animate-[spin_24s_linear_infinite]"
         />
         <span
           aria-hidden="true"
@@ -73,7 +73,7 @@ export function WorldPortal({ id, label, className }: WorldPortalProps) {
         />
         <LivePlanet body={body} active={active} pointer={pointer} />
       </div>
-      <span className="mt-1 font-heading text-[clamp(1.8rem,min(6.5vw,7vh),3.6rem)] leading-tight font-bold transition-colors group-hover:text-stellar-cyan group-focus-visible:text-stellar-cyan">
+      <span className="mt-1 font-heading text-[clamp(1.8rem,min(6.5vw,7vh),3.6rem)] leading-tight font-bold transition-colors group-hover:text-cosmic-cyan group-focus-visible:text-cosmic-cyan">
         {t(`destinations.${id}.name`)}
       </span>
 

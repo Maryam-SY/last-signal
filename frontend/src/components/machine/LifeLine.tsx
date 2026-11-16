@@ -69,7 +69,7 @@ export function LifeLine({ born, lifespan, epilogue, className }: LifeLineProps)
           <dt className="font-mono text-[0.72rem] tracking-[0.25em] text-moon-dust uppercase">{t('machine.lastSignal')}</dt>
           <dd className="mt-1 font-heading text-xl font-bold">
             {alive ? (
-              <span className="text-stellar-cyan">{t('machine.stillWorking')}</span>
+              <span className="text-cosmic-cyan">{t('machine.stillWorking')}</span>
             ) : end ? (
               <time dateTime={end.value}>{formatPartialDate(end.value, locale)}</time>
             ) : (

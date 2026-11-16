@@ -4,14 +4,14 @@ import type { StepKey } from '@/api/types'
 export const stepSectionId = (number: number) => `step-${number}`
 
 /**
- * Ambient colour of each narrative step (interface cue only, US-5.6). All COSMOS accents,
- * each ≥ 7:1 on Void Black, so they can also colour the step labels.
+ * Ambient colour of each narrative step (interface cue only, US-5.6). All ORBEMORIA accents,
+ * each ≥ 6:1 on Midnight Universe, so they can also colour the step labels.
  */
 export const STEP_ACCENT: Record<StepKey, string> = {
-  signal: 'var(--cosmos-stellar-cyan)',
-  why: 'var(--cosmos-cosmic-indigo)',
-  how: 'var(--cosmos-nebula-purple)',
-  discovery: 'var(--cosmos-stellar-gold)',
-  relay: 'var(--cosmos-stellar-cyan)',
-  'your-turn': 'var(--cosmos-nebula-purple)',
+  signal: 'var(--orbemoria-cosmic-cyan)',
+  why: 'var(--orbemoria-ice-cyan)',
+  how: 'var(--orbemoria-archive-lavender)',
+  discovery: 'var(--orbemoria-pale-gold)',
+  relay: 'var(--orbemoria-cosmic-cyan)',
+  'your-turn': 'var(--orbemoria-archive-lavender)',
 }

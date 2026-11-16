@@ -96,7 +96,7 @@ function MediaBody({ media }: { media: Media }) {
       href={media.type === '3d-model' ? media.pageUrl : media.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex aspect-video w-full flex-col items-center justify-center gap-2 bg-nebula-surface text-center text-sm font-medium text-cosmic-indigo hover:underline"
+      className="flex aspect-video w-full flex-col items-center justify-center gap-2 bg-nebula-surface text-center text-sm font-medium text-cosmic-cyan hover:underline"
     >
       <Icon aria-hidden="true" className="size-10" />
       {label}

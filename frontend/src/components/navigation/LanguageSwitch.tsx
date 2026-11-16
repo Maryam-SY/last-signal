@@ -57,7 +57,7 @@ export function LanguageSwitch({ className }: { className?: string }) {
         aria-expanded={open}
         aria-controls={listId}
         onClick={() => setOpen((value) => !value)}
-        className="inline-flex min-h-11 min-w-11 items-center justify-center gap-1.5 rounded-full border border-moon-dust/30 px-2.5 text-xs font-medium text-starlight transition-colors hover:border-stellar-cyan aria-expanded:border-stellar-cyan"
+        className="inline-flex min-h-11 min-w-11 items-center justify-center gap-1.5 rounded-full border border-moon-dust/30 px-2.5 text-xs font-medium text-starlight transition-colors hover:border-cosmic-cyan aria-expanded:border-cosmic-cyan"
       >
         <Languages aria-hidden="true" className="size-4" />
         <span className="font-mono uppercase">{locale}</span>
@@ -82,7 +82,7 @@ export function LanguageSwitch({ className }: { className?: string }) {
                 aria-current={locale === code ? 'true' : undefined}
                 onClick={() => choose(code)}
                 onKeyDown={onListKey}
-                className="flex min-h-11 w-full items-center gap-3 rounded-xl px-3 text-left text-sm text-starlight transition-colors hover:bg-white/10 focus-visible:bg-white/10 aria-[current=true]:text-stellar-cyan"
+                className="flex min-h-11 w-full items-center gap-3 rounded-xl px-3 text-left text-sm text-starlight transition-colors hover:bg-white/10 focus-visible:bg-white/10 aria-[current=true]:text-cosmic-cyan"
               >
                 <span className="w-6 font-mono text-xs uppercase text-moon-dust">{code}</span>
                 <span className="flex-1">{t(`lang.${code}`)}</span>

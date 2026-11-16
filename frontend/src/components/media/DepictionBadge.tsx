@@ -14,7 +14,7 @@ export function DepictionBadge({ depiction }: { depiction: Depiction }) {
   const Icon = ICONS[depiction]
 
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-full border border-stellar-gold/60 bg-void/85 px-2.5 py-1 text-xs font-semibold text-stellar-gold">
+    <span className="inline-flex items-center gap-1.5 rounded-full border border-pale-gold/60 bg-void/85 px-2.5 py-1 text-xs font-semibold text-pale-gold">
       <Icon aria-hidden="true" className="size-3.5" />
       {t(`depiction.${depiction}`)}
     </span>

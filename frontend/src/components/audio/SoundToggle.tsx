@@ -67,12 +67,12 @@ export function SoundToggle({ className }: { className?: string }) {
       onClick={toggle}
       title={t('sound.label')}
       className={cn(
-        'relative inline-flex size-11 shrink-0 items-center justify-center rounded-full text-moon-dust transition-colors hover:text-starlight aria-pressed:text-stellar-cyan',
+        'relative inline-flex size-11 shrink-0 items-center justify-center rounded-full text-moon-dust transition-colors hover:text-starlight aria-pressed:text-cosmic-cyan',
         className,
       )}
     >
       <Icon aria-hidden="true" className="size-5" />
-      {on && <span aria-hidden="true" className="sound-wave absolute inset-1 rounded-full border border-stellar-cyan/50" />}
+      {on && <span aria-hidden="true" className="sound-wave absolute inset-1 rounded-full border border-cosmic-cyan/50" />}
       <span className="sr-only">{t('sound.label')}</span>
     </button>
   )

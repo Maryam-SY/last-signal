@@ -93,7 +93,7 @@ All interface text lives in `frontend/src/i18n/messages/` (`en.ts` is the source
 | User flows and stories | [docs/product/USER_FLOWS.md](docs/product/USER_FLOWS.md), [docs/product/USER_STORIES.md](docs/product/USER_STORIES.md) |
 | Architecture and decisions | [docs/architecture/ARCHITECTURE.md](docs/architecture/ARCHITECTURE.md), [docs/architecture/TECHNICAL_DECISIONS.md](docs/architecture/TECHNICAL_DECISIONS.md) |
 | Data model | [docs/architecture/DATA_MODEL.md](docs/architecture/DATA_MODEL.md) |
-| Design system (COSMOS palette) | [docs/design/DESIGN_SYSTEM.md](docs/design/DESIGN_SYSTEM.md) |
+| Design system (« Cosmic Knowledge » palette) | [docs/design/DESIGN_SYSTEM.md](docs/design/DESIGN_SYSTEM.md) |
 | Quality gates | [docs/quality/QUALITY_GATES.md](docs/quality/QUALITY_GATES.md) |
 | Plan and open decisions | [docs/project/IMPLEMENTATION_PLAN.md](docs/project/IMPLEMENTATION_PLAN.md), [docs/project/AUDIT_PHASE0.md](docs/project/AUDIT_PHASE0.md) |
 

@@ -181,7 +181,7 @@ function SpatialJourney({ scenes, layers, navLabel }: DepthJourneyProps) {
 
         <nav aria-label={navLabel} className="absolute top-1/2 right-1 z-[2000] -translate-y-1/2 sm:right-4">
           <div aria-hidden="true" className="absolute top-5 bottom-5 left-1/2 w-px -translate-x-1/2 bg-moon-dust/20">
-            <div ref={progressRef} className="h-full w-full origin-top bg-stellar-cyan" style={{ transform: 'scaleY(0)' }} />
+            <div ref={progressRef} className="h-full w-full origin-top bg-cosmic-cyan" style={{ transform: 'scaleY(0)' }} />
           </div>
           <ol className="relative flex flex-col gap-3">
             {scenes.map((scene, index) => (
@@ -194,7 +194,7 @@ function SpatialJourney({ scenes, layers, navLabel }: DepthJourneyProps) {
                   onClick={() => goTo(index)}
                   className="group relative flex size-11 items-center justify-center rounded-full"
                 >
-                  <span className="block size-2.5 rounded-full border border-moon-dust/70 bg-void transition-all group-hover:border-stellar-cyan group-aria-[current=step]:size-3.5 group-aria-[current=step]:border-stellar-cyan group-aria-[current=step]:bg-stellar-cyan" />
+                  <span className="block size-2.5 rounded-full border border-moon-dust/70 bg-void transition-all group-hover:border-cosmic-cyan group-aria-[current=step]:size-3.5 group-aria-[current=step]:border-cosmic-cyan group-aria-[current=step]:bg-cosmic-cyan" />
                   <span aria-hidden="true" className="pointer-events-none absolute right-full mr-1 hidden rounded bg-void/80 px-2 py-0.5 font-mono text-[0.72rem] tracking-widest whitespace-nowrap text-moon-dust uppercase group-hover:block group-focus-visible:block sm:mr-2 lg:group-aria-[current=step]:block">
                     {scene.label}
                   </span>

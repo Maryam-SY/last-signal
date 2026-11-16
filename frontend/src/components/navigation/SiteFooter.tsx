@@ -35,7 +35,7 @@ export function SiteFooter() {
 
   return (
     <footer className="site-footer relative z-40 overflow-hidden border-t border-white/5 bg-void/90">
-      <div aria-hidden="true" className="h-px bg-gradient-to-r from-transparent via-stellar-cyan/60 to-transparent" />
+      <div aria-hidden="true" className="h-px bg-gradient-to-r from-transparent via-cosmic-cyan/60 to-transparent" />
       <div className="relative mx-auto max-w-6xl px-4 pt-12 pb-8">
         <div className="grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-[1.6fr_1fr_1fr]">
           <div className="col-span-2 lg:col-span-1">
@@ -48,7 +48,7 @@ export function SiteFooter() {
           </div>
           {columns.map((column) => (
             <nav key={column.titleKey} aria-label={t(column.titleKey)}>
-              <p className="font-mono text-[0.72rem] tracking-[0.3em] text-stellar-gold uppercase">{t(column.titleKey)}</p>
+              <p className="font-mono text-[0.72rem] tracking-[0.3em] text-pale-gold uppercase">{t(column.titleKey)}</p>
               <ul className="mt-3">
                 {column.links.map((link) => (
                   <li key={link.to}>
@@ -67,7 +67,7 @@ export function SiteFooter() {
           <button
             type="button"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="inline-flex min-h-11 w-fit items-center gap-2 rounded-full border border-white/15 px-4 text-sm font-medium text-starlight transition-colors hover:border-stellar-cyan hover:text-stellar-cyan"
+            className="inline-flex min-h-11 w-fit items-center gap-2 rounded-full border border-white/15 px-4 text-sm font-medium text-starlight transition-colors hover:border-cosmic-cyan hover:text-cosmic-cyan"
           >
             <ArrowUp aria-hidden="true" className="size-4" />
             {t('footer.top')}

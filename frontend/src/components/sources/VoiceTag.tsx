@@ -4,9 +4,9 @@ import { useTranslation } from '@/i18n'
 import { cn } from '@/lib/utils'
 
 const STYLE = {
-  data: { Icon: BookOpen, className: 'text-stellar-gold' },
-  interpretation: { Icon: Lightbulb, className: 'text-cosmic-indigo' },
-  imagination: { Icon: Sparkles, className: 'text-nebula-purple' },
+  data: { Icon: BookOpen, className: 'text-pale-gold' },
+  interpretation: { Icon: Lightbulb, className: 'text-cosmic-cyan' },
+  imagination: { Icon: Sparkles, className: 'text-archive-lavender' },
 } as const
 
 /** STORY-007: the narrative voice is always written out (Fact / What it means / Imagine). */
