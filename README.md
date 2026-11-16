@@ -107,4 +107,4 @@ No secret in the repository, no raw HTML injection, dependency audit and gitleak
 
 ## License
 
-[MIT](LICENSE), © 2026 Pape Birame Thiombane and Ndeye Marième Sy (Maryam-SY). Third-party licenses (fonts, images, libraries) will be listed in `THIRD_PARTY_LICENSES.md` and on the site's About page.
+[MIT](LICENSE), © 2026 Ndeye Marième Sy (Maryam-SY). Third-party licenses (fonts, images, libraries) will be listed in `THIRD_PARTY_LICENSES.md` and on the site's About page.

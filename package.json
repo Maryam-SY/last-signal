@@ -8,6 +8,10 @@
   },
   "scripts": {
     "secrets": "node scripts/scan-secrets.mts",
-    "test:scripts": "node --test \"scripts/*.test.mts\""
+    "test:scripts": "node --test \"scripts/*.test.mts\"",
+    "prepare": "lefthook install"
+  },
+  "devDependencies": {
+    "lefthook": "2.2.2"
   }
 }
