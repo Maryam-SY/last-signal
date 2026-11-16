@@ -19,8 +19,8 @@ export function LogoMark({ className }: { className?: string }) {
     <svg aria-hidden="true" viewBox="0 0 64 64" className={cn('logo-mark shrink-0', className)}>
       <defs>
         <radialGradient id={glow}>
-          <stop offset="0" stopColor="#36d6e7" stopOpacity="0.6" />
-          <stop offset="1" stopColor="#36d6e7" stopOpacity="0" />
+          <stop offset="0" stopColor="#f2c879" stopOpacity="0.6" />
+          <stop offset="1" stopColor="#f2c879" stopOpacity="0" />
         </radialGradient>
         <mask id={cut}>
           <rect width="64" height="64" fill="#fff" />
@@ -32,7 +32,7 @@ export function LogoMark({ className }: { className?: string }) {
       <path transform={ORBIT_TILT} d={ORBIT_NEAR} fill="none" stroke="#e8d6a5" strokeWidth="3.2" strokeLinecap="round" />
       <g className="logo-star">
         <circle cx="32" cy="32" r="7.5" fill={`url(#${glow})`} />
-        <path d="M32 25 Q32.9 31.1 39 32 Q32.9 32.9 32 39 Q31.1 32.9 25 32 Q31.1 31.1 32 25Z" fill="#e9fbfc" />
+        <path d="M32 25 Q32.9 31.1 39 32 Q32.9 32.9 32 39 Q31.1 32.9 25 32 Q31.1 31.1 32 25Z" fill="#fff6e0" />
       </g>
     </svg>
   )
