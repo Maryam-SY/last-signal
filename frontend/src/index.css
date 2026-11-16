@@ -1855,29 +1855,29 @@ html[data-flight-snap] .flight-snap-edge {
   filter: blur(6px) saturate(1.1);
 }
 
-/* The OrbeMoria mark: its two signal arcs light up in turn, faster when the logo is hovered. */
-.logo-wave-far {
-  opacity: 0.55;
+/* The OrbeMoria mark: the star at the heart of the ring twinkles, faster when the logo is hovered. */
+.logo-star {
+  transform-box: fill-box;
+  transform-origin: center;
 }
 @media (prefers-reduced-motion: no-preference) {
-  .logo-wave {
-    animation: logo-signal 2.8s ease-in-out infinite;
+  .logo-star {
+    animation: logo-twinkle 3.2s ease-in-out infinite;
   }
-  .logo-wave-far {
-    animation-delay: 0.35s;
-  }
-  .group:hover .logo-wave,
-  .group:focus-visible .logo-wave {
-    animation-duration: 1.2s;
+  .group:hover .logo-star,
+  .group:focus-visible .logo-star {
+    animation-duration: 1.4s;
   }
 }
-@keyframes logo-signal {
+@keyframes logo-twinkle {
   0%,
   100% {
-    opacity: 0.35;
+    opacity: 0.75;
+    transform: scale(0.85);
   }
-  30% {
+  40% {
     opacity: 1;
+    transform: scale(1.08);
   }
 }
 

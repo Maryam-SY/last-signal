@@ -89,9 +89,10 @@ Le guide fournit des couleurs par **famille d'objets** (étoiles, planètes roch
 - Conserver la variable `--radius` existante (0,625 rem) et l'échelle d'espacement Tailwind.
 - Espacement minimal entre cibles tactiles : 8 px.
 
-## 6. Logo (2026-11-15)
+## 6. Logo (2026-11-16, remplace le « A » du 2026-11-15)
 
-- **Idée** : un atterrisseur en forme de lettre **A**, posé sur l'horizon d'un monde, qui **émet encore son signal** — chaque machine a transmis quelque chose. Pas de logo ni d'élément graphique de la NASA.
-- **Couleurs** : A en `starlight` (#f1f5f9), balise et ondes en `stellar-cyan` (#61d6e8, l'onde lointaine à 55 %), horizon en `stellar-gold` (#e5c58d), fond de tuile du `#18223a` au `void-black`.
-- **Fichiers** (`frontend/public/`) : `favicon.svg` (tuile arrondie), `favicon.ico` (16, 32, 48), `apple-touch-icon.png` (180, plein cadre), `icon-192.png`, `icon-512.png`, `icon-maskable-512.png` (dessin dans la zone sûre de 80 %, pieds sur l'horizon), `og-image.jpg` (1200 × 630, aperçu de partage). Dans l'en-tête : `LogoMark` (`app/Layout.tsx`), version sans tuile ; les deux ondes s'allument tour à tour (coupé sous `prefers-reduced-motion`).
-- **Lisibilité** : reconnaissable à 16 px (vérifié sur fond sombre et clair).
+- **Logo de référence** : `docs/design/brand/orbemoria-logo.webp` (1536 × 1024), fourni par l'équipe : un petit rover à antenne parabolique sur une lune qui sort d'un livre ouvert, une orbite, le mot-symbole « ORBEMORIA », la phrase « Every object has a story. » et « Explore · Discover · Learn ». Illustration de marque, pas une image de mission : elle n'apparaît pas comme média dans l'interface. Pas de logo ni d'élément graphique de la NASA.
+- **Marque réduite** (en-tête, pied de page, icônes) : le « O » du logo, un anneau blanc (`#f8f5f2`) traversé par une orbite dorée (`#f5b860`, qui passe derrière puis devant l'anneau), une étoile au centre (`#fff4dc`, halo doré). Le logo complet est illisible en dessous d'environ 200 px de large ; la marque réduite reste reconnaissable à 16 px (vérifié sur fond sombre et clair).
+- **Couleurs** : l'or `#f5b860` et les violets du logo complet ne font pas partie des tokens COSMOS (`stellar-gold` vaut `#e5c58d`). Ils restent réservés au logo tant que l'équipe n'a pas décidé d'aligner la palette.
+- **Fichiers** (`frontend/public/`) : `favicon.svg` (tuile arrondie, source des icônes), `favicon.ico` (16, 32, 48), `apple-touch-icon.png` (180, plein cadre), `icon-192.png`, `icon-512.png` (tuile arrondie, coins transparents), `icon-maskable-512.png` (dessin réduit à 80 % dans la zone sûre), `og-image.jpg` (1200 × 630 : le logo complet et la mention « Independent project · not affiliated with NASA »). Dans l'interface : `LogoMark` (`components/brand/LogoMark.tsx`), version sans tuile ; l'étoile scintille (coupé sous `prefers-reduced-motion`).
+
