@@ -101,6 +101,10 @@ All interface text lives in `frontend/src/i18n/messages/` (`en.ts` is the source
 
 One branch per story (`feat/US-x.y-short-name`) and a green CI before merging. Frontend-only work goes through the `front` integration branch, backend-only work through `back`; cross-cutting work and docs target `main` directly. `front` and `back` reach `main` through a pull request, and `main` is merged back into both after every merge. See [CLAUDE.md](CLAUDE.md) for the full workflow and the scientific-accuracy rules (no invented coordinates, dates, statuses, relations or quotes; every fact has a source).
 
+## Security
+
+No secret in the repository, no raw HTML injection, dependency audit and gitleaks in CI: see [SECURITY.md](SECURITY.md). Check locally with `npm run secrets` from the repository root.
+
 ## License
 
 [MIT](LICENSE). Third-party licenses (fonts, images, libraries) will be listed in `THIRD_PARTY_LICENSES.md` and on the site's About page.
