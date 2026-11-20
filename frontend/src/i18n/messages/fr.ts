@@ -396,6 +396,7 @@ export const fr: Messages = {
     scanHelp: 'Scanne ce code avec l’appareil photo d’un téléphone ou d’une tablette, puis touche « Voir chez moi ».',
     qrLabel: 'QR code qui ouvre {name} en réalité augmentée sur un téléphone',
     unsupported: 'Cet appareil ne peut pas poser la machine chez toi, mais tu peux toujours la faire tourner ici.',
+    localOnly: 'Le QR code apparaît une fois le site en ligne : cette adresse locale (localhost) ne s’ouvre pas sur un téléphone.',
     credit: 'Modèle 3D : {credit}, NASA 3D Resources',
     newTab: '(s’ouvre dans un nouvel onglet)',
     noModel: 'La NASA n’a pas publié de modèle 3D de cette machine : elle ne peut donc pas venir chez toi. Ses photos sont sur sa page.',

@@ -6,6 +6,16 @@ import { makeQrGrid, qrPath, type QrGrid } from './qrPath'
 const MARGIN = 4
 
 /** Mouse-driven devices (computers) get the QR code; touch devices without AR get a short note. */
+/** Addresses that only mean something on this computer (development server). */
+const isLocalAddress = (url: string) => {
+  try {
+    const host = new URL(url).hostname
+    return host === 'localhost' || host.endsWith('.localhost') || host === '[::1]' || host.startsWith('127.')
+  } catch {
+    return false
+  }
+}
+
 const hasFinePointer = () => typeof window !== 'undefined' && typeof window.matchMedia === 'function' && window.matchMedia('(pointer: fine)').matches
 
 /**
@@ -18,9 +28,10 @@ export function ArFallback({ url, name }: { url: string; name: string }) {
   const { t } = useTranslation()
   const [grid, setGrid] = useState<QrGrid | null>(null)
   const computer = hasFinePointer()
+  const local = isLocalAddress(url)
 
   useEffect(() => {
-    if (!computer) return
+    if (!computer || local) return
     let alive = true
     makeQrGrid(url).then(
       (made) => alive && setGrid(made),
@@ -29,10 +40,14 @@ export function ArFallback({ url, name }: { url: string; name: string }) {
     return () => {
       alive = false
     }
-  }, [computer, url])
+  }, [computer, local, url])
 
   if (!computer) {
     return <p className="mt-3 text-sm text-moon-dust">{t('ar.unsupported')}</p>
+  }
+  // A "localhost" address would open the phone itself, not this computer: no code to scan.
+  if (local) {
+    return <p className="mt-3 text-sm text-moon-dust">{t('ar.localOnly')}</p>
   }
 
   const side = grid ? grid.size + MARGIN * 2 : 0

@@ -398,6 +398,7 @@ export const en = {
     scanHelp: 'Scan this code with the camera of a phone or tablet, then tap “See it in my room”.',
     qrLabel: 'QR code that opens {name} in augmented reality on a phone',
     unsupported: 'This device cannot place the machine in your room, but you can still turn it here.',
+    localOnly: 'The QR code appears once the site is online: this local address (localhost) does not open on a phone.',
     credit: '3D model: {credit}, NASA 3D Resources',
     newTab: '(opens in a new tab)',
     noModel: 'NASA has not published a 3D model of this machine, so it cannot come into your room. Its photos are on its page.',

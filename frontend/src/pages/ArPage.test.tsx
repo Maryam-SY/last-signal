@@ -1,6 +1,8 @@
-import { screen, waitFor, within } from '@testing-library/react'
+import { render, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it, vi } from 'vitest'
+import { ArFallback } from '@/components/ar/ArFallback'
+import { I18nProvider } from '@/i18n'
 import { renderRoute } from '@/test/renderRoute'
 
 // <model-viewer> needs WebGL: in jsdom its module is replaced by an empty one (the element stays inert).
@@ -84,15 +86,26 @@ describe('AR page (US-5.16)', () => {
     expect(within(hunt).getByRole('link', { name: 'Test what you remember' })).toHaveAttribute('href', '/explore/mars/machine-a#quiz')
   })
 
-  it('shows a QR code on a computer once the model is loaded and cannot be placed here', async () => {
+  it('on a computer served from localhost, explains that no phone can open that address (no QR code)', async () => {
     vi.stubGlobal('matchMedia', (query: string) => ({ matches: query === '(pointer: fine)', media: query, addEventListener() {}, removeEventListener() {} }))
     renderRoute('/ar/mars/machine-a')
     const model = await viewer()
     model.dispatchEvent(new Event('load'))
+    expect(await screen.findByText(/The QR code appears once the site is online/)).toBeInTheDocument()
+    expect(screen.queryByRole('img', { name: /QR code/ })).not.toBeInTheDocument()
+  })
+
+  it('on a computer, shows a QR code of the public address, written out too', async () => {
+    vi.stubGlobal('matchMedia', (query: string) => ({ matches: query === '(pointer: fine)', media: query, addEventListener() {}, removeEventListener() {} }))
+    render(
+      <I18nProvider initialLocale="en">
+        <ArFallback url="https://orbemoria.example/ar/mars/machine-a" name="Test Rover" />
+      </I18nProvider>,
+    )
     // The QR encoder is loaded on demand: under a full parallel run, give it more time.
     const qr = await screen.findByRole('img', { name: 'QR code that opens Test Rover in augmented reality on a phone' }, { timeout: 15000 })
     expect(decodeURIComponent(qr.getAttribute('src') ?? '')).toMatch(/^data:image\/svg\+xml,<svg .*<path d="M\d+ \d+h1v1h-1z/)
-    expect(screen.getByText('http://localhost:3000/ar/mars/machine-a')).toBeInTheDocument()
+    expect(screen.getByText('https://orbemoria.example/ar/mars/machine-a')).toBeInTheDocument()
   })
 
   it('on a touch device without AR, says the model can still be turned here', async () => {
