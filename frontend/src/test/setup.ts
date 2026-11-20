@@ -9,7 +9,7 @@ configure({ asyncUtilTimeout: 5000 })
 // Warm the code-split pages once per worker, so the first test that navigates to one does not
 // pay their transform time inside its own wait.
 beforeAll(async () => {
-  await Promise.all([import('@/pages/DestinationPage'), import('@/pages/MachinePage'), import('@/pages/StoryPage'), import('@/pages/AboutPage'), import('@/pages/NotFoundPage')])
+  await Promise.all([import('@/pages/DestinationPage'), import('@/pages/MachinePage'), import('@/pages/StoryPage'), import('@/pages/AboutPage'), import('@/pages/ArPage'), import('@/pages/NotFoundPage')])
 })
 import { installMockApi } from './mockApi'
 
