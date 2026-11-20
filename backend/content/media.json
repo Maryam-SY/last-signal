@@ -4803,6 +4803,35 @@
     "descriptionStatus": "draft"
   },
   {
+    "id": "mer-3d-model",
+    "type": "3d-model",
+    "url": "https://raw.githubusercontent.com/nasa/NASA-3D-Resources/master/3D%20Models/Mars%20Exploration%20Rover%20-%20Opportunity%20%28MER-B%29/Mars%20Exploration%20Rover%20-%20Opportunity%20%28MER-B%29.glb",
+    "pageUrl": "https://github.com/nasa/NASA-3D-Resources/tree/master/3D%20Models/Mars%20Exploration%20Rover%20-%20Opportunity%20%28MER-B%29",
+    "title": "Mars Exploration Rover - Opportunity (MER-B)",
+    "caption": null,
+    "alt": {
+      "en": "3D model of a Mars Exploration Rover that you can turn around.",
+      "fr": "Modèle 3D d’un rover d’exploration martienne, que l’on peut faire tourner."
+    },
+    "credit": "NASA",
+    "license": "NASA media — generally not subject to copyright in the United States; see NASA Images and Media Usage Guidelines.",
+    "missionIds": [
+      "mars-exploration-rovers"
+    ],
+    "machineIds": [
+      "spirit",
+      "opportunity"
+    ],
+    "sourceId": "nasa-3d-mer-github",
+    "aiGenerated": false,
+    "depiction": "simulation",
+    "description": {
+      "en": "A simplified NASA model of Opportunity. Spirit and Opportunity were twin rovers, so this model shows both.",
+      "fr": "Un modèle simplifié d’Opportunity, publié par la NASA. Spirit et Opportunity étaient des rovers jumeaux : ce modèle montre donc les deux."
+    },
+    "descriptionStatus": "draft"
+  },
+  {
     "id": "bio-spirit-ksc-03pd1897",
     "type": "image",
     "url": "https://images-assets.nasa.gov/image/KSC-03pd1897/KSC-03pd1897~orig.jpg",
